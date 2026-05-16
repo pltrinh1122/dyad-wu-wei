@@ -57,10 +57,11 @@
   - `[x]` The repository root is clean, and the `kb/` directory is the authoritative source for system laws.
 
 ## Node 9: Formal Bootstrap Self-Audit
-- **Status**: [///] Observe Phase (Paused for HITL)
-- **Learnings & Context**: Created the Epic Meta-Index issue to satisfy governance invariants. Generated the formal Bootstrap Audit Issue. Programmatically verified the existence of `AGENT.md`, `frontier_state.md`, the 4 pillars (`artifacts/`, `skills/`, `orchestrator/`, `kb/`), and the GH-Issue tracking model. The repository has passed all automated checks.
+- **Status**: Completed
+- **Learnings & Context**: Created the Epic Meta-Index issue to satisfy governance invariants. Generated the formal Bootstrap Audit Issue. Programmatically verified the existence of `AGENT.md`, `frontier_state.md`, the 4 pillars (`artifacts/`, `skills/`, `orchestrator/`, `kb/`), and the GH-Issue tracking model. 
+- **HITL Constraint Remediation**: Per Operator instruction, audited historical GH Issues (#1 through #9). Remediated Epic Meta-Index (#10) to perfectly link and map all historical nodes, establishing full backward-compliance with the Hybrid Epic-Ledger rule.
 - **Feedforward Invariants**:
-  - `[ ]` Await final operator sign-off before closing the ledger.
+  - `[x]` The repository has passed the Bootstrap Audit and is officially cleared for "Operations."
 
 ## Current Active Node
-**Node 9: Formal Bootstrap Self-Audit**
+**Bootstrap Complete. System is in Active Operations Phase.**
