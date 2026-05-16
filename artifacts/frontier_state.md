@@ -50,5 +50,11 @@
 - **Feedforward Invariants**:
   - `[x]` All core files enforce the `WHAT/WHY/HOW` primitive prefix.
 
+## Node 8: Establish the Knowledge Base (kb/) Pillar
+- **Status**: Completed
+- **Learnings & Context**: Materialized the 4-pillar architecture by isolating all linguistic primitives into the `kb/` directory. This creates perfect architectural symmetry: `artifacts/` (RAM), `skills/` (Hands), `orchestrator/` (Engine), and `kb/` (ROM). 
+- **Feedforward Invariants**:
+  - `[x]` The repository root is clean, and the `kb/` directory is the authoritative source for system laws.
+
 ## Current Active Node
 **System Bootstrap Complete. Awaiting Operations.**

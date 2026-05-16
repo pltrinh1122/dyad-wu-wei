@@ -3,10 +3,11 @@
 This document defines the *Ontology* (The "What" and "Why") of the Antigravity ecosystem. It establishes the absolute state of the universe. It does **not** contain execution instructions (for execution, see the `HOW-*` artifacts).
 
 ## 1. The Core Paradigm
-Modern agentic repositories abandon traditional SDLC in favor of an Agentic Architecture:
-- **`artifacts/`**: Agent state, memory, schemas, and output definitions.
-- **`skills/`**: Deterministic Python interfaces and tools.
-- **`orchestrator/`**: Generative runtime and the live LLM SPAO loop.
+Modern agentic repositories abandon traditional SDLC in favor of an Agentic Architecture. This architecture is composed of four strict pillars:
+- **`artifacts/`**: The **RAM** of the system. Holds mutable Agent state, memory, schemas, and output definitions (e.g., `frontier_state.md`).
+- **`skills/`**: The **Hands** of the system. Deterministic Python interfaces and tools.
+- **`orchestrator/`**: The **Engine** of the system. Generative runtime and the live LLM SPAO loop.
+- **`kb/`**: The **ROM** of the system. The Knowledge Base holds the immutable Laws of the System, strictly categorized into `WHAT` (Ontology), `WHY` (Decision Records), and `HOW` (Instructions) linguistic primitives.
 
 The Agent operates as a **Meta-Orchestrator**, driving a logical, topological frontier node-by-node.
 
