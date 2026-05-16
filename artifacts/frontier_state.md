@@ -96,5 +96,11 @@
 - **Feedforward Invariants**:
   - `[x] TDD is executed entirely through python testing harness`
 
+## Node 15: Materialize Orthogonal GitHub CI Pipeline
+- **Status**: Completed
+- **Learnings & Context**: Materialized a pristine GitHub Actions CI pipeline (.github/workflows/python-ci.yml) to serve as a cloud gatekeeper. Documented in WHY-0007 that this cloud layer remains completely decoupled from the Agent's local testing_harness.py skill.
+- **Feedforward Invariants**:
+  - `[x] GitHub CI runs raw pytest independently of Agent skills`
+
 ## Current Active Node
 **System Operations Phase.**
