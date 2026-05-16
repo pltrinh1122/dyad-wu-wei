@@ -18,7 +18,7 @@ Because Agent sessions are ephemeral, the repository must be physically self-des
 
 ## 3. GitHub Issues as the Flow-State Ledger
 GitHub Issues act as the primary operational anchor bridging the Human Operator and the Agent:
-- **Contract of Execution**: The GH-Issue defines the strict Scope and Acceptance Criteria (The "Plan") before any codebase mutation begins. It forces alignment.
+- **Contract of Execution**: The GH-Issue defines the strict Scope and Acceptance Criteria (The "Plan") before execution begins. This applies not just to codebase mutations, but to **any work** performed outside of the core loop. It forces explicit alignment.
 - **Micro-State Tracker**: GH-Issues hold the granular `[ ]` task checklists.
 - **Constraint Injector (HITL)**: During the Observe phase, if the Operator provides feedback or identifies missing invariants, the Agent must formally log this as a comment in the GH-Issue.
 - **Flow-State Anchor**: The 1:1 mapping between a Topological Node and a GH-Issue means that if a session drops, the next session simply checks `frontier_state.md`, finds the active Node, and reads the open GH-Issue to perfectly resume flow-state.
