@@ -78,5 +78,11 @@
 - **Feedforward Invariants**:
   - `[ ]` Await final operator sign-off before closing the ledger.
 
+## Node 12: Materialize Audit Payload Artifacts
+- **Status**: Completed
+- **Learnings & Context**: Materialized the "Ledger vs Payload" paradigm for audits. The GH-Issue serves as the micro-state execution contract, but the final diagnostic result is permanently outputted to `artifacts/audit/`. This provides excellent offline, chronological traceability of repository health. Generated the first payload: `0001-bootstrap-v2-compliance.md`.
+- **Feedforward Invariants**:
+  - `[x]` All future audits must generate a physical payload in `artifacts/audit/` prior to ledger closure.
+
 ## Current Active Node
-**Node 11: Formal Bootstrap Self-Audit V2**
+**System Operations Phase.**

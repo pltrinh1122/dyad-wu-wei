@@ -23,8 +23,13 @@ If the Agent discovers an unchecked requirement during the audit:
 - [ ] **Epic Meta-Index**: The overarching Epic GH-Issue has been created to track macro-goals.
 - [ ] **Task Independence**: The repository relies on GH-Issues for micro-state, avoiding hard reliance on ephemeral, local `task.md` files.
 
-## Operator Verification (HITL)
-Once the Agent has verified and checked all boxes above, it must pause and await final sign-off from the Operator before closing this ledger.
+## Operator Verification (HITL) & Payload Generation
+Once the Agent has verified and checked all boxes above, it must pause and await final sign-off from the Operator. 
+
+If the Operator approves the audit, the Agent must execute the following **Payload Generation** step before closing this ledger:
+1. Create a physical markdown report of the audit results in `artifacts/audit/`. 
+2. Use an informative, chronological naming convention (e.g., `artifacts/audit/0001-bootstrap-compliance.md`).
+3. The report must contain the Date, Audit Type, Status, Ledger Reference (this GH-Issue #), and the final checklist results.
 
 - **Operator Approval**: [ ] Yes / [ ] No
 - **Constraints/Notes**: *(Agent to log any HITL feedback here)*
