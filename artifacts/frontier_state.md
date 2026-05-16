@@ -44,5 +44,11 @@
 - **Feedforward Invariants**:
   - `[x]` Formal Audit template exists and is integrated into the intake bootstrap process.
 
+## Node 7: Migrate to Primitive WHAT/WHY/HOW Architecture
+- **Status**: Completed
+- **Learnings & Context**: Successfully crossed the Materialization Boundary to completely restructure the repository's governance documents. De-jargonized the standards into pure linguistic primitives: `WHAT-*` for Definitions/Ontology, `WHY-*` for Decision Rationale, and `HOW-*` for Instructions. This creates an unambiguously orthogonal system for LLM interpretation.
+- **Feedforward Invariants**:
+  - `[x]` All core files enforce the `WHAT/WHY/HOW` primitive prefix.
+
 ## Current Active Node
 **System Bootstrap Complete. Awaiting Operations.**
