@@ -71,3 +71,10 @@ The master objective is decomposed into discrete topological **Nodes**. For each
 | **Act** | Execute file creation, tool implementations, and orchestrator scripts. | Provide necessary external authentications (e.g., API Keys). |
 | **Observe** | Await feedback. Transcribe constraints into GH Issue comments. | Execute generated code. Validate constraints. Provide HITL feedback. |
 | **Reflect** | Synthesize learnings. Mutate `frontier_state.md`. Close GH Issue. | N/A |
+
+## 6. The Formal Bootstrap Audit
+Before a repository can transition from the "Bootstrapping" phase to active "Operations," it must pass a formal audit. 
+- We employ a **Dynamic Control Ledger** for auditing, rather than injecting static administrative files into the repository.
+- The Agent must fetch the `BOOTSTRAP_AUDIT_TEMPLATE.md` from the `agent-antigravity` meta-repository.
+- The Agent opens a new GH-Issue using this template and performs the compliance checks.
+- The Agent must pause for a final Operator HITL sign-off before closing the audit ledger and beginning standard operations.
