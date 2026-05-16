@@ -17,14 +17,21 @@ Because Agent sessions are ephemeral, the repository must be physically self-des
 - **Episodic State (`task.md`)**: Strictly *optional*. Local checklist tracking in the episodic brain cache must not be relied upon for session continuity. Micro-state is deferred to GitHub Issues.
 
 ## 3. GitHub Issues as the Flow-State Ledger
-GitHub Issues act as the primary operational anchor bridging the Human Operator and the Agent:
-- **Contract of Execution**: The GH-Issue defines the strict Scope and Acceptance Criteria (The "Plan") before execution begins. This applies not just to codebase mutations, but to **any work** performed outside of the core loop. It forces explicit alignment.
-- **Micro-State Tracker**: GH-Issues hold the granular `[ ]` task checklists.
-- **Constraint Injector (HITL)**: During the Observe phase, if the Operator provides feedback or identifies missing invariants, the Agent must formally log this as a comment in the GH-Issue.
-- **Flow-State Anchor**: The 1:1 mapping between a Topological Node and a GH-Issue means that if a session drops, the next session simply checks `frontier_state.md`, finds the active Node, and reads the open GH-Issue to perfectly resume flow-state.
+GitHub Issues act as the primary operational anchor bridging the Human Operator and the Agent. To balance a cohesive narrative with granular auditability, we employ a **Hybrid Epic-Ledger Approach**:
 
-### 3.1 The Materialization Boundary (Side-Bar Rubrics)
-To balance flow-state strictness with the need for rapid, low-friction brainstorming, Agents must adhere to the **Materialization Boundary** to determine when a GH-Issue is required.
+### 3.1 The Epic Meta-Index (Macro-Ledger)
+For every overarching project goal, a single long-lived "Epic" Issue must be created.
+- **Purpose:** Acts as the cloud-hosted `frontier_state.md`. 
+- **Mechanics:** Its body contains a Meta-Index (table of contents) tracking all completed and active Topological Nodes. It remains open until the master goal is achieved.
+
+### 3.2 The Node Transactions (Micro-Ledger)
+For every discrete Topological Node, a new specific GH-Issue must be created.
+- **Contract of Execution**: The Node Issue defines the strict Scope and Acceptance Criteria (The "Plan") before execution begins. This applies to codebase mutations and **any work** performed outside the core loop.
+- **Constraint Injector (HITL)**: The Operator injects feedback directly into the Node Issue's comment thread, preserving an isolated context for that specific work block.
+- **Immutability:** Once a Node is complete, its Issue is closed, turning it into an immutable transaction log.
+
+### 3.3 The Materialization Boundary (Side-Bar Rubrics)
+To balance flow-state strictness with the need for rapid, low-friction brainstorming, Agents must adhere to the **Materialization Boundary**.
 
 **Permitted Side-Bars (No GH-Issue Required):**
 An Agent may converse off-ledger if the prompt satisfies these rubrics:
@@ -42,11 +49,16 @@ The Agent **must halt conversation and demand a GH-Issue Plan** if the prompt me
 ## 4. The SPAO + HITL Execution Loop
 The master objective is decomposed into discrete topological **Nodes**. For each Node, the Agent executes the following loop:
 
-1. **Sense**: Load invariants from `frontier_state.md`.
-2. **Plan**: Create GitHub Issue defining Scope and Acceptance Criteria.
+1. **Sense**: Load invariants from `frontier_state.md` and the cloud-hosted Epic Meta-Index.
+2. **Plan**: 
+   - Create a **Node Issue** defining Scope and Acceptance Criteria.
+   - Mutate the **Epic Issue** body to link to the newly active Node Issue.
 3. **Act**: Execute codebase generation and artifact mutations.
-4. **Observe (HITL Pause)**: Agent pauses. Operator executes the local environment, evaluates the state, and injects constraints. The Agent formally logs constraints to the GH Issue.
-5. **Reflect & Advance**: Close GH Issue, feedforward learnings into `frontier_state.md`, and advance the active topological node pointer.
+4. **Observe (HITL Pause)**: Agent pauses. Operator executes the local environment, evaluates the state, and injects constraints. The Agent formally logs constraints to the Node Issue.
+5. **Reflect & Advance**: 
+   - Close the Node Issue.
+   - Mutate the **Epic Issue** body to check off the completed node.
+   - Feedforward learnings into `frontier_state.md` and advance the active topological node pointer.
 
 ## 5. Agent vs Operator Responsibility Matrix
 

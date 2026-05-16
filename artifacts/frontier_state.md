@@ -26,5 +26,11 @@
 - **Feedforward Invariants**:
   - `[x]` Agent consistency rubrics are codified in the standard.
 
+## Node 4: Codify Hybrid Epic-Ledger Issue Governance
+- **Status**: Completed
+- **Learnings & Context**: Materialized the hybrid approach to GitHub Issue lifecycle management. Established the pattern of a long-lived "Epic Meta-Index" for macro-tracking and ephemeral "Node Issues" for immutable micro-transactions. This bridges the gap between clean audit narratives and strict execution contracts.
+- **Feedforward Invariants**:
+  - `[x]` The SPAO loop standard mandates updating the Epic Meta-Index during Plan and Reflect phases.
+
 ## Current Active Node
 **System Bootstrap Complete. Awaiting Operations.**
