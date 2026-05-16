@@ -63,5 +63,11 @@
 - **Feedforward Invariants**:
   - `[x]` The repository has passed the Bootstrap Audit and is officially cleared for "Operations."
 
+## Node 10: Codify Audit Remediation Threshold
+- **Status**: Completed
+- **Learnings & Context**: Established the "Complexity Threshold" rule for audits. Agents are now permitted to execute atomic "Audit + Remediate" operations for trivial, deterministic fixes (to maintain velocity), but are strictly required to spawn dedicated GH-Issue Nodes for complex logic fixes (to prevent masked mutations).
+- **Feedforward Invariants**:
+  - `[x]` Audits allow trivial inline remediation; complex failures demand dedicated spin-out nodes.
+
 ## Current Active Node
-**Bootstrap Complete. System is in Active Operations Phase.**
+**System Operations Phase.**

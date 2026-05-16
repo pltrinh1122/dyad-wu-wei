@@ -4,6 +4,11 @@ This issue serves as the **Dynamic Control Ledger** to verify that the repositor
 
 The Agent must not transition the repository to the "Operations" phase until every checkbox below is verified and the Operator has provided final HITL sign-off.
 
+### The Remediation Threshold Rule
+If the Agent discovers an unchecked requirement during the audit:
+- **Trivial Remediations:** If the fix is deterministic and trivial (e.g., creating a missing directory or updating a link), the Agent may execute the fix immediately within this ledger, check the box, and log the action in the comments.
+- **Mandatory Spin-Outs:** If the fix requires architectural design, logic generation, or crosses the Materialization Boundary, the Agent must treat this ledger as "Report Only." The Agent must leave the box unchecked, halt the audit, and spawn a dedicated GH-Issue Node to execute the complex remediation.
+
 ## 1. Persona & Memory Invariants
 - [ ] **`AGENT.md`**: Present at the repository root and correctly defines the Meta-Orchestrator persona.
 - [ ] **`artifacts/frontier_state.md`**: Present, initialized, and tracking the active Topological Node.
