@@ -5,6 +5,7 @@ This document officially establishes the rigorous "Meta-Orchestrator" interactio
 ## 1. The Core Philosophy
 Modern agentic repositories abandon traditional SDLC in favor of an Agentic Architecture:
 - **`artifacts/`**: Agent state, memory, schemas, and output definitions.
+  - **`artifacts/kdr/`**: Key Decision Records. The "Philosophical Memory" of the repository, capturing the rationale behind major architectural decisions.
 - **`skills/`**: Deterministic Python interfaces and tools.
 - **`orchestrator/`**: Generative runtime and the live LLM SPAO loop.
 
@@ -44,7 +45,8 @@ The Agent **must halt conversation and demand a GH-Issue Plan** if the prompt me
 1. **Repository Mutation:** The prompt requires creating, deleting, or modifying files that affect the project's logic, architecture, or persistent state.
 2. **Ambiguity in Implementation:** The request involves complex architecture where multiple approaches exist, requiring Operator alignment before execution.
 3. **State Transitions:** The prompt commands the Agent to advance the topological frontier to a new Node.
-*If an investigatory Side-Bar conversation results in a concrete decision that meets the Materialization rubrics, the Agent must immediately transition the agreed-upon decision into a formal GH-Issue.*
+
+**The KDR Handoff:** *If an investigatory Side-Bar conversation results in a major architectural decision, the Agent must first draft a Key Decision Record (KDR) in `artifacts/kdr/` to permanently preserve the philosophical rationale (the "why"). Only then may the Agent create the formal GH-Issue (the "what") to execute the decision.*
 
 ## 4. The SPAO + HITL Execution Loop
 The master objective is decomposed into discrete topological **Nodes**. For each Node, the Agent executes the following loop:
