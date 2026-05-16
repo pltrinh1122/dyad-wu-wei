@@ -69,5 +69,14 @@
 - **Feedforward Invariants**:
   - `[x]` Audits allow trivial inline remediation; complex failures demand dedicated spin-out nodes.
 
+## Node 11: Formal Bootstrap Self-Audit V2
+- **Status**: [///] Observe Phase (Paused for HITL)
+- **Learnings & Context**: Re-executed the audit to ensure compliance with the newly codified `kb/WHY-0004` Threshold Rule.
+  - Sensed the repository against `kb/HOW-0002`. All programmatic pillars are intact. 
+  - Identified a trivial failure: The Epic Meta-Index (#10) was missing links to Node 10 and Node 11. 
+  - **Inline Remediation Executed**: Safely invoked "Audit + Remediate" to update the Epic Meta-Index without needing a spin-out node.
+- **Feedforward Invariants**:
+  - `[ ]` Await final operator sign-off before closing the ledger.
+
 ## Current Active Node
-**System Operations Phase.**
+**Node 11: Formal Bootstrap Self-Audit V2**
