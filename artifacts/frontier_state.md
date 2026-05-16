@@ -20,5 +20,11 @@
   - `[x]` Full Agentic Architecture (`artifacts/`, `skills/`, `orchestrator/`) is present.
   - `[x]` GH Issue successfully acted as the Plan anchor.
 
+## Node 3: Codify Side-Bar Rubrics & Materialization Boundary
+- **Status**: Completed
+- **Learnings & Context**: Materialized the off-ledger evaluation regarding conversational interaction vs GH-Issue strictness. `INTAKE_BOOTSTRAP.md` was updated to explicitly define the Side-Bar Rubrics and the Materialization Boundary, ensuring future agents consistently interpret when to chat freely versus when to demand a GH-Issue.
+- **Feedforward Invariants**:
+  - `[x]` Agent consistency rubrics are codified in the standard.
+
 ## Current Active Node
 **System Bootstrap Complete. Awaiting Operations.**

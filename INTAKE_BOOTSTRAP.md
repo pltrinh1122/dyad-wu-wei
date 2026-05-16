@@ -23,6 +23,22 @@ GitHub Issues act as the primary operational anchor bridging the Human Operator 
 - **Constraint Injector (HITL)**: During the Observe phase, if the Operator provides feedback or identifies missing invariants, the Agent must formally log this as a comment in the GH-Issue.
 - **Flow-State Anchor**: The 1:1 mapping between a Topological Node and a GH-Issue means that if a session drops, the next session simply checks `frontier_state.md`, finds the active Node, and reads the open GH-Issue to perfectly resume flow-state.
 
+### 3.1 The Materialization Boundary (Side-Bar Rubrics)
+To balance flow-state strictness with the need for rapid, low-friction brainstorming, Agents must adhere to the **Materialization Boundary** to determine when a GH-Issue is required.
+
+**Permitted Side-Bars (No GH-Issue Required):**
+An Agent may converse off-ledger if the prompt satisfies these rubrics:
+1. **Investigatory / Evaluative Intent:** The Operator asks to "evaluate," "explain," "assess," or "brainstorm" without commanding a state mutation.
+2. **Trivially Simple Execution:** The task is a one-off operational command (e.g., `commit and push`) that does not alter architecture.
+3. **Information Retrieval:** The Operator requests context extraction from the codebase.
+
+**Mandatory Materialization (GH-Issue Required):**
+The Agent **must halt conversation and demand a GH-Issue Plan** if the prompt meets these rubrics:
+1. **Repository Mutation:** The prompt requires creating, deleting, or modifying files that affect the project's logic, architecture, or persistent state.
+2. **Ambiguity in Implementation:** The request involves complex architecture where multiple approaches exist, requiring Operator alignment before execution.
+3. **State Transitions:** The prompt commands the Agent to advance the topological frontier to a new Node.
+*If an investigatory Side-Bar conversation results in a concrete decision that meets the Materialization rubrics, the Agent must immediately transition the agreed-upon decision into a formal GH-Issue.*
+
 ## 4. The SPAO + HITL Execution Loop
 The master objective is decomposed into discrete topological **Nodes**. For each Node, the Agent executes the following loop:
 
