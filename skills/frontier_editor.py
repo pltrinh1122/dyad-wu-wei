@@ -1,0 +1,55 @@
+import re
+
+def read_active_node(filepath: str) -> str:
+    """Reads the current active node from frontier_state.md."""
+    with open(filepath, 'r') as f:
+        lines = f.readlines()
+        
+    for i, line in enumerate(lines):
+        if line.strip() == "## Current Active Node":
+            for j in range(i + 1, len(lines)):
+                next_line = lines[j].strip()
+                if next_line:
+                    # Strip bold asterisks
+                    return next_line.strip('*')
+    return ""
+
+def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str]) -> None:
+    """Appends the completed node block above the Current Active Node header."""
+    with open(filepath, 'r') as f:
+        content = f.read()
+        
+    invariant_str = "\n".join([f"  - `{inv}`" for inv in invariants])
+    if not invariant_str:
+        invariant_str = "  - `[ ]` None"
+        
+    completed_block = f"""## {node_name}
+- **Status**: Completed
+- **Learnings & Context**: {learnings}
+- **Feedforward Invariants**:
+{invariant_str}
+
+"""
+    # Find the Current Active Node block and insert before it
+    if "## Current Active Node" in content:
+        content = content.replace("## Current Active Node", completed_block + "## Current Active Node")
+    
+    with open(filepath, 'w') as f:
+        f.write(content)
+
+def set_active_node(filepath: str, node_name: str) -> None:
+    """Updates the text below Current Active Node."""
+    with open(filepath, 'r') as f:
+        lines = f.readlines()
+        
+    for i, line in enumerate(lines):
+        if line.strip() == "## Current Active Node":
+            # Find the next non-empty line and replace it
+            for j in range(i + 1, len(lines)):
+                if lines[j].strip():
+                    lines[j] = f"**{node_name}**\n"
+                    break
+            break
+            
+    with open(filepath, 'w') as f:
+        f.writelines(lines)

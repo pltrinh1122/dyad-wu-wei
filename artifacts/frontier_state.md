@@ -84,5 +84,11 @@
 - **Feedforward Invariants**:
   - `[x]` All future audits must generate a physical payload in `artifacts/audit/` prior to ledger closure.
 
+## Node 13: Implement Portable Flow-State Skills
+- **Status**: Completed
+- **Learnings & Context**: Successfully replaced brittle bash commands with pure Python modules via rigorous TDD. Flow-State operations (Plan/Reflect) are now safely executed via skills.flow_state_manager.
+- **Feedforward Invariants**:
+  - `[x] TDD test suite achieves 100% pass rate`
+
 ## Current Active Node
 **System Operations Phase.**

@@ -10,7 +10,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - Validate that the feedforward invariants from the previous node are met.
 
 2. **Plan (Contract Formulation):** 
-   - Execute a `gh issue create` command to create a **Node Issue** defining the exact Scope and Acceptance Criteria.
+   - Execute the Python skill: `python3 -c "from skills.flow_state_manager import plan_node; plan_node('Node X: Title', 'Body content...')"` to safely create a **Node Issue** without bash quoting errors.
    - Mutate the body of the **Epic Issue** to link to the newly active Node Issue.
    - *Do not execute codebase mutations until the Node Issue is created.*
 
@@ -23,10 +23,9 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - The Agent must formally log any constraints or feedback provided by the Operator as a comment on the Node Issue.
 
 5. **Reflect & Advance (Post-Condition):** 
-   - Execute `gh issue close` to seal the Node Issue, rendering it an immutable transaction log.
+   - Execute the Python skill: `python3 -c "from skills.flow_state_manager import reflect_node; reflect_node('artifacts/frontier_state.md', 'ISSUE_ID', 'Node X: Title', 'Learnings...', ['[x] Invariant'], 'commit message')"`
+   - This atomic skill will automatically update `artifacts/frontier_state.md`, close the GH Issue, and commit/push the codebase.
    - Mutate the **Epic Issue** body to check off the completed node.
-   - Synthesize learnings and write them to `artifacts/frontier_state.md`.
-   - Advance the active topological node pointer to await the next objective.
 
 ## Executing the Formal Bootstrap Audit
 Before a newly bootstrapped repository can transition into active "Operations," it must pass an audit.
