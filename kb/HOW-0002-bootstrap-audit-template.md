@@ -11,8 +11,8 @@ The Agent must not transition the repository to the "Operations" phase until eve
 ## 2. Agentic Architecture Scaffolding
 - [ ] **`artifacts/`**: Directory exists to hold state and output memory.
 - [ ] **`skills/`**: Directory exists to hold deterministic tool interfaces.
-- [ ] **`orchestrator/`**: Directory exists to hold the generative runtime and SPAO loop mechanics.
-- [ ] **`artifacts/kdr/`**: Knowledge Base directory exists to hold Key Decision Records (Philosophical Memory).
+- **`orchestrator/`**: Directory exists to hold the generative runtime and SPAO loop mechanics.
+- [ ] **`kb/`**: Knowledge Base directory exists to hold WHAT/WHY/HOW linguistic primitives.
 
 ## 3. Flow-State Governance
 - [ ] **Epic Meta-Index**: The overarching Epic GH-Issue has been created to track macro-goals.
