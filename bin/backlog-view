@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 <issue_id>"
+    exit 1
+fi
+
+# Resolve repository root
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Resolve python executable to use
+if [[ -n "${VIRTUAL_ENV:-}" && -x "$VIRTUAL_ENV/bin/python3" ]]; then
+    PYTHON_EXE="$VIRTUAL_ENV/bin/python3"
+elif [[ -x "/home/pt/actions-runner/venv/bin/python3" ]]; then
+    PYTHON_EXE="/home/pt/actions-runner/venv/bin/python3"
+else
+    PYTHON_EXE="python3"
+fi
+
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
+import subprocess, json, sys
+res = subprocess.run(['gh', 'issue', 'view', sys.argv[1], '--json', 'title,state,body'], capture_output=True, text=True, check=True)
+data = json.loads(res.stdout)
+print('='*40)
+print('Issue #{}: {} [{}]'.format(sys.argv[1], data['title'], data['state']))
+print('='*40)
+print(data['body'])
+print('='*40)
+" "$1"
