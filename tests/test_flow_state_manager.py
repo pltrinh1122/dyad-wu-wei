@@ -4,12 +4,10 @@ from orchestrator.flow_state_manager import plan_node, reflect_node, sync_and_cl
 
 @patch('orchestrator.flow_state_manager.github_client')
 def test_plan_node(mock_gh):
-    mock_gh.create_issue.return_value = "https://github.com/org/repo/issues/100"
+    result = plan_node("100", "Test Body")
     
-    result = plan_node("Test Title", "Test Body")
-    
-    assert result == "https://github.com/org/repo/issues/100"
-    mock_gh.create_issue.assert_called_once_with("Test Title", "Test Body")
+    assert result == "https://github.com/pltrinh1122/agent-antigravity/issues/100"
+    mock_gh.update_issue_body.assert_called_once_with("100", "Test Body")
 
 @patch('orchestrator.flow_state_manager.github_client')
 @patch('orchestrator.flow_state_manager.frontier_editor')
