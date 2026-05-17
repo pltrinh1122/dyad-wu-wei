@@ -50,4 +50,11 @@ systemctl --user daemon-reload
 systemctl --user enable github-runner
 systemctl --user start github-runner
 
+echo "Bootstrapping CI Python venv..."
+VENV_DIR="$RUNNER_DIR/venv"
+REQUIREMENTS="$(cd "$(dirname "$0")" && pwd)/../../requirements-dev.txt"
+python3 -m venv "$VENV_DIR"
+"$VENV_DIR/bin/pip" install --quiet -r "$REQUIREMENTS"
+echo "CI venv ready at $VENV_DIR"
+
 echo "Provisioning Complete. The daemon is now a permanent resident of your host OS."

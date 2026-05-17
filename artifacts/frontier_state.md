@@ -134,5 +134,13 @@
 - **Feedforward Invariants**:
   - `[x] CI Pipeline no longer hangs`
 
+## Node 21: Zero-Network CI Execution
+- **Status**: Completed
+- **Learnings & Context**: Eliminated all network calls from the CI test step by pre-baking a runner-level venv at ~/actions-runner/venv/. Stripped setup-python and pip install steps from python-ci.yml. The full 16-test suite now executes in 155ms with a 2-step workflow (checkout + pytest). Operator duty for deps refresh is documented in infrastructure_state.md.
+- **Feedforward Invariants**:
+  - `[x] CI completes in <10s with zero PyPI/CDN calls after checkout`
+  - `[x] ci-venv is tracked as a Managed Artifact in infrastructure_state.md`
+  - `[x] provision.sh is idempotent and bootstraps the venv on first run`
+
 ## Current Active Node
 **System Operations Phase.**
