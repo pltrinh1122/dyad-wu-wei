@@ -70,7 +70,7 @@ def sync_and_clean_node() -> None:
     if backlog_items:
         print(f"\n📋 Backlog ({len(backlog_items)} item(s) pending):")
         for item in backlog_items:
-            print(f"  #{item['number']}: {item['title']}")
+            print(f"  {item['title']}")
         print()
 
 def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, pr_title: str) -> None:

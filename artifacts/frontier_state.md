@@ -365,5 +365,11 @@
 - **Feedforward Invariants**:
   - `[x] Update bin/backlog`
 
+## Node 97: Activity 97: Clean up duplicate formatting in flow_state_manager.py
+- **Status**: Completed
+- **Learnings & Context**: Successfully removed the redundant `#{}` issue ID formatting from the `sync-clean` pipeline.
+- **Feedforward Invariants**:
+  - `[x] Update flow_state_manager.py`
+
 ## Current Active Node
-**Node 95: Activity 95: Audit Node Types against Enum**
+**Node 97: Activity 97: Clean up duplicate formatting in flow_state_manager.py**
