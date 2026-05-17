@@ -72,7 +72,7 @@ def append_active_node(filepath: str, node_id: int, node_title: str, description
     if not invariant_str:
         invariant_str = "  - `[ ]` None"
 
-    node_name = f"Node {node_id}: {node_title}"
+    node_name = node_title
 
     completed_block = f"""## {node_name}
 - **Status**: [///] Act Phase

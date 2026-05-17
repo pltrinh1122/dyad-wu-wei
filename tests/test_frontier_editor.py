@@ -57,9 +57,9 @@ def test_append_active_node(dummy_frontier):
     )
     content = open(dummy_frontier).read()
 
-    assert "## Node 40: Great Success" in content
+    assert "## Great Success" in content
     assert "- **Status**: [///] Act Phase" in content
     assert "- **Learnings & Context**: Completed the mission." in content
     assert "- `[ ] Verified system is stable.`" in content
     assert "## Current Active Node" in content
-    assert "**Node 40: Great Success**" in content
+    assert "**Great Success**" in content
