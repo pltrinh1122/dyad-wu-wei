@@ -1,0 +1,9 @@
+hotfixes:
+- hash: d2463708435da3a4fae4468a3fb478b4204b5013
+  timestamp: '2026-05-17T23:19:42Z'
+  file: GEMINI.md
+  message: test hotfix
+- hash: 3b2d5b968ce21dab5e43fe22d514ef8d57d68f30
+  timestamp: '2026-05-17T23:24:30Z'
+  file: GEMINI.md
+  message: test hotfix on main
