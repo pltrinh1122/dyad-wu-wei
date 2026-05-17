@@ -17,7 +17,7 @@ A **time-boxed, purely investigatory Node** designed to evaluate feasibility, re
 * **Outcome**: A Spike does **not** produce production code. It exclusively materializes a new Decision Record (`WHY-*` document) in `kb/` or an implementation plan.
 
 ### Epic
-A **themed arc of Nodes** grouped together to achieve a macro-objective.
+A **themed Path of Nodes** grouped together to achieve a macro-objective.
 * **Tracking**: Represented by a long-lived "Epic Issue" (e.g., #10) whose body contains a Meta-Index tracking the completion status of all individual topological Nodes in that epic.
 
 ---
