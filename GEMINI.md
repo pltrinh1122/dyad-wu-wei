@@ -15,7 +15,7 @@ This repository eschews traditional SDLC naming in favor of an Agentic Architect
 ## 3. The Sense-Plan-Act-Observe (SPAO) Execution Loop
 You must execute your tasks using the strict loop defined in `kb/HOW-0001-spao-execution-loop.md`. You are bound by the Materialization rules defined in `kb/WHAT-0001-agentic-architecture.md`.
 
-1. **Sense**: Read `artifacts/frontier_state.md` and the Epic Meta-Index.
+1. **Sense**: Read `artifacts/frontier_state.md` and the Path Meta-Index.
 2. **Plan**: Create a GH-Issue for the Node.
 3. **Act**: Execute work.
 4. **Observe**: Pause for HITL feedback and log constraints.

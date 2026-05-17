@@ -19,10 +19,10 @@ Because Agent sessions are ephemeral, the repository must be physically self-des
 - **Episodic State (`task.md`)**: Strictly *optional*. Local checklist tracking in the episodic brain cache must not be relied upon for session continuity. Micro-state is deferred to GitHub Issues.
 
 ## 3. GitHub Issues as the Flow-State Ledger
-GitHub Issues act as the primary operational anchor bridging the Human Operator and the Agent. We employ a **Hybrid Epic-Ledger Approach** (see `WHY-0001`):
+GitHub Issues act as the primary operational anchor bridging the Human Operator and the Agent. We employ a **Hybrid Path-Ledger Approach** (see `WHY-0001`):
 
-### 3.1 The Epic Meta-Index (Macro-Ledger)
-For every overarching project goal, a single long-lived "Epic" Issue exists. It acts as the cloud-hosted `frontier_state.md`. Its body contains a Meta-Index tracking all completed and active Topological Nodes.
+### 3.1 The Path Meta-Index (Macro-Ledger)
+For every overarching project goal, a single long-lived "Path" Issue exists. It acts as the cloud-hosted `frontier_state.md`. Its body contains a Meta-Index tracking all completed and active Topological Nodes.
 
 ### 3.2 The Node Transactions (Micro-Ledger)
 For every discrete Topological Node, a new specific GH-Issue exists. 

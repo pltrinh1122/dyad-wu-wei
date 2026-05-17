@@ -4,7 +4,7 @@
 **Status:** Accepted
 
 ## Context
-During the Formal Bootstrap Self-Audit of the meta-repository, a failure was detected: historical GH-Issues were not properly mapped to the Epic Meta-Index. The Agent remediated the missing links *during* the audit and logged the fix. This sparked an evaluation: Should an Audit be strictly "Report Only" (halting on failure and spawning a new GH-Issue for the fix), or "Audit + Remediate" (fixing the problem as a single atomic step within the audit ledger)?
+During the Formal Bootstrap Self-Audit of the meta-repository, a failure was detected: historical GH-Issues were not properly mapped to the Path Meta-Index. The Agent remediated the missing links *during* the audit and logged the fix. This sparked an evaluation: Should an Audit be strictly "Report Only" (halting on failure and spawning a new GH-Issue for the fix), or "Audit + Remediate" (fixing the problem as a single atomic step within the audit ledger)?
 
 ## Options Considered
 1. **"Audit" (Report Only):** Perfect scope protection and traceability, but introduces extremely high friction for trivial fixes (e.g., spawning an entire SPAO cycle to fix a missing hyperlink).
