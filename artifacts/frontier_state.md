@@ -356,5 +356,12 @@
   - `[x] bin/node updated`
   - `[x] tests updated and pass`
 
+## Node 48: Probe: Architectural Placement of sync-clean (bin/rt)
+- **Status**: [///] Plan Phase (Paused for Evaluation)
+- **Learnings & Context**: Surfaced backlog Issue #78 via `sync-clean`. Formulated the Node Contract to migrate `bin/sync-clean` to `bin/rt` and linked it to Epic #10. Evaluated whether `rt` should be just a CLI adapter (Option A) or elevated to a core Pillar (Option B). Suspended the node loop to persist state pending operator decision for future pick-up.
+- **Feedforward Invariants**:
+  - `[ ]` Operator selects Option A or Option B.
+  - `[ ]` Node is resumed.
+
 ## Current Active Node
-**Node 47: Abstract GH Issue View CLI**
+**Node 48: Probe: Architectural Placement of sync-clean (bin/rt)**
