@@ -1,4 +1,5 @@
 import sys
+from skills.file_locker import lock_file
 import yaml
 import os
 import argparse
@@ -11,17 +12,19 @@ def get_ledger_file():
 
 def load_data(ledger_file):
     data = {"hotfixes": []}
-    if os.path.exists(ledger_file):
-        with open(ledger_file, "r") as f:
-            loaded = yaml.safe_load(f)
-            if loaded and "hotfixes" in loaded:
-                data = loaded
+    with lock_file(ledger_file):
+        if os.path.exists(ledger_file):
+            with open(ledger_file, "r") as f:
+                loaded = yaml.safe_load(f)
+                if loaded and "hotfixes" in loaded:
+                    data = loaded
     return data
 
 def save_data(ledger_file, data):
     os.makedirs(os.path.dirname(ledger_file), exist_ok=True)
-    with open(ledger_file, "w") as f:
-        yaml.dump(data, f, default_flow_style=False, sort_keys=False)
+    with lock_file(ledger_file):
+        with open(ledger_file, "w") as f:
+            yaml.dump(data, f, default_flow_style=False, sort_keys=False)
 
 def execute_hotfix(file_path, commit_msg):
     valid_exts = (".md", ".yml", ".yaml", ".gitignore")
