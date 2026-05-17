@@ -165,5 +165,12 @@
   - `Coherence Validation artifact exists`
   - `PR matches strict branch naming`
 
+## Node 31: Automated Lexical Guard
+- **Status**: Completed
+- **Learnings & Context**: Implemented a highly robust Automated Lexical Guard unit test that automatically scans all modified, added, renamed, or untracked files in the active git workspace for stale words (epic/spike). Integrates seamlessly into our local TDD test harness, failing loudly if violations occur. Strictly exempts legacy mapping documents (kb/GLOSSARY.md, artifacts/frontier_state.md, artifacts/coherence_validation.md) to preserve historical accuracy.
+- **Feedforward Invariants**:
+  - `Lexical guard test suite passes cleanly`
+  - `Stale vocabulary is completely blocked on all new codebase mutations`
+
 ## Current Active Node
-**Node 30: Terminology Synchronization**
+**Node 31: Automated Lexical Guard**
