@@ -12,9 +12,9 @@ An **atomic, topological unit of work** in the repository. Every Node represents
 * **1:1:1 Mapping**: A Node maps exactly to a **GitHub Issue** (contract/plan), a **Git Branch** (active execution), and a **Pull Request** (review/merge).
 * **Isolation**: No two Nodes may be worked on concurrently (enforced by the `WIP=1` invariant).
 
-### Spike
+### Probe
 A **time-boxed, purely investigatory Node** designed to evaluate feasibility, research techniques, or resolve architectural ambiguity.
-* **Outcome**: A Spike does **not** produce production code. It exclusively materializes a new Decision Record (`WHY-*` document) in `kb/` or an implementation plan.
+* **Outcome**: A Probe does **not** produce functional logic mutations. It exclusively materializes a new Decision Record (`WHY-*` document) in `kb/` or an implementation plan, feeding forward critical constraints to subsequent Nodes.
 
 ### Path
 A **themed sequence of Nodes** grouped together to achieve a macro-objective.
