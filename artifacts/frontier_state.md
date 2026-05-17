@@ -359,5 +359,11 @@
 - **Feedforward Invariants**:
   - `[x] Update github_client.py`
 
+## Node 95: Activity 95: Audit Node Types against Enum
+- **Status**: Completed
+- **Learnings & Context**: Successfully enforced a strict node-type validation layer inside bin/backlog to guarantee alignment.
+- **Feedforward Invariants**:
+  - `[x] Update bin/backlog`
+
 ## Current Active Node
-**Node 90: Feature: Inject Node ID during Backlog Creation**
+**Node 95: Activity 95: Audit Node Types against Enum**
