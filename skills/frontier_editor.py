@@ -30,9 +30,16 @@ def complete_active_node(filepath: str, node_name: str, learnings: str, invarian
 {invariant_str}
 
 """
-    # Find the Current Active Node block and insert before it
-    if "## Current Active Node" in content:
-        content = content.replace("## Current Active Node", completed_block + "## Current Active Node")
+    # Find the existing node block and replace it
+    pattern = r"## " + re.escape(node_name) + r"\n.*?(?=\n## |\Z)"
+    
+    # We need to strip the trailing newline from completed_block so we don't add extra newlines, 
+    # but wait, completed_block already ends with \n\n. Let's just use it and rely on the regex matching up to \n##
+    content, count = re.subn(pattern, completed_block.strip() + "\n", content, count=1, flags=re.DOTALL)
+    
+    if count == 0 and "## Current Active Node" in content:
+        # Fallback if the node wasn't found for some reason
+        content = content.replace("## Current Active Node", completed_block + "\n## Current Active Node")
     
     with open(filepath, 'w') as f:
         f.write(content)

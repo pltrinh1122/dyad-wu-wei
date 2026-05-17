@@ -259,29 +259,12 @@
   - `[x] all tests pass`
 
 ## Node 43: Decouple testing_harness Skill
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Strip SPAO stage awareness from skills/testing_harness.py and migrate logging responsibility to the bin/run-tests CLI adapter to restore compliance with WHY-0009.
-- **Feedforward Invariants**:
-  - `[ ] log_stage_advancement removed from testing_harness.py`
-  - `[ ] log_stage_advancement added to bin/run-tests`
-  - `[ ] tests pass`
-
-## Node 43: Decouple testing_harness Skill
 - **Status**: Completed
 - **Learnings & Context**: Stripped SPAO stage awareness from testing_harness.py and moved logging to bin/run-tests. Acknowledged backlog creation invariant violation.
 - **Feedforward Invariants**:
   - `[x] log_stage_advancement removed from testing_harness.py`
   - `[x] log_stage_advancement added to bin/run-tests`
   - `[x] tests pass`
-
-## Node 44: Enforce node plan Edit-Only Guardrail
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Modify orchestrator/flow_state_manager.py and bin/node to enforce that plan_node strictly takes an existing Backlog Issue ID instead of creating a new issue, ensuring all new nodes originate from the backlog.
-- **Feedforward Invariants**:
-  - `[ ] flow_state_manager.py updated`
-  - `[ ] bin/node updated`
-  - `[ ] HOW-0001 updated`
-  - `[ ] tests updated and pass`
 
 ## Node 44: Enforce node plan Edit-Only Guardrail
 - **Status**: Completed
@@ -293,25 +276,10 @@
   - `[x] tests updated and pass`
 
 ## Node 45: Evaluate Meta-Rules Reference Pattern
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Expand GEMINI.md to include Meta-Rules and Guardrails index.
-- **Feedforward Invariants**:
-  - `[ ] GEMINI.md updated with Rules section`
-
-## Node 45: Evaluate Meta-Rules Reference Pattern
 - **Status**: Completed
 - **Learnings & Context**: Expanded GEMINI.md to include Section 5: Meta-Rules & Guardrails index, enforcing strict system invariants directly in the System Prompt Hook instead of creating a fragmented rules/ directory.
 - **Feedforward Invariants**:
   - `[x] GEMINI.md updated with Rules section`
-
-## Node 46: Establish Repository .gitignore
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Create .gitignore and purge accidentally tracked .venv and __pycache__ directories from git history.
-- **Feedforward Invariants**:
-  - `[ ] .gitignore created`
-  - `[ ] __pycache__ untracked`
-  - `[ ] .venv untracked`
-  - `[ ] tests pass`
 
 ## Node 46: Establish Repository .gitignore
 - **Status**: Completed
@@ -323,15 +291,6 @@
   - `[x] tests pass`
 
 ## Node 28: Issue Factory Skill
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Implement template-driven issue factory.
-- **Feedforward Invariants**:
-  - `[ ] kb/templates created`
-  - `[ ] skills/issue_factory.py created`
-  - `[ ] HOW-0001 updated`
-  - `[ ] tests pass`
-
-## Node 28: Issue Factory Skill
 - **Status**: Completed
 - **Learnings & Context**: Introduced Issue Factory skill to eliminate inline markdown generation for GitHub Issues. All bodies (Backlog and Contracts) are now generated via strict Operator-editable templates in kb/templates/. Enforced template usage in HOW-0001.
 - **Feedforward Invariants**:
@@ -339,14 +298,6 @@
   - `[x] skills/issue_factory.py created`
   - `[x] HOW-0001 updated`
   - `[x] tests pass`
-
-## Node 47: Abstract GH Issue View CLI
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Add view subcommands to bin/backlog and bin/node.
-- **Feedforward Invariants**:
-  - `[ ] bin/backlog updated`
-  - `[ ] bin/node updated`
-  - `[ ] tests updated and pass`
 
 ## Node 47: Abstract GH Issue View CLI
 - **Status**: Completed
