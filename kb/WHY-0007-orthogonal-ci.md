@@ -16,3 +16,6 @@ We decided to adopt **Option 3: Strict Orthogonality**.
 
 ## Rationale
 Agentic tools (Skills) are built to bridge the gap between complex shell constraints and LLM execution. Cloud CI pipelines (GitHub Actions) are declarative, pristine environments that do not suffer from the same cognitive constraints as an Agent. By strictly decoupling them, the Agent can use its bespoke harness for rapid local iteration, while the repository relies on the un-abstracted, industry-standard `pytest` command as its ultimate cloud verification gatekeeper.
+
+## Budget Optimization (Added 2026-05-16)
+To prevent rapid exhaustion of GitHub Actions compute minutes, the CI pipeline is strictly configured to **exclude** `pull_request` triggers. Because the Agent runs infinite, free TDD cycles locally via `skills/testing_harness.py`, Pull Requests are assumed functionally "Green" upon opening. The cloud CI is reserved purely as the final gatekeeper for code physically merging into `main`. This strategy reduces budget consumption by over 50%.
