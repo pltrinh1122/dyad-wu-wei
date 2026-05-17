@@ -57,6 +57,16 @@ def test_node_reflect_subcommand_usage():
     assert res.returncode != 0
     assert "Usage:" in res.stdout
 
+def test_node_view_subcommand_usage():
+    """Verifies bin/node view enforces argument counts and prints usage on errors."""
+    bin_path = os.path.join(os.path.dirname(__file__), '../bin/node')
+    assert os.path.exists(bin_path)
+
+    # view subcommand needs at least 1 arg
+    res = subprocess.run([bin_path, "view"], capture_output=True, text=True)
+    assert res.returncode != 0
+    assert "Usage:" in res.stdout
+
 def test_backlog_wrapper_usage():
     """Verifies bin/backlog prints usage when no arguments or invalid subcommands are passed."""
     bin_path = os.path.join(os.path.dirname(__file__), '../bin/backlog')
