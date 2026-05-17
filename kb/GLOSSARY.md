@@ -12,7 +12,7 @@ An **atomic, topological unit of work** in the repository. Every Node represents
 * **1:1:1 Mapping**: A Node maps exactly to a **GitHub Issue** (NC/plan), a **Git Branch** (active execution), and a **Pull Request** (review/merge).
 * **Isolation**: No two Nodes may be worked on concurrently (enforced by the `WIP-N=1` invariant).
 * **Mandatory Structural Attributes**: Every Node $V$ in the Meta-Graph carries the following non-nullable attributes:
-  * `ID` — Backlog GH Issue identifier.
+  * `ID` — GitHub Issue identifier (The topological Node ID is strictly equated to its GitHub Issue ID).
   * `Title` — Concise transition description.
   * `NC` — **Non-null** Node Contract; must be locked before Act Phase entry.
   * `State` — Current SPAO stage: `{Plan | Act | Observe | Reflect}`.

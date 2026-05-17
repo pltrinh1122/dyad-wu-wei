@@ -9,10 +9,10 @@ def test_plan_node(mock_gh, mock_run):
     mock_result.stdout = '{"title": "Probe: Test Title"}'
     mock_run.return_value = mock_result
     
-    result = plan_node("49", "100", "Test Body")
+    result = plan_node("100", "Test Body")
     
     assert result == "https://github.com/pltrinh1122/agent-antigravity/issues/100"
-    mock_gh.rename_issue_title.assert_called_once_with("100", "Node 49: Probe: Test Title")
+    mock_gh.rename_issue_title.assert_called_once_with("100", "Node 100: Probe: Test Title")
     mock_gh.update_issue_body.assert_called_once_with("100", "Test Body")
 
 @patch('orchestrator.flow_state_manager.github_client')
