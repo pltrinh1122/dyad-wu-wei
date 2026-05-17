@@ -407,5 +407,11 @@
 - **Feedforward Invariants**:
   - `All prompts must maintain status tracking`
 
+## Activity 113: List items in prompt queue
+- **Status**: Completed
+- **Learnings & Context**: Abstracted shell wrapper logic into formal mgr_prompt python module
+- **Feedforward Invariants**:
+  - `All CLI domains must be backed by a native mgr-* orchestrator`
+
 ## Current Active Node
-**Activity 108: Refactor prompt backlog to YAML**
+**Activity 113: List items in prompt queue**

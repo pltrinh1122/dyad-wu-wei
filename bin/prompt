@@ -1,49 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <prompt_text>"
-    exit 1
-fi
-
-PROMPT_TEXT="$*"
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PYTHON_EXE="${REPO_DIR}/venv/bin/python3"
 if [ ! -f "$PYTHON_EXE" ]; then
     PYTHON_EXE="python3"
 fi
 
-PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
-import sys, yaml, os, time, uuid
-from datetime import datetime, timezone
+if [ "$#" -eq 0 ]; then
+    echo "Usage: $0 <prompt_text> | list"
+    exit 1
+fi
 
-prompt_text = sys.argv[1]
-repo_dir = sys.argv[2]
-backlog_file = os.path.join(repo_dir, "artifacts", "prompt_backlog.yml")
-
-os.makedirs(os.path.dirname(backlog_file), exist_ok=True)
-
-data = {"prompts": []}
-if os.path.exists(backlog_file):
-    with open(backlog_file, "r") as f:
-        loaded = yaml.safe_load(f)
-        if loaded and "prompts" in loaded:
-            data = loaded
-
-timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-prompt_id = "p-" + str(int(time.time())) + "-" + str(uuid.uuid4())[:4]
-
-new_prompt = {
-    "id": prompt_id,
-    "timestamp": timestamp,
-    "text": prompt_text,
-    "status": "pending"
-}
-
-data["prompts"].append(new_prompt)
-
-with open(backlog_file, "w") as f:
-    yaml.dump(data, f, default_flow_style=False, sort_keys=False)
-
-print(f"Prompt queued to {backlog_file}")
-' "$PROMPT_TEXT" "$REPO_DIR"
+CMD=$1
+if [[ "$CMD" == "list" || "$CMD" == "add" ]]; then
+    PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m orchestrator.mgr_prompt "$@"
+else
+    # Legacy fallback: assume they just typed ./prompt "some text"
+    PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m orchestrator.mgr_prompt add "$*"
+fi

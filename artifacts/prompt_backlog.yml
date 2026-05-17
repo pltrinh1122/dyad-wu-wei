@@ -3,3 +3,10 @@ prompts:
   timestamp: '2026-05-17T21:37:49Z'
   text: this is a test prompt
   status: pending
+- id: p-1779054032-d493
+  timestamp: '2026-05-17T21:40:32Z'
+  text: 'i want to eventually be able to concurrently work on Activity and Probe nodes
+    independently: one or more independent activity across multipl antigravity sessions
+    while concurrently one ore more probe across multiple antigravity session.  basically
+    activity and probe are fairly orthogonal and supports parallelism.'
+  status: consumed
