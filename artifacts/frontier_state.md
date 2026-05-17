@@ -121,5 +121,12 @@
   - `[x] Infrastructure is formally tracked and agent-controllable`
   - `[x] GitHub CI runs on self-hosted`
 
+## Node 19: Establish Antigravity Hook
+- **Status**: Completed
+- **Learnings & Context**: Migrated AGENT.md to GEMINI.md to utilize the native Antigravity system prompt hook. Formally codified a Hard Invariant banning raw LLM bash testing, forcing the use of skills/testing_harness.py across all KB documents.
+- **Feedforward Invariants**:
+  - `[x] Antigravity System reads GEMINI.md automatically`
+  - `[x] Native bash testing is forbidden`
+
 ## Current Active Node
 **System Operations Phase.**

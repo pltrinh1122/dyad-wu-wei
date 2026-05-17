@@ -17,6 +17,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
 
 3. **Act (Execution):** 
    - Execute codebase generation, tool invocations, and artifact mutations required by the Scope.
+   - **TDD Invariant:** You MUST use `python3 -c "from skills.testing_harness import run_tests; run_tests()"` for all local testing. Raw bash `pytest` is strictly forbidden.
 
 4. **Observe (HITL Pause):** 
    - The Agent halts execution.

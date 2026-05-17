@@ -14,7 +14,7 @@ The Agent operates as a **Meta-Orchestrator**, driving a logical, topological fr
 
 ## 2. Session Continuity Invariants
 Because Agent sessions are ephemeral, the repository must be physically self-describing.
-- **`AGENT.md` (System Prompt)**: Mandated at the repository root. This ensures incoming sessions instantly understand their persona.
+- **`GEMINI.md` (System Prompt Hook)**: Mandated at the repository root. This ensures the Antigravity engine automatically injects the Meta-Orchestrator persona.
 - **`artifacts/frontier_state.md` (Macro-State)**: Mandated to track topological nodes, execution status, and feedforward invariants (knowledge required for the next node).
 - **Episodic State (`task.md`)**: Strictly *optional*. Local checklist tracking in the episodic brain cache must not be relied upon for session continuity. Micro-state is deferred to GitHub Issues.
 

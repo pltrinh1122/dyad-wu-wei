@@ -4,7 +4,7 @@
 **Status:** Accepted
 
 ## Context
-After migrating to the Linguistic Primitives (`WHAT`, `WHY`, `HOW`), the files were initially placed at the root of the repository. This created clutter and blurred the lines between immutable system governance and standard repository entry points (like `README.md` or `AGENT.md`). The Operator requested an evaluation of "house-cleaning" to determine if these files belonged in `artifacts/` or elsewhere.
+After migrating to the Linguistic Primitives (`WHAT`, `WHY`, `HOW`), the files were initially placed at the root of the repository. This created clutter and blurred the lines between immutable system governance and standard repository entry points (like `README.md` or `GEMINI.md`). The Operator requested an evaluation of "house-cleaning" to determine if these files belonged in `artifacts/` or elsewhere.
 
 ## Options Considered
 1. **The Root Directory:** Leave primitives at the root. Cluttered and unscalable.
