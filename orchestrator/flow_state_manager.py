@@ -28,9 +28,20 @@ def log_stage_advancement(stage: str, status: str, details: str = "") -> None:
         print(f" 📝 Details          ►  {details}")
     print("═"*60 + "\n")
 
-def plan_node(issue_id: str, body: str) -> str:
+def plan_node(node_id: str, issue_id: str, body: str) -> str:
     """Plans a node by locking the Node Contract into an existing Backlog Issue."""
     log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Backlog Issue #{issue_id}")
+    
+    import json
+    # Retrieve current title to check if we need to rename it
+    res = subprocess.run(["gh", "issue", "view", str(issue_id), "--json", "title"], capture_output=True, text=True, check=True)
+    current_title = json.loads(res.stdout)["title"]
+    
+    prefix = f"Node {node_id}:"
+    if not current_title.startswith(prefix):
+        new_title = f"{prefix} {current_title}"
+        github_client.rename_issue_title(issue_id, new_title)
+        
     github_client.update_issue_body(issue_id, body)
     
     issue_url = f"https://github.com/pltrinh1122/agent-antigravity/issues/{issue_id}"

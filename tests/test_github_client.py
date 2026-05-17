@@ -98,7 +98,8 @@ def test_list_issues_by_label_empty(mock_run):
 
 @patch('skills.github_client.subprocess.run')
 @patch('skills.github_client.tempfile.NamedTemporaryFile')
-def test_add_to_backlog(mock_tempfile, mock_run):
+@patch('skills.github_client.render_template')
+def test_add_to_backlog(mock_render, mock_tempfile, mock_run):
     mock_result = MagicMock()
     mock_result.stdout = "https://github.com/pltrinh1122/agent-antigravity/issues/31"
     mock_run.return_value = mock_result
@@ -106,11 +107,19 @@ def test_add_to_backlog(mock_tempfile, mock_run):
     mock_file = MagicMock()
     mock_file.name = "/tmp/fake_backlog.md"
     mock_tempfile.return_value.__enter__.return_value = mock_file
+    
+    mock_render.return_value = "Rendered Template Body"
 
-    url = add_to_backlog("Future Work Item", "Description of work")
+    url = add_to_backlog("probe", "Future Work Item", "Description of work")
 
     assert url == "https://github.com/pltrinh1122/agent-antigravity/issues/31"
-    mock_file.write.assert_called_once_with("Description of work")
+    mock_file.write.assert_called_once_with("Rendered Template Body")
     args = mock_run.call_args[0][0]
-    assert args == ["gh", "issue", "create", "--title", "Future Work Item",
+    assert args == ["gh", "issue", "create", "--title", "Probe: Future Work Item",
                     "-F", "/tmp/fake_backlog.md", "--label", "backlog"]
+    mock_render.assert_called_once_with("backlog_issue", {
+        "goal": "Description of work",
+        "changes": "TBD",
+        "invariants": "TBD",
+        "depends_on": "TBD"
+    })

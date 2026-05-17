@@ -42,7 +42,7 @@ def test_node_plan_subcommand_usage():
     bin_path = os.path.join(os.path.dirname(__file__), '../bin/node')
     assert os.path.exists(bin_path)
 
-    # plan subcommand needs at least 2 args
+    # plan subcommand needs at least 3 args
     res = subprocess.run([bin_path, "plan"], capture_output=True, text=True)
     assert res.returncode != 0
     assert "Usage:" in res.stdout
@@ -87,7 +87,7 @@ def test_backlog_subcommand_usage():
     bin_path = os.path.join(os.path.dirname(__file__), '../bin/backlog')
     assert os.path.exists(bin_path)
 
-    # new subcommand needs at least 2 args
+    # new subcommand needs at least 3 args
     res = subprocess.run([bin_path, "new"], capture_output=True, text=True)
     assert res.returncode != 0
     assert "Usage:" in res.stdout

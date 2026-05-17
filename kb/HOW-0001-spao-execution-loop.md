@@ -11,8 +11,8 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - Validate that the feedforward invariants from the previous node are met.
    - If backlog items are surfaced, pull the highest-priority item as the next Node (unless the Operator specifies otherwise).
 
-2. **Plan (Contract Formulation):** 
-   - Execute the shell script: `./bin/node plan "ISSUE_ID" "Body content..."` to lock the Node Contract into the existing **Backlog Issue**.
+1. **Plan (Contract Formulation):** 
+   - Execute the shell script: `./bin/node plan "NODE_ID" "ISSUE_ID" "Body content..."` to lock the Node Contract into the existing **Backlog Issue** and automatically prepend the Node ID to the GitHub Issue title.
    - **Meta-Rule Invariant:** Node Issues MUST be pulled from the backlog. It is mathematically forbidden to generate a new issue out of thin air during the Plan phase.
    - **Template Invariant:** The Agent must NEVER generate inline markdown strings for GitHub Issues. All issue bodies (Backlog and Node Contracts) MUST be rendered using strict, Operator-editable templates located in `kb/templates/`.
    - Mutate the body of the **Path Issue** to link to the newly active Node Issue via `./bin/meta link "NODE_ID" "Node X: Title" "ISSUE_ID"`.
