@@ -118,6 +118,16 @@ To prevent terminology drift and ensure absolute precision across models and ope
 
 ---
 
+## 🛠️ Tooling & Orchestration
+
+### Skill
+A **pure, atomic, deterministic callable**. It maintains zero state between invocations, has no SPAO/NL stage awareness, and maps to a single external system interaction. Independently testable.
+
+### Workflow
+A **multi-step, stage-aware orchestration sequence**. It sequences Skills across NL phase transitions and maintains active state context (e.g., "we are in the Act phase").
+
+---
+
 ## 📜 Linguistic Primitives (kb/ Pillars)
 
 ### Primitive
@@ -132,7 +142,10 @@ A physical post-condition/assertion of a completed Node that acts as a mandatory
 ### Pillar
 A top-level directory in the agentic architecture, defining a specific systemic function:
 * **`artifacts/` (RAM)**: Mutable runtime memory and outputs.
-* **`skills/` (Hands)**: Deterministic, tested tools and interfaces.
-* **`orchestrator/` (Engine)**: Generative runtime state and execution loop.
+* **`skills/` (Hands)**: Deterministic, tested tools and interfaces (contains exclusively **Skills**).
+* **`orchestrator/` (Engine)**: Generative runtime state and execution loop (contains **Workflows**).
 * **`kb/` (ROM)**: Immutable laws and primitives.
 * **`infra/` (Infrastructure)**: Orchestrated daemons and runner environments.
+
+### CLI Adapter Layer (`bin/`)
+*Not a core execution Pillar.* Thin interface shell scripts that bridge human operators and agent intent to the underlying `skills/` or `orchestrator/` layers.

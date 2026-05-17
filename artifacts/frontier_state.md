@@ -242,5 +242,13 @@
   - `[ ] GLOSSARY.md extends Node definition with mandatory structural attributes`
   - `[ ] WHAT-0001-agentic-architecture.md reflects the two-tier SPAO model`
 
+## Node 41: Probe - Skill vs. Workflow Boundary & bin/ Classification
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Evaluated and formally resolved the Skill vs. Workflow boundary, identified flow_state_manager.py as a misclassified Workflow, and classified bin/ as the CLI Adapter Layer.
+- **Feedforward Invariants**:
+  - `[ ] WHY-0009 Decision Record codifies Skill/Workflow boundary and bin/ classification`
+  - `[ ] GLOSSARY.md adds canonical Skill and Workflow definitions`
+  - `[ ] WHAT-0001-agentic-architecture.md adds bin/ as CLI Adapter Layer pillar`
+
 ## Current Active Node
-**Node 40: Ontology - Multi-Layered SPAO, NC Invariance, and Tiered WIP**
+**Node 41: Probe - Skill vs. Workflow Boundary & bin/ Classification**
