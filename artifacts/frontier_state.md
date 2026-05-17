@@ -108,5 +108,11 @@
 - **Feedforward Invariants**:
   - `[x] Agent is paralyzed from advancing to the next node until the Operator merges the PR`
 
+## Node 17: CI Budget Optimization
+- **Status**: Completed
+- **Learnings & Context**: Removed `pull_request` trigger from GitHub Actions to optimize compute budget. Updated `WHY-0007` to document the decision to rely on local TDD instead of burning cloud minutes on open PRs.
+- **Feedforward Invariants**:
+  - `[x] GitHub CI only triggers on main pushes`
+
 ## Current Active Node
 **System Operations Phase.**
