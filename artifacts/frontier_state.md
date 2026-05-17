@@ -339,5 +339,11 @@
   - `[x] Update HOW and GLOSSARY`
 
 
+## Node 81: Feature: Refactor backlog-list output format
+- **Status**: Completed
+- **Learnings & Context**: Refactored backlog list output to natively include the Node ID and stripped legacy node ID prefixes from old backlog items. Fixed argument count bug in meta active.
+- **Feedforward Invariants**:
+  - `[x] Refactor backlog list`
+
 ## Current Active Node
-None
+**Node 81: Feature: Refactor backlog-list output format**
