@@ -114,5 +114,12 @@
 - **Feedforward Invariants**:
   - `[x] GitHub CI only triggers on main pushes`
 
+## Node 18: Materialize Local CI Runner Infrastructure
+- **Status**: Completed
+- **Learnings & Context**: Successfully established the `infra/` pillar and `infrastructure_state.md`. Built the universal `infra_manager` skill with `systemd_user` routing. Materialized `provision.sh` for the GitHub self-hosted runner and successfully routed CI traffic to it. The runner is active.
+- **Feedforward Invariants**:
+  - `[x] Infrastructure is formally tracked and agent-controllable`
+  - `[x] GitHub CI runs on self-hosted`
+
 ## Current Active Node
 **System Operations Phase.**
