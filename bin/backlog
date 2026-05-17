@@ -42,9 +42,9 @@ else:
         fi
         
         NODE_TYPE=$(echo "$1" | tr '[:upper:]' '[:lower:]')
-        if [[ "$NODE_TYPE" != "probe" && "$NODE_TYPE" != "activity" ]]; then
+        if [[ "$NODE_TYPE" != "probe" && "$NODE_TYPE" != "activity" && "$NODE_TYPE" != "path" ]]; then
             echo "Error: Invalid node type '$1'."
-            echo "Strict Enum Enforcement: <type> must be either 'probe' or 'activity'."
+            echo "Strict Enum Enforcement: <type> must be either 'probe', 'activity', or 'path'."
             exit 1
         fi
         

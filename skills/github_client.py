@@ -71,13 +71,19 @@ def add_to_backlog(node_type: str, title: str, goal: str) -> str:
     Returns the URL of the created issue.
     """
     formatted_title = f"{node_type.capitalize()}: {title}"
-    kwargs = {
-        "goal": goal,
-        "changes": "TBD",
-        "invariants": "TBD",
-        "depends_on": "TBD"
-    }
-    body = render_template("backlog_issue", kwargs)
+    if node_type.lower() == "path":
+        kwargs = {"goal": goal}
+        body = render_template("path_tracker", kwargs)
+        label = "meta"
+    else:
+        kwargs = {
+            "goal": goal,
+            "changes": "TBD",
+            "invariants": "TBD",
+            "depends_on": "TBD"
+        }
+        body = render_template("backlog_issue", kwargs)
+        label = "backlog"
     
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
         temp_file.write(body)
@@ -85,7 +91,7 @@ def add_to_backlog(node_type: str, title: str, goal: str) -> str:
         
         result = subprocess.run(
             ["gh", "issue", "create", "--title", formatted_title,
-             "-F", temp_file.name, "--label", "backlog"],
+             "-F", temp_file.name, "--label", label],
             capture_output=True, text=True, check=True
         )
         issue_url = result.stdout.strip()
