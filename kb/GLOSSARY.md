@@ -55,6 +55,20 @@ The volume of active development at any single moment. Under our **0-nesting sin
 
 ---
 
+## 🔁 Flow vs. Loop vs. Path (Ontological Disambiguation)
+
+To prevent terminology drift and ensure absolute precision across models and operators, "Flow", "Loop", and "Path" represent distinct operational dimensions and must never be used interchangeably:
+
+| Dimension | Concept | Scope | Governance |
+| :--- | :--- | :--- | :--- |
+| **Structural** | **Path** | The long-term architectural roadmap/themed track (e.g. Issue #10). A themed sequence of logical Nodes grouped to achieve a macro-objective. | Track-level roadmap progression. |
+| **Spatial** | **Flow (Single-Piece Flow)** | The dynamic serialization of work *along* or *across* Paths. Dictates that exactly one Node of one Path may be active at any given moment. | Strictly enforced by the $WIP=1$ constraint. |
+| **Temporal** | **Loop (SPAO Loop)** | The cyclic 5-stage protocol (**Sense → Plan → Act → Observe → Reflect**) executed *within* the boundaries of a single active Node to move it from inception to PR. | Stage-by-stage execution hygiene. |
+
+* **Linguistic Rule**: You *run* the **SPAO Loop** to complete a Node; this progresses the **Single-Piece Flow** sequentially along a planned **Path**.
+
+---
+
 ## 📜 Linguistic Primitives (kb/ Pillars)
 
 ### Primitive

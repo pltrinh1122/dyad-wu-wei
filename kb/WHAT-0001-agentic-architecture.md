@@ -44,3 +44,20 @@ To balance flow-state strictness with rapid, low-friction brainstorming, Agents 
 3. **State Transitions:** Advancing the topological frontier.
 
 **The WHY Handoff:** *If an investigatory Side-Bar conversation results in a major architectural decision, the Agent must draft a `WHY-*` document (a Decision Record) to permanently preserve the rationale. Only then may the Agent create the formal GH-Issue to execute the decision.*
+
+## 5. Ontological Taxonomy: Flow, Loop, and Path
+
+To maintain high cognitive alignment and guarantee repeatable repository transitions, the Agentic Architecture strictly segregates the following terms:
+
+1. **Path (Structure)**:
+   * **Definition**: A structural, long-term themed track of execution (e.g., Path Meta-Index Issue #10).
+   * **Invariance**: Paths map out *where* the repository is heading conceptually by grouping logically dependent Topological Nodes.
+
+2. **Flow (Dynamics & Serialization)**:
+   * **Definition**: The dynamic serialization of work *along* or *across* Paths.
+   * **Invariance**: Under our **0-nesting single-piece flow** policy, only a single Node on a single Path may be active at any given moment. Parallelization, nesting, or simultaneous active branches are strictly prohibited. The $WIP=1$ constraint acts as the flow rate limiter.
+
+3. **Loop (Temporal Sequence)**:
+   * **Definition**: The internal 5-stage temporal execution protocol (**Sense-Plan-Act-Observe-Reflect**) followed strictly to execute each individual active Node.
+   * **Invariance**: The Loop is the engine of progression; it cycles once per Node, moving the active work transactionally from a planned issue state (Plan), through local codebase TDD verification (Act), to an operator-reviewed merge (Observe/Reflect), thereby advancing the overall Flow forward along the Path.
+
