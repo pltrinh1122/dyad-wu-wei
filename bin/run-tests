@@ -4,8 +4,17 @@ set -euo pipefail
 # Resolve repository root
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+# Resolve python executable to use
+if [[ -n "${VIRTUAL_ENV:-}" && -x "$VIRTUAL_ENV/bin/python3" ]]; then
+    PYTHON_EXE="$VIRTUAL_ENV/bin/python3"
+elif [[ -x "/home/pt/actions-runner/venv/bin/python3" ]]; then
+    PYTHON_EXE="/home/pt/actions-runner/venv/bin/python3"
+else
+    PYTHON_EXE="python3"
+fi
+
 # Set execution flag to prevent recursive testing loops
 export ANTIGRAVITY_RUNNING_TESTS=1
 
 # Execute unit tests via mandated Python testing harness
-PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" python3 -c "from skills.testing_harness import run_tests; print(run_tests())"
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "from skills.testing_harness import run_tests; print(run_tests())"
