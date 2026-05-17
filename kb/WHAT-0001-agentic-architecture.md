@@ -11,7 +11,7 @@ Modern agentic repositories abandon traditional SDLC in favor of an Agentic Arch
 - **`infra/`**: The **Infrastructure** of the system. Contains Infrastructure as Code (IaC) provisioning scripts for daemons (e.g., Local CI Runners). The Agent strictly provisions infrastructure here, but does not execute the daemons directly in its cognitive loop. User-Level Systemd (`systemctl --user`) is the standard for Agent-controllable daemons.
 
 ### The CLI Adapter Layer
-Bridging the operator and the architecture is the **`bin/`** directory. It is NOT a core Pillar, but rather the **CLI Adapter Layer** containing thin shell wrappers that wire shell invocations to the underlying `skills/` or `orchestrator/` primitives.
+Bridging the operator and the architecture is the **`bin/`** directory. It is NOT a core Pillar, but rather the **CLI Adapter Layer**. It contains ultra-thin shell wrappers that delegate immediately to Python **Orchestrators** (e.g., `orchestrator/mgr_node.py`). These Python `mgr_*` orchestrators handle CLI argument parsing and route requests to the underlying Domain logic in `skills/` or `orchestrator/flow_state_manager.py`.
 
 The Agent operates as a **Meta-Orchestrator**, driving a logical, topological frontier node-by-node.
 

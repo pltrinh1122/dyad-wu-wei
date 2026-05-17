@@ -385,5 +385,13 @@
   - `[x] Update flow_state_manager.py`
   - `[x] Close Probe 92`
 
+## Probe 98: Architectural Evaluation of mgr-* Orchestrators
+- **Status**: Completed
+- **Learnings & Context**: Completed architectural evaluation. Updated WHAT-0001 to document the new CLI Router layer architecture and spawned Activity 104 to formally execute the migration.
+- **Feedforward Invariants**:
+  - `[x] Draft implementation plan`
+  - `[x] Update WHAT-0001`
+  - `[x] Spawn execution node`
+
 ## Current Active Node
-**Activity 102: Abstract PR creation command sequence for node completion**
+**Probe 98: Architectural Evaluation of mgr-* Orchestrators**
