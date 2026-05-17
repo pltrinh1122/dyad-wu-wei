@@ -12,7 +12,12 @@ def test_run_tests_wrapper():
     assert os.path.exists(bin_path)
     
     # Run the shell script and verify it executes our pytest suite successfully
-    res = subprocess.run([bin_path], capture_output=True, text=True, check=True)
+    try:
+        res = subprocess.run([bin_path], capture_output=True, text=True, check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"STDOUT: {e.stdout}")
+        print(f"STDERR: {e.stderr}")
+        raise
     assert res.returncode == 0
     assert "test session starts" in res.stdout
     assert "passed in" in res.stdout
