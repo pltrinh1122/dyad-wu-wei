@@ -16,9 +16,9 @@ An **atomic, topological unit of work** in the repository. Every Node represents
 A **time-boxed, purely investigatory Node** designed to evaluate feasibility, research techniques, or resolve architectural ambiguity.
 * **Outcome**: A Spike does **not** produce production code. It exclusively materializes a new Decision Record (`WHY-*` document) in `kb/` or an implementation plan.
 
-### Epic
-A **themed Path of Nodes** grouped together to achieve a macro-objective.
-* **Tracking**: Represented by a long-lived "Epic Issue" (e.g., #10) whose body contains a Meta-Index tracking the completion status of all individual topological Nodes in that epic.
+### Path
+A **themed sequence of Nodes** grouped together to achieve a macro-objective.
+* **Tracking**: Represented by a long-lived **Path Issue** (formerly "Epic Issue", e.g., #10) whose body contains a Meta-Index tracking the completion status of all individual topological Nodes along that path.
 
 ---
 
@@ -27,7 +27,7 @@ A **themed Path of Nodes** grouped together to achieve a macro-objective.
 ### SPAO Loop
 The **Sense-Plan-Act-Observe** execution loop followed strictly by the Agent for every Node:
 1. **Sense**: Sync `main`, clean local branches, surface pending backlog items, and validate pre-condition invariants.
-2. **Plan**: Formulate the contract by creating/updating the GH Issue and linking it in the Epic.
+2. **Plan**: Formulate the contract by creating/updating the GH Issue and linking it in the Path.
 3. **Act**: Execute the codebase/artifact changes under strict TDD invariants.
 4. **Observe**: Halt and await Human-In-The-Loop (HITL) feedback and sign-off.
 5. **Reflect**: Close the transaction ledger, push the branch, and open the PR for squash-merging.
