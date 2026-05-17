@@ -94,3 +94,15 @@ def add_to_backlog(node_type: str, title: str, goal: str) -> str:
         rename_issue_title(issue_id, new_title)
         
         return issue_url
+
+def create_pull_request(title: str, body: str) -> str:
+    """Creates a PR using gh pr create."""
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
+        temp_file.write(body)
+        temp_file.flush()
+        
+        result = subprocess.run(
+            ["gh", "pr", "create", "--title", title, "-F", temp_file.name],
+            capture_output=True, text=True, check=True
+        )
+        return result.stdout.strip()

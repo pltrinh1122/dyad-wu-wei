@@ -37,13 +37,12 @@ def test_reflect_node(mock_run, mock_fe, mock_gh):
     mock_fe.complete_active_node.assert_called_once_with("/tmp/dummy.md", "Node 1: Test", "It worked", ["[x] Good"])
     
     # Verify Git commands
-    assert mock_run.call_count == 4
+    assert mock_run.call_count == 3
     
     call_args = [call[0][0] for call in mock_run.call_args_list]
-    assert call_args[0] == ["git", "checkout", "-b", "node/1-test-branch"]
-    assert call_args[1] == ["git", "add", "."]
-    assert call_args[2] == ["git", "commit", "-m", "Test commit"]
-    assert call_args[3] == ["git", "push", "-u", "origin", "node/1-test-branch"]
+    assert call_args[0] == ["git", "add", "."]
+    assert call_args[1] == ["git", "commit", "-m", "Test commit"]
+    assert call_args[2] == ["git", "push", "-u", "origin", "node/1-test-branch"]
     
     # Verify PR created
     mock_gh.create_pull_request.assert_called_once_with("PR Title", "Resolves #100\n\nIt worked")
