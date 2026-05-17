@@ -393,5 +393,13 @@
   - `[x] Update WHAT-0001`
   - `[x] Spawn execution node`
 
+## Activity 106: Automate PR title injection in reflect_node
+- **Status**: Completed
+- **Learnings & Context**: Stripped the manual pr_title arg from the CLI and orchestrator layers to eliminate double-prefixing.
+- **Feedforward Invariants**:
+  - `[x] Update bin/node`
+  - `[x] Update flow_state_manager.py`
+  - `[x] Update test suite`
+
 ## Current Active Node
-**Probe 98: Architectural Evaluation of mgr-* Orchestrators**
+**Activity 106: Automate PR title injection in reflect_node**
