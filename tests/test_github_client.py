@@ -124,7 +124,7 @@ def test_add_to_backlog(mock_render, mock_tempfile, mock_run):
                     
     # Check second call (edit/rename)
     edit_args = mock_run.call_args_list[1][0][0]
-    assert edit_args == ["gh", "issue", "edit", "31", "--title", "Node 31: Probe: Future Work Item"]
+    assert edit_args == ["gh", "issue", "edit", "31", "--title", "Probe 31: Future Work Item"]
     mock_render.assert_called_once_with("backlog_issue", {
         "goal": "Description of work",
         "changes": "TBD",

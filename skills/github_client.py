@@ -90,7 +90,7 @@ def add_to_backlog(node_type: str, title: str, goal: str) -> str:
         )
         issue_url = result.stdout.strip()
         issue_id = issue_url.split("/")[-1]
-        new_title = f"Node {issue_id}: {formatted_title}"
+        new_title = f"{node_type.capitalize()} {issue_id}: {title}"
         rename_issue_title(issue_id, new_title)
         
         return issue_url
