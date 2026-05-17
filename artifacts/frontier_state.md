@@ -128,5 +128,11 @@
   - `[x] Antigravity System reads GEMINI.md automatically`
   - `[x] Native bash testing is forbidden`
 
+## Node 20: Unblock CI Cache Stall
+- **Status**: Completed
+- **Learnings & Context**: Removed `cache: pip` from `python-ci.yml` because the `actions/setup-python` pip cache synchronization protocol frequently hangs on raw self-hosted runners. A raw pip install takes <2s on the local workstation, rendering the cloud cache redundant anyway.
+- **Feedforward Invariants**:
+  - `[x] CI Pipeline no longer hangs`
+
 ## Current Active Node
 **System Operations Phase.**
