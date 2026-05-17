@@ -3,12 +3,15 @@
 This document defines the *Ontology* (The "What" and "Why") of the Antigravity ecosystem. It establishes the absolute state of the universe. It does **not** contain execution instructions (for execution, see the `HOW-*` artifacts).
 
 ## 1. The Core Paradigm
-Modern agentic repositories abandon traditional SDLC in favor of an Agentic Architecture. This architecture is composed of four strict pillars:
+Modern agentic repositories abandon traditional SDLC in favor of an Agentic Architecture. This architecture is composed of five strict pillars:
 - **`artifacts/`**: The **RAM** of the system. Holds mutable Agent state, memory, schemas, and output definitions (e.g., `frontier_state.md`).
-- **`skills/`**: The **Hands** of the system. Deterministic Python interfaces and tools.
-- **`orchestrator/`**: The **Engine** of the system. Generative runtime and the live LLM SPAO loop.
+- **`skills/`**: The **Hands** of the system. Deterministic, stateless Python interfaces (**Skills**).
+- **`orchestrator/`**: The **Engine** of the system. Contains stateful, stage-aware **Workflows** and the live LLM SPAO loop. *(Note: Currently aspirational; pending migration of the misclassified `flow_state_manager.py` Workflow from `skills/`)*.
 - **`kb/`**: The **ROM** of the system. The Knowledge Base holds the immutable Laws of the System, strictly categorized into `WHAT` (Ontology), `WHY` (Decision Records), and `HOW` (Instructions) linguistic primitives.
 - **`infra/`**: The **Infrastructure** of the system. Contains Infrastructure as Code (IaC) provisioning scripts for daemons (e.g., Local CI Runners). The Agent strictly provisions infrastructure here, but does not execute the daemons directly in its cognitive loop. User-Level Systemd (`systemctl --user`) is the standard for Agent-controllable daemons.
+
+### The CLI Adapter Layer
+Bridging the operator and the architecture is the **`bin/`** directory. It is NOT a core Pillar, but rather the **CLI Adapter Layer** containing thin shell wrappers that wire shell invocations to the underlying `skills/` or `orchestrator/` primitives.
 
 The Agent operates as a **Meta-Orchestrator**, driving a logical, topological frontier node-by-node.
 
