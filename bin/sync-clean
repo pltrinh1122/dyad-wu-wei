@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve repository root
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Run sync and clean node operations
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" python3 -c "from skills.flow_state_manager import sync_and_clean_node; sync_and_clean_node()"

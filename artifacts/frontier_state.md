@@ -172,5 +172,14 @@
   - `Lexical guard test suite passes cleanly`
   - `Stale vocabulary is completely blocked on all new codebase mutations`
 
+## Node 32: Shell Script Wrappers
+- **Status**: Completed
+- **Learnings & Context**: Designed, implemented, and thoroughly tested robust executable bash wrappers (bin/run-tests, bin/sync-clean, bin/plan-node, bin/reflect-node) to encapsulate raw python3 commands. This allows the human operator to tightly whitelist agentic commands in their terminal guardrails without having to generally whitelist python3. Updated all active operational documentation in GEMINI.md and kb/HOW-0001 to point exclusively to the wrapper scripts.
+- **Feedforward Invariants**:
+  - `All agentic python3 commands successfully wrapped in bin/`
+  - `bin/* is fully executable and handles arguments transparently`
+  - `Tests verify wrappers execute correctly and prevent recursive test loops`
+  - `Operational documents strictly use wrapper commands`
+
 ## Current Active Node
-**Node 31: Automated Lexical Guard**
+**Node 32: Shell Script Wrappers**

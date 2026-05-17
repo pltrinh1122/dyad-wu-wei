@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve repository root
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Set execution flag to prevent recursive testing loops
+export ANTIGRAVITY_RUNNING_TESTS=1
+
+# Execute unit tests via mandated Python testing harness
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" python3 -c "from skills.testing_harness import run_tests; print(run_tests())"
