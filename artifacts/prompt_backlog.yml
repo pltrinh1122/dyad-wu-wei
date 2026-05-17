@@ -13,4 +13,6 @@ prompts:
 - id: p-1779054987-1125
   timestamp: '2026-05-17T21:56:27Z'
   text: dummy prompt for node 109 consumption test
-  status: pending
+  status: consumed
+  consumed_by_pr: https://github.com/pltrinh1122/agent-antigravity/pull/120
+  read_timestamp: '2026-05-17T21:58:59Z'

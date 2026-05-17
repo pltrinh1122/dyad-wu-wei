@@ -38,8 +38,6 @@ case "$SUBCOMMAND" in
         PROMPTS="${8:-}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
-print(sys.executable)
-print(sys.path)
 import json
 from orchestrator.flow_state_manager import reflect_node
 
