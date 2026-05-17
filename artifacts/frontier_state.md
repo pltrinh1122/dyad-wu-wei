@@ -345,5 +345,13 @@
 - **Feedforward Invariants**:
   - `[x] Refactor backlog list`
 
+## Node 89: Feature: Implement Asynchronous Prompt Backlog
+- **Status**: Completed
+- **Learnings & Context**: Successfully executed the Option A blueprint to establish an asynchronous prompt/signal queue. Built bin/prompt and updated loop mechanics and glossary.
+- **Feedforward Invariants**:
+  - `[x] Create bin/prompt`
+  - `[x] Update HOW-0001`
+  - `[x] Update GLOSSARY`
+
 ## Current Active Node
-**Node 81: Feature: Refactor backlog-list output format**
+**Node 89: Feature: Implement Asynchronous Prompt Backlog**

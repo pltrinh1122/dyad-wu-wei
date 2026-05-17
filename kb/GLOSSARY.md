@@ -69,8 +69,11 @@ The strict threshold separating **PML** (low-friction conversational exploration
 ### Frontier
 The physical, chronological state ledger located at [frontier_state.md](file:///mnt/shared_data/git_repos/agent-antigravity/artifacts/frontier_state.md). It records the active node, completed nodes, learnings, and their feedforward invariants.
 
-### Backlog
+### Backlog (Node Backlog)
 The **flat, dependency-linked queue** of declared future Nodes. Organized entirely as GitHub Issues labeled with `backlog` and containing explicit `depends-on: #XX` relationships to keep execution order mathematically sound.
+
+### Prompt Backlog (Signal Queue)
+An ephemeral, unstructured local ingestion queue (`artifacts/prompt_backlog.md`) used to safely capture asynchronous operator prompts and system signals during the **Act phase**. Protects the single-piece flow (`WIP-N=1`) from cognitive interruption. This queue is flushed and processed during the **Observe phase**.
 
 ### WIP-N (Work-In-Progress at the Node level)
 The **operative, independently-enforced** constraint. At most **1** Node may occupy the Act Phase at any given moment (one active Git branch). Replaces the deprecated flat `WIP=1` term.
