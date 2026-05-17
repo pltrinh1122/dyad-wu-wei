@@ -30,20 +30,24 @@ For every discrete Topological Node, a new specific GH-Issue exists, serving as 
 - **Constraint Injector (HITL)**: The Operator injects feedback directly into the Node Issue's comment thread.
 - **Immutability:** Once complete, its Issue is closed, turning it into an immutable transaction log.
 
-## 4. The Materialization Boundary (Side-Bar Rubrics)
-To balance flow-state strictness with rapid, low-friction brainstorming, Agents must adhere to the **Materialization Boundary**.
+## 4. The Materialization Boundary & The Two SPAO Instantiations
+To balance flow-state strictness with rapid, low-friction brainstorming, the Agent operates in two distinct SPAO instantiations separated by the **Materialization Boundary**:
 
-**Permitted Side-Bars (No GH-Issue Required):**
+**PML (Pre-Materialization Loop)** — operates *below* the boundary:
 1. **Investigatory / Evaluative Intent:** The Operator asks to "evaluate," "explain," "assess," or "brainstorm" without commanding a state mutation.
 2. **Trivially Simple Execution:** One-off operational commands (e.g., `commit and push`).
 3. **Information Retrieval:** Extracting context from the codebase.
 
-**Mandatory Materialization (GH-Issue Required):**
+A PML cycle produces at most a **Node Contract (NC)** proposal for operator review. No branch is checked out, no GitHub Node Issue is required.
+
+**NL (Node-Loop)** — operates *above* the boundary (mandatory materialization):
 1. **Repository Mutation:** Creating, deleting, or modifying files that affect logic, architecture, or persistent state.
 2. **Ambiguity in Implementation:** Complex architecture requiring Operator alignment before execution.
 3. **State Transitions:** Advancing the topological frontier.
 
-**The WHY Handoff:** *If an investigatory Side-Bar conversation results in a major architectural decision, the Agent must draft a `WHY-*` document (a Decision Record) to permanently preserve the rationale. Only then may the Agent create the formal GH-Issue to execute the decision.*
+Activation of the NL requires: (1) a Backlog GH Issue (created via `bin/backlog new`), (2) a complete operator-approved **NC**, (3) a checked-out `node/XX-*` branch, and (4) an updated `frontier_state.md`.
+
+**The WHY Handoff:** *If a PML cycle results in a major architectural decision, the Agent must draft a `WHY-*` document (a Decision Record) to permanently preserve the rationale before materializing the formal GH-Issue.*
 
 ## 5. Ontological Taxonomy: Spatial (Graph) and Temporal (SPAO)
 
@@ -55,7 +59,10 @@ To maintain high cognitive alignment and guarantee repeatable repository transit
 * **Meta-Tracker (Container/Vehicle)**: The long-lived GitHub Issue (e.g., Issue #10) representing a themed Path.
 * **Meta-Index (Payload/Adjacency Ledger)**: The checklist data structure (`- [x] Node ...`) contained inside the Meta-Tracker, indexing the status of the Path's vertices.
 
-### 5.2 The Temporal Dimension (The Meta-Loop / SPAO Loop)
-* **Meta-Loop (SPAO Loop)**: The internal 5-stage temporal execution protocol (**Sense-Plan-Act-Observe-Reflect**) followed strictly to execute each individual active Node, transitioning the system from one vertex in the **Meta-Graph** to the next.
-* **Flow (Single-Piece Flow)**: The strictly serialized, non-overlapping serialization of transitions across the **Meta-Graph**. Enforced by the $WIP=1$ constraint, it ensures only a single vertex of the **Meta-Graph** may be traversed/active at any given moment.
+### 5.2 The Temporal Dimension (SPAO — Universal Meta-Loop)
+* **SPAO (Meta-Loop)**: The **universal** 5-stage agentic protocol (**Sense-Plan-Act-Observe-Reflect**) governing **all** agent/operator interactions. SPAO is not scoped to Nodes — it is the common temporal algorithm from which all loop instantiations derive.
+* **PML (Pre-Materialization Loop)**: SPAO instantiated *below* the Materialization Boundary. Ephemeral, conversational, produces at most an **NC** proposal.
+* **NL (Node-Loop)**: SPAO instantiated *on* an active Node traversal in the Meta-Graph. Persistent, transactional, branch-mutating. Governed by **WIP-N=1** + **HITL**.
+* **NC (Node Contract)**: The mandatory, non-null Plan-Stage output of the NL. Pre-conditions every Node's Act-Phase entry.
+* **Flow (Single-Piece Flow)**: The strictly serialized traversal of vertices in the **Meta-Graph**, enforced by `WIP-N=1` (operative) and `WIP-P=1` (derived).
 

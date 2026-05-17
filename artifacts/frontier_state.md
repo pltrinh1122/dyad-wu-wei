@@ -234,5 +234,13 @@
   - `[ ] skills/frontier_editor.py supports dynamic append_active_node template generation`
   - `[ ] tests/test_bash_wrappers.py validates bin/meta arguments and usage`
 
+## Node 40: Ontology - Multi-Layered SPAO, NC Invariance, and Tiered WIP
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Codified four canonical GLOSSARY corrections: SPAO universality, NL (Node-Loop), PML (Pre-Materialization Loop), NC (Node Contract), and tiered WIP-N/WIP-P replacing flat WIP=1.
+- **Feedforward Invariants**:
+  - `[ ] GLOSSARY.md corrects SPAO as universal protocol and introduces NL, PML, NC, WIP-N, WIP-P`
+  - `[ ] GLOSSARY.md extends Node definition with mandatory structural attributes`
+  - `[ ] WHAT-0001-agentic-architecture.md reflects the two-tier SPAO model`
+
 ## Current Active Node
-**Node 39: Feature - Meta-Management CLI Integration**
+**Node 40: Ontology - Multi-Layered SPAO, NC Invariance, and Tiered WIP**

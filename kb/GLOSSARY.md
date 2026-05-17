@@ -9,8 +9,14 @@
 
 ### Node
 An **atomic, topological unit of work** in the repository. Every Node represents a single state transition in the repository's evolution.
-* **1:1:1 Mapping**: A Node maps exactly to a **GitHub Issue** (contract/plan), a **Git Branch** (active execution), and a **Pull Request** (review/merge).
-* **Isolation**: No two Nodes may be worked on concurrently (enforced by the `WIP=1` invariant).
+* **1:1:1 Mapping**: A Node maps exactly to a **GitHub Issue** (NC/plan), a **Git Branch** (active execution), and a **Pull Request** (review/merge).
+* **Isolation**: No two Nodes may be worked on concurrently (enforced by the `WIP-N=1` invariant).
+* **Mandatory Structural Attributes**: Every Node $V$ in the Meta-Graph carries the following non-nullable attributes:
+  * `ID` — Backlog GH Issue identifier.
+  * `Title` — Concise transition description.
+  * `NC` — **Non-null** Node Contract; must be locked before Act Phase entry.
+  * `State` — Current SPAO stage: `{Plan | Act | Observe | Reflect}`.
+  * `Invariants` — Target feedforward post-condition assertions.
 
 ### Probe
 A **time-boxed, purely investigatory Node** designed to evaluate feasibility, research techniques, or resolve architectural ambiguity.
@@ -30,21 +36,31 @@ The **checklist data structure** (`- [x] Node ...`) contained inside the body of
 
 ## 🔄 Execution Loop & Governance
 
-### SPAO Loop
-The **Sense-Plan-Act-Observe** execution loop followed strictly by the Agent for every Node:
+### SPAO (Meta-Loop)
+The universal **Sense-Plan-Act-Observe-Reflect** agentic protocol governing **all** agent/operator interactions. SPAO is **not scoped exclusively to Node execution** — it is the common temporal algorithm from which all loop instantiations are derived. Two concrete instantiations exist:
+
+| Instantiation | Acronym | Scope | Governed By |
+| :--- | :--- | :--- | :--- |
+| **Pre-Materialization Loop** | **PML** | Below the Materialization Boundary — ephemeral, conversational. Produces at most an **NC** proposal. | Operator dialogue |
+| **Node-Loop** | **NL** | On an active Node traversal in the Meta-Graph — persistent, transactional, branch-mutating. | **WIP-N=1** + **HITL** gate |
+
+The five SPAO stages as applied within the **NL**:
 1. **Sense**: Sync `main`, clean local branches, surface pending backlog items, and validate pre-condition invariants.
-2. **Plan**: Formulate the contract by creating/updating the GH Issue and linking it in the Path.
-3. **Act**: Execute the codebase/artifact changes under strict TDD invariants.
-4. **Observe**: Halt and await Human-In-The-Loop (HITL) feedback and sign-off.
+2. **Plan**: Formulate and lock the **NC** by creating/updating the GH Issue and linking it in the Path.
+3. **Act**: Execute codebase/artifact changes under strict TDD invariants.
+4. **Observe**: Halt and await **HITL** feedback and sign-off.
 5. **Reflect**: Close the transaction ledger, push the branch, and open the PR for squash-merging.
+
+### NC (Node Contract)
+The **mandatory, non-null Plan-Stage output** of the **NL** for a given Node. The NC is the formal pre-condition for the Node's Act-Phase edge traversal in the Meta-Graph. No Node may advance from Plan to Act without a complete, operator-approved NC.
 
 ### HITL (Human-In-The-Loop)
 The **operator approval gate**. The Agent is completely paralyzed from advancing past the **Observe** phase or starting the next Node until the human operator reviews, approves, and merges the Node's active PR into `main`.
 
 ### Materialization Boundary
-The strict threshold dividing low-friction conversational brainstorming from formal repository mutation:
-* **Side-bar**: Conversational/investigatory thread that does *not* mutate state. No GH Issue or Node is required.
-* **Materialization**: The moment a side-bar converts into a formal Node because it commands a file creation, structural mutation, or state transition.
+The strict threshold separating **PML** (low-friction conversational exploration) from formal **NL** execution (branch-mutating repository transitions):
+* **PML (Pre-Materialization Loop)**: The SPAO instantiation operating *below* this boundary. Ephemeral, unstructured, does not produce branch mutations. A PML cycle produces at most an **NC** proposal for operator review.
+* **Materialization**: The moment a PML cycle produces an operator-approved **NC** and the Agent activates a formal Node (checkout branch, update `frontier_state.md`), crossing into the **NL**.
 
 ---
 
@@ -56,8 +72,14 @@ The physical, chronological state ledger located at [frontier_state.md](file:///
 ### Backlog
 The **flat, dependency-linked queue** of declared future Nodes. Organized entirely as GitHub Issues labeled with `backlog` and containing explicit `depends-on: #XX` relationships to keep execution order mathematically sound.
 
-### WIP (Work In Progress)
-The volume of active development at any single moment. Under our **0-nesting single-piece flow** policy, WIP is strictly limited to **1** per repository.
+### WIP-N (Work-In-Progress at the Node level)
+The **operative, independently-enforced** constraint. At most **1** Node may occupy the Act Phase at any given moment (one active Git branch). Replaces the deprecated flat `WIP=1` term.
+
+### WIP-P (Work-In-Progress at the Path level)
+The **derived** constraint. At most **1** Path may be actively traversed at any moment. Automatically satisfied when `WIP-N=1` in the current single-Path model. Named explicitly for future multi-Path governance scalability.
+
+> [!NOTE]
+> The flat term `WIP=1` is **deprecated** in favour of the tiered `WIP-N=1` (operative) and `WIP-P=1` (derived). Stage-level WIP (`WIP-S=1`) is trivially enforced by the NL state machine and requires no explicit naming.
 
 ---
 
