@@ -82,6 +82,17 @@ We reserve the **"Meta-"** prefix strictly for **recursive structures** within t
 
 ---
 
+## ⚖️ Metasystem Governance & The Meta-Rule
+
+The **Meta-Rule** is the prime law governing *how the Metasystem itself is permitted to change*. To prevent cognitive degradation and maintain systemic integrity, the Agent is strictly bound by these self-referential laws:
+
+1. **Primacy of the Transactional Node**: Any modification to the system's own rules (`kb/`), tools (`skills/`), engine (`orchestrator/`), or runner commands (`bin/`) CANNOT be made ad-hoc in conversational sidebar threads. It MUST be executed under a formally planned, dependency-sorted Node or Probe transaction.
+2. **The TDD Invariant for Cognitive Tools**: Every automated tool or wrapper added to `skills/` or `bin/` must have 100% automated test coverage in `tests/`.
+3. **The Lexical Guard Law**: System rules and terminology are audited automatically during testing. Terms that drift from their canonical GLOSSARY definitions will trigger validation failures.
+4. **Absolute Human Sovereignty**: The Agent cannot self-modify its own cognitive boundary or governance rules without explicit Human-In-The-Loop (HITL) review, walkthrough evaluation, and squash-merge verification.
+
+---
+
 ## 🔁 Flow vs. Loop vs. Path (Ontological Disambiguation)
 
 To prevent terminology drift and ensure absolute precision across models and operators, "Flow", "Loop", and "Path" represent distinct operational dimensions and must never be used interchangeably:
