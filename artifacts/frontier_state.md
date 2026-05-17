@@ -204,18 +204,27 @@
   - `[x] Full TDD unit test coverage in tests/test_flow_state_manager.py`
 
 ## Node 36: Terminology Disambiguation
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Clarifying the ontological definitions and relationships between Loop, Flow, and Path across canonical architectural documents to prevent terminology drift.
-- **Feedforward Invariants**:
-  - `[ ] GLOSSARY.md explicitly distinguishes Loop, Flow, and Path`
-  - `[ ] WHAT-0001-agentic-architecture.md defines the relationship between Flow and Path`
-
-## Node 36: Terminology Disambiguation
 - **Status**: Completed
 - **Learnings & Context**: Clarified the ontological definitions and relationships between Loop, Flow, and Path across GLOSSARY.md and WHAT-0001-agentic-architecture.md to prevent cognitive and terminological drift.
 - **Feedforward Invariants**:
   - `[x] GLOSSARY.md explicitly distinguishes Loop, Flow, and Path`
   - `[x] WHAT-0001-agentic-architecture.md defines the relationship between Flow and Path`
 
+## Node 37: Ontology - Meta-Tracker Integration
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Refined the repository ontology to capture the hierarchies between the Application Tier and the Metasystem Tier, clearly defining recursive "Meta-" components (Meta-Graph, Meta-Tracker, Meta-Index, Meta-Loop) and anchoring them around Graph and SPAO loop concepts.
+- **Feedforward Invariants**:
+  - `[ ] GLOSSARY.md defines Hierarchical Differentiation and recursive Meta-prefix rules`
+  - `[ ] GLOSSARY.md defines Meta-Tracker and integrates it into the taxonomy`
+  - `[ ] WHAT-0001-agentic-architecture.md aligns Section 3.1 and Section 5 with Meta-Tracker taxonomy`
+
+## Node 37: Ontology - Meta-Tracker Integration
+- **Status**: Completed
+- **Learnings & Context**: Refined the repository ontology to capture the hierarchies between the Application Tier and the Metasystem Tier, clearly defining recursive 'Meta-' components (Meta-Graph, Meta-Tracker, Meta-Index, Meta-Loop) and anchoring them around Graph and SPAO loop concepts.
+- **Feedforward Invariants**:
+  - `[ ] GLOSSARY.md defines Hierarchical Differentiation and recursive Meta-prefix rules`
+  - `[ ] GLOSSARY.md defines Meta-Tracker and integrates it into the taxonomy`
+  - `[ ] WHAT-0001-agentic-architecture.md aligns Section 3.1 and Section 5 with Meta-Tracker taxonomy`
+
 ## Current Active Node
-**Node 36: Terminology Disambiguation**
+**Node 37: Ontology - Meta-Tracker Integration**

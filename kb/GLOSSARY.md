@@ -20,6 +20,12 @@ A **time-boxed, purely investigatory Node** designed to evaluate feasibility, re
 A **themed sequence of Nodes** grouped together to achieve a macro-objective.
 * **Tracking**: Represented by a long-lived **Path Issue** (formerly "Epic Issue", e.g., #10) whose body contains a Meta-Index tracking the completion status of all individual topological Nodes along that path.
 
+### Meta-Tracker
+The **physical cloud container** (the specific long-lived GitHub Issue, e.g. Issue #10) representing a themed **Path**. It acts as the cloud anchor for macro-level progress tracking.
+
+### Meta-Index
+The **checklist data structure** (`- [x] Node ...`) contained inside the body of the **Meta-Tracker**. Entries index references to closed transaction issues.
+
 ---
 
 ## 🔄 Execution Loop & Governance
@@ -55,17 +61,38 @@ The volume of active development at any single moment. Under our **0-nesting sin
 
 ---
 
+## 🎚️ Hierarchical Tiering & Recursive "Meta-" Prefix
+
+To prevent conceptual confusion, we establish a strict boundary between two organizational tiers:
+1. **Application Tier (The Product)**: Represents the business domain deliverables (features, bugs, stories, databases, APIs) of the client system.
+2. **Metasystem Tier (The Agentic Governance System - Antigravity)**: Represents the topological, state, and cognitive engine that coordinates repository progress.
+
+### The Taxonomy of Base Primitives
+**Node**, **Path**, and **Probe** are native **Metasystem-tier primitives**. Because they *exclusively* exist within our agentic governance layer (there is no such thing as an "Application-tier Path" or "Application-tier Probe" in our codebase), prepending "Meta-" to them is redundant. We keep these base terms simple and clean.
+
+### The Recursive "Meta-" Prefix Rule
+We reserve the **"Meta-"** prefix strictly for **recursive structures** within the Metasystem tier: when a component governs, contains, or indexes other components of the *same type*:
+
+* **Meta-Graph**: The entire Directed Acyclic Graph (DAG) of the repository's topological Nodes (vertices) linked by dependency edges. It maps the spatial evolution of the system.
+* **Meta-Tracker**: A cloud container (GitHub Issue, e.g. Issue #10) that tracks *other trackers* (the individual Node issues along a Path subgraph).
+* **Meta-Index**: A catalog (checklist) whose entries *index other indexes* (references to closed transaction issues).
+* **Meta-Loop (SPAO Loop)**: A cyclic temporal protocol (**Sense-Plan-Act-Observe-Reflect**) governing the internal execution sequence of a single active Node.
+* **Meta-Repository**: The system repository (`agent-antigravity`) hosting the rules, tools, and engine managing other codebases.
+* **Meta-Orchestrator**: The generative agent engine persona (Antigravity) operating as the executive pilot.
+
+---
+
 ## 🔁 Flow vs. Loop vs. Path (Ontological Disambiguation)
 
 To prevent terminology drift and ensure absolute precision across models and operators, "Flow", "Loop", and "Path" represent distinct operational dimensions and must never be used interchangeably:
 
 | Dimension | Concept | Scope | Governance |
 | :--- | :--- | :--- | :--- |
-| **Structural** | **Path** | The long-term architectural roadmap/themed track (e.g. Issue #10). A themed sequence of logical Nodes grouped to achieve a macro-objective. | Track-level roadmap progression. |
-| **Spatial** | **Flow (Single-Piece Flow)** | The dynamic serialization of work *along* or *across* Paths. Dictates that exactly one Node of one Path may be active at any given moment. | Strictly enforced by the $WIP=1$ constraint. |
-| **Temporal** | **Loop (SPAO Loop)** | The cyclic 5-stage protocol (**Sense → Plan → Act → Observe → Reflect**) executed *within* the boundaries of a single active Node to move it from inception to PR. | Stage-by-stage execution hygiene. |
+| **Structural** | **Path** | A themed, directed subgraph or track within the **Meta-Graph** grouped to achieve a macro-objective (e.g. Issue #10). | Track-level roadmap progression. |
+| **Spatial** | **Flow (Single-Piece Flow)** | The dynamic serialization of work *along* or *across* Paths. Enforced by the $WIP=1$ constraint, it ensures only a single vertex of the **Meta-Graph** may be active/traversed at any given moment. | Strictly enforced by the $WIP=1$ constraint. |
+| **Temporal** | **Loop (Meta-Loop / SPAO)** | The cyclic 5-stage temporal execution protocol (**Sense → Plan → Act → Observe → Reflect**) executed *within* the boundaries of a single active Node (transitioning the system from one vertex to the next). | Stage-by-stage execution hygiene. |
 
-* **Linguistic Rule**: You *run* the **SPAO Loop** to complete a Node; this progresses the **Single-Piece Flow** sequentially along a planned **Path**.
+* **Linguistic Rule**: You *run* the **Meta-Loop (SPAO Loop)** to complete a Node; this progresses the **Single-Piece Flow** sequentially along a planned **Path** within the **Meta-Graph**.
 
 ---
 

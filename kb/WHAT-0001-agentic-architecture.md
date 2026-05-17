@@ -21,11 +21,11 @@ Because Agent sessions are ephemeral, the repository must be physically self-des
 ## 3. GitHub Issues as the Flow-State Ledger
 GitHub Issues act as the primary operational anchor bridging the Human Operator and the Agent. We employ a **Hybrid Path-Ledger Approach** (see `WHY-0001`):
 
-### 3.1 The Path Meta-Index (Macro-Ledger)
-For every overarching project goal, a single long-lived "Path" Issue exists. It acts as the cloud-hosted `frontier_state.md`. Its body contains a Meta-Index tracking all completed and active Topological Nodes.
+### 3.1 The Path Meta-Tracker (Macro-Ledger)
+For every overarching project goal, a single long-lived "Path" Issue exists, acting as the **Meta-Tracker**. It acts as the cloud-hosted `frontier_state.md`. Its description body contains the **Meta-Index** (checklist) tracking the completion status of all individual topological Nodes (vertices) along that Path subgraph in the **Meta-Graph**.
 
 ### 3.2 The Node Transactions (Micro-Ledger)
-For every discrete Topological Node, a new specific GH-Issue exists. 
+For every discrete Topological Node, a new specific GH-Issue exists, serving as a transaction ledger. 
 - **Contract of Execution**: It defines the strict Scope and Acceptance Criteria (The "Plan") before execution begins.
 - **Constraint Injector (HITL)**: The Operator injects feedback directly into the Node Issue's comment thread.
 - **Immutability:** Once complete, its Issue is closed, turning it into an immutable transaction log.
@@ -45,19 +45,17 @@ To balance flow-state strictness with rapid, low-friction brainstorming, Agents 
 
 **The WHY Handoff:** *If an investigatory Side-Bar conversation results in a major architectural decision, the Agent must draft a `WHY-*` document (a Decision Record) to permanently preserve the rationale. Only then may the Agent create the formal GH-Issue to execute the decision.*
 
-## 5. Ontological Taxonomy: Flow, Loop, and Path
+## 5. Ontological Taxonomy: Spatial (Graph) and Temporal (SPAO)
 
 To maintain high cognitive alignment and guarantee repeatable repository transitions, the Agentic Architecture strictly segregates the following terms:
 
-1. **Path (Structure)**:
-   * **Definition**: A structural, long-term themed track of execution (e.g., Path Meta-Index Issue #10).
-   * **Invariance**: Paths map out *where* the repository is heading conceptually by grouping logically dependent Topological Nodes.
+### 5.1 The Spatial Dimension (The Meta-Graph)
+* **Meta-Graph**: The entire Directed Acyclic Graph (DAG) of the repository's topological Nodes (vertices) linked by dependency edges. It maps the spatial territory of the system's evolution.
+* **Path**: A themed, directed subgraph or linear track within the **Meta-Graph** grouped to achieve a macro-objective.
+* **Meta-Tracker (Container/Vehicle)**: The long-lived GitHub Issue (e.g., Issue #10) representing a themed Path.
+* **Meta-Index (Payload/Adjacency Ledger)**: The checklist data structure (`- [x] Node ...`) contained inside the Meta-Tracker, indexing the status of the Path's vertices.
 
-2. **Flow (Dynamics & Serialization)**:
-   * **Definition**: The dynamic serialization of work *along* or *across* Paths.
-   * **Invariance**: Under our **0-nesting single-piece flow** policy, only a single Node on a single Path may be active at any given moment. Parallelization, nesting, or simultaneous active branches are strictly prohibited. The $WIP=1$ constraint acts as the flow rate limiter.
-
-3. **Loop (Temporal Sequence)**:
-   * **Definition**: The internal 5-stage temporal execution protocol (**Sense-Plan-Act-Observe-Reflect**) followed strictly to execute each individual active Node.
-   * **Invariance**: The Loop is the engine of progression; it cycles once per Node, moving the active work transactionally from a planned issue state (Plan), through local codebase TDD verification (Act), to an operator-reviewed merge (Observe/Reflect), thereby advancing the overall Flow forward along the Path.
+### 5.2 The Temporal Dimension (The Meta-Loop / SPAO Loop)
+* **Meta-Loop (SPAO Loop)**: The internal 5-stage temporal execution protocol (**Sense-Plan-Act-Observe-Reflect**) followed strictly to execute each individual active Node, transitioning the system from one vertex in the **Meta-Graph** to the next.
+* **Flow (Single-Piece Flow)**: The strictly serialized, non-overlapping serialization of transitions across the **Meta-Graph**. Enforced by the $WIP=1$ constraint, it ensures only a single vertex of the **Meta-Graph** may be traversed/active at any given moment.
 
