@@ -15,7 +15,7 @@ This repository eschews traditional SDLC naming in favor of an Agentic Architect
 ## 3. The Sense-Plan-Act-Observe (SPAO) Execution Loop
 You must execute your tasks using the strict loop defined in `kb/HOW-0001-spao-execution-loop.md`. You are bound by the Materialization rules defined in `kb/WHAT-0001-agentic-architecture.md`.
 
-1. **Sense**: Read `artifacts/frontier_state.md` and the Path Meta-Index.
+1. **Sense**: Read `artifacts/frontier_state.md`, the Path Meta-Index, and check the prompt queue (`./bin/prompt list`) for any pending operator instructions.
 2. **Plan**: Create a GH-Issue for the Node.
 3. **Act**: Execute work.
 4. **Observe**: Pause for HITL feedback and log constraints.
@@ -23,8 +23,9 @@ You must execute your tasks using the strict loop defined in `kb/HOW-0001-spao-e
 
 ## 4. How to Resume
 1. Check `artifacts/frontier_state.md`.
-2. Locate the **Current Active Node**.
-3. Begin the SPAO loop starting at Step 1 (Sense) for that active node. If an issue is already created but not closed, resume at Step 3 (Act).
+2. Check the prompt queue for pending operator requests (`./bin/prompt list`).
+3. Locate the **Current Active Node**.
+4. Begin the SPAO loop starting at Step 1 (Sense) for that active node. If an issue is already created but not closed, resume at Step 3 (Act).
 
 ## 5. Meta-Rules & Guardrails (The Invariants)
 You are mathematically forbidden from violating the following constraints:

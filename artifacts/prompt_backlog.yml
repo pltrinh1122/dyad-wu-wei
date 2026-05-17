@@ -16,3 +16,16 @@ prompts:
   status: consumed
   consumed_by_pr: https://github.com/pltrinh1122/agent-antigravity/pull/120
   read_timestamp: '2026-05-17T21:58:59Z'
+- id: p-1779058514-fd3f
+  timestamp: '2026-05-17T22:55:14Z'
+  text: ensure that node supports --help
+  status: pending
+- id: p-1779058544-4141
+  timestamp: '2026-05-17T22:55:44Z'
+  text: ensure rt supports --help
+  status: pending
+- id: p-1779058605-ae1b
+  timestamp: '2026-05-17T22:56:45Z'
+  text: ensure that there is a hook into GEMINI.md for processing prompt since it
+    doesn't appear to know to do that
+  status: pending
