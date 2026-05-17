@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from skills.flow_state_manager import plan_node, reflect_node, sync_and_clean_node
+from orchestrator.flow_state_manager import plan_node, reflect_node, sync_and_clean_node
 
-@patch('skills.flow_state_manager.github_client')
+@patch('orchestrator.flow_state_manager.github_client')
 def test_plan_node(mock_gh):
     mock_gh.create_issue.return_value = "https://github.com/org/repo/issues/100"
     
@@ -11,9 +11,9 @@ def test_plan_node(mock_gh):
     assert result == "https://github.com/org/repo/issues/100"
     mock_gh.create_issue.assert_called_once_with("Test Title", "Test Body")
 
-@patch('skills.flow_state_manager.github_client')
-@patch('skills.flow_state_manager.frontier_editor')
-@patch('skills.flow_state_manager.subprocess.run')
+@patch('orchestrator.flow_state_manager.github_client')
+@patch('orchestrator.flow_state_manager.frontier_editor')
+@patch('orchestrator.flow_state_manager.subprocess.run')
 def test_reflect_node(mock_run, mock_fe, mock_gh):
     reflect_node(
         frontier_file="/tmp/dummy.md",
@@ -57,8 +57,8 @@ def test_reflect_node_invalid_branch():
             pr_title="PR Title"
         )
 
-@patch('skills.flow_state_manager.github_client.list_issues_by_label', return_value=[])
-@patch('skills.flow_state_manager.subprocess.run')
+@patch('orchestrator.flow_state_manager.github_client.list_issues_by_label', return_value=[])
+@patch('orchestrator.flow_state_manager.subprocess.run')
 def test_sync_and_clean_node(mock_run, mock_list):
     mock_result = MagicMock()
     mock_result.stdout = "  main\n* node/1-test\n  old-branch\n"
@@ -77,7 +77,7 @@ def test_sync_and_clean_node(mock_run, mock_list):
 
 def test_is_verbose():
     """Verifies that is_verbose evaluates the correct environment variables."""
-    from skills.flow_state_manager import is_verbose
+    from orchestrator.flow_state_manager import is_verbose
     import os
 
     # Standard / silent mode
@@ -94,7 +94,7 @@ def test_is_verbose():
 
 def test_log_stage_advancement(capsys):
     """Verifies that log_stage_advancement outputs content only when verbose is active."""
-    from skills.flow_state_manager import log_stage_advancement
+    from orchestrator.flow_state_manager import log_stage_advancement
     import os
 
     # Verify standard (silent) mode prints nothing
