@@ -150,5 +150,12 @@
   - `[x] Agent surfaces backlog at every Sense phase via sync_and_clean_node()`
   - `[x] Backlog pull convention is codified in HOW-0001`
 
+## Node 27: Materialize GLOSSARY.md
+- **Status**: Completed
+- **Learnings & Context**: Materialized the authoritative kb/GLOSSARY.md dictionary, defining Node, Spike, Epic, Side-bar, Materialization Boundary, SPAO Loop, HITL, Frontier, Backlog, WIP, Primitive, Feedforward Invariant, and Pillar terms to ensure strict vocabulary consistency across sessions and models.
+- **Feedforward Invariants**:
+  - `kb/GLOSSARY.md exists`
+  - `Terms from seed list are comprehensively defined`
+
 ## Current Active Node
-**System Operations Phase.**
+**Node 27: Materialize GLOSSARY.md**
