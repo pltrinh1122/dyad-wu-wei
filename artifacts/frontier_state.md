@@ -258,5 +258,21 @@
   - `[x] all bin scripts import from orchestrator`
   - `[x] all tests pass`
 
+## Node 43: Decouple testing_harness Skill
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Strip SPAO stage awareness from skills/testing_harness.py and migrate logging responsibility to the bin/run-tests CLI adapter to restore compliance with WHY-0009.
+- **Feedforward Invariants**:
+  - `[ ] log_stage_advancement removed from testing_harness.py`
+  - `[ ] log_stage_advancement added to bin/run-tests`
+  - `[ ] tests pass`
+
+## Node 43: Decouple testing_harness Skill
+- **Status**: Completed
+- **Learnings & Context**: Stripped SPAO stage awareness from testing_harness.py and moved logging to bin/run-tests. Acknowledged backlog creation invariant violation.
+- **Feedforward Invariants**:
+  - `[x] log_stage_advancement removed from testing_harness.py`
+  - `[x] log_stage_advancement added to bin/run-tests`
+  - `[x] tests pass`
+
 ## Current Active Node
-**Node 42: Migrate flow_state_manager Workflow**
+**Node 43: Decouple testing_harness Skill**
