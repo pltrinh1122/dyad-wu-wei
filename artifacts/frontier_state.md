@@ -292,5 +292,17 @@
   - `[x] HOW-0001 updated`
   - `[x] tests updated and pass`
 
+## Node 45: Evaluate Meta-Rules Reference Pattern
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Expand GEMINI.md to include Meta-Rules and Guardrails index.
+- **Feedforward Invariants**:
+  - `[ ] GEMINI.md updated with Rules section`
+
+## Node 45: Evaluate Meta-Rules Reference Pattern
+- **Status**: Completed
+- **Learnings & Context**: Expanded GEMINI.md to include Section 5: Meta-Rules & Guardrails index, enforcing strict system invariants directly in the System Prompt Hook instead of creating a fragmented rules/ directory.
+- **Feedforward Invariants**:
+  - `[x] GEMINI.md updated with Rules section`
+
 ## Current Active Node
-**Node 44: Enforce node plan Edit-Only Guardrail**
+**Node 45: Evaluate Meta-Rules Reference Pattern**
