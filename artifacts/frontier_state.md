@@ -102,5 +102,11 @@
 - **Feedforward Invariants**:
   - `[x] GitHub CI runs raw pytest independently of Agent skills`
 
+## Node 16: Establish Pull Request HITL Gate
+- **Status**: Completed
+- **Learnings & Context**: Successfully transitioned the SPAO loop to a Branch & Pull Request paradigm. Strict branch naming (`node/<id>-<kebab-case>`) is now programmatically enforced via regex in `flow_state_manager.py`. Local hygiene is automated via `sync_and_clean_node`.
+- **Feedforward Invariants**:
+  - `[x] Agent is paralyzed from advancing to the next node until the Operator merges the PR`
+
 ## Current Active Node
 **System Operations Phase.**

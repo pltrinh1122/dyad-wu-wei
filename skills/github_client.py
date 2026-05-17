@@ -30,3 +30,15 @@ def update_issue_body(issue_id: str, new_body: str) -> None:
             ["gh", "issue", "edit", str(issue_id), "--body-file", temp_file.name],
             check=True
         )
+
+def create_pull_request(title: str, body: str) -> str:
+    """Creates a Pull Request safely using a temp file for the body."""
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
+        temp_file.write(body)
+        temp_file.flush()
+        
+        result = subprocess.run(
+            ["gh", "pr", "create", "--title", title, "-F", temp_file.name],
+            capture_output=True, text=True, check=True
+        )
+        return result.stdout.strip()
