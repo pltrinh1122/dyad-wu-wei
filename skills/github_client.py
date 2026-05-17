@@ -42,3 +42,33 @@ def create_pull_request(title: str, body: str) -> str:
             capture_output=True, text=True, check=True
         )
         return result.stdout.strip()
+
+def list_issues_by_label(label: str) -> list[dict]:
+    """Returns a list of open issues matching the given label.
+    
+    Each item is a dict with 'number', 'title', and 'url' keys.
+    Returns an empty list if no issues are found.
+    """
+    result = subprocess.run(
+        ["gh", "issue", "list", "--label", label, "--state", "open",
+         "--json", "number,title,url"],
+        capture_output=True, text=True, check=True
+    )
+    import json
+    return json.loads(result.stdout.strip() or "[]")
+
+def add_to_backlog(title: str, body: str) -> str:
+    """Creates a GH issue and applies the 'backlog' label.
+    
+    Returns the URL of the created issue.
+    """
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
+        temp_file.write(body)
+        temp_file.flush()
+        
+        result = subprocess.run(
+            ["gh", "issue", "create", "--title", title,
+             "-F", temp_file.name, "--label", "backlog"],
+            capture_output=True, text=True, check=True
+        )
+        return result.stdout.strip()

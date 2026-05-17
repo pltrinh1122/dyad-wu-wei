@@ -142,5 +142,13 @@
   - `[x] ci-venv is tracked as a Managed Artifact in infrastructure_state.md`
   - `[x] provision.sh is idempotent and bootstraps the venv on first run`
 
+## Node 22: GitHub Native Backlog Primitives
+- **Status**: Completed
+- **Learnings & Context**: Established GitHub Issues as the native agentic backlog. Added list_issues_by_label() and add_to_backlog() to github_client.py. Updated sync_and_clean_node() to surface backlog items at every Sense phase. Codified pull convention in HOW-0001. Created the backlog label on GitHub. 19/19 tests pass.
+- **Feedforward Invariants**:
+  - `[x] Agent can add items to backlog via add_to_backlog()`
+  - `[x] Agent surfaces backlog at every Sense phase via sync_and_clean_node()`
+  - `[x] Backlog pull convention is codified in HOW-0001`
+
 ## Current Active Node
 **System Operations Phase.**
