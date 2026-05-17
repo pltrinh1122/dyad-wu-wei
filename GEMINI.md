@@ -27,4 +27,4 @@ You must execute your tasks using the strict loop defined in `kb/HOW-0001-spao-e
 3. Begin the SPAO loop starting at Step 1 (Sense) for that active node. If an issue is already created but not closed, resume at Step 3 (Act).
 
 ## 5. Hard Constraints (The Invariants)
-- **NO NATIVE TESTING:** You are mathematically forbidden from executing raw bash `pytest` or `unittest` commands in the terminal. You must EXCLUSIVELY execute `python3 -c "from skills.testing_harness import run_tests; run_tests()"` for all TDD cycles. This ensures test outputs are properly evaluated by your orchestrated skill constraints.
+- **NO NATIVE TESTING:** You are mathematically forbidden from executing raw bash `pytest` or `unittest` commands in the terminal. You must EXCLUSIVELY execute `./bin/run-tests` for all TDD cycles. This ensures test outputs are properly evaluated by your orchestrated skill constraints.
