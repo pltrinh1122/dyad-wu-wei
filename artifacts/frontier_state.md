@@ -419,5 +419,12 @@
 - **Feedforward Invariants**:
   - `All consumed prompts must map to a PR body`
 
+## Probe 125: Architectural Evaluation of Hot-Fix Workflow
+- **Status**: Completed
+- **Learnings & Context**: Concluded that a Tiered Governance Model is needed. Trivial documentation changes warrant a formalized bin/hotfix tool rather than the heavy SPAO overhead, provided they are logged to a lightweight ledger to prevent traceability loss.
+- **Feedforward Invariants**:
+  - `Direct commits to main are forbidden without using the bin/hotfix tool`
+  - `which mandates traceability.`
+
 ## Current Active Node
-**Activity 109: Link consumed prompts to PR bodies**
+**Probe 125: Architectural Evaluation of Hot-Fix Workflow**
