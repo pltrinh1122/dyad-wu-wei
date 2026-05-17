@@ -74,7 +74,15 @@ def add_to_backlog(node_type: str, title: str, goal: str) -> str:
     if node_type.lower() == "path":
         kwargs = {"goal": goal}
         body = render_template("path_tracker", kwargs)
-        label = "meta"
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
+            temp_file.write(body)
+            temp_file.flush()
+            
+            result = subprocess.run(
+                ["gh", "issue", "create", "--title", formatted_title, "-F", temp_file.name],
+                capture_output=True, text=True, check=True
+            )
     else:
         kwargs = {
             "goal": goal,
@@ -83,23 +91,23 @@ def add_to_backlog(node_type: str, title: str, goal: str) -> str:
             "depends_on": "TBD"
         }
         body = render_template("backlog_issue", kwargs)
-        label = "backlog"
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
+            temp_file.write(body)
+            temp_file.flush()
+            
+            result = subprocess.run(
+                ["gh", "issue", "create", "--title", formatted_title,
+                 "-F", temp_file.name, "--label", "backlog"],
+                capture_output=True, text=True, check=True
+            )
+            
+    issue_url = result.stdout.strip()
+    issue_id = issue_url.split("/")[-1]
+    new_title = f"{node_type.capitalize()} {issue_id}: {title}"
+    rename_issue_title(issue_id, new_title)
     
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
-        temp_file.write(body)
-        temp_file.flush()
-        
-        result = subprocess.run(
-            ["gh", "issue", "create", "--title", formatted_title,
-             "-F", temp_file.name, "--label", label],
-            capture_output=True, text=True, check=True
-        )
-        issue_url = result.stdout.strip()
-        issue_id = issue_url.split("/")[-1]
-        new_title = f"{node_type.capitalize()} {issue_id}: {title}"
-        rename_issue_title(issue_id, new_title)
-        
-        return issue_url
+    return issue_url
 
 def create_pull_request(title: str, body: str) -> str:
     """Creates a PR using gh pr create."""

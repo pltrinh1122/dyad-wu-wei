@@ -401,5 +401,11 @@
   - `[x] Update flow_state_manager.py`
   - `[x] Update test suite`
 
+## Activity 108: Refactor prompt backlog to YAML
+- **Status**: Completed
+- **Learnings & Context**: Migrated markdown prompt list to structured YAML pipeline
+- **Feedforward Invariants**:
+  - `All prompts must maintain status tracking`
+
 ## Current Active Node
-**Activity 106: Automate PR title injection in reflect_node**
+**Activity 108: Refactor prompt backlog to YAML**
