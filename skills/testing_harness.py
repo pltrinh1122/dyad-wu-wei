@@ -3,6 +3,9 @@ import subprocess
 
 def run_tests(target: str = "tests/") -> str:
     """Executes pytest within the virtual environment and returns the output."""
+    from skills.flow_state_manager import log_stage_advancement
+    log_stage_advancement("act", "Executing TDD Test Harness Validation", f"Running pytest on target: '{target}'")
+    
     env = os.environ.copy()
     env["PYTHONPATH"] = "."
     
