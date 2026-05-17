@@ -38,3 +38,7 @@ prompts:
   timestamp: '2026-05-17T23:11:08Z'
   text: extend the prompt-admin capability to clean itself
   status: pending
+- id: p-1779060369-dd31
+  timestamp: '2026-05-17T23:26:09Z'
+  text: node should manage its own internal life-cycle and workflow
+  status: pending

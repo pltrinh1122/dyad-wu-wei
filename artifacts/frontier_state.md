@@ -433,5 +433,12 @@
   - `Hot-fixes must strictly execute only on the main branch to prevent cross-branch contamination`
 
 
+## Activity 124: Add prompt-processing hook into GEMINI.md SPAO instructions
+- **Status**: Completed
+- **Learnings & Context**: Explicitly updated GEMINI.md to require agents to run ./bin/prompt list to check and process the queue, and then to consume them in reflect.
+- **Feedforward Invariants**:
+  - `[x] GEMINI.md explicitly requires prompt queue processing`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
