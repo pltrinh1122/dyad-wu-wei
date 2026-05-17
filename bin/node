@@ -27,7 +27,7 @@ case "$SUBCOMMAND" in
             echo "Usage: $0 plan <node_name> <body_content>"
             exit 1
         fi
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from skills.flow_state_manager import plan_node; print(plan_node(sys.argv[1], sys.argv[2]))" "$1" "$2"
+        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from orchestrator.flow_state_manager import plan_node; print(plan_node(sys.argv[1], sys.argv[2]))" "$1" "$2"
         ;;
     reflect)
         if [ "$#" -lt 7 ]; then
@@ -38,7 +38,7 @@ case "$SUBCOMMAND" in
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
 import json
-from skills.flow_state_manager import reflect_node
+from orchestrator.flow_state_manager import reflect_node
 
 issue_id = sys.argv[1]
 node_name = sys.argv[2]

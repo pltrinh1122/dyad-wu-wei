@@ -14,4 +14,4 @@ else
 fi
 
 # Run sync and clean node operations
-PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "from skills.flow_state_manager import sync_and_clean_node; sync_and_clean_node()"
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "from orchestrator.flow_state_manager import sync_and_clean_node; sync_and_clean_node()"

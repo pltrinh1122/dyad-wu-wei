@@ -243,12 +243,20 @@
   - `[ ] WHAT-0001-agentic-architecture.md reflects the two-tier SPAO model`
 
 ## Node 41: Probe - Skill vs. Workflow Boundary & bin/ Classification
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Evaluated and formally resolved the Skill vs. Workflow boundary, identified flow_state_manager.py as a misclassified Workflow, and classified bin/ as the CLI Adapter Layer.
 - **Feedforward Invariants**:
-  - `[ ] WHY-0009 Decision Record codifies Skill/Workflow boundary and bin/ classification`
-  - `[ ] GLOSSARY.md adds canonical Skill and Workflow definitions`
-  - `[ ] WHAT-0001-agentic-architecture.md adds bin/ as CLI Adapter Layer pillar`
+  - `[x] WHY-0009 Decision Record codifies Skill/Workflow boundary and bin/ classification`
+  - `[x] GLOSSARY.md adds canonical Skill and Workflow definitions`
+  - `[x] WHAT-0001-agentic-architecture.md adds bin/ as CLI Adapter Layer pillar`
+
+## Node 42: Migrate flow_state_manager Workflow
+- **Status**: Completed
+- **Learnings & Context**: Successfully migrated skills/flow_state_manager.py to orchestrator/flow_state_manager.py, correcting its misclassification as per WHY-0009. Updated all imports in bin/ scripts and tests/ and confirmed 100% test passage.
+- **Feedforward Invariants**:
+  - `[x] flow_state_manager.py exists in orchestrator/`
+  - `[x] all bin scripts import from orchestrator`
+  - `[x] all tests pass`
 
 ## Current Active Node
-**Node 41: Probe - Skill vs. Workflow Boundary & bin/ Classification**
+**Node 42: Migrate flow_state_manager Workflow**
