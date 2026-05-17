@@ -83,11 +83,11 @@ else:
 ' "$1" "$PATH_ISSUE"
         ;;
     active)
-        if [ "$#" -lt 3 ]; then
+        if [ "$#" -lt 4 ]; then
             echo "Usage: $0 active <issue_id> <node_title> <description> <invariants_json> [frontier_file]"
             exit 1
         fi
-        FRONTIER_FILE="${4:-artifacts/frontier_state.md}"
+        FRONTIER_FILE="${5:-artifacts/frontier_state.md}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
 import json

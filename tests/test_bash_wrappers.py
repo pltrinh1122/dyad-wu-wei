@@ -151,7 +151,7 @@ def test_meta_active_subcommand_usage():
     bin_path = os.path.join(os.path.dirname(__file__), '../bin/meta')
     assert os.path.exists(bin_path)
 
-    # active needs at least 3 args
+    # active needs at least 4 args
     res = subprocess.run([bin_path, "active"], capture_output=True, text=True)
     assert res.returncode != 0
     assert "Usage:" in res.stdout
