@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 <prompt_text>"
+    exit 1
+fi
+
+PROMPT_TEXT="$*"
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BACKLOG_FILE="${REPO_DIR}/artifacts/prompt_backlog.md"
+
+TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+mkdir -p "$(dirname "$BACKLOG_FILE")"
+
+# If file doesn't exist or is empty, add a header
+if [ ! -s "$BACKLOG_FILE" ]; then
+    echo "# Asynchronous Prompt Backlog" > "$BACKLOG_FILE"
+    echo "Queue for operator prompts and system signals captured during the Act phase." >> "$BACKLOG_FILE"
+    echo "" >> "$BACKLOG_FILE"
+fi
+
+echo "- [ ] **[$TIMESTAMP]**: $PROMPT_TEXT" >> "$BACKLOG_FILE"
+echo "Prompt queued to $BACKLOG_FILE"
