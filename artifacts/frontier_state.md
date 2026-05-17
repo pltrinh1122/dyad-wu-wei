@@ -353,5 +353,11 @@
   - `[x] Update HOW-0001`
   - `[x] Update GLOSSARY`
 
+## Node 90: Feature: Inject Node ID during Backlog Creation
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented the feature to natively enforce the Hybrid Node ID scheme at the exact moment of GH Issue creation by extracting the generated Issue ID and immediately invoking a rename operation.
+- **Feedforward Invariants**:
+  - `[x] Update github_client.py`
+
 ## Current Active Node
-**Node 89: Feature: Implement Asynchronous Prompt Backlog**
+**Node 90: Feature: Inject Node ID during Backlog Creation**
