@@ -322,5 +322,23 @@
   - `[x] .venv untracked`
   - `[x] tests pass`
 
+## Node 28: Issue Factory Skill
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Implement template-driven issue factory.
+- **Feedforward Invariants**:
+  - `[ ] kb/templates created`
+  - `[ ] skills/issue_factory.py created`
+  - `[ ] HOW-0001 updated`
+  - `[ ] tests pass`
+
+## Node 28: Issue Factory Skill
+- **Status**: Completed
+- **Learnings & Context**: Introduced Issue Factory skill to eliminate inline markdown generation for GitHub Issues. All bodies (Backlog and Contracts) are now generated via strict Operator-editable templates in kb/templates/. Enforced template usage in HOW-0001.
+- **Feedforward Invariants**:
+  - `[x] kb/templates created`
+  - `[x] skills/issue_factory.py created`
+  - `[x] HOW-0001 updated`
+  - `[x] tests pass`
+
 ## Current Active Node
-**Node 46: Establish Repository .gitignore**
+**Node 28: Issue Factory Skill**
