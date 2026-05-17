@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from skills.github_client import create_issue, close_issue, update_issue_body
+from skills.github_client import create_issue, close_issue, update_issue_body, create_pull_request
 
 @patch('skills.github_client.subprocess.run')
 @patch('skills.github_client.tempfile.NamedTemporaryFile')
@@ -51,3 +51,23 @@ def test_update_issue_body(mock_tempfile, mock_run):
     mock_run.assert_called_once()
     args = mock_run.call_args[0][0]
     assert args == ["gh", "issue", "edit", "99", "--body-file", "/tmp/fake.md"]
+
+@patch('skills.github_client.subprocess.run')
+@patch('skills.github_client.tempfile.NamedTemporaryFile')
+def test_create_pull_request(mock_tempfile, mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = "https://github.com/pltrinh1122/agent-antigravity/pull/99"
+    mock_result.returncode = 0
+    mock_run.return_value = mock_result
+    
+    mock_file = MagicMock()
+    mock_file.name = "/tmp/fake_pr.md"
+    mock_tempfile.return_value.__enter__.return_value = mock_file
+    
+    pr_url = create_pull_request("Test PR Title", "Test PR Body")
+    
+    assert pr_url == "https://github.com/pltrinh1122/agent-antigravity/pull/99"
+    mock_file.write.assert_called_once_with("Test PR Body")
+    mock_run.assert_called_once()
+    args = mock_run.call_args[0][0]
+    assert args == ["gh", "pr", "create", "--title", "Test PR Title", "-F", "/tmp/fake_pr.md"]
