@@ -8,7 +8,7 @@ def plan_node(title: str, body: str) -> str:
     return github_client.create_issue(title, body)
 
 def sync_and_clean_node() -> None:
-    """Syncs main and prunes merged local branches."""
+    """Syncs main, prunes merged local branches, and surfaces pending backlog items."""
     subprocess.run(["git", "switch", "main"], check=True)
     subprocess.run(["git", "pull", "--prune", "origin", "main"], check=True)
     
@@ -19,6 +19,14 @@ def sync_and_clean_node() -> None:
         if b and b != 'main':
             # Don't check=True because branch -d can fail if it's not fully merged in git's eyes sometimes
             subprocess.run(["git", "branch", "-d", b])
+
+    # Surface pending backlog items at Sense phase
+    backlog_items = github_client.list_issues_by_label("backlog")
+    if backlog_items:
+        print(f"\n📋 Backlog ({len(backlog_items)} item(s) pending):")
+        for item in backlog_items:
+            print(f"  #{item['number']}: {item['title']}")
+        print()
 
 def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, pr_title: str) -> None:
     """Closes the GH issue, creates a PR, and updates the frontier."""

@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from skills.github_client import create_issue, close_issue, update_issue_body, create_pull_request
+from skills.github_client import create_issue, close_issue, update_issue_body, create_pull_request, list_issues_by_label, add_to_backlog
 
 @patch('skills.github_client.subprocess.run')
 @patch('skills.github_client.tempfile.NamedTemporaryFile')
@@ -71,3 +71,46 @@ def test_create_pull_request(mock_tempfile, mock_run):
     mock_run.assert_called_once()
     args = mock_run.call_args[0][0]
     assert args == ["gh", "pr", "create", "--title", "Test PR Title", "-F", "/tmp/fake_pr.md"]
+
+@patch('skills.github_client.subprocess.run')
+def test_list_issues_by_label(mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = '[{"number": 31, "title": "Backlog Item", "url": "https://github.com/org/repo/issues/31"}]'
+    mock_run.return_value = mock_result
+
+    items = list_issues_by_label("backlog")
+
+    assert len(items) == 1
+    assert items[0]["number"] == 31
+    assert items[0]["title"] == "Backlog Item"
+    args = mock_run.call_args[0][0]
+    assert args == ["gh", "issue", "list", "--label", "backlog", "--state", "open",
+                    "--json", "number,title,url"]
+
+@patch('skills.github_client.subprocess.run')
+def test_list_issues_by_label_empty(mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = ""
+    mock_run.return_value = mock_result
+
+    items = list_issues_by_label("backlog")
+    assert items == []
+
+@patch('skills.github_client.subprocess.run')
+@patch('skills.github_client.tempfile.NamedTemporaryFile')
+def test_add_to_backlog(mock_tempfile, mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = "https://github.com/pltrinh1122/agent-antigravity/issues/31"
+    mock_run.return_value = mock_result
+
+    mock_file = MagicMock()
+    mock_file.name = "/tmp/fake_backlog.md"
+    mock_tempfile.return_value.__enter__.return_value = mock_file
+
+    url = add_to_backlog("Future Work Item", "Description of work")
+
+    assert url == "https://github.com/pltrinh1122/agent-antigravity/issues/31"
+    mock_file.write.assert_called_once_with("Description of work")
+    args = mock_run.call_args[0][0]
+    assert args == ["gh", "issue", "create", "--title", "Future Work Item",
+                    "-F", "/tmp/fake_backlog.md", "--label", "backlog"]

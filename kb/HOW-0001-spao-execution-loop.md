@@ -6,9 +6,10 @@ This document contains the strict, deterministic instructions (The "How") for op
 The master objective is decomposed into discrete topological **Nodes**. For each Node, the Agent **must** execute the following loop in exact order:
 
 1. **Sense (Pre-Condition):** 
-   - Execute the Python skill: `python3 -c "from skills.flow_state_manager import sync_and_clean_node; sync_and_clean_node()"` to fetch `main` and safely delete old merged branches.
+   - Execute the Python skill: `python3 -c "from skills.flow_state_manager import sync_and_clean_node; sync_and_clean_node()"` to fetch `main`, safely delete old merged branches, and **surface any pending backlog items**.
    - Read `artifacts/frontier_state.md` and the cloud-hosted Epic Meta-Index (GH Issue).
    - Validate that the feedforward invariants from the previous node are met.
+   - If backlog items are surfaced, pull the highest-priority item as the next Node (unless the Operator specifies otherwise).
 
 2. **Plan (Contract Formulation):** 
    - Execute the Python skill: `python3 -c "from skills.flow_state_manager import plan_node; plan_node('Node X: Title', 'Body content...')"` to safely create a **Node Issue** without bash quoting errors.

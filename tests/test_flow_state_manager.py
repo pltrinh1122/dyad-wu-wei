@@ -57,8 +57,9 @@ def test_reflect_node_invalid_branch():
             pr_title="PR Title"
         )
 
+@patch('skills.flow_state_manager.github_client.list_issues_by_label', return_value=[])
 @patch('skills.flow_state_manager.subprocess.run')
-def test_sync_and_clean_node(mock_run):
+def test_sync_and_clean_node(mock_run, mock_list):
     mock_result = MagicMock()
     mock_result.stdout = "  main\n* node/1-test\n  old-branch\n"
     mock_run.return_value = mock_result
@@ -72,3 +73,4 @@ def test_sync_and_clean_node(mock_run):
     assert ["git", "branch", "--merged"] in call_args
     assert ["git", "branch", "-d", "node/1-test"] in call_args
     assert ["git", "branch", "-d", "old-branch"] in call_args
+    mock_list.assert_called_once_with("backlog")
