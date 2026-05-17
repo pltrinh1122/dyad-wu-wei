@@ -53,3 +53,33 @@ def set_active_node(filepath: str, node_name: str) -> None:
             
     with open(filepath, 'w') as f:
         f.writelines(lines)
+
+def append_active_node(filepath: str, node_id: int, node_title: str, description: str, invariants: list[str]) -> None:
+    """Appends a new active node block above the Current Active Node header,
+    and sets it active.
+    """
+    with open(filepath, 'r') as f:
+        content = f.read()
+
+    invariant_str = "\n".join([f"  - `{inv}`" for inv in invariants])
+    if not invariant_str:
+        invariant_str = "  - `[ ]` None"
+
+    node_name = f"Node {node_id}: {node_title}"
+
+    completed_block = f"""## {node_name}
+- **Status**: [///] Act Phase
+- **Learnings & Context**: {description}
+- **Feedforward Invariants**:
+{invariant_str}
+
+"""
+    # Find the Current Active Node block and insert before it
+    if "## Current Active Node" in content:
+        content = content.replace("## Current Active Node", completed_block + "## Current Active Node")
+
+    with open(filepath, 'w') as f:
+        f.write(content)
+
+    # Now set it active
+    set_active_node(filepath, node_name)

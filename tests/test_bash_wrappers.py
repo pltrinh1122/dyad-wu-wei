@@ -101,3 +101,49 @@ def test_backlog_list_subcommand():
     assert res.returncode == 0
     assert "Backlog" in res.stdout or "empty" in res.stdout
 
+def test_meta_wrapper_usage():
+    """Verifies bin/meta prints usage when no arguments or invalid subcommands are passed."""
+    bin_path = os.path.join(os.path.dirname(__file__), '../bin/meta')
+    assert os.path.exists(bin_path)
+    
+    # No args
+    res = subprocess.run([bin_path], capture_output=True, text=True)
+    assert res.returncode != 0
+    assert "Usage:" in res.stdout
+
+    # Invalid subcommand
+    res = subprocess.run([bin_path, "invalid"], capture_output=True, text=True)
+    assert res.returncode != 0
+    assert "Unknown subcommand:" in res.stdout
+
+def test_meta_link_subcommand_usage():
+    """Verifies bin/meta link enforces argument counts and prints usage on errors."""
+    bin_path = os.path.join(os.path.dirname(__file__), '../bin/meta')
+    assert os.path.exists(bin_path)
+
+    # link needs at least 3 args
+    res = subprocess.run([bin_path, "link"], capture_output=True, text=True)
+    assert res.returncode != 0
+    assert "Usage:" in res.stdout
+
+def test_meta_check_subcommand_usage():
+    """Verifies bin/meta check enforces argument counts and prints usage on errors."""
+    bin_path = os.path.join(os.path.dirname(__file__), '../bin/meta')
+    assert os.path.exists(bin_path)
+
+    # check needs at least 1 arg
+    res = subprocess.run([bin_path, "check"], capture_output=True, text=True)
+    assert res.returncode != 0
+    assert "Usage:" in res.stdout
+
+def test_meta_active_subcommand_usage():
+    """Verifies bin/meta active enforces argument counts and prints usage on errors."""
+    bin_path = os.path.join(os.path.dirname(__file__), '../bin/meta')
+    assert os.path.exists(bin_path)
+
+    # active needs at least 4 args
+    res = subprocess.run([bin_path, "active"], capture_output=True, text=True)
+    assert res.returncode != 0
+    assert "Usage:" in res.stdout
+
+

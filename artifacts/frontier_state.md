@@ -219,12 +219,20 @@
   - `[x] WHAT-0001-agentic-architecture.md aligns Section 3.1 and Section 5 with Meta-Tracker taxonomy`
 
 ## Node 38: Refactor - Consolidate Node Wrappers
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Consolidated distinct bash wrapper entry points bin/plan-node and bin/reflect-node into a single unified bin/node script with plan and reflect subcommands.
 - **Feedforward Invariants**:
-  - `[ ] bin/node implements plan and reflect subcommands`
-  - `[ ] bin/plan-node and bin/reflect-node are deleted`
-  - `[ ] tests/test_bash_wrappers.py validates bin/node arguments and usage`
+  - `[x] bin/node implements plan and reflect subcommands`
+  - `[x] bin/plan-node and bin/reflect-node are deleted`
+  - `[x] tests/test_bash_wrappers.py validates bin/node arguments and usage`
+
+## Node 39: Feature - Meta-Management CLI Integration
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Implemented a unified bin/meta script to automate Metasystem-level state operations, standardizing our execution transitions and eliminating manual python scripting during the Plan and Reflect phases.
+- **Feedforward Invariants**:
+  - `[ ] bin/meta implements link, check, and active subcommands`
+  - `[ ] skills/frontier_editor.py supports dynamic append_active_node template generation`
+  - `[ ] tests/test_bash_wrappers.py validates bin/meta arguments and usage`
 
 ## Current Active Node
-**Node 38: Refactor - Consolidate Node Wrappers**
+**Node 39: Feature - Meta-Management CLI Integration**
