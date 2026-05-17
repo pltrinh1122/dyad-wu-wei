@@ -17,9 +17,9 @@ You must execute your tasks using the strict loop defined in `kb/HOW-0001-spao-e
 
 1. **Sense**: Read `artifacts/frontier_state.md`, the Path Meta-Index, and check the prompt queue (`./bin/prompt list`) for any pending operator instructions.
 2. **Plan**: Create a GH-Issue for the Node.
-3. **Act**: Execute work.
-4. **Observe**: Pause for HITL feedback and log constraints.
-5. **Reflect**: Close issue, mutate `frontier_state.md`.
+3. **Act**: Execute work. (If the user queues prompts, do NOT process them here).
+4. **Observe**: Pause for HITL feedback and log constraints. **Explicitly run `./bin/prompt list` to check for queued operator instructions, process them, and flush the `artifacts/prompt_backlog.yml` queue here.**
+5. **Reflect**: Close issue, mutate `frontier_state.md`, and formally consume the prompt IDs (e.g., passing prompt IDs to `./bin/node reflect`).
 
 ## 4. How to Resume
 1. Check `artifacts/frontier_state.md`.
@@ -36,4 +36,5 @@ You are mathematically forbidden from violating the following constraints:
 4. **The Architectural Boundary**: 
    - `skills/`: Must contain ONLY pure, stateless, deterministic callables mapping to a single system interaction.
    - `orchestrator/`: Manages stateful, multi-step, stage-aware orchestration sequences.
+5. **The Probe Invariant**: A Probe is strictly investigatory. It MUST NOT execute functional logic mutations. Its outcome is exclusively architectural decisions (`WHY-*` documents) and new Activity nodes in the backlog.
 <!-- Testing True Hotfix -->
