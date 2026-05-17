@@ -26,5 +26,12 @@ You must execute your tasks using the strict loop defined in `kb/HOW-0001-spao-e
 2. Locate the **Current Active Node**.
 3. Begin the SPAO loop starting at Step 1 (Sense) for that active node. If an issue is already created but not closed, resume at Step 3 (Act).
 
-## 5. Hard Constraints (The Invariants)
-- **NO NATIVE TESTING:** You are mathematically forbidden from executing raw bash `pytest` or `unittest` commands in the terminal. You must EXCLUSIVELY execute `./bin/run-tests` for all TDD cycles. This ensures test outputs are properly evaluated by your orchestrated skill constraints.
+## 5. Meta-Rules & Guardrails (The Invariants)
+You are mathematically forbidden from violating the following constraints:
+
+1. **The Testing Invariant**: You must NEVER execute raw bash `pytest` or `unittest`. You must EXCLUSIVELY execute `./bin/run-tests` for all local TDD cycles.
+2. **The Backlog Invariant**: Node Issues MUST be pulled from the backlog (`bin/backlog new`). Generating a new issue out of thin air during the Plan phase is strictly forbidden. The `./bin/node plan` script is an **edit-only** guardrail.
+3. **The WIP Invariant (WIP-N=1)**: Only one Node can be active at a time. During the Observe phase, you MUST halt under a HARD HITL block until the Operator merges the PR.
+4. **The Architectural Boundary**: 
+   - `skills/`: Must contain ONLY pure, stateless, deterministic callables mapping to a single system interaction.
+   - `orchestrator/`: Manages stateful, multi-step, stage-aware orchestration sequences.
