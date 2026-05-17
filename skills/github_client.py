@@ -1,5 +1,6 @@
 import subprocess
 import tempfile
+from skills.issue_factory import render_template
 
 def create_issue(title: str, body: str) -> str:
     """Creates a GH issue safely using a temp file for the body."""
@@ -57,17 +58,33 @@ def list_issues_by_label(label: str) -> list[dict]:
     import json
     return json.loads(result.stdout.strip() or "[]")
 
-def add_to_backlog(title: str, body: str) -> str:
-    """Creates a GH issue and applies the 'backlog' label.
+def rename_issue_title(issue_id: str, new_title: str) -> None:
+    """Renames an existing GH issue's title."""
+    subprocess.run(
+        ["gh", "issue", "edit", str(issue_id), "--title", new_title],
+        check=True
+    )
+
+def add_to_backlog(node_type: str, title: str, goal: str) -> str:
+    """Creates a GH issue using the backlog_issue template and applies the 'backlog' label.
     
     Returns the URL of the created issue.
     """
+    formatted_title = f"{node_type.capitalize()}: {title}"
+    kwargs = {
+        "goal": goal,
+        "changes": "TBD",
+        "invariants": "TBD",
+        "depends_on": "TBD"
+    }
+    body = render_template("backlog_issue", kwargs)
+    
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
         temp_file.write(body)
         temp_file.flush()
         
         result = subprocess.run(
-            ["gh", "issue", "create", "--title", title,
+            ["gh", "issue", "create", "--title", formatted_title,
              "-F", temp_file.name, "--label", "backlog"],
             capture_output=True, text=True, check=True
         )

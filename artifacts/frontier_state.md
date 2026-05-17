@@ -314,5 +314,14 @@
   - `[ ]` Operator selects Option A or Option B.
   - `[ ]` Node is resumed.
 
+## Node 49: Feature - Refactor backlog-add to use templates
+- **Status**: Completed
+- **Learnings & Context**: Successfully refactored backlog new to take type, title, and goal, leveraging the backlog_issue template. Also modified plan_node to enforce topological GH title consistency.
+- **Feedforward Invariants**:
+  - `[x] backlog-add updated`
+  - `[x] node plan updated`
+  - `[x] tests pass`
+
+
 ## Current Active Node
-**Node 48: Probe: Architectural Placement of sync-clean (bin/rt)**
+None
