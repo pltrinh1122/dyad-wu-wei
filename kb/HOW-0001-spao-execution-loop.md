@@ -21,9 +21,11 @@ The master objective is decomposed into discrete topological **Nodes**. For each
 3. **Act (Execution):** 
    - Execute codebase generation, tool invocations, and artifact mutations required by the Scope.
    - **TDD Invariant:** You MUST use `./bin/run-tests` for all local testing. Raw bash `pytest` is strictly forbidden.
+   - **Asynchronous Prompt Interception:** If the Operator submits an asynchronous prompt or system signal during the Act phase, you must strictly preserve the `WIP-N=1` invariant. Queue the prompt into `artifacts/prompt_backlog.yaml` (via `./bin/prompt "..."` or local write) and immediately return to the active task without altering cognitive context.
 
 4. **Observe (HITL Pause):** 
    - The Agent halts execution.
+   - **Prompt Backlog Flush:** Before halting, the Agent must read and flush `artifacts/prompt_backlog.yaml`. Collate and deduplicate the queued prompts. If they are executable system commands (e.g., `backlog new`), execute them. If ambiguous, address them conversationally in the chat. Finally, wipe the file contents clean.
    - The Operator executes the local environment, evaluates the state, and provides Human-In-The-Loop feedback.
    - The Agent must formally log any constraints or feedback provided by the Operator as a comment on the Node Issue.
 
