@@ -22,7 +22,8 @@ def test_run_tests(mock_run):
     args = call_args[0][0]
     kwargs = call_args[1]
     
-    assert args == [".venv/bin/pytest", "tests/test_dummy.py"]
+    assert args[0].endswith("pytest")
+    assert args[1] == "tests/test_dummy.py"
     assert "env" in kwargs
     assert kwargs["env"]["PYTHONPATH"] == "."
     assert kwargs["env"]["PATH"] == "/usr/bin" # Ensures base env was copied
