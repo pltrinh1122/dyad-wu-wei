@@ -182,18 +182,25 @@
   - `Operational documents strictly use wrapper commands`
 
 ## Node 33: Backlog CLI Abstractions
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Implementing clean executable shell wrappers (bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit) to eliminate raw gh calls and permit secure operator whitelisting.
-- **Feedforward Invariants**:
-  - `[ ] bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit are fully functional`
-  - `[ ] Full TDD unit test coverage in tests/test_bash_wrappers.py`
-
-## Node 33: Backlog CLI Abstractions
 - **Status**: Completed
 - **Learnings & Context**: Materialized precise executable backlog script wrappers (bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit) in the git index with executable permissions (mode 100755), eliminating raw gh calls and permitting secure operator whitelisting. Full TDD subprocess unit testing implemented and verified green.
 - **Feedforward Invariants**:
   - `[x] bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit are fully functional`
   - `[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`
 
+## Node 34: Consolidated Backlog CLI
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Consolidating multiple separate backlog CLI wrapper scripts into a single unified bin/backlog wrapper with clean subcommand routing.
+- **Feedforward Invariants**:
+  - `[ ] bin/backlog is fully functional supporting list, new, view, edit`
+  - `[ ] Full TDD unit test coverage in tests/test_bash_wrappers.py`
+
+## Node 34: Consolidated Backlog CLI
+- **Status**: Completed
+- **Learnings & Context**: Consolidated multiple separate backlog CLI wrapper scripts into a single unified bin/backlog wrapper script supporting list, new, view, and edit subcommands. This reduces directory clutter, eliminates redundant environment resolver code, and simplifies whitelisting.
+- **Feedforward Invariants**:
+  - `[x] bin/backlog is fully functional supporting list, new, view, edit`
+  - `[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`
+
 ## Current Active Node
-**Node 33: Backlog CLI Abstractions**
+**Node 34: Consolidated Backlog CLI**
