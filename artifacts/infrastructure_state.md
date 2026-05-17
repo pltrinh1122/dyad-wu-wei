@@ -10,3 +10,12 @@ This document mathematically tracks the physical state of the Host OS infrastruc
 
 ## Daemon Governance
 The Agent must use `skills/infra_manager.py` to programmatically interact with these daemons.
+
+## Managed Artifacts
+
+| Artifact | Path | Provisioned By | Description |
+| :--- | :--- | :--- | :--- |
+| `ci-venv` | `~/actions-runner/venv/` | `infra/github-runner/provision.sh` | Pre-baked Python venv for zero-network CI execution. Contains pinned packages from `requirements-dev.txt`. |
+
+## Operator Duties
+- **On `requirements-dev.txt` change**: Re-run `infra/github-runner/provision.sh` to refresh the `ci-venv`. CI will fail loudly (import error) if this is skipped, ensuring the failure is never silent.
