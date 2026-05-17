@@ -196,14 +196,6 @@
   - `[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`
 
 ## Node 35: Verbose SPAO Stage Tracking
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Implementing operator-triggered verbose mode for SPAO loop stage tracking to keep the human operator perfectly aligned and informed of all state transitions and invariant assertions.
-- **Feedforward Invariants**:
-  - `[ ] SPAO_VERBOSE=1 triggers detailed stage logging banners`
-  - `[ ] Standard non-verbose execution remains completely silent`
-  - `[ ] Full TDD unit test coverage in tests/test_flow_state_manager.py`
-
-## Node 35: Verbose SPAO Stage Tracking
 - **Status**: Completed
 - **Learnings & Context**: Implemented operator-triggered verbose mode for SPAO loop stage tracking to keep the human operator perfectly aligned and informed of all state transitions and invariant assertions. Verified fully functional with TDD unit tests.
 - **Feedforward Invariants**:
@@ -211,5 +203,19 @@
   - `[x] Standard non-verbose execution remains completely silent`
   - `[x] Full TDD unit test coverage in tests/test_flow_state_manager.py`
 
+## Node 36: Terminology Disambiguation
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Clarifying the ontological definitions and relationships between Loop, Flow, and Path across canonical architectural documents to prevent terminology drift.
+- **Feedforward Invariants**:
+  - `[ ] GLOSSARY.md explicitly distinguishes Loop, Flow, and Path`
+  - `[ ] WHAT-0001-agentic-architecture.md defines the relationship between Flow and Path`
+
+## Node 36: Terminology Disambiguation
+- **Status**: Completed
+- **Learnings & Context**: Clarified the ontological definitions and relationships between Loop, Flow, and Path across GLOSSARY.md and WHAT-0001-agentic-architecture.md to prevent cognitive and terminological drift.
+- **Feedforward Invariants**:
+  - `[x] GLOSSARY.md explicitly distinguishes Loop, Flow, and Path`
+  - `[x] WHAT-0001-agentic-architecture.md defines the relationship between Flow and Path`
+
 ## Current Active Node
-**Node 35: Verbose SPAO Stage Tracking**
+**Node 36: Terminology Disambiguation**
