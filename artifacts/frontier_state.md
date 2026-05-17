@@ -274,5 +274,23 @@
   - `[x] log_stage_advancement added to bin/run-tests`
   - `[x] tests pass`
 
+## Node 44: Enforce node plan Edit-Only Guardrail
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Modify orchestrator/flow_state_manager.py and bin/node to enforce that plan_node strictly takes an existing Backlog Issue ID instead of creating a new issue, ensuring all new nodes originate from the backlog.
+- **Feedforward Invariants**:
+  - `[ ] flow_state_manager.py updated`
+  - `[ ] bin/node updated`
+  - `[ ] HOW-0001 updated`
+  - `[ ] tests updated and pass`
+
+## Node 44: Enforce node plan Edit-Only Guardrail
+- **Status**: Completed
+- **Learnings & Context**: Modified orchestrator/flow_state_manager.py and bin/node to enforce that plan_node strictly takes an existing Backlog Issue ID instead of creating a new issue, ensuring all new nodes originate from the backlog. Updated tests and HOW-0001.
+- **Feedforward Invariants**:
+  - `[x] flow_state_manager.py updated`
+  - `[x] bin/node updated`
+  - `[x] HOW-0001 updated`
+  - `[x] tests updated and pass`
+
 ## Current Active Node
-**Node 43: Decouple testing_harness Skill**
+**Node 44: Enforce node plan Edit-Only Guardrail**

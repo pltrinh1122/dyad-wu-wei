@@ -24,7 +24,7 @@ fi
 case "$SUBCOMMAND" in
     plan)
         if [ "$#" -lt 2 ]; then
-            echo "Usage: $0 plan <node_name> <body_content>"
+            echo "Usage: $0 plan <issue_id> <body_content>"
             exit 1
         fi
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from orchestrator.flow_state_manager import plan_node; print(plan_node(sys.argv[1], sys.argv[2]))" "$1" "$2"

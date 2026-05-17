@@ -28,14 +28,12 @@ def log_stage_advancement(stage: str, status: str, details: str = "") -> None:
         print(f" 📝 Details          ►  {details}")
     print("═"*60 + "\n")
 
-def plan_node(title: str, body: str) -> str:
-    """Plans a node by creating a GH issue."""
-    log_stage_advancement("plan", "Formulating Implementation Contract", f"Creating new Node issue with title: '{title}'")
-    issue_url = github_client.create_issue(title, body)
+def plan_node(issue_id: str, body: str) -> str:
+    """Plans a node by locking the Node Contract into an existing Backlog Issue."""
+    log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Backlog Issue #{issue_id}")
+    github_client.update_issue_body(issue_id, body)
     
-    # Extract issue ID from URL
-    match = re.search(r"/issues/(\d+)", issue_url)
-    issue_id = match.group(1) if match else "unknown"
+    issue_url = f"https://github.com/pltrinh1122/agent-antigravity/issues/{issue_id}"
     log_stage_advancement("plan", "Plan Phase Completed", f"Node issue #{issue_id} successfully planned. Transitioning to Act phase.")
     return issue_url
 
