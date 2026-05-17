@@ -323,5 +323,21 @@
   - `[x] tests pass`
 
 
+## Node 50: Node 50: Probe - Evaluate Node Numbering Scheme
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Cross-reference options based on industry best practices.
+- **Feedforward Invariants**:
+  - `[ ] Research best practices`
+  - `[ ] Output evaluation`
+
+## Node 84: Feature - Refactor Node ID to match GH Issue ID
+- **Status**: Completed
+- **Learnings & Context**: Successfully refactored CLI wrappers to drop node_id parameter and implemented Option 4. Tests pass and docs updated.
+- **Feedforward Invariants**:
+  - `[x] Drop node_id from bin/node`
+  - `[x] Drop node_id from bin/meta`
+  - `[x] Update HOW and GLOSSARY`
+
+
 ## Current Active Node
 None

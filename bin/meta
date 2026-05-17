@@ -23,37 +23,36 @@ fi
 
 case "$SUBCOMMAND" in
     link)
-        if [ "$#" -lt 3 ]; then
-            echo "Usage: $0 link <node_id> <node_title> <issue_id> [path_issue_id]"
+        if [ "$#" -lt 2 ]; then
+            echo "Usage: $0 link <node_title> <issue_id> [path_issue_id]"
             exit 1
         fi
-        PATH_ISSUE="${4:-10}"
+        PATH_ISSUE="${3:-10}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
 import subprocess
 import json
 from skills.github_client import update_issue_body
 
-node_id = sys.argv[1]
-node_title = sys.argv[2]
-issue_id = sys.argv[3]
-path_issue = sys.argv[4]
+node_title = sys.argv[1]
+issue_id = sys.argv[2]
+path_issue = sys.argv[3]
 
 res = subprocess.run(["gh", "issue", "view", str(path_issue), "--json", "body"], capture_output=True, text=True, check=True)
 body = json.loads(res.stdout)["body"]
 
-new_line = f"- [ ] Node {node_id}: {node_title} (#{issue_id})"
+new_line = f"- [ ] {node_title} (#{issue_id})"
 if new_line not in body:
     body = body.strip() + "\n" + new_line + "\n"
     update_issue_body(str(path_issue), body)
-    print(f"Node {node_id} successfully linked to Path Meta-Tracker #{path_issue}!")
+    print(f"Node {issue_id} successfully linked to Path Meta-Tracker #{path_issue}!")
 else:
-    print(f"Node {node_id} is already linked.")
-' "$1" "$2" "$3" "$PATH_ISSUE"
+    print(f"Node {issue_id} is already linked.")
+' "$1" "$2" "$PATH_ISSUE"
         ;;
     check)
         if [ "$#" -lt 1 ]; then
-            echo "Usage: $0 check <node_id> [path_issue_id]"
+            echo "Usage: $0 check <issue_id> [path_issue_id]"
             exit 1
         fi
         PATH_ISSUE="${2:-10}"
@@ -64,13 +63,13 @@ import json
 import re
 from skills.github_client import update_issue_body
 
-node_id = sys.argv[1]
+issue_id = sys.argv[1]
 path_issue = sys.argv[2]
 
 res = subprocess.run(["gh", "issue", "view", str(path_issue), "--json", "body"], capture_output=True, text=True, check=True)
 body = json.loads(res.stdout)["body"]
 
-pattern = rf"- \[ \] Node {node_id}:.*"
+pattern = rf"- \[ \] Node {issue_id}:.*"
 matches = re.findall(pattern, body)
 
 if matches:
@@ -78,23 +77,23 @@ if matches:
     new_line = old_line.replace("- [ ]", "- [x]", 1)
     body = body.replace(old_line, new_line, 1)
     update_issue_body(str(path_issue), body)
-    print(f"Node {node_id} successfully marked completed in Path Meta-Tracker #{path_issue}!")
+    print(f"Node {issue_id} successfully marked completed in Path Meta-Tracker #{path_issue}!")
 else:
-    print(f"Active Node {node_id} checklist item not found or already checked off.")
+    print(f"Active Node {issue_id} checklist item not found or already checked off.")
 ' "$1" "$PATH_ISSUE"
         ;;
     active)
-        if [ "$#" -lt 4 ]; then
-            echo "Usage: $0 active <node_id> <node_title> <description> <invariants_json> [frontier_file]"
+        if [ "$#" -lt 3 ]; then
+            echo "Usage: $0 active <issue_id> <node_title> <description> <invariants_json> [frontier_file]"
             exit 1
         fi
-        FRONTIER_FILE="${5:-artifacts/frontier_state.md}"
+        FRONTIER_FILE="${4:-artifacts/frontier_state.md}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
 import json
 from skills.frontier_editor import append_active_node
 
-node_id = int(sys.argv[1])
+issue_id = int(sys.argv[1])
 node_title = sys.argv[2]
 description = sys.argv[3]
 inv_arg = sys.argv[4]
@@ -107,12 +106,12 @@ else:
 
 append_active_node(
     filepath=filepath,
-    node_id=node_id,
+    node_id=issue_id,
     node_title=node_title,
     description=description,
     invariants=invariants
 )
-print(f"Node {node_id}: {node_title} set active in local ledger {filepath}!")
+print(f"Node {issue_id}: {node_title} set active in local ledger {filepath}!")
 ' "$1" "$2" "$3" "$4" "$FRONTIER_FILE"
         ;;
     *)
