@@ -304,5 +304,23 @@
 - **Feedforward Invariants**:
   - `[x] GEMINI.md updated with Rules section`
 
+## Node 46: Establish Repository .gitignore
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Create .gitignore and purge accidentally tracked .venv and __pycache__ directories from git history.
+- **Feedforward Invariants**:
+  - `[ ] .gitignore created`
+  - `[ ] __pycache__ untracked`
+  - `[ ] .venv untracked`
+  - `[ ] tests pass`
+
+## Node 46: Establish Repository .gitignore
+- **Status**: Completed
+- **Learnings & Context**: Created .gitignore at the repository root and purged .venv, .pytest_cache, and __pycache__ from git tracking. The index now correctly ignores these dynamic files, fixing the git pull sync-clean conflict.
+- **Feedforward Invariants**:
+  - `[x] .gitignore created`
+  - `[x] __pycache__ untracked`
+  - `[x] .venv untracked`
+  - `[x] tests pass`
+
 ## Current Active Node
-**Node 45: Evaluate Meta-Rules Reference Pattern**
+**Node 46: Establish Repository .gitignore**
