@@ -111,7 +111,7 @@ append_active_node(
     description=description,
     invariants=invariants
 )
-print(f"Node {issue_id}: {node_title} set active in local ledger {filepath}!")
+print(f"{node_title} set active in local ledger {filepath}!")
 ' "$1" "$2" "$3" "$4" "$FRONTIER_FILE"
         ;;
     *)

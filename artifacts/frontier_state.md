@@ -371,5 +371,11 @@
 - **Feedforward Invariants**:
   - `[x] Update flow_state_manager.py`
 
+## Node 100: Activity 100: Triage and resolve duplicate NodeID and Activity ID
+- **Status**: Completed
+- **Learnings & Context**: Successfully removed the redundant `Node {id}: ` string interpolation from the ledger update path.
+- **Feedforward Invariants**:
+  - `[x] Update frontier_editor.py`
+
 ## Current Active Node
-**Node 97: Activity 97: Clean up duplicate formatting in flow_state_manager.py**
+**Node 100: Activity 100: Triage and resolve duplicate NodeID and Activity ID**
