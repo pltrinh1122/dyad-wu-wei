@@ -426,5 +426,12 @@
   - `Direct commits to main are forbidden without using the bin/hotfix tool`
   - `which mandates traceability.`
 
+## Activity 127: Implement bin/rt formal primitive
+- **Status**: Completed
+- **Learnings & Context**: Created mgr_rt.py orchestrator and bin/rt adapter. Learned that git push origin main from a feature branch pushes the local main, not the checked-out branch, requiring strict branch verification.
+- **Feedforward Invariants**:
+  - `Hot-fixes must strictly execute only on the main branch to prevent cross-branch contamination`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
