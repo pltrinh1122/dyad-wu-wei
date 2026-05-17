@@ -189,18 +189,27 @@
   - `[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`
 
 ## Node 34: Consolidated Backlog CLI
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Consolidating multiple separate backlog CLI wrapper scripts into a single unified bin/backlog wrapper with clean subcommand routing.
-- **Feedforward Invariants**:
-  - `[ ] bin/backlog is fully functional supporting list, new, view, edit`
-  - `[ ] Full TDD unit test coverage in tests/test_bash_wrappers.py`
-
-## Node 34: Consolidated Backlog CLI
 - **Status**: Completed
 - **Learnings & Context**: Consolidated multiple separate backlog CLI wrapper scripts into a single unified bin/backlog wrapper script supporting list, new, view, and edit subcommands. This reduces directory clutter, eliminates redundant environment resolver code, and simplifies whitelisting.
 - **Feedforward Invariants**:
   - `[x] bin/backlog is fully functional supporting list, new, view, edit`
   - `[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`
 
+## Node 35: Verbose SPAO Stage Tracking
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Implementing operator-triggered verbose mode for SPAO loop stage tracking to keep the human operator perfectly aligned and informed of all state transitions and invariant assertions.
+- **Feedforward Invariants**:
+  - `[ ] SPAO_VERBOSE=1 triggers detailed stage logging banners`
+  - `[ ] Standard non-verbose execution remains completely silent`
+  - `[ ] Full TDD unit test coverage in tests/test_flow_state_manager.py`
+
+## Node 35: Verbose SPAO Stage Tracking
+- **Status**: Completed
+- **Learnings & Context**: Implemented operator-triggered verbose mode for SPAO loop stage tracking to keep the human operator perfectly aligned and informed of all state transitions and invariant assertions. Verified fully functional with TDD unit tests.
+- **Feedforward Invariants**:
+  - `[x] SPAO_VERBOSE=1 triggers detailed stage logging banners`
+  - `[x] Standard non-verbose execution remains completely silent`
+  - `[x] Full TDD unit test coverage in tests/test_flow_state_manager.py`
+
 ## Current Active Node
-**Node 34: Consolidated Backlog CLI**
+**Node 35: Verbose SPAO Stage Tracking**

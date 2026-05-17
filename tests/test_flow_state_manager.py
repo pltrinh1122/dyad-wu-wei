@@ -74,3 +74,41 @@ def test_sync_and_clean_node(mock_run, mock_list):
     assert ["git", "branch", "-d", "node/1-test"] in call_args
     assert ["git", "branch", "-d", "old-branch"] in call_args
     mock_list.assert_called_once_with("backlog")
+
+def test_is_verbose():
+    """Verifies that is_verbose evaluates the correct environment variables."""
+    from skills.flow_state_manager import is_verbose
+    import os
+
+    # Standard / silent mode
+    with patch.dict(os.environ, {}, clear=True):
+        assert not is_verbose()
+
+    # SPAO_VERBOSE enabled
+    with patch.dict(os.environ, {"SPAO_VERBOSE": "1"}):
+        assert is_verbose()
+
+    # SPOA_VERBOSE enabled (operator fallback spelling)
+    with patch.dict(os.environ, {"SPOA_VERBOSE": "true"}):
+        assert is_verbose()
+
+def test_log_stage_advancement(capsys):
+    """Verifies that log_stage_advancement outputs content only when verbose is active."""
+    from skills.flow_state_manager import log_stage_advancement
+    import os
+
+    # Verify standard (silent) mode prints nothing
+    with patch.dict(os.environ, {}, clear=True):
+        log_stage_advancement("sense", "Testing", "Details")
+        captured = capsys.readouterr()
+        assert not captured.out
+
+    # Verify verbose prints beautiful Stage banner
+    with patch.dict(os.environ, {"SPAO_VERBOSE": "1"}):
+        log_stage_advancement("sense", "Initiating testing", "Aesthetic checks")
+        captured = capsys.readouterr()
+        assert "SPAO Loop Stage" in captured.out
+        assert "🔍 SENSE" in captured.out
+        assert "Initiating testing" in captured.out
+        assert "Aesthetic checks" in captured.out
+
