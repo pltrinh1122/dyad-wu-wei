@@ -29,3 +29,12 @@ prompts:
   text: ensure that there is a hook into GEMINI.md for processing prompt since it
     doesn't appear to know to do that
   status: pending
+- id: p-1779059440-715c
+  timestamp: '2026-05-17T23:10:40Z'
+  text: extend the prompt command to support admin function to manualy delete records,
+    e.g. p-1779053869-aecb
+  status: pending
+- id: p-1779059468-a95c
+  timestamp: '2026-05-17T23:11:08Z'
+  text: extend the prompt-admin capability to clean itself
+  status: pending
