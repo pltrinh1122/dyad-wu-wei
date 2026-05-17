@@ -84,7 +84,6 @@ def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: s
     
     frontier_editor.complete_active_node(frontier_file, node_name, learnings, invariants)
     
-    subprocess.run(["git", "checkout", "-b", branch_name], check=True)
     subprocess.run(["git", "add", "."], check=True)
     subprocess.run(["git", "commit", "-m", commit_msg], check=True)
     subprocess.run(["git", "push", "-u", "origin", branch_name], check=True)
