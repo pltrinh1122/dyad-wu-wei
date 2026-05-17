@@ -340,5 +340,21 @@
   - `[x] HOW-0001 updated`
   - `[x] tests pass`
 
+## Node 47: Abstract GH Issue View CLI
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Add view subcommands to bin/backlog and bin/node.
+- **Feedforward Invariants**:
+  - `[ ] bin/backlog updated`
+  - `[ ] bin/node updated`
+  - `[ ] tests updated and pass`
+
+## Node 47: Abstract GH Issue View CLI
+- **Status**: Completed
+- **Learnings & Context**: Added the view subcommand to bin/node to provide native, zero-friction payload inspection without breaking adapter encapsulation. bin/backlog view was already implemented.
+- **Feedforward Invariants**:
+  - `[x] bin/backlog updated`
+  - `[x] bin/node updated`
+  - `[x] tests updated and pass`
+
 ## Current Active Node
-**Node 28: Issue Factory Skill**
+**Node 47: Abstract GH Issue View CLI**

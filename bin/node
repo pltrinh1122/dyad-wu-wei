@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 {plan|reflect} [args...]"
+    echo "Usage: $0 {plan|reflect|view} [args...]"
     exit 1
 fi
 
@@ -66,9 +66,25 @@ reflect_node(
 )
 ' "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$FRONTIER_FILE"
         ;;
+    view)
+        if [ "$#" -lt 1 ]; then
+            echo "Usage: $0 view <issue_id>"
+            exit 1
+        fi
+        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
+import subprocess, json, sys
+res = subprocess.run(['gh', 'issue', 'view', sys.argv[1], '--json', 'title,state,body'], capture_output=True, text=True, check=True)
+data = json.loads(res.stdout)
+print('='*40)
+print('Issue #{}: {} [{}]'.format(sys.argv[1], data['title'], data['state']))
+print('='*40)
+print(data['body'])
+print('='*40)
+" "$1"
+        ;;
     *)
         echo "Unknown subcommand: $SUBCOMMAND"
-        echo "Usage: $0 {plan|reflect} [args...]"
+        echo "Usage: $0 {plan|reflect|view} [args...]"
         exit 1
         ;;
 esac
