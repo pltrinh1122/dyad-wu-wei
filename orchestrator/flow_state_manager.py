@@ -73,7 +73,7 @@ def sync_and_clean_node() -> None:
             print(f"  {item['title']}")
         print()
 
-def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, pr_title: str) -> None:
+def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str) -> None:
     """Closes the GH issue, creates a PR, and updates the frontier."""
     if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
         raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
@@ -89,6 +89,6 @@ def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: s
     subprocess.run(["git", "push", "-u", "origin", branch_name], check=True)
     
     pr_body = f"Resolves #{issue_id}\n\n{learnings}"
-    github_client.create_pull_request(pr_title, pr_body)
+    github_client.create_pull_request(node_name, pr_body)
 
     log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")

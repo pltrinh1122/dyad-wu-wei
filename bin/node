@@ -30,11 +30,11 @@ case "$SUBCOMMAND" in
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from orchestrator.flow_state_manager import plan_node; print(plan_node(sys.argv[1], sys.argv[2]))" "$1" "$2"
         ;;
     reflect)
-        if [ "$#" -lt 7 ]; then
-            echo "Usage: $0 reflect <issue_id> <node_name> <learnings> <invariants> <commit_msg> <branch_name> <pr_title> [frontier_file]"
+        if [ "$#" -lt 6 ]; then
+            echo "Usage: $0 reflect <issue_id> <node_name> <learnings> <invariants> <commit_msg> <branch_name> [frontier_file]"
             exit 1
         fi
-        FRONTIER_FILE="${8:-artifacts/frontier_state.md}"
+        FRONTIER_FILE="${7:-artifacts/frontier_state.md}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
 import json
@@ -46,8 +46,7 @@ learnings = sys.argv[3]
 inv_arg = sys.argv[4]
 commit_msg = sys.argv[5]
 branch_name = sys.argv[6]
-pr_title = sys.argv[7]
-frontier_file = sys.argv[8]
+frontier_file = sys.argv[7]
 
 if inv_arg.startswith("[") and inv_arg.endswith("]"):
     invariants = json.loads(inv_arg)
@@ -61,10 +60,9 @@ reflect_node(
     learnings=learnings,
     invariants=invariants,
     commit_msg=commit_msg,
-    branch_name=branch_name,
-    pr_title=pr_title
+    branch_name=branch_name
 )
-' "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$FRONTIER_FILE"
+' "$1" "$2" "$3" "$4" "$5" "$6" "$FRONTIER_FILE"
         ;;
     view)
         if [ "$#" -lt 1 ]; then

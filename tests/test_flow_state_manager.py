@@ -26,8 +26,7 @@ def test_reflect_node(mock_run, mock_fe, mock_gh):
         learnings="It worked",
         invariants=["[x] Good"],
         commit_msg="Test commit",
-        branch_name="node/1-test-branch",
-        pr_title="PR Title"
+        branch_name="node/1-test-branch"
     )
     
     # Verify GitHub closed
@@ -45,7 +44,7 @@ def test_reflect_node(mock_run, mock_fe, mock_gh):
     assert call_args[2] == ["git", "push", "-u", "origin", "node/1-test-branch"]
     
     # Verify PR created
-    mock_gh.create_pull_request.assert_called_once_with("PR Title", "Resolves #100\n\nIt worked")
+    mock_gh.create_pull_request.assert_called_once_with("Node 1: Test", "Resolves #100\n\nIt worked")
 
 def test_reflect_node_invalid_branch():
     with pytest.raises(ValueError):
@@ -56,8 +55,7 @@ def test_reflect_node_invalid_branch():
             learnings="It worked",
             invariants=["[x] Good"],
             commit_msg="Test commit",
-            branch_name="invalid_branch_name",
-            pr_title="PR Title"
+            branch_name="invalid_branch_name"
         )
 
 @patch('orchestrator.flow_state_manager.github_client.list_issues_by_label', return_value=[])
