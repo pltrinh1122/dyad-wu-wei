@@ -114,9 +114,17 @@ def test_add_to_backlog(mock_render, mock_tempfile, mock_run):
 
     assert url == "https://github.com/pltrinh1122/agent-antigravity/issues/31"
     mock_file.write.assert_called_once_with("Rendered Template Body")
-    args = mock_run.call_args[0][0]
-    assert args == ["gh", "issue", "create", "--title", "Probe: Future Work Item",
+    
+    assert mock_run.call_count == 2
+    
+    # Check first call (create)
+    create_args = mock_run.call_args_list[0][0][0]
+    assert create_args == ["gh", "issue", "create", "--title", "Probe: Future Work Item",
                     "-F", "/tmp/fake_backlog.md", "--label", "backlog"]
+                    
+    # Check second call (edit/rename)
+    edit_args = mock_run.call_args_list[1][0][0]
+    assert edit_args == ["gh", "issue", "edit", "31", "--title", "Node 31: Probe: Future Work Item"]
     mock_render.assert_called_once_with("backlog_issue", {
         "goal": "Description of work",
         "changes": "TBD",

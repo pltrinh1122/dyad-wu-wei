@@ -29,7 +29,7 @@ items = list_issues_by_label('backlog')
 if items:
     print('\n📋 Backlog ({} item(s) pending):'.format(len(items)))
     for item in items:
-        print('  Node {}: {}'.format(item['number'], item['title']))
+        print('  {}'.format(item['title']))
     print()
 else:
     print('Backlog is empty.')
