@@ -181,5 +181,19 @@
   - `Tests verify wrappers execute correctly and prevent recursive test loops`
   - `Operational documents strictly use wrapper commands`
 
+## Node 33: Backlog CLI Abstractions
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Implementing clean executable shell wrappers (bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit) to eliminate raw gh calls and permit secure operator whitelisting.
+- **Feedforward Invariants**:
+  - `[ ] bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit are fully functional`
+  - `[ ] Full TDD unit test coverage in tests/test_bash_wrappers.py`
+
+## Node 33: Backlog CLI Abstractions
+- **Status**: Completed
+- **Learnings & Context**: Materialized precise executable backlog script wrappers (bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit) in the git index with executable permissions (mode 100755), eliminating raw gh calls and permitting secure operator whitelisting. Full TDD subprocess unit testing implemented and verified green.
+- **Feedforward Invariants**:
+  - `[x] bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit are fully functional`
+  - `[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`
+
 ## Current Active Node
-**Node 32: Shell Script Wrappers**
+**Node 33: Backlog CLI Abstractions**

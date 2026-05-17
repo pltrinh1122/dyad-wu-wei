@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "$#" -lt 2 ]; then
+    echo "Usage: $0 <title> <body_content>"
+    exit 1
+fi
+
+# Resolve repository root
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Resolve python executable to use
+if [[ -n "${VIRTUAL_ENV:-}" && -x "$VIRTUAL_ENV/bin/python3" ]]; then
+    PYTHON_EXE="$VIRTUAL_ENV/bin/python3"
+elif [[ -x "/home/pt/actions-runner/venv/bin/python3" ]]; then
+    PYTHON_EXE="/home/pt/actions-runner/venv/bin/python3"
+else
+    PYTHON_EXE="python3"
+fi
+
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from skills.github_client import add_to_backlog; print(add_to_backlog(sys.argv[1], sys.argv[2]))" "$1" "$2"
