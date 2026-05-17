@@ -413,5 +413,11 @@
 - **Feedforward Invariants**:
   - `All CLI domains must be backed by a native mgr-* orchestrator`
 
+## Activity 109: Link consumed prompts to PR bodies
+- **Status**: Completed
+- **Learnings & Context**: Integrated mgr_prompt into reflect phase to automatically trace and consume prompts from the YAML backlog.
+- **Feedforward Invariants**:
+  - `All consumed prompts must map to a PR body`
+
 ## Current Active Node
-**Activity 113: List items in prompt queue**
+**Activity 109: Link consumed prompts to PR bodies**

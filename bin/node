@@ -31,10 +31,11 @@ case "$SUBCOMMAND" in
         ;;
     reflect)
         if [ "$#" -lt 6 ]; then
-            echo "Usage: $0 reflect <issue_id> <node_name> <learnings> <invariants> <commit_msg> <branch_name> [frontier_file]"
+            echo "Usage: $0 reflect <issue_id> <node_name> <learnings> <invariants> <commit_msg> <branch_name> [frontier_file] [prompts]"
             exit 1
         fi
         FRONTIER_FILE="${7:-artifacts/frontier_state.md}"
+        PROMPTS="${8:-}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
 import json
@@ -60,9 +61,10 @@ reflect_node(
     learnings=learnings,
     invariants=invariants,
     commit_msg=commit_msg,
-    branch_name=branch_name
+    branch_name=branch_name,
+    consumed_prompts=sys.argv[8] if len(sys.argv) > 8 else None
 )
-' "$1" "$2" "$3" "$4" "$5" "$6" "$FRONTIER_FILE"
+' "$1" "$2" "$3" "$4" "$5" "$6" "$FRONTIER_FILE" "$PROMPTS"
         ;;
     view)
         if [ "$#" -lt 1 ]; then

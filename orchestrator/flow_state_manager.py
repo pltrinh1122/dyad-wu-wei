@@ -3,6 +3,7 @@ import re
 import subprocess
 from skills import github_client
 from skills import frontier_editor
+from orchestrator import mgr_prompt
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -73,8 +74,8 @@ def sync_and_clean_node() -> None:
             print(f"  {item['title']}")
         print()
 
-def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str) -> None:
-    """Closes the GH issue, creates a PR, and updates the frontier."""
+def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, consumed_prompts: str = None) -> None:
+    """Closes the GH issue, creates a PR, updates the frontier, and consumes any prompts."""
     if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
         raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
 
@@ -89,6 +90,22 @@ def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: s
     subprocess.run(["git", "push", "-u", "origin", branch_name], check=True)
     
     pr_body = f"Resolves #{issue_id}\n\n{learnings}"
-    github_client.create_pull_request(node_name, pr_body)
+    
+    prompt_ids = []
+    if consumed_prompts:
+        prompt_ids = [p.strip() for p in consumed_prompts.split(",") if p.strip()]
+        if prompt_ids:
+            pr_body += "\n\n### Addresses Prompts\n"
+            backlog_file = mgr_prompt.get_backlog_file()
+            data = mgr_prompt.load_data(backlog_file)
+            for p in data.get("prompts", []):
+                if p["id"] in prompt_ids:
+                    pr_body += f"- **{p['id']}**: {p['text']}\n"
+                    
+    pr_url = github_client.create_pull_request(node_name, pr_body)
+    
+    if prompt_ids:
+        mgr_prompt.consume_prompts(",".join(prompt_ids), pr_url)
+
 
     log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
