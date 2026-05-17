@@ -22,21 +22,38 @@ def test_run_tests_wrapper():
     assert "test session starts" in res.stdout
     assert "passed in" in res.stdout
 
-def test_plan_node_wrapper_usage():
-    """Verifies bin/plan-node prints usage when insufficient arguments are passed."""
-    bin_path = os.path.join(os.path.dirname(__file__), '../bin/plan-node')
+def test_node_wrapper_usage():
+    """Verifies bin/node prints usage when no arguments or invalid subcommands are passed."""
+    bin_path = os.path.join(os.path.dirname(__file__), '../bin/node')
     assert os.path.exists(bin_path)
     
+    # No args
     res = subprocess.run([bin_path], capture_output=True, text=True)
     assert res.returncode != 0
     assert "Usage:" in res.stdout
 
-def test_reflect_node_wrapper_usage():
-    """Verifies bin/reflect-node prints usage when insufficient arguments are passed."""
-    bin_path = os.path.join(os.path.dirname(__file__), '../bin/reflect-node')
+    # Invalid subcommand
+    res = subprocess.run([bin_path, "invalid"], capture_output=True, text=True)
+    assert res.returncode != 0
+    assert "Unknown subcommand:" in res.stdout
+
+def test_node_plan_subcommand_usage():
+    """Verifies bin/node plan enforces argument counts and prints usage on errors."""
+    bin_path = os.path.join(os.path.dirname(__file__), '../bin/node')
     assert os.path.exists(bin_path)
-    
-    res = subprocess.run([bin_path], capture_output=True, text=True)
+
+    # plan subcommand needs at least 2 args
+    res = subprocess.run([bin_path, "plan"], capture_output=True, text=True)
+    assert res.returncode != 0
+    assert "Usage:" in res.stdout
+
+def test_node_reflect_subcommand_usage():
+    """Verifies bin/node reflect enforces argument counts and prints usage on errors."""
+    bin_path = os.path.join(os.path.dirname(__file__), '../bin/node')
+    assert os.path.exists(bin_path)
+
+    # reflect subcommand needs at least 7 args
+    res = subprocess.run([bin_path, "reflect"], capture_output=True, text=True)
     assert res.returncode != 0
     assert "Usage:" in res.stdout
 

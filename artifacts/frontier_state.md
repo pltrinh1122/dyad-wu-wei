@@ -211,20 +211,20 @@
   - `[x] WHAT-0001-agentic-architecture.md defines the relationship between Flow and Path`
 
 ## Node 37: Ontology - Meta-Tracker Integration
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Refined the repository ontology to capture the hierarchies between the Application Tier and the Metasystem Tier, clearly defining recursive "Meta-" components (Meta-Graph, Meta-Tracker, Meta-Index, Meta-Loop) and anchoring them around Graph and SPAO loop concepts.
-- **Feedforward Invariants**:
-  - `[ ] GLOSSARY.md defines Hierarchical Differentiation and recursive Meta-prefix rules`
-  - `[ ] GLOSSARY.md defines Meta-Tracker and integrates it into the taxonomy`
-  - `[ ] WHAT-0001-agentic-architecture.md aligns Section 3.1 and Section 5 with Meta-Tracker taxonomy`
-
-## Node 37: Ontology - Meta-Tracker Integration
 - **Status**: Completed
 - **Learnings & Context**: Refined the repository ontology to capture the hierarchies between the Application Tier and the Metasystem Tier, clearly defining recursive 'Meta-' components (Meta-Graph, Meta-Tracker, Meta-Index, Meta-Loop) and anchoring them around Graph and SPAO loop concepts.
 - **Feedforward Invariants**:
-  - `[ ] GLOSSARY.md defines Hierarchical Differentiation and recursive Meta-prefix rules`
-  - `[ ] GLOSSARY.md defines Meta-Tracker and integrates it into the taxonomy`
-  - `[ ] WHAT-0001-agentic-architecture.md aligns Section 3.1 and Section 5 with Meta-Tracker taxonomy`
+  - `[x] GLOSSARY.md defines Hierarchical Differentiation and recursive Meta-prefix rules`
+  - `[x] GLOSSARY.md defines Meta-Tracker and integrates it into the taxonomy`
+  - `[x] WHAT-0001-agentic-architecture.md aligns Section 3.1 and Section 5 with Meta-Tracker taxonomy`
+
+## Node 38: Refactor - Consolidate Node Wrappers
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Consolidated distinct bash wrapper entry points bin/plan-node and bin/reflect-node into a single unified bin/node script with plan and reflect subcommands.
+- **Feedforward Invariants**:
+  - `[ ] bin/node implements plan and reflect subcommands`
+  - `[ ] bin/plan-node and bin/reflect-node are deleted`
+  - `[ ] tests/test_bash_wrappers.py validates bin/node arguments and usage`
 
 ## Current Active Node
-**Node 37: Ontology - Meta-Tracker Integration**
+**Node 38: Refactor - Consolidate Node Wrappers**
