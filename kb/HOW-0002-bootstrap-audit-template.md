@@ -20,7 +20,7 @@ If the Agent discovers an unchecked requirement during the audit:
 - [ ] **`kb/`**: Knowledge Base directory exists to hold WHAT/WHY/HOW linguistic primitives.
 
 ## 3. Flow-State Governance
-- [ ] **Epic Meta-Index**: The overarching Epic GH-Issue has been created to track macro-goals.
+- [ ] **Path Meta-Index**: The overarching Path GH-Issue has been created to track macro-goals.
 - [ ] **Task Independence**: The repository relies on GH-Issues for micro-state, avoiding hard reliance on ephemeral, local `task.md` files.
 
 ## Operator Verification (HITL) & Payload Generation

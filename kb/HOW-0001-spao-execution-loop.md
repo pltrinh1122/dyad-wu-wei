@@ -7,13 +7,13 @@ The master objective is decomposed into discrete topological **Nodes**. For each
 
 1. **Sense (Pre-Condition):** 
    - Execute the Python skill: `python3 -c "from skills.flow_state_manager import sync_and_clean_node; sync_and_clean_node()"` to fetch `main`, safely delete old merged branches, and **surface any pending backlog items**.
-   - Read `artifacts/frontier_state.md` and the cloud-hosted Epic Meta-Index (GH Issue).
+   - Read `artifacts/frontier_state.md` and the cloud-hosted Path Meta-Index (GH Issue).
    - Validate that the feedforward invariants from the previous node are met.
    - If backlog items are surfaced, pull the highest-priority item as the next Node (unless the Operator specifies otherwise).
 
 2. **Plan (Contract Formulation):** 
    - Execute the Python skill: `python3 -c "from skills.flow_state_manager import plan_node; plan_node('Node X: Title', 'Body content...')"` to safely create a **Node Issue** without bash quoting errors.
-   - Mutate the body of the **Epic Issue** to link to the newly active Node Issue.
+   - Mutate the body of the **Path Issue** to link to the newly active Node Issue.
    - *Do not execute codebase mutations until the Node Issue is created.*
 
 3. **Act (Execution):** 
@@ -28,7 +28,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
 5. **Reflect & Advance (Post-Condition):** 
    - Execute the Python skill: `python3 -c "from skills.flow_state_manager import reflect_node; reflect_node('artifacts/frontier_state.md', 'ISSUE_ID', 'Node X: Title', 'Learnings...', ['[x] Invariant'], 'commit message', 'node/XX-kebab-case', 'PR Title')"`
    - This atomic skill will rigorously enforce branch naming, update `artifacts/frontier_state.md`, push the branch, and automatically open a Pull Request.
-   - Mutate the **Epic Issue** body to check off the completed node.
+   - Mutate the **Path Issue** body to check off the completed node.
    - **HARD HITL BLOCK:** The Agent must absolutely halt and wait for the Operator to review and merge the PR before proceeding to the next node.
 
 ## Executing the Formal Bootstrap Audit

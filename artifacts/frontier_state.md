@@ -157,5 +157,13 @@
   - `kb/GLOSSARY.md exists`
   - `Terms from seed list are comprehensively defined`
 
+## Node 30: Terminology Synchronization
+- **Status**: Completed
+- **Learnings & Context**: Successfully synchronized the entire repository with the authoritative GLOSSARY terms. Evaluated and mapped the transition to topological graph theory and SPAO loop terminologies, generated the physical coherence validation artifact, renamed KDR-0001, and updated GEMINI.md, WHAT-0001, HOW-0001, HOW-0002, and historical compliance records to cleanly use "Path" and "Probe".
+- **Feedforward Invariants**:
+  - `All active files in kb/ and root use Path/Probe`
+  - `Coherence Validation artifact exists`
+  - `PR matches strict branch naming`
+
 ## Current Active Node
-**Node 27: Materialize GLOSSARY.md**
+**Node 30: Terminology Synchronization**

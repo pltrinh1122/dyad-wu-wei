@@ -21,7 +21,7 @@ This audit verifies that the `agent-antigravity` meta-repository strictly compli
 - `[PASS]` **`kb/`**: ROM pillar exists (containing `WHAT/WHY/HOW` primitives).
 
 ### 3. Flow-State Governance
-- `[PASS]` **Epic Meta-Index**: The overarching Epic GH-Issue (#10) exists and all historical nodes (#1 through #13) are accurately hyperlinked.
+- `[PASS]` **Path Meta-Index**: The overarching Path GH-Issue (#10) exists and all historical nodes (#1 through #13) are accurately hyperlinked.
 - `[PASS]` **Task Independence**: Micro-state logic is fully deferred to GH-Issues.
 
 ## HITL Constraints & Remediations
