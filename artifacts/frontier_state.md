@@ -512,5 +512,13 @@
   - `gh issue view (Issue API) is strongly consistent`
 
 
+## Activity 150: Mitigate GitHub API Eventual Consistency
+- **Status**: Completed
+- **Learnings & Context**: Implemented a double-verification pattern in `list_issues_by_label`. The system now fetches issues via the eventually-consistent Search API (`gh issue list`) and cross-verifies each issue's state using the strongly-consistent Issues API (`gh issue view`). This mathematically eliminates the ghost-state bug where closed issues momentarily reappear in the backlog.
+- **Feedforward Invariants**:
+  - `list_issues_by_label cross-verifies state with Issues API`
+  - `Test suite maintains 100% pass rate`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
