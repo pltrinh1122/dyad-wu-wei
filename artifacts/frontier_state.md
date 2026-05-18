@@ -447,5 +447,13 @@
   - `[x] file_locker implemented and integrated into shared artifacts`
 
 
+## Activity 121: Implement git worktree management for orthogonal parallelism
+- **Status**: Completed
+- **Learnings & Context**: Implemented checkout subcommand in bin/node and flow_state_manager to automatically provision isolated git worktrees inside .worktrees/ directory. Also fixed the reflect_node commit sequence to ensure consumed prompts are properly synced and traceability is maintained.
+- **Feedforward Invariants**:
+  - `[x] bin/node supports checkout and provisions worktrees`
+  - `[x] prompt queue consumption bug fixed with a 2-commit strategy`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
