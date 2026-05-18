@@ -1,0 +1,15 @@
+timer_interval: "5m"
+audit_branches:
+  - "main"
+rules:
+  - id: "periodic-health-audit"
+    type: "node_completion_threshold"
+    threshold: 10
+    alert_level: "NOTIFICATION"
+    prompt_message: "Periodic Health Audit (Node count: {current}) - Ensure architectural invariants"
+
+  - id: "refresh-ci-venv"
+    type: "file_modified"
+    file: "requirements-dev.txt"
+    alert_level: "FAILURE"
+    prompt_message: "Refresh CI Venv (requirements-dev.txt changed)"
