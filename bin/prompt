@@ -8,7 +8,7 @@ if [ ! -f "$PYTHON_EXE" ]; then
 fi
 
 if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
-    echo "Usage: $0 <prompt_text> | list | add | delete <prompt_id>"
+    echo "Usage: $0 <prompt_text> | list | add | delete <prompt_id> | clean"
     exit 0
 fi
 
@@ -18,7 +18,7 @@ if [ "$#" -eq 0 ]; then
 fi
 
 CMD=$1
-if [[ "$CMD" == "list" || "$CMD" == "add" || "$CMD" == "delete" ]]; then
+if [[ "$CMD" == "list" || "$CMD" == "add" || "$CMD" == "delete" || "$CMD" == "clean" ]]; then
     PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m orchestrator.mgr_prompt "$@"
 else
     # Legacy fallback: assume they just typed ./prompt "some text"

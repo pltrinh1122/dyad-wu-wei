@@ -478,5 +478,14 @@
   - `TTY Isolation Principle mathematically prevents pipe spoofing`
 
 
+## Activity 143: Implement prompt clean CLI command
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented the bin/prompt clean feature. It purges all consumed prompts non-interactively to facilitate automated maintenance.
+- **Feedforward Invariants**:
+  - `Added clean_prompts function in mgr_prompt.py`
+  - `Registered clean subcommand in argparse and bin/prompt adapter`
+  - `Verified that consumed prompts are permanently removed from the yaml file`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
