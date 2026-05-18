@@ -495,6 +495,12 @@
   - `Verified that consumed prompts are permanently removed from the yaml file`
 
 
+## Activity 146: Add meta-rule to GEMINI for gh issue mapping
+- **Status**: Completed
+- **Learnings & Context**: Mapped gh issue list and view to backlog list and node view respectively
+- **Feedforward Invariants**:
+  - `[x] GEMINI.md updated`
+
 ## Activity 145: Implement GitHub Label-Based Node Locking
 - **Status**: Completed
 - **Learnings & Context**: Implemented a highly robust atomic distributed lock leveraging GitHub's Label API (`status: in-progress`). The Node Checkout phase now checks the GH API before mutating the filesystem, raising a mathematical invariant if another thread is already working on the Node. This prevents all future parallel merge conflicts related to orthogonal identical-node checkout.

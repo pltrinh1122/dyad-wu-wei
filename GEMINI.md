@@ -56,4 +56,5 @@ You are mathematically forbidden from violating the following constraints:
    - `skills/`: Must contain ONLY pure, stateless, deterministic callables mapping to a single system interaction.
    - `orchestrator/`: Manages stateful, multi-step, stage-aware orchestration sequences.
 5. **The Probe Invariant**: A Probe is strictly investigatory. It MUST NOT execute functional logic mutations. Its outcome is exclusively architectural decisions (`WHY-*` documents) and new Activity nodes in the backlog.
+6. **The CLI Abstraction Invariant**: You must NEVER execute raw `gh issue list` or `gh issue view`. You must EXCLUSIVELY use `./bin/backlog list` and `./bin/node view` (or `./bin/backlog view`) respectively to inspect the state.
 <!-- Testing True Hotfix -->
