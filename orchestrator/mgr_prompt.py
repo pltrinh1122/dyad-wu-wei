@@ -98,6 +98,18 @@ def delete_prompt(prompt_id):
     else:
         print("\nDeletion cancelled.")
 
+def clean_prompts():
+    backlog_file = get_backlog_file()
+    data = load_data(backlog_file)
+    prompts = data.get("prompts", [])
+    
+    pending_prompts = [p for p in prompts if p.get("status") == "pending"]
+    removed_count = len(prompts) - len(pending_prompts)
+    
+    data["prompts"] = pending_prompts
+    save_data(backlog_file, data)
+    print(f"Purged {removed_count} consumed prompt(s).")
+
 def main():
     parser = argparse.ArgumentParser(description="Prompt Queue Manager")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -119,6 +131,9 @@ def main():
     parser_delete = subparsers.add_parser("delete", help="Delete a prompt from the queue")
     parser_delete.add_argument("prompt_id", help="ID of the prompt to delete")
 
+    # Clean command
+    parser_clean = subparsers.add_parser("clean", help="Purge all consumed prompts from the queue")
+
     args = parser.parse_args()
 
     if args.command == "add":
@@ -129,6 +144,8 @@ def main():
         consume_prompts(args.prompt_ids, args.pr_url)
     elif args.command == "delete":
         delete_prompt(args.prompt_id)
+    elif args.command == "clean":
+        clean_prompts()
 
 if __name__ == "__main__":
     main()
