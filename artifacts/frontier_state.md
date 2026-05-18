@@ -455,5 +455,13 @@
   - `[x] prompt queue consumption bug fixed with a 2-commit strategy`
 
 
+## Activity 134: Implement universal --help and -h support for all bin/ CLI adapters
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented universal --help and -h parsing blocks for all 7 bin/ scripts, standardizing CLI help output and fulfilling the prompt requests.
+- **Feedforward Invariants**:
+  - `All bin/ scripts gracefully handle --help and exit 0`
+  - `Test suite maintains 100% pass rate`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
