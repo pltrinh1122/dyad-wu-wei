@@ -204,3 +204,15 @@ def get_open_prs() -> list[dict]:
     )
     import json
     return json.loads(result.stdout.strip() or "[]")
+
+def get_merged_prs(limit: int = 50) -> list[dict]:
+    """Returns a list of recently merged PRs for the repository.
+    
+    Each item is a dict with 'headRefName'.
+    """
+    result = subprocess.run(
+        ["gh", "pr", "list", "--state", "merged", "--limit", str(limit), "--json", "headRefName"],
+        capture_output=True, text=True, check=True
+    )
+    import json
+    return json.loads(result.stdout.strip() or "[]")
