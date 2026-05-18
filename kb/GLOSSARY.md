@@ -18,6 +18,12 @@ An **atomic, topological unit of work** in the repository. Every Node represents
   * `State` — Current SPAO stage: `{Plan | Act | Observe | Reflect}`.
   * `Invariants` — Target feedforward post-condition assertions.
 
+### Terminal Node
+A leaf Node in the Meta-Graph that performs functional execution (e.g., an Activity or Probe). It creates branch mutations and is tracked via a micro-ledger transaction.
+
+### Non-Terminal Node
+A grouping or parent Node in the Meta-Graph that encapsulates a themed subgraph (e.g., a Path). It does not create branch mutations directly but acts as a macro-ledger container for tracking Terminal Nodes.
+
 ### Probe
 A **time-boxed, purely investigatory Node** designed to evaluate feasibility, research techniques, or resolve architectural ambiguity.
 * **Outcome**: A Probe does **not** produce functional logic mutations. It exclusively materializes a new Decision Record (`WHY-*` document) in `kb/` or an implementation plan, feeding forward critical constraints to subsequent Nodes.
