@@ -121,13 +121,25 @@ To prevent terminology drift and ensure absolute precision across models and ope
 
 ---
 
-## 🛠️ Tooling & Orchestration
+## 🛠️ Managers, Workflows, and Agents
+
+### Agent
+A **non-deterministic reasoning engine** (e.g., an LLM instance). It possesses intent, interprets context, and executes actions to navigate a deterministic Workflow.
+
+### Workflow
+A **deterministic state machine** and orchestration sequence. It sequences Skills across phase transitions (e.g., the SPAO loop) and maintains the rules and active state context.
+
+### Manager (Orchestrator)
+The **systemic synthesis of Workflow + Agent**. A Manager binds an Agent to a specific Workflow to achieve a domain objective.
+
+### Operator Agent
+The primary **Agent** within a Manager responsible for actively executing the functional logic of the Workflow.
+
+### Auditor Agent
+The secondary **Agent** within a Manager responsible for independent, concurrent background verification and invariant checking.
 
 ### Skill
 A **pure, atomic, deterministic callable**. It maintains zero state between invocations, has no SPAO/NL stage awareness, and maps to a single external system interaction. Independently testable.
-
-### Workflow
-A **multi-step, stage-aware orchestration sequence**. It sequences Skills across NL phase transitions and maintains active state context (e.g., "we are in the Act phase").
 
 ---
 
