@@ -120,3 +120,38 @@ def create_pull_request(title: str, body: str) -> str:
             capture_output=True, text=True, check=True
         )
         return result.stdout.strip()
+
+def get_issue_labels(issue_id: str) -> list[str]:
+    """Returns a list of label names for the given issue."""
+    result = subprocess.run(
+        ["gh", "issue", "view", str(issue_id), "--json", "labels"],
+        capture_output=True, text=True, check=True
+    )
+    import json
+    data = json.loads(result.stdout.strip() or "{}")
+    labels = data.get("labels", [])
+    return [label.get("name") for label in labels]
+
+def add_label(issue_id: str, label: str) -> None:
+    """Adds a label to the given issue."""
+    try:
+        subprocess.run(
+            ["gh", "issue", "edit", str(issue_id), "--add-label", label],
+            check=True, capture_output=True, text=True
+        )
+    except subprocess.CalledProcessError as e:
+        if "not found" in e.stderr:
+            subprocess.run(["gh", "label", "create", label, "--force"], check=True, capture_output=True)
+            subprocess.run(
+                ["gh", "issue", "edit", str(issue_id), "--add-label", label],
+                check=True, capture_output=True
+            )
+        else:
+            raise e
+
+def remove_label(issue_id: str, label: str) -> None:
+    """Removes a label from the given issue."""
+    subprocess.run(
+        ["gh", "issue", "edit", str(issue_id), "--remove-label", label],
+        check=True
+    )
