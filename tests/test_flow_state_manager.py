@@ -1,15 +1,33 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from orchestrator.flow_state_manager import plan_node, reflect_node, sync_and_clean_node
+from orchestrator.flow_state_manager import reflect_node, sync_and_clean_node
+
+@patch('orchestrator.flow_state_manager.github_client')
+def test_plan_start_node(mock_gh):
+    from orchestrator.flow_state_manager import plan_start_node
+    mock_gh.get_issue_labels.return_value = ["backlog"]
+    
+    plan_start_node("100")
+    
+    mock_gh.add_label.assert_called_once_with("100", "status: in-progress")
+
+@patch('orchestrator.flow_state_manager.github_client')
+def test_plan_start_node_locked(mock_gh):
+    from orchestrator.flow_state_manager import plan_start_node
+    mock_gh.get_issue_labels.return_value = ["status: in-progress"]
+    
+    with pytest.raises(Exception, match="Node #100 is already in progress by another thread!"):
+        plan_start_node("100")
 
 @patch('orchestrator.flow_state_manager.subprocess.run')
 @patch('orchestrator.flow_state_manager.github_client')
-def test_plan_node(mock_gh, mock_run):
+def test_plan_finish_node(mock_gh, mock_run):
+    from orchestrator.flow_state_manager import plan_finish_node
     mock_result = MagicMock()
     mock_result.stdout = '{"title": "Probe: Test Title"}'
     mock_run.return_value = mock_result
     
-    result = plan_node("100", "Test Body")
+    result = plan_finish_node("100", "Test Body")
     
     assert result == "https://github.com/pltrinh1122/agent-antigravity/issues/100"
     mock_gh.rename_issue_title.assert_called_once_with("100", "Node 100: Probe: Test Title")
@@ -18,22 +36,14 @@ def test_plan_node(mock_gh, mock_run):
 @patch('orchestrator.flow_state_manager.subprocess.run')
 @patch('orchestrator.flow_state_manager.github_client')
 @patch('orchestrator.flow_state_manager.os.makedirs')
-def test_checkout_node_soft_lock(mock_makedirs, mock_gh, mock_run, capsys):
+def test_checkout_node(mock_makedirs, mock_gh, mock_run):
     from orchestrator.flow_state_manager import checkout_node
     
-    # Simulate both labels being present
-    mock_gh.get_issue_labels.return_value = ["status: in-progress", "backlog"]
-    
-    # Should print warning and proceed, no exception raised
     checkout_node("157", "node/157-test")
     
-    captured = capsys.readouterr()
-    assert "\033[93mWARNING: Node #157 is already in progress by another thread. Proceeding anyway...\033[0m" in captured.out
+    mock_gh.add_label.assert_called_once_with("157", "status: in-progress")
     
-    # Ensure remove_label is not called at all
-    mock_gh.remove_label.assert_not_called()
-    
-    # Worktree should still be added
+    # Worktree should be added
     mock_run.assert_called_once()
     assert mock_run.call_args[0][0] == ["git", "worktree", "add", "-b", "node/157-test", ".worktrees/node/157-test", "main"]
 

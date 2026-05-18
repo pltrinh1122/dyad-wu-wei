@@ -567,6 +567,13 @@
   - `Epic Meta-Index must track all completed nodes`
   - `Active Node pointer in frontier_state.md must be accurate`
   - `Audit payloads must be materialized in artifacts/audit`
+## Activity 161: Implement Multi-Phase Node Planning (plan-start and plan-finish)
+- **Status**: Completed
+- **Learnings & Context**: Successfully decomposed `bin/node plan` into `plan-start` (which acquires the GitHub label lock immediately) and `plan-finish` (which finalizes the contract). This architectural shift guarantees that the WIP-N=1 invariant is preserved even during protracted agentic planning and drafting phases. `checkout` has been updated to safely inherit the lock idempotently.
+- **Feedforward Invariants**:
+  - `bin/node plan is replaced by plan-start and plan-finish`
+  - `plan-start acquires status: in-progress immediately`
+  - `checkout applies lock idempotently without fatal exception`
 
 
 ## Current Active Node
