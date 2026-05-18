@@ -1,19 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
-    echo "Usage: $0 {sync|plan-start|plan-finish|checkout|reflect|view} [args...]"
-    exit 0
-fi
-
-if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 {sync|plan-start|plan-finish|checkout|reflect|view} [args...]"
-    exit 1
-fi
-
-SUBCOMMAND="$1"
-shift
-
 # Resolve repository root
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
@@ -26,87 +13,4 @@ else
     PYTHON_EXE="python3"
 fi
 
-case "$SUBCOMMAND" in
-    sync)
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "from orchestrator.flow_state_manager import sync_and_clean_node; sync_and_clean_node()"
-        ;;
-    plan-start)
-        if [ "$#" -lt 1 ]; then
-            echo "Usage: $0 plan-start <issue_id>"
-            exit 1
-        fi
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from orchestrator.flow_state_manager import plan_start_node; plan_start_node(sys.argv[1])" "$1"
-        ;;
-    plan-finish)
-        if [ "$#" -lt 2 ]; then
-            echo "Usage: $0 plan-finish <issue_id> <body_content>"
-            exit 1
-        fi
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from orchestrator.flow_state_manager import plan_finish_node; print(plan_finish_node(sys.argv[1], sys.argv[2]))" "$1" "$2"
-        ;;
-    checkout)
-        if [ "$#" -lt 2 ]; then
-            echo "Usage: $0 checkout <issue_id> <branch_name>"
-            exit 1
-        fi
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from orchestrator.flow_state_manager import checkout_node; checkout_node(sys.argv[1], sys.argv[2])" "$1" "$2"
-        ;;
-    reflect)
-        if [ "$#" -lt 6 ]; then
-            echo "Usage: $0 reflect <issue_id> <node_name> <learnings> <invariants> <commit_msg> <branch_name> [frontier_file] [prompts]"
-            exit 1
-        fi
-        FRONTIER_FILE="${7:-artifacts/frontier_state.md}"
-        PROMPTS="${8:-}"
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
-import sys
-import json
-from orchestrator.flow_state_manager import reflect_node
-
-issue_id = sys.argv[1]
-node_name = sys.argv[2]
-learnings = sys.argv[3]
-inv_arg = sys.argv[4]
-commit_msg = sys.argv[5]
-branch_name = sys.argv[6]
-frontier_file = sys.argv[7]
-
-if inv_arg.startswith("[") and inv_arg.endswith("]"):
-    invariants = json.loads(inv_arg)
-else:
-    invariants = [inv.strip() for inv in inv_arg.split(",") if inv.strip()]
-
-reflect_node(
-    frontier_file=frontier_file,
-    issue_id=issue_id,
-    node_name=node_name,
-    learnings=learnings,
-    invariants=invariants,
-    commit_msg=commit_msg,
-    branch_name=branch_name,
-    consumed_prompts=sys.argv[8] if len(sys.argv) > 8 else None
-)
-' "$1" "$2" "$3" "$4" "$5" "$6" "$FRONTIER_FILE" "$PROMPTS"
-        ;;
-    view)
-        if [ "$#" -lt 1 ]; then
-            echo "Usage: $0 view <issue_id>"
-            exit 1
-        fi
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
-import subprocess, json, sys
-res = subprocess.run(['gh', 'issue', 'view', sys.argv[1], '--json', 'title,state,body'], capture_output=True, text=True, check=True)
-data = json.loads(res.stdout)
-print('='*40)
-print('Issue #{}: {} [{}]'.format(sys.argv[1], data['title'], data['state']))
-print('='*40)
-print(data['body'])
-print('='*40)
-" "$1"
-        ;;
-    *)
-        echo "Unknown subcommand: $SUBCOMMAND"
-        echo "Usage: $0 {sync|plan-start|plan-finish|checkout|reflect|view} [args...]"
-        exit 1
-        ;;
-esac
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m orchestrator.mgr_node "$@"

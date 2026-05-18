@@ -150,3 +150,100 @@ def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: s
 
 
     log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
+
+
+import argparse
+import sys
+import json
+
+def cmd_sync(args):
+    sync_and_clean_node()
+
+def cmd_plan_start(args):
+    plan_start_node(args.issue_id)
+
+def cmd_plan_finish(args):
+    print(plan_finish_node(args.issue_id, args.body_content))
+
+def cmd_checkout(args):
+    checkout_node(args.issue_id, args.branch_name)
+
+def cmd_reflect(args):
+    if args.invariants.startswith("[") and args.invariants.endswith("]"):
+        invariants = json.loads(args.invariants)
+    else:
+        invariants = [inv.strip() for inv in args.invariants.split(",") if inv.strip()]
+        
+    reflect_node(
+        frontier_file=args.frontier_file,
+        issue_id=args.issue_id,
+        node_name=args.node_name,
+        learnings=args.learnings,
+        invariants=invariants,
+        commit_msg=args.commit_msg,
+        branch_name=args.branch_name,
+        consumed_prompts=args.prompts
+    )
+
+def cmd_view(args):
+    res = subprocess.run(['gh', 'issue', 'view', args.issue_id, '--json', 'title,state,body'], capture_output=True, text=True, check=True)
+    data = json.loads(res.stdout)
+    print('='*40)
+    print(f"Issue #{args.issue_id}: {data['title']} [{data['state']}]")
+    print('='*40)
+    print(data['body'])
+    print('='*40)
+
+def main():
+    parser = argparse.ArgumentParser(description="Antigravity Domain Orchestrator for Node Lifecycle Management")
+    subparsers = parser.add_subparsers(dest="subcommand", required=True)
+
+    # sync
+    subparsers.add_parser("sync", help="Sync main, prune branches, and surface backlog")
+
+    # plan-start
+    parser_ps = subparsers.add_parser("plan-start", help="Lock an issue to start multi-phase planning")
+    parser_ps.add_argument("issue_id")
+
+    # plan-finish
+    parser_pf = subparsers.add_parser("plan-finish", help="Complete the plan phase by writing the Node Contract")
+    parser_pf.add_argument("issue_id")
+    parser_pf.add_argument("body_content")
+
+    # checkout
+    parser_co = subparsers.add_parser("checkout", help="Create a worktree for the Act phase")
+    parser_co.add_argument("issue_id")
+    parser_co.add_argument("branch_name")
+
+    # reflect
+    parser_r = subparsers.add_parser("reflect", help="Close node, push branch, open PR")
+    parser_r.add_argument("issue_id")
+    parser_r.add_argument("node_name")
+    parser_r.add_argument("learnings")
+    parser_r.add_argument("invariants")
+    parser_r.add_argument("commit_msg")
+    parser_r.add_argument("branch_name")
+    parser_r.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
+    parser_r.add_argument("prompts", nargs="?", default=None)
+
+    # view
+    parser_v = subparsers.add_parser("view", help="View a Node issue")
+    parser_v.add_argument("issue_id")
+
+    args = parser.parse_args()
+
+    if args.subcommand == "sync":
+        cmd_sync(args)
+    elif args.subcommand == "plan-start":
+        cmd_plan_start(args)
+    elif args.subcommand == "plan-finish":
+        cmd_plan_finish(args)
+    elif args.subcommand == "checkout":
+        cmd_checkout(args)
+    elif args.subcommand == "reflect":
+        cmd_reflect(args)
+    elif args.subcommand == "view":
+        cmd_view(args)
+
+if __name__ == "__main__":
+    main()

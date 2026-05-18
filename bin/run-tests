@@ -22,4 +22,4 @@ fi
 export ANTIGRAVITY_RUNNING_TESTS=1
 
 # Execute unit tests via mandated Python testing harness
-PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "from orchestrator.flow_state_manager import log_stage_advancement; from skills.testing_harness import run_tests; log_stage_advancement('act', 'Executing TDD Test Harness Validation', 'Running pytest on target: tests/'); print(run_tests())"
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "from orchestrator.mgr_node import log_stage_advancement; from skills.testing_harness import run_tests; log_stage_advancement('act', 'Executing TDD Test Harness Validation', 'Running pytest on target: tests/'); print(run_tests())"

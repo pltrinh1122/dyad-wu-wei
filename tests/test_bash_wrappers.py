@@ -30,12 +30,12 @@ def test_node_wrapper_usage():
     # No args
     res = subprocess.run([bin_path], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
     # Invalid subcommand
     res = subprocess.run([bin_path, "invalid"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Unknown subcommand:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
 def test_node_plan_subcommand_usage():
     """Verifies bin/node plan enforces argument counts and prints usage on errors."""
@@ -43,9 +43,9 @@ def test_node_plan_subcommand_usage():
     assert os.path.exists(bin_path)
 
     # plan subcommand needs at least 2 args
-    res = subprocess.run([bin_path, "plan"], capture_output=True, text=True)
+    res = subprocess.run([bin_path, "plan-start"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
 def test_node_reflect_subcommand_usage():
     """Verifies bin/node reflect enforces argument counts and prints usage on errors."""
@@ -55,7 +55,7 @@ def test_node_reflect_subcommand_usage():
     # reflect subcommand needs at least 7 args
     res = subprocess.run([bin_path, "reflect"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
 def test_node_view_subcommand_usage():
     """Verifies bin/node view enforces argument counts and prints usage on errors."""
@@ -65,7 +65,7 @@ def test_node_view_subcommand_usage():
     # view subcommand needs at least 1 arg
     res = subprocess.run([bin_path, "view"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
 def test_backlog_wrapper_usage():
     """Verifies bin/backlog prints usage when no arguments or invalid subcommands are passed."""

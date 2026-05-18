@@ -1,28 +1,28 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from orchestrator.flow_state_manager import reflect_node, sync_and_clean_node
+from orchestrator.mgr_node import reflect_node, sync_and_clean_node
 
-@patch('orchestrator.flow_state_manager.github_client')
+@patch('orchestrator.mgr_node.github_client')
 def test_plan_start_node(mock_gh):
-    from orchestrator.flow_state_manager import plan_start_node
+    from orchestrator.mgr_node import plan_start_node
     mock_gh.get_issue_labels.return_value = ["backlog"]
     
     plan_start_node("100")
     
     mock_gh.add_label.assert_called_once_with("100", "status: in-progress")
 
-@patch('orchestrator.flow_state_manager.github_client')
+@patch('orchestrator.mgr_node.github_client')
 def test_plan_start_node_locked(mock_gh):
-    from orchestrator.flow_state_manager import plan_start_node
+    from orchestrator.mgr_node import plan_start_node
     mock_gh.get_issue_labels.return_value = ["status: in-progress"]
     
     with pytest.raises(Exception, match="Node #100 is already in progress by another thread!"):
         plan_start_node("100")
 
-@patch('orchestrator.flow_state_manager.subprocess.run')
-@patch('orchestrator.flow_state_manager.github_client')
+@patch('orchestrator.mgr_node.subprocess.run')
+@patch('orchestrator.mgr_node.github_client')
 def test_plan_finish_node(mock_gh, mock_run):
-    from orchestrator.flow_state_manager import plan_finish_node
+    from orchestrator.mgr_node import plan_finish_node
     mock_result = MagicMock()
     mock_result.stdout = '{"title": "Probe: Test Title"}'
     mock_run.return_value = mock_result
@@ -33,11 +33,11 @@ def test_plan_finish_node(mock_gh, mock_run):
     mock_gh.rename_issue_title.assert_called_once_with("100", "Node 100: Probe: Test Title")
     mock_gh.update_issue_body.assert_called_once_with("100", "Test Body")
 
-@patch('orchestrator.flow_state_manager.subprocess.run')
-@patch('orchestrator.flow_state_manager.github_client')
-@patch('orchestrator.flow_state_manager.os.makedirs')
+@patch('orchestrator.mgr_node.subprocess.run')
+@patch('orchestrator.mgr_node.github_client')
+@patch('orchestrator.mgr_node.os.makedirs')
 def test_checkout_node(mock_makedirs, mock_gh, mock_run):
-    from orchestrator.flow_state_manager import checkout_node
+    from orchestrator.mgr_node import checkout_node
     
     checkout_node("157", "node/157-test")
     
@@ -48,9 +48,9 @@ def test_checkout_node(mock_makedirs, mock_gh, mock_run):
     assert mock_run.call_args[0][0] == ["git", "worktree", "add", "-b", "node/157-test", ".worktrees/node/157-test", "main"]
 
 
-@patch('orchestrator.flow_state_manager.github_client')
-@patch('orchestrator.flow_state_manager.frontier_editor')
-@patch('orchestrator.flow_state_manager.subprocess.run')
+@patch('orchestrator.mgr_node.github_client')
+@patch('orchestrator.mgr_node.frontier_editor')
+@patch('orchestrator.mgr_node.subprocess.run')
 def test_reflect_node(mock_run, mock_fe, mock_gh):
     reflect_node(
         frontier_file="/tmp/dummy.md",
@@ -91,9 +91,9 @@ def test_reflect_node_invalid_branch():
             branch_name="invalid_branch_name"
         )
 
-@patch('orchestrator.flow_state_manager.github_client.get_open_prs', return_value=[])
-@patch('orchestrator.flow_state_manager.github_client.list_issues_by_label', return_value=[])
-@patch('orchestrator.flow_state_manager.subprocess.run')
+@patch('orchestrator.mgr_node.github_client.get_open_prs', return_value=[])
+@patch('orchestrator.mgr_node.github_client.list_issues_by_label', return_value=[])
+@patch('orchestrator.mgr_node.subprocess.run')
 def test_sync_and_clean_node(mock_run, mock_list, mock_get_open_prs):
     mock_result = MagicMock()
     mock_result.stdout = "  main\n* node/1-test\n  old-branch\n"
@@ -111,7 +111,7 @@ def test_sync_and_clean_node(mock_run, mock_list, mock_get_open_prs):
     mock_list.assert_called_once_with("backlog")
     mock_get_open_prs.assert_called_once()
 
-@patch('orchestrator.flow_state_manager.github_client.get_open_prs')
+@patch('orchestrator.mgr_node.github_client.get_open_prs')
 def test_sync_and_clean_node_with_open_prs(mock_get_open_prs):
     mock_get_open_prs.return_value = [{"number": 123, "headRefName": "node/123-test", "title": "Test PR", "url": "http"}]
     
@@ -122,7 +122,7 @@ def test_sync_and_clean_node_with_open_prs(mock_get_open_prs):
 
 def test_is_verbose():
     """Verifies that is_verbose evaluates the correct environment variables."""
-    from orchestrator.flow_state_manager import is_verbose
+    from orchestrator.mgr_node import is_verbose
     import os
 
     # Standard / silent mode
@@ -139,7 +139,7 @@ def test_is_verbose():
 
 def test_log_stage_advancement(capsys):
     """Verifies that log_stage_advancement outputs content only when verbose is active."""
-    from orchestrator.flow_state_manager import log_stage_advancement
+    from orchestrator.mgr_node import log_stage_advancement
     import os
 
     # Verify standard (silent) mode prints nothing
