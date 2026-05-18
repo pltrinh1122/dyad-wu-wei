@@ -609,5 +609,12 @@
   - `All domain-specific Node Taxonomy mappings must be defined in antigravity.yml at the repository root.`
 
 
+## Execute Architectural Migration of mgr-* Orchestrators
+- **Status**: Completed
+- **Learnings & Context**: Migrated flow_state_manager.py natively into orchestrator/mgr_node.py to formally establish the Manager pattern. Refactored bin/node as a proxy wrapper and added argparse.
+- **Feedforward Invariants**:
+  - `Manager components must inherently own their workflows.`
+
+
 ## Current Active Node
 **Probe 163: Audit State Inconsistencies**
