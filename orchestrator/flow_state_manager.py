@@ -29,9 +29,18 @@ def log_stage_advancement(stage: str, status: str, details: str = "") -> None:
         print(f" 📝 Details          ►  {details}")
     print("═"*60 + "\n")
 
-def plan_node(issue_id: str, body: str) -> str:
-    """Plans a node by locking the Node Contract into an existing Backlog Issue."""
-    log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Backlog Issue #{issue_id}")
+def plan_start_node(issue_id: str) -> None:
+    """Acquires the GH Issue label lock to begin a multi-phase planning sequence."""
+    labels = github_client.get_issue_labels(issue_id)
+    if "status: in-progress" in labels:
+        raise Exception(f"Node #{issue_id} is already in progress by another thread!")
+        
+    github_client.add_label(issue_id, "status: in-progress")
+    log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{issue_id} for multi-phase planning.")
+
+def plan_finish_node(issue_id: str, body: str) -> str:
+    """Finalizes a multi-phase plan by committing the Node Contract into the existing Issue."""
+    log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Issue #{issue_id}")
     
     import json
     # Retrieve current title to check if we need to rename it
@@ -54,10 +63,8 @@ def checkout_node(issue_id: str, branch_name: str) -> None:
     if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
         raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
         
-    labels = github_client.get_issue_labels(issue_id)
-    if "status: in-progress" in labels:
-        print(f"\033[93mWARNING: Node #{issue_id} is already in progress by another thread. Proceeding anyway...\033[0m")
-        
+    # The lock is expected to be acquired during plan-start.
+    # However, to be resilient for legacy/hotfix operations, we can idempotently apply it.
     github_client.add_label(issue_id, "status: in-progress")
             
     log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at .worktrees/{branch_name}")
