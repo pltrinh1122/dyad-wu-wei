@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 {plan|reflect|view} [args...]"
+    echo "Usage: $0 {plan|checkout|reflect|view} [args...]"
     exit 1
 fi
 
@@ -28,6 +28,13 @@ case "$SUBCOMMAND" in
             exit 1
         fi
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from orchestrator.flow_state_manager import plan_node; print(plan_node(sys.argv[1], sys.argv[2]))" "$1" "$2"
+        ;;
+    checkout)
+        if [ "$#" -lt 2 ]; then
+            echo "Usage: $0 checkout <issue_id> <branch_name>"
+            exit 1
+        fi
+        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from orchestrator.flow_state_manager import checkout_node; checkout_node(sys.argv[1], sys.argv[2])" "$1" "$2"
         ;;
     reflect)
         if [ "$#" -lt 6 ]; then
@@ -84,7 +91,7 @@ print('='*40)
         ;;
     *)
         echo "Unknown subcommand: $SUBCOMMAND"
-        echo "Usage: $0 {plan|reflect|view} [args...]"
+        echo "Usage: $0 {plan|checkout|reflect|view} [args...]"
         exit 1
         ;;
 esac

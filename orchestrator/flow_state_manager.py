@@ -49,6 +49,20 @@ def plan_node(issue_id: str, body: str) -> str:
     log_stage_advancement("plan", "Plan Phase Completed", f"Node issue #{issue_id} successfully planned. Transitioning to Act phase.")
     return issue_url
 
+def checkout_node(issue_id: str, branch_name: str) -> None:
+    """Creates a git worktree for a new node."""
+    if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
+        raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
+        
+    log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at .worktrees/{branch_name}")
+    
+    worktree_path = os.path.join(".worktrees", branch_name)
+    os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
+    
+    subprocess.run(["git", "worktree", "add", "-b", branch_name, worktree_path, "main"], check=True)
+    
+    print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
+
 def sync_and_clean_node() -> None:
     """Syncs main, prunes merged local branches, and surfaces pending backlog items."""
     log_stage_advancement("sense", "Initiating Sense Phase", "Syncing main, cleaning up local branches, and refreshing backlog state.")
@@ -61,8 +75,13 @@ def sync_and_clean_node() -> None:
     for branch in branches:
         b = branch.strip().strip('* ')
         if b and b != 'main':
+            wt_path = os.path.join(".worktrees", b)
+            if os.path.exists(wt_path):
+                subprocess.run(["git", "worktree", "remove", "-f", wt_path])
             # Don't check=True because branch -d can fail if it's not fully merged in git's eyes sometimes
             subprocess.run(["git", "branch", "-d", b])
+            
+    subprocess.run(["git", "worktree", "prune"], check=False)
 
     log_stage_advancement("sense", "Sense Phase Completed", "Workspace successfully synchronized and pruned.")
 
@@ -106,6 +125,10 @@ def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: s
     
     if prompt_ids:
         mgr_prompt.consume_prompts(",".join(prompt_ids), pr_url)
+        backlog_file = mgr_prompt.get_backlog_file()
+        subprocess.run(["git", "add", backlog_file], check=True)
+        subprocess.run(["git", "commit", "-m", "chore: consume prompts"], check=True)
+        subprocess.run(["git", "push", "origin", branch_name], check=True)
 
 
     log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
