@@ -6,7 +6,7 @@ This document contains the strict, deterministic instructions (The "How") for op
 The master objective is decomposed into discrete topological **Nodes**. For each Node, the Agent **must** execute the following loop in exact order:
 
 1. **Sense (Pre-Condition):** 
-   - Execute the shell script: `./bin/sync-clean` to fetch `main`, safely delete old merged branches, and **surface any pending backlog items**.
+   - Execute the shell script: `./bin/node sync` to fetch `main`, safely delete old merged branches, and **surface any pending backlog items**.
    - Read `artifacts/frontier_state.md` and the cloud-hosted Path Meta-Index (GH Issue).
    - Validate that the feedforward invariants from the previous node are met.
    - If backlog items are surfaced, pull the highest-priority item as the next Node (unless the Operator specifies otherwise).

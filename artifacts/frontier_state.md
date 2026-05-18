@@ -463,5 +463,14 @@
   - `Test suite maintains 100% pass rate`
 
 
+## Activity 136: Execute Architectural Migration of sync-clean to bin/node sync
+- **Status**: Completed
+- **Learnings & Context**: Successfully migrated the legacy `sync-clean` primitive into the canonical `bin/node` wrapper as the `sync` subcommand. This aligns workspace cleaning perfectly with the node abstraction lifecycle (sync, plan, checkout, reflect, view).
+- **Feedforward Invariants**:
+  - `bin/sync-clean has been permanently deleted`
+  - `bin/node sync invokes the workspace synchronization loop`
+  - `Test suite maintains 100% pass rate`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
