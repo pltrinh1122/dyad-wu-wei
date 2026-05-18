@@ -97,7 +97,7 @@ class TerminalNode(BaseNode):
         
         print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
 
-    def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, consumed_prompts: str = None) -> None:
+    def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str) -> None:
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
 
@@ -113,26 +113,8 @@ class TerminalNode(BaseNode):
         
         pr_body = f"Resolves #{self.issue_id}\n\n{learnings}"
         
-        prompt_ids = []
-        if consumed_prompts:
-            prompt_ids = [p.strip() for p in consumed_prompts.split(",") if p.strip()]
-            if prompt_ids:
-                pr_body += "\n\n### Addresses Prompts\n"
-                backlog_file = mgr_prompt.get_backlog_file()
-                data = mgr_prompt.load_data(backlog_file)
-                for p in data.get("prompts", []):
-                    if p["id"] in prompt_ids:
-                        pr_body += f"- **{p['id']}**: {p['text']}\n"
-                        
         pr_url = github_client.create_pull_request(node_name, pr_body)
         
-        if prompt_ids:
-            mgr_prompt.consume_prompts(",".join(prompt_ids), pr_url)
-            backlog_file = mgr_prompt.get_backlog_file()
-            subprocess.run(["git", "add", backlog_file], check=True)
-            subprocess.run(["git", "commit", "-m", "chore: consume prompts"], check=True)
-            subprocess.run(["git", "push", "origin", branch_name], check=True)
-
         log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
 
     @classmethod

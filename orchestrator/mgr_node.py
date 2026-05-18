@@ -58,10 +58,10 @@ def sync_and_clean_node() -> None:
             print(f"  {item['title']}")
         print()
 
-def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, consumed_prompts: str = None) -> None:
-    """Closes the GH issue, creates a PR, updates the frontier, and consumes any prompts."""
+def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str) -> None:
+    """Closes the GH issue, creates a PR, and updates the frontier."""
     node = TerminalNode(issue_id)
-    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, consumed_prompts)
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name)
 
 
 import argparse
@@ -93,8 +93,7 @@ def cmd_reflect(args):
         learnings=args.learnings,
         invariants=invariants,
         commit_msg=args.commit_msg,
-        branch_name=args.branch_name,
-        consumed_prompts=args.prompts
+        branch_name=args.branch_name
     )
 
 def cmd_view(args):
@@ -141,7 +140,6 @@ def main():
     parser_r.add_argument("commit_msg")
     parser_r.add_argument("branch_name")
     parser_r.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
-    parser_r.add_argument("prompts", nargs="?", default=None)
 
     # view
     parser_v = subparsers.add_parser("view", help="View a Node issue")
