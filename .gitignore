@@ -7,3 +7,4 @@ venv/
 
 # Agentic Architecture
 .worktrees/
+*.lock
