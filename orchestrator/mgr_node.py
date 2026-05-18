@@ -39,12 +39,31 @@ def sync_and_clean_node() -> None:
     subprocess.run(["git", "switch", "main"], check=True)
     subprocess.run(["git", "pull", "--prune", "origin", "main"], check=True)
     
+    merged_branches = set()
+    
+    # 1. Local merged branches
     result = subprocess.run(["git", "branch", "--merged"], capture_output=True, text=True)
-    branches = result.stdout.split('\n')
-    for branch in branches:
+    for branch in result.stdout.split('\n'):
         b = branch.strip().strip('* ')
         if b and b != 'main':
-            TerminalNode.clean_if_merged(b)
+            merged_branches.add(b)
+            
+    # 2. GitHub merged PRs
+    try:
+        merged_prs = github_client.get_merged_prs(limit=50)
+        for pr in merged_prs:
+            if pr.get("headRefName"):
+                merged_branches.add(pr["headRefName"])
+    except Exception as e:
+        print(f"Warning: Failed to fetch merged PRs from GitHub: {e}")
+
+    # Verify which of these actually exist locally and clean them
+    result = subprocess.run(["git", "branch", "--format", "%(refname:short)"], capture_output=True, text=True)
+    local_branches = {b.strip() for b in result.stdout.split('\n') if b.strip()}
+    
+    for branch in merged_branches:
+        if branch in local_branches and branch != 'main':
+            TerminalNode.clean_if_merged(branch)
             
     subprocess.run(["git", "worktree", "prune"], check=False)
 

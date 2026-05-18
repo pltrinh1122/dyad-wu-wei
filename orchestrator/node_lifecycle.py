@@ -123,4 +123,4 @@ class TerminalNode(BaseNode):
         wt_path = os.path.join(".worktrees", branch_name)
         if os.path.exists(wt_path):
             subprocess.run(["git", "worktree", "remove", "-f", wt_path])
-        subprocess.run(["git", "branch", "-d", branch_name])
+        subprocess.run(["git", "branch", "-D", branch_name])

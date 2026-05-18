@@ -79,11 +79,12 @@ def test_reflect_node_invalid_branch():
         )
 
 @patch('orchestrator.mgr_node.github_client.get_open_prs', return_value=[])
+@patch('orchestrator.mgr_node.github_client.get_merged_prs', return_value=[{"headRefName": "node/2-test"}])
 @patch('orchestrator.mgr_node.github_client.list_issues_by_label', return_value=[])
 @patch('orchestrator.mgr_node.subprocess.run')
-def test_sync_and_clean_node(mock_run, mock_list, mock_get_open_prs):
+def test_sync_and_clean_node(mock_run, mock_list, mock_get_merged_prs, mock_get_open_prs):
     mock_result = MagicMock()
-    mock_result.stdout = "  main\n* node/1-test\n  old-branch\n"
+    mock_result.stdout = "main\nnode/1-test\nold-branch\nnode/2-test\n"
     mock_run.return_value = mock_result
     
     sync_and_clean_node()
@@ -93,10 +94,12 @@ def test_sync_and_clean_node(mock_run, mock_list, mock_get_open_prs):
     assert ["git", "pull", "--prune", "origin", "main"] in call_args
     assert ["git", "branch", "--merged"] in call_args
     assert ["git", "worktree", "prune"] in call_args
-    assert ["git", "branch", "-d", "node/1-test"] in call_args
-    assert ["git", "branch", "-d", "old-branch"] in call_args
+    assert ["git", "branch", "-D", "node/1-test"] in call_args
+    assert ["git", "branch", "-D", "old-branch"] in call_args
+    assert ["git", "branch", "-D", "node/2-test"] in call_args
     
     mock_list.assert_called_once_with("backlog")
+    mock_get_merged_prs.assert_called_once_with(limit=50)
     mock_get_open_prs.assert_called_once()
 
 @patch('orchestrator.mgr_node.github_client.get_open_prs')
