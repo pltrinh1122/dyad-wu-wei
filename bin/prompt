@@ -7,6 +7,11 @@ if [ ! -f "$PYTHON_EXE" ]; then
     PYTHON_EXE="python3"
 fi
 
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+    echo "Usage: $0 <prompt_text> | list | add"
+    exit 0
+fi
+
 if [ "$#" -eq 0 ]; then
     echo "Usage: $0 <prompt_text> | list"
     exit 1
