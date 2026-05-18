@@ -535,6 +535,13 @@
   - `Test suite maintains 100% pass rate`
 
 
+## Probe 153: Architectural Evaluation of Terminal vs Non-Terminal Node Abstraction
+- **Status**: Completed
+- **Learnings & Context**: Evaluated the benefit of abstracting nodes into Terminal (execution, leaf) and Non-Terminal (composite, path) base classes. This purely graph-theoretic abstraction decouples the Antigravity orchestration logic from the software development domain, allowing generic reuse across arbitrary domains like `agent-travel`. Queued Activity 156 to formally implement this abstraction.
+- **Feedforward Invariants**:
+  - `Probe must not mutate functional logic`
+  - `Terminal Node represents leaf/execution node`
+  - `Non-Terminal Node represents composite/parent node`
 ## Node 157: Implement Soft-Locking for Node Checkout
 - **Status**: Completed
 - **Learnings & Context**: Implemented a soft-lock in flow_state_manager to emit a yellow warning instead of raising an exception. Preserved the backlog label to ensure visibility. Captured the architectural decision in WHY-0011.
