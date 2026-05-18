@@ -35,7 +35,9 @@ prompts:
   timestamp: '2026-05-17T23:10:40Z'
   text: extend the prompt command to support admin function to manualy delete records,
     e.g. p-1779053869-aecb
-  status: pending
+  status: consumed
+  consumed_by_pr: https://github.com/pltrinh1122/agent-antigravity/pull/139
+  read_timestamp: '2026-05-18T01:24:03Z'
 - id: p-1779059468-a95c
   timestamp: '2026-05-17T23:11:08Z'
   text: extend the prompt-admin capability to clean itself
