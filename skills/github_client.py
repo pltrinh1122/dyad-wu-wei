@@ -56,7 +56,19 @@ def list_issues_by_label(label: str) -> list[dict]:
         capture_output=True, text=True, check=True
     )
     import json
-    return json.loads(result.stdout.strip() or "[]")
+    issues = json.loads(result.stdout.strip() or "[]")
+    
+    valid_issues = []
+    for issue in issues:
+        view_res = subprocess.run(
+            ["gh", "issue", "view", str(issue["number"]), "--json", "state"],
+            capture_output=True, text=True, check=True
+        )
+        state_data = json.loads(view_res.stdout.strip() or "{}")
+        if state_data.get("state") == "OPEN":
+            valid_issues.append(issue)
+            
+    return valid_issues
 
 def rename_issue_title(issue_id: str, new_title: str) -> None:
     """Renames an existing GH issue's title."""

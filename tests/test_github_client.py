@@ -74,18 +74,27 @@ def test_create_pull_request(mock_tempfile, mock_run):
 
 @patch('skills.github_client.subprocess.run')
 def test_list_issues_by_label(mock_run):
-    mock_result = MagicMock()
-    mock_result.stdout = '[{"number": 31, "title": "Backlog Item", "url": "https://github.com/org/repo/issues/31"}]'
-    mock_run.return_value = mock_result
+    mock_list_result = MagicMock()
+    mock_list_result.stdout = '[{"number": 31, "title": "Backlog Item", "url": "https://github.com/org/repo/issues/31"}]'
+    
+    mock_view_result = MagicMock()
+    mock_view_result.stdout = '{"state": "OPEN"}'
+
+    mock_run.side_effect = [mock_list_result, mock_view_result]
 
     items = list_issues_by_label("backlog")
 
     assert len(items) == 1
     assert items[0]["number"] == 31
     assert items[0]["title"] == "Backlog Item"
-    args = mock_run.call_args[0][0]
-    assert args == ["gh", "issue", "list", "--label", "backlog", "--state", "open",
+    
+    assert mock_run.call_count == 2
+    list_args = mock_run.call_args_list[0][0][0]
+    assert list_args == ["gh", "issue", "list", "--label", "backlog", "--state", "open",
                     "--json", "number,title,url"]
+                    
+    view_args = mock_run.call_args_list[1][0][0]
+    assert view_args == ["gh", "issue", "view", "31", "--json", "state"]
 
 @patch('skills.github_client.subprocess.run')
 def test_list_issues_by_label_empty(mock_run):
