@@ -2,12 +2,12 @@
 set -euo pipefail
 
 if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
-    echo "Usage: $0 {plan|checkout|reflect|view} [args...]"
+    echo "Usage: $0 {sync|plan|checkout|reflect|view} [args...]"
     exit 0
 fi
 
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 {plan|checkout|reflect|view} [args...]"
+    echo "Usage: $0 {sync|plan|checkout|reflect|view} [args...]"
     exit 1
 fi
 
@@ -27,6 +27,9 @@ else
 fi
 
 case "$SUBCOMMAND" in
+    sync)
+        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "from orchestrator.flow_state_manager import sync_and_clean_node; sync_and_clean_node()"
+        ;;
     plan)
         if [ "$#" -lt 2 ]; then
             echo "Usage: $0 plan <issue_id> <body_content>"
@@ -96,7 +99,7 @@ print('='*40)
         ;;
     *)
         echo "Unknown subcommand: $SUBCOMMAND"
-        echo "Usage: $0 {plan|checkout|reflect|view} [args...]"
+        echo "Usage: $0 {sync|plan|checkout|reflect|view} [args...]"
         exit 1
         ;;
 esac
