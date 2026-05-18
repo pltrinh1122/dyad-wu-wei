@@ -46,25 +46,9 @@ def add_prompt(prompt_text):
     save_data(backlog_file, data)
     print(f"Prompt queued to {backlog_file}")
 
-def consume_prompts(prompt_ids_str, pr_url):
-    backlog_file = get_backlog_file()
-    data = load_data(backlog_file)
-    prompt_ids = [p.strip() for p in prompt_ids_str.split(",")]
-    
-    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    consumed_count = 0
-    for p in data.get("prompts", []):
-        if p["id"] in prompt_ids and p.get("status") == "pending":
-            p["status"] = "consumed"
-            p["consumed_by_pr"] = pr_url
-            p["read_timestamp"] = timestamp
-            consumed_count += 1
-            
-    if consumed_count > 0:
-        save_data(backlog_file, data)
-    print(f"Consumed {consumed_count} prompt(s).")
 
-def process_prompts(prompt_ids_str):
+
+def process_prompts(prompt_ids_str, resolution_context="manual"):
     backlog_file = get_backlog_file()
     data = load_data(backlog_file)
     prompt_ids = [p.strip() for p in prompt_ids_str.split(",")]
@@ -74,13 +58,13 @@ def process_prompts(prompt_ids_str):
     for p in data.get("prompts", []):
         if p["id"] in prompt_ids and p.get("status") == "pending":
             p["status"] = "consumed"
-            p["consumed_by_pr"] = "manual"
+            p["resolution_context"] = resolution_context
             p["read_timestamp"] = timestamp
             processed_count += 1
             
     if processed_count > 0:
         save_data(backlog_file, data)
-    print(f"Processed {processed_count} prompt(s) manually.")
+    print(f"Processed {processed_count} prompt(s) with context: {resolution_context}")
 
 
 def list_prompts(all_prompts=False):
@@ -141,14 +125,12 @@ def main():
     parser_list = subparsers.add_parser("list", help="List prompts in the queue")
     parser_list.add_argument("--all", action="store_true", help="Show all prompts, including consumed")
 
-    # Consume command
-    parser_consume = subparsers.add_parser("consume", help="Consume prompts")
-    parser_consume.add_argument("prompt_ids", help="Comma-separated list of prompt IDs")
-    parser_consume.add_argument("pr_url", help="URL of the PR that consumed the prompts")
+
 
     # Process command
-    parser_process = subparsers.add_parser("process", help="Manually process prompts without a PR URL")
+    parser_process = subparsers.add_parser("process", help="Process prompts into consumed state")
     parser_process.add_argument("prompt_ids", help="Comma-separated list of prompt IDs")
+    parser_process.add_argument("--context", default="manual", help="Resolution context (e.g., Node 171, chat)")
 
     # Delete command
     parser_delete = subparsers.add_parser("delete", help="Delete a prompt from the queue")
@@ -163,10 +145,8 @@ def main():
         add_prompt(args.prompt_text)
     elif args.command == "list":
         list_prompts(args.all)
-    elif args.command == "consume":
-        consume_prompts(args.prompt_ids, args.pr_url)
     elif args.command == "process":
-        process_prompts(args.prompt_ids)
+        process_prompts(args.prompt_ids, args.context)
     elif args.command == "delete":
         delete_prompt(args.prompt_id)
     elif args.command == "clean":
