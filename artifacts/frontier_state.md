@@ -616,5 +616,13 @@
   - `Manager components must inherently own their workflows.`
 
 
+## Activity 138: Decouple Prompt Lifecycle from PR Merge
+- **Status**: Completed
+- **Learnings & Context**: Removed consume_prompts and PR linkage entirely. Updated process_prompts to handle consumption definitively based on a resolution context. Cleaned up TerminalNode.reflect logic.
+- **Feedforward Invariants**:
+  - `[x] Prompt lifecycle decoupled from PRs`
+  - `[x] Activity 175 created for Node Clean requirements`
+
+
 ## Current Active Node
 **Probe 163: Audit State Inconsistencies**
