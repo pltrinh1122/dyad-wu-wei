@@ -471,6 +471,20 @@
   - `bin/node sync invokes the workspace synchronization loop`
   - `Test suite maintains 100% pass rate`
 
+## Activity 137: Implement prompt delete CLI command
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented prompt delete CLI command with interactive confirmation. Removed the test prompt from the backlog as requested.
+- **Feedforward Invariants**:
+  - `Prompt deletion is gated by CLI confirmation`
+  - `CLI usage instructions are updated`
+
+
+## Activity 140: Implement Architectural TTY Hard-Gate
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented the TTY Isolation Principle via skills/tty_gate.py. Tested piped bypass prevention successfully. It intercepts any automated inputs and enforces true HITL.
+- **Feedforward Invariants**:
+  - `TTY Isolation Principle mathematically prevents pipe spoofing`
+
 
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
