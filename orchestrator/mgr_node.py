@@ -5,6 +5,7 @@ from skills import github_client
 from skills import frontier_editor
 from skills import testing_harness
 from orchestrator import mgr_prompt
+from orchestrator.sense_hooks import HookManager
 
 from orchestrator.node_lifecycle import TerminalNode, log_stage_advancement
 
@@ -70,12 +71,8 @@ def sync_and_clean_node() -> None:
     log_stage_advancement("sense", "Sense Phase Completed", "Workspace successfully synchronized and pruned.")
 
     # Surface pending backlog items at Sense phase
-    backlog_items = github_client.list_issues_by_label("backlog")
-    if backlog_items:
-        print(f"\n📋 Backlog ({len(backlog_items)} item(s) pending):")
-        for item in backlog_items:
-            print(f"  {item['title']}")
-        print()
+    manager = HookManager()
+    manager.execute_all()
 
 def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str) -> None:
     """Closes the GH issue, creates a PR, and updates the frontier."""

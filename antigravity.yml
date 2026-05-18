@@ -4,3 +4,9 @@ node_taxonomy:
     - probe
   non_terminal:
     - path
+
+sense_hooks:
+  - type: prompt_queue
+    location: artifacts/prompt_backlog.yml
+  - type: next_best_action
+    repository: pltrinh1122/agent-antigravity
