@@ -596,5 +596,12 @@
   - `All future architectural references must align with the Manager = Agent + Workflow paradigm.`
 
 
+## Abstract Nodes into Terminal and Non-Terminal Base Classes
+- **Status**: Completed
+- **Learnings & Context**: Abstracted Node classification into Terminal and Non-Terminal Base Classes via antigravity.yml configuration, unlocking domain portability.
+- **Feedforward Invariants**:
+  - `All domain-specific Node Taxonomy mappings must be defined in antigravity.yml at the repository root.`
+
+
 ## Current Active Node
 **Probe 163: Audit State Inconsistencies**
