@@ -471,5 +471,12 @@
   - `CLI usage instructions are updated`
 
 
+## Activity 140: Implement Architectural TTY Hard-Gate
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented the TTY Isolation Principle via skills/tty_gate.py. Tested piped bypass prevention successfully. It intercepts any automated inputs and enforces true HITL.
+- **Feedforward Invariants**:
+  - `TTY Isolation Principle mathematically prevents pipe spoofing`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**

@@ -6,6 +6,7 @@ import time
 import uuid
 import argparse
 from datetime import datetime, timezone
+from skills.tty_gate import require_operator_approval
 
 def get_backlog_file():
     repo_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -90,11 +91,12 @@ def delete_prompt(prompt_id):
     print(f"  Status: {target.get('status')}")
     print(f"  Text: {target.get('text')}")
     
-    # Temporarily removed soft-gate input() due to CI failure. 
-    # Hard-gate to be implemented in a subsequent architectural node.
-    data["prompts"] = [p for p in prompts if p["id"] != prompt_id]
-    save_data(backlog_file, data)
-    print(f"Prompt {prompt_id} deleted.")
+    if require_operator_approval(f"Are you sure you want to delete this prompt? [y/N]: "):
+        data["prompts"] = [p for p in prompts if p["id"] != prompt_id]
+        save_data(backlog_file, data)
+        print(f"\nPrompt {prompt_id} deleted.")
+    else:
+        print("\nDeletion cancelled.")
 
 def main():
     parser = argparse.ArgumentParser(description="Prompt Queue Manager")
