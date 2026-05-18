@@ -1,9 +1,11 @@
 import re
+from skills.file_locker import lock_file
 
 def read_active_node(filepath: str) -> str:
     """Reads the current active node from frontier_state.md."""
-    with open(filepath, 'r') as f:
-        lines = f.readlines()
+    with lock_file(filepath):
+        with open(filepath, 'r') as f:
+            lines = f.readlines()
         
     for i, line in enumerate(lines):
         if line.strip() == "## Current Active Node":
@@ -16,8 +18,9 @@ def read_active_node(filepath: str) -> str:
 
 def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str]) -> None:
     """Appends the completed node block above the Current Active Node header."""
-    with open(filepath, 'r') as f:
-        content = f.read()
+    with lock_file(filepath):
+        with open(filepath, 'r') as f:
+            content = f.read()
         
     invariant_str = "\n".join([f"  - `{inv}`" for inv in invariants])
     if not invariant_str:
@@ -46,8 +49,9 @@ def complete_active_node(filepath: str, node_name: str, learnings: str, invarian
 
 def set_active_node(filepath: str, node_name: str) -> None:
     """Updates the text below Current Active Node."""
-    with open(filepath, 'r') as f:
-        lines = f.readlines()
+    with lock_file(filepath):
+        with open(filepath, 'r') as f:
+            lines = f.readlines()
         
     for i, line in enumerate(lines):
         if line.strip() == "## Current Active Node":
@@ -65,8 +69,9 @@ def append_active_node(filepath: str, node_id: int, node_title: str, description
     """Appends a new active node block above the Current Active Node header,
     and sets it active.
     """
-    with open(filepath, 'r') as f:
-        content = f.read()
+    with lock_file(filepath):
+        with open(filepath, 'r') as f:
+            content = f.read()
 
     invariant_str = "\n".join([f"  - `{inv}`" for inv in invariants])
     if not invariant_str:

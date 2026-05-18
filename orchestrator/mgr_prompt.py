@@ -1,4 +1,5 @@
 import sys
+from skills.file_locker import lock_file
 import yaml
 import os
 import time
@@ -12,17 +13,19 @@ def get_backlog_file():
 
 def load_data(backlog_file):
     data = {"prompts": []}
-    if os.path.exists(backlog_file):
-        with open(backlog_file, "r") as f:
-            loaded = yaml.safe_load(f)
-            if loaded and "prompts" in loaded:
-                data = loaded
+    with lock_file(backlog_file):
+        if os.path.exists(backlog_file):
+            with open(backlog_file, "r") as f:
+                loaded = yaml.safe_load(f)
+                if loaded and "prompts" in loaded:
+                    data = loaded
     return data
 
 def save_data(backlog_file, data):
     os.makedirs(os.path.dirname(backlog_file), exist_ok=True)
-    with open(backlog_file, "w") as f:
-        yaml.dump(data, f, default_flow_style=False, sort_keys=False)
+    with lock_file(backlog_file):
+        with open(backlog_file, "w") as f:
+            yaml.dump(data, f, default_flow_style=False, sort_keys=False)
 
 def add_prompt(prompt_text):
     backlog_file = get_backlog_file()

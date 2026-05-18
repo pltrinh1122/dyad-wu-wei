@@ -440,5 +440,12 @@
   - `[x] GEMINI.md explicitly requires prompt queue processing`
 
 
+## Activity 122: Implement file-locking mechanism for shared artifacts
+- **Status**: Completed
+- **Learnings & Context**: Implemented a reentrant cross-platform advisory file-locking mechanism in skills/file_locker.py using fcntl and threading.local. Wrapped all reads and writes to shared artifacts (frontier_state, prompt_backlog, hotfix_ledger) to ensure orthogonal thread safety.
+- **Feedforward Invariants**:
+  - `[x] file_locker implemented and integrated into shared artifacts`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
