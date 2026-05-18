@@ -3,6 +3,7 @@ import re
 import subprocess
 from skills import github_client
 from skills import frontier_editor
+from skills import testing_harness
 from orchestrator import mgr_prompt
 
 from orchestrator.node_lifecycle import TerminalNode, log_stage_advancement
@@ -104,6 +105,11 @@ def cmd_view(args):
     print(data['body'])
     print('='*40)
 
+def cmd_test(args):
+    log_stage_advancement("act", "Executing TDD Test Harness Validation", f"Running pytest on target: {args.target}")
+    exit_code = testing_harness.run_tests(args.target)
+    sys.exit(exit_code)
+
 def main():
     parser = argparse.ArgumentParser(description="Antigravity Domain Orchestrator for Node Lifecycle Management")
     subparsers = parser.add_subparsers(dest="subcommand", required=True)
@@ -139,6 +145,10 @@ def main():
     parser_v = subparsers.add_parser("view", help="View a Node issue")
     parser_v.add_argument("issue_id")
 
+    # test
+    parser_t = subparsers.add_parser("test", help="Execute test harness validation")
+    parser_t.add_argument("target", nargs="?", default="tests/", help="Target directory or file for pytest")
+
     args = parser.parse_args()
 
     if args.subcommand == "sync":
@@ -153,6 +163,8 @@ def main():
         cmd_reflect(args)
     elif args.subcommand == "view":
         cmd_view(args)
+    elif args.subcommand == "test":
+        cmd_test(args)
 
 if __name__ == "__main__":
     main()

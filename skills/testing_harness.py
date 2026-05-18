@@ -1,10 +1,11 @@
 import os
 import subprocess
 
-def run_tests(target: str = "tests/") -> str:
-    """Executes pytest within the virtual environment and returns the output."""
+def run_tests(target: str = "tests/") -> int:
+    """Executes pytest within the virtual environment, streams output, and returns exit code."""
     env = os.environ.copy()
     env["PYTHONPATH"] = "."
+    env["ANTIGRAVITY_RUNNING_TESTS"] = "1"
     
     # Resolve the correct pytest executable dynamically
     venv_dir = os.environ.get("VIRTUAL_ENV")
@@ -19,14 +20,7 @@ def run_tests(target: str = "tests/") -> str:
         
     result = subprocess.run(
         [pytest_exe, target],
-        env=env,
-        capture_output=True,
-        text=True
+        env=env
     )
     
-    # If tests fail, pytest returns a non-zero exit code.
-    # We still want to return the output so the Agent can read the failures.
-    if result.returncode != 0:
-        return result.stdout + "\n" + result.stderr
-        
-    return result.stdout
+    return result.returncode

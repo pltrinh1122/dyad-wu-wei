@@ -616,6 +616,11 @@
   - `Manager components must inherently own their workflows.`
 
 
+## 116-run-tests-abstraction
+- **Status**: Completed
+- **Learnings & Context**: Integrated test execution natively into mgr_node to align with domain manager separation of concerns. Fixed a critical bug in testing_harness.py where the exact exit code from pytest was swallowed, replacing capture_output with streaming output.
+- **Feedforward Invariants**:
+  - `[ ]` None
 ## Activity 138: Decouple Prompt Lifecycle from PR Merge
 - **Status**: Completed
 - **Learnings & Context**: Removed consume_prompts and PR linkage entirely. Updated process_prompts to handle consumption definitively based on a resolution context. Cleaned up TerminalNode.reflect logic.
