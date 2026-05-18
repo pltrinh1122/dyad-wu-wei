@@ -15,6 +15,29 @@ def test_plan_node(mock_gh, mock_run):
     mock_gh.rename_issue_title.assert_called_once_with("100", "Node 100: Probe: Test Title")
     mock_gh.update_issue_body.assert_called_once_with("100", "Test Body")
 
+@patch('orchestrator.flow_state_manager.subprocess.run')
+@patch('orchestrator.flow_state_manager.github_client')
+@patch('orchestrator.flow_state_manager.os.makedirs')
+def test_checkout_node_soft_lock(mock_makedirs, mock_gh, mock_run, capsys):
+    from orchestrator.flow_state_manager import checkout_node
+    
+    # Simulate both labels being present
+    mock_gh.get_issue_labels.return_value = ["status: in-progress", "backlog"]
+    
+    # Should print warning and proceed, no exception raised
+    checkout_node("157", "node/157-test")
+    
+    captured = capsys.readouterr()
+    assert "\033[93mWARNING: Node #157 is already in progress by another thread. Proceeding anyway...\033[0m" in captured.out
+    
+    # Ensure remove_label is not called at all
+    mock_gh.remove_label.assert_not_called()
+    
+    # Worktree should still be added
+    mock_run.assert_called_once()
+    assert mock_run.call_args[0][0] == ["git", "worktree", "add", "-b", "node/157-test", ".worktrees/node/157-test", "main"]
+
+
 @patch('orchestrator.flow_state_manager.github_client')
 @patch('orchestrator.flow_state_manager.frontier_editor')
 @patch('orchestrator.flow_state_manager.subprocess.run')
