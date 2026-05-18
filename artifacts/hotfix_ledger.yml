@@ -7,3 +7,7 @@ hotfixes:
   timestamp: '2026-05-17T23:24:30Z'
   file: GEMINI.md
   message: test hotfix on main
+- hash: db3f51f12dd717d5014093d507f0f839c7b75406
+  timestamp: '2026-05-18T01:07:27Z'
+  file: GEMINI.md
+  message: Refactor GEMINI.md to add Bring-Up Process and Agentic Registry
