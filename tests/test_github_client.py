@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from skills.github_client import create_issue, close_issue, update_issue_body, create_pull_request, list_issues_by_label, add_to_backlog, get_issue_labels, add_label, remove_label
+from skills.github_client import create_issue, close_issue, update_issue_body, create_pull_request, list_issues_by_label, add_to_backlog, get_issue_labels, add_label, remove_label, get_open_prs
 
 @patch('skills.github_client.subprocess.run')
 @patch('skills.github_client.tempfile.NamedTemporaryFile')
@@ -175,3 +175,19 @@ def test_remove_label(mock_run):
     mock_run.assert_called_once()
     args = mock_run.call_args[0][0]
     assert args == ["gh", "issue", "edit", "145", "--remove-label", "backlog"]
+
+@patch('skills.github_client.subprocess.run')
+def test_get_open_prs(mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = '[{"number": 123, "title": "Test PR", "headRefName": "node/123-test", "url": "https://..."}]'
+    mock_run.return_value = mock_result
+
+    prs = get_open_prs()
+
+    assert len(prs) == 1
+    assert prs[0]["number"] == 123
+    assert prs[0]["headRefName"] == "node/123-test"
+
+    mock_run.assert_called_once()
+    args = mock_run.call_args[0][0]
+    assert args == ["gh", "pr", "list", "--state", "open", "--json", "number,title,headRefName,url"]

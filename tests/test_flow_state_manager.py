@@ -58,9 +58,10 @@ def test_reflect_node_invalid_branch():
             branch_name="invalid_branch_name"
         )
 
+@patch('orchestrator.flow_state_manager.github_client.get_open_prs', return_value=[])
 @patch('orchestrator.flow_state_manager.github_client.list_issues_by_label', return_value=[])
 @patch('orchestrator.flow_state_manager.subprocess.run')
-def test_sync_and_clean_node(mock_run, mock_list):
+def test_sync_and_clean_node(mock_run, mock_list, mock_get_open_prs):
     mock_result = MagicMock()
     mock_result.stdout = "  main\n* node/1-test\n  old-branch\n"
     mock_run.return_value = mock_result
@@ -75,6 +76,16 @@ def test_sync_and_clean_node(mock_run, mock_list):
     assert ["git", "branch", "-d", "node/1-test"] in call_args
     assert ["git", "branch", "-d", "old-branch"] in call_args
     mock_list.assert_called_once_with("backlog")
+    mock_get_open_prs.assert_called_once()
+
+@patch('orchestrator.flow_state_manager.github_client.get_open_prs')
+def test_sync_and_clean_node_with_open_prs(mock_get_open_prs):
+    mock_get_open_prs.return_value = [{"number": 123, "headRefName": "node/123-test", "title": "Test PR", "url": "http"}]
+    
+    with pytest.raises(Exception, match="WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: #123 \\(node/123-test\\)"):
+        sync_and_clean_node()
+    
+    mock_get_open_prs.assert_called_once()
 
 def test_is_verbose():
     """Verifies that is_verbose evaluates the correct environment variables."""

@@ -526,5 +526,14 @@
   - `Test suite maintains 100% pass rate`
 
 
+## Activity 154: Add invariant check for closed PR before branch cleanup
+- **Status**: Completed
+- **Learnings & Context**: Implemented WIP-N=1 invariant check by querying GitHub API for open PRs before proceeding with SENSE phase sync and cleanup.
+- **Feedforward Invariants**:
+  - `sync_and_clean_node queries GitHub API for open PRs`
+  - `Raises Exception if PRs are open`
+  - `Test suite maintains 100% pass rate`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**

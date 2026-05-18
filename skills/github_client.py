@@ -167,3 +167,12 @@ def remove_label(issue_id: str, label: str) -> None:
         ["gh", "issue", "edit", str(issue_id), "--remove-label", label],
         check=True
     )
+
+def get_open_prs() -> list[dict]:
+    """Returns a list of currently open PRs for the repository."""
+    result = subprocess.run(
+        ["gh", "pr", "list", "--state", "open", "--json", "number,title,headRefName,url"],
+        capture_output=True, text=True, check=True
+    )
+    import json
+    return json.loads(result.stdout.strip() or "[]")
