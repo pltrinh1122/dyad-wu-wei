@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import patch, MagicMock
 from orchestrator.flow_state_manager import reflect_node, sync_and_clean_node
 
-@patch('orchestrator.flow_state_manager.github_client')
+@patch('orchestrator.node_lifecycle.github_client')
 def test_plan_start_node(mock_gh):
     from orchestrator.flow_state_manager import plan_start_node
     mock_gh.get_issue_labels.return_value = ["backlog"]
@@ -11,7 +11,7 @@ def test_plan_start_node(mock_gh):
     
     mock_gh.add_label.assert_called_once_with("100", "status: in-progress")
 
-@patch('orchestrator.flow_state_manager.github_client')
+@patch('orchestrator.node_lifecycle.github_client')
 def test_plan_start_node_locked(mock_gh):
     from orchestrator.flow_state_manager import plan_start_node
     mock_gh.get_issue_labels.return_value = ["status: in-progress"]
@@ -19,8 +19,8 @@ def test_plan_start_node_locked(mock_gh):
     with pytest.raises(Exception, match="Node #100 is already in progress by another thread!"):
         plan_start_node("100")
 
-@patch('orchestrator.flow_state_manager.subprocess.run')
-@patch('orchestrator.flow_state_manager.github_client')
+@patch('orchestrator.node_lifecycle.subprocess.run')
+@patch('orchestrator.node_lifecycle.github_client')
 def test_plan_finish_node(mock_gh, mock_run):
     from orchestrator.flow_state_manager import plan_finish_node
     mock_result = MagicMock()
@@ -33,9 +33,9 @@ def test_plan_finish_node(mock_gh, mock_run):
     mock_gh.rename_issue_title.assert_called_once_with("100", "Node 100: Probe: Test Title")
     mock_gh.update_issue_body.assert_called_once_with("100", "Test Body")
 
-@patch('orchestrator.flow_state_manager.subprocess.run')
-@patch('orchestrator.flow_state_manager.github_client')
-@patch('orchestrator.flow_state_manager.os.makedirs')
+@patch('orchestrator.node_lifecycle.subprocess.run')
+@patch('orchestrator.node_lifecycle.github_client')
+@patch('orchestrator.node_lifecycle.os.makedirs')
 def test_checkout_node(mock_makedirs, mock_gh, mock_run):
     from orchestrator.flow_state_manager import checkout_node
     
@@ -48,9 +48,9 @@ def test_checkout_node(mock_makedirs, mock_gh, mock_run):
     assert mock_run.call_args[0][0] == ["git", "worktree", "add", "-b", "node/157-test", ".worktrees/node/157-test", "main"]
 
 
-@patch('orchestrator.flow_state_manager.github_client')
-@patch('orchestrator.flow_state_manager.frontier_editor')
-@patch('orchestrator.flow_state_manager.subprocess.run')
+@patch('orchestrator.node_lifecycle.github_client')
+@patch('orchestrator.node_lifecycle.frontier_editor')
+@patch('orchestrator.node_lifecycle.subprocess.run')
 def test_reflect_node(mock_run, mock_fe, mock_gh):
     reflect_node(
         frontier_file="/tmp/dummy.md",
@@ -106,8 +106,10 @@ def test_sync_and_clean_node(mock_run, mock_list, mock_get_open_prs):
     assert ["git", "switch", "main"] in call_args
     assert ["git", "pull", "--prune", "origin", "main"] in call_args
     assert ["git", "branch", "--merged"] in call_args
+    assert ["git", "worktree", "prune"] in call_args
     assert ["git", "branch", "-d", "node/1-test"] in call_args
     assert ["git", "branch", "-d", "old-branch"] in call_args
+    
     mock_list.assert_called_once_with("backlog")
     mock_get_open_prs.assert_called_once()
 
