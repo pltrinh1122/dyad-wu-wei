@@ -495,5 +495,12 @@
   - `Verified that consumed prompts are permanently removed from the yaml file`
 
 
+## Activity 146
+- **Status**: Completed
+- **Learnings & Context**: Mapped gh issue list and view to backlog list and node view respectively
+- **Feedforward Invariants**:
+  - `[x] GEMINI.md updated`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
