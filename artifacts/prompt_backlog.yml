@@ -1,8 +1,4 @@
 prompts:
-- id: p-1779053869-aecb
-  timestamp: '2026-05-17T21:37:49Z'
-  text: this is a test prompt
-  status: pending
 - id: p-1779054032-d493
   timestamp: '2026-05-17T21:40:32Z'
   text: 'i want to eventually be able to concurrently work on Activity and Probe nodes
