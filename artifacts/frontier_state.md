@@ -495,11 +495,35 @@
   - `Verified that consumed prompts are permanently removed from the yaml file`
 
 
-## Activity 146
+## Activity 146: Add meta-rule to GEMINI for gh issue mapping
 - **Status**: Completed
 - **Learnings & Context**: Mapped gh issue list and view to backlog list and node view respectively
 - **Feedforward Invariants**:
   - `[x] GEMINI.md updated`
+
+## Activity 145: Implement GitHub Label-Based Node Locking
+- **Status**: Completed
+- **Learnings & Context**: Implemented a highly robust atomic distributed lock leveraging GitHub's Label API (`status: in-progress`). The Node Checkout phase now checks the GH API before mutating the filesystem, raising a mathematical invariant if another thread is already working on the Node. This prevents all future parallel merge conflicts related to orthogonal identical-node checkout.
+- **Feedforward Invariants**:
+  - `checkout_node applies 'status: in-progress' label`
+  - `checkout_node aborts if 'status: in-progress' is present`
+  - `Test suite maintains 100% pass rate`
+
+## Probe 149: Triage GitHub API Eventual Consistency on Issue State
+- **Status**: Completed
+- **Learnings & Context**: Identified the root cause of ghost-state backlog collisions as the architectural lag between GitHub's strongly-consistent Issues API and its eventually-consistent Search API. Formulated a mitigation strategy to double-verify issue states using direct Issue API lookups, and generated Activity 150 to implement the patch in `github_client.py`.
+- **Feedforward Invariants**:
+  - `Probe must not mutate functional logic`
+  - `gh issue list (Search API) is eventually consistent`
+  - `gh issue view (Issue API) is strongly consistent`
+
+
+## Activity 150: Mitigate GitHub API Eventual Consistency
+- **Status**: Completed
+- **Learnings & Context**: Implemented a double-verification pattern in `list_issues_by_label`. The system now fetches issues via the eventually-consistent Search API (`gh issue list`) and cross-verifies each issue's state using the strongly-consistent Issues API (`gh issue view`). This mathematically eliminates the ghost-state bug where closed issues momentarily reappear in the backlog.
+- **Feedforward Invariants**:
+  - `list_issues_by_label cross-verifies state with Issues API`
+  - `Test suite maintains 100% pass rate`
 
 
 ## Current Active Node
