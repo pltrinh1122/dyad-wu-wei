@@ -64,6 +64,25 @@ def consume_prompts(prompt_ids_str, pr_url):
         save_data(backlog_file, data)
     print(f"Consumed {consumed_count} prompt(s).")
 
+def process_prompts(prompt_ids_str):
+    backlog_file = get_backlog_file()
+    data = load_data(backlog_file)
+    prompt_ids = [p.strip() for p in prompt_ids_str.split(",")]
+    
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    processed_count = 0
+    for p in data.get("prompts", []):
+        if p["id"] in prompt_ids and p.get("status") == "pending":
+            p["status"] = "consumed"
+            p["consumed_by_pr"] = "manual"
+            p["read_timestamp"] = timestamp
+            processed_count += 1
+            
+    if processed_count > 0:
+        save_data(backlog_file, data)
+    print(f"Processed {processed_count} prompt(s) manually.")
+
+
 def list_prompts(all_prompts=False):
     backlog_file = get_backlog_file()
     data = load_data(backlog_file)
@@ -127,6 +146,10 @@ def main():
     parser_consume.add_argument("prompt_ids", help="Comma-separated list of prompt IDs")
     parser_consume.add_argument("pr_url", help="URL of the PR that consumed the prompts")
 
+    # Process command
+    parser_process = subparsers.add_parser("process", help="Manually process prompts without a PR URL")
+    parser_process.add_argument("prompt_ids", help="Comma-separated list of prompt IDs")
+
     # Delete command
     parser_delete = subparsers.add_parser("delete", help="Delete a prompt from the queue")
     parser_delete.add_argument("prompt_id", help="ID of the prompt to delete")
@@ -142,6 +165,8 @@ def main():
         list_prompts(args.all)
     elif args.command == "consume":
         consume_prompts(args.prompt_ids, args.pr_url)
+    elif args.command == "process":
+        process_prompts(args.prompt_ids)
     elif args.command == "delete":
         delete_prompt(args.prompt_id)
     elif args.command == "clean":

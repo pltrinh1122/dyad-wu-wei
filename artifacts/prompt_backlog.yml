@@ -9,3 +9,9 @@ prompts:
   timestamp: '2026-05-17T23:26:09Z'
   text: node should manage its own internal life-cycle and workflow
   status: pending
+- id: p-1779127563-918d
+  timestamp: '2026-05-18T18:06:03Z'
+  text: manual trigger test prompt
+  status: consumed
+  consumed_by_pr: manual
+  read_timestamp: '2026-05-18T18:06:13Z'

@@ -583,6 +583,12 @@
   - `State invariants have been restored.`
 
 
+## Activity 167: allow manual triggering to process prompts-queue
+- **Status**: Completed
+- **Learnings & Context**: Implemented the process subcommand for bin/prompt to allow manual consumption of prompts.
+- **Feedforward Invariants**:
+  - `[x] Process logic implemented in mgr_prompt.py`
+  - `[x] bin/prompt wrapper updated`
 ## Codify Manager and Dual-Agent Ontology
 - **Status**: Completed
 - **Learnings & Context**: Established the formal mathematical decoupling of Workflow from Agent, codified the concept of a Manager, and asserted the Dual-Agent (Operator/Auditor) paradigm for true system autonomy.
