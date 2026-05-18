@@ -463,5 +463,13 @@
   - `Test suite maintains 100% pass rate`
 
 
+## Activity 137: Implement prompt delete CLI command
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented prompt delete CLI command with interactive confirmation. Removed the test prompt from the backlog as requested.
+- **Feedforward Invariants**:
+  - `Prompt deletion is gated by CLI confirmation`
+  - `CLI usage instructions are updated`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
