@@ -2,18 +2,17 @@ import os
 import subprocess
 import pytest
 
-def test_run_tests_wrapper():
-    """Verifies the bin/run-tests shell script executes successfully."""
-    # Prevent infinite recursion when this test runs as a child process of bin/run-tests
+def test_node_test_subcommand():
+    """Verifies the bin/node test subcommand executes successfully."""
     if os.environ.get("ANTIGRAVITY_RUNNING_TESTS"):
         return
         
-    bin_path = os.path.join(os.path.dirname(__file__), '../bin/run-tests')
+    bin_path = os.path.join(os.path.dirname(__file__), '../bin/node')
     assert os.path.exists(bin_path)
     
     # Run the shell script and verify it executes our pytest suite successfully
     try:
-        res = subprocess.run([bin_path], capture_output=True, text=True, check=True)
+        res = subprocess.run([bin_path, "test"], capture_output=True, text=True, check=True)
     except subprocess.CalledProcessError as e:
         print(f"STDOUT: {e.stdout}")
         print(f"STDERR: {e.stderr}")

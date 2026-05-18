@@ -616,5 +616,12 @@
   - `Manager components must inherently own their workflows.`
 
 
+## 116-run-tests-abstraction
+- **Status**: Completed
+- **Learnings & Context**: Integrated test execution natively into mgr_node to align with domain manager separation of concerns. Fixed a critical bug in testing_harness.py where the exact exit code from pytest was swallowed, replacing capture_output with streaming output.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+
 ## Current Active Node
 **Probe 163: Audit State Inconsistencies**

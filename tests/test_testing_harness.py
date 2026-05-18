@@ -12,9 +12,9 @@ def test_run_tests(mock_run):
     
     # We mock os.environ so we have a predictable base environment
     with patch.dict(os.environ, {"PATH": "/usr/bin"}, clear=True):
-        output = run_tests("tests/test_dummy.py")
+        exit_code = run_tests("tests/test_dummy.py")
         
-    assert "3 passed" in output
+    assert exit_code == 0
     mock_run.assert_called_once()
     
     # Check the subprocess arguments
