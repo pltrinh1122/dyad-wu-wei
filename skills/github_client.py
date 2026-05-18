@@ -77,13 +77,41 @@ def rename_issue_title(issue_id: str, new_title: str) -> None:
         check=True
     )
 
+import yaml
+import os
+
+def load_node_taxonomy() -> dict:
+    """Loads the domain-specific node taxonomy from antigravity.yml."""
+    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "antigravity.yml")
+    if not os.path.exists(config_path):
+        return {
+            "terminal": ["activity", "probe"],
+            "non_terminal": ["path"]
+        }
+    with open(config_path, "r") as f:
+        config = yaml.safe_load(f)
+    return config.get("node_taxonomy", {
+        "terminal": ["activity", "probe"],
+        "non_terminal": ["path"]
+    })
+
 def add_to_backlog(node_type: str, title: str, goal: str) -> str:
-    """Creates a GH issue using the backlog_issue template and applies the 'backlog' label.
+    """Creates a GH issue based on whether the node type maps to a Terminal or Non-Terminal Base Class.
     
     Returns the URL of the created issue.
     """
+    node_type_lower = node_type.lower()
+    taxonomy = load_node_taxonomy()
+    
+    is_terminal = node_type_lower in taxonomy.get("terminal", [])
+    is_non_terminal = node_type_lower in taxonomy.get("non_terminal", [])
+    
+    if not is_terminal and not is_non_terminal:
+        valid_types = taxonomy.get("terminal", []) + taxonomy.get("non_terminal", [])
+        raise ValueError(f"Error: Invalid node type '{node_type}'. Must be one of: {', '.join(valid_types)}")
+        
     formatted_title = f"{node_type.capitalize()}: {title}"
-    if node_type.lower() == "path":
+    if is_non_terminal:
         kwargs = {"goal": goal}
         body = render_template("path_tracker", kwargs)
         

@@ -1,0 +1,6 @@
+node_taxonomy:
+  terminal:
+    - activity
+    - probe
+  non_terminal:
+    - path

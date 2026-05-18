@@ -46,14 +46,15 @@ else:
             exit 1
         fi
         
-        NODE_TYPE=$(echo "$1" | tr '[:upper:]' '[:lower:]')
-        if [[ "$NODE_TYPE" != "probe" && "$NODE_TYPE" != "activity" && "$NODE_TYPE" != "path" ]]; then
-            echo "Error: Invalid node type '$1'."
-            echo "Strict Enum Enforcement: <type> must be either 'probe', 'activity', or 'path'."
-            exit 1
-        fi
-        
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from skills.github_client import add_to_backlog; print(add_to_backlog(sys.argv[1], sys.argv[2], sys.argv[3]))" "$NODE_TYPE" "$2" "$3"
+        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
+import sys
+from skills.github_client import add_to_backlog
+try:
+    print(add_to_backlog(sys.argv[1], sys.argv[2], sys.argv[3]))
+except Exception as e:
+    print(str(e))
+    sys.exit(1)
+" "$1" "$2" "$3"
         ;;
     view)
         if [ "$#" -lt 1 ]; then
