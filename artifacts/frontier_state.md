@@ -596,6 +596,12 @@
   - `All future architectural references must align with the Manager = Agent + Workflow paradigm.`
 
 
+## Activity 171: Node internal lifecycle and workflow management
+- **Status**: Completed
+- **Learnings & Context**: Created orchestrator/node_lifecycle.py with BaseNode and TerminalNode classes, migrating procedural SPAO logic into TerminalNode. Refactored flow_state_manager to act as an adapter layer delegating to TerminalNode instances. This establishes the OOP foundation. Also Resolves #156.
+- **Feedforward Invariants**:
+  - `[x] Node SPAO lifecycle is object-oriented`
+  - `[x] Abstract BaseNode and TerminalNode created`
 ## Abstract Nodes into Terminal and Non-Terminal Base Classes
 - **Status**: Completed
 - **Learnings & Context**: Abstracted Node classification into Terminal and Non-Terminal Base Classes via antigravity.yml configuration, unlocking domain portability.
