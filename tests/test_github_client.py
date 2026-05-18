@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from skills.github_client import create_issue, close_issue, update_issue_body, create_pull_request, list_issues_by_label, add_to_backlog
+from skills.github_client import create_issue, close_issue, update_issue_body, create_pull_request, list_issues_by_label, add_to_backlog, get_issue_labels, add_label, remove_label
 
 @patch('skills.github_client.subprocess.run')
 @patch('skills.github_client.tempfile.NamedTemporaryFile')
@@ -131,3 +131,38 @@ def test_add_to_backlog(mock_render, mock_tempfile, mock_run):
         "invariants": "TBD",
         "depends_on": "TBD"
     })
+
+@patch('skills.github_client.subprocess.run')
+def test_get_issue_labels(mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = '{"labels": [{"name": "status: in-progress"}, {"name": "backlog"}]}'
+    mock_run.return_value = mock_result
+
+    labels = get_issue_labels("145")
+
+    assert labels == ["status: in-progress", "backlog"]
+    mock_run.assert_called_once()
+    args = mock_run.call_args[0][0]
+    assert args == ["gh", "issue", "view", "145", "--json", "labels"]
+
+@patch('skills.github_client.subprocess.run')
+def test_add_label(mock_run):
+    mock_result = MagicMock()
+    mock_run.return_value = mock_result
+
+    add_label("145", "status: in-progress")
+
+    mock_run.assert_called_once()
+    args = mock_run.call_args[0][0]
+    assert args == ["gh", "issue", "edit", "145", "--add-label", "status: in-progress"]
+
+@patch('skills.github_client.subprocess.run')
+def test_remove_label(mock_run):
+    mock_result = MagicMock()
+    mock_run.return_value = mock_result
+
+    remove_label("145", "backlog")
+
+    mock_run.assert_called_once()
+    args = mock_run.call_args[0][0]
+    assert args == ["gh", "issue", "edit", "145", "--remove-label", "backlog"]

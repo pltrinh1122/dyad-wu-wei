@@ -54,6 +54,17 @@ def checkout_node(issue_id: str, branch_name: str) -> None:
     if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
         raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
         
+    labels = github_client.get_issue_labels(issue_id)
+    if "status: in-progress" in labels:
+        raise Exception(f"Node #{issue_id} is already in progress by another thread!")
+        
+    github_client.add_label(issue_id, "status: in-progress")
+    if "backlog" in labels:
+        try:
+            github_client.remove_label(issue_id, "backlog")
+        except Exception:
+            pass # ignore if it fails
+            
     log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at .worktrees/{branch_name}")
     
     worktree_path = os.path.join(".worktrees", branch_name)

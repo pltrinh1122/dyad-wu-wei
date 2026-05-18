@@ -495,5 +495,14 @@
   - `Verified that consumed prompts are permanently removed from the yaml file`
 
 
+## Activity 145: Implement GitHub Label-Based Node Locking
+- **Status**: Completed
+- **Learnings & Context**: Implemented a highly robust atomic distributed lock leveraging GitHub's Label API (`status: in-progress`). The Node Checkout phase now checks the GH API before mutating the filesystem, raising a mathematical invariant if another thread is already working on the Node. This prevents all future parallel merge conflicts related to orthogonal identical-node checkout.
+- **Feedforward Invariants**:
+  - `checkout_node applies 'status: in-progress' label`
+  - `checkout_node aborts if 'status: in-progress' is present`
+  - `Test suite maintains 100% pass rate`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
