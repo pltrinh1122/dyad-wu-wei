@@ -542,6 +542,13 @@
   - `Probe must not mutate functional logic`
   - `Terminal Node represents leaf/execution node`
   - `Non-Terminal Node represents composite/parent node`
+## Node 157: Implement Soft-Locking for Node Checkout
+- **Status**: Completed
+- **Learnings & Context**: Implemented a soft-lock in flow_state_manager to emit a yellow warning instead of raising an exception. Preserved the backlog label to ensure visibility. Captured the architectural decision in WHY-0011.
+- **Feedforward Invariants**:
+  - `[x] checkout_node acts as a soft-lock`
+  - `[x] backlog label is preserved`
+  - `[x] tests pass`
 
 
 ## Current Active Node
