@@ -535,5 +535,14 @@
   - `Test suite maintains 100% pass rate`
 
 
+## Probe 153: Architectural Evaluation of Terminal vs Non-Terminal Node Abstraction
+- **Status**: Completed
+- **Learnings & Context**: Evaluated the benefit of abstracting nodes into Terminal (execution, leaf) and Non-Terminal (composite, path) base classes. This purely graph-theoretic abstraction decouples the Antigravity orchestration logic from the software development domain, allowing generic reuse across arbitrary domains like `agent-travel`. Queued Activity 156 to formally implement this abstraction.
+- **Feedforward Invariants**:
+  - `Probe must not mutate functional logic`
+  - `Terminal Node represents leaf/execution node`
+  - `Non-Terminal Node represents composite/parent node`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
