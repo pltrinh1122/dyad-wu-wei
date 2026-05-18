@@ -503,6 +503,5 @@
   - `checkout_node aborts if 'status: in-progress' is present`
   - `Test suite maintains 100% pass rate`
 
-
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
