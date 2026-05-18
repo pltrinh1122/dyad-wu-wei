@@ -503,5 +503,14 @@
   - `checkout_node aborts if 'status: in-progress' is present`
   - `Test suite maintains 100% pass rate`
 
+## Probe 149: Triage GitHub API Eventual Consistency on Issue State
+- **Status**: Completed
+- **Learnings & Context**: Identified the root cause of ghost-state backlog collisions as the architectural lag between GitHub's strongly-consistent Issues API and its eventually-consistent Search API. Formulated a mitigation strategy to double-verify issue states using direct Issue API lookups, and generated Activity 150 to implement the patch in `github_client.py`.
+- **Feedforward Invariants**:
+  - `Probe must not mutate functional logic`
+  - `gh issue list (Search API) is eventually consistent`
+  - `gh issue view (Issue API) is strongly consistent`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
