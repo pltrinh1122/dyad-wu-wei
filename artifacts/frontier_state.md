@@ -551,5 +551,14 @@
   - `[x] tests pass`
 
 
+## Probe 159: Evaluate node plan-start and plan-finish commands
+- **Status**: Completed
+- **Learnings & Context**: Determined that planning must be a stateful, two-step protocol (`plan-start` and `plan-finish`) to prevent race conditions during prolonged multi-turn drafting sessions. `plan-start` acts as the immediate GH Label lock, while `plan-finish` finalizes the contract. This definitively hardens the SPAO WIP-N=1 invariant against parallel agentic collisions.
+- **Feedforward Invariants**:
+  - `Probe must not mutate functional logic`
+  - `plan-start applies status: in-progress lock immediately`
+  - `plan-finish uploads final contract to Issue body`
+
+
 ## Current Active Node
 **Probe 125: Architectural Evaluation of Hot-Fix Workflow**
