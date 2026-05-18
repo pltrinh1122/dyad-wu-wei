@@ -15,6 +15,17 @@ Bridging the operator and the architecture is the **`bin/`** directory. It is NO
 
 The Agent operates as a **Meta-Orchestrator**, driving a logical, topological frontier node-by-node.
 
+### 1.1 Managers, Workflows, and Agents
+To achieve true autonomy, the environment must be mathematically decoupled from the actor:
+- **Workflow**: A deterministic state machine (e.g., the SPAO Loop, Node Contracts, Path Tracking). It defines the rules, transitions, and constraints of the environment.
+- **Agent**: A non-deterministic reasoning engine (e.g., an LLM). It navigates and executes the workflow.
+- **Manager (Orchestrator)**: The systemic synthesis of `Workflow + Agent`. A Manager binds an Agent to a specific Workflow.
+
+### 1.2 The Dual-Agent Paradigm
+A production-grade Manager cannot rely on a single thread of execution to self-police. True autonomy requires independent, concurrent verification. Therefore, a Manager consists of at least two autonomous agents:
+- **Operator Agent**: Actively executes the functional logic of the Workflow (e.g., writing code, checking out branches).
+- **Auditor Agent**: An independent, concurrent LLM thread responsible for continuous background verification, invariant checking, and state consistency (e.g., the Audit Daemon).
+
 ## 2. Session Continuity Invariants
 Because Agent sessions are ephemeral, the repository must be physically self-describing.
 - **`GEMINI.md` (System Prompt Hook)**: Mandated at the repository root. This ensures the Antigravity engine automatically injects the Meta-Orchestrator persona.

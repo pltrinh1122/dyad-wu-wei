@@ -583,5 +583,12 @@
   - `State invariants have been restored.`
 
 
+## Codify Manager and Dual-Agent Ontology
+- **Status**: Completed
+- **Learnings & Context**: Established the formal mathematical decoupling of Workflow from Agent, codified the concept of a Manager, and asserted the Dual-Agent (Operator/Auditor) paradigm for true system autonomy.
+- **Feedforward Invariants**:
+  - `All future architectural references must align with the Manager = Agent + Workflow paradigm.`
+
+
 ## Current Active Node
 **Probe 163: Audit State Inconsistencies**
