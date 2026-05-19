@@ -72,6 +72,7 @@ To maintain high cognitive alignment and guarantee repeatable repository transit
 * **Path**: A themed, directed subgraph or linear track within the **Meta-Graph** grouped to achieve a macro-objective.
 * **Meta-Tracker (Container/Vehicle)**: The long-lived GitHub Issue (e.g., Issue #10) representing a themed Path.
 * **Meta-Index (Payload/Adjacency Ledger)**: The checklist data structure (`- [x] Node ...`) contained inside the Meta-Tracker, indexing the status of the Path's vertices.
+* **NBA (Next-Best-Action)**: The navigational primitive that evaluates the current frontier state and Path Meta-Index (DAG) to recommend the most logical next node for execution. Ensures the Agent remains on the topological roadmap.
 * **Orphaned Node Fallacy**: The architectural breakdown caused when a topological node (Activity/Probe) exists in the backlog without being mathematically bound to a parent Path. **Invariant:** All terminal nodes MUST belong to a Path.
 * **Dual-Probe Initialization Rule**: The invariant that every new Path must be initialized with at least two Probes before functional execution: (1) A Refinement Probe to clarify intent, goal, and the problem to be solved, and (2) A Scoping Probe to map out the exact functional Activities required.
 
