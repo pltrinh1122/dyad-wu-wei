@@ -739,5 +739,14 @@
   - `Path 202 Meta-Index contains 203, 204, 206, 207, 208`
 
 
+## Activity 207: Enforce --path Constraint on bin/backlog new
+- **Status**: Completed
+- **Learnings & Context**: Implemented argparse in bin/backlog and refactored add_to_backlog to mathematically link terminal nodes to their parent Path's Meta-Index. Auto-injection logic verified with unit tests.
+- **Feedforward Invariants**:
+  - `bin/backlog rejects orphaned nodes`
+  - `add_to_backlog updates parent body automatically`
+  - `tests pass`
+
+
 ## Current Active Node
 **Activity 191: Codify Path Invariant Enforcement**
