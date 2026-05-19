@@ -67,8 +67,9 @@ def process_prompts(prompt_ids_str, resolution_context="manual"):
     print(f"Processed {processed_count} prompt(s) with context: {resolution_context}")
 
 
-def list_prompts(all_prompts=False):
-    backlog_file = get_backlog_file()
+def list_prompts(all_prompts=False, backlog_file=None):
+    if backlog_file is None:
+        backlog_file = get_backlog_file()
     data = load_data(backlog_file)
     prompts = data.get("prompts", [])
     

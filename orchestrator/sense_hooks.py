@@ -28,10 +28,10 @@ class HookManager:
 
     def execute_prompt_queue_hook(self, config):
         """Surfaces pending operator prompts from a configurable file path."""
-        # Placeholder for Activity B
         location = config.get("location", "artifacts/prompt_backlog.yml")
-        print(f"\n📋 Prompt Queue Hook (location: {location}):")
-        print("  [Pending Implementation in Activity B]")
+        from orchestrator.mgr_prompt import list_prompts
+        print()
+        list_prompts(all_prompts=False, backlog_file=location)
 
     def execute_next_best_action_hook(self, config):
         """Dynamically evaluates and surfaces the next best action."""
