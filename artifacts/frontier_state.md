@@ -746,5 +746,13 @@
   - `Activities 227, 228, 229 generated`
 
 
+## Activity 223: Enforce Contract Sections in Issue Templates
+- **Status**: Completed
+- **Learnings & Context**: Replaced generic Invariants section with strict Pre-Requisite and Post-Requisite sections in both backlog_issue.md and node_contract.md templates. Updated github_client.py to inject these dependencies correctly during new node generation.
+- **Feedforward Invariants**:
+  - `Templates updated`
+  - `tests pass`
+
+
 ## Current Active Node
 None

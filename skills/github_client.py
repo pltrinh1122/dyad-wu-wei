@@ -137,7 +137,8 @@ def add_to_backlog(node_type: str, title: str, goal: str, path_id: str = None) -
         kwargs = {
             "goal": goal,
             "changes": "TBD",
-            "invariants": "TBD",
+            "pre_requisites": "TBD",
+            "post_requisites": "TBD",
             "depends_on": "TBD"
         }
         body = render_template("backlog_issue", kwargs)
