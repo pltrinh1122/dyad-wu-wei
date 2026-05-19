@@ -121,9 +121,19 @@ def test_list_issues_by_label_empty(mock_run):
 @patch('skills.github_client.tempfile.NamedTemporaryFile')
 @patch('skills.github_client.render_template')
 def test_add_to_backlog(mock_render, mock_tempfile, mock_run):
-    mock_result = MagicMock()
-    mock_result.stdout = "https://github.com/pltrinh1122/agent-antigravity/issues/31"
-    mock_run.return_value = mock_result
+    mock_result_create = MagicMock()
+    mock_result_create.stdout = "https://github.com/pltrinh1122/agent-antigravity/issues/31"
+    
+    mock_result_rename = MagicMock()
+    mock_result_rename.stdout = ""
+
+    mock_result_view = MagicMock()
+    mock_result_view.stdout = '{"body": "Path body\\n## Meta-Index\\n- [x] Node 30"}'
+    
+    mock_result_edit = MagicMock()
+    mock_result_edit.stdout = ""
+
+    mock_run.side_effect = [mock_result_create, mock_result_rename, mock_result_view, mock_result_edit]
 
     mock_file = MagicMock()
     mock_file.name = "/tmp/fake_backlog.md"
@@ -131,12 +141,12 @@ def test_add_to_backlog(mock_render, mock_tempfile, mock_run):
     
     mock_render.return_value = "Rendered Template Body"
 
-    url = add_to_backlog("probe", "Future Work Item", "Description of work")
+    url = add_to_backlog("probe", "Future Work Item", "Description of work", path_id="10")
 
     assert url == "https://github.com/pltrinh1122/agent-antigravity/issues/31"
-    mock_file.write.assert_called_once_with("Rendered Template Body")
+    mock_file.write.assert_any_call("Rendered Template Body")
     
-    assert mock_run.call_count == 2
+    assert mock_run.call_count == 4
     
     # Check first call (create)
     create_args = mock_run.call_args_list[0][0][0]
@@ -146,12 +156,25 @@ def test_add_to_backlog(mock_render, mock_tempfile, mock_run):
     # Check second call (edit/rename)
     edit_args = mock_run.call_args_list[1][0][0]
     assert edit_args == ["gh", "issue", "edit", "31", "--title", "Probe 31: Future Work Item"]
+    
+    # Check third call (view path)
+    view_args = mock_run.call_args_list[2][0][0]
+    assert view_args == ["gh", "issue", "view", "10", "--json", "body"]
+    
+    # Check fourth call (edit path)
+    update_args = mock_run.call_args_list[3][0][0]
+    assert update_args == ["gh", "issue", "edit", "10", "--body-file", mock_file.name]
+    
     mock_render.assert_called_once_with("backlog_issue", {
         "goal": "Description of work",
         "changes": "TBD",
         "invariants": "TBD",
         "depends_on": "TBD"
     })
+
+def test_add_to_backlog_missing_path():
+    with pytest.raises(ValueError, match="Terminal nodes \\(Activities and Probes\\) must belong to a parent Path"):
+        add_to_backlog("probe", "Title", "Goal")
 
 @patch('skills.github_client.subprocess.run')
 def test_get_issue_labels(mock_run):

@@ -102,7 +102,7 @@ def load_node_taxonomy() -> dict:
         "non_terminal": ["path"]
     })
 
-def add_to_backlog(node_type: str, title: str, goal: str) -> str:
+def add_to_backlog(node_type: str, title: str, goal: str, path_id: str = None) -> str:
     """Creates a GH issue based on whether the node type maps to a Terminal or Non-Terminal Base Class.
     
     Returns the URL of the created issue.
@@ -116,6 +116,9 @@ def add_to_backlog(node_type: str, title: str, goal: str) -> str:
     if not is_terminal and not is_non_terminal:
         valid_types = taxonomy.get("terminal", []) + taxonomy.get("non_terminal", [])
         raise ValueError(f"Error: Invalid node type '{node_type}'. Must be one of: {', '.join(valid_types)}")
+        
+    if is_terminal and not path_id:
+        raise ValueError("Terminal nodes (Activities and Probes) must belong to a parent Path. Please provide a path_id.")
         
     formatted_title = f"{node_type.capitalize()}: {title}"
     if is_non_terminal:
@@ -153,6 +156,20 @@ def add_to_backlog(node_type: str, title: str, goal: str) -> str:
     issue_id = issue_url.split("/")[-1]
     new_title = f"{node_type.capitalize()} {issue_id}: {title}"
     rename_issue_title(issue_id, new_title)
+    
+    if is_terminal and path_id:
+        view_res = subprocess.run(["gh", "issue", "view", str(path_id), "--json", "body"], capture_output=True, text=True, check=True)
+        import json
+        path_data = json.loads(view_res.stdout.strip() or "{}")
+        path_body = path_data.get("body", "")
+        
+        checkbox_line = f"- [ ] Node {issue_id}: {new_title}"
+        if "## Meta-Index" in path_body:
+            path_body += f"\n{checkbox_line}"
+        else:
+            path_body += f"\n\n## Meta-Index\n{checkbox_line}"
+            
+        update_issue_body(path_id, path_body)
     
     return issue_url
 
