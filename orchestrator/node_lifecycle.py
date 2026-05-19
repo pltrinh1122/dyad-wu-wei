@@ -2,6 +2,7 @@ import os
 import re
 import json
 import subprocess
+import yaml
 from skills import github_client
 from skills import frontier_editor
 from orchestrator import mgr_prompt
@@ -9,6 +10,24 @@ from orchestrator import mgr_prompt
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
     return os.environ.get("SPAO_VERBOSE") in ("1", "true", "TRUE") or os.environ.get("SPOA_VERBOSE") in ("1", "true", "TRUE")
+
+def load_node_status_config() -> dict:
+    """Loads the node status mapping from node.yml."""
+    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "node.yml")
+    if not os.path.exists(config_path):
+        return {}
+    with open(config_path, "r") as f:
+        config = yaml.safe_load(f)
+    return config.get("node_attributes", {}).get("status", {})
+
+def load_node_classification_config() -> dict:
+    """Loads the node classification mapping from node.yml."""
+    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "node.yml")
+    if not os.path.exists(config_path):
+        return {}
+    with open(config_path, "r") as f:
+        config = yaml.safe_load(f)
+    return config.get("node_attributes", {}).get("classification", {})
 
 def log_stage_advancement(stage: str, status: str, details: str = "") -> None:
     """Prints a beautiful H1 banner representing SPAO loop stage advancement when verbose is active."""
