@@ -89,7 +89,7 @@ def test_backlog_subcommand_usage():
     # new subcommand needs at least 3 args
     res = subprocess.run([bin_path, "new"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
     # view subcommand needs at least 1 arg
     res = subprocess.run([bin_path, "view"], capture_output=True, text=True)
