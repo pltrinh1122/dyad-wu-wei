@@ -77,6 +77,27 @@ def list_issues_by_label(label: str) -> list[dict]:
             
     return valid_issues
 
+def get_open_issues() -> list[dict]:
+    """Returns a list of open issues in the repository.
+    
+    Each item is a dict with 'number', 'title', and 'body' keys.
+    """
+    result = subprocess.run(
+        ["gh", "issue", "list", "--state", "open", "--limit", "100", "--json", "number,title,body"],
+        capture_output=True, text=True, check=True
+    )
+    import json
+    return json.loads(result.stdout.strip() or "[]")
+
+def get_issue_details(issue_id: str) -> dict:
+    """Returns details for a specific issue."""
+    result = subprocess.run(
+        ["gh", "issue", "view", str(issue_id), "--json", "number,title,body"],
+        capture_output=True, text=True, check=True
+    )
+    import json
+    return json.loads(result.stdout.strip() or "{}")
+
 def rename_issue_title(issue_id: str, new_title: str) -> None:
     """Renames an existing GH issue's title."""
     subprocess.run(

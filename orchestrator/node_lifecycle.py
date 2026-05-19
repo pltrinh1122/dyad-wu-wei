@@ -90,11 +90,47 @@ class TerminalNode(BaseNode):
     
     def __init__(self, issue_id: str):
         super().__init__(issue_id)
+    def _validate_orthogonal_scope(self):
+        """Validates that the current node does not have an identical footprint to another open node."""
+        current_node = github_client.get_issue_details(self.issue_id)
+        current_title = current_node.get("title", "")
+        current_body = current_node.get("body", "")
         
+        def extract_goal(body: str) -> str:
+            match = re.search(r"## Goal\n(.*?)(?=\n## |\Z)", body, re.DOTALL | re.IGNORECASE)
+            return match.group(1).strip().lower() if match else ""
+            
+        def extract_core_title(title: str) -> str:
+            clean = re.sub(r"^(Node \d+: )?(Activity|Probe|Path)( \d+)?: ", "", title, flags=re.IGNORECASE)
+            return clean.strip().lower()
+
+        current_goal = extract_goal(current_body)
+        current_core_title = extract_core_title(current_title)
+        
+        if not current_core_title and not current_goal:
+            return
+            
+        open_issues = github_client.get_open_issues()
+        
+        for issue in open_issues:
+            if str(issue["number"]) == str(self.issue_id):
+                continue
+                
+            other_core_title = extract_core_title(issue.get("title", ""))
+            other_goal = extract_goal(issue.get("body", ""))
+            
+            if current_core_title and current_core_title == other_core_title:
+                raise Exception(f"Orthogonal Scope Violation: Node {self.issue_id} has an identical title footprint to Node {issue['number']}")
+                
+            if current_goal and current_goal == other_goal:
+                raise Exception(f"Orthogonal Scope Violation: Node {self.issue_id} has an identical goal footprint to Node {issue['number']}")
+
     def plan_start(self) -> None:
         in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
         if in_progress_label in self.gh_labels:
             raise Exception(f"Node #{self.issue_id} is already in progress by another thread!")
+            
+        self._validate_orthogonal_scope()
             
         self.set_status("in_progress")
         log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} for multi-phase planning.")

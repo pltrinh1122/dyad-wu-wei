@@ -255,3 +255,24 @@ def test_check_off_meta_index_not_found(mock_update, mock_run):
 
     mock_run.assert_called_once()
     mock_update.assert_not_called()
+
+@patch('skills.github_client.subprocess.run')
+def test_get_open_issues(mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = '[{"number": 1, "title": "A", "body": "B"}]'
+    mock_run.return_value = mock_result
+    
+    from skills.github_client import get_open_issues
+    issues = get_open_issues()
+    assert len(issues) == 1
+    assert issues[0]["number"] == 1
+    
+@patch('skills.github_client.subprocess.run')
+def test_get_issue_details(mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = '{"number": 1, "title": "A", "body": "B"}'
+    mock_run.return_value = mock_result
+    
+    from skills.github_client import get_issue_details
+    details = get_issue_details("1")
+    assert details["title"] == "A"
