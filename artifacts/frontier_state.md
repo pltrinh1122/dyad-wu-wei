@@ -674,5 +674,13 @@
   - `[x] Hook consumes NBA skill output`
 
 
+## Probe 193: Architectural Evaluation of Normalized Status Labels
+- **Status**: Completed
+- **Learnings & Context**: Investigated and codified the node.yml schema and set_status abstraction in WHY-0013.
+- **Feedforward Invariants**:
+  - `WHY-0013 exists`
+  - `Schema maps logical to physical labels`
+
+
 ## Current Active Node
 **Probe 163: Audit State Inconsistencies**
