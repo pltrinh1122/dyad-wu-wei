@@ -36,6 +36,7 @@ class HookManager:
     def execute_next_best_action_hook(self, config):
         """Dynamically evaluates and surfaces the next best action using NBAManager orchestrator."""
         from orchestrator.mgr_nba import NBAManager
+        from skills import issue_factory
         repository = config.get("repository", "pltrinh1122/agent-antigravity")
         frontier_file = config.get("frontier_file", "artifacts/frontier_state.md")
 
@@ -47,20 +48,29 @@ class HookManager:
             return
 
         mode_label = "📍 Path Continuation" if result["type"] == "path_continuation" else "🔀 Path Switch Recommended"
-        print(f"\n🎯 Next-Best-Action ({mode_label}):")
         
+        path_info = ""
         if result["type"] == "path_continuation":
-            print(f"  Continuing Path {result['path_id']}: {result['path_title']}")
+            path_info = f"  Continuing Path {result['path_id']}: {result['path_title']}"
         elif result["type"] == "path_switching":
             if not result["recommendations"]:
-                print("  No pending work in current Path. Recommending next best from global backlog.")
+                path_info = "  No pending work in current Path. Recommending next best from global backlog."
             else:
-                print("  Path exhausted or not detected. Recommending next best from global backlog:")
+                path_info = "  Path exhausted or not detected. Recommending next best from global backlog:"
 
+        recommendations_list = ""
         if result["recommendations"]:
+            lines = []
             for item in result["recommendations"]:
-                # gh_graph_skill returns 'id' and 'title', github_client returns 'number' and 'title'
                 issue_id = item.get("id") or item.get("number")
-                print(f"  → #{issue_id}: {item['title']}")
+                lines.append(f"  → #{issue_id}: {item['title']}")
+            recommendations_list = "\n".join(lines)
         else:
-            print("  (No recommendations found.)")
+            recommendations_list = "  (No recommendations found.)"
+
+        banner = issue_factory.render_template("nba_banner", {
+            "mode_label": mode_label,
+            "path_info": path_info,
+            "recommendations_list": recommendations_list
+        })
+        print("\n" + banner.strip())
