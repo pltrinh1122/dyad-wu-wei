@@ -859,5 +859,13 @@
   - `[x] tests updated and passed.`
 
 
+## Verify NBA Orchestrator Accuracy
+- **Status**: Completed
+- **Learnings & Context**: Successfully verified that the new NBAManager correctly identifies Probe nodes in the backlog, resolving the failures observed in the legacy evaluator.
+- **Feedforward Invariants**:
+  - `[x] NBAManager verified`
+  - `[x] Legacy issues 217-220 closed as resolved.`
+
+
 ## Current Active Node
 **Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator**
