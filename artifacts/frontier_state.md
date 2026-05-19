@@ -737,7 +737,7 @@
   - `Activities 223, 224, 225 generated`
 
 ## Current Active Path
-**Refactor and Promote NBA Evaluator (#242)**
+**256**
 
 ## Probe 221: Holistic Evaluation of Path Modifications
 - **Status**: Completed
@@ -865,6 +865,13 @@
 - **Feedforward Invariants**:
   - `[x] NBAManager verified`
   - `[x] Legacy issues 217-220 closed as resolved.`
+
+
+## Probe 257: Refine NBA Presentation Requirements
+- **Status**: Completed
+- **Learnings & Context**: Reordered NBA banner to prioritize Path information with bold styling. Added robust newline handling to Meta-Index parser.
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 
 ## Current Active Node

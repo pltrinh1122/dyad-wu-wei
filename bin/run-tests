@@ -1,0 +1,4 @@
+#!/bin/bash
+# Canonical test runner entrypoint
+export PYTHONPATH=.
+/home/pt/actions-runner/venv/bin/pytest "$@"
