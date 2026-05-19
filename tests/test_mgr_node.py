@@ -82,6 +82,7 @@ def test_reflect_node(mock_evaluate, mock_run, mock_fe, mock_gh):
         "message": ""
     }
     mock_fe.read_active_path.return_value = "Path 181: Configurable Sense Hooks"
+    mock_fe.extract_path_id.return_value = "181"
     reflect_node(
         frontier_file="/tmp/dummy.md",
         issue_id="100",

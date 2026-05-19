@@ -178,10 +178,11 @@ class TerminalNode(BaseNode):
         # Automate Meta-Index Checkbox Synchronization
         active_path_str = frontier_editor.read_active_path(frontier_file)
         if active_path_str:
-            path_number_match = re.search(r"Path (\d+):", active_path_str, re.IGNORECASE)
-            if path_number_match:
-                path_issue_id = path_number_match.group(1)
+            path_issue_id = frontier_editor.extract_path_id(active_path_str)
+            if path_issue_id:
                 github_client.check_off_meta_index(path_issue_id, self.issue_id)
+            else:
+                print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
         
         # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
         from skills import nba_evaluator
@@ -190,9 +191,8 @@ class TerminalNode(BaseNode):
         
         if nba_result["mode"] == "path_switching" and nba_result["active_path"] is not None:
             active_path_str = nba_result["active_path"]
-            path_number_match = re.search(r"Path (\d+):", active_path_str, re.IGNORECASE)
-            if path_number_match:
-                path_issue_id = path_number_match.group(1)
+            path_issue_id = frontier_editor.extract_path_id(active_path_str)
+            if path_issue_id:
                 github_client.close_issue(path_issue_id, "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
                 log_stage_advancement("reflect", "Path Invariant Enforced", f"Automatically closed parent {active_path_str}")
                 frontier_editor.set_active_path(frontier_file, "None")
