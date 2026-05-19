@@ -37,13 +37,15 @@ def test_get_backlog_items_gh_failure(mock_run):
     assert result == []
 
 
+@patch('subprocess.run')
 @patch('skills.nba_evaluator.get_active_path', return_value="Path 181: Configurable Sense Hooks")
 @patch('skills.nba_evaluator.get_backlog_items')
-def test_evaluate_path_continuation(mock_backlog, mock_path):
+def test_evaluate_path_continuation(mock_backlog, mock_path, mock_run):
     mock_backlog.return_value = [
         {"number": 187, "title": "Activity 187: Prompt Queue Hook", "url": "http"},
         {"number": 189, "title": "Activity 189: NBA Skill", "url": "http"},
     ]
+    mock_run.return_value = MagicMock(returncode=0, stdout=json.dumps({"body": "- [ ] Node 187: Activity 187\n- [ ] Node 189: Activity 189"}))
     result = evaluate(repository="owner/repo", frontier_file="/fake/frontier.md")
     assert result["mode"] == "path_continuation"
     assert result["active_path"] == "Path 181: Configurable Sense Hooks"
@@ -62,13 +64,14 @@ def test_evaluate_path_switching(mock_backlog, mock_path):
     assert result["recommended"][0]["number"] == 118
 
 
+@patch('subprocess.run')
 @patch('skills.nba_evaluator.get_active_path', return_value="Path 181: Configurable Sense Hooks")
 @patch('skills.nba_evaluator.get_backlog_items')
-def test_evaluate_falls_back_when_no_related_activities(mock_backlog, mock_path):
-    # Only items that aren't Activities numerically after 181
+def test_evaluate_falls_back_when_no_related_activities(mock_backlog, mock_path, mock_run):
     mock_backlog.return_value = [
         {"number": 118, "title": "Probe 118: Parallel Processing", "url": "http"},
     ]
+    mock_run.return_value = MagicMock(returncode=0, stdout=json.dumps({"body": "- [ ] Node 187: Activity 187"}))
     result = evaluate(repository="owner/repo", frontier_file="/fake/frontier.md")
     # No related activities found -> falls back to path_switching
     assert result["mode"] == "path_switching"

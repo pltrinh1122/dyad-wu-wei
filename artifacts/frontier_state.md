@@ -763,5 +763,14 @@
   - `tests pass`
 
 
+## Activity 228: Refactor nba_evaluator to parse Meta-Index DAG
+- **Status**: Completed
+- **Learnings & Context**: Replaced numeric guesswork in nba_evaluator with a native DAG parser that pulls the parent Path's GH issue body, parses all nodes and their dependencies, and mathematically surfaces the unblocked true Next-Best-Actions.
+- **Feedforward Invariants**:
+  - `DAG parsing implemented`
+  - `numeric guessing removed`
+  - `tests pass`
+
+
 ## Current Active Node
 None
