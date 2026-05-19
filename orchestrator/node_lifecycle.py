@@ -67,6 +67,20 @@ class BaseNode:
     def close(self, comment: str):
         github_client.close_issue(self.issue_id, comment)
 
+    def set_status(self, status_key: str) -> None:
+        """Translates a logical status key into a physical label using node.yml."""
+        status_config = load_node_status_config()
+        if status_key not in status_config:
+            raise ValueError(f"Status key '{status_key}' is not defined in node.yml")
+        self.add_gh_label(status_config[status_key])
+
+    def set_classification(self, classification_key: str) -> None:
+        """Translates a logical classification key into a physical label using node.yml."""
+        class_config = load_node_classification_config()
+        if classification_key not in class_config:
+            raise ValueError(f"Classification key '{classification_key}' is not defined in node.yml")
+        self.add_gh_label(class_config[classification_key])
+
 class NonTerminalNode(BaseNode):
     """Represents a composite or path node."""
     pass
