@@ -692,5 +692,13 @@ None
   - `[x] Current Active Path and Current Active Node are decoupled in frontier_state.md\n[x] TerminalNode.reflect automatically closes Paths with 0 pending children`
 
 
+## Activity 194: Implement node.yml Configuration Schema
+- **Status**: Completed
+- **Learnings & Context**: Created node.yml schema mapped to industry standard statuses and implemented parsing logic in node_lifecycle.py
+- **Feedforward Invariants**:
+  - `node.yml exists`
+  - `load_node_status_config implemented`
+
+
 ## Current Active Node
 **Activity 191: Codify Path Invariant Enforcement**
