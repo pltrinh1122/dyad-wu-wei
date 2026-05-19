@@ -322,7 +322,6 @@
   - `[x] node plan updated`
   - `[x] tests pass`
 
-
 ## Node 50: Node 50: Probe - Evaluate Node Numbering Scheme
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Cross-reference options based on industry best practices.
@@ -337,7 +336,6 @@
   - `[x] Drop node_id from bin/node`
   - `[x] Drop node_id from bin/meta`
   - `[x] Update HOW and GLOSSARY`
-
 
 ## Node 81: Feature: Refactor backlog-list output format
 - **Status**: Completed
@@ -432,20 +430,17 @@
 - **Feedforward Invariants**:
   - `Hot-fixes must strictly execute only on the main branch to prevent cross-branch contamination`
 
-
 ## Activity 124: Add prompt-processing hook into GEMINI.md SPAO instructions
 - **Status**: Completed
 - **Learnings & Context**: Explicitly updated GEMINI.md to require agents to run ./bin/prompt list to check and process the queue, and then to consume them in reflect.
 - **Feedforward Invariants**:
   - `[x] GEMINI.md explicitly requires prompt queue processing`
 
-
 ## Activity 122: Implement file-locking mechanism for shared artifacts
 - **Status**: Completed
 - **Learnings & Context**: Implemented a reentrant cross-platform advisory file-locking mechanism in skills/file_locker.py using fcntl and threading.local. Wrapped all reads and writes to shared artifacts (frontier_state, prompt_backlog, hotfix_ledger) to ensure orthogonal thread safety.
 - **Feedforward Invariants**:
   - `[x] file_locker implemented and integrated into shared artifacts`
-
 
 ## Activity 121: Implement git worktree management for orthogonal parallelism
 - **Status**: Completed
@@ -454,14 +449,12 @@
   - `[x] bin/node supports checkout and provisions worktrees`
   - `[x] prompt queue consumption bug fixed with a 2-commit strategy`
 
-
 ## Activity 134: Implement universal --help and -h support for all bin/ CLI adapters
 - **Status**: Completed
 - **Learnings & Context**: Successfully implemented universal --help and -h parsing blocks for all 7 bin/ scripts, standardizing CLI help output and fulfilling the prompt requests.
 - **Feedforward Invariants**:
   - `All bin/ scripts gracefully handle --help and exit 0`
   - `Test suite maintains 100% pass rate`
-
 
 ## Activity 136: Execute Architectural Migration of sync-clean to bin/node sync
 - **Status**: Completed
@@ -478,13 +471,11 @@
   - `Prompt deletion is gated by CLI confirmation`
   - `CLI usage instructions are updated`
 
-
 ## Activity 140: Implement Architectural TTY Hard-Gate
 - **Status**: Completed
 - **Learnings & Context**: Successfully implemented the TTY Isolation Principle via skills/tty_gate.py. Tested piped bypass prevention successfully. It intercepts any automated inputs and enforces true HITL.
 - **Feedforward Invariants**:
   - `TTY Isolation Principle mathematically prevents pipe spoofing`
-
 
 ## Activity 143: Implement prompt clean CLI command
 - **Status**: Completed
@@ -493,7 +484,6 @@
   - `Added clean_prompts function in mgr_prompt.py`
   - `Registered clean subcommand in argparse and bin/prompt adapter`
   - `Verified that consumed prompts are permanently removed from the yaml file`
-
 
 ## Activity 146: Add meta-rule to GEMINI for gh issue mapping
 - **Status**: Completed
@@ -517,14 +507,12 @@
   - `gh issue list (Search API) is eventually consistent`
   - `gh issue view (Issue API) is strongly consistent`
 
-
 ## Activity 150: Mitigate GitHub API Eventual Consistency
 - **Status**: Completed
 - **Learnings & Context**: Implemented a double-verification pattern in `list_issues_by_label`. The system now fetches issues via the eventually-consistent Search API (`gh issue list`) and cross-verifies each issue's state using the strongly-consistent Issues API (`gh issue view`). This mathematically eliminates the ghost-state bug where closed issues momentarily reappear in the backlog.
 - **Feedforward Invariants**:
   - `list_issues_by_label cross-verifies state with Issues API`
   - `Test suite maintains 100% pass rate`
-
 
 ## Activity 154: Add invariant check for closed PR before branch cleanup
 - **Status**: Completed
@@ -533,7 +521,6 @@
   - `sync_and_clean_node queries GitHub API for open PRs`
   - `Raises Exception if PRs are open`
   - `Test suite maintains 100% pass rate`
-
 
 ## Probe 153: Architectural Evaluation of Terminal vs Non-Terminal Node Abstraction
 - **Status**: Completed
@@ -550,7 +537,6 @@
   - `[x] backlog label is preserved`
   - `[x] tests pass`
 
-
 ## Probe 159: Evaluate node plan-start and plan-finish commands
 - **Status**: Completed
 - **Learnings & Context**: Determined that planning must be a stateful, two-step protocol (`plan-start` and `plan-finish`) to prevent race conditions during prolonged multi-turn drafting sessions. `plan-start` acts as the immediate GH Label lock, while `plan-finish` finalizes the contract. This definitively hardens the SPAO WIP-N=1 invariant against parallel agentic collisions.
@@ -558,7 +544,6 @@
   - `Probe must not mutate functional logic`
   - `plan-start applies status: in-progress lock immediately`
   - `plan-finish uploads final contract to Issue body`
-
 
 ## Node 163: Probe 163: Audit State Inconsistencies
 - **Status**: Completed
@@ -575,13 +560,11 @@
   - `plan-start acquires status: in-progress immediately`
   - `checkout applies lock idempotently without fatal exception`
 
-
 ## Audit State Inconsistencies
 - **Status**: Completed
 - **Learnings & Context**: Successfully audited and corrected stale frontier_state and Epic Meta-Index missing items.
 - **Feedforward Invariants**:
   - `State invariants have been restored.`
-
 
 ## Activity 167: allow manual triggering to process prompts-queue
 - **Status**: Completed
@@ -595,7 +578,6 @@
 - **Feedforward Invariants**:
   - `All future architectural references must align with the Manager = Agent + Workflow paradigm.`
 
-
 ## Activity 171: Node internal lifecycle and workflow management
 - **Status**: Completed
 - **Learnings & Context**: Created orchestrator/node_lifecycle.py with BaseNode and TerminalNode classes, migrating procedural SPAO logic into TerminalNode. Refactored flow_state_manager to act as an adapter layer delegating to TerminalNode instances. This establishes the OOP foundation. Also Resolves #156.
@@ -608,13 +590,11 @@
 - **Feedforward Invariants**:
   - `All domain-specific Node Taxonomy mappings must be defined in antigravity.yml at the repository root.`
 
-
 ## Execute Architectural Migration of mgr-* Orchestrators
 - **Status**: Completed
 - **Learnings & Context**: Migrated flow_state_manager.py natively into orchestrator/mgr_node.py to formally establish the Manager pattern. Refactored bin/node as a proxy wrapper and added argparse.
 - **Feedforward Invariants**:
   - `Manager components must inherently own their workflows.`
-
 
 ## 116-run-tests-abstraction
 - **Status**: Completed
@@ -628,7 +608,6 @@
   - `[x] Prompt lifecycle decoupled from PRs`
   - `[x] Activity 175 created for Node Clean requirements`
 
-
 ## Activity 175: Implement Node Clean Abstraction
 - **Status**: Completed
 - **Learnings & Context**: Implemented node clean abstraction to parse merged PRs from GitHub and properly dismantle local git state. Switched to forced branch deletion to handle squash merges.
@@ -636,13 +615,11 @@
   - `[x] GitHub API queried for merged PRs`
   - `[x] Local branch deletion forced for squash merges`
 
-
 ## Activity 32: Audit Daemon
 - **Status**: Completed
 - **Learnings & Context**: Implemented a modular Python-based Rules Engine (skills/audit_daemon.py) triggered by a systemd --user timer. Configured via audit_config.yml to support dynamic rules with distinct alert levels (FAILURE vs NOTIFICATION). Added robust mock-based TDD tests.
 - **Feedforward Invariants**:
   - `[ ]` None
-
 
 ## Probe 179: Architectural Evaluation of Configurable Operator-Gates
 - **Status**: Completed
@@ -656,14 +633,12 @@
   - `[x] HookManager dynamically parses configuration`
   - `[x] Sense Phase abstracted into modular execution pattern`
 
-
 ## Activity 187: Implement Prompt Queue Hook
 - **Status**: Completed
 - **Learnings & Context**: Implemented the execute_prompt_queue_hook function in sense_hooks.py to consume the configurable backlog_file parameter. Updated mgr_prompt.py to support non-default backlog file resolution, enabling dynamic configuration in the HookManager.
 - **Feedforward Invariants**:
   - `[x] Prompt Queue hooked into Sense cycle`
   - `[x] mgr_prompt primitives support custom paths`
-
 
 ## Activity 189: Implement Next-Best-Action Skill and Hook
 - **Status**: Completed
@@ -673,7 +648,6 @@
   - `[x] Two-tier logic: path continuation and path switching`
   - `[x] Hook consumes NBA skill output`
 
-
 ## Probe 193: Architectural Evaluation of Normalized Status Labels
 - **Status**: Completed
 - **Learnings & Context**: Investigated and codified the node.yml schema and set_status abstraction in WHY-0013.
@@ -681,16 +655,11 @@
   - `WHY-0013 exists`
   - `Schema maps logical to physical labels`
 
-
-## Current Active Path
-None
-
 ## Activity 191: Codify Path Invariant Enforcement
 - **Status**: Completed
 - **Learnings & Context**: Decoupled Active Path and Active Node in frontier_state.md. Hooked NBA skill into TerminalNode.reflect to automatically assert path closure invariant.
 - **Feedforward Invariants**:
   - `[x] Current Active Path and Current Active Node are decoupled in frontier_state.md\n[x] TerminalNode.reflect automatically closes Paths with 0 pending children`
-
 
 ## Activity 194: Implement node.yml Configuration Schema
 - **Status**: Completed
@@ -698,7 +667,6 @@ None
 - **Feedforward Invariants**:
   - `node.yml exists`
   - `load_node_status_config implemented`
-
 
 ## Activity 195: Abstract State Changes to node set-status
 - **Status**: Completed
@@ -708,7 +676,6 @@ None
   - `bin/node set-status CLI wrapper exists`
   - `Execution layer remains untouched (Node 196)`
 
-
 ## Activity 196: Refactor Node Locking to Use node set-status
 - **Status**: Completed
 - **Learnings & Context**: Refactored TerminalNode.plan_start and TerminalNode.checkout to use the BaseNode.set_status abstraction instead of hardcoded github labels.
@@ -716,13 +683,11 @@ None
   - `TerminalNode uses set_status`
   - `Hardcoded status: in-progress eliminated from orchestrator`
 
-
 ## Probe 203: Refine Intent and Problem Statement for Topological Invariants
 - **Status**: Completed
 - **Learnings & Context**: Drafted WHY-0014 defining the Orphaned Node Fallacy and Dual-Probe Initialization rule.
 - **Feedforward Invariants**:
   - `WHY-0014 exists`
-
 
 ## Probe 204: Scope Necessary Activities for Topological Invariants
 - **Status**: Completed
@@ -730,14 +695,12 @@ None
 - **Feedforward Invariants**:
   - `Backlog populated`
 
-
 ## Activity 208: Reopen and Reconstruct Path 202 Meta-Index
 - **Status**: Completed
 - **Learnings & Context**: Added reopen_issue skill to github_client and reconstructed the Meta-Index payload for Path 202.
 - **Feedforward Invariants**:
   - `reopen_issue skill exists`
   - `Path 202 Meta-Index contains 203, 204, 206, 207, 208`
-
 
 ## Activity 207: Enforce --path Constraint on bin/backlog new
 - **Status**: Completed
@@ -747,7 +710,6 @@ None
   - `add_to_backlog updates parent body automatically`
   - `tests pass`
 
-
 ## Activity 206: Update Core Ontologies (WHAT-0001 & HOW-0001)
 - **Status**: Completed
 - **Learnings & Context**: Formally codified the Orphaned Node Fallacy and Dual-Probe Initialization constraints into WHAT-0001 and HOW-0001, permanently establishing these invariants in the system's philosophical ROM.
@@ -755,17 +717,11 @@ None
   - `WHAT-0001 updated`
   - `HOW-0001 updated`
 
-
 ## Probe 215: Scope Necessary Activities for Path Execution Guardrails
 - **Status**: Completed
 - **Learnings & Context**: Scoped out the necessary Activities to enforce orthogonal scopes, pre/post-requisite contracts, and dynamic children traversal order. Generated Activities 223, 224, and 225 and injected them into the Path 213 Meta-Index.
 - **Feedforward Invariants**:
   - `Activities 223, 224, 225 generated`
-
-
-## Current Active Node
-**Activity 191: Codify Path Invariant Enforcement**
-
 
 ## Probe 214: Refine Intent and Problem Statement for Path Execution Guardrails
 - **Status**: Completed
@@ -774,15 +730,14 @@ None
   - `WHY-0015 exists`
   - `Dog-food Probe generated`
 
-## Current Active Path
-**Path 213: Formalize Path Execution and Dependency Guardrails**
-
 ## Probe 215: Scope Necessary Activities for Path Execution Guardrails
 - **Status**: Completed
 - **Learnings & Context**: Scoped out the necessary Activities to enforce orthogonal scopes, pre/post-requisite contracts, and dynamic children traversal order. Generated Activities 223, 224, and 225 and injected them into the Path 213 Meta-Index.
 - **Feedforward Invariants**:
   - `Activities 223, 224, 225 generated`
 
+## Current Active Path
+**Path 213: Formalize Path Execution and Dependency Guardrails**
 
 ## Current Active Node
 None
