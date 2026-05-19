@@ -168,7 +168,8 @@ def test_add_to_backlog(mock_render, mock_tempfile, mock_run):
     mock_render.assert_called_once_with("backlog_issue", {
         "goal": "Description of work",
         "changes": "TBD",
-        "invariants": "TBD",
+        "pre_requisites": "TBD",
+        "post_requisites": "TBD",
         "depends_on": "TBD"
     })
 
