@@ -21,6 +21,13 @@ def close_issue(issue_id: str, comment_body: str) -> None:
         check=True
     )
 
+def reopen_issue(issue_id: str) -> None:
+    """Reopens a closed GH issue."""
+    subprocess.run(
+        ["gh", "issue", "reopen", str(issue_id)],
+        check=True
+    )
+
 def update_issue_body(issue_id: str, new_body: str) -> None:
     """Updates an existing issue body using a temp file."""
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
