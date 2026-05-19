@@ -45,7 +45,7 @@ def get_backlog_items(repository: str) -> list[dict]:
          "--repo", repository,
          "--label", "backlog",
          "--json", "number,title,url",
-         "--limit", "20"],
+         "--limit", "100"],
         capture_output=True, text=True, check=False
     )
     if result.returncode != 0:
@@ -77,17 +77,44 @@ def evaluate(repository: str, frontier_file: str | None = None) -> dict:
         path_number_match = re.search(r"Path (\d+):", active_path, re.IGNORECASE)
         path_number = int(path_number_match.group(1)) if path_number_match else None
 
-        # Activities belonging to this path typically reference the parent in their title
-        # or are numerically grouped. Filter by items that mention the Path number range.
-        # Primary heuristic: activities whose numbers follow the path number.
         related = []
         if path_number:
-            for item in backlog:
-                title = item.get("title", "")
-                # Match Activity nodes numerically higher than the Path and not another Path/Probe
-                num_match = re.match(r"^Activity (\d+):", title)
-                if num_match and int(num_match.group(1)) > path_number:
-                    related.append(item)
+            path_result = subprocess.run(
+                ["gh", "issue", "view", str(path_number), "--json", "body"],
+                capture_output=True, text=True, check=False
+            )
+            if path_result.returncode == 0:
+                import json
+                try:
+                    path_data = json.loads(path_result.stdout.strip())
+                    body = path_data.get("body", "")
+                    
+                    nodes = {}
+                    for line in body.splitlines():
+                        line = line.strip()
+                        status_match = re.match(r"-\s+\[([xX ])\]\s+Node\s+(\d+):", line)
+                        if status_match:
+                            status = status_match.group(1).lower()
+                            nid = status_match.group(2)
+                            depends = []
+                            dep_match = re.search(r"\[Depends:\s*(.*?)\]", line)
+                            if dep_match:
+                                depends = [d.strip() for d in dep_match.group(1).split(",")]
+                            nodes[nid] = {"completed": status == "x", "depends": depends}
+                    
+                    incomplete_ids = {nid for nid, data in nodes.items() if not data["completed"]}
+                    ready_ids = []
+                    for nid in incomplete_ids:
+                        deps = nodes[nid]["depends"]
+                        if not any(dep in incomplete_ids for dep in deps):
+                            ready_ids.append(nid)
+                    
+                    for item in backlog:
+                        item_num = str(item.get("number", ""))
+                        if item_num in ready_ids:
+                            related.append(item)
+                except (json.JSONDecodeError, ValueError):
+                    pass
 
         if related:
             return {
