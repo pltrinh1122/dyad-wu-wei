@@ -44,7 +44,14 @@ def test_checkout_node(mock_makedirs, mock_gh, mock_run):
 @patch('orchestrator.node_lifecycle.github_client')
 @patch('orchestrator.node_lifecycle.frontier_editor')
 @patch('orchestrator.node_lifecycle.subprocess.run')
-def test_reflect_node(mock_run, mock_fe, mock_gh):
+@patch('skills.nba_evaluator.evaluate')
+def test_reflect_node(mock_evaluate, mock_run, mock_fe, mock_gh):
+    mock_evaluate.return_value = {
+        "mode": "path_switching",
+        "active_path": "Path 181: Configurable Sense Hooks",
+        "recommended": [],
+        "message": ""
+    }
     reflect_node(
         frontier_file="/tmp/dummy.md",
         issue_id="100",
@@ -55,7 +62,9 @@ def test_reflect_node(mock_run, mock_fe, mock_gh):
         branch_name="node/1-test-branch"
     )
     
-    mock_gh.close_issue.assert_called_once_with("100", "Node completed via Flow-State Manager. Moving to PR.")
+    mock_gh.close_issue.assert_any_call("100", "Node completed via Flow-State Manager. Moving to PR.")
+    mock_gh.close_issue.assert_any_call("181", "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
+    mock_fe.set_active_path.assert_called_once_with("/tmp/dummy.md", "None")
     mock_fe.complete_active_node.assert_called_once_with("/tmp/dummy.md", "Node 1: Test", "It worked", ["[x] Good"])
     
     assert mock_run.call_count == 3

@@ -105,6 +105,20 @@ class TerminalNode(BaseNode):
 
         self.close("Node completed via Flow-State Manager. Moving to PR.")
         
+        # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
+        from skills import nba_evaluator
+        repository = "pltrinh1122/agent-antigravity"  # Hardcoded for now, could be dynamic
+        nba_result = nba_evaluator.evaluate(repository=repository, frontier_file=frontier_file)
+        
+        if nba_result["mode"] == "path_switching" and nba_result["active_path"] is not None:
+            active_path_str = nba_result["active_path"]
+            path_number_match = re.search(r"Path (\d+):", active_path_str, re.IGNORECASE)
+            if path_number_match:
+                path_issue_id = path_number_match.group(1)
+                github_client.close_issue(path_issue_id, "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
+                log_stage_advancement("reflect", "Path Invariant Enforced", f"Automatically closed parent {active_path_str}")
+                frontier_editor.set_active_path(frontier_file, "None")
+        
         frontier_editor.complete_active_node(frontier_file, node_name, learnings, invariants)
         
         subprocess.run(["git", "add", "."], check=True)

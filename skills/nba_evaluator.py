@@ -27,11 +27,11 @@ def get_active_path(frontier_file: str | None = None) -> str | None:
     Reads frontier_state.md to determine the active Path node (non-terminal).
     Returns the Path title string if found, else None.
     """
-    from skills.frontier_editor import read_active_node
+    from skills.frontier_editor import read_active_path
     path = _get_frontier_path(frontier_file)
-    active_node = read_active_node(path)
-    if active_node and re.match(r"^Path \d+:", active_node, re.IGNORECASE):
-        return active_node
+    active_path = read_active_path(path)
+    if active_path and re.match(r"^Path \d+:", active_path, re.IGNORECASE):
+        return active_path
     return None
 
 

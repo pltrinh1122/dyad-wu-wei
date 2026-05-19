@@ -682,5 +682,15 @@
   - `Schema maps logical to physical labels`
 
 
+## Current Active Path
+None
+
+## Activity 191: Codify Path Invariant Enforcement
+- **Status**: Completed
+- **Learnings & Context**: Decoupled Active Path and Active Node in frontier_state.md. Hooked NBA skill into TerminalNode.reflect to automatically assert path closure invariant.
+- **Feedforward Invariants**:
+  - `[x] Current Active Path and Current Active Node are decoupled in frontier_state.md\n[x] TerminalNode.reflect automatically closes Paths with 0 pending children`
+
+
 ## Current Active Node
-**Probe 163: Audit State Inconsistencies**
+**Activity 191: Codify Path Invariant Enforcement**

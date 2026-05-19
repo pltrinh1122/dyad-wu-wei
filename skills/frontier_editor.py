@@ -16,6 +16,22 @@ def read_active_node(filepath: str) -> str:
                     return next_line.strip('*')
     return ""
 
+def read_active_path(filepath: str) -> str | None:
+    """Reads the current active path from frontier_state.md."""
+    with lock_file(filepath):
+        with open(filepath, 'r') as f:
+            lines = f.readlines()
+        
+    for i, line in enumerate(lines):
+        if line.strip() == "## Current Active Path":
+            for j in range(i + 1, len(lines)):
+                next_line = lines[j].strip()
+                if next_line:
+                    if next_line == "None":
+                        return None
+                    return next_line.strip('*')
+    return None
+
 def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str]) -> None:
     """Appends the completed node block above the Current Active Node header."""
     with lock_file(filepath):
@@ -59,6 +75,27 @@ def set_active_node(filepath: str, node_name: str) -> None:
             for j in range(i + 1, len(lines)):
                 if lines[j].strip():
                     lines[j] = f"**{node_name}**\n"
+                    break
+            break
+            
+    with open(filepath, 'w') as f:
+        f.writelines(lines)
+
+def set_active_path(filepath: str, path_name: str) -> None:
+    """Updates the text below Current Active Path."""
+    with lock_file(filepath):
+        with open(filepath, 'r') as f:
+            lines = f.readlines()
+        
+    for i, line in enumerate(lines):
+        if line.strip() == "## Current Active Path":
+            # Find the next non-empty line and replace it
+            for j in range(i + 1, len(lines)):
+                if lines[j].strip():
+                    if path_name == "None" or path_name is None:
+                        lines[j] = "None\n"
+                    else:
+                        lines[j] = f"**{path_name}**\n"
                     break
             break
             
