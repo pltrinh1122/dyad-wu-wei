@@ -874,5 +874,12 @@
   - `[ ]` None
 
 
+## Probe 258: Scope NBA Presentation Enhancements
+- **Status**: Completed
+- **Learnings & Context**: Finalized technical scope for semantic color coding, visual framing, and history surfacing.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+
 ## Current Active Node
 **Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator**
