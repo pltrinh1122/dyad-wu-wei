@@ -644,6 +644,11 @@
   - `[ ]` None
 
 
+## Probe 179: Architectural Evaluation of Configurable Operator-Gates
+- **Status**: Completed
+- **Learnings & Context**: Conducted architectural evaluation of HITL gates, determining that a BaseManager OOP pattern (Option C) guided by modular {domain}-gates.yml configuration files provides the best systemic invariant.
+- **Feedforward Invariants**:
+  - `- [x] kb/WHY-0012-configurable-operator-gates.md exists`
 ## Activity 182: Implement HookManager and Configuration Schema
 - **Status**: Completed
 - **Learnings & Context**: Implemented HookManager in orchestrator/sense_hooks.py to dynamically parse antigravity.yml and execute configurable hooks. Hook abstractions have been integrated into sync_and_clean_node.
