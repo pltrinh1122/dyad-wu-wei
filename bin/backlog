@@ -51,9 +51,10 @@ parser.add_argument('type', help='Node type (probe, activity, path, etc)')
 parser.add_argument('title', help='Issue title')
 parser.add_argument('goal', help='Issue goal')
 parser.add_argument('--path', help='Parent Path ID for terminal nodes')
+parser.add_argument('--depends', help='Comma-separated list of issue IDs this node depends on')
 try:
     args = parser.parse_args(sys.argv[1:])
-    print(add_to_backlog(args.type, args.title, args.goal, path_id=args.path))
+    print(add_to_backlog(args.type, args.title, args.goal, path_id=args.path, depends_on=args.depends))
 except SystemExit as e:
     sys.exit(e.code)
 except Exception as e:
