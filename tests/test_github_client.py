@@ -227,3 +227,31 @@ def test_get_open_prs(mock_run):
     mock_run.assert_called_once()
     args = mock_run.call_args[0][0]
     assert args == ["gh", "pr", "list", "--state", "open", "--json", "number,title,headRefName,url"]
+
+@patch('skills.github_client.subprocess.run')
+@patch('skills.github_client.update_issue_body')
+def test_check_off_meta_index(mock_update, mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = '{"body": "## Meta-Index\\n- [ ] Node 229: Title [Depends: 228]\\n- [ ] Node 230: Title"}'
+    mock_result.returncode = 0
+    mock_run.return_value = mock_result
+
+    from skills.github_client import check_off_meta_index
+    check_off_meta_index("213", "229")
+
+    mock_run.assert_called_once()
+    mock_update.assert_called_once_with("213", "## Meta-Index\n- [x] Node 229: Title [Depends: 228]\n- [ ] Node 230: Title")
+
+@patch('skills.github_client.subprocess.run')
+@patch('skills.github_client.update_issue_body')
+def test_check_off_meta_index_not_found(mock_update, mock_run):
+    mock_result = MagicMock()
+    mock_result.stdout = '{"body": "## Meta-Index\\n- [ ] Node 230: Title"}'
+    mock_result.returncode = 0
+    mock_run.return_value = mock_result
+
+    from skills.github_client import check_off_meta_index
+    check_off_meta_index("213", "229")
+
+    mock_run.assert_called_once()
+    mock_update.assert_not_called()

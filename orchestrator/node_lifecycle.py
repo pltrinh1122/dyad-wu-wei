@@ -139,6 +139,14 @@ class TerminalNode(BaseNode):
 
         self.close("Node completed via Flow-State Manager. Moving to PR.")
         
+        # Automate Meta-Index Checkbox Synchronization
+        active_path_str = frontier_editor.read_active_path(frontier_file)
+        if active_path_str:
+            path_number_match = re.search(r"Path (\d+):", active_path_str, re.IGNORECASE)
+            if path_number_match:
+                path_issue_id = path_number_match.group(1)
+                github_client.check_off_meta_index(path_issue_id, self.issue_id)
+        
         # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
         from skills import nba_evaluator
         repository = "pltrinh1122/agent-antigravity"  # Hardcoded for now, could be dynamic
