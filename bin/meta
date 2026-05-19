@@ -136,6 +136,76 @@ set_active_path(filepath, path_name)
 print(f'Path {path_name} set active in local ledger {filepath}!')
 " "$1" "$FRONTIER_FILE"
         ;;
+    audit)
+        FRONTIER_FILE="${1:-artifacts/frontier_state.md}"
+        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
+import sys
+import re
+import json
+import subprocess
+from skills import github_client
+from skills import frontier_editor
+
+filepath = sys.argv[1]
+
+with open(filepath, "r") as f:
+    content = f.read()
+
+# Find all completed nodes in the frontier
+completed_nodes = []
+# Matches ## Node 123: Title\n- **Status**: Completed
+pattern = r"## (?:Node|Activity|Probe|Path)?\s*(\d+):.*?\n-\s+\*\*Status\*\*: Completed"
+for match in re.finditer(pattern, content, re.IGNORECASE):
+    completed_nodes.append(match.group(1))
+
+print(f"Detected {len(completed_nodes)} completed nodes in frontier.")
+
+# Target Paths to audit
+target_paths = set()
+
+# 1. Add the Current Active Path from frontier
+active_path_str = frontier_editor.read_active_path(filepath)
+if active_path_str:
+    active_id = frontier_editor.extract_path_id(active_path_str)
+    if active_id:
+        target_paths.add(active_id)
+        print(f"Active Path detected: {active_id}")
+
+# 2. Add any Paths defined in the frontier
+path_pattern_all = r"## Path\s*(\d+):"
+for match in re.finditer(path_pattern_all, content, re.IGNORECASE):
+    target_paths.add(match.group(1))
+
+if not target_paths:
+    print("No paths detected in frontier for auditing.")
+    sys.exit(0)
+
+for path_id in sorted(list(target_paths)):
+    print(f"Auditing Meta-Index for Path {path_id}...")
+    try:
+        res = subprocess.run(["gh", "issue", "view", str(path_id), "--json", "body"], capture_output=True, text=True, check=True)
+        body = json.loads(res.stdout)["body"]
+        
+        modified = False
+        for node_id in completed_nodes:
+            # Look for - [ ] ... (#node_id)
+            node_pattern = rf"- \[ \].*?Node\s+{node_id}:.*"
+            matches = re.findall(node_pattern, body, re.IGNORECASE)
+            if matches:
+                for old_line in matches:
+                    new_line = old_line.replace("- [ ]", "- [x]", 1)
+                    body = body.replace(old_line, new_line, 1)
+                    modified = True
+                    print(f"  ✓ Marking Node {node_id} completed in Path {path_id}")
+        
+        if modified:
+            github_client.update_issue_body(str(path_id), body)
+    except Exception as e:
+        print(f"  ✗ Failed to audit Path {path_id}: {e}")
+
+print("Audit complete.")
+' "$FRONTIER_FILE"
+        ;;
     *)
         echo "Unknown subcommand: $SUBCOMMAND"
         echo "Usage: $0 {link|check|active|path} [args...]"

@@ -151,7 +151,8 @@ def add_to_backlog(node_type: str, title: str, goal: str, path_id: str = None, d
             temp_file.flush()
             
             result = subprocess.run(
-                ["gh", "issue", "create", "--title", formatted_title, "-F", temp_file.name],
+                ["gh", "issue", "create", "--title", formatted_title,
+                 "-F", temp_file.name, "--label", "backlog"],
                 capture_output=True, text=True, check=True
             )
     else:

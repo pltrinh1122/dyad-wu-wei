@@ -32,6 +32,30 @@ def read_active_path(filepath: str) -> str | None:
                     return next_line.strip('*')
     return None
 
+def extract_path_id(path_str: str) -> str | None:
+    """
+    Extracts the numeric ID from a Path string.
+    Supports formats like:
+      - Path 181: Title
+      - Title (#181)
+      - 181
+    """
+    if not path_str:
+        return None
+    # Matches "Path 181:"
+    match = re.search(r"Path (\d+):", path_str, re.IGNORECASE)
+    if match:
+        return match.group(1)
+    # Matches "(#181)"
+    match = re.search(r"\(#(\d+)\)", path_str)
+    if match:
+        return match.group(1)
+    # Matches raw number
+    match = re.match(r"^(\d+)$", path_str.strip())
+    if match:
+        return match.group(1)
+    return None
+
 def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str]) -> None:
     """Appends the completed node block above the Current Active Node header."""
     with lock_file(filepath):
