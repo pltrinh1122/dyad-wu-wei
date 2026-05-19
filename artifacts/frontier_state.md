@@ -754,5 +754,14 @@
   - `tests pass`
 
 
+## Activity 227: Evolve Meta-Index into a DAG Syntax
+- **Status**: Completed
+- **Learnings & Context**: Updated bin/backlog to accept --depends and modified github_client.py to append DAG annotations (e.g., [Depends: 223, 224]) to both the parent Path Meta-Index and the child issue body.
+- **Feedforward Invariants**:
+  - `CLI accepts --depends`
+  - `DAG injection validated`
+  - `tests pass`
+
+
 ## Current Active Node
 None

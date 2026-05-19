@@ -102,7 +102,7 @@ def load_node_taxonomy() -> dict:
         "non_terminal": ["path"]
     })
 
-def add_to_backlog(node_type: str, title: str, goal: str, path_id: str = None) -> str:
+def add_to_backlog(node_type: str, title: str, goal: str, path_id: str = None, depends_on: str = None) -> str:
     """Creates a GH issue based on whether the node type maps to a Terminal or Non-Terminal Base Class.
     
     Returns the URL of the created issue.
@@ -139,7 +139,7 @@ def add_to_backlog(node_type: str, title: str, goal: str, path_id: str = None) -
             "changes": "TBD",
             "pre_requisites": "TBD",
             "post_requisites": "TBD",
-            "depends_on": "TBD"
+            "depends_on": depends_on if depends_on else "TBD"
         }
         body = render_template("backlog_issue", kwargs)
         
@@ -165,6 +165,9 @@ def add_to_backlog(node_type: str, title: str, goal: str, path_id: str = None) -
         path_body = path_data.get("body", "")
         
         checkbox_line = f"- [ ] Node {issue_id}: {new_title}"
+        if depends_on:
+            checkbox_line += f" [Depends: {depends_on}]"
+            
         if "## Meta-Index" in path_body:
             path_body += f"\n{checkbox_line}"
         else:
