@@ -34,8 +34,18 @@ class HookManager:
         list_prompts(all_prompts=False, backlog_file=location)
 
     def execute_next_best_action_hook(self, config):
-        """Dynamically evaluates and surfaces the next best action."""
-        # Placeholder for Activity C
+        """Dynamically evaluates and surfaces the next best action using nba_evaluator skill."""
+        from skills import nba_evaluator
         repository = config.get("repository", "pltrinh1122/agent-antigravity")
-        print(f"\n📋 Next-Best-Action Hook (repo: {repository}):")
-        print("  [Pending Implementation in Activity C]")
+        frontier_file = config.get("frontier_file", None)
+
+        result = nba_evaluator.evaluate(repository=repository, frontier_file=frontier_file)
+
+        mode_label = "📍 Path Continuation" if result["mode"] == "path_continuation" else "🔀 Path Switch Recommended"
+        print(f"\n🎯 Next-Best-Action ({mode_label}):")
+        print(f"  {result['message']}")
+        if result["recommended"]:
+            for item in result["recommended"]:
+                print(f"  → #{item['number']}: {item['title']}")
+        else:
+            print("  (No pending backlog items found.)")
