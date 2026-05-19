@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from skills.github_client import create_issue, close_issue, update_issue_body, create_pull_request, list_issues_by_label, add_to_backlog, get_issue_labels, add_label, remove_label, get_open_prs
+from skills.github_client import create_issue, close_issue, reopen_issue, update_issue_body, create_pull_request, list_issues_by_label, add_to_backlog, get_issue_labels, add_label, remove_label, get_open_prs
 
 @patch('skills.github_client.subprocess.run')
 @patch('skills.github_client.tempfile.NamedTemporaryFile')
@@ -33,6 +33,18 @@ def test_close_issue(mock_run):
     mock_run.assert_called_once()
     args = mock_run.call_args[0][0]
     assert args == ["gh", "issue", "close", "99", "-c", "Closing comment"]
+
+@patch('skills.github_client.subprocess.run')
+def test_reopen_issue(mock_run):
+    mock_result = MagicMock()
+    mock_result.returncode = 0
+    mock_run.return_value = mock_result
+
+    reopen_issue("99")
+    
+    mock_run.assert_called_once()
+    args = mock_run.call_args[0][0]
+    assert args == ["gh", "issue", "reopen", "99"]
 
 @patch('skills.github_client.subprocess.run')
 @patch('skills.github_client.tempfile.NamedTemporaryFile')
