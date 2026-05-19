@@ -665,5 +665,14 @@
   - `[x] mgr_prompt primitives support custom paths`
 
 
+## Activity 189: Implement Next-Best-Action Skill and Hook
+- **Status**: Completed
+- **Learnings & Context**: Created skills/nba_evaluator.py as a stateless skill implementing two-tier NBA logic: path continuation (finds pending activities within the active Path) and path switching (falls back to global backlog). Wired into execute_next_best_action_hook in sense_hooks.py.
+- **Feedforward Invariants**:
+  - `[x] NBA skill is stateless and pure`
+  - `[x] Two-tier logic: path continuation and path switching`
+  - `[x] Hook consumes NBA skill output`
+
+
 ## Current Active Node
 **Probe 163: Audit State Inconsistencies**
