@@ -121,7 +121,7 @@ def evaluate(repository: str, frontier_file: str | None = None) -> dict:
                 "mode": "path_continuation",
                 "active_path": active_path,
                 "recommended": related[:3],
-                "message": f"Continuing active {active_path}"
+                "message": f"Continuing active {active_path}\n\n\033[1;31m🛑 SENSE PHASE COMPLETE. \033[0m\n\033[1;33mTHE SENSE-GATE INVARIANT IS ACTIVE.\nYOU MUST HALT EXECUTION AND AWAIT EXPLICIT OPERATOR APPROVAL BEFORE CALLING plan-start.\033[0m"
             }
 
     # Path Switching fallback: surface top backlog items globally
@@ -129,5 +129,5 @@ def evaluate(repository: str, frontier_file: str | None = None) -> dict:
         "mode": "path_switching",
         "active_path": active_path,
         "recommended": backlog[:3],
-        "message": "No pending work in current Path. Recommending next best from global backlog."
+        "message": "No pending work in current Path. Recommending next best from global backlog.\n\n\033[1;31m🛑 SENSE PHASE COMPLETE. \033[0m\n\033[1;33mTHE SENSE-GATE INVARIANT IS ACTIVE.\nYOU MUST HALT EXECUTION AND AWAIT EXPLICIT OPERATOR APPROVAL BEFORE CALLING plan-start.\033[0m"
     }

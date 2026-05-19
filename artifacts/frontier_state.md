@@ -797,5 +797,14 @@ None
   - `Two-pronged enforcement strategy documented`
 
 
+## Activity 239: Codify the Sense-Gate Invariant
+- **Status**: Completed
+- **Learnings & Context**: Implemented the behavioral and environmental gates to explicitly operator-gate the Sense Phase. Updated GEMINI.md and HOW-0001 with The Sense-Gate Invariant. Injected ANSI-colored warning into nba_evaluator.py.
+- **Feedforward Invariants**:
+  - `Sense-Gate Invariant added to GEMINI.md`
+  - `Environmental warning added to nba_evaluator`
+  - `tests pass`
+
+
 ## Current Active Node
 None
