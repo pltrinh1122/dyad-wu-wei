@@ -840,5 +840,15 @@
   - `[x] verified with tests and manual execution.`
 
 
+## Decommission legacy NBA skill and formalize primitive
+- **Status**: Completed
+- **Learnings & Context**: Successfully promoted NBA to a first-class primitive and refactored the legacy skill into a thin proxy.
+- **Feedforward Invariants**:
+  - `[x] nba_evaluator.py refactored as proxy`
+  - `[x] WHAT-0017 materialized`
+  - `[x] WHAT-0001 updated`
+  - `[x] obsolete tests deleted.`
+
+
 ## Current Active Node
 **Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator**
