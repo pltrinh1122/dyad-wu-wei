@@ -149,3 +149,25 @@ def test_log_stage_advancement(capsys):
         assert "🔍 SENSE" in captured.out
         assert "Initiating testing" in captured.out
         assert "Aesthetic checks" in captured.out
+
+@patch("orchestrator.mgr_node.BaseNode")
+def test_cmd_set_status(mock_base_node):
+    from orchestrator.mgr_node import cmd_set_status
+    args = MagicMock()
+    args.issue_id = "123"
+    args.status_key = "todo"
+    
+    cmd_set_status(args)
+    mock_base_node.assert_called_once_with("123")
+    mock_base_node.return_value.set_status.assert_called_once_with("todo")
+
+@patch("orchestrator.mgr_node.BaseNode")
+def test_cmd_set_classification(mock_base_node):
+    from orchestrator.mgr_node import cmd_set_classification
+    args = MagicMock()
+    args.issue_id = "123"
+    args.classification_key = "backlog"
+    
+    cmd_set_classification(args)
+    mock_base_node.assert_called_once_with("123")
+    mock_base_node.return_value.set_classification.assert_called_once_with("backlog")

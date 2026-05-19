@@ -7,7 +7,7 @@ from skills import testing_harness
 from orchestrator import mgr_prompt
 from orchestrator.sense_hooks import HookManager
 
-from orchestrator.node_lifecycle import TerminalNode, log_stage_advancement
+from orchestrator.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -121,6 +121,14 @@ def cmd_view(args):
     print(data['body'])
     print('='*40)
 
+def cmd_set_status(args):
+    node = BaseNode(args.issue_id)
+    node.set_status(args.status_key)
+
+def cmd_set_classification(args):
+    node = BaseNode(args.issue_id)
+    node.set_classification(args.classification_key)
+
 def cmd_test(args):
     log_stage_advancement("act", "Executing TDD Test Harness Validation", f"Running pytest on target: {args.target}")
     exit_code = testing_harness.run_tests(args.target)
@@ -161,6 +169,16 @@ def main():
     parser_v = subparsers.add_parser("view", help="View a Node issue")
     parser_v.add_argument("issue_id")
 
+    # set-status
+    parser_ss = subparsers.add_parser("set-status", help="Set the logical status of a node")
+    parser_ss.add_argument("issue_id")
+    parser_ss.add_argument("status_key")
+
+    # set-classification
+    parser_sc = subparsers.add_parser("set-classification", help="Set the logical classification of a node")
+    parser_sc.add_argument("issue_id")
+    parser_sc.add_argument("classification_key")
+
     # test
     parser_t = subparsers.add_parser("test", help="Execute test harness validation")
     parser_t.add_argument("target", nargs="?", default="tests/", help="Target directory or file for pytest")
@@ -179,6 +197,10 @@ def main():
         cmd_reflect(args)
     elif args.subcommand == "view":
         cmd_view(args)
+    elif args.subcommand == "set-status":
+        cmd_set_status(args)
+    elif args.subcommand == "set-classification":
+        cmd_set_classification(args)
     elif args.subcommand == "test":
         cmd_test(args)
 

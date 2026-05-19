@@ -700,5 +700,14 @@ None
   - `load_node_status_config implemented`
 
 
+## Activity 195: Abstract State Changes to node set-status
+- **Status**: Completed
+- **Learnings & Context**: Implemented BaseNode set_status and set_classification to map logical statuses to github labels, and exposed them via mgr_node CLI
+- **Feedforward Invariants**:
+  - `set_status API exists`
+  - `bin/node set-status CLI wrapper exists`
+  - `Execution layer remains untouched (Node 196)`
+
+
 ## Current Active Node
 **Activity 191: Codify Path Invariant Enforcement**
