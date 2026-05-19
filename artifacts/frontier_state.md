@@ -850,5 +850,14 @@
   - `[x] obsolete tests deleted.`
 
 
+## Materialize template-driven NBA banners
+- **Status**: Completed
+- **Learnings & Context**: Successfully migrated NBA banner rendering to a formal template-driven system with ANSI support.
+- **Feedforward Invariants**:
+  - `[x] kb/templates/nba_banner.md created`
+  - `[x] sense_hooks.py refactored`
+  - `[x] tests updated and passed.`
+
+
 ## Current Active Node
 **Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator**
