@@ -756,6 +756,13 @@ None
   - `HOW-0001 updated`
 
 
+## Probe 215: Scope Necessary Activities for Path Execution Guardrails
+- **Status**: Completed
+- **Learnings & Context**: Scoped out the necessary Activities to enforce orthogonal scopes, pre/post-requisite contracts, and dynamic children traversal order. Generated Activities 223, 224, and 225 and injected them into the Path 213 Meta-Index.
+- **Feedforward Invariants**:
+  - `Activities 223, 224, 225 generated`
+
+
 ## Current Active Node
 **Activity 191: Codify Path Invariant Enforcement**
 
@@ -769,6 +776,13 @@ None
 
 ## Current Active Path
 **Path 213: Formalize Path Execution and Dependency Guardrails**
+
+## Probe 215: Scope Necessary Activities for Path Execution Guardrails
+- **Status**: Completed
+- **Learnings & Context**: Scoped out the necessary Activities to enforce orthogonal scopes, pre/post-requisite contracts, and dynamic children traversal order. Generated Activities 223, 224, and 225 and injected them into the Path 213 Meta-Index.
+- **Feedforward Invariants**:
+  - `Activities 223, 224, 225 generated`
+
 
 ## Current Active Node
 None
