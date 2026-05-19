@@ -737,7 +737,7 @@
   - `Activities 223, 224, 225 generated`
 
 ## Current Active Path
-**Path 213: Formalize Path Execution and Dependency Guardrails**
+None
 
 ## Probe 221: Holistic Evaluation of Path Modifications
 - **Status**: Completed
@@ -779,6 +779,14 @@
   - `Meta-Index checkbox synchronization automated`
   - `tests updated and passing`
   - `Activity 224 manually closed out successfully using this hook`
+
+
+## Activity 225: Enforce Orthogonal Scope Validation
+- **Status**: Completed
+- **Learnings & Context**: Implemented Orthogonal Scope Validation guardrail inside TerminalNode.plan_start. This prevents duplicate/overlapping work generation by scanning the backlog for concurrent Activities with identical goals or canonical titles.
+- **Feedforward Invariants**:
+  - `Orthogonal Scope Validation implemented`
+  - `tests updated and passing`
 
 
 ## Current Active Node

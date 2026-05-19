@@ -2,12 +2,14 @@ import pytest
 from unittest.mock import patch, MagicMock
 from orchestrator.mgr_node import reflect_node, sync_and_clean_node, plan_start_node, plan_finish_node, checkout_node
 
+@patch('orchestrator.node_lifecycle.TerminalNode._validate_orthogonal_scope')
 @patch('orchestrator.node_lifecycle.github_client')
-def test_plan_start_node(mock_gh):
+def test_plan_start_node(mock_gh, mock_validate):
     mock_gh.get_issue_labels.return_value = ["backlog"]
     
     plan_start_node("100")
     
+    mock_validate.assert_called_once()
     mock_gh.add_label.assert_called_once_with("100", "status: in-progress")
 
 @patch('orchestrator.node_lifecycle.github_client')
@@ -16,6 +18,33 @@ def test_plan_start_node_locked(mock_gh):
     
     with pytest.raises(Exception, match="Node #100 is already in progress by another thread!"):
         plan_start_node("100")
+        
+@patch('orchestrator.node_lifecycle.github_client.get_open_issues')
+@patch('orchestrator.node_lifecycle.github_client.get_issue_details')
+def test_orthogonal_scope_validation(mock_details, mock_issues):
+    from orchestrator.node_lifecycle import TerminalNode
+    node = TerminalNode("100")
+    
+    mock_details.return_value = {
+        "title": "Node 100: Activity: Do work",
+        "body": "## Goal\nDo some work\n"
+    }
+    
+    mock_issues.return_value = [
+        {"number": 100, "title": "Node 100: Activity: Do work", "body": "## Goal\nDo some work\n"},
+        {"number": 101, "title": "Node 101: Activity: Do other work", "body": "## Goal\nDo some work\n"}
+    ]
+    
+    with pytest.raises(Exception, match="Orthogonal Scope Violation: Node 100 has an identical goal footprint to Node 101"):
+        node._validate_orthogonal_scope()
+
+    mock_issues.return_value = [
+        {"number": 100, "title": "Node 100: Activity: Do work", "body": "## Goal\nDo some work\n"},
+        {"number": 101, "title": "Node 101: Activity: Do work", "body": "## Goal\nDo some other work\n"}
+    ]
+    
+    with pytest.raises(Exception, match="Orthogonal Scope Violation: Node 100 has an identical title footprint to Node 101"):
+        node._validate_orthogonal_scope()
 
 @patch('orchestrator.node_lifecycle.subprocess.run')
 @patch('orchestrator.node_lifecycle.github_client')
