@@ -1,7 +1,7 @@
 # WHY-0014: Topological Traceability Invariants
 
 ## Context
-As the agentic repository grows in complexity, the queue of Backlog items (Activities and Probes) has become fragmented. Nodes are occasionally added organically without a clear overarching objective, resulting in "orphaned" tasks. Furthermore, Paths are sometimes created with a vague goal, leading to a haphazard collection of child Activities that are organically discovered during the execution process rather than deliberately designed. This organic discovery introduces execution risk, cognitive drift, and scope creep.
+As the agentic repository grows in complexity, the queue of Backlog items (Activities and Probes) has become fragmented. Nodes are occasionally added organically without a clear overarching objective, resulting in "orphaned" tasks. Furthermore, Paths are sometimes created with a vague goal, leading to a haphazard collection of child Activities that are organically discovered during the execution process rather than deliberately designed. Crucially, this structurally overloads the Operator's cognition by forcing them to maintain a complex mental map of the overarching intent and goal across disjointed Probes and Activities. Ultimately, this organic discovery introduces execution risk, severe cognitive drift, and scope creep.
 
 To harden the autonomy and mathematical traceability of the system, we must enforce strict constraints on how Nodes are bound to Paths and how Paths are initialized.
 
