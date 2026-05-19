@@ -1,5 +1,6 @@
 import yaml
 import os
+from skills import frontier_editor
 
 class HookManager:
     """Manages the execution of configurable Sense hooks."""
@@ -47,11 +48,18 @@ class HookManager:
             print(f"\n❌ Next-Best-Action Error: {result['message']}")
             return
 
+        # History Extraction
+        last_step = frontier_editor.read_last_completed_node(frontier_file)
+        if last_step:
+            history_info = f"\033[1;30m(Last Step: {last_step})\033[0m"
+        else:
+            history_info = ""
+
         mode_label = "📍 Path Continuation" if result["type"] == "path_continuation" else "🔀 Path Switch Recommended"
         
         path_info = ""
         if result["type"] == "path_continuation":
-            path_info = f"  \033[1m{result['path_title']}\033[0m"
+            path_info = f"  \033[1;34m{result['path_title']}\033[0m"
         elif result["type"] == "path_switching":
             if not result["recommendations"]:
                 path_info = "  (Global backlog empty)"
@@ -63,14 +71,37 @@ class HookManager:
             lines = []
             for item in result["recommendations"]:
                 issue_id = item.get("id") or item.get("number")
-                lines.append(f"  → #{issue_id}: {item['title']}")
+                title = item['title']
+                
+                # Semantic Styling
+                if "Probe" in title:
+                    styled_title = f"\033[1;33m{title}\033[0m" # Bold Yellow
+                elif "Activity" in title:
+                    styled_title = f"\033[1;32m{title}\033[0m" # Bold Green
+                else:
+                    styled_title = title
+                    
+                lines.append(f"  → #{issue_id}: {styled_title}")
             recommendations_list = "\n".join(lines)
         else:
             recommendations_list = "  (No recommendations found.)"
 
-        banner = issue_factory.render_template("nba_banner", {
-            "mode_label": mode_label,
-            "path_info": path_info,
-            "recommendations_list": recommendations_list
-        })
-        print("\n" + banner.strip())
+        # Construct raw content for framing
+        content_lines = [
+            f"🎯 \033[1;36mNext-Best-Action\033[0m (\033[1;35m{mode_label}\033[0m)",
+            history_info,
+            path_info,
+            recommendations_list
+        ]
+        
+        # Clean up empty lines
+        content_lines = [l for l in content_lines if l.strip()]
+
+        # Framing Logic (Simplified for terminal width)
+        print("\n┌──────────────────────────────────────────────────────────┐")
+        for line in content_lines:
+            # We don't pad to the right perfectly because of ANSI escape codes 
+            # calculating visible length is non-trivial without a dedicated library.
+            # We'll just print the line with a left border.
+            print(f"│ {line}")
+        print("└──────────────────────────────────────────────────────────┘")
