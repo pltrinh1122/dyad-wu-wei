@@ -50,31 +50,30 @@ def test_execute_prompt_queue_hook_default(mock_list_prompts, mock_load_config):
     mock_list_prompts.assert_called_once_with(all_prompts=False, backlog_file="artifacts/prompt_backlog.yml")
 
 @patch('orchestrator.sense_hooks.HookManager._load_config', return_value=[])
-@patch('skills.nba_evaluator.evaluate')
+@patch('orchestrator.mgr_nba.NBAManager.evaluate')
 def test_execute_next_best_action_hook(mock_evaluate, mock_load_config, capsys):
     mock_evaluate.return_value = {
-        "mode": "path_continuation",
-        "active_path": "Path 181: Configurable Sense Hooks",
-        "recommended": [{"number": 189, "title": "Activity 189: NBA Skill", "url": "http"}],
-        "message": "Continuing active Path 181: Configurable Sense Hooks"
+        "type": "path_continuation",
+        "path_id": "181",
+        "path_title": "Configurable Sense Hooks",
+        "recommendations": [{"number": 189, "title": "Activity 189: NBA Skill"}]
     }
     hm = HookManager("fake.yml")
     hm.execute_next_best_action_hook({"repository": "owner/repo"})
-    mock_evaluate.assert_called_once_with(repository="owner/repo", frontier_file=None)
+    mock_evaluate.assert_called_once_with(frontier_file="artifacts/frontier_state.md")
     out = capsys.readouterr().out
     assert "Next-Best-Action" in out
     assert "#189" in out
+    assert "Path 181" in out
 
 @patch('orchestrator.sense_hooks.HookManager._load_config', return_value=[])
-@patch('skills.nba_evaluator.evaluate')
+@patch('orchestrator.mgr_nba.NBAManager.evaluate')
 def test_execute_next_best_action_hook_empty(mock_evaluate, mock_load_config, capsys):
     mock_evaluate.return_value = {
-        "mode": "path_switching",
-        "active_path": None,
-        "recommended": [],
-        "message": "No pending work."
+        "type": "path_switching",
+        "recommendations": []
     }
     hm = HookManager("fake.yml")
     hm.execute_next_best_action_hook({})
     out = capsys.readouterr().out
-    assert "No pending backlog items" in out
+    assert "No recommendations found" in out

@@ -71,3 +71,16 @@ def get_ready_nodes(nodes: dict) -> list[str]:
     
     # Sort by numeric ID to ensure deterministic order
     return sorted(ready_ids, key=int)
+
+def get_next_nodes(body: str) -> list[dict]:
+    """
+    High-level primitive that parses a Meta-Index and returns 
+    the full details of the next unblocked nodes.
+    """
+    nodes = parse_meta_index(body)
+    ready_ids = get_ready_nodes(nodes)
+    
+    return [
+        {"id": nid, "title": nodes[nid]["title"]}
+        for nid in ready_ids
+    ]

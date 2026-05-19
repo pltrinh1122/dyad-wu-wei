@@ -34,18 +34,33 @@ class HookManager:
         list_prompts(all_prompts=False, backlog_file=location)
 
     def execute_next_best_action_hook(self, config):
-        """Dynamically evaluates and surfaces the next best action using nba_evaluator skill."""
-        from skills import nba_evaluator
+        """Dynamically evaluates and surfaces the next best action using NBAManager orchestrator."""
+        from orchestrator.mgr_nba import NBAManager
         repository = config.get("repository", "pltrinh1122/agent-antigravity")
-        frontier_file = config.get("frontier_file", None)
+        frontier_file = config.get("frontier_file", "artifacts/frontier_state.md")
 
-        result = nba_evaluator.evaluate(repository=repository, frontier_file=frontier_file)
+        nba = NBAManager(repository=repository)
+        result = nba.evaluate(frontier_file=frontier_file)
 
-        mode_label = "📍 Path Continuation" if result["mode"] == "path_continuation" else "🔀 Path Switch Recommended"
+        if result["type"] == "error":
+            print(f"\n❌ Next-Best-Action Error: {result['message']}")
+            return
+
+        mode_label = "📍 Path Continuation" if result["type"] == "path_continuation" else "🔀 Path Switch Recommended"
         print(f"\n🎯 Next-Best-Action ({mode_label}):")
-        print(f"  {result['message']}")
-        if result["recommended"]:
-            for item in result["recommended"]:
-                print(f"  → #{item['number']}: {item['title']}")
+        
+        if result["type"] == "path_continuation":
+            print(f"  Continuing Path {result['path_id']}: {result['path_title']}")
+        elif result["type"] == "path_switching":
+            if not result["recommendations"]:
+                print("  No pending work in current Path. Recommending next best from global backlog.")
+            else:
+                print("  Path exhausted or not detected. Recommending next best from global backlog:")
+
+        if result["recommendations"]:
+            for item in result["recommendations"]:
+                # gh_graph_skill returns 'id' and 'title', github_client returns 'number' and 'title'
+                issue_id = item.get("id") or item.get("number")
+                print(f"  → #{issue_id}: {item['title']}")
         else:
-            print("  (No pending backlog items found.)")
+            print("  (No recommendations found.)")

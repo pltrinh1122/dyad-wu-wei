@@ -831,5 +831,14 @@
   - `[x] Path labeling fixed`
 
 
+## Implement NBAManager orchestrator
+- **Status**: Completed
+- **Learnings & Context**: Successfully migrated high-level navigation logic from legacy skill to a formal orchestrator.
+- **Feedforward Invariants**:
+  - `[x] NBAManager implemented`
+  - `[x] integrated into sense_hooks`
+  - `[x] verified with tests and manual execution.`
+
+
 ## Current Active Node
 **Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator**
