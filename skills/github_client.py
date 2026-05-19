@@ -189,6 +189,23 @@ def create_pull_request(title: str, body: str) -> str:
         )
         return result.stdout.strip()
 
+def check_off_meta_index(path_id: str, node_id: str) -> None:
+    """Finds the node in the parent Path's Meta-Index and marks it as completed."""
+    try:
+        res = subprocess.run(["gh", "issue", "view", str(path_id), "--json", "body"], capture_output=True, text=True, check=True)
+        import json
+        data = json.loads(res.stdout.strip() or "{}")
+        body = data.get("body", "")
+        
+        import re
+        pattern = re.compile(r"-\s+\[\s*\]\s+Node\s+" + str(node_id) + r":", re.IGNORECASE)
+        
+        if pattern.search(body):
+            new_body = pattern.sub(f"- [x] Node {node_id}:", body)
+            update_issue_body(str(path_id), new_body)
+    except Exception as e:
+        print(f"Warning: Failed to check off Meta-Index for Node {node_id} in Path {path_id}: {e}")
+
 def get_issue_labels(issue_id: str) -> list[str]:
     """Returns a list of label names for the given issue."""
     result = subprocess.run(
