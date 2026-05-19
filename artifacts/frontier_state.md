@@ -756,5 +756,13 @@ None
   - `HOW-0001 updated`
 
 
+## Probe 214: Refine Intent and Problem Statement for Path Execution Guardrails
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHY-0015 to formalize orthogonal scope, pre/post-requisite contracts, and dynamic children traversal order. Dog-fooded dynamic traversal by automatically generating a third Probe for Path 213 mid-execution.
+- **Feedforward Invariants**:
+  - `WHY-0015 exists`
+  - `Dog-food Probe generated`
+
+
 ## Current Active Node
 **Activity 191: Codify Path Invariant Enforcement**
