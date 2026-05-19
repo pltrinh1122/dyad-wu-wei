@@ -813,5 +813,14 @@
   - `WHY-0016 exists`
   - `Meta-Index updated`
 
+## Implement gh_graph_skill.py stateless primitive
+- **Status**: Completed
+- **Learnings & Context**: Successfully extracted graph-parsing logic from nba_evaluator.py into a dedicated, stateless skill gh_graph_skill.py. Verified with 100% test coverage (87/87 tests passed).
+- **Feedforward Invariants**:
+  - `gh_graph_skill.py implemented`
+  - `nba_evaluator.py refactored`
+  - `tests pass`
+
+
 ## Current Active Node
 **Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator**
