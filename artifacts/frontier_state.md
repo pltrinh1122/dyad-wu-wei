@@ -709,5 +709,13 @@ None
   - `Execution layer remains untouched (Node 196)`
 
 
+## Activity 196: Refactor Node Locking to Use node set-status
+- **Status**: Completed
+- **Learnings & Context**: Refactored TerminalNode.plan_start and TerminalNode.checkout to use the BaseNode.set_status abstraction instead of hardcoded github labels.
+- **Feedforward Invariants**:
+  - `TerminalNode uses set_status`
+  - `Hardcoded status: in-progress eliminated from orchestrator`
+
+
 ## Current Active Node
 **Activity 191: Codify Path Invariant Enforcement**
