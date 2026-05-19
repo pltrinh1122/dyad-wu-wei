@@ -64,7 +64,7 @@ def test_execute_next_best_action_hook(mock_evaluate, mock_load_config, capsys):
     out = capsys.readouterr().out
     assert "Next-Best-Action" in out
     assert "#189" in out
-    assert "Path 181" in out
+    assert "Configurable Sense Hooks" in out
 
 @patch('orchestrator.sense_hooks.HookManager._load_config', return_value=[])
 @patch('orchestrator.mgr_nba.NBAManager.evaluate')
@@ -76,4 +76,4 @@ def test_execute_next_best_action_hook_empty(mock_evaluate, mock_load_config, ca
     hm = HookManager("fake.yml")
     hm.execute_next_best_action_hook({})
     out = capsys.readouterr().out
-    assert "No recommendations found" in out
+    assert "Global backlog empty" in out

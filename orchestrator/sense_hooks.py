@@ -51,12 +51,12 @@ class HookManager:
         
         path_info = ""
         if result["type"] == "path_continuation":
-            path_info = f"  Continuing Path {result['path_id']}: {result['path_title']}"
+            path_info = f"  \033[1m{result['path_title']}\033[0m"
         elif result["type"] == "path_switching":
             if not result["recommendations"]:
-                path_info = "  No pending work in current Path. Recommending next best from global backlog."
+                path_info = "  (Global backlog empty)"
             else:
-                path_info = "  Path exhausted or not detected. Recommending next best from global backlog:"
+                path_info = "  (Switching to Global Backlog)"
 
         recommendations_list = ""
         if result["recommendations"]:

@@ -30,6 +30,8 @@ def parse_meta_index(body: str) -> dict:
       }
     """
     nodes = {}
+    # Handle both real newlines and literal \n characters that might appear from JSON parsing
+    body = body.replace("\\n", "\n")
     for line in body.splitlines():
         line = line.strip()
         # Matches: - [x] Node 123: Title
