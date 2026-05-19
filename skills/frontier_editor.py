@@ -16,6 +16,28 @@ def read_active_node(filepath: str) -> str:
                     return next_line.strip('*')
     return ""
 
+def read_last_completed_node(filepath: str) -> str:
+    """Reads the most recently completed node (the one immediately above Current Active Node)."""
+    with lock_file(filepath):
+        with open(filepath, 'r') as f:
+            lines = f.readlines()
+            
+    active_idx = -1
+    for i, line in enumerate(lines):
+        if line.strip() == "## Current Active Node":
+            active_idx = i
+            break
+            
+    if active_idx == -1:
+        return ""
+        
+    # Search backwards from active_idx - 1 for the first "## " header
+    for i in range(active_idx - 1, -1, -1):
+        if lines[i].startswith("## "):
+            return lines[i].strip("# ").strip()
+            
+    return ""
+
 def read_active_path(filepath: str) -> str | None:
     """Reads the current active path from frontier_state.md."""
     with lock_file(filepath):
