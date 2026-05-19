@@ -28,3 +28,23 @@ def test_execute_all(mock_nba, mock_pq):
     
     mock_pq.assert_called_once_with({"type": "prompt_queue", "location": "a"})
     mock_nba.assert_called_once_with({"type": "next_best_action", "repository": "b"})
+
+@patch('orchestrator.sense_hooks.HookManager._load_config', return_value=[])
+@patch('orchestrator.mgr_prompt.list_prompts')
+def test_execute_prompt_queue_hook(mock_list_prompts, mock_load_config):
+    hm = HookManager("fake.yml")
+    config = {"location": "custom/path.yml"}
+    
+    hm.execute_prompt_queue_hook(config)
+    
+    mock_list_prompts.assert_called_once_with(all_prompts=False, backlog_file="custom/path.yml")
+    
+@patch('orchestrator.sense_hooks.HookManager._load_config', return_value=[])
+@patch('orchestrator.mgr_prompt.list_prompts')
+def test_execute_prompt_queue_hook_default(mock_list_prompts, mock_load_config):
+    hm = HookManager("fake.yml")
+    config = {}
+    
+    hm.execute_prompt_queue_hook(config)
+    
+    mock_list_prompts.assert_called_once_with(all_prompts=False, backlog_file="artifacts/prompt_backlog.yml")

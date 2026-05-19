@@ -657,5 +657,13 @@
   - `[x] Sense Phase abstracted into modular execution pattern`
 
 
+## Activity 187: Implement Prompt Queue Hook
+- **Status**: Completed
+- **Learnings & Context**: Implemented the execute_prompt_queue_hook function in sense_hooks.py to consume the configurable backlog_file parameter. Updated mgr_prompt.py to support non-default backlog file resolution, enabling dynamic configuration in the HookManager.
+- **Feedforward Invariants**:
+  - `[x] Prompt Queue hooked into Sense cycle`
+  - `[x] mgr_prompt primitives support custom paths`
+
+
 ## Current Active Node
 **Probe 163: Audit State Inconsistencies**
