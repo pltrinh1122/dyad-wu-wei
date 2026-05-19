@@ -789,5 +789,13 @@ None
   - `tests updated and passing`
 
 
+## Probe 238: Formulate the Sense-Gate Invariant Architecture
+- **Status**: Completed
+- **Learnings & Context**: Formulated the architectural rationale for the two-pronged Sense-Gate in kb/WHY-0013-sense-phase-operator-gate.md. This establishes the requirement for both Behavioral (Meta-Instruction) and Environmental (CLI warning) gates to prevent autonomous SENSE -> PLAN transitions.
+- **Feedforward Invariants**:
+  - `Sense-Gate architecture formalized`
+  - `Two-pronged enforcement strategy documented`
+
+
 ## Current Active Node
 None
