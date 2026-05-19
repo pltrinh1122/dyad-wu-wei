@@ -717,5 +717,12 @@ None
   - `Hardcoded status: in-progress eliminated from orchestrator`
 
 
+## Probe 203: Refine Intent and Problem Statement for Topological Invariants
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHY-0014 defining the Orphaned Node Fallacy and Dual-Probe Initialization rule.
+- **Feedforward Invariants**:
+  - `WHY-0014 exists`
+
+
 ## Current Active Node
 **Activity 191: Codify Path Invariant Enforcement**
