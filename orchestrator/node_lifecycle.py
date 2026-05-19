@@ -92,10 +92,11 @@ class TerminalNode(BaseNode):
         super().__init__(issue_id)
         
     def plan_start(self) -> None:
-        if "status: in-progress" in self.gh_labels:
+        in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
+        if in_progress_label in self.gh_labels:
             raise Exception(f"Node #{self.issue_id} is already in progress by another thread!")
             
-        self.add_gh_label("status: in-progress")
+        self.set_status("in_progress")
         log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} for multi-phase planning.")
 
     def plan_finish(self, body: str) -> str:
@@ -119,7 +120,7 @@ class TerminalNode(BaseNode):
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
             
-        self.add_gh_label("status: in-progress")
+        self.set_status("in_progress")
                 
         log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at .worktrees/{branch_name}")
         
