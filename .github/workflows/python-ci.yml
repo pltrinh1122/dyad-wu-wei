@@ -9,8 +9,6 @@ on:
 jobs:
   test:
     runs-on: self-hosted
-    env:
-      GIT_CONFIG_GLOBAL: /dev/null
 
     steps:
     - uses: actions/checkout@v4
