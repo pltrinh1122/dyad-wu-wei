@@ -644,5 +644,12 @@
   - `[ ]` None
 
 
+## Probe 179: Architectural Evaluation of Configurable Operator-Gates
+- **Status**: Completed
+- **Learnings & Context**: Conducted architectural evaluation of HITL gates, determining that a BaseManager OOP pattern (Option C) guided by modular {domain}-gates.yml configuration files provides the best systemic invariant.
+- **Feedforward Invariants**:
+  - `- [x] kb/WHY-0012-configurable-operator-gates.md exists`
+
+
 ## Current Active Node
 **Probe 163: Audit State Inconsistencies**
