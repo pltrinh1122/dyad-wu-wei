@@ -10,9 +10,10 @@ Two-tier logic:
      backlog and surface the highest-priority item across all pending nodes.
 """
 
-import subprocess
-import re
 import os
+import re
+import subprocess
+from skills import gh_graph_skill
 
 
 def _get_frontier_path(frontier_file: str | None = None) -> str:
@@ -79,42 +80,17 @@ def evaluate(repository: str, frontier_file: str | None = None) -> dict:
 
         related = []
         if path_number:
-            path_result = subprocess.run(
-                ["gh", "issue", "view", str(path_number), "--json", "body"],
-                capture_output=True, text=True, check=False
-            )
-            if path_result.returncode == 0:
-                import json
-                try:
-                    path_data = json.loads(path_result.stdout.strip())
-                    body = path_data.get("body", "")
-                    
-                    nodes = {}
-                    for line in body.splitlines():
-                        line = line.strip()
-                        status_match = re.match(r"-\s+\[([xX ])\]\s+Node\s+(\d+):", line)
-                        if status_match:
-                            status = status_match.group(1).lower()
-                            nid = status_match.group(2)
-                            depends = []
-                            dep_match = re.search(r"\[Depends:\s*(.*?)\]", line)
-                            if dep_match:
-                                depends = [d.strip() for d in dep_match.group(1).split(",")]
-                            nodes[nid] = {"completed": status == "x", "depends": depends}
-                    
-                    incomplete_ids = {nid for nid, data in nodes.items() if not data["completed"]}
-                    ready_ids = []
-                    for nid in incomplete_ids:
-                        deps = nodes[nid]["depends"]
-                        if not any(dep in incomplete_ids for dep in deps):
-                            ready_ids.append(nid)
-                    
-                    for item in backlog:
-                        item_num = str(item.get("number", ""))
-                        if item_num in ready_ids:
-                            related.append(item)
-                except (json.JSONDecodeError, ValueError):
-                    pass
+            try:
+                body = gh_graph_skill.fetch_path_data(path_number, repository)
+                nodes = gh_graph_skill.parse_meta_index(body)
+                ready_ids = gh_graph_skill.get_ready_nodes(nodes)
+                
+                for item in backlog:
+                    item_num = str(item.get("number", ""))
+                    if item_num in ready_ids:
+                        related.append(item)
+            except Exception:
+                pass
 
         if related:
             return {
