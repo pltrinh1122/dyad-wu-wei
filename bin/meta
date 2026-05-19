@@ -119,9 +119,26 @@ append_active_node(
 print(f"{node_title} set active in local ledger {filepath}!")
 ' "$1" "$2" "$3" "$4" "$FRONTIER_FILE"
         ;;
+    path)
+        if [ "$#" -lt 1 ]; then
+            echo "Usage: $0 path <path_name_or_none>"
+            exit 1
+        fi
+        FRONTIER_FILE="${2:-artifacts/frontier_state.md}"
+        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
+import sys
+from skills.frontier_editor import set_active_path
+
+path_name = sys.argv[1]
+filepath = sys.argv[2]
+
+set_active_path(filepath, path_name)
+print(f'Path {path_name} set active in local ledger {filepath}!')
+" "$1" "$FRONTIER_FILE"
+        ;;
     *)
         echo "Unknown subcommand: $SUBCOMMAND"
-        echo "Usage: $0 {link|check|active} [args...]"
+        echo "Usage: $0 {link|check|active|path} [args...]"
         exit 1
         ;;
 esac

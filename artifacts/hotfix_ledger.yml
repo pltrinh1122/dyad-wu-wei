@@ -11,3 +11,11 @@ hotfixes:
   timestamp: '2026-05-18T01:07:27Z'
   file: GEMINI.md
   message: Refactor GEMINI.md to add Bring-Up Process and Agentic Registry
+- hash: 602e238be47f0325b98d51491fe722c3306eec0e
+  timestamp: '2026-05-19T16:31:11Z'
+  file: artifacts/frontier_state.md
+  message: restore active path pointer to Path 213 and repair formatting
+- hash: 1c879ec107f8201407725574b3eb54cad5d037cb
+  timestamp: '2026-05-19T16:36:41Z'
+  file: artifacts/frontier_state.md
+  message: fix mangled frontier_state.md headers

@@ -737,7 +737,7 @@
   - `Activities 223, 224, 225 generated`
 
 ## Current Active Path
-None
+**Refactor and Promote NBA Evaluator (#242)**
 
 ## Probe 221: Holistic Evaluation of Path Modifications
 - **Status**: Completed
@@ -806,5 +806,12 @@ None
   - `tests pass`
 
 
+## Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator
+- **Status**: Completed
+- **Learnings & Context**: Successfully analyzed the current implementation, drafted an architectural promotion strategy, and spawned execution Activities 244-247. Decisions codified in WHY-0016.
+- **Feedforward Invariants**:
+  - `WHY-0016 exists`
+  - `Meta-Index updated`
+
 ## Current Active Node
-None
+**Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator**
