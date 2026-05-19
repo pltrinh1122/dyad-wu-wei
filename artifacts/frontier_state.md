@@ -724,5 +724,12 @@
   - `WHY-0014 exists`
 
 
+## Probe 204: Scope Necessary Activities for Topological Invariants
+- **Status**: Completed
+- **Learnings & Context**: Created Activities 206, 207, and 208 to implement the topological invariants.
+- **Feedforward Invariants**:
+  - `Backlog populated`
+
+
 ## Current Active Node
 **Activity 191: Codify Path Invariant Enforcement**
