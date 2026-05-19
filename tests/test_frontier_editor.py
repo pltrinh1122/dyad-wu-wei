@@ -13,6 +13,9 @@ def dummy_frontier(tmp_path):
         - **Status**: Completed
         - **Learnings**: Did things.
         
+        ## Current Active Path
+        **Path 181: Configurable Sense Hooks**
+        
         ## Current Active Node
         **Node 2: Do the next thing**
     """)
@@ -22,6 +25,19 @@ def dummy_frontier(tmp_path):
 def test_read_active_node(dummy_frontier):
     node = read_active_node(dummy_frontier)
     assert node == "Node 2: Do the next thing"
+
+def test_read_active_path(dummy_frontier):
+    from skills.frontier_editor import read_active_path
+    path = read_active_path(dummy_frontier)
+    assert path == "Path 181: Configurable Sense Hooks"
+
+def test_set_active_path(dummy_frontier):
+    from skills.frontier_editor import set_active_path, read_active_path
+    set_active_path(dummy_frontier, "Path 192: Another Path")
+    assert read_active_path(dummy_frontier) == "Path 192: Another Path"
+    
+    set_active_path(dummy_frontier, "None")
+    assert read_active_path(dummy_frontier) is None
 
 def test_complete_active_node(dummy_frontier):
     complete_active_node(

@@ -3,19 +3,19 @@ from unittest.mock import patch, MagicMock
 from skills.nba_evaluator import get_active_path, get_backlog_items, evaluate
 
 
-@patch('skills.frontier_editor.read_active_node', return_value="Path 181: Configurable Sense Hooks")
+@patch('skills.frontier_editor.read_active_path', return_value="Path 181: Configurable Sense Hooks")
 def test_get_active_path_returns_path(mock_read):
     result = get_active_path("/fake/frontier.md")
     assert result == "Path 181: Configurable Sense Hooks"
 
 
-@patch('skills.frontier_editor.read_active_node', return_value="Activity 189: NBA Skill")
+@patch('skills.frontier_editor.read_active_path', return_value="Activity 189: NBA Skill")
 def test_get_active_path_returns_none_for_activity(mock_read):
     result = get_active_path("/fake/frontier.md")
     assert result is None
 
 
-@patch('skills.frontier_editor.read_active_node', return_value="")
+@patch('skills.frontier_editor.read_active_path', return_value="")
 def test_get_active_path_empty(mock_read):
     result = get_active_path("/fake/frontier.md")
     assert result is None
