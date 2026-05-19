@@ -10,6 +10,8 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - Read `artifacts/frontier_state.md` and the cloud-hosted Path Meta-Index (GH Issue).
    - Validate that the feedforward invariants from the previous node are met.
    - If backlog items are surfaced, pull the highest-priority item as the next Node (unless the Operator specifies otherwise).
+   - **Path Initialization Invariant:** When embarking on a new Path, the Agent MUST execute the **Dual-Probe Initialization** pattern before advancing to any codebase-mutating Activities.
+   - **Backlog Generation Invariant:** When the Agent generates new items for the backlog (e.g., scoping activities), it MUST utilize the `--path` argument in `bin/backlog new` to bind it to a parent Path, preventing Orphaned Nodes.
 
 1. **Plan (Contract Formulation):** 
    - Execute the shell script: `./bin/node plan "ISSUE_ID" "Body content..."` to lock the Node Contract into the existing **Backlog Issue** and automatically prepend the Node ID to the GitHub Issue title.

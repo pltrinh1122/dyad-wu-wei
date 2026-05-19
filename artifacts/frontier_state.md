@@ -683,7 +683,7 @@
 
 
 ## Current Active Path
-**Path 202: Enforce Strict Topological Traceability Invariants**
+None
 
 ## Activity 191: Codify Path Invariant Enforcement
 - **Status**: Completed
@@ -746,6 +746,14 @@
   - `bin/backlog rejects orphaned nodes`
   - `add_to_backlog updates parent body automatically`
   - `tests pass`
+
+
+## Activity 206: Update Core Ontologies (WHAT-0001 & HOW-0001)
+- **Status**: Completed
+- **Learnings & Context**: Formally codified the Orphaned Node Fallacy and Dual-Probe Initialization constraints into WHAT-0001 and HOW-0001, permanently establishing these invariants in the system's philosophical ROM.
+- **Feedforward Invariants**:
+  - `WHAT-0001 updated`
+  - `HOW-0001 updated`
 
 
 ## Current Active Node
