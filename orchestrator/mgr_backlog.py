@@ -140,6 +140,21 @@ class BacklogManager:
         except Exception as e:
             print(f"Warning: Failed to check off Meta-Index for Node {node_id} in Path {path_id}: {e}")
 
+    def uncheck_meta_index(self, path_id: str, node_id: str) -> None:
+        """Finds the node in the parent Path's Meta-Index and marks it as uncompleted."""
+        try:
+            data = github_client.get_issue_details(path_id)
+            body = data.get("body", "")
+            
+            import re
+            pattern = re.compile(r"-\s+\[x\]\s+Node\s+" + str(node_id) + r":", re.IGNORECASE)
+            
+            if pattern.search(body):
+                new_body = pattern.sub(f"- [ ] Node {node_id}:", body)
+                github_client.update_issue_body(str(path_id), new_body)
+        except Exception as e:
+            print(f"Warning: Failed to uncheck Meta-Index for Node {node_id} in Path {path_id}: {e}")
+
 from orchestrator.mgr_telemetry import record_execution
 
 @record_execution(stage="sense")

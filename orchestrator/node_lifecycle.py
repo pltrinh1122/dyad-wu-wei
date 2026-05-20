@@ -6,6 +6,7 @@ import yaml
 from skills import github_client, git_client
 from orchestrator import mgr_frontier, mgr_prompt, mgr_backlog, mgr_nba
 from orchestrator.mgr_telemetry import TelemetryManager, record_execution
+from orchestrator.mgr_transaction import FlowTransaction
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -66,6 +67,9 @@ class BaseNode:
         
     def close(self, comment: str):
         github_client.close_issue(self.issue_id, comment)
+
+    def reopen(self, comment: str = ""):
+        github_client.reopen_issue(self.issue_id)
 
     def set_status(self, status_key: str) -> None:
         """Translates a logical status key into a physical label using node.yml."""
@@ -151,29 +155,31 @@ class TerminalNode(BaseNode):
 
     @record_execution(stage="plan")
     def plan_start(self, frontier_file: str = "artifacts/frontier_state.md") -> None:
-        self._verify_state_purity(frontier_file)
-        
-        in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
-        if in_progress_label in self.gh_labels:
-            raise Exception(f"Node #{self.issue_id} is already in progress by another thread!")
+        with FlowTransaction(frontier_file) as tx:
+            self._verify_state_purity(frontier_file)
             
-        self._validate_orthogonal_scope()
+            in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
+            if in_progress_label in self.gh_labels:
+                raise Exception(f"Node #{self.issue_id} is already in progress by another thread!")
+                
+            self._validate_orthogonal_scope()
+                
+            self.set_status("in_progress")
+            tx.register_rollback(self.set_status, "open")
             
-        self.set_status("in_progress")
-        
-        # Atomically set active node in frontier
-        details = github_client.get_issue_details(self.issue_id)
-        node_title = details.get("title", f"Node {self.issue_id}")
-        mgr_frontier.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
-        
-        log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} and updated frontier.")
+            # Atomically set active node in frontier
+            details = github_client.get_issue_details(self.issue_id)
+            node_title = details.get("title", f"Node {self.issue_id}")
+            mgr_frontier.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
+            
+            log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} and updated frontier.")
 
     @record_execution(stage="plan")
     def plan_finish(self, body: str) -> str:
         log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Issue #{self.issue_id}")
         
-        res = subprocess.run(["gh", "issue", "view", self.issue_id, "--json", "title"], capture_output=True, text=True, check=True)
-        current_title = json.loads(res.stdout)["title"]
+        issue_details = github_client.get_issue_details(self.issue_id)
+        current_title = issue_details.get("title", "")
         
         prefix = f"Node {self.issue_id}:"
         if not current_title.startswith(prefix):
@@ -191,65 +197,76 @@ class TerminalNode(BaseNode):
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
             
-        self._verify_state_purity(frontier_file, expected_active=self.issue_id)
-        
-        self.set_status("in_progress")
-                
-        log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at .worktrees/{branch_name}")
-        
-        worktree_path = os.path.join(".worktrees", branch_name)
-        os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
-        
-        git_client.worktree_add(branch_name, worktree_path, "main")
-        
-        print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
+        with FlowTransaction(frontier_file) as tx:
+            self._verify_state_purity(frontier_file, expected_active=self.issue_id)
+            
+            self.set_status("in_progress")
+            tx.register_rollback(self.set_status, "open")
+                    
+            log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at .worktrees/{branch_name}")
+            
+            worktree_path = os.path.join(".worktrees", branch_name)
+            os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
+            
+            git_client.worktree_add(branch_name, worktree_path, "main")
+            tx.register_rollback(git_client.worktree_remove, worktree_path, force=True)
+            tx.register_rollback(git_client.branch_delete, branch_name)
+            
+            print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
 
     @record_execution(stage="reflect")
     def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str) -> None:
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
  
-        log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
- 
-        self.close("Node completed via Flow-State Manager. Moving to PR.")
-        
-        # Automate Meta-Index Checkbox Synchronization
-        active_path_str = mgr_frontier.read_active_path(frontier_file)
-        if active_path_str:
-            path_issue_id = mgr_frontier.extract_path_id(active_path_str)
-            if path_issue_id:
-                backlog = mgr_backlog.BacklogManager()
-                backlog.check_off_meta_index(path_issue_id, self.issue_id)
-            else:
-                print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
-        
-        # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
-        nba = mgr_nba.NBAManager()
-        nba_result = nba.evaluate(frontier_file=frontier_file)
-        
-        clear_path = False
-        if nba_result["type"] == "path_switching" and active_path_str:
-            # We had an active path, but NBA now says we should switch (because it's exhausted)
-            path_issue_id = mgr_frontier.extract_path_id(active_path_str)
-            if path_issue_id:
-                github_client.close_issue(path_issue_id, "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
-                log_stage_advancement("reflect", "Path Invariant Enforced", f"Automatically closed parent {active_path_str}")
-                clear_path = True
-        
-        # ATOMIC UPDATE: Mark node completed AND clear pointers
-        mgr_frontier.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
-        if clear_path:
-            mgr_frontier.set_active_path(frontier_file, "None")
-        
-        git_client.add(["."])
-        git_client.commit(commit_msg)
-        git_client.push(branch_name)
-        
-        pr_body = f"Resolves #{self.issue_id}\n\n{learnings}"
-        
-        pr_url = github_client.create_pull_request(node_name, pr_body)
-        
-        log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
+        with FlowTransaction(frontier_file) as tx:
+            log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
+     
+            self.close("Node completed via Flow-State Manager. Moving to PR.")
+            tx.register_rollback(self.reopen)
+            
+            # Automate Meta-Index Checkbox Synchronization
+            active_path_str = mgr_frontier.read_active_path(frontier_file)
+            if active_path_str:
+                path_issue_id = mgr_frontier.extract_path_id(active_path_str)
+                if path_issue_id:
+                    backlog = mgr_backlog.BacklogManager()
+                    backlog.check_off_meta_index(path_issue_id, self.issue_id)
+                    tx.register_rollback(backlog.uncheck_meta_index, path_issue_id, self.issue_id)
+                else:
+                    print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
+            
+            # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
+            nba = mgr_nba.NBAManager()
+            nba_result = nba.evaluate(frontier_file=frontier_file)
+            
+            clear_path = False
+            if nba_result["type"] == "path_switching" and active_path_str:
+                # We had an active path, but NBA now says we should switch (because it's exhausted)
+                path_issue_id = mgr_frontier.extract_path_id(active_path_str)
+                if path_issue_id:
+                    github_client.close_issue(path_issue_id, "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
+                    tx.register_rollback(github_client.reopen_issue, path_issue_id)
+                    log_stage_advancement("reflect", "Path Invariant Enforced", f"Automatically closed parent {active_path_str}")
+                    clear_path = True
+            
+            # ATOMIC UPDATE: Mark node completed AND clear pointers
+            mgr_frontier.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
+            if clear_path:
+                mgr_frontier.set_active_path(frontier_file, "None")
+            
+            git_client.add(["."])
+            git_client.commit(commit_msg)
+            # rollback the local commit if remote operations fail
+            tx.register_rollback(subprocess.run, ["git", "reset", "--hard", "HEAD~1"], check=True)
+            
+            git_client.push(branch_name)
+            
+            pr_body = f"Resolves #{self.issue_id}\n\n{learnings}"
+            
+            pr_url = github_client.create_pull_request(node_name, pr_body)
+            
+            log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
 
     @classmethod
     def clean_if_merged(cls, branch_name: str):

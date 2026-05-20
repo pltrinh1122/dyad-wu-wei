@@ -1194,3 +1194,10 @@ nodes:
   - get_commit_hash
   - branch_delete`'\n- '`No raw git subprocesses inside orchestrator modules`'\n-
     '`All 96 tests pass cleanly`'\n
+- name: Implement Abstraction Remediation and Atomic Transactions
+  status: Completed
+  learnings: Adding git wrappers and a context-manager transaction layer allows rollbacks
+    of Git and GitHub state on failure, avoiding dirty states and compliance violations.
+  invariants:
+  - Must always use git_client wrapper functions instead of raw subprocess calls to
+    git in all orchestration modules. Must always wrap state transitions in FlowTransaction.

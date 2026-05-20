@@ -60,3 +60,45 @@ def get_commit_hash(revision: str = "HEAD") -> str:
 def branch_delete(branch: str) -> None:
     """Deletes a local branch."""
     subprocess.run(["git", "branch", "-D", branch], check=True)
+
+@record_execution(stage="skill")
+def switch(branch: str) -> None:
+    """Switches to the specified branch."""
+    subprocess.run(["git", "switch", branch], check=True)
+
+@record_execution(stage="skill")
+def pull(remote: str, branch: str, prune: bool = False) -> None:
+    """Pulls commits from remote repository branch."""
+    cmd = ["git", "pull"]
+    if prune:
+        cmd.append("--prune")
+    cmd.extend([remote, branch])
+    subprocess.run(cmd, check=True)
+
+@record_execution(stage="skill")
+def list_merged_branches() -> list[str]:
+    """Returns a list of local branches that have been merged into HEAD."""
+    res = subprocess.run(["git", "branch", "--merged"], capture_output=True, text=True, check=True)
+    return [b.strip().strip("* ") for b in res.stdout.splitlines() if b.strip()]
+
+@record_execution(stage="skill")
+def list_local_branches() -> list[str]:
+    """Returns a list of all local branch names."""
+    res = subprocess.run(["git", "branch", "--format", "%(refname:short)"], capture_output=True, text=True, check=True)
+    return [b.strip() for b in res.stdout.splitlines() if b.strip()]
+
+@record_execution(stage="skill")
+def worktree_prune() -> None:
+    """Prunes stale git worktrees."""
+    subprocess.run(["git", "worktree", "prune"], check=False)
+
+def get_git_common_dir() -> str:
+    """Returns the .git directory path (git-common-dir)."""
+    res = subprocess.run(["git", "rev-parse", "--git-common-dir"], capture_output=True, text=True, check=True)
+    return res.stdout.strip()
+
+def get_show_toplevel() -> str:
+    """Returns the primary repository root directory."""
+    res = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True, check=True)
+    return res.stdout.strip()
+
