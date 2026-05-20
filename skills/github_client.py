@@ -111,14 +111,17 @@ def rename_issue_title(issue_id: str, new_title: str) -> None:
     )
 
 
-def create_pull_request(title: str, body: str) -> str:
+def create_pull_request(title: str, body: str, head: str = None) -> str:
     """Creates a PR using gh pr create."""
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
         temp_file.write(body)
         temp_file.flush()
         
+        cmd = ["gh", "pr", "create", "--title", title, "-F", temp_file.name]
+        if head:
+            cmd += ["--head", head]
         result = subprocess.run(
-            ["gh", "pr", "create", "--title", title, "-F", temp_file.name],
+            cmd,
             capture_output=True, text=True, check=True
         )
         return result.stdout.strip()

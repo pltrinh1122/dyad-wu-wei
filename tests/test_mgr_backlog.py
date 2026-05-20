@@ -2,6 +2,12 @@ import pytest
 from unittest.mock import patch, MagicMock
 from orchestrator.mgr_backlog import BacklogManager
 
+@pytest.fixture(autouse=True)
+def mock_register_backlog_node():
+    with patch('orchestrator.mgr_frontier.register_backlog_node') as mock_reg:
+        yield mock_reg
+
+
 def test_backlog_list(mock_backlog_gh):
     mock_backlog_gh.list_issues_by_label.return_value = [{"number": 31, "title": "Backlog Item", "url": "https://..."}]
     manager = BacklogManager()
