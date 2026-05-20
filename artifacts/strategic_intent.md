@@ -1,10 +1,10 @@
 # Strategic Intent Ledger
 
 ## Active Goals
-### NS-0001: Operational Leverage through Autonomous Reliability (North Star)
-- **Operator Problem**: The operator suffers from attention overhead and context-switching fatigue when guiding autonomous agents, preventing scale.
+### NS-0001: Synergistic Human-Agent Partnership (North Star - 1+1=3)
+- **Operator Problem**: Unilateral automation hard-caps the system's output at the limits of the agent's logic or the human's manual review bandwidth.
 - **Constraints**: The system must operate under real-time session limits, operator attention boundaries, and standard repository rules.
-- **Falsification Signal**: The ratio of operator attention time (conversation, reviews, debug gates) to completed backlog nodes increases over a 30-day window.
+- **Falsification Signal**: The dyad fails to achieve greater throughput and architectural stability than the operator working alone or the agent executing without oversight.
 - **Prioritized Paths**: None
 
 ### SG-0001: Backlog Dynamics and Resource Budget Alignment
