@@ -949,5 +949,14 @@ None
   - `Atomic State Invariant added to GLOSSARY.md`
 
 
+## Plan - Metasystem State Hardening
+- **Status**: Completed
+- **Learnings & Context**: Implemented atomic state transitions in frontier_editor.py and integrated a stale-pointer audit rule into audit_daemon.py. Added mandatory state purity gating to TerminalNode lifecycle methods.
+- **Feedforward Invariants**:
+  - `Atomic completion and pointer clearing in frontier_editor.py`
+  - `State purity verification in TerminalNode lifecycle`
+  - `Stale active node detection in audit_daemon.py`
+  - `Audit trigger integrated into node sync`
+
 ## Current Active Node
-**Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator**
+None
