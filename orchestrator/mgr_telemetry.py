@@ -66,7 +66,7 @@ class TelemetryManager:
     def _get_default_ledger_path(self):
         """Anchors the default ledger path to the git repository root."""
         try:
-            root = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()
+            root = subprocess.check_output(["git", "rev-parse", "--show-common-toplevel"], text=True).strip()
             return os.path.join(root, "artifacts", "telemetry.jsonl")
         except subprocess.CalledProcessError:
             # Fallback to current directory artifacts if not in a git repo
