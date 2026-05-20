@@ -970,5 +970,12 @@ None
 - **Feedforward Invariants**:
   - `Metasystem state is now atomic and self-auditing`
 
+## Plan - Regression Testing Architecture Hardening
+- **Status**: Completed
+- **Learnings & Context**: Implemented centralized test support layer (conftest.py, harness.py) and integrated a mandatory patch-density guardrail into mgr_testing.py. Refactored major test files to comply with orthogonality requirements.
+- **Feedforward Invariants**:
+  - `Test files MUST NOT exceed 10 patches`
+  - `Standardize on pytest fixtures`
+
 ## Current Active Node
 None

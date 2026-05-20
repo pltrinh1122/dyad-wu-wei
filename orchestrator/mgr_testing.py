@@ -2,6 +2,8 @@ import os
 import sys
 import subprocess
 import argparse
+import re
+import yaml
 from typing import List
 
 class TestManager:
@@ -9,12 +11,66 @@ class TestManager:
 
     def __init__(self, repo_root: str = "."):
         self.repo_root = os.path.abspath(repo_root)
+        self.config_path = os.path.join(self.repo_root, "orchestrator/test_config.yml")
+        self.config = self._load_config()
+
+    def _load_config(self) -> dict:
+        if os.path.exists(self.config_path):
+            with open(self.config_path, "r") as f:
+                return yaml.safe_load(f)
+        return {"guardrails": {"patch_density": {"threshold": 10, "strict": False}}}
+
+    def audit_patch_density(self, targets: List[str]) -> bool:
+        """Audits the patch density of targeted test files."""
+        threshold = self.config.get("guardrails", {}).get("patch_density", {}).get("threshold", 10)
+        strict = self.config.get("guardrails", {}).get("patch_density", {}).get("strict", False)
+        
+        violations = []
+        
+        # Resolve all test files in targets
+        test_files = []
+        for target in targets:
+            abs_target = os.path.abspath(os.path.join(self.repo_root, target))
+            if os.path.isfile(abs_target):
+                test_files.append(abs_target)
+            elif os.path.isdir(abs_target):
+                for root, _, files in os.walk(abs_target):
+                    for f in files:
+                        if f.startswith("test_") and f.endswith(".py"):
+                            test_files.append(os.path.join(root, f))
+        
+        for filepath in test_files:
+            with open(filepath, "r") as f:
+                content = f.read()
+            
+            patches = re.findall(r"@patch\(['\"]([^'\"]+)['\"]\)", content)
+            count = len(patches)
+            
+            if count > threshold:
+                violations.append((os.path.relpath(filepath, self.repo_root), count))
+        
+        if violations:
+            print("\n🚨 Patch Density Violation Detected!")
+            print(f"Threshold: {threshold} patches per file")
+            for file, count in violations:
+                print(f"  - {file}: {count} patches")
+            
+            if strict:
+                print("❌ Aborting tests due to strict guardrail enforcement. Use fixtures in conftest.py instead.")
+                return False
+        
+        return True
 
     def run(self, targets: List[str] = None) -> int:
         """Executes pytest for the given targets."""
         if not targets:
             targets = ["tests/"]
 
+        # 1. Audit Phase
+        if not self.audit_patch_density(targets):
+            return 1
+
+        # 2. Execution Phase
         env = os.environ.copy()
         env["PYTHONPATH"] = self.repo_root
         env["ANTIGRAVITY_RUNNING_TESTS"] = "1"
