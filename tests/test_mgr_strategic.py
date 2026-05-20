@@ -58,6 +58,18 @@ class TestMgrStrategic(unittest.TestCase):
         errors = mgr_strategic.validate_goal(goal)
         self.assertTrue(any("Falsifiability error" in e for e in errors))
 
+    def test_validate_goal_invalid_materializability(self):
+        goal = {
+            "title": "AGI Integration",
+            "operator_problem": "The operator wants an AGI model to automate all repository work.",
+            "constraints": "Requires infinite context window and zero latency connection.",
+            "falsification_signal": "The agent makes a mistake."
+        }
+        errors = mgr_strategic.validate_goal(goal)
+        self.assertTrue(any("Materializability error" in e for e in errors))
+        self.assertTrue(any("speculative capabilities" in e for e in errors))
+
+
     def test_save_and_load_ledger(self):
         data = {
             "strategic_goals": [

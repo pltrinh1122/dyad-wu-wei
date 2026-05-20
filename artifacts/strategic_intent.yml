@@ -36,7 +36,7 @@ strategic_goals:
   title: Preservation of Autonomous Velocity
   operator_problem: Autonomous agent velocity is degraded because non-deterministic
     (flaky) tests or slow validation runs trigger false-positive auto-rollbacks, stalling
-    the agent in infinite repair loops.
+    the agent in repeating repair loops.
   constraints: Validation test suites must execute completely offline, contain zero
     network dependencies, and run in under 60 seconds.
   falsification_signal: The agent's throughput (nodes completed per unit of time)

@@ -93,11 +93,18 @@ def validate_goal(goal: dict) -> list[str]:
             if re.search(r'\b' + verb + r'\b', constraints_lower):
                 errors.append(f"Constraint error: constraint cannot frame facts as action/problem (contains action verb '{verb}').")
                 
+        # Axiom (3) (Materializability) Validation
+        forbidden_assumptions = ["infinite", "instantaneous", "zero latency", "perfect network", "unlimited token", "unlimited context", "agi"]
+        for word in forbidden_assumptions:
+            if word in constraints_lower or word in str(prob).lower():
+                errors.append(f"Materializability error: goal assumes non-physical or speculative capabilities (contains term '{word}').")
+                
     falsification = goal.get("falsification_signal", "")
     if not falsification or not str(falsification).strip():
         errors.append("Falsifiability error: 'falsification_signal' is empty or missing.")
         
     return errors
+
 
 def cmd_list():
     data = load_ledger()

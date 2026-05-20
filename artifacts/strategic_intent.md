@@ -20,7 +20,7 @@
 - **Prioritized Paths**: None
 
 ### SG-0003: Preservation of Autonomous Velocity
-- **Operator Problem**: Autonomous agent velocity is degraded because non-deterministic (flaky) tests or slow validation runs trigger false-positive auto-rollbacks, stalling the agent in infinite repair loops.
+- **Operator Problem**: Autonomous agent velocity is degraded because non-deterministic (flaky) tests or slow validation runs trigger false-positive auto-rollbacks, stalling the agent in repeating repair loops.
 - **Constraints**: Validation test suites must execute completely offline, contain zero network dependencies, and run in under 60 seconds.
 - **Falsification Signal**: The agent's throughput (nodes completed per unit of time) decreases due to repeating rollback cycles caused by test flakiness or network timeouts.
 - **Prioritized Paths**: 368
