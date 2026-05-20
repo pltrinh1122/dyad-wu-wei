@@ -1594,3 +1594,11 @@ nodes:
   invariants:
   - '[x] WHY-0046 created'
   - '[x] WHAT-0046 created'
+- name: 'Activity 458: Activity: Implement Automated Labeling Invariants'
+  status: Completed
+  learnings: Implemented automated labeling cleanup on issue close, path tagging in
+    backlog, and status label transition in lifecycle.
+  invariants:
+  - '[x] Automated status cleaning on issue close'
+  - '[x] Path labeling in backlog manager'
+  - '[x] Set status transitions cleanup'

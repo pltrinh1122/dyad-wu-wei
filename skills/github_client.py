@@ -22,6 +22,13 @@ def close_issue(issue_id: str, comment_body: str) -> None:
         ["gh", "issue", "close", str(issue_id), "-c", comment_body],
         check=True
     )
+    try:
+        labels = get_issue_labels(issue_id)
+        for label in labels:
+            if label.startswith("status:"):
+                remove_label(issue_id, label)
+    except Exception:
+        pass
 
 def reopen_issue(issue_id: str) -> None:
     """Reopens a closed GH issue."""

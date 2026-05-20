@@ -106,11 +106,21 @@ class BaseNode:
         github_client.reopen_issue(self.issue_id)
 
     def set_status(self, status_key: str) -> None:
-        """Translates a logical status key into a physical label using node.yml."""
+        """Translates a logical status key into a physical label using node.yml and removes other status labels."""
         status_config = load_node_status_config()
         if status_key not in status_config:
             raise ValueError(f"Status key '{status_key}' is not defined in node.yml")
-        self.add_gh_label(status_config[status_key])
+        
+        target_label = status_config[status_key]
+        try:
+            current_labels = self.gh_labels
+            for key, label in status_config.items():
+                if label != target_label and label in current_labels:
+                    github_client.remove_label(self.issue_id, label)
+        except Exception:
+            pass
+            
+        self.add_gh_label(target_label)
 
     def set_classification(self, classification_key: str) -> None:
         """Translates a logical classification key into a physical label using node.yml."""

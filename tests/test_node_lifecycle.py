@@ -32,13 +32,22 @@ def test_load_node_status_config_not_found():
         class_config = load_node_classification_config()
         assert class_config == {}
 
+@mock.patch("orchestrator.node_lifecycle.github_client.remove_label")
+@mock.patch("orchestrator.node_lifecycle.github_client.get_issue_labels")
 @mock.patch("orchestrator.node_lifecycle.load_node_status_config")
 @mock.patch("orchestrator.node_lifecycle.github_client.add_label")
-def test_base_node_set_status(mock_add_label, mock_load_config):
-    mock_load_config.return_value = {"in_progress": "status: in-progress"}
+def test_base_node_set_status(mock_add_label, mock_load_config, mock_get_labels, mock_remove_label):
+    mock_load_config.return_value = {
+        "todo": "status: todo",
+        "in_progress": "status: in-progress"
+    }
+    mock_get_labels.return_value = ["status: todo", "backlog"]
+    
     node = BaseNode("100")
     node.set_status("in_progress")
+    
     mock_add_label.assert_called_once_with("100", "status: in-progress")
+    mock_remove_label.assert_called_once_with("100", "status: todo")
 
 @mock.patch("orchestrator.node_lifecycle.load_node_status_config")
 def test_base_node_set_status_invalid(mock_load_config):

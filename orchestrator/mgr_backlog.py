@@ -116,10 +116,14 @@ class BacklogManager:
             github_client.add_label(issue_id, backlog_label)
             if is_terminal:
                 github_client.add_label(issue_id, todo_label)
+            if is_non_terminal:
+                github_client.add_label(issue_id, "path")
         except Exception:
             github_client.add_label(issue_id, "backlog")
             if is_terminal:
                 github_client.add_label(issue_id, "status: todo")
+            if is_non_terminal:
+                github_client.add_label(issue_id, "path")
 
         new_title = f"{node_type.capitalize()} {issue_id}: {title}"
         github_client.rename_issue_title(issue_id, new_title)

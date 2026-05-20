@@ -15,10 +15,25 @@ def test_create_issue(mock_tempfile, mock_subprocess):
     assert "create" in args
 
 def test_close_issue(mock_subprocess):
+    mock_close = MagicMock(returncode=0)
+    mock_labels = MagicMock(stdout='{"labels": [{"name": "status: in-progress"}]}', returncode=0)
+    mock_remove = MagicMock(returncode=0)
+    
+    mock_subprocess.side_effect = [mock_close, mock_labels, mock_remove]
+    
     close_issue("99", "Closing comment")
-    mock_subprocess.assert_called_once()
-    args = mock_subprocess.call_args[0][0]
-    assert "close" in args
+    
+    assert mock_subprocess.call_count == 3
+    close_args = mock_subprocess.call_args_list[0][0][0]
+    assert "close" in close_args
+    assert "99" in close_args
+    
+    view_args = mock_subprocess.call_args_list[1][0][0]
+    assert "view" in view_args
+    
+    remove_args = mock_subprocess.call_args_list[2][0][0]
+    assert "--remove-label" in remove_args
+    assert "status: in-progress" in remove_args
 
 def test_reopen_issue(mock_subprocess):
     reopen_issue("99")
