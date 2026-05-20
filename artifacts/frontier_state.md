@@ -1053,7 +1053,7 @@
   - `[ ]` None
 
 ## Current Active Path
-Path 368: Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
+**Path 368: Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite**
 
 ## Current Active Node
-None — node 364 BLOCKED (PR #367 open, CI failing); CI Hardening Spike #368 is now priority
+None

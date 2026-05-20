@@ -1,4 +1,5 @@
-current_active_path: null
+current_active_path: "Path 368: Spike Path: CI Hardening \u2014 Remediate and Prevent\
+  \ Live GitHub API Calls in Test Suite"
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -1224,3 +1225,8 @@ nodes:
     using unit tests and manual multi-workspace validation.
   invariants:
   - All SPAO scripts must distinguish execution path from workspace target path.
+- name: 'Node 364: Probe 364: Plan - Spike Path: SPAO Release Packaging, One-Step
+    Onboarding & CLI Discoverability'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
