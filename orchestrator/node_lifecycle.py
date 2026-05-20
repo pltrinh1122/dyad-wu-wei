@@ -220,13 +220,32 @@ class TerminalNode(BaseNode):
             if in_progress_label in self.gh_labels:
                 raise Exception(f"Node #{self.issue_id} is already in progress by another thread!")
                 
+            # Verify dependencies
+            details = github_client.get_issue_details(self.issue_id)
+            body = details.get("body", "")
+            
+            # Find dependencies under "## Depends On"
+            dep_match = re.search(r"## Depends On\s*\n+([^\n#]+)", body, re.IGNORECASE)
+            if dep_match:
+                dep_content = dep_match.group(1).strip()
+                if dep_content.upper() != "TBD" and dep_content:
+                    dep_ids = re.findall(r"\d+", dep_content)
+                    for dep_id in dep_ids:
+                        try:
+                            dep_details = github_client.get_issue_details(dep_id)
+                            if dep_details.get("state") != "CLOSED":
+                                raise Exception(f"Dependency Violation: Node #{self.issue_id} depends on Node #{dep_id}, which is still open!")
+                        except Exception as e:
+                            if "Dependency Violation" in str(e):
+                                raise
+                            pass
+                            
             self._validate_orthogonal_scope()
                 
             self.set_status("in_progress")
             tx.register_rollback(self.set_status, "open")
             
             # Atomically set active node in frontier
-            details = github_client.get_issue_details(self.issue_id)
             node_title = details.get("title", f"Node {self.issue_id}")
             mgr_frontier.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
             

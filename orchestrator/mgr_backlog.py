@@ -55,12 +55,41 @@ class BacklogManager:
         if is_terminal and not path_id:
             raise ValueError("Terminal nodes (Activities and Probes) must belong to a parent Path. Please provide a path_id.")
             
+        if is_terminal and path_id:
+            try:
+                path_details = github_client.get_issue_details(path_id)
+                if not path_details:
+                    raise ValueError(f"Parent Path issue {path_id} does not exist.")
+                if path_details.get("state") != "OPEN":
+                    raise ValueError(f"Parent Path issue {path_id} is already closed.")
+                path_title = path_details.get("title", "")
+                if not path_title.lower().startswith("path"):
+                    raise ValueError(f"Parent issue {path_id} is not classified as a Path.")
+            except ValueError:
+                raise
+            except Exception:
+                pass
+
         formatted_title = f"{node_type.capitalize()}: {title}"
+
+        # Idempotency duplicate check
+        import re
+        try:
+            open_issues = github_client.get_open_issues()
+            for issue in open_issues:
+                curr_title = issue.get("title", "")
+                clean_curr = re.sub(r"^(Probe|Activity|Path)\s*\d+:\s*", r"\1: ", curr_title, flags=re.IGNORECASE)
+                expected_clean = f"{node_type.capitalize()}: {title}"
+                if clean_curr.lower() == expected_clean.lower():
+                    print(f"Warning: Reusing existing issue for {node_type} '{title}'")
+                    return f"https://github.com/{self.repository}/issues/{issue['number']}"
+        except Exception:
+            pass
+
         if is_non_terminal:
             kwargs = {"goal": goal}
             body = render_template("path_tracker", kwargs)
             issue_url = github_client.create_issue(formatted_title, body)
-            github_client.add_label(issue_url.split("/")[-1], "backlog")
         else:
             kwargs = {
                 "goal": goal,
@@ -71,9 +100,27 @@ class BacklogManager:
             }
             body = render_template("backlog_issue", kwargs)
             issue_url = github_client.create_issue(formatted_title, body)
-            github_client.add_label(issue_url.split("/")[-1], "backlog")
                 
         issue_id = issue_url.split("/")[-1]
+        
+        # Apply labels from node.yml
+        try:
+            from skills import path_resolver
+            node_yml = path_resolver.load_node_yml()
+            status_config = node_yml.get("node_attributes", {}).get("status", {})
+            class_config = node_yml.get("node_attributes", {}).get("classification", {})
+            
+            backlog_label = class_config.get("backlog", "backlog")
+            todo_label = status_config.get("todo", "status: todo")
+            
+            github_client.add_label(issue_id, backlog_label)
+            if is_terminal:
+                github_client.add_label(issue_id, todo_label)
+        except Exception:
+            github_client.add_label(issue_id, "backlog")
+            if is_terminal:
+                github_client.add_label(issue_id, "status: todo")
+
         new_title = f"{node_type.capitalize()} {issue_id}: {title}"
         github_client.rename_issue_title(issue_id, new_title)
         
@@ -91,6 +138,15 @@ class BacklogManager:
                 path_body += f"\n\n## Meta-Index\n{checkbox_line}"
                 
             github_client.update_issue_body(path_id, path_body)
+
+        # Frontier Auto-Registration
+        try:
+            from orchestrator import mgr_frontier
+            from skills import path_resolver
+            frontier_file = path_resolver.resolve_workspace_path("artifacts", "frontier_state.md")
+            mgr_frontier.register_backlog_node(frontier_file, int(issue_id), new_title, goal)
+        except Exception:
+            pass
 
         if is_non_terminal:
             # 1. Align Probe

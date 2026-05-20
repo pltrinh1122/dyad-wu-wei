@@ -142,3 +142,73 @@ def test_reflect_success(mock_get_worktree_path, mock_nba, mock_frontier, mock_g
     mock_git.add.assert_called_once_with(["."], cwd=expected_worktree)
     mock_git.commit.assert_called_once_with("commit-msg", cwd=expected_worktree)
     mock_git.push.assert_called_once_with("node/390-test", cwd=expected_worktree)
+
+@mock.patch("orchestrator.node_lifecycle.github_client.get_issue_labels")
+@mock.patch("orchestrator.node_lifecycle.FlowTransaction")
+@mock.patch("orchestrator.node_lifecycle.load_node_status_config")
+@mock.patch("orchestrator.node_lifecycle.github_client.get_issue_details")
+@mock.patch("orchestrator.node_lifecycle.TerminalNode._verify_state_purity")
+@mock.patch("orchestrator.node_lifecycle.TerminalNode._validate_orthogonal_scope")
+@mock.patch("orchestrator.node_lifecycle.TerminalNode.set_status")
+@mock.patch("orchestrator.node_lifecycle.mgr_frontier.append_active_node")
+def test_plan_start_dependency_violation(mock_append, mock_set_status, mock_validate_scope, mock_verify_purity, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
+    mock_load_config.return_value = {"in_progress": "status: in-progress"}
+    mock_get_labels.return_value = []
+    
+    def side_effect(issue_id):
+        if str(issue_id) == "390":
+            return {
+                "title": "Probe 390: Plan - title",
+                "body": "## Goal\nSome goal\n\n## Depends On\nNode 380",
+                "state": "OPEN"
+            }
+        elif str(issue_id) == "380":
+            return {
+                "title": "Probe 380: Align - title",
+                "body": "Some body",
+                "state": "OPEN"
+            }
+        return {}
+        
+    mock_get_details.side_effect = side_effect
+    
+    node = TerminalNode("390")
+    
+    with pytest.raises(Exception, match="Dependency Violation: Node #390 depends on Node #380, which is still open"):
+        node.plan_start("dummy_frontier.md")
+
+
+@mock.patch("orchestrator.node_lifecycle.github_client.get_issue_labels")
+@mock.patch("orchestrator.node_lifecycle.FlowTransaction")
+@mock.patch("orchestrator.node_lifecycle.load_node_status_config")
+@mock.patch("orchestrator.node_lifecycle.github_client.get_issue_details")
+@mock.patch("orchestrator.node_lifecycle.TerminalNode._verify_state_purity")
+@mock.patch("orchestrator.node_lifecycle.TerminalNode._validate_orthogonal_scope")
+@mock.patch("orchestrator.node_lifecycle.TerminalNode.set_status")
+@mock.patch("orchestrator.node_lifecycle.mgr_frontier.append_active_node")
+def test_plan_start_dependency_satisfied(mock_append, mock_set_status, mock_validate_scope, mock_verify_purity, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
+    mock_load_config.return_value = {"in_progress": "status: in-progress"}
+    mock_get_labels.return_value = []
+    
+    def side_effect(issue_id):
+        if str(issue_id) == "390":
+            return {
+                "title": "Probe 390: Plan - title",
+                "body": "## Goal\nSome goal\n\n## Depends On\nNode 380",
+                "state": "OPEN"
+            }
+        elif str(issue_id) == "380":
+            return {
+                "title": "Probe 380: Align - title",
+                "body": "Some body",
+                "state": "CLOSED"
+            }
+        return {}
+        
+    mock_get_details.side_effect = side_effect
+    
+    node = TerminalNode("390")
+    
+    node.plan_start("dummy_frontier.md")
+    mock_set_status.assert_called_with("in_progress")
+

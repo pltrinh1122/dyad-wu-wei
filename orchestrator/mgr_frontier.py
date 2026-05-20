@@ -269,3 +269,30 @@ def append_active_node(filepath: str, node_id: int, node_title: str, description
     state["nodes"] = nodes
     state["current_active_node"] = node_name
     save_state(yml_path, state)
+
+def register_backlog_node(filepath: str, node_id: int, node_title: str, description: str) -> None:
+    """Registers a newly created backlog node in the ledger with Backlog status."""
+    yml_path = resolve_yml_path(filepath)
+    state = load_state(yml_path)
+    
+    node_name = f"Node {node_id}: {node_title}"
+    nodes = state.get("nodes", [])
+    found = False
+    for node in nodes:
+        if node.get("name") == node_name:
+            found = True
+            break
+            
+    if not found:
+        new_node = {
+            "name": node_name,
+            "status": "Backlog",
+            "learnings": description,
+            "invariants": []
+        }
+        new_node.update(get_node_metadata(node_id))
+        nodes.append(new_node)
+        
+    state["nodes"] = nodes
+    save_state(yml_path, state)
+
