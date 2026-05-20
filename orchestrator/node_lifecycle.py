@@ -3,7 +3,7 @@ import re
 import json
 import subprocess
 import yaml
-from skills import github_client
+from skills import github_client, git_client
 from orchestrator import mgr_frontier, mgr_prompt, mgr_backlog, mgr_nba
 from orchestrator.mgr_telemetry import TelemetryManager, record_execution
 
@@ -200,7 +200,7 @@ class TerminalNode(BaseNode):
         worktree_path = os.path.join(".worktrees", branch_name)
         os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
         
-        subprocess.run(["git", "worktree", "add", "-b", branch_name, worktree_path, "main"], check=True)
+        git_client.worktree_add(branch_name, worktree_path, "main")
         
         print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
 
@@ -241,9 +241,9 @@ class TerminalNode(BaseNode):
         if clear_path:
             mgr_frontier.set_active_path(frontier_file, "None")
         
-        subprocess.run(["git", "add", "."], check=True)
-        subprocess.run(["git", "commit", "-m", commit_msg], check=True)
-        subprocess.run(["git", "push", "-u", "origin", branch_name], check=True)
+        git_client.add(["."])
+        git_client.commit(commit_msg)
+        git_client.push(branch_name)
         
         pr_body = f"Resolves #{self.issue_id}\n\n{learnings}"
         
@@ -256,5 +256,5 @@ class TerminalNode(BaseNode):
         """Cleans up the local worktree and branch if it has been merged."""
         wt_path = os.path.join(".worktrees", branch_name)
         if os.path.exists(wt_path):
-            subprocess.run(["git", "worktree", "remove", "-f", wt_path])
-        subprocess.run(["git", "branch", "-D", branch_name])
+            git_client.worktree_remove(wt_path, force=True)
+        git_client.branch_delete(branch_name)

@@ -1,4 +1,4 @@
-current_active_path: '341'
+current_active_path: null
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -1176,3 +1176,21 @@ nodes:
     and node internality.
   invariants:
   - '- ''`WHAT-0025 specification created`''\n- ''`All 83 tests pass cleanly`''\n'
+- name: 'Node 344: Activity 344: Reflect - Spike Path: Abstraction Doctrine - Python
+    API for git and gh'
+  status: Completed
+  learnings: Implemented skills/git_client.py wrapping all git commands in safe subprocess
+    functions. Refactored orchestrator/node_lifecycle.py and orchestrator/mgr_rt.py
+    to call git_client instead of direct CLI subprocess execution, and verified execution
+    via test suite.
+  invariants:
+  - '- ''`skills/git_client.py wraps add'
+  - commit
+  - push
+  - restore
+  - worktree_add
+  - worktree_remove
+  - get_current_branch
+  - get_commit_hash
+  - branch_delete`'\n- '`No raw git subprocesses inside orchestrator modules`'\n-
+    '`All 96 tests pass cleanly`'\n

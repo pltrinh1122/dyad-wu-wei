@@ -1008,8 +1008,22 @@
 - **Feedforward Invariants**:
   - - '`WHAT-0025 specification created`'\n- '`All 83 tests pass cleanly`'\n
 
+## Node 344: Activity 344: Reflect - Spike Path: Abstraction Doctrine - Python API for git and gh
+- **Status**: Completed
+- **Learnings & Context**: Implemented skills/git_client.py wrapping all git commands in safe subprocess functions. Refactored orchestrator/node_lifecycle.py and orchestrator/mgr_rt.py to call git_client instead of direct CLI subprocess execution, and verified execution via test suite.
+- **Feedforward Invariants**:
+  - - '`skills/git_client.py wraps add
+  - `commit`
+  - `push`
+  - `restore`
+  - `worktree_add`
+  - `worktree_remove`
+  - `get_current_branch`
+  - `get_commit_hash`
+  - branch_delete`'\n- '`No raw git subprocesses inside orchestrator modules`'\n- '`All 96 tests pass cleanly`'\n
+
 ## Current Active Path
-**341**
+None
 
 ## Current Active Node
 None

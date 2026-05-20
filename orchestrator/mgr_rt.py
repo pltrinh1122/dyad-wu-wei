@@ -1,5 +1,6 @@
 import sys
 from skills.file_locker import lock_file
+from skills import git_client
 import yaml
 import os
 import argparse
@@ -36,8 +37,7 @@ def execute_hotfix(file_path, commit_msg):
         print(f"Error: File {file_path} does not exist.")
         sys.exit(1)
 
-    result = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True, check=True)
-    current_branch = result.stdout.strip()
+    current_branch = git_client.get_current_branch()
     if current_branch != "main":
         print(f"Error: Hotfixes MUST be executed on the 'main' branch. You are currently on '{current_branch}'.")
         print(f"Hint: Use 'git stash', 'git switch main', run the hotfix, and then 'git switch -', 'git stash pop'.")
@@ -46,17 +46,16 @@ def execute_hotfix(file_path, commit_msg):
     print(f"Executing Tier-2 Hotfix for {file_path}...")
     
     # 1. git add
-    subprocess.run(["git", "add", file_path], check=True)
+    git_client.add([file_path])
     
     # 2. git commit
-    subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+    git_client.commit(commit_msg)
     
     # 3. git rev-parse HEAD
-    result = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True)
-    commit_hash = result.stdout.strip()
+    commit_hash = git_client.get_commit_hash("HEAD")
     
     # 4. git push origin main
-    subprocess.run(["git", "push", "origin", "main"], check=True)
+    git_client.push("main")
 
     # 5. append to ledger
     ledger_file = get_ledger_file()
