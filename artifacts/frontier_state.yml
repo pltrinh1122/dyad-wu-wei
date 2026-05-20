@@ -1249,3 +1249,9 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Probe 385: Align - Spike Path: Three-Loop Governance Framework'
+  status: Completed
+  learnings: 'Aligned on the Three-Loop Project Governance Framework: Option B selected
+    for C1. Formalized loop mechanics and states under Concept F.'
+  invariants:
+  - None

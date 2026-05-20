@@ -1076,6 +1076,12 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Probe 385: Align - Spike Path: Three-Loop Governance Framework
+- **Status**: Completed
+- **Learnings & Context**: Aligned on the Three-Loop Project Governance Framework: Option B selected for C1. Formalized loop mechanics and states under Concept F.
+- **Feedforward Invariants**:
+  - `None`
+
 ## Current Active Path
 None
 
