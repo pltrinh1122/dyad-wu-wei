@@ -1300,10 +1300,11 @@
   - `[ ]` None
 
 ## Node 421: Probe 421: Align - Audit and Harden Inner-Loop Test Dependencies
-- **Status**: Backlog
-- **Learnings & Context**: Align on the philosophical and technical intent for Audit and Harden Inner-Loop Test Dependencies.
+- **Status**: Completed
+- **Learnings & Context**: Formulated WHY-0041 and WHAT-0041 detailing the architectural rationale and auditing baseline for ensuring 100% hermetic offline inner-loop test isolation.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHY-0041 is created`
+  - `[x] WHAT-0041 is created`
 
 ## Node 422: Probe 422: Plan - Audit and Harden Inner-Loop Test Dependencies
 - **Status**: Backlog
