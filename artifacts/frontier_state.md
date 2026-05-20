@@ -1060,10 +1060,10 @@
   - `[x] WHAT-0040 is created`
 
 ## Node 370: Probe 370: Plan - Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Completed
+- **Learnings & Context**: Formulated implementation contract and updated WHAT-0040 specification file to touch and track in git.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHAT-0040 touched and tracked`
 
 ## Node 371: Activity 371: Reflect - Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
 - **Status**: [///] Act Phase
