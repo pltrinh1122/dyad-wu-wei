@@ -1,0 +1,9 @@
+{"timestamp": "2026-05-20T00:05:44.688426Z", "node_id": "100", "path_id": null, "stage": "PLAN", "event": "START", "metadata": {}}
+{"timestamp": "2026-05-20T00:05:44.691303Z", "node_id": "100", "path_id": null, "stage": "PLAN", "event": "FINISH", "metadata": {}}
+{"timestamp": "2026-05-20T00:05:44.692650Z", "node_id": "157", "path_id": null, "stage": "ACT", "event": "START", "metadata": {"branch": "node/157-test"}}
+{"timestamp": "2026-05-20T00:05:44.718411Z", "node_id": null, "path_id": null, "stage": "SENSE", "event": "START", "metadata": {}}
+{"timestamp": "2026-05-20T00:05:44.718643Z", "node_id": null, "path_id": null, "stage": "SENSE", "event": "FINISH", "metadata": {}}
+{"timestamp": "2026-05-20T00:05:44.719362Z", "node_id": null, "path_id": null, "stage": "SENSE", "event": "START", "metadata": {}}
+{"timestamp": "2026-05-20T00:06:39.481183Z", "node_id": null, "path_id": null, "stage": "SENSE", "event": "START", "metadata": {}}
+{"timestamp": "2026-05-20T00:06:51.803898Z", "node_id": null, "path_id": null, "stage": "SENSE", "event": "START", "metadata": {}}
+{"timestamp": "2026-05-20T00:06:58.444370Z", "node_id": null, "path_id": null, "stage": "SENSE", "event": "START", "metadata": {}}

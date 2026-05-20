@@ -6,6 +6,7 @@ import yaml
 from skills import github_client
 from skills import frontier_editor
 from orchestrator import mgr_prompt
+from orchestrator.mgr_telemetry import TelemetryManager
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -133,6 +134,10 @@ class TerminalNode(BaseNode):
         self._validate_orthogonal_scope()
             
         self.set_status("in_progress")
+        
+        telemetry = TelemetryManager()
+        telemetry.log_event(stage="plan", event="start", node_id=self.issue_id)
+        
         log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} for multi-phase planning.")
 
     def plan_finish(self, body: str) -> str:
@@ -147,6 +152,9 @@ class TerminalNode(BaseNode):
             github_client.rename_issue_title(self.issue_id, new_title)
             
         self.update_body(body)
+        
+        telemetry = TelemetryManager()
+        telemetry.log_event(stage="plan", event="finish", node_id=self.issue_id)
         
         issue_url = f"https://github.com/pltrinh1122/agent-antigravity/issues/{self.issue_id}"
         log_stage_advancement("plan", "Plan Phase Completed", f"Node issue #{self.issue_id} successfully planned. Transitioning to Act phase.")
@@ -164,6 +172,9 @@ class TerminalNode(BaseNode):
         os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
         
         subprocess.run(["git", "worktree", "add", "-b", branch_name, worktree_path, "main"], check=True)
+        
+        telemetry = TelemetryManager()
+        telemetry.log_event(stage="act", event="start", node_id=self.issue_id, metadata={"branch": branch_name})
         
         print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
 
@@ -206,6 +217,9 @@ class TerminalNode(BaseNode):
         pr_body = f"Resolves #{self.issue_id}\n\n{learnings}"
         
         pr_url = github_client.create_pull_request(node_name, pr_body)
+        
+        telemetry = TelemetryManager()
+        telemetry.log_event(stage="reflect", event="finish", node_id=self.issue_id, metadata={"pr_url": pr_url})
         
         log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
 

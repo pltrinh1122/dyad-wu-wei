@@ -8,6 +8,7 @@ from orchestrator import mgr_prompt
 from orchestrator.sense_hooks import HookManager
 
 from orchestrator.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement
+from orchestrator.mgr_telemetry import TelemetryManager
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -31,6 +32,9 @@ def checkout_node(issue_id: str, branch_name: str) -> None:
 def sync_and_clean_node() -> None:
     """Syncs main, prunes merged local branches, and surfaces pending backlog items."""
     log_stage_advancement("sense", "Initiating Sense Phase", "Syncing main, cleaning up local branches, and refreshing backlog state.")
+    
+    telemetry = TelemetryManager()
+    telemetry.log_event(stage="sense", event="start")
     
     open_prs = github_client.get_open_prs()
     if open_prs:
@@ -69,6 +73,9 @@ def sync_and_clean_node() -> None:
     subprocess.run(["git", "worktree", "prune"], check=False)
 
     log_stage_advancement("sense", "Sense Phase Completed", "Workspace successfully synchronized and pruned.")
+
+    telemetry = TelemetryManager()
+    telemetry.log_event(stage="sense", event="finish")
 
     # Surface pending backlog items at Sense phase
     manager = HookManager()
