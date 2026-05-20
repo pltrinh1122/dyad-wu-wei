@@ -1,6 +1,8 @@
 import subprocess
 import tempfile
+from orchestrator.mgr_telemetry import record_execution
 
+@record_execution(stage="skill")
 def create_issue(title: str, body: str) -> str:
     """Creates a GH issue safely using a temp file for the body."""
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
@@ -13,6 +15,7 @@ def create_issue(title: str, body: str) -> str:
         )
         return result.stdout.strip()
 
+@record_execution(stage="skill")
 def close_issue(issue_id: str, comment_body: str) -> None:
     """Closes a GH issue with a final comment."""
     subprocess.run(
@@ -27,6 +30,7 @@ def reopen_issue(issue_id: str) -> None:
         check=True
     )
 
+@record_execution(stage="skill")
 def update_issue_body(issue_id: str, new_body: str) -> None:
     """Updates an existing issue body using a temp file."""
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
@@ -50,6 +54,7 @@ def create_pull_request(title: str, body: str) -> str:
         )
         return result.stdout.strip()
 
+@record_execution(stage="skill")
 def list_issues_by_label(label: str) -> list[dict]:
     """Returns a list of open issues matching the given label.
     
@@ -88,6 +93,7 @@ def get_open_issues() -> list[dict]:
     import json
     return json.loads(result.stdout.strip() or "[]")
 
+@record_execution(stage="skill")
 def get_issue_details(issue_id: str) -> dict:
     """Returns details for a specific issue."""
     result = subprocess.run(

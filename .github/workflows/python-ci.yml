@@ -17,4 +17,4 @@ jobs:
       env:
         PYTHONPATH: .
       run: |
-        ~/actions-runner/venv/bin/pytest
+        ./bin/run-tests

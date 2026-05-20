@@ -51,6 +51,9 @@ class TestManager:
 
         return "pytest"
 
+from orchestrator.mgr_telemetry import record_execution
+
+@record_execution(stage="act")
 def main():
     parser = argparse.ArgumentParser(description="SPAO Test Manager")
     parser.add_argument("targets", nargs="*", help="Test files or directories to run")

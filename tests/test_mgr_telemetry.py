@@ -9,8 +9,9 @@ def test_log_event():
     with patch("os.makedirs"):
         with patch("skills.file_locker.lock_file"):
             with patch("builtins.open", mock_open()) as mocked_file:
-                tm = TelemetryManager(ledger_path="/tmp/test.jsonl")
-                tm.log_event(stage="plan", event="start", node_id="264", metadata={"test": "data"})
+                with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
+                    tm = TelemetryManager(ledger_path="/tmp/test.jsonl")
+                    tm.log_event(stage="plan", event="start", node_id="264", metadata={"test": "data"})
                 
                 # Check if write was called
                 mocked_file().write.assert_called_once()
@@ -64,21 +65,24 @@ def test_generate_report_with_bottleneck():
 def test_ledger_anchoring():
     with patch("subprocess.check_output") as mock_run:
         mock_run.side_effect = ["/repo/root/.git\n"]
-        tm = TelemetryManager()
-        assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
+        with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
+            tm = TelemetryManager()
+            assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
         mock_run.assert_called_with(["git", "rev-parse", "--git-common-dir"], text=True)
 
 def test_ledger_anchoring_worktree():
     with patch("subprocess.check_output") as mock_run:
         # git-common-dir is usually absolute in worktrees
         mock_run.side_effect = ["/repo/root/.git\n"]
-        tm = TelemetryManager()
-        assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
+        with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
+            tm = TelemetryManager()
+            assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
 
 def test_ledger_anchoring_fallback():
     with patch("subprocess.check_output") as mock_run:
         from subprocess import CalledProcessError
         mock_run.side_effect = CalledProcessError(1, "git")
-        tm = TelemetryManager()
-        assert os.path.isabs(tm.ledger_path)
-        assert tm.ledger_path.endswith("artifacts/telemetry.jsonl")
+        with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
+            tm = TelemetryManager()
+            assert os.path.isabs(tm.ledger_path)
+            assert tm.ledger_path.endswith("artifacts/telemetry.jsonl")

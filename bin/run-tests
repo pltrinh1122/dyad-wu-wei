@@ -1,4 +1,8 @@
 #!/bin/bash
 # Canonical test runner entrypoint
 export PYTHONPATH=.
+python3 -m orchestrator.mgr_telemetry log ACT START --domain bin --component run-tests
 python3 -m orchestrator.mgr_testing "$@"
+EXIT_CODE=$?
+python3 -m orchestrator.mgr_telemetry log ACT FINISH --domain bin --component run-tests --metadata "{\"exit_code\": $EXIT_CODE}"
+exit $EXIT_CODE

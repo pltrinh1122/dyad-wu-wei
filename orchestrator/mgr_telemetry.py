@@ -64,6 +64,10 @@ class TelemetryManager:
             self.ledger_path = ledger_path
         elif os.environ.get("SPAO_TELEMETRY_LEDGER"):
             self.ledger_path = os.environ.get("SPAO_TELEMETRY_LEDGER")
+        elif (os.environ.get("ANTIGRAVITY_RUNNING_TESTS") or os.environ.get("GITHUB_ACTIONS")) and not os.environ.get("SPAO_TELEMETRY_NO_TEST_SAFETY"):
+            # Use a temporary file in /tmp/ during tests to avoid polluting artifacts
+            # and to avoid git calls that break mocked subprocess tests.
+            self.ledger_path = "/tmp/antigravity_telemetry_test.jsonl"
         else:
             self.ledger_path = self._get_default_ledger_path()
 
@@ -87,6 +91,12 @@ class TelemetryManager:
 
     def log_event(self, stage, event, node_id=None, path_id=None, domain=None, component=None, execution_id=None, metadata=None):
         """Records an observation point to the telemetry ledger."""
+        # Skip telemetry IO in unit tests to avoid side effects and broken mocks,
+        # UNLESS we are explicitly testing telemetry (ledger_path is /tmp/ or explicitly set).
+        if os.environ.get("ANTIGRAVITY_RUNNING_TESTS") or os.environ.get("GITHUB_ACTIONS"):
+            if not os.environ.get("SPAO_TELEMETRY_LEDGER") and "antigravity_telemetry_test.jsonl" in self.ledger_path:
+                return
+
         entry = {
             "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "node_id": node_id,
@@ -217,6 +227,7 @@ def record_execution(stage=None):
     return decorator
 
 
+@record_execution(stage="system")
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Telemetry Manager CLI")
@@ -224,11 +235,29 @@ def main():
     
     subparsers.add_parser("report", help="Generate a health report")
     
+    parser_log = subparsers.add_parser("log", help="Log a telemetry event")
+    parser_log.add_argument("stage", help="Stage (e.g., ACT, SENSE)")
+    parser_log.add_argument("event", help="Event (e.g., START, FINISH)")
+    parser_log.add_argument("--node", help="Node ID")
+    parser_log.add_argument("--domain", help="Domain")
+    parser_log.add_argument("--component", help="Component")
+    parser_log.add_argument("--metadata", help="JSON metadata string")
+    
     args = parser.parse_args()
     manager = TelemetryManager()
     
     if args.subcommand == "report":
         print(manager.generate_report())
+    elif args.subcommand == "log":
+        metadata = json.loads(args.metadata) if args.metadata else {}
+        manager.log_event(
+            stage=args.stage,
+            event=args.event,
+            node_id=args.node,
+            domain=args.domain,
+            component=args.component,
+            metadata=metadata
+        )
 
 if __name__ == "__main__":
     main()
