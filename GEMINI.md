@@ -58,4 +58,5 @@ You are mathematically forbidden from violating the following constraints:
 5. **The Probe Invariant**: A Probe is strictly investigatory. It MUST NOT execute functional logic mutations. Its outcome is exclusively architectural decisions (`WHY-*` documents) and new Activity nodes in the backlog.
 6. **The CLI Abstraction Invariant**: You must NEVER execute raw `gh issue list` or `gh issue view`. You must EXCLUSIVELY use `./bin/backlog list` and `./bin/node view` (or `./bin/backlog view`) respectively to inspect the state.
 7. **The Sense-Gate Invariant**: After executing `bin/node sync` (or observing the Next-Best-Action output), you MUST HALT and request explicit operator approval before initiating `bin/node plan-start` on any node. Autonomous transition from SENSE to PLAN is strictly forbidden.
+8. **The Abstraction Doctrine Invariant**: You must NEVER execute raw `git` or `gh` commands directly. All Git actions must be performed using the Python client API wrapper (`skills/git_client.py`) or via `./bin/git` in terminal invocations. Direct shell executions of `git` or `gh` are strictly prohibited.
 <!-- Testing True Hotfix -->
