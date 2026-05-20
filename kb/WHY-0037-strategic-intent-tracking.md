@@ -11,11 +11,11 @@ This document details the alignment decisions on these issues.
 ## Alignment Decisions
 
 ### 1. The Core Governance Axioms
-Every strategic intent/goal must satisfy three core axioms to be considered well-formed:
+Every strategic intent/goal is evaluated against the following structure. The Meta-Axiom is the sole immutable invariant, whereas the operational Axioms (1) and (2) are hypotheses subject to potential falsification and refinement based on operational signals:
 
-- **Meta-Axiom (Falsifiability)**: All operational and strategic axioms must be testable and falsifiable. We must define a concrete signal or observation that would prove the goal is invalid or failed. If no such signal can be defined, the goal is dogmatic and must be rejected.
-- **Axiom (1) (Grounding)**: Goals must be grounded in real-world human/operator problems. They cannot exist solely for codebase modularity or clean-code aesthetics. They must map to documented human friction or system failure modes experienced by the operator.
-- **Axiom (2) (Constraint Separation)**: Constraints (e.g., API limits, unauthenticated runner environments) are environmental facts/boundary conditions and therefore are not the problem itself. The problem is how the system behaves under those constraints. Strategic goals must optimize system adaptability *within* constraints, not attempt to eliminate the constraint.
+- **Meta-Axiom (Falsifiability) [IMMUTABLE]**: All operational and strategic axioms must be testable and falsifiable. We must define a concrete signal or observation that would prove the goal or the axiom itself is invalid or failed. If no such signal can be defined, it is dogmatic and must be rejected.
+- **Axiom (1) (Grounding) [FALSIFIABLE]**: Goals must be grounded in real-world human/operator problems. They cannot exist solely for codebase modularity or clean-code aesthetics. They must map to documented human friction or system failure modes experienced by the operator.
+- **Axiom (2) (Constraint Separation) [FALSIFIABLE]**: Constraints (e.g., API limits, unauthenticated runner environments) are environmental facts/boundary conditions and therefore are not the problem itself. The problem is how the system behaves under those constraints. Strategic goals must optimize system adaptability *within* constraints, not attempt to eliminate the constraint.
 
 ### 2. The Strategic Intent Ledger (`artifacts/strategic_intent.yml`)
 We will establish a structured, machine-readable ledger representing the source of truth for all strategic goals.
