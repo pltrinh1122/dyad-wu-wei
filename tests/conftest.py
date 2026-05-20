@@ -2,6 +2,17 @@ import pytest
 from unittest.mock import MagicMock, patch
 import os
 
+_FIXTURES_DIR = os.path.join(os.path.dirname(__file__), "fixtures")
+
+@pytest.fixture(autouse=True, scope="session")
+def stub_gh_cli():
+    """Inject tests/fixtures/ into PATH at the session level to redirect all gh calls."""
+    original_path = os.environ.get("PATH", "")
+    os.environ["PATH"] = _FIXTURES_DIR + os.pathsep + original_path
+    yield
+    os.environ["PATH"] = original_path
+
+
 @pytest.fixture
 def mock_gh():
     """Provides a centralized mock for github_client."""
