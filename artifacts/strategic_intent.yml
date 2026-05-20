@@ -1,0 +1,13 @@
+strategic_goals:
+- title: SPAO Prioritization and Backlog Governance
+  operator_problem: The operator has low visibility into the urgency and priority
+    of probes/paths, causing cognitive load and backlog stagnation because broader
+    strategic intent is not tracked and enforced.
+  constraints: The system operates under existing repository structures, GitHub API
+    limits, and a dual-probe initialization pattern.
+  falsification_signal: The operator manually overrides Next-Best-Action recommendations
+    consistently even after intent prioritization is active.
+  status: Active
+  prioritized_paths:
+  - 404
+  id: SG-0001

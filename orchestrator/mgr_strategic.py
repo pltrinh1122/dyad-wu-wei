@@ -1,0 +1,310 @@
+import os
+import sys
+import yaml
+import hashlib
+import argparse
+import re
+from skills import path_resolver
+from skills import github_client
+
+def get_ledger_path():
+    env_path = os.environ.get("SPAO_STRATEGIC_LEDGER_PATH")
+    if env_path:
+        return os.path.abspath(env_path)
+    return path_resolver.resolve_workspace_path("artifacts", "strategic_intent.yml")
+
+def load_ledger():
+    path = get_ledger_path()
+    if not os.path.exists(path):
+        return {"strategic_goals": []}
+    with open(path, "r") as f:
+        return yaml.safe_load(f) or {"strategic_goals": []}
+
+def save_ledger(data):
+    path = get_ledger_path()
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w") as f:
+        yaml.safe_dump(data, f, default_flow_style=False, sort_keys=False)
+    rehash_ledger()
+    generate_markdown(data)
+
+def rehash_ledger():
+    path = get_ledger_path()
+    checksum_path = path + ".sha256"
+    if not os.path.exists(path):
+        return
+    with open(path, "rb") as f:
+        h = hashlib.sha256(f.read()).hexdigest()
+    with open(checksum_path, "w") as f:
+        f.write(h + "\n")
+
+def generate_markdown(data):
+    path = get_ledger_path()
+    md_path = path.replace(".yml", ".md")
+    
+    goals = data.get("strategic_goals", [])
+    
+    by_status = {"Active": [], "Draft": [], "Achieved": [], "Falsified": []}
+    for g in goals:
+        status = g.get("status", "Draft")
+        if status in by_status:
+            by_status[status].append(g)
+        else:
+            by_status["Draft"].append(g)
+            
+    content = []
+    content.append("# Strategic Intent Ledger\n")
+    
+    for status in ["Active", "Draft", "Achieved", "Falsified"]:
+        content.append(f"## {status} Goals")
+        goals_list = by_status[status]
+        if not goals_list:
+            content.append("*No goals in this state.*\n")
+            continue
+            
+        for g in goals_list:
+            paths_str = ", ".join(str(p) for p in g.get("prioritized_paths", [])) or "None"
+            content.append(f"### {g.get('id')}: {g.get('title')}")
+            content.append(f"- **Operator Problem**: {g.get('operator_problem')}")
+            content.append(f"- **Constraints**: {g.get('constraints')}")
+            content.append(f"- **Falsification Signal**: {g.get('falsification_signal')}")
+            content.append(f"- **Prioritized Paths**: {paths_str}")
+            if g.get("falsification_notes"):
+                content.append(f"- **Falsification Notes**: {g.get('falsification_notes')}")
+            content.append("")
+            
+    with open(md_path, "w") as f:
+        f.write("\n".join(content))
+
+def validate_goal(goal: dict) -> list[str]:
+    errors = []
+    
+    prob = goal.get("operator_problem", "")
+    if not prob or not str(prob).strip():
+        errors.append("Grounding error: 'operator_problem' is empty or missing.")
+        
+    constraints = goal.get("constraints", "")
+    if not constraints or not str(constraints).strip():
+        errors.append("Constraint error: 'constraints' is empty or missing.")
+    else:
+        forbidden_verbs = ["fix", "solve", "remedy", "remove", "eliminate", "correct"]
+        constraints_lower = str(constraints).lower()
+        for verb in forbidden_verbs:
+            if re.search(r'\b' + verb + r'\b', constraints_lower):
+                errors.append(f"Constraint error: constraint cannot frame facts as action/problem (contains action verb '{verb}').")
+                
+    falsification = goal.get("falsification_signal", "")
+    if not falsification or not str(falsification).strip():
+        errors.append("Falsifiability error: 'falsification_signal' is empty or missing.")
+        
+    return errors
+
+def cmd_list():
+    data = load_ledger()
+    goals = data.get("strategic_goals", [])
+    if not goals:
+        print("No strategic goals found in the ledger.")
+        return
+        
+    print(f"{'ID':<8} | {'Title':<25} | {'Status':<10} | {'Prioritized Paths'}")
+    print("-" * 70)
+    for g in goals:
+        paths = ", ".join(str(p) for p in g.get("prioritized_paths", [])) or "None"
+        print(f"{g.get('id'):<8} | {g.get('title', '')[:25]:<25} | {g.get('status', 'Draft'):<10} | {paths}")
+
+def cmd_add(args):
+    if args.title is None and args.problem is None and args.constraints is None and args.falsification is None:
+        print("=== Add a New Strategic Goal ===")
+        title = input("Goal Title: ").strip()
+        problem = input("Operator Problem (grounding): ").strip()
+        constraints = input("Constraints (facts, no action verbs): ").strip()
+        falsification = input("Falsification Signal: ").strip()
+        paths_str = input("Prioritized Path IDs (comma-separated, optional): ").strip()
+        
+        paths = []
+        if paths_str:
+            for p in paths_str.split(","):
+                if p.strip():
+                    paths.append(int(p.strip()))
+    else:
+        title = args.title or ""
+        problem = args.problem or ""
+        constraints = args.constraints or ""
+        falsification = args.falsification or ""
+        paths = []
+        if args.paths:
+            paths = [int(p) for p in args.paths]
+            
+    goal = {
+        "title": title,
+        "operator_problem": problem,
+        "constraints": constraints,
+        "falsification_signal": falsification,
+        "status": "Active",
+        "prioritized_paths": paths
+    }
+    
+    errors = validate_goal(goal)
+    if errors:
+        print("Validation errors occurred. Goal not added:")
+        for err in errors:
+            print(f"  - {err}")
+        sys.exit(1)
+        
+    data = load_ledger()
+    goals = data.get("strategic_goals", [])
+    
+    max_id = 0
+    for g in goals:
+        gid = g.get("id", "")
+        if gid.startswith("SG-"):
+            try:
+                num = int(gid[3:])
+                if num > max_id:
+                    max_id = num
+            except ValueError:
+                pass
+    new_id = f"SG-{max_id + 1:04d}"
+    
+    goal["id"] = new_id
+    goals.append(goal)
+    data["strategic_goals"] = goals
+    
+    save_ledger(data)
+    print(f"Successfully added goal {new_id} to ledger.")
+
+def cmd_verify():
+    data = load_ledger()
+    goals = data.get("strategic_goals", [])
+    
+    print("🔍 Verifying strategic ledger...")
+    all_ok = True
+    
+    for g in goals:
+        errors = validate_goal(g)
+        if errors:
+            print(f"❌ Goal {g.get('id')} ({g.get('title')}) has validation failures:")
+            for err in errors:
+                print(f"  - {err}")
+            all_ok = False
+        else:
+            print(f"✅ Goal {g.get('id')} ({g.get('title')}) is valid.")
+            
+    try:
+        backlog_items = github_client.list_issues_by_label("backlog")
+        open_paths = []
+        for item in backlog_items:
+            num = str(item.get("number"))
+            labels = github_client.get_issue_labels(num)
+            if "path" in labels:
+                open_paths.append(item)
+                
+        if open_paths:
+            active_paths = set()
+            for g in goals:
+                if g.get("status") == "Active":
+                    for p in g.get("prioritized_paths", []):
+                        active_paths.add(str(p))
+                        
+            unmapped = []
+            for p in open_paths:
+                pnum = str(p.get("number"))
+                if pnum not in active_paths:
+                    unmapped.append(p)
+                    
+            if unmapped:
+                print("⚠️  Warning: The following open backlog Paths are not mapped to any active strategic goal:")
+                for p in unmapped:
+                    print(f"  - #{p.get('number')}: {p.get('title')}")
+            else:
+                print("✅ All open backlog Paths are mapped to at least one active strategic goal.")
+    except Exception as e:
+        print(f"Warning: Failed to fetch backlog issues for mapping check: {e}")
+        
+    if all_ok:
+        print("Ledger verification complete. All invariants satisfied.")
+    else:
+        print("❌ Ledger verification failed.")
+        sys.exit(1)
+
+def cmd_prioritize(args):
+    data = load_ledger()
+    goals = data.get("strategic_goals", [])
+    target = None
+    for g in goals:
+        if g.get("id") == args.id:
+            target = g
+            break
+            
+    if not target:
+        print(f"Error: Goal {args.id} not found in the ledger.")
+        sys.exit(1)
+        
+    target["prioritized_paths"] = [int(p) for p in args.paths]
+    save_ledger(data)
+    print(f"Successfully updated prioritized paths for goal {args.id}.")
+
+def cmd_transition(args):
+    data = load_ledger()
+    goals = data.get("strategic_goals", [])
+    target = None
+    for g in goals:
+        if g.get("id") == args.id:
+            target = g
+            break
+            
+    if not target:
+        print(f"Error: Goal {args.id} not found in the ledger.")
+        sys.exit(1)
+        
+    status = args.status
+    if status == "Falsified" and not args.notes:
+        print("Error: Notes describing the falsification signal are required when transitioning to Falsified.")
+        sys.exit(1)
+        
+    target["status"] = status
+    if args.notes:
+        target["falsification_notes"] = args.notes
+        
+    save_ledger(data)
+    print(f"Successfully transitioned goal {args.id} to status '{status}'.")
+
+def main():
+    parser = argparse.ArgumentParser(description="Manage the strategic intent ledger.")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    
+    subparsers.add_parser("list", help="List all strategic goals.")
+    
+    add_parser = subparsers.add_parser("add", help="Add a new strategic goal.")
+    add_parser.add_argument("--title", help="Goal title.")
+    add_parser.add_argument("--problem", help="Grounding operator problem.")
+    add_parser.add_argument("--constraints", help="Constraints.")
+    add_parser.add_argument("--falsification", help="Falsification signal.")
+    add_parser.add_argument("--paths", nargs="*", help="Prioritized path IDs.")
+    
+    subparsers.add_parser("verify", help="Verify the strategic ledger invariants.")
+    
+    prioritize_parser = subparsers.add_parser("prioritize", help="Define sequencing of Path IDs for a goal.")
+    prioritize_parser.add_argument("id", help="Strategic goal ID (e.g. SG-0001).")
+    prioritize_parser.add_argument("paths", nargs="+", help="Ordered Path IDs.")
+    
+    transition_parser = subparsers.add_parser("transition", help="Transition status of a goal.")
+    transition_parser.add_argument("id", help="Strategic goal ID (e.g. SG-0001).")
+    transition_parser.add_argument("status", choices=["Active", "Draft", "Achieved", "Falsified"], help="Target status.")
+    transition_parser.add_argument("notes", nargs="?", help="Notes (required for Falsified).")
+    
+    args = parser.parse_args()
+    
+    if args.command == "list":
+        cmd_list()
+    elif args.command == "add":
+        cmd_add(args)
+    elif args.command == "verify":
+        cmd_verify()
+    elif args.command == "prioritize":
+        cmd_prioritize(args)
+    elif args.command == "transition":
+        cmd_transition(args)
+
+if __name__ == "__main__":
+    main()
