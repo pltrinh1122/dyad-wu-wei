@@ -1276,3 +1276,11 @@ nodes:
   invariants:
   - '[x] Gated SPEC check by issue title in plan_finish'
   - '[x] Path 384 closed automatically by Path Invariant check'
+- name: "Node 380: Probe 380: Align - Spike Path: spao node reflect Auto-Stage \u2014\
+    \ Git Transaction Ownership by SPAO"
+  status: Completed
+  learnings: Aligned on Option 3 (Combined Approach) for Auto-Staging and Git Transaction
+    Ownership by SPAO.
+  invariants:
+  - '[x] Aligned on Option 3 (Combined Approach)'
+  - '[x] Created WHY-0035-git-transaction-ownership-spao.md'
