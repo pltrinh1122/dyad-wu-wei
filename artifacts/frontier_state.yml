@@ -1239,9 +1239,11 @@ nodes:
   - '[x] WHAT-0040 is created'
 - name: "Node 370: Probe 370: Plan - Spike Path: CI Hardening \u2014 Remediate and\
     \ Prevent Live GitHub API Calls in Test Suite"
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
+  status: Completed
+  learnings: Formulated implementation contract and updated WHAT-0040 specification
+    file to touch and track in git.
+  invariants:
+  - '[x] WHAT-0040 touched and tracked'
 - name: "Node 371: Activity 371: Reflect - Spike Path: CI Hardening \u2014 Remediate\
     \ and Prevent Live GitHub API Calls in Test Suite"
   status: '[///] Act Phase'
