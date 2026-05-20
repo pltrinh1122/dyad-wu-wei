@@ -1179,6 +1179,19 @@
   - `[x] Added unit tests for path_tracker template rendering`
   - `[x] Verified 124 tests pass successfully`
 
+## Node 377: Probe 377: Plan - Spike Path: Backlog Node Factory — Robustness Audit and Invariant Formalization
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 377: Probe 377: Reflect - Plan Backlog Node Factory Robustness
+- **Status**: Completed
+- **Learnings & Context**: Formulated the WHAT-0036 specification document in kb/ specifying Backlog Node Factory robustness designs.
+- **Feedforward Invariants**:
+  - `[x] Formulated WHAT-0036-backlog-node-factory-robustness.md specification`
+  - `[x] Verified 124 tests pass successfully`
+
 ## Current Active Path
 None
 
