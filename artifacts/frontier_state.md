@@ -1046,16 +1046,14 @@
 - **Feedforward Invariants**:
   - `All SPAO scripts must distinguish execution path from workspace target path.`
 
-## Node 363: Probe 363: Align - Spike Path: SPAO Release Packaging, One-Step Onboarding & CLI Discoverability
-- **Status**: Completed
-- **Learnings & Context**: Aligned on two decisions: (1) canonical one-step onboarding is a single `curl | bash -s -- --local` command; (2) `run-spao.sh` must print a usage banner on no-args invocation and a `README.spao.md` must be generated alongside it. WHY-0030 materialized and merged via PR #366. Automated reflect rolled back due to `gh pr create` running from wrong CWD — PR created manually from worktree, then issue closed via rollback handler.
+## Node 364: Probe 364: Plan - Spike Path: SPAO Release Packaging, One-Step Onboarding & CLI Discoverability
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `[x]` WHY-0030 merged to main
-  - `[x]` Issue #363 closed
-  - `[ ]` Dependency Enforcement gap in mgr_node.py noted for future hardening
+  - `[ ]` None
 
 ## Current Active Path
-Path 362: Spike Path: SPAO Release Packaging, One-Step Onboarding & CLI Discoverability
+Path 368: Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
 
 ## Current Active Node
-None — awaiting Plan node #364 approval
+None — node 364 BLOCKED (PR #367 open, CI failing); CI Hardening Spike #368 is now priority
