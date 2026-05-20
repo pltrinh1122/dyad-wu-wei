@@ -106,3 +106,17 @@ def test_checksum_mismatch(dummy_frontier):
     mgr_frontier.rehash(dummy_frontier)
     node = read_active_node(dummy_frontier)
     assert node == "Node 2: Do the next thing"
+
+def test_register_backlog_node(dummy_frontier):
+    mgr_frontier.register_backlog_node(
+        dummy_frontier,
+        node_id=45,
+        node_title="Backlog Task",
+        description="A task in backlog."
+    )
+    
+    content = open(dummy_frontier).read()
+    assert "## Node 45: Backlog Task" in content
+    assert "- **Status**: Backlog" in content
+    assert "- **Learnings & Context**: A task in backlog." in content
+
