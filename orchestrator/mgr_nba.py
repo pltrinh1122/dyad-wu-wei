@@ -49,9 +49,37 @@ class NBAManager:
         # Tier 2: Path Switching / Global Backlog
         try:
             backlog_items = github_client.list_issues_by_label("backlog")
-            # Filter out non-terminal nodes (Paths) from global recommendation? 
-            # Or include them as "Switch to Path"?
-            # For now, include all as recommendations.
+            
+            # Reorder backlog_items based on active strategic goals
+            prioritized_ids = []
+            from orchestrator import mgr_strategic
+            yaml_path = mgr_strategic.get_ledger_path()
+            if os.path.exists(yaml_path):
+                import yaml
+                try:
+                    with open(yaml_path, "r") as f:
+                        data = yaml.safe_load(f) or {}
+                    goals = data.get("strategic_goals", [])
+                    for goal in goals:
+                        if goal.get("status") == "Active":
+                            prioritized_ids.extend([str(pid) for pid in goal.get("prioritized_paths", [])])
+                except Exception as e:
+                    print(f"Warning: Failed to load/parse strategic intent ledger: {e}")
+            
+            if prioritized_ids:
+                prioritized_set = set(prioritized_ids)
+                matched_items = []
+                unmatched_items = []
+                for item in backlog_items:
+                    num_str = str(item.get("number", ""))
+                    if num_str in prioritized_set:
+                        matched_items.append(item)
+                    else:
+                        unmatched_items.append(item)
+                
+                matched_items.sort(key=lambda x: prioritized_ids.index(str(x.get("number", ""))))
+                backlog_items = matched_items + unmatched_items
+
             return {
                 "type": "path_switching",
                 "recommendations": backlog_items[:5] # Limit to top 5
