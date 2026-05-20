@@ -1562,3 +1562,9 @@ nodes:
   invariants:
   - '[x] WHY-0044 is created'
   - '[x] WHAT-0044 is created'
+- name: 'Node 435: Probe 435: Plan - Sandboxing and Containment Experimentation'
+  status: Completed
+  learnings: Verified and locked the WHAT-0044 specification for sandboxing containment
+    rules.
+  invariants:
+  - '[x] WHAT-0044 is verified and locked'
