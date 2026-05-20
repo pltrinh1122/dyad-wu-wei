@@ -1340,6 +1340,30 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 428: Path 428: Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation
+- **Status**: Backlog
+- **Learnings & Context**: Analyze the tradeoff value between conducting a speculative future-state gap analysis versus executing immediate network-dependency velocity remediation (Path 368) to determine which pathway maximizes compounding system gains.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 429: Probe 429: Align - Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation
+- **Status**: Backlog
+- **Learnings & Context**: Align on the philosophical and technical intent for Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 430: Probe 430: Plan - Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 431: Activity 431: Reflect - Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 

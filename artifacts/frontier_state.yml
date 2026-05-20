@@ -1501,3 +1501,28 @@ nodes:
   learnings: Final reflection and path closure for Strategic Evaluation of Knowledge
     Accrual vs Offline Velocity Priority.
   invariants: []
+- name: 'Node 428: Path 428: Value Comparison of Speculative Gap Analysis vs Immediate
+    Velocity Remediation'
+  status: Backlog
+  learnings: Analyze the tradeoff value between conducting a speculative future-state
+    gap analysis versus executing immediate network-dependency velocity remediation
+    (Path 368) to determine which pathway maximizes compounding system gains.
+  invariants: []
+- name: 'Node 429: Probe 429: Align - Value Comparison of Speculative Gap Analysis
+    vs Immediate Velocity Remediation'
+  status: Backlog
+  learnings: Align on the philosophical and technical intent for Value Comparison
+    of Speculative Gap Analysis vs Immediate Velocity Remediation.
+  invariants: []
+- name: 'Node 430: Probe 430: Plan - Value Comparison of Speculative Gap Analysis
+    vs Immediate Velocity Remediation'
+  status: Backlog
+  learnings: Technical design and proposed changes for Value Comparison of Speculative
+    Gap Analysis vs Immediate Velocity Remediation.
+  invariants: []
+- name: 'Node 431: Activity 431: Reflect - Value Comparison of Speculative Gap Analysis
+    vs Immediate Velocity Remediation'
+  status: Backlog
+  learnings: Final reflection and path closure for Value Comparison of Speculative
+    Gap Analysis vs Immediate Velocity Remediation.
+  invariants: []
