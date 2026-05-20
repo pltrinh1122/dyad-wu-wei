@@ -1,5 +1,6 @@
 import json
 import os
+import subprocess
 from datetime import datetime, timezone, timedelta
 from skills.file_locker import lock_file
 
@@ -21,9 +22,6 @@ class SynthesisEngine:
     def calculate_metrics(self):
         """Groups events by node/stage and calculates durations."""
         metrics = {}
-        
-        # Group events by Node ID and Stage
-        # Global events (like SENSE) have node_id=None
         
         for event in self.events:
             key = (event.get("node_id"), event.get("stage"))
@@ -59,8 +57,20 @@ class SynthesisEngine:
 class TelemetryManager:
     """Manages the lifecycle and orchestration of the Telemetry primitive."""
     
-    def __init__(self, ledger_path="artifacts/telemetry.jsonl"):
-        self.ledger_path = ledger_path
+    def __init__(self, ledger_path=None):
+        if ledger_path:
+            self.ledger_path = ledger_path
+        else:
+            self.ledger_path = self._get_default_ledger_path()
+
+    def _get_default_ledger_path(self):
+        """Anchors the default ledger path to the git repository root."""
+        try:
+            root = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()
+            return os.path.join(root, "artifacts", "telemetry.jsonl")
+        except subprocess.CalledProcessError:
+            # Fallback to current directory artifacts if not in a git repo
+            return os.path.join("artifacts", "telemetry.jsonl")
 
     def log_event(self, stage, event, node_id=None, path_id=None, metadata=None):
         """Records an observation point to the telemetry ledger."""
@@ -83,7 +93,7 @@ class TelemetryManager:
     def generate_report(self):
         """Synthesizes the ledger into a health report."""
         if not os.path.exists(self.ledger_path):
-            return "No telemetry data available."
+            return f"No telemetry data available at {self.ledger_path}."
             
         with open(self.ledger_path, "r") as f:
             events = [json.loads(line) for line in f]
@@ -92,6 +102,7 @@ class TelemetryManager:
         metrics = engine.calculate_metrics()
         
         report = ["# SPAO Operational Health Report", ""]
+        report.append(f"Source: {self.ledger_path}")
         report.append(f"Total Observation Points: {len(events)}")
         report.append("")
         

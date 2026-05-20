@@ -1,7 +1,8 @@
 import pytest
-from unittest.mock import patch, mock_open
+from unittest.mock import patch, mock_open, MagicMock
 from orchestrator.mgr_telemetry import TelemetryManager, SynthesisEngine
 import json
+import os
 from datetime import datetime, timezone, timedelta
 
 def test_log_event():
@@ -23,7 +24,7 @@ def test_log_event():
 def test_generate_report_empty():
     with patch("os.path.exists", return_value=False):
         tm = TelemetryManager(ledger_path="/tmp/test.jsonl")
-        assert tm.generate_report() == "No telemetry data available."
+        assert "No telemetry data available" in tm.generate_report()
 
 def test_synthesis_engine():
     events = [
@@ -59,3 +60,17 @@ def test_generate_report_with_bottleneck():
             assert "⚠️ BOTTLENECK" in report
             assert "🚨 Bottleneck Alerts" in report
             assert "**Node #1** stalled in **PLAN** phase for 2:00:00" in report
+
+def test_ledger_anchoring():
+    with patch("subprocess.check_output") as mock_run:
+        mock_run.return_value = "/repo/root\n"
+        tm = TelemetryManager()
+        assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
+        mock_run.assert_called_once_with(["git", "rev-parse", "--show-toplevel"], text=True)
+
+def test_ledger_anchoring_fallback():
+    with patch("subprocess.check_output") as mock_run:
+        from subprocess import CalledProcessError
+        mock_run.side_effect = CalledProcessError(1, "git")
+        tm = TelemetryManager()
+        assert tm.ledger_path == "artifacts/telemetry.jsonl"
