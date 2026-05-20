@@ -1028,6 +1028,12 @@
 - **Feedforward Invariants**:
   - `Must always use git_client wrapper functions instead of raw subprocess calls to git in all orchestration modules. Must always wrap state transitions in FlowTransaction.`
 
+## Node 356: Probe 356: Align - Path: Global SPAO System Containment, Deployment, and CLI Integration
+- **Status**: Completed
+- **Learnings & Context**: Aligned on a hybrid symbolic-linkage and Python package architecture to make the SPAO system globally accessible across target projects.
+- **Feedforward Invariants**:
+  - `All SPAO scripts must distinguish execution path from workspace target path.`
+
 ## Current Active Path
 None
 
