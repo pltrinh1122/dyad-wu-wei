@@ -1,6 +1,5 @@
 import subprocess
 import tempfile
-from skills.issue_factory import render_template
 
 def create_issue(title: str, body: str) -> str:
     """Creates a GH issue safely using a temp file for the body."""
@@ -105,99 +104,6 @@ def rename_issue_title(issue_id: str, new_title: str) -> None:
         check=True
     )
 
-import yaml
-import os
-
-def load_node_taxonomy() -> dict:
-    """Loads the domain-specific node taxonomy from antigravity.yml."""
-    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "antigravity.yml")
-    if not os.path.exists(config_path):
-        return {
-            "terminal": ["activity", "probe"],
-            "non_terminal": ["path"]
-        }
-    with open(config_path, "r") as f:
-        config = yaml.safe_load(f)
-    return config.get("node_taxonomy", {
-        "terminal": ["activity", "probe"],
-        "non_terminal": ["path"]
-    })
-
-def add_to_backlog(node_type: str, title: str, goal: str, path_id: str = None, depends_on: str = None) -> str:
-    """Creates a GH issue based on whether the node type maps to a Terminal or Non-Terminal Base Class.
-    
-    Returns the URL of the created issue.
-    """
-    node_type_lower = node_type.lower()
-    taxonomy = load_node_taxonomy()
-    
-    is_terminal = node_type_lower in taxonomy.get("terminal", [])
-    is_non_terminal = node_type_lower in taxonomy.get("non_terminal", [])
-    
-    if not is_terminal and not is_non_terminal:
-        valid_types = taxonomy.get("terminal", []) + taxonomy.get("non_terminal", [])
-        raise ValueError(f"Error: Invalid node type '{node_type}'. Must be one of: {', '.join(valid_types)}")
-        
-    if is_terminal and not path_id:
-        raise ValueError("Terminal nodes (Activities and Probes) must belong to a parent Path. Please provide a path_id.")
-        
-    formatted_title = f"{node_type.capitalize()}: {title}"
-    if is_non_terminal:
-        kwargs = {"goal": goal}
-        body = render_template("path_tracker", kwargs)
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
-            temp_file.write(body)
-            temp_file.flush()
-            
-            result = subprocess.run(
-                ["gh", "issue", "create", "--title", formatted_title,
-                 "-F", temp_file.name, "--label", "backlog"],
-                capture_output=True, text=True, check=True
-            )
-    else:
-        kwargs = {
-            "goal": goal,
-            "changes": "TBD",
-            "pre_requisites": "TBD",
-            "post_requisites": "TBD",
-            "depends_on": depends_on if depends_on else "TBD"
-        }
-        body = render_template("backlog_issue", kwargs)
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
-            temp_file.write(body)
-            temp_file.flush()
-            
-            result = subprocess.run(
-                ["gh", "issue", "create", "--title", formatted_title,
-                 "-F", temp_file.name, "--label", "backlog"],
-                capture_output=True, text=True, check=True
-            )
-            
-    issue_url = result.stdout.strip()
-    issue_id = issue_url.split("/")[-1]
-    new_title = f"{node_type.capitalize()} {issue_id}: {title}"
-    rename_issue_title(issue_id, new_title)
-    
-    if is_terminal and path_id:
-        view_res = subprocess.run(["gh", "issue", "view", str(path_id), "--json", "body"], capture_output=True, text=True, check=True)
-        import json
-        path_data = json.loads(view_res.stdout.strip() or "{}")
-        path_body = path_data.get("body", "")
-        
-        checkbox_line = f"- [ ] Node {issue_id}: {new_title}"
-        if depends_on:
-            checkbox_line += f" [Depends: {depends_on}]"
-            
-        if "## Meta-Index" in path_body:
-            path_body += f"\n{checkbox_line}"
-        else:
-            path_body += f"\n\n## Meta-Index\n{checkbox_line}"
-            
-        update_issue_body(path_id, path_body)
-    
-    return issue_url
 
 def create_pull_request(title: str, body: str) -> str:
     """Creates a PR using gh pr create."""
@@ -211,22 +117,6 @@ def create_pull_request(title: str, body: str) -> str:
         )
         return result.stdout.strip()
 
-def check_off_meta_index(path_id: str, node_id: str) -> None:
-    """Finds the node in the parent Path's Meta-Index and marks it as completed."""
-    try:
-        res = subprocess.run(["gh", "issue", "view", str(path_id), "--json", "body"], capture_output=True, text=True, check=True)
-        import json
-        data = json.loads(res.stdout.strip() or "{}")
-        body = data.get("body", "")
-        
-        import re
-        pattern = re.compile(r"-\s+\[\s*\]\s+Node\s+" + str(node_id) + r":", re.IGNORECASE)
-        
-        if pattern.search(body):
-            new_body = pattern.sub(f"- [x] Node {node_id}:", body)
-            update_issue_body(str(path_id), new_body)
-    except Exception as e:
-        print(f"Warning: Failed to check off Meta-Index for Node {node_id} in Path {path_id}: {e}")
 
 def get_issue_labels(issue_id: str) -> list[str]:
     """Returns a list of label names for the given issue."""
