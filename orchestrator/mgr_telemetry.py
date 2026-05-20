@@ -75,12 +75,13 @@ class TelemetryManager:
         """Anchors the default ledger path to the git repository root."""
 
         try:
+            from skills import git_client
             # git-common-dir returns the .git directory path, even in worktrees.
             # Its parent is the primary repository root.
-            common_dir = subprocess.check_output(["git", "rev-parse", "--git-common-dir"], text=True).strip()
+            common_dir = git_client.get_git_common_dir()
             if not os.path.isabs(common_dir):
                 # If it's relative, it's relative to the current working tree root
-                toplevel = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()
+                toplevel = git_client.get_show_toplevel()
                 common_dir = os.path.abspath(os.path.join(toplevel, common_dir))
             
             root = os.path.dirname(common_dir)

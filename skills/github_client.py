@@ -97,7 +97,7 @@ def get_open_issues() -> list[dict]:
 def get_issue_details(issue_id: str) -> dict:
     """Returns details for a specific issue."""
     result = subprocess.run(
-        ["gh", "issue", "view", str(issue_id), "--json", "number,title,body"],
+        ["gh", "issue", "view", str(issue_id), "--json", "number,title,body,state"],
         capture_output=True, text=True, check=True
     )
     import json

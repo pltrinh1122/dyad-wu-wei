@@ -1,7 +1,7 @@
 import os
 import re
 import subprocess
-from skills import github_client
+from skills import github_client, git_client
 from orchestrator import mgr_frontier
 from orchestrator import mgr_testing
 from orchestrator import mgr_prompt
@@ -39,15 +39,14 @@ def sync_and_clean_node() -> None:
         pr_list = ", ".join([f"#{pr['number']} ({pr['headRefName']})" for pr in open_prs])
         raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
         
-    subprocess.run(["git", "switch", "main"], check=True)
-    subprocess.run(["git", "pull", "--prune", "origin", "main"], check=True)
+    git_client.switch("main")
+    git_client.pull("origin", "main", prune=True)
     
     merged_branches = set()
     
     # 1. Local merged branches
-    result = subprocess.run(["git", "branch", "--merged"], capture_output=True, text=True)
-    for branch in result.stdout.split('\n'):
-        b = branch.strip().strip('* ')
+    for branch in git_client.list_merged_branches():
+        b = branch.strip()
         if b and b != 'main':
             merged_branches.add(b)
             
@@ -61,14 +60,13 @@ def sync_and_clean_node() -> None:
         print(f"Warning: Failed to fetch merged PRs from GitHub: {e}")
  
     # Verify which of these actually exist locally and clean them
-    result = subprocess.run(["git", "branch", "--format", "%(refname:short)"], capture_output=True, text=True)
-    local_branches = {b.strip() for b in result.stdout.split('\n') if b.strip()}
+    local_branches = set(git_client.list_local_branches())
     
     for branch in merged_branches:
         if branch in local_branches and branch != 'main':
             TerminalNode.clean_if_merged(branch)
             
-    subprocess.run(["git", "worktree", "prune"], check=False)
+    git_client.worktree_prune()
  
     log_stage_advancement("sense", "Sense Phase Completed", "Workspace successfully synchronized and pruned.")
  
@@ -119,8 +117,7 @@ def cmd_reflect(args):
     )
 
 def cmd_view(args):
-    res = subprocess.run(['gh', 'issue', 'view', args.issue_id, '--json', 'title,state,body'], capture_output=True, text=True, check=True)
-    data = json.loads(res.stdout)
+    data = github_client.get_issue_details(args.issue_id)
     print('='*40)
     print(f"Issue #{args.issue_id}: {data['title']} [{data['state']}]")
     print('='*40)

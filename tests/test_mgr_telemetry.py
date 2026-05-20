@@ -63,26 +63,31 @@ def test_generate_report_with_bottleneck():
             assert "**Node #1** stalled in **PLAN** phase for 2:00:00" in report
 
 def test_ledger_anchoring():
-    with patch("subprocess.check_output") as mock_run:
-        mock_run.side_effect = ["/repo/root/.git\n"]
+    with patch("skills.git_client.get_git_common_dir") as mock_common:
+        mock_common.return_value = "/repo/root/.git"
         with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
             tm = TelemetryManager()
             assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
-        mock_run.assert_called_with(["git", "rev-parse", "--git-common-dir"], text=True)
+        mock_common.assert_called_once()
 
 def test_ledger_anchoring_worktree():
-    with patch("subprocess.check_output") as mock_run:
-        # git-common-dir is usually absolute in worktrees
-        mock_run.side_effect = ["/repo/root/.git\n"]
+    with patch("skills.git_client.get_git_common_dir") as mock_common, \
+         patch("skills.git_client.get_show_toplevel") as mock_toplevel:
+        # git-common-dir is relative in worktrees sometimes
+        mock_common.return_value = ".git"
+        mock_toplevel.return_value = "/repo/root"
         with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
             tm = TelemetryManager()
             assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
+        mock_common.assert_called_once()
+        mock_toplevel.assert_called_once()
 
 def test_ledger_anchoring_fallback():
-    with patch("subprocess.check_output") as mock_run:
+    with patch("skills.git_client.get_git_common_dir") as mock_common:
         from subprocess import CalledProcessError
-        mock_run.side_effect = CalledProcessError(1, "git")
+        mock_common.side_effect = CalledProcessError(1, "git")
         with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
             tm = TelemetryManager()
             assert os.path.isabs(tm.ledger_path)
             assert tm.ledger_path.endswith("artifacts/telemetry.jsonl")
+
