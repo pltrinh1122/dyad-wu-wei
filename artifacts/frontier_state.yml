@@ -1504,10 +1504,13 @@ nodes:
   invariants: []
 - name: 'Node 425: Probe 425: Align - Strategic Evaluation of Knowledge Accrual vs
     Offline Velocity Priority'
-  status: Backlog
-  learnings: Align on the philosophical and technical intent for Strategic Evaluation
-    of Knowledge Accrual vs Offline Velocity Priority.
-  invariants: []
+  status: Completed
+  learnings: Formulated WHY-0043 and WHAT-0043 documenting the strategic tradeoff
+    and prioritization gate that establishes offline velocity baseline as a hard prerequisite
+    to autonomous knowledge accrual.
+  invariants:
+  - '[x] WHY-0043 is created'
+  - '[x] WHAT-0043 is created'
 - name: 'Node 426: Probe 426: Plan - Strategic Evaluation of Knowledge Accrual vs
     Offline Velocity Priority'
   status: Backlog
