@@ -1088,6 +1088,14 @@
 - **Feedforward Invariants**:
   - `None`
 
+## Node 390: Activity 390: Implement - Spike Path: Three-Loop Governance Framework
+- **Status**: Completed
+- **Learnings & Context**: Implemented metadata parsing for loops/area/kind, partition worktree management (Option B), PR purity checks, and WHAT- spec file checks.
+- **Feedforward Invariants**:
+  - `[x] Loop/Area/Kind metadata parsed correctly`
+  - `[x] Partition worktree path correctly resolved`
+  - `[x] SPAO PR purity checks enforced`
+
 ## Current Active Path
 None
 

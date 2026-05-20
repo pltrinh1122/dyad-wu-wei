@@ -44,3 +44,19 @@ def load_node_yml() -> dict:
     with open(target_path, "r") as f:
         config = yaml.safe_load(f) or {}
     return config
+
+def load_antigravity_yml() -> dict:
+    """Loads antigravity.yml from workspace directory, falling back to core directory if missing."""
+    workspace_path = resolve_workspace_path("antigravity.yml")
+    if os.path.exists(workspace_path):
+        target_path = workspace_path
+    else:
+        target_path = resolve_core_path("antigravity.yml")
+        
+    if not os.path.exists(target_path):
+        return {}
+        
+    with open(target_path, "r") as f:
+        config = yaml.safe_load(f) or {}
+    return config
+
