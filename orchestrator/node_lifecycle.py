@@ -216,6 +216,9 @@ class TerminalNode(BaseNode):
         with FlowTransaction(frontier_file) as tx:
             self._verify_state_purity(frontier_file)
             
+            from orchestrator.mgr_strategic import verify_node_transition_allowed
+            verify_node_transition_allowed(self.issue_id)
+            
             in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
             if in_progress_label in self.gh_labels:
                 raise Exception(f"Node #{self.issue_id} is already in progress by another thread!")
@@ -298,6 +301,9 @@ class TerminalNode(BaseNode):
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
             
+        from orchestrator.mgr_strategic import verify_node_transition_allowed
+        verify_node_transition_allowed(self.issue_id)
+
         with FlowTransaction(frontier_file) as tx:
             self._verify_state_purity(frontier_file, expected_active=self.issue_id)
             

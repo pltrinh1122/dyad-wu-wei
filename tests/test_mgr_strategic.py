@@ -185,6 +185,110 @@ class TestMgrStrategic(unittest.TestCase):
         res = mgr_strategic.verify_prioritized_paths(goals)
         self.assertFalse(res)
 
+    def test_verify_node_transition_allowed_success(self):
+        data = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0001",
+                    "status": "Active",
+                    "prioritized_paths": [416]
+                }
+            ]
+        }
+        mgr_strategic.save_ledger(data)
+        
+        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        mgr_strategic._MOCK_PARENT_PATHS = {"419": "416"}
+        
+        try:
+            mgr_strategic.verify_node_transition_allowed("419")
+        finally:
+            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
+            mgr_strategic._MOCK_PARENT_PATHS = {}
+
+    def test_verify_node_transition_allowed_blocked(self):
+        data = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0001",
+                    "status": "Active",
+                    "prioritized_paths": [412]
+                }
+            ]
+        }
+        mgr_strategic.save_ledger(data)
+        
+        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        mgr_strategic._MOCK_PARENT_PATHS = {"419": "416"}
+        
+        try:
+            with self.assertRaises(Exception) as ctx:
+                mgr_strategic.verify_node_transition_allowed("419")
+            self.assertIn("Transition Blocked", str(ctx.exception))
+        finally:
+            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
+            mgr_strategic._MOCK_PARENT_PATHS = {}
+
+    def test_verify_node_transition_allowed_missing_parent(self):
+        data = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0001",
+                    "status": "Active",
+                    "prioritized_paths": [416]
+                }
+            ]
+        }
+        mgr_strategic.save_ledger(data)
+        
+        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        mgr_strategic._MOCK_PARENT_PATHS = {}
+        
+        try:
+            with self.assertRaises(ValueError) as ctx:
+                mgr_strategic.verify_node_transition_allowed("419")
+            self.assertIn("Alignment Failure", str(ctx.exception))
+        finally:
+            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
+
+    def test_verify_path_activation_allowed_success(self):
+        data = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0001",
+                    "status": "Active",
+                    "prioritized_paths": [416]
+                }
+            ]
+        }
+        mgr_strategic.save_ledger(data)
+        
+        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        try:
+            mgr_strategic.verify_path_activation_allowed("416")
+        finally:
+            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
+
+    def test_verify_path_activation_allowed_blocked(self):
+        data = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0001",
+                    "status": "Active",
+                    "prioritized_paths": [412]
+                }
+            ]
+        }
+        mgr_strategic.save_ledger(data)
+        
+        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        try:
+            with self.assertRaises(Exception) as ctx:
+                mgr_strategic.verify_path_activation_allowed("416")
+            self.assertIn("Path Activation Blocked", str(ctx.exception))
+        finally:
+            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
+
 if __name__ == "__main__":
     unittest.main()
 
