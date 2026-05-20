@@ -76,5 +76,50 @@ with open('$TARGET_BIN', 'w') as f:
 
 chmod +x "$TARGET_BIN"
 
+# Update global GEMINI rules file if it exists, otherwise create it
+GLOBAL_GEMINI="$HOME/.gemini/GEMINI.md"
+if [ ! -d "$HOME/.gemini" ]; then
+    mkdir -p "$HOME/.gemini"
+fi
+
+SPAO_RULES_MARKER="# SPAO Meta-Orchestrator Rules"
+
+if [ -f "$GLOBAL_GEMINI" ]; then
+    if grep -q "$SPAO_RULES_MARKER" "$GLOBAL_GEMINI"; then
+        echo "Global GEMINI.md already contains SPAO rules. Updating in-place..."
+        python3 -c "
+import re
+with open('$GLOBAL_GEMINI', 'r') as f:
+    content = f.read()
+# Remove old SPAO block
+content = re.sub(r'# SPAO Meta-Orchestrator Rules Start.*?# SPAO Meta-Orchestrator Rules End', '', content, flags=re.DOTALL).strip()
+with open('$SPAO_CORE_DIR/GEMINI.md', 'r') as f:
+    spao_rules = f.read().strip()
+new_content = content + '\n\n# SPAO Meta-Orchestrator Rules Start\n' + spao_rules + '\n# SPAO Meta-Orchestrator Rules End\n'
+with open('$GLOBAL_GEMINI', 'w') as f:
+    f.write(new_content.strip() + '\n')
+"
+    else
+        echo "Appending SPAO rules to global GEMINI.md..."
+        cat << 'EOF' >> "$GLOBAL_GEMINI"
+
+# SPAO Meta-Orchestrator Rules Start
+EOF
+        cat "$SPAO_CORE_DIR/GEMINI.md" >> "$GLOBAL_GEMINI"
+        cat << 'EOF' >> "$GLOBAL_GEMINI"
+# SPAO Meta-Orchestrator Rules End
+EOF
+    fi
+else
+    echo "Creating global GEMINI.md with SPAO rules..."
+    cat << 'EOF' > "$GLOBAL_GEMINI"
+# SPAO Meta-Orchestrator Rules Start
+EOF
+    cat "$SPAO_CORE_DIR/GEMINI.md" >> "$GLOBAL_GEMINI"
+    cat << 'EOF' >> "$GLOBAL_GEMINI"
+# SPAO Meta-Orchestrator Rules End
+EOF
+fi
+
 echo "✅ Successfully installed 'spao' globally to $TARGET_BIN"
 echo "Ensure $INSTALL_DIR is in your shell PATH."
