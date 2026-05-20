@@ -97,6 +97,16 @@ def get_git_common_dir() -> str:
     res = subprocess.run(["git", "rev-parse", "--git-common-dir"], capture_output=True, text=True, check=True)
     return res.stdout.strip()
 
+@record_execution(stage="skill")
+def tag(version: str, message: str) -> None:
+    """Creates an annotated git tag."""
+    subprocess.run(["git", "tag", "-a", version, "-m", message], check=True)
+
+@record_execution(stage="skill")
+def tag_push(version: str) -> None:
+    """Pushes a specific tag to origin."""
+    subprocess.run(["git", "push", "origin", version], check=True)
+
 def get_show_toplevel() -> str:
     """Returns the primary repository root directory."""
     res = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True, check=True)
