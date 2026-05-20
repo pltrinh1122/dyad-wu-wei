@@ -1555,3 +1555,10 @@ nodes:
     analysis.
   invariants:
   - '[x] WHAT-0042 verified and locked'
+- name: 'Node 434: Probe 434: Align - Sandboxing and Containment Experimentation'
+  status: Completed
+  learnings: Created WHY-0044 and WHAT-0044 defining the process-level and container-level
+    sandboxing models.
+  invariants:
+  - '[x] WHY-0044 is created'
+  - '[x] WHAT-0044 is created'

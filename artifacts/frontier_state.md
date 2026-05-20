@@ -1370,6 +1370,13 @@
 - **Feedforward Invariants**:
   - `[x] WHAT-0042 verified and locked`
 
+## Node 434: Probe 434: Align - Sandboxing and Containment Experimentation
+- **Status**: Completed
+- **Learnings & Context**: Created WHY-0044 and WHAT-0044 defining the process-level and container-level sandboxing models.
+- **Feedforward Invariants**:
+  - `[x] WHY-0044 is created`
+  - `[x] WHAT-0044 is created`
+
 ## Current Active Path
 None
 
