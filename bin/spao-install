@@ -16,42 +16,47 @@ if [ "$1" = "--local" ]; then
     
     TARGET_RUNNER="$TARGET_DIR/run-spao.sh"
     
-    cat << 'EOF' > "$TARGET_RUNNER"
+    cat << 'RUNNER_EOF' > "$TARGET_RUNNER"
 #!/usr/bin/env bash
 # Local SPAO Workspace Runner
+# Invokes agy (Antigravity CLI) with SPAO environment context pre-configured.
+# The workspace GEMINI.md provides agy with the full SPAO meta-orchestrator instructions.
+#
+# Usage:
+#   ./run-spao.sh                          # Launch agy interactively in this workspace
+#   ./run-spao.sh -p "spao node sync"      # Run a single SPAO prompt non-interactively
+#   ./run-spao.sh --print "spao prompt list"
+#   ./run-spao.sh --continue               # Resume the most recent agy conversation
+#   ./run-spao.sh -c                       # Short alias for --continue
+#   ./run-spao.sh -i "resume"              # Start with an initial prompt interactively
+#   ./run-spao.sh [any agy flags...]       # Pass any other agy flags through directly
 
-# Core SPAO Codebase Path
-SPAO_CORE_DIR="REPLACE_SPAO_CORE_DIR"
+# Resolve workspace root as the directory containing this script
 SPAO_WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Core SPAO Codebase Path (baked in at install time)
+SPAO_CORE_DIR="REPLACE_SPAO_CORE_DIR"
 
 export SPAO_CORE_DIR
 export SPAO_WORKSPACE_DIR
 
-SUB=$1
-shift
+# Ensure agy is available
+if ! command -v agy &>/dev/null; then
+    echo "Error: 'agy' (Antigravity CLI) is not installed or not in PATH." >&2
+    exit 1
+fi
 
-case "$SUB" in
-    node)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_node.py" "$@"
-        ;;
-    backlog)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_backlog.py" "$@"
-        ;;
-    prompt)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_prompt.py" "$@"
-        ;;
-    rt)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_rt.py" "$@"
-        ;;
-    test)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_testing.py" "$@"
-        ;;
-    *)
-        echo "Usage: ./run-spao.sh {node|backlog|prompt|rt|test} [options]"
-        exit 1
-        ;;
-esac
-EOF
+# cd into workspace so agy picks up the local GEMINI.md
+cd "$SPAO_WORKSPACE_DIR"
+
+if [ $# -eq 0 ]; then
+    # No args: launch agy interactively; workspace GEMINI.md supplies SPAO context
+    exec agy --add-dir "$SPAO_CORE_DIR"
+else
+    # Pass all flags/args through to agy unchanged
+    exec agy --add-dir "$SPAO_CORE_DIR" "$@"
+fi
+RUNNER_EOF
 
     # Substitute REPLACE_SPAO_CORE_DIR with the actual SPAO_CORE_DIR
     python3 -c "
@@ -76,7 +81,6 @@ with open('$TARGET_RUNNER', 'w') as f:
 import re
 with open('$LOCAL_GEMINI', 'r') as f:
     content = f.read()
-# Remove old SPAO block
 content = re.sub(r'# SPAO Meta-Orchestrator Rules Start.*?# SPAO Meta-Orchestrator Rules End', '', content, flags=re.DOTALL).strip()
 with open('$SPAO_CORE_DIR/GEMINI.md', 'r') as f:
     spao_rules = f.read().strip()
@@ -84,26 +88,17 @@ new_content = content + '\n\n# SPAO Meta-Orchestrator Rules Start\n' + spao_rule
 with open('$LOCAL_GEMINI', 'w') as f:
     f.write(new_content.strip() + '\n')
 "
-        else:
+        else
             echo "Appending SPAO rules to local GEMINI.md..."
-            cat << 'EOF' >> "$LOCAL_GEMINI"
-
-# SPAO Meta-Orchestrator Rules Start
-EOF
+            printf '\n# SPAO Meta-Orchestrator Rules Start\n' >> "$LOCAL_GEMINI"
             cat "$SPAO_CORE_DIR/GEMINI.md" >> "$LOCAL_GEMINI"
-            cat << 'EOF' >> "$LOCAL_GEMINI"
-# SPAO Meta-Orchestrator Rules End
-EOF
+            printf '\n# SPAO Meta-Orchestrator Rules End\n' >> "$LOCAL_GEMINI"
         fi
     else
         echo "Creating local GEMINI.md with SPAO rules..."
-        cat << 'EOF' > "$LOCAL_GEMINI"
-# SPAO Meta-Orchestrator Rules Start
-EOF
+        printf '# SPAO Meta-Orchestrator Rules Start\n' > "$LOCAL_GEMINI"
         cat "$SPAO_CORE_DIR/GEMINI.md" >> "$LOCAL_GEMINI"
-        cat << 'EOF' >> "$LOCAL_GEMINI"
-# SPAO Meta-Orchestrator Rules End
-EOF
+        printf '\n# SPAO Meta-Orchestrator Rules End\n' >> "$LOCAL_GEMINI"
     fi
 
     echo "✅ Successfully configured local SPAO workspace in $TARGET_DIR"
