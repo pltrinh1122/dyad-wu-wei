@@ -11,7 +11,7 @@
 - **Collaborative Gap**: The prioritization model fails to dynamically map the operator's high-level intent to the agent's backlog selection, causing attention drift between the partners.
 - **Constraints**: Backlog prioritization must be evaluated deterministically during the SENSE phase using active ledger goals.
 - **Falsification Signal**: The agent spends resource/token budget on paths that are not prioritized in the strategic ledger.
-- **Prioritized Paths**: 404
+- **Prioritized Paths**: 404, 412, 416
 
 ### SG-0002: Gateless Autonomous Execution within Risk-Managed Sandbox
 - **Collaborative Gap**: The human cannot safely delegate execution authority to the agent, creating a trust bottleneck where the human acts as a manual gatekeeper and the agent is blocked from executing autonomously.
@@ -23,19 +23,19 @@
 - **Collaborative Gap**: Low-fidelity validation feedback (flaky or slow tests) breaks the agent's inner-loop verification, forcing the operator to intervene in tactical debugging rather than strategic governance.
 - **Constraints**: Validation test suites must execute completely offline, contain zero network dependencies, and run in under 60 seconds.
 - **Falsification Signal**: The agent's throughput (nodes completed per unit of time) decreases due to repeating rollback cycles caused by test flakiness or network timeouts.
-- **Prioritized Paths**: 368
+- **Prioritized Paths**: 368, 420
 
 ### SG-0004: Efficient Intent-to-Goal Policy Communication
 - **Collaborative Gap**: The communication interface requires verbose conversational turns instead of high-abstraction policy definitions, causing human decision fatigue and agent execution drift.
 - **Constraints**: Intent must be communicated exclusively through structured policy definitions (strategic_intent.yml) with falsifiable metrics.
 - **Falsification Signal**: The operator spends more than 10% of their session time in interactive conversational turns rather than simple policy updates.
-- **Prioritized Paths**: None
+- **Prioritized Paths**: 428
 
 ### SG-0005: Autonomous Knowledge Accrual
 - **Collaborative Gap**: The agent cannot autonomously codify and recall lessons from past failures, forcing the operator to repeatedly correct similar errors.
 - **Constraints**: Knowledge mutations under the kb/ directory must be verified for structural validity and must not violate immutable core axioms.
 - **Falsification Signal**: The average number of agent repair cycles on repeat error patterns does not decrease over subsequent sessions targeting the same domain.
-- **Prioritized Paths**: None
+- **Prioritized Paths**: 424
 
 ## Draft Goals
 *No goals in this state.*
