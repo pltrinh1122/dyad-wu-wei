@@ -5,22 +5,54 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SPAO_CORE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
+# Directories from the SPAO core that must be accessible in the target workspace
+# so that both `spao <sub>` AND `./bin/<sub>` invocation forms work per GEMINI.md invariants.
+LINK_TARGETS=("bin" "skills" "orchestrator")
+
+usage() {
+    echo "Usage:"
+    echo "  spao-install                     # Install global 'spao' CLI to ~/.local/bin"
+    echo "  spao-install --local [DIR]       # Set up SPAO in a local workspace (default: cwd)"
+    echo "  spao-install --unlink [DIR]      # Remove SPAO symlinks from a local workspace"
+    exit 1
+}
+
+# ──────────────────────────────────────────────────────────────────────────────
+# LOCAL INSTALL MODE
+# ──────────────────────────────────────────────────────────────────────────────
 if [ "$1" = "--local" ]; then
-    TARGET_DIR="$2"
-    if [ -z "$TARGET_DIR" ]; then
-        TARGET_DIR="$(pwd)"
-    fi
+    TARGET_DIR="${2:-$(pwd)}"
     TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
-    
+
     echo "Installing SPAO locally to workspace: $TARGET_DIR"
-    
+    echo "Core codebase: $SPAO_CORE_DIR"
+
+    # 1. Symlink bin/, skills/, orchestrator/ from core into the workspace
+    #    so `./bin/node sync`, `./bin/prompt list`, etc. all resolve correctly.
+    for dir in "${LINK_TARGETS[@]}"; do
+        LINK_PATH="$TARGET_DIR/$dir"
+        LINK_TARGET="$SPAO_CORE_DIR/$dir"
+        if [ -L "$LINK_PATH" ]; then
+            echo "  ↻ Updating symlink: $dir/ → $LINK_TARGET"
+            ln -sfn "$LINK_TARGET" "$LINK_PATH"
+        elif [ -e "$LINK_PATH" ]; then
+            echo "  ⚠️  $dir/ already exists as a real directory — skipping symlink (manual review needed)"
+        else
+            echo "  ✅ Linking: $dir/ → $LINK_TARGET"
+            ln -s "$LINK_TARGET" "$LINK_PATH"
+        fi
+    done
+
+    # 2. Generate run-spao.sh — agy launcher that sources SPAO env context
     TARGET_RUNNER="$TARGET_DIR/run-spao.sh"
-    
+
     cat << 'RUNNER_EOF' > "$TARGET_RUNNER"
 #!/usr/bin/env bash
 # Local SPAO Workspace Runner
 # Invokes agy (Antigravity CLI) with SPAO environment context pre-configured.
 # The workspace GEMINI.md provides agy with the full SPAO meta-orchestrator instructions.
+# bin/, skills/, orchestrator/ are symlinked from the SPAO core repo so that
+# both `spao <sub>` and `./bin/<sub>` invocation forms work per GEMINI.md invariants.
 #
 # Usage:
 #   ./run-spao.sh                          # Launch agy interactively in this workspace
@@ -58,7 +90,7 @@ else
 fi
 RUNNER_EOF
 
-    # Substitute REPLACE_SPAO_CORE_DIR with the actual SPAO_CORE_DIR
+    # Substitute REPLACE_SPAO_CORE_DIR with the actual baked-in path
     python3 -c "
 with open('$TARGET_RUNNER', 'r') as f:
     content = f.read()
@@ -66,17 +98,16 @@ content = content.replace('REPLACE_SPAO_CORE_DIR', '$SPAO_CORE_DIR')
 with open('$TARGET_RUNNER', 'w') as f:
     f.write(content)
 "
-
     chmod +x "$TARGET_RUNNER"
-    echo "✅ Created runner script: $TARGET_RUNNER"
+    echo "  ✅ Created runner: $TARGET_RUNNER"
 
-    # Setup local GEMINI.md
+    # 3. Create / update local GEMINI.md with SPAO rules block
     LOCAL_GEMINI="$TARGET_DIR/GEMINI.md"
     SPAO_RULES_MARKER="# SPAO Meta-Orchestrator Rules"
 
     if [ -f "$LOCAL_GEMINI" ]; then
         if grep -q "$SPAO_RULES_MARKER" "$LOCAL_GEMINI"; then
-            echo "Local GEMINI.md already contains SPAO rules. Updating in-place..."
+            echo "  ↻ Updating SPAO rules block in local GEMINI.md..."
             python3 -c "
 import re
 with open('$LOCAL_GEMINI', 'r') as f:
@@ -89,27 +120,50 @@ with open('$LOCAL_GEMINI', 'w') as f:
     f.write(new_content.strip() + '\n')
 "
         else
-            echo "Appending SPAO rules to local GEMINI.md..."
+            echo "  ✅ Appending SPAO rules to existing local GEMINI.md..."
             printf '\n# SPAO Meta-Orchestrator Rules Start\n' >> "$LOCAL_GEMINI"
             cat "$SPAO_CORE_DIR/GEMINI.md" >> "$LOCAL_GEMINI"
             printf '\n# SPAO Meta-Orchestrator Rules End\n' >> "$LOCAL_GEMINI"
         fi
     else
-        echo "Creating local GEMINI.md with SPAO rules..."
+        echo "  ✅ Creating local GEMINI.md with SPAO rules..."
         printf '# SPAO Meta-Orchestrator Rules Start\n' > "$LOCAL_GEMINI"
         cat "$SPAO_CORE_DIR/GEMINI.md" >> "$LOCAL_GEMINI"
         printf '\n# SPAO Meta-Orchestrator Rules End\n' >> "$LOCAL_GEMINI"
     fi
 
-    echo "✅ Successfully configured local SPAO workspace in $TARGET_DIR"
+    echo ""
+    echo "✅ SPAO workspace ready at: $TARGET_DIR"
+    echo "   Run './run-spao.sh' to launch agy with SPAO context."
 
-else
-    # Define installation target directory
+# ──────────────────────────────────────────────────────────────────────────────
+# UNLINK MODE
+# ──────────────────────────────────────────────────────────────────────────────
+elif [ "$1" = "--unlink" ]; then
+    TARGET_DIR="${2:-$(pwd)}"
+    TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
+
+    echo "Removing SPAO symlinks from workspace: $TARGET_DIR"
+
+    for dir in "${LINK_TARGETS[@]}"; do
+        LINK_PATH="$TARGET_DIR/$dir"
+        if [ -L "$LINK_PATH" ]; then
+            rm "$LINK_PATH"
+            echo "  ✅ Removed symlink: $dir/"
+        else
+            echo "  — Not a symlink (skipping): $dir/"
+        fi
+    done
+
+    [ -f "$TARGET_DIR/run-spao.sh" ] && rm "$TARGET_DIR/run-spao.sh" && echo "  ✅ Removed run-spao.sh"
+    echo "✅ Unlinked. GEMINI.md preserved (edit manually if needed)."
+
+# ──────────────────────────────────────────────────────────────────────────────
+# GLOBAL INSTALL MODE (default)
+# ──────────────────────────────────────────────────────────────────────────────
+elif [ -z "$1" ]; then
     INSTALL_DIR="$HOME/.local/bin"
-    if [ ! -d "$INSTALL_DIR" ]; then
-        mkdir -p "$INSTALL_DIR"
-    fi
-
+    mkdir -p "$INSTALL_DIR"
     TARGET_BIN="$INSTALL_DIR/spao"
 
     echo "Installing global SPAO CLI..."
@@ -127,15 +181,13 @@ SPAO_CORE_DIR="REPLACE_SPAO_CORE_DIR"
 if [ -n "$SPAO_WORKSPACE_DIR" ]; then
     WORKSPACE_ROOT="$SPAO_WORKSPACE_DIR"
 else
-    # Fallback to nearest git root
     WORKSPACE_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
     if [ -z "$WORKSPACE_ROOT" ]; then
         WORKSPACE_ROOT="$(pwd)"
     fi
 fi
 
-# Export Environment Variables
-export SPAO_CORE_DIR="$SPAO_CORE_DIR"
+export SPAO_CORE_DIR
 export SPAO_WORKSPACE_DIR="$WORKSPACE_ROOT"
 
 SUB=$1
@@ -164,7 +216,6 @@ case "$SUB" in
 esac
 EOF
 
-    # Substitute REPLACE_SPAO_CORE_DIR with the actual SPAO_CORE_DIR
     python3 -c "
 with open('$TARGET_BIN', 'r') as f:
     content = f.read()
@@ -172,15 +223,11 @@ content = content.replace('REPLACE_SPAO_CORE_DIR', '$SPAO_CORE_DIR')
 with open('$TARGET_BIN', 'w') as f:
     f.write(content)
 "
-
     chmod +x "$TARGET_BIN"
 
-    # Update global GEMINI rules file if it exists, otherwise create it
+    # Update global GEMINI.md
     GLOBAL_GEMINI="$HOME/.gemini/GEMINI.md"
-    if [ ! -d "$HOME/.gemini" ]; then
-        mkdir -p "$HOME/.gemini"
-    fi
-
+    mkdir -p "$HOME/.gemini"
     SPAO_RULES_MARKER="# SPAO Meta-Orchestrator Rules"
 
     if [ -f "$GLOBAL_GEMINI" ]; then
@@ -190,7 +237,6 @@ with open('$TARGET_BIN', 'w') as f:
 import re
 with open('$GLOBAL_GEMINI', 'r') as f:
     content = f.read()
-# Remove old SPAO block
 content = re.sub(r'# SPAO Meta-Orchestrator Rules Start.*?# SPAO Meta-Orchestrator Rules End', '', content, flags=re.DOTALL).strip()
 with open('$SPAO_CORE_DIR/GEMINI.md', 'r') as f:
     spao_rules = f.read().strip()
@@ -198,28 +244,22 @@ new_content = content + '\n\n# SPAO Meta-Orchestrator Rules Start\n' + spao_rule
 with open('$GLOBAL_GEMINI', 'w') as f:
     f.write(new_content.strip() + '\n')
 "
-        else:
+        else
             echo "Appending SPAO rules to global GEMINI.md..."
-            cat << 'EOF' >> "$GLOBAL_GEMINI"
-
-# SPAO Meta-Orchestrator Rules Start
-EOF
+            printf '\n# SPAO Meta-Orchestrator Rules Start\n' >> "$GLOBAL_GEMINI"
             cat "$SPAO_CORE_DIR/GEMINI.md" >> "$GLOBAL_GEMINI"
-            cat << 'EOF' >> "$GLOBAL_GEMINI"
-# SPAO Meta-Orchestrator Rules End
-EOF
+            printf '\n# SPAO Meta-Orchestrator Rules End\n' >> "$GLOBAL_GEMINI"
         fi
     else
         echo "Creating global GEMINI.md with SPAO rules..."
-        cat << 'EOF' > "$GLOBAL_GEMINI"
-# SPAO Meta-Orchestrator Rules Start
-EOF
+        printf '# SPAO Meta-Orchestrator Rules Start\n' > "$GLOBAL_GEMINI"
         cat "$SPAO_CORE_DIR/GEMINI.md" >> "$GLOBAL_GEMINI"
-        cat << 'EOF' >> "$GLOBAL_GEMINI"
-# SPAO Meta-Orchestrator Rules End
-EOF
+        printf '\n# SPAO Meta-Orchestrator Rules End\n' >> "$GLOBAL_GEMINI"
     fi
 
     echo "✅ Successfully installed 'spao' globally to $TARGET_BIN"
     echo "Ensure $INSTALL_DIR is in your shell PATH."
+
+else
+    usage
 fi
