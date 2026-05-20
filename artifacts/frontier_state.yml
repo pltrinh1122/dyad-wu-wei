@@ -1,5 +1,4 @@
-current_active_path: 'Path 331: Spike Path: Enforce Triple-Node Auto-Initialization
-  for Paths'
+current_active_path: null
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
