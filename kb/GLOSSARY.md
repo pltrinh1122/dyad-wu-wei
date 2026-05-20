@@ -94,6 +94,9 @@ The **derived** constraint. At most **1** Path may be actively traversed at any 
 
 ## 🎚️ Hierarchical Tiering & Recursive "Meta-" Prefix
 
+- **Align Probe**: A structural Node used to establish philosophical and technical alignment before work begins.
+- **Atomic State Invariant**: The requirement that ledger updates (node completion) and topological pointer movements (active node status) occur as a single, atomic operation to prevent state dissonance.
+
 To prevent conceptual confusion, we establish a strict boundary between two organizational tiers:
 1. **Application Tier (The Product)**: Represents the business domain deliverables (features, bugs, stories, databases, APIs) of the client system.
 2. **Metasystem Tier (The Agentic Governance System - Antigravity)**: Represents the topological, state, and cognitive engine that coordinates repository progress.
