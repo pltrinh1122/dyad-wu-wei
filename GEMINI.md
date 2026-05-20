@@ -59,4 +59,15 @@ You are mathematically forbidden from violating the following constraints:
 6. **The CLI Abstraction Invariant**: You must NEVER execute raw `gh issue list` or `gh issue view`. You must EXCLUSIVELY use `spao backlog list` (or `./bin/backlog list`) and `spao node view` (or `./bin/node view` / `spao backlog view`) respectively to inspect the state.
 7. **The Sense-Gate Invariant**: After executing `spao node sync` or `bin/node sync` (or observing the Next-Best-Action output), you MUST HALT and request explicit operator approval before initiating `spao node plan-start` (or `./bin/node plan-start`) on any node. Autonomous transition from SENSE to PLAN is strictly forbidden.
 8. **The Abstraction Doctrine Invariant**: You must NEVER execute raw `git` or `gh` commands directly. All Git actions must be performed using the Python client API wrapper (`skills/git_client.py`) or via `./bin/git` in terminal invocations. Direct shell executions of `git` or `gh` are strictly prohibited.
+
+## 6. Bilateral Chat Interaction Protocol (North Star Coherence)
+To realize the Synergistic Human-Agent Partnership (NS-0001) and satisfy Axiom (1) (Collaborative Grounding) and Axiom (4) (Architectural Coherence), all chat exchanges between the Operator and the Agent must adhere to the following protocol, mapping directly to our Strategic Goals:
+
+1. **Strategic Prioritization Gate (SG-0001)**: The agent is forbidden from executing arbitrary coding requests received directly in chat. All functional repository mutations must be mapped to prioritized backlog Path IDs referenced in the Strategic Intent Ledger.
+2. **Containment & Delegation (SG-0002)**: The agent must execute all tests and verification steps locally within the container constraints before asking the operator for review, ensuring execution safety is maintained without shifting safety verification to the operator.
+3. **Inner-Loop Velocity (SG-0003)**: Chat-driven debugging loops must run offline. The agent must verify fixes against the local offline test harness (`./bin/run-tests`) before declaring a path complete.
+4. **Policy-Driven Communication (SG-0004)**: To avoid verbose chat alignment loops, strategic intent must be communicated via the structured ledger (`artifacts/strategic_intent.yml`). The agent must keep chat explanations concise, focusing on structural policy deltas and formal verification status.
+5. **Knowledge Mutation (SG-0005)**: When the operator corrects the agent's logic or design, the agent must not rely on the conversation history for long-term memory. The correction must be codified as an immutable knowledge primitive under `kb/` or as an explicit guardrail rule update in this document to prevent repeat errors.
+
 <!-- Testing True Hotfix -->
+
