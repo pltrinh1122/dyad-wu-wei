@@ -392,7 +392,7 @@ class TerminalNode(BaseNode):
             
             pr_body = f"Resolves #{self.issue_id}\n\n{learnings}{transition_summary}"
             
-            pr_url = github_client.create_pull_request(node_name, pr_body)
+            pr_url = github_client.create_pull_request(node_name, pr_body, head=branch_name)
             
             log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
 
