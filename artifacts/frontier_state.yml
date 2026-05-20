@@ -1,4 +1,4 @@
-current_active_path: 'Path 416: Implement NBA Strict Transition Enforcement Gate'
+current_active_path: null
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -1231,9 +1231,12 @@ nodes:
   invariants: []
 - name: "Node 369: Probe 369: Align - Spike Path: CI Hardening \u2014 Remediate and\
     \ Prevent Live GitHub API Calls in Test Suite"
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
+  status: Completed
+  learnings: Materialized WHY-0040 and WHAT-0040 detailing the architectural rationale
+    and technical specifications for global pytest session-scoped PATH-injection stubbing.
+  invariants:
+  - '[x] WHY-0040 is created'
+  - '[x] WHAT-0040 is created'
 - name: "Node 370: Probe 370: Plan - Spike Path: CI Hardening \u2014 Remediate and\
     \ Prevent Live GitHub API Calls in Test Suite"
   status: '[///] Act Phase'
