@@ -917,14 +917,14 @@
   - `[x] Branch-Target invariant implemented`
   - `[x] Governance docs updated`
 
-## Align - Metasystem State Hardening
+## Node 317: Probe 317: Align - Metasystem State Hardening
 - **Status**: Completed
 - **Learnings & Context**: Established the Atomic State Invariant (WHY-0021) and updated the glossary. This doctrine mandates that ledger updates and pointer transitions occur as a single atomic unit.
 - **Feedforward Invariants**:
   - `Atomic State Invariant documented in WHY-0021`
   - `Atomic State Invariant added to GLOSSARY.md`
 
-## Plan - Metasystem State Hardening
+## Node 318: Probe 318: Plan - Metasystem State Hardening
 - **Status**: Completed
 - **Learnings & Context**: Implemented atomic state transitions in frontier_editor.py and integrated a stale-pointer audit rule into audit_daemon.py. Added mandatory state purity gating to TerminalNode lifecycle methods.
 - **Feedforward Invariants**:
@@ -933,13 +933,7 @@
   - `Stale active node detection in audit_daemon.py`
   - `Audit trigger integrated into node sync`
 
-## Activity 319: Reflect - Metasystem State Hardening
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Reflect - Metasystem State Hardening
+## Node 319: Activity 319: Reflect - Metasystem State Hardening
 - **Status**: Completed
 - **Learnings & Context**: Completed the Path 316 cycle. Established the Atomic State Invariant and implemented mandatory state-purity guardrails.
 - **Feedforward Invariants**:
@@ -977,7 +971,7 @@
   - `[x] All 82 unit and integration tests passing`
 
 ## Current Active Path
-**Path 316: Metasystem State Hardening**
+None
 
 ## Current Active Node
 None

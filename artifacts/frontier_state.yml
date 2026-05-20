@@ -1,4 +1,4 @@
-current_active_path: 'Path 316: Metasystem State Hardening'
+current_active_path: null
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -1067,7 +1067,7 @@ nodes:
   - '`[x] Trinity auto-init implemented`'
   - '`[x] Branch-Target invariant implemented`'
   - '`[x] Governance docs updated`'
-- name: Align - Metasystem State Hardening
+- name: 'Node 317: Probe 317: Align - Metasystem State Hardening'
   status: Completed
   learnings: Established the Atomic State Invariant (WHY-0021) and updated the glossary.
     This doctrine mandates that ledger updates and pointer transitions occur as a
@@ -1075,7 +1075,7 @@ nodes:
   invariants:
   - '`Atomic State Invariant documented in WHY-0021`'
   - '`Atomic State Invariant added to GLOSSARY.md`'
-- name: Plan - Metasystem State Hardening
+- name: 'Node 318: Probe 318: Plan - Metasystem State Hardening'
   status: Completed
   learnings: Implemented atomic state transitions in frontier_editor.py and integrated
     a stale-pointer audit rule into audit_daemon.py. Added mandatory state purity
@@ -1085,12 +1085,7 @@ nodes:
   - '`State purity verification in TerminalNode lifecycle`'
   - '`Stale active node detection in audit_daemon.py`'
   - '`Audit trigger integrated into node sync`'
-- name: 'Activity 319: Reflect - Metasystem State Hardening'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants:
-  - '`[ ]` None'
-- name: Reflect - Metasystem State Hardening
+- name: 'Node 319: Activity 319: Reflect - Metasystem State Hardening'
   status: Completed
   learnings: Completed the Path 316 cycle. Established the Atomic State Invariant
     and implemented mandatory state-purity guardrails.
