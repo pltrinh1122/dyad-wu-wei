@@ -19,3 +19,11 @@ hotfixes:
   timestamp: '2026-05-19T16:36:41Z'
   file: artifacts/frontier_state.md
   message: fix mangled frontier_state.md headers
+- hash: 00f4462540dca9abbe28c2af020348005bfa311f
+  timestamp: '2026-05-20T04:55:14Z'
+  file: artifacts/frontier_state.yml
+  message: 'chore: clear active path 331 pointer after closure'
+- hash: e29c968aca8849d2467f314867e43c54de0b0116
+  timestamp: '2026-05-20T04:55:21Z'
+  file: artifacts/frontier_state.md
+  message: 'chore: sync markdown derived state after closure'
