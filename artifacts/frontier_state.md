@@ -1053,10 +1053,11 @@
   - `[ ]` None
 
 ## Node 369: Probe 369: Align - Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Completed
+- **Learnings & Context**: Materialized WHY-0040 and WHAT-0040 detailing the architectural rationale and technical specifications for global pytest session-scoped PATH-injection stubbing.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHY-0040 is created`
+  - `[x] WHAT-0040 is created`
 
 ## Node 370: Probe 370: Plan - Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
 - **Status**: [///] Act Phase
@@ -1365,7 +1366,7 @@
   - `[ ]` None
 
 ## Current Active Path
-**Path 416: Implement NBA Strict Transition Enforcement Gate**
+None
 
 ## Current Active Node
 None
