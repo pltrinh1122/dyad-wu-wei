@@ -1421,9 +1421,10 @@ nodes:
     in CI/CLI but is bypassed locally offline to maintain velocity.'
   invariants: []
 - name: 'Node 414: Probe 414: Plan - Implement Strategic Goal Path Alignment Verification'
-  status: Backlog
-  learnings: Technical design and proposed changes for Implement Strategic Goal Path
-    Alignment Verification.
+  status: Completed
+  learnings: Created specification file WHAT-0038-strategic-goal-path-alignment-verification.md
+    defining programmatic invariants and environment/test isolation behavior for verifying
+    prioritized path references.
   invariants: []
 - name: 'Node 415: Activity 415: Reflect - Implement Strategic Goal Path Alignment
     Verification'
