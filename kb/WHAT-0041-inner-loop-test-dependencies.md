@@ -33,3 +33,5 @@ All test files are mapped in the table below:
 ## Technical Invariants
 1. **Network-Isolated Execution**: All unit and integration tests must run successfully with no external network interfaces or live CLI calls.
 2. **Catalog Integrity**: Any new test file added to the repository must be cataloged in this specification as a `Type A` (Hermetic) test before passing review.
+
+<!-- plan touched -->
