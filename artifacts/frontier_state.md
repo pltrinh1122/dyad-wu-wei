@@ -1377,6 +1377,12 @@
   - `[x] WHY-0044 is created`
   - `[x] WHAT-0044 is created`
 
+## Node 435: Probe 435: Plan - Sandboxing and Containment Experimentation
+- **Status**: Completed
+- **Learnings & Context**: Verified and locked the WHAT-0044 specification for sandboxing containment rules.
+- **Feedforward Invariants**:
+  - `[x] WHAT-0044 is verified and locked`
+
 ## Current Active Path
 None
 

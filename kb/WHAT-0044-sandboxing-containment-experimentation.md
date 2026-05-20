@@ -44,3 +44,8 @@ To run a task under container-level sandboxing, the executor must run Docker wit
    - Every sandboxed execution must pass an initial TDD cycle inside the isolated workspace using `./bin/run-tests`.
 2. **Network Egress Check**:
    - The metasystem audit daemon must actively monitor subprocess socket calls and block executions attempting to connect to external endpoints.
+
+## Verification & Status
+- **Status**: Locked
+- **Verified by**: Node 435 Plan Probe
+
