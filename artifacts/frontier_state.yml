@@ -1246,9 +1246,11 @@ nodes:
   - '[x] WHAT-0040 touched and tracked'
 - name: "Node 371: Activity 371: Reflect - Spike Path: CI Hardening \u2014 Remediate\
     \ and Prevent Live GitHub API Calls in Test Suite"
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
+  status: Completed
+  learnings: Promoted stub_gh_cli to a global session-scoped fixture in conftest.py,
+    and cleaned up test_bash_wrappers.py. All 146 tests pass hermetically.
+  invariants:
+  - INVARIANT_GLOBAL_OFFLINE_STUB
 - name: 'Node 365: Activity 365: Reflect - Spike Path: SPAO Release Packaging, One-Step
     Onboarding & CLI Discoverability'
   status: '[///] Act Phase'
