@@ -1002,6 +1002,12 @@
 - **Feedforward Invariants**:
   - - '`WHY-0024 decision record created`'\n- '`All 83 tests pass cleanly`'\n
 
+## Node 343: Probe 343: Plan - Spike Path: Abstraction Doctrine - Python API for git and gh
+- **Status**: Completed
+- **Learnings & Context**: Documented the concrete technical specifications of the Abstraction Doctrine in WHAT-0025, detailing Git/GitHub wrappers, path/backlog consolidation evaluation, and node internality.
+- **Feedforward Invariants**:
+  - - '`WHAT-0025 specification created`'\n- '`All 83 tests pass cleanly`'\n
+
 ## Current Active Path
 **341**
 
