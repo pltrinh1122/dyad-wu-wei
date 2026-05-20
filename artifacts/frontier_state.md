@@ -1125,6 +1125,20 @@
   - `[x] Implemented worktree auto-resolution in node_lifecycle.py`
   - `[x] Verified with 122 tests passing`
 
+## Node 396: Activity 396: Activity: Implement bin/git CLI Wrapper to Enforce Abstraction Doctrine
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 396: Activity 396: Reflect - Spike Path: bin/git CLI wrapper
+- **Status**: Completed
+- **Learnings & Context**: Implemented and verified the bin/git script wrapper and skills/git_wrapper.py backend.
+- **Feedforward Invariants**:
+  - `[x] Created bin/git shell wrapper`
+  - `[x] Created skills/git_wrapper.py backend`
+  - `[x] Created tests/test_git_wrapper.py and verified all 123 tests pass`
+
 ## Current Active Path
 None
 

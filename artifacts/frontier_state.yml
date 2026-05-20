@@ -1301,3 +1301,16 @@ nodes:
   - '[x] Implemented --stage flag in CLI parser'
   - '[x] Implemented worktree auto-resolution in node_lifecycle.py'
   - '[x] Verified with 122 tests passing'
+- name: 'Node 396: Activity 396: Activity: Implement bin/git CLI Wrapper to Enforce
+    Abstraction Doctrine'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 396: Activity 396: Reflect - Spike Path: bin/git CLI wrapper'
+  status: Completed
+  learnings: Implemented and verified the bin/git script wrapper and skills/git_wrapper.py
+    backend.
+  invariants:
+  - '[x] Created bin/git shell wrapper'
+  - '[x] Created skills/git_wrapper.py backend'
+  - '[x] Created tests/test_git_wrapper.py and verified all 123 tests pass'
