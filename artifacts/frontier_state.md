@@ -1316,6 +1316,30 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 424: Path 424: Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority
+- **Status**: Backlog
+- **Learnings & Context**: Conduct a strategic evaluation and tradeoff analysis between prioritizing the offline velocity baseline (SG-0003, Path 368) vs bootstrapping the autonomous knowledge accrual pipeline (SG-0005) to determine which pathway unlocks higher compounding leverage first.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 425: Probe 425: Align - Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority
+- **Status**: Backlog
+- **Learnings & Context**: Align on the philosophical and technical intent for Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 426: Probe 426: Plan - Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 427: Activity 427: Reflect - Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 

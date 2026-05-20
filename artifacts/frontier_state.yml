@@ -1475,3 +1475,29 @@ nodes:
   learnings: Final reflection and path closure for Audit and Harden Inner-Loop Test
     Dependencies.
   invariants: []
+- name: 'Node 424: Path 424: Strategic Evaluation of Knowledge Accrual vs Offline
+    Velocity Priority'
+  status: Backlog
+  learnings: Conduct a strategic evaluation and tradeoff analysis between prioritizing
+    the offline velocity baseline (SG-0003, Path 368) vs bootstrapping the autonomous
+    knowledge accrual pipeline (SG-0005) to determine which pathway unlocks higher
+    compounding leverage first.
+  invariants: []
+- name: 'Node 425: Probe 425: Align - Strategic Evaluation of Knowledge Accrual vs
+    Offline Velocity Priority'
+  status: Backlog
+  learnings: Align on the philosophical and technical intent for Strategic Evaluation
+    of Knowledge Accrual vs Offline Velocity Priority.
+  invariants: []
+- name: 'Node 426: Probe 426: Plan - Strategic Evaluation of Knowledge Accrual vs
+    Offline Velocity Priority'
+  status: Backlog
+  learnings: Technical design and proposed changes for Strategic Evaluation of Knowledge
+    Accrual vs Offline Velocity Priority.
+  invariants: []
+- name: 'Node 427: Activity 427: Reflect - Strategic Evaluation of Knowledge Accrual
+    vs Offline Velocity Priority'
+  status: Backlog
+  learnings: Final reflection and path closure for Strategic Evaluation of Knowledge
+    Accrual vs Offline Velocity Priority.
+  invariants: []
