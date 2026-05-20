@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import patch, mock_open
-from orchestrator.mgr_telemetry import TelemetryManager
+from orchestrator.mgr_telemetry import TelemetryManager, SynthesisEngine
 import json
-import os
+from datetime import datetime, timezone, timedelta
 
 def test_log_event():
     with patch("os.makedirs"):
@@ -25,11 +25,37 @@ def test_generate_report_empty():
         tm = TelemetryManager(ledger_path="/tmp/test.jsonl")
         assert tm.generate_report() == "No telemetry data available."
 
-def test_generate_report_with_data():
-    fake_data = json.dumps({"timestamp": "2026-05-20T00:00:00Z", "stage": "PLAN", "event": "START"}) + "\n"
+def test_synthesis_engine():
+    events = [
+        {"timestamp": "2026-05-20T00:00:00Z", "stage": "PLAN", "event": "START", "node_id": "1"},
+        {"timestamp": "2026-05-20T02:00:00Z", "stage": "PLAN", "event": "FINISH", "node_id": "1"}, # 2 hours (Bottleneck)
+        {"timestamp": "2026-05-20T03:00:00Z", "stage": "SENSE", "event": "START", "node_id": None},
+        {"timestamp": "2026-05-20T03:01:00Z", "stage": "SENSE", "event": "FINISH", "node_id": None}, # 1 min (Healthy)
+    ]
+    engine = SynthesisEngine(events)
+    metrics = engine.calculate_metrics()
+    
+    assert len(metrics) == 2
+    
+    plan_metric = next(m for m in metrics if m["stage"] == "PLAN")
+    assert plan_metric["duration"] == timedelta(hours=2)
+    assert plan_metric["is_bottleneck"] is True
+    
+    sense_metric = next(m for m in metrics if m["stage"] == "SENSE")
+    assert sense_metric["duration"] == timedelta(minutes=1)
+    assert sense_metric["is_bottleneck"] is False
+
+def test_generate_report_with_bottleneck():
+    events = [
+        {"timestamp": "2026-05-20T00:00:00Z", "stage": "PLAN", "event": "START", "node_id": "1"},
+        {"timestamp": "2026-05-20T02:00:00Z", "stage": "PLAN", "event": "FINISH", "node_id": "1"},
+    ]
+    fake_data = "\n".join([json.dumps(e) for e in events]) + "\n"
+    
     with patch("os.path.exists", return_value=True):
         with patch("builtins.open", mock_open(read_data=fake_data)):
             tm = TelemetryManager(ledger_path="/tmp/test.jsonl")
             report = tm.generate_report()
-            assert "# SPAO Operational Health Report" in report
-            assert "Total Observation Points: 1" in report
+            assert "⚠️ BOTTLENECK" in report
+            assert "🚨 Bottleneck Alerts" in report
+            assert "**Node #1** stalled in **PLAN** phase for 2:00:00" in report

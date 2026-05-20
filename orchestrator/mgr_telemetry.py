@@ -1,7 +1,60 @@
 import json
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from skills.file_locker import lock_file
+
+class SynthesisEngine:
+    """Processes raw telemetry events into actionable metrics."""
+    
+    def __init__(self, events):
+        self.events = events
+        self.thresholds = {
+            "SENSE": timedelta(minutes=5),
+            "PLAN": timedelta(hours=1),
+            "ACT": timedelta(hours=4),
+            "REFLECT": timedelta(minutes=15)
+        }
+
+    def _parse_ts(self, ts_str):
+        return datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
+
+    def calculate_metrics(self):
+        """Groups events by node/stage and calculates durations."""
+        metrics = {}
+        
+        # Group events by Node ID and Stage
+        # Global events (like SENSE) have node_id=None
+        
+        for event in self.events:
+            key = (event.get("node_id"), event.get("stage"))
+            if key not in metrics:
+                metrics[key] = {"start": None, "finish": None, "events": []}
+            
+            metrics[key]["events"].append(event)
+            ts = self._parse_ts(event["timestamp"])
+            
+            if event["event"] == "START":
+                metrics[key]["start"] = ts
+            elif event["event"] == "FINISH":
+                metrics[key]["finish"] = ts
+
+        results = []
+        for key, data in metrics.items():
+            node_id, stage = key
+            if data["start"] and data["finish"]:
+                duration = data["finish"] - data["start"]
+                threshold = self.thresholds.get(stage, timedelta(hours=24))
+                is_bottleneck = duration > threshold
+                
+                results.append({
+                    "node_id": node_id,
+                    "stage": stage,
+                    "duration": duration,
+                    "is_bottleneck": is_bottleneck,
+                    "threshold": threshold
+                })
+        
+        return results
 
 class TelemetryManager:
     """Manages the lifecycle and orchestration of the Telemetry primitive."""
@@ -35,12 +88,35 @@ class TelemetryManager:
         with open(self.ledger_path, "r") as f:
             events = [json.loads(line) for line in f]
             
-        # Basic report logic for now
+        engine = SynthesisEngine(events)
+        metrics = engine.calculate_metrics()
+        
         report = ["# SPAO Operational Health Report", ""]
         report.append(f"Total Observation Points: {len(events)}")
+        report.append("")
         
-        # Identify bottlenecks (simple logic: find time delta between START and FINISH)
-        # TODO: Implement sophisticated analysis
+        if not metrics:
+            report.append("No completed phases found to calculate durations.")
+            return "\n".join(report)
+
+        report.append("| Node | Stage | Duration | Status |")
+        report.append("| :--- | :--- | :--- | :--- |")
+        
+        bottlenecks = []
+        for m in metrics:
+            status = "✅ Healthy"
+            if m["is_bottleneck"]:
+                status = "⚠️ BOTTLENECK"
+                bottlenecks.append(m)
+            
+            node_display = f"#{m['node_id']}" if m['node_id'] else "Global"
+            report.append(f"| {node_display} | {m['stage']} | {m['duration']} | {status} |")
+            
+        if bottlenecks:
+            report.append("\n## 🚨 Bottleneck Alerts")
+            for b in bottlenecks:
+                node_display = f"Node #{b['node_id']}" if b['node_id'] else "Global system"
+                report.append(f"- **{node_display}** stalled in **{b['stage']}** phase for {b['duration']} (Threshold: {b['threshold']})")
         
         return "\n".join(report)
 
