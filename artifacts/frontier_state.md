@@ -1313,10 +1313,11 @@
   - `[x] WHAT-0041 touched and tracked`
 
 ## Node 423: Activity 423: Reflect - Audit and Harden Inner-Loop Test Dependencies
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Audit and Harden Inner-Loop Test Dependencies.
+- **Status**: Completed
+- **Learnings & Context**: Successfully audited all 20 test files in the repository and confirmed 100% offline hermetic execution. Documented findings and invariants in WHY-0041 and WHAT-0041.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHAT-0041 cleaned up`
+  - `[x] All tests run offline`
 
 ## Node 424: Path 424: Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority
 - **Status**: Backlog
