@@ -3,7 +3,7 @@ import re
 import subprocess
 from skills import github_client
 from skills import frontier_editor
-from skills import testing_harness
+from orchestrator import mgr_testing
 from orchestrator import mgr_prompt
 from orchestrator.sense_hooks import HookManager
 
@@ -138,7 +138,8 @@ def cmd_set_classification(args):
 
 def cmd_test(args):
     log_stage_advancement("act", "Executing TDD Test Harness Validation", f"Running pytest on target: {args.target}")
-    exit_code = testing_harness.run_tests(args.target)
+    manager = mgr_testing.TestManager()
+    exit_code = manager.run([args.target] if args.target else [])
     sys.exit(exit_code)
 
 def main():
