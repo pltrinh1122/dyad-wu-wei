@@ -180,6 +180,34 @@ def cmd_add(args):
     save_ledger(data)
     print(f"Successfully added goal {new_id} to ledger.")
 
+def verify_prioritized_paths(goals: list) -> bool:
+    """Verifies that all prioritized paths in Active goals exist and are open on GitHub."""
+    is_offline = os.environ.get("ANTIGRAVITY_RUNNING_TESTS") == "1" or os.environ.get("SPAO_OFFLINE") == "1"
+    if is_offline:
+        print("ℹ️  Offline environment detected. Bypassing live GitHub path verification.")
+        return True
+
+    print("🔍 Verifying active prioritized path alignments on GitHub...")
+    all_paths_ok = True
+    for g in goals:
+        if g.get("status") == "Active":
+            paths = g.get("prioritized_paths", [])
+            for path_id in paths:
+                try:
+                    details = github_client.get_issue_details(str(path_id))
+                    if not details or not details.get("number"):
+                        print(f"❌ Path {path_id} (under goal {g.get('id')}) does not exist on GitHub.")
+                        all_paths_ok = False
+                    elif details.get("state", "").upper() != "OPEN":
+                        print(f"❌ Path {path_id} (under goal {g.get('id')}) exists but is {details.get('state').upper()} on GitHub (expected OPEN).")
+                        all_paths_ok = False
+                    else:
+                        print(f"✅ Path {path_id} (under goal {g.get('id')}) is open and valid.")
+                except Exception as e:
+                    print(f"❌ Path {path_id} (under goal {g.get('id')}) could not be verified: {e}")
+                    all_paths_ok = False
+    return all_paths_ok
+
 def cmd_verify():
     data = load_ledger()
     goals = data.get("strategic_goals", [])
@@ -196,6 +224,11 @@ def cmd_verify():
             all_ok = False
         else:
             print(f"✅ Goal {g.get('id')} ({g.get('title')}) is valid.")
+            
+    paths_ok = verify_prioritized_paths(goals)
+    if not paths_ok:
+        all_ok = False
+
             
     try:
         backlog_items = github_client.list_issues_by_label("backlog")

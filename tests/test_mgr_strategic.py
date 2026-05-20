@@ -157,5 +157,34 @@ class TestMgrStrategic(unittest.TestCase):
         self.assertEqual(recs[1]["number"], 362)
         self.assertEqual(recs[2]["number"], 355)
 
+    @patch("skills.github_client.get_issue_details")
+    @patch("os.environ.get")
+    def test_verify_prioritized_paths_success(self, mock_env_get, mock_details):
+        mock_env_get.side_effect = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else os.environ.get(key, default)
+        mock_details.return_value = {"number": 368, "state": "OPEN"}
+        goals = [{"status": "Active", "prioritized_paths": [368]}]
+        res = mgr_strategic.verify_prioritized_paths(goals)
+        self.assertTrue(res)
+        mock_details.assert_called_once_with("368")
+
+    @patch("skills.github_client.get_issue_details")
+    @patch("os.environ.get")
+    def test_verify_prioritized_paths_closed(self, mock_env_get, mock_details):
+        mock_env_get.side_effect = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else os.environ.get(key, default)
+        mock_details.return_value = {"number": 368, "state": "CLOSED"}
+        goals = [{"status": "Active", "prioritized_paths": [368]}]
+        res = mgr_strategic.verify_prioritized_paths(goals)
+        self.assertFalse(res)
+
+    @patch("skills.github_client.get_issue_details")
+    @patch("os.environ.get")
+    def test_verify_prioritized_paths_missing(self, mock_env_get, mock_details):
+        mock_env_get.side_effect = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else os.environ.get(key, default)
+        mock_details.side_effect = Exception("Issue not found")
+        goals = [{"status": "Active", "prioritized_paths": [368]}]
+        res = mgr_strategic.verify_prioritized_paths(goals)
+        self.assertFalse(res)
+
 if __name__ == "__main__":
     unittest.main()
+

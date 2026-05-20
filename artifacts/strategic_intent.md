@@ -11,7 +11,7 @@
 - **Collaborative Gap**: The prioritization model fails to dynamically map the operator's high-level intent to the agent's backlog selection, causing attention drift between the partners.
 - **Constraints**: Backlog prioritization must be evaluated deterministically during the SENSE phase using active ledger goals.
 - **Falsification Signal**: The agent spends resource/token budget on paths that are not prioritized in the strategic ledger.
-- **Prioritized Paths**: 404, 412, 416
+- **Prioritized Paths**: 412, 416
 
 ### SG-0002: Gateless Autonomous Execution within Risk-Managed Sandbox
 - **Collaborative Gap**: The human cannot safely delegate execution authority to the agent, creating a trust bottleneck where the human acts as a manual gatekeeper and the agent is blocked from executing autonomously.
