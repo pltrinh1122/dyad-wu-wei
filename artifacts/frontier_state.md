@@ -1383,6 +1383,13 @@
 - **Feedforward Invariants**:
   - `[x] WHAT-0044 is verified and locked`
 
+## Node 436: Activity 436: Reflect - Sandboxing and Containment Experimentation
+- **Status**: Completed
+- **Learnings & Context**: Formally completed the alignment and specification phases for process-level and container-level sandboxing, locking the specifications in WHAT-0044.
+- **Feedforward Invariants**:
+  - `[x] WHAT-0044 finalized and locked`
+  - `[x] Path 433 reflected and complete`
+
 ## Current Active Path
 None
 

@@ -48,4 +48,5 @@ To run a task under container-level sandboxing, the executor must run Docker wit
 ## Verification & Status
 - **Status**: Locked
 - **Verified by**: Node 435 Plan Probe
+- **Reflected by**: Node 436 Reflect Activity
 
