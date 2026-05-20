@@ -3,31 +3,35 @@ from unittest.mock import MagicMock
 from skills import git_client
 
 def test_git_add(mock_subprocess):
-    git_client.add(["file1.txt", "file2.txt"])
-    mock_subprocess.assert_called_once_with(["git", "add", "file1.txt", "file2.txt"], check=True)
+    git_client.add(["file1.txt", "file2.txt"], cwd="/some/dir")
+    mock_subprocess.assert_called_once_with(["git", "add", "file1.txt", "file2.txt"], check=True, cwd="/some/dir")
 
 def test_git_add_empty(mock_subprocess):
-    git_client.add([])
+    git_client.add([], cwd="/some/dir")
     mock_subprocess.assert_not_called()
 
 def test_git_commit(mock_subprocess):
-    git_client.commit("Commit msg")
-    mock_subprocess.assert_called_once_with(["git", "commit", "-m", "Commit msg"], check=True)
+    git_client.commit("Commit msg", cwd="/some/dir")
+    mock_subprocess.assert_called_once_with(["git", "commit", "-m", "Commit msg"], check=True, cwd="/some/dir")
 
 def test_git_push_default(mock_subprocess):
-    git_client.push("feature-branch")
-    mock_subprocess.assert_called_once_with(["git", "push", "-u", "origin", "feature-branch"], check=True)
+    git_client.push("feature-branch", cwd="/some/dir")
+    mock_subprocess.assert_called_once_with(["git", "push", "-u", "origin", "feature-branch"], check=True, cwd="/some/dir")
 
 def test_git_push_force(mock_subprocess):
-    git_client.push("feature-branch", force=True)
-    mock_subprocess.assert_called_once_with(["git", "push", "-f"], check=True)
+    git_client.push("feature-branch", force=True, cwd="/some/dir")
+    mock_subprocess.assert_called_once_with(["git", "push", "-f"], check=True, cwd="/some/dir")
 
 def test_git_restore(mock_subprocess):
-    git_client.restore(["file1.txt"])
-    mock_subprocess.assert_called_once_with(["git", "restore", "file1.txt"], check=True)
+    git_client.restore(["file1.txt"], cwd="/some/dir")
+    mock_subprocess.assert_called_once_with(["git", "restore", "file1.txt"], check=True, cwd="/some/dir")
+
+def test_git_restore_staged(mock_subprocess):
+    git_client.restore(["file1.txt"], staged=True, cwd="/some/dir")
+    mock_subprocess.assert_called_once_with(["git", "restore", "--staged", "file1.txt"], check=True, cwd="/some/dir")
 
 def test_git_restore_empty(mock_subprocess):
-    git_client.restore([])
+    git_client.restore([], cwd="/some/dir")
     mock_subprocess.assert_not_called()
 
 def test_git_worktree_add(mock_subprocess):
@@ -97,4 +101,20 @@ def test_git_get_show_toplevel(mock_subprocess):
     res = git_client.get_show_toplevel()
     assert res == "/path/to/repo"
     mock_subprocess.assert_called_once_with(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True, check=True)
+
+def test_git_status_porcelain(mock_subprocess):
+    mock_subprocess.return_value.stdout = "M file1.txt\n?? file2.txt\n"
+    res = git_client.status_porcelain(cwd="/some/dir")
+    assert res == "M file1.txt\n?? file2.txt\n"
+    mock_subprocess.assert_called_once_with(["git", "status", "--porcelain"], capture_output=True, text=True, check=True, cwd="/some/dir")
+
+def test_git_diff_names(mock_subprocess):
+    mock_subprocess.return_value.stdout = "file1.txt\nfile2.txt\n"
+    res = git_client.diff_names("main", cwd="/some/dir")
+    assert res == ["file1.txt", "file2.txt"]
+    mock_subprocess.assert_called_once_with(["git", "diff", "--name-only", "main"], capture_output=True, text=True, check=True, cwd="/some/dir")
+
+def test_git_reset_hard(mock_subprocess):
+    git_client.reset_hard(cwd="/some/dir")
+    mock_subprocess.assert_called_once_with(["git", "reset", "--hard", "HEAD~1"], check=True, cwd="/some/dir")
 

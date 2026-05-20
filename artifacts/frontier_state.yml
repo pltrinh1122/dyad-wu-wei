@@ -1291,3 +1291,13 @@ nodes:
     Auto-Staging by SPAO during reflection.
   invariants:
   - '[x] Created WHAT-0035-git-transaction-ownership-spao.md'
+- name: "Node 382: Activity 382: Reflect - Spike Path: spao node reflect Auto-Stage\
+    \ \u2014 Git Transaction Ownership by SPAO"
+  status: Completed
+  learnings: Implemented and verified git auto-staging, worktree path auto-resolution,
+    and git client cwd abstractions.
+  invariants:
+  - '[x] Extended skills/git_client.py with cwd and staged restore capabilities'
+  - '[x] Implemented --stage flag in CLI parser'
+  - '[x] Implemented worktree auto-resolution in node_lifecycle.py'
+  - '[x] Verified with 122 tests passing'

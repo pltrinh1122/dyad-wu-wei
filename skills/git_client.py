@@ -2,33 +2,53 @@ import subprocess
 from orchestrator.mgr_telemetry import record_execution
 
 @record_execution(stage="skill")
-def add(files: list[str]) -> None:
+def add(files: list[str], cwd: str | None = None) -> None:
     """Stages files for commit."""
     if not files:
         return
-    subprocess.run(["git", "add"] + files, check=True)
+    subprocess.run(["git", "add"] + files, check=True, cwd=cwd)
 
 @record_execution(stage="skill")
-def commit(message: str) -> None:
+def commit(message: str, cwd: str | None = None) -> None:
     """Commits staged changes."""
-    subprocess.run(["git", "commit", "-m", message], check=True)
+    subprocess.run(["git", "commit", "-m", message], check=True, cwd=cwd)
 
 @record_execution(stage="skill")
-def push(branch: str, force: bool = False) -> None:
+def push(branch: str, force: bool = False, cwd: str | None = None) -> None:
     """Pushes local commits to origin."""
     cmd = ["git", "push"]
     if force:
         cmd.append("-f")
     else:
         cmd.extend(["-u", "origin", branch])
-    subprocess.run(cmd, check=True)
+    subprocess.run(cmd, check=True, cwd=cwd)
 
 @record_execution(stage="skill")
-def restore(files: list[str]) -> None:
+def restore(files: list[str], staged: bool = False, cwd: str | None = None) -> None:
     """Restores specified modified files."""
     if not files:
         return
-    subprocess.run(["git", "restore"] + files, check=True)
+    cmd = ["git", "restore"]
+    if staged:
+        cmd.append("--staged")
+    subprocess.run(cmd + files, check=True, cwd=cwd)
+
+@record_execution(stage="skill")
+def status_porcelain(cwd: str | None = None) -> str:
+    """Returns git status in porcelain format."""
+    res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True, cwd=cwd)
+    return res.stdout
+
+@record_execution(stage="skill")
+def diff_names(branch: str, cwd: str | None = None) -> list[str]:
+    """Returns list of files modified against specified branch."""
+    res = subprocess.run(["git", "diff", "--name-only", branch], capture_output=True, text=True, check=True, cwd=cwd)
+    return [f.strip() for f in res.stdout.splitlines() if f.strip()]
+
+@record_execution(stage="skill")
+def reset_hard(cwd: str | None = None) -> None:
+    """Performs a hard reset to HEAD~1."""
+    subprocess.run(["git", "reset", "--hard", "HEAD~1"], check=True, cwd=cwd)
 
 @record_execution(stage="skill")
 def worktree_add(branch: str, path: str, base: str = "main") -> None:
