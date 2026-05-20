@@ -64,7 +64,7 @@ class TelemetryManager:
             self.ledger_path = ledger_path
         elif os.environ.get("SPAO_TELEMETRY_LEDGER"):
             self.ledger_path = os.environ.get("SPAO_TELEMETRY_LEDGER")
-        elif os.environ.get("ANTIGRAVITY_RUNNING_TESTS") and not os.environ.get("SPAO_TELEMETRY_NO_TEST_SAFETY"):
+        elif (os.environ.get("ANTIGRAVITY_RUNNING_TESTS") or os.environ.get("GITHUB_ACTIONS")) and not os.environ.get("SPAO_TELEMETRY_NO_TEST_SAFETY"):
             # Use a temporary file in /tmp/ during tests to avoid polluting artifacts
             # and to avoid git calls that break mocked subprocess tests.
             self.ledger_path = "/tmp/antigravity_telemetry_test.jsonl"
@@ -93,7 +93,7 @@ class TelemetryManager:
         """Records an observation point to the telemetry ledger."""
         # Skip telemetry IO in unit tests to avoid side effects and broken mocks,
         # UNLESS we are explicitly testing telemetry (ledger_path is /tmp/ or explicitly set).
-        if os.environ.get("ANTIGRAVITY_RUNNING_TESTS"):
+        if os.environ.get("ANTIGRAVITY_RUNNING_TESTS") or os.environ.get("GITHUB_ACTIONS"):
             if not os.environ.get("SPAO_TELEMETRY_LEDGER") and "antigravity_telemetry_test.jsonl" in self.ledger_path:
                 return
 
