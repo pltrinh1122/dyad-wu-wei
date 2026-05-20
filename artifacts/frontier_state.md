@@ -982,6 +982,12 @@
 - **Feedforward Invariants**:
   - - '`WHY-0022 document created`'\n- '`All 82 tests pass cleanly`'\n
 
+## Node 336: Probe 336: Plan - Enforce Triple-Node Auto-Initialization for Paths
+- **Status**: Completed
+- **Learnings & Context**: Planned and documented the technical specification for programmatically generating Align Probe, Plan Probe, and Reflect Activity child nodes recursively in BacklogManager.
+- **Feedforward Invariants**:
+  - - '`WHAT-0023 document created`'\n- '`All 82 tests pass cleanly`'\n
+
 ## Current Active Path
 **Path 331: Spike Path: Enforce Triple-Node Auto-Initialization for Paths**
 
