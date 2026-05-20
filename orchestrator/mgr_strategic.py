@@ -309,6 +309,77 @@ def cmd_transition(args):
     save_ledger(data)
     print(f"Successfully transitioned goal {args.id} to status '{status}'.")
 
+_MOCK_PARENT_PATHS = {}
+_FORCE_STRATEGIC_VERIFICATION = False
+
+def find_parent_path_id(node_id: str) -> str | None:
+    """Finds the parent path ID for a given terminal node ID by querying open Path issues on GitHub."""
+    node_id_str = str(node_id)
+    if node_id_str in _MOCK_PARENT_PATHS:
+        return _MOCK_PARENT_PATHS[node_id_str]
+        
+    is_offline = os.environ.get("ANTIGRAVITY_RUNNING_TESTS") == "1" or os.environ.get("SPAO_OFFLINE") == "1"
+    if is_offline:
+        return None
+        
+    try:
+        backlog_items = github_client.list_issues_by_label("backlog")
+        for item in backlog_items:
+            num = str(item.get("number"))
+            labels = github_client.get_issue_labels(num)
+            if "path" in labels:
+                details = github_client.get_issue_details(num)
+                body = details.get("body", "")
+                
+                pattern = re.compile(r"-\s+\[\s*x?\s*\]\s+Node\s+" + re.escape(str(node_id)) + r"\b", re.IGNORECASE)
+                if pattern.search(body):
+                    return num
+    except Exception as e:
+        print(f"Warning: Failed to find parent path for node {node_id} on GitHub: {e}")
+    return None
+
+def verify_node_transition_allowed(node_id: str) -> None:
+    """Verifies that a node transition is allowed based on the strategic intent ledger."""
+    node_id_str = str(node_id)
+    
+    is_offline = os.environ.get("ANTIGRAVITY_RUNNING_TESTS") == "1" or os.environ.get("SPAO_OFFLINE") == "1"
+    if is_offline and not _FORCE_STRATEGIC_VERIFICATION:
+        return
+        
+    parent_path_id = find_parent_path_id(node_id_str)
+    if is_offline and not parent_path_id and not _FORCE_STRATEGIC_VERIFICATION:
+        return
+        
+    if not parent_path_id:
+        raise ValueError(f"Alignment Failure: Terminal Node #{node_id_str} has no parent Path.")
+        
+    ledger = load_ledger()
+    active_prioritized_paths = set()
+    for goal in ledger.get("strategic_goals", []):
+        if goal.get("status") == "Active":
+            for path_id in goal.get("prioritized_paths", []):
+                active_prioritized_paths.add(str(path_id))
+                
+    if str(parent_path_id) not in active_prioritized_paths:
+        raise Exception(f"Transition Blocked: Parent Path #{parent_path_id} of Node #{node_id_str} is not prioritized in the active strategic ledger.")
+
+def verify_path_activation_allowed(path_id: str) -> None:
+    """Verifies that a path activation is allowed based on the strategic intent ledger."""
+    is_offline = os.environ.get("ANTIGRAVITY_RUNNING_TESTS") == "1" or os.environ.get("SPAO_OFFLINE") == "1"
+    if is_offline and not _FORCE_STRATEGIC_VERIFICATION:
+        return
+        
+    path_id_str = str(path_id)
+    ledger = load_ledger()
+    active_prioritized_paths = set()
+    for goal in ledger.get("strategic_goals", []):
+        if goal.get("status") == "Active":
+            for p in goal.get("prioritized_paths", []):
+                active_prioritized_paths.add(str(p))
+                
+    if path_id_str not in active_prioritized_paths:
+        raise Exception(f"Path Activation Blocked: Path #{path_id_str} is not prioritized in the active strategic ledger.")
+
 def main():
     parser = argparse.ArgumentParser(description="Manage the strategic intent ledger.")
     subparsers = parser.add_subparsers(dest="command", required=True)

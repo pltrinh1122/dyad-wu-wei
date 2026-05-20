@@ -172,6 +172,10 @@ def set_active_path(filepath: str, path_name: str) -> None:
     if path_name == "None" or path_name is None:
         state["current_active_path"] = None
     else:
+        path_id = extract_path_id(path_name)
+        if path_id:
+            from orchestrator.mgr_strategic import verify_path_activation_allowed
+            verify_path_activation_allowed(path_id)
         state["current_active_path"] = path_name
     save_state(yml_path, state)
 
