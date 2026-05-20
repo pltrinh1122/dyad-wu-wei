@@ -232,6 +232,21 @@ command -v agy &>/dev/null || { echo "Error: 'agy' not found in PATH." >&2; exit
 cd "$SPAO_WORKSPACE_DIR"
 
 if [ $# -eq 0 ]; then
+    PINNED_VER="$(cat "$SPAO_DOT_DIR/version" 2>/dev/null || basename "$SPAO_CORE_DIR")"
+    printf '\n'
+    printf '\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n'
+    printf '\u2551  SPAO Workspace Runner  (%s)\n' "$PINNED_VER"
+    printf '\u2551  Core:      %s\n' "$SPAO_CORE_DIR"
+    printf '\u2551  Workspace: %s\n' "$SPAO_WORKSPACE_DIR"
+    printf '\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n'
+    printf '\u2551  Usage:\n'
+    printf '\u2551    ./run-spao.sh                    Interactive session\n'
+    printf '\u2551    ./run-spao.sh -p "spao node sync"  Single prompt\n'
+    printf '\u2551    ./run-spao.sh --continue / -c    Resume conversation\n'
+    printf '\u2551    ./run-spao.sh -i "resume"        Interactive + prompt\n'
+    printf '\u2551  See README.spao.md for full documentation.\n'
+    printf '\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n'
+    printf '\n'
     exec agy --add-dir "$SPAO_CORE_DIR"
 else
     exec agy --add-dir "$SPAO_CORE_DIR" "$@"
@@ -240,6 +255,61 @@ RUNNER_EOF
 
     chmod +x "$runner"
     _ok "Created run-spao.sh"
+}
+
+_write_readme() {
+    local target_dir="$1"
+    local readme="$target_dir/README.spao.md"
+
+    if [ -f "$readme" ]; then
+        _warn "README.spao.md already exists — skipping (edit manually to update)"
+        return
+    fi
+
+    cat > "$readme" << 'README_EOF'
+# SPAO — Sense-Plan-Act-Observe System
+
+This project is managed by the **SPAO meta-orchestrator** via
+[Antigravity CLI (`agy`)](https://github.com/pltrinh1122/agent-antigravity).
+
+## Quick Start
+
+Launch an agy session with full SPAO context:
+
+    ./run-spao.sh
+
+Run a single SPAO command non-interactively:
+
+    ./run-spao.sh -p "spao node sync"
+
+Resume your last conversation:
+
+    ./run-spao.sh --continue
+
+## Bootstrap
+
+    curl -sSL https://raw.githubusercontent.com/pltrinh1122/agent-antigravity/main/bin/spao-install | bash -s -- --local
+
+## Version Management
+
+| File | Purpose |
+|---|---|
+| `.spao/version` | Pinned SPAO core version for this workspace |
+| `GEMINI.md` | SPAO invariants injected into agy context |
+| `run-spao.sh` | agy launcher with SPAO env wired in |
+
+Upgrade:
+
+    spao-install --upgrade
+    spao-install --local
+
+## How it works
+
+`run-spao.sh` sets `SPAO_CORE_DIR` and `SPAO_WORKSPACE_DIR` before invoking
+`agy --add-dir`, making the SPAO orchestration scripts available as context.
+README_EOF
+
+    _ok "Created README.spao.md"
 }
 
 usage() {
@@ -336,6 +406,9 @@ if [ "$MODE" = "global" ] || [ "$MODE" = "upgrade" ]; then
     echo "   Global shim:  $SPAO_BIN"
     echo "   Core:         $SPAO_HOME/current  →  $SPAO_VERSIONS_DIR/$VERSION"
     echo ""
+    echo "   Bootstrap any project in one command:"
+    echo "   curl -sSL https://raw.githubusercontent.com/pltrinh1122/agent-antigravity/main/bin/spao-install | bash -s -- --local"
+    echo ""
     echo "   Next: run 'spao-install --local' inside any project to set it up."
     exit 0
 fi
@@ -343,6 +416,7 @@ fi
 # ── Mode: local ───────────────────────────────────────────────────────────────
 if [ "$MODE" = "local" ]; then
     TARGET_DIR="${TARGET_DIR:-$(pwd)}"
+    mkdir -p "$TARGET_DIR"
     TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
     echo "Setting up SPAO workspace: $TARGET_DIR"
 
@@ -378,11 +452,16 @@ if [ "$MODE" = "local" ]; then
     _update_gitignore "$TARGET_DIR"
     _write_runner "$TARGET_DIR"
     _update_local_gemini "$TARGET_DIR"
+    _write_readme "$TARGET_DIR"
 
     echo ""
     echo "✅ SPAO workspace ready: $TARGET_DIR"
-    echo "   Pinned to:  $RESOLVED_VERSION"
-    echo "   Launch:     ./run-spao.sh"
-    echo "   Upgrade:    spao-install --upgrade  then re-run --local to re-pin"
+    echo "   Pinned to:       $RESOLVED_VERSION"
+    echo "   Launch:          ./run-spao.sh"
+    echo "   Documentation:   ./README.spao.md"
+    echo "   Upgrade:         spao-install --upgrade  then re-run --local to re-pin"
+    echo ""
+    echo "   One-step bootstrap (share with teammates):"
+    echo "   curl -sSL https://raw.githubusercontent.com/pltrinh1122/agent-antigravity/main/bin/spao-install | bash -s -- --local"
     exit 0
 fi
