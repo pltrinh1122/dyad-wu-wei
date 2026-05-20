@@ -73,22 +73,8 @@ class TelemetryManager:
 
     def _get_default_ledger_path(self):
         """Anchors the default ledger path to the git repository root."""
-
-        try:
-            from skills import git_client
-            # git-common-dir returns the .git directory path, even in worktrees.
-            # Its parent is the primary repository root.
-            common_dir = git_client.get_git_common_dir()
-            if not os.path.isabs(common_dir):
-                # If it's relative, it's relative to the current working tree root
-                toplevel = git_client.get_show_toplevel()
-                common_dir = os.path.abspath(os.path.join(toplevel, common_dir))
-            
-            root = os.path.dirname(common_dir)
-            return os.path.join(root, "artifacts", "telemetry.jsonl")
-        except subprocess.CalledProcessError:
-            # Fallback to current directory artifacts if not in a git repo
-            return os.path.abspath(os.path.join("artifacts", "telemetry.jsonl"))
+        from skills import path_resolver
+        return path_resolver.resolve_workspace_path("artifacts", "telemetry.jsonl")
 
     def log_event(self, stage, event, node_id=None, path_id=None, domain=None, component=None, execution_id=None, metadata=None):
         """Records an observation point to the telemetry ledger."""

@@ -16,7 +16,13 @@ class BacklogManager:
 
     def load_node_taxonomy(self) -> dict:
         """Loads the domain-specific node taxonomy from antigravity.yml."""
-        config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "antigravity.yml")
+        from skills import path_resolver
+        workspace_path = path_resolver.resolve_workspace_path("antigravity.yml")
+        if os.path.exists(workspace_path):
+            config_path = workspace_path
+        else:
+            config_path = path_resolver.resolve_core_path("antigravity.yml")
+            
         if not os.path.exists(config_path):
             return {
                 "terminal": ["activity", "probe"],

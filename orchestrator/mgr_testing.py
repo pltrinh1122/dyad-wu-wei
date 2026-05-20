@@ -9,7 +9,10 @@ from typing import List
 class TestManager:
     """Manages the execution and orchestration of the test suite."""
 
-    def __init__(self, repo_root: str = "."):
+    def __init__(self, repo_root: str = None):
+        from skills import path_resolver
+        if repo_root is None:
+            repo_root = path_resolver.get_workspace_dir()
         self.repo_root = os.path.abspath(repo_root)
         self.config_path = os.path.join(self.repo_root, "orchestrator/test_config.yml")
         self.config = self._load_config()

@@ -1216,3 +1216,11 @@ nodes:
     in WHAT-0029.
   invariants:
   - All SPAO scripts must distinguish execution path from workspace target path.
+- name: 'Node 358: Activity 358: Reflect - Path: Global SPAO System Containment, Deployment,
+    and CLI Integration'
+  status: Completed
+  learnings: Implemented dynamic path resolution, refactored all managers to use skills.path_resolver,
+    introduced a global installer script bin/spao-install, and verified functionality
+    using unit tests and manual multi-workspace validation.
+  invariants:
+  - All SPAO scripts must distinguish execution path from workspace target path.

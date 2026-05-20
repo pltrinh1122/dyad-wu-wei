@@ -20,6 +20,9 @@ class NBAManager:
         3. If pending children found -> Path Continuation.
         4. If no active path OR no pending children -> Path Switching (Global Backlog).
         """
+        from skills import path_resolver
+        if not os.path.isabs(frontier_file):
+            frontier_file = path_resolver.resolve_workspace_path(frontier_file)
         active_path_str = mgr_frontier.read_active_path(frontier_file)
         active_id = None
         if active_path_str:

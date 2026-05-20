@@ -72,7 +72,9 @@ def sync_and_clean_node() -> None:
  
     # Trigger Metasystem Audit
     print("\n🔍 Executing Metasystem Integrity Audit...")
-    subprocess.run([sys.executable, "skills/audit_daemon.py"], check=False)
+    from skills import path_resolver
+    audit_script = path_resolver.resolve_core_path("skills", "audit_daemon.py")
+    subprocess.run([sys.executable, audit_script], check=False)
  
     # Surface pending backlog items at Sense phase
     manager = HookManager()

@@ -6,6 +6,9 @@ class FlowTransaction:
     """Manages the transactional context and rollback logic for orchestration tasks."""
     
     def __init__(self, frontier_file: str = "artifacts/frontier_state.md"):
+        from skills import path_resolver
+        if not os.path.isabs(frontier_file):
+            frontier_file = path_resolver.resolve_workspace_path(frontier_file)
         self.frontier_file = frontier_file
         self.yml_file = frontier_file.replace(".md", ".yml")
         self.sha_file = frontier_file.replace(".md", ".yml.sha256")

@@ -14,21 +14,16 @@ def is_verbose() -> bool:
 
 def load_node_status_config() -> dict:
     """Loads the node status mapping from node.yml."""
-    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "node.yml")
-    if not os.path.exists(config_path):
-        return {}
-    with open(config_path, "r") as f:
-        config = yaml.safe_load(f)
+    from skills import path_resolver
+    config = path_resolver.load_node_yml()
     return config.get("node_attributes", {}).get("status", {})
 
 def load_node_classification_config() -> dict:
     """Loads the node classification mapping from node.yml."""
-    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "node.yml")
-    if not os.path.exists(config_path):
-        return {}
-    with open(config_path, "r") as f:
-        config = yaml.safe_load(f)
+    from skills import path_resolver
+    config = path_resolver.load_node_yml()
     return config.get("node_attributes", {}).get("classification", {})
+
 
 def log_stage_advancement(stage: str, status: str, details: str = "") -> None:
     """Prints a beautiful H1 banner representing SPAO loop stage advancement when verbose is active."""

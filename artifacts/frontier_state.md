@@ -1040,6 +1040,12 @@
 - **Feedforward Invariants**:
   - `All SPAO scripts must distinguish execution path from workspace target path.`
 
+## Node 358: Activity 358: Reflect - Path: Global SPAO System Containment, Deployment, and CLI Integration
+- **Status**: Completed
+- **Learnings & Context**: Implemented dynamic path resolution, refactored all managers to use skills.path_resolver, introduced a global installer script bin/spao-install, and verified functionality using unit tests and manual multi-workspace validation.
+- **Feedforward Invariants**:
+  - `All SPAO scripts must distinguish execution path from workspace target path.`
+
 ## Current Active Path
 None
 
