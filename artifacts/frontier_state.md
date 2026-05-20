@@ -737,7 +737,7 @@
   - `Activities 223, 224, 225 generated`
 
 ## Current Active Path
-**256**
+None
 
 ## Probe 221: Holistic Evaluation of Path Modifications
 - **Status**: Completed
@@ -886,6 +886,32 @@
 - **Learnings & Context**: Implemented framed, color-coded, and history-aware NBA banner.
 - **Feedforward Invariants**:
   - `[ ]` None
+
+
+## Refactor Test Runner & Legacy Proxies
+- **Status**: Completed
+- **Learnings & Context**: Successfully migrated testing logic to orchestrator/mgr_testing.py and decommissioned skills/nba_evaluator.py and skills/testing_harness.py. Updated node_lifecycle and mgr_node to align with the new ontology.
+- **Feedforward Invariants**:
+  - `[x] TestManager materialized`
+  - `[x] bin/run-tests purified`
+  - `[x] Legacy proxies deleted`
+  - `[x] Mocks updated in tests`
+
+
+## Fix ModuleNotFoundError in PR #284
+- **Status**: Completed
+- **Learnings & Context**: Successfully resolved CI failures by removing stale test files (tests/test_testing_harness.py) and re-applying the Activity 279 refactoring on a clean branch. All 88 tests pass.
+- **Feedforward Invariants**:
+  - `[x] Stale tests deleted`
+  - `[x] Refactoring re-applied`
+  - `[x] 88 tests pass`
+
+
+## Activity 280: Telemetry Decorator
+- **Status**: Completed
+- **Learnings & Context**: Implemented @record_execution decorator for automated telemetry. Refactored mgr_node and node_lifecycle to use it. Expanded schema for hierarchical reporting.
+- **Feedforward Invariants**:
+  - `[x] TDD: 91 tests pass`
 
 
 ## Current Active Node

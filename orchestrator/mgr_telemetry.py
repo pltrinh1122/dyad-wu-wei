@@ -1,6 +1,8 @@
 import json
 import os
 import subprocess
+import uuid
+import functools
 from datetime import datetime, timezone, timedelta
 from skills.file_locker import lock_file
 
@@ -60,11 +62,14 @@ class TelemetryManager:
     def __init__(self, ledger_path=None):
         if ledger_path:
             self.ledger_path = ledger_path
+        elif os.environ.get("SPAO_TELEMETRY_LEDGER"):
+            self.ledger_path = os.environ.get("SPAO_TELEMETRY_LEDGER")
         else:
             self.ledger_path = self._get_default_ledger_path()
 
     def _get_default_ledger_path(self):
         """Anchors the default ledger path to the git repository root."""
+
         try:
             # git-common-dir returns the .git directory path, even in worktrees.
             # Its parent is the primary repository root.
@@ -80,19 +85,24 @@ class TelemetryManager:
             # Fallback to current directory artifacts if not in a git repo
             return os.path.abspath(os.path.join("artifacts", "telemetry.jsonl"))
 
-    def log_event(self, stage, event, node_id=None, path_id=None, metadata=None):
+    def log_event(self, stage, event, node_id=None, path_id=None, domain=None, component=None, execution_id=None, metadata=None):
         """Records an observation point to the telemetry ledger."""
         entry = {
             "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "node_id": node_id,
             "path_id": path_id,
+            "domain": domain,
+            "component": component,
+            "execution_id": execution_id,
             "stage": stage.upper(),
             "event": event.upper(),
             "metadata": metadata or {}
         }
         
         # Ensure the directory exists
-        os.makedirs(os.path.dirname(self.ledger_path), exist_ok=True)
+        dir_name = os.path.dirname(self.ledger_path)
+        if dir_name:
+            os.makedirs(dir_name, exist_ok=True)
         
         with lock_file(self.ledger_path):
             with open(self.ledger_path, "a") as f:
@@ -138,6 +148,74 @@ class TelemetryManager:
                 report.append(f"- **{node_display}** stalled in **{b['stage']}** phase for {b['duration']} (Threshold: {b['threshold']})")
         
         return "\n".join(report)
+
+def record_execution(stage=None):
+    """Decorator to automatically log telemetry for a function execution."""
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            manager = TelemetryManager()
+            execution_id = str(uuid.uuid4())
+            
+            # Infer domain and component from module name
+            module_parts = func.__module__.split('.')
+            domain = module_parts[0] if module_parts else "unknown"
+            component = module_parts[-1] if len(module_parts) > 1 else "root"
+            
+            # Attempt to extract node_id from first argument if it's a Node object
+            node_id = None
+            if args and hasattr(args[0], 'issue_id'):
+                node_id = getattr(args[0], 'issue_id')
+            
+            manager.log_event(
+                stage=stage or "ACT",
+                event="START",
+                node_id=node_id,
+                domain=domain,
+                component=component,
+                execution_id=execution_id,
+                metadata={"function": func.__name__}
+            )
+            
+            start_time = datetime.now(timezone.utc)
+            try:
+                result = func(*args, **kwargs)
+                duration = (datetime.now(timezone.utc) - start_time).total_seconds()
+                
+                manager.log_event(
+                    stage=stage or "ACT",
+                    event="FINISH",
+                    node_id=node_id,
+                    domain=domain,
+                    component=component,
+                    execution_id=execution_id,
+                    metadata={
+                        "function": func.__name__,
+                        "duration_sec": duration,
+                        "status": "success"
+                    }
+                )
+                return result
+            except Exception as e:
+                duration = (datetime.now(timezone.utc) - start_time).total_seconds()
+                manager.log_event(
+                    stage=stage or "ACT",
+                    event="FINISH",
+                    node_id=node_id,
+                    domain=domain,
+                    component=component,
+                    execution_id=execution_id,
+                    metadata={
+                        "function": func.__name__,
+                        "duration_sec": duration,
+                        "status": "error",
+                        "error": str(e)
+                    }
+                )
+                raise
+        return wrapper
+    return decorator
+
 
 def main():
     import argparse
