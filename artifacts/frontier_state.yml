@@ -1,4 +1,4 @@
-current_active_path: null
+current_active_path: 'Path 292: Path: Agentic Infrastructure Hardening'
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -1131,3 +1131,10 @@ nodes:
   - '[x] Continuous auditing integrated with audit daemon'
   - '[x] Standardized Node prefixing implemented'
   - '[x] All 82 unit and integration tests passing'
+- name: 'Node 333: Activity 333: De-track Telemetry Log from Git'
+  status: Completed
+  learnings: De-tracked artifacts/telemetry.jsonl from Git tracking to avoid checkout
+    and merge conflicts during node sync operations.
+  invariants:
+  - '- ''`artifacts/telemetry.jsonl is not tracked in Git`''\n- ''`All 82 tests pass
+    cleanly`''\n'
