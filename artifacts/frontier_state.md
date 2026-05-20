@@ -977,5 +977,11 @@ None
   - `Test files MUST NOT exceed 10 patches`
   - `Standardize on pytest fixtures`
 
+## Format active node name with Node id prefix in frontier_editor
+- **Status**: Completed
+- **Learnings & Context**: Updated skills/frontier_editor.py to format appended active node titles using the Node {id}: prefix, ensuring consistent representation across the frontier state file. Updated tests/test_frontier_editor.py assertions to verify the formatting.
+- **Feedforward Invariants**:
+  - `Active node titles must include Node id prefix`
+
 ## Current Active Node
 None
