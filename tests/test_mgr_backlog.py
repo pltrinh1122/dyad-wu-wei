@@ -135,8 +135,9 @@ def test_backlog_add_path(mock_render, mock_backlog_gh):
 
     assert url == "https://github.com/pltrinh1122/agent-antigravity/issues/100"
     assert mock_backlog_gh.create_issue.call_count == 4
-    # Labels added for each issue (both backlog and status: todo for terminals)
-    assert mock_backlog_gh.add_label.call_count == 7 # 1 (Path) + 2*3 (Align, Plan, Reflect)
+    # Labels added for each issue (both backlog and status: todo for terminals, and path for path)
+    assert mock_backlog_gh.add_label.call_count == 8 # 2 (Path: backlog, path) + 2*3 (Align, Plan, Reflect)
+    mock_backlog_gh.add_label.assert_any_call("100", "path")
     assert mock_backlog_gh.rename_issue_title.call_count == 4
     
     mock_backlog_gh.rename_issue_title.assert_any_call("100", "Path 100: New Path Title")
