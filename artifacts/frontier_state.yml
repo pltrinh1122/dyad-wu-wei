@@ -1575,3 +1575,10 @@ nodes:
   invariants:
   - '[x] WHAT-0044 finalized and locked'
   - '[x] Path 433 reflected and complete'
+- name: 'Node 302: Probe 302: Probe: Global Metadata Audit & Divergence Mapping'
+  status: Completed
+  learnings: Conducted global scan of GitHub issues to locate label drift. Formulated
+    specification for node/path transition label cleaning and mapping.
+  invariants:
+  - '[x] WHY-0045 created'
+  - '[x] WHAT-0045 created'
