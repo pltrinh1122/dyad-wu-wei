@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+set -e
+
+# Resolve absolute path to the directory containing this script, then its parent (repo root)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SPAO_CORE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# Define installation target directory
+INSTALL_DIR="$HOME/.local/bin"
+if [ ! -d "$INSTALL_DIR" ]; then
+    mkdir -p "$INSTALL_DIR"
+fi
+
+TARGET_BIN="$INSTALL_DIR/spao"
+
+echo "Installing global SPAO CLI..."
+echo "Core codebase path: $SPAO_CORE_DIR"
+echo "Target binary path: $TARGET_BIN"
+
+cat << 'EOF' > "$TARGET_BIN"
+#!/usr/bin/env bash
+# Global SPAO CLI Entrypoint Wrapper
+
+# Core SPAO Codebase Path
+SPAO_CORE_DIR="REPLACE_SPAO_CORE_DIR"
+
+# Resolve Active Project Workspace Root
+if [ -n "$SPAO_WORKSPACE_DIR" ]; then
+    WORKSPACE_ROOT="$SPAO_WORKSPACE_DIR"
+else
+    # Fallback to nearest git root
+    WORKSPACE_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [ -z "$WORKSPACE_ROOT" ]; then
+        WORKSPACE_ROOT="$(pwd)"
+    fi
+fi
+
+# Export Environment Variables
+export SPAO_CORE_DIR="$SPAO_CORE_DIR"
+export SPAO_WORKSPACE_DIR="$WORKSPACE_ROOT"
+
+SUB=$1
+shift
+
+case "$SUB" in
+    node)
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_node.py" "$@"
+        ;;
+    backlog)
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_backlog.py" "$@"
+        ;;
+    prompt)
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_prompt.py" "$@"
+        ;;
+    rt)
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_rt.py" "$@"
+        ;;
+    test)
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_testing.py" "$@"
+        ;;
+    *)
+        echo "Usage: spao {node|backlog|prompt|rt|test} [options]"
+        exit 1
+        ;;
+esac
+EOF
+
+# Substitute REPLACE_SPAO_CORE_DIR with the actual SPAO_CORE_DIR
+python3 -c "
+with open('$TARGET_BIN', 'r') as f:
+    content = f.read()
+content = content.replace('REPLACE_SPAO_CORE_DIR', '$SPAO_CORE_DIR')
+with open('$TARGET_BIN', 'w') as f:
+    f.write(content)
+"
+
+chmod +x "$TARGET_BIN"
+
+echo "✅ Successfully installed 'spao' globally to $TARGET_BIN"
+echo "Ensure $INSTALL_DIR is in your shell PATH."

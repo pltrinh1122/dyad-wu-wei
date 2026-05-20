@@ -9,8 +9,8 @@ from datetime import datetime, timezone
 from skills.tty_gate import require_operator_approval
 
 def get_backlog_file():
-    repo_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(repo_dir, "artifacts", "prompt_backlog.yml")
+    from skills import path_resolver
+    return path_resolver.resolve_workspace_path("artifacts", "prompt_backlog.yml")
 
 def load_data(backlog_file):
     data = {"prompts": []}
