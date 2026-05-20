@@ -1357,10 +1357,10 @@
   - `[x] WHAT-0042 is created`
 
 ## Node 430: Probe 430: Plan - Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation.
+- **Status**: Completed
+- **Learnings & Context**: Verified WHAT-0042 specification mapping and finalized the plan contract.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHAT-0042 touched and tracked`
 
 ## Node 431: Activity 431: Reflect - Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation
 - **Status**: Backlog
