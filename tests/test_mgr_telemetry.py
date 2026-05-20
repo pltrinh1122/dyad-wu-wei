@@ -63,14 +63,22 @@ def test_generate_report_with_bottleneck():
 
 def test_ledger_anchoring():
     with patch("subprocess.check_output") as mock_run:
-        mock_run.return_value = "/repo/root\n"
+        mock_run.side_effect = ["/repo/root/.git\n"]
         tm = TelemetryManager()
         assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
-        mock_run.assert_called_once_with(["git", "rev-parse", "--show-common-toplevel"], text=True)
+        mock_run.assert_called_with(["git", "rev-parse", "--git-common-dir"], text=True)
+
+def test_ledger_anchoring_worktree():
+    with patch("subprocess.check_output") as mock_run:
+        # git-common-dir is usually absolute in worktrees
+        mock_run.side_effect = ["/repo/root/.git\n"]
+        tm = TelemetryManager()
+        assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
 
 def test_ledger_anchoring_fallback():
     with patch("subprocess.check_output") as mock_run:
         from subprocess import CalledProcessError
         mock_run.side_effect = CalledProcessError(1, "git")
         tm = TelemetryManager()
-        assert tm.ledger_path == "artifacts/telemetry.jsonl"
+        assert os.path.isabs(tm.ledger_path)
+        assert tm.ledger_path.endswith("artifacts/telemetry.jsonl")
