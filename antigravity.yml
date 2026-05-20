@@ -10,3 +10,7 @@ sense_hooks:
     location: artifacts/prompt_backlog.yml
   - type: next_best_action
     repository: pltrinh1122/agent-antigravity
+
+governance:
+  spao_purity_enforcement: true
+

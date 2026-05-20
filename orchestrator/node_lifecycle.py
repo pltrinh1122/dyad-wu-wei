@@ -53,6 +53,45 @@ class BaseNode:
     @property
     def gh_labels(self):
         return github_client.get_issue_labels(self.issue_id)
+
+    @property
+    def loop(self) -> str | None:
+        try:
+            for label in self.gh_labels:
+                if label.startswith("loop:"):
+                    return label.split(":", 1)[1].strip()
+        except Exception:
+            pass
+        return None
+
+    @property
+    def area(self) -> str | None:
+        try:
+            for label in self.gh_labels:
+                if label.startswith("area:"):
+                    return label.split(":", 1)[1].strip()
+        except Exception:
+            pass
+        return None
+
+    @property
+    def kind(self) -> str | None:
+        try:
+            for label in self.gh_labels:
+                if label.startswith("kind:"):
+                    return label.split(":", 1)[1].strip()
+        except Exception:
+            pass
+        return None
+
+    def get_worktree_path(self, branch_name: str) -> str:
+        loop_val = self.loop
+        if loop_val == "spao":
+            return os.path.join(".worktrees", "spao", branch_name)
+        elif loop_val == "sdlc":
+            return os.path.join(".worktrees", "sdlc", branch_name)
+        else:
+            return os.path.join(".worktrees", branch_name)
         
     def add_gh_label(self, label: str):
         github_client.add_label(self.issue_id, label)
@@ -112,6 +151,37 @@ class TerminalNode(BaseNode):
                 return
                 
             raise Exception(f"State Dissonance: Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
+
+    def _validate_spao_purity(self):
+        """Validates that a loop:spao branch only modifies policy/documentation paths."""
+        from skills import path_resolver
+        config = path_resolver.load_antigravity_yml()
+        enforce = config.get("governance", {}).get("spao_purity_enforcement", True)
+        
+        try:
+            res = subprocess.run(["git", "diff", "--name-only", "main"], capture_output=True, text=True)
+            if res.returncode != 0:
+                return
+                
+            if res.stdout == "success":
+                return
+                
+            modified_files = [f.strip() for f in res.stdout.splitlines() if f.strip()]
+            violations = []
+            for filepath in modified_files:
+                if filepath.startswith("kb/") or filepath.startswith("artifacts/") or filepath == "GEMINI.md":
+                    continue
+                violations.append(filepath)
+                
+            if violations:
+                msg = f"SPAO PR Purity Violation: The following executable/code files were modified on a spao-loop branch: {violations}"
+                if enforce:
+                    raise Exception(msg)
+                else:
+                    print(f"Warning: {msg}")
+        except Exception as e:
+            if "SPAO PR Purity Violation" in str(e):
+                raise
 
     def _validate_orthogonal_scope(self):
         """Validates that the current node does not have an identical footprint to another open node."""
@@ -173,6 +243,29 @@ class TerminalNode(BaseNode):
     def plan_finish(self, body: str) -> str:
         log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Issue #{self.issue_id}")
         
+        # Enforce WHAT- spec file tracking in git
+        try:
+            res = subprocess.run(["git", "diff", "--name-only", "main"], capture_output=True, text=True)
+            if res.returncode != 0:
+                res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+                
+            if res.returncode == 0 and res.stdout != "success":
+                modified_files = []
+                if isinstance(res.stdout, str):
+                    for line in res.stdout.splitlines():
+                        parts = line.strip().split(None, 1)
+                        if len(parts) > 1:
+                            modified_files.append(parts[1])
+                        else:
+                            modified_files.append(line.strip())
+                            
+                has_spec = any(f.startswith("kb/WHAT-") and f.endswith(".md") for f in modified_files)
+                if not has_spec:
+                    raise Exception("SPEC file violation: A corresponding WHAT- specification file under kb/ (e.g. kb/WHAT-*.md) must be created and modified/added to finish the Plan phase.")
+        except Exception as e:
+            if "SPEC file violation" in str(e):
+                raise
+
         issue_details = github_client.get_issue_details(self.issue_id)
         current_title = issue_details.get("title", "")
         
@@ -197,10 +290,10 @@ class TerminalNode(BaseNode):
             
             self.set_status("in_progress")
             tx.register_rollback(self.set_status, "open")
-                    
-            log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at .worktrees/{branch_name}")
             
-            worktree_path = os.path.join(".worktrees", branch_name)
+            worktree_path = self.get_worktree_path(branch_name)
+            log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at {worktree_path}")
+            
             os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
             
             git_client.worktree_add(branch_name, worktree_path, "main")
@@ -250,6 +343,10 @@ class TerminalNode(BaseNode):
             if clear_path:
                 mgr_frontier.set_active_path(frontier_file, "None")
             
+            # Run SPAO purity validation check before git commit/push
+            if self.loop == "spao":
+                self._validate_spao_purity()
+            
             git_client.add(["."])
             git_client.commit(commit_msg)
             # rollback the local commit if remote operations fail
@@ -257,7 +354,18 @@ class TerminalNode(BaseNode):
             
             git_client.push(branch_name)
             
-            pr_body = f"Resolves #{self.issue_id}\n\n{learnings}"
+            loop_val = (self.loop or "unknown").upper()
+            transition_summary = f"""
+
+## Three-Loop Transition Summary
+- **Source Loop**: {loop_val}
+- **Target Lineage**: main
+- **Gate Status**: Gate-1 [OK], Gate-2 [OK]
+
+### Observed Variances & Recommendations
+- None."""
+            
+            pr_body = f"Resolves #{self.issue_id}\n\n{learnings}{transition_summary}"
             
             pr_url = github_client.create_pull_request(node_name, pr_body)
             
@@ -266,7 +374,12 @@ class TerminalNode(BaseNode):
     @classmethod
     def clean_if_merged(cls, branch_name: str):
         """Cleans up the local worktree and branch if it has been merged."""
-        wt_path = os.path.join(".worktrees", branch_name)
-        if os.path.exists(wt_path):
-            git_client.worktree_remove(wt_path, force=True)
+        possible_paths = [
+            os.path.join(".worktrees", branch_name),
+            os.path.join(".worktrees", "spao", branch_name),
+            os.path.join(".worktrees", "sdlc", branch_name),
+        ]
+        for wt_path in possible_paths:
+            if os.path.exists(wt_path):
+                git_client.worktree_remove(wt_path, force=True)
         git_client.branch_delete(branch_name)

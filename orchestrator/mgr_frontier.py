@@ -98,6 +98,12 @@ def write_markdown_derived(yml_path: str, md_path: str) -> None:
         
         lines.append(f"## {name}")
         lines.append(f"- **Status**: {status}")
+        if node.get("loop"):
+            lines.append(f"- **Loop**: {node['loop']}")
+        if node.get("area"):
+            lines.append(f"- **Area**: {node['area']}")
+        if node.get("kind"):
+            lines.append(f"- **Kind**: {node['kind']}")
         lines.append(f"- **Learnings & Context**: {learnings}")
         lines.append("- **Feedforward Invariants**:")
         if invariants:
@@ -179,12 +185,31 @@ def set_active_node(filepath: str, node_name: str) -> None:
         state["current_active_node"] = node_name
     save_state(yml_path, state)
 
+def get_node_metadata(node_id: int | str) -> dict:
+    """Queries issue labels to extract loop, area, and kind metadata."""
+    from skills import github_client
+    metadata = {}
+    try:
+        labels = github_client.get_issue_labels(str(node_id))
+        for label in labels:
+            if label.startswith("loop:"):
+                metadata["loop"] = label.split(":", 1)[1].strip()
+            elif label.startswith("area:"):
+                metadata["area"] = label.split(":", 1)[1].strip()
+            elif label.startswith("kind:"):
+                metadata["kind"] = label.split(":", 1)[1].strip()
+    except Exception:
+        # Ignore errors (e.g. offline tests or missing API stubs)
+        pass
+    return metadata
+
 @record_execution(stage="skill")
 def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str], clear_pointers: bool = True) -> None:
     """Marks the active node as completed in the YAML ledger."""
     yml_path = resolve_yml_path(filepath)
     state = load_state(yml_path)
     
+    node_id = extract_path_id(node_name)
     nodes = state.get("nodes", [])
     found = False
     for node in nodes:
@@ -192,16 +217,21 @@ def complete_active_node(filepath: str, node_name: str, learnings: str, invarian
             node["status"] = "Completed"
             node["learnings"] = learnings
             node["invariants"] = invariants
+            if node_id:
+                node.update(get_node_metadata(node_id))
             found = True
             break
             
     if not found:
-        nodes.append({
+        new_node = {
             "name": node_name,
             "status": "Completed",
             "learnings": learnings,
             "invariants": invariants
-        })
+        }
+        if node_id:
+            new_node.update(get_node_metadata(node_id))
+        nodes.append(new_node)
         
     state["nodes"] = nodes
     if clear_pointers:
@@ -222,16 +252,19 @@ def append_active_node(filepath: str, node_id: int, node_title: str, description
             node["status"] = "[///] Act Phase"
             node["learnings"] = description
             node["invariants"] = invariants
+            node.update(get_node_metadata(node_id))
             found = True
             break
             
     if not found:
-        nodes.append({
+        new_node = {
             "name": node_name,
             "status": "[///] Act Phase",
             "learnings": description,
             "invariants": invariants
-        })
+        }
+        new_node.update(get_node_metadata(node_id))
+        nodes.append(new_node)
         
     state["nodes"] = nodes
     state["current_active_node"] = node_name
