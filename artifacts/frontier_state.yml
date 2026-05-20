@@ -1474,10 +1474,12 @@ nodes:
     features.
   invariants: []
 - name: 'Node 421: Probe 421: Align - Audit and Harden Inner-Loop Test Dependencies'
-  status: Backlog
-  learnings: Align on the philosophical and technical intent for Audit and Harden
-    Inner-Loop Test Dependencies.
-  invariants: []
+  status: Completed
+  learnings: Formulated WHY-0041 and WHAT-0041 detailing the architectural rationale
+    and auditing baseline for ensuring 100% hermetic offline inner-loop test isolation.
+  invariants:
+  - '[x] WHY-0041 is created'
+  - '[x] WHAT-0041 is created'
 - name: 'Node 422: Probe 422: Plan - Audit and Harden Inner-Loop Test Dependencies'
   status: Backlog
   learnings: Technical design and proposed changes for Audit and Harden Inner-Loop
