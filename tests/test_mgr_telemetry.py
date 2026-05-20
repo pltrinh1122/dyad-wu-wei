@@ -66,7 +66,7 @@ def test_ledger_anchoring():
         mock_run.return_value = "/repo/root\n"
         tm = TelemetryManager()
         assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
-        mock_run.assert_called_once_with(["git", "rev-parse", "--show-toplevel"], text=True)
+        mock_run.assert_called_once_with(["git", "rev-parse", "--show-common-toplevel"], text=True)
 
 def test_ledger_anchoring_fallback():
     with patch("subprocess.check_output") as mock_run:
