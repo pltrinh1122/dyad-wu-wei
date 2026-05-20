@@ -75,6 +75,9 @@ def execute_hotfix(file_path, commit_msg):
     save_data(ledger_file, data)
     print(f"Hotfix complete! Logged to {ledger_file}")
 
+from orchestrator.mgr_telemetry import record_execution
+
+@record_execution(stage="act")
 def main():
     parser = argparse.ArgumentParser(description="Runtime Manager (RT)")
     subparsers = parser.add_subparsers(dest="command", required=True)

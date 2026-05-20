@@ -7,6 +7,7 @@ from orchestrator.mgr_telemetry import TelemetryManager, record_execution
 
 class TestTelemetryDecorator(unittest.TestCase):
     def setUp(self):
+        os.environ["SPAO_TELEMETRY_NO_TEST_SAFETY"] = "1"
         self.test_ledger = "test_telemetry.jsonl"
         if os.path.exists(self.test_ledger):
             os.remove(self.test_ledger)

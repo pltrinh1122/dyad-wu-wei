@@ -114,6 +114,9 @@ def clean_prompts():
     save_data(backlog_file, data)
     print(f"Purged {removed_count} consumed prompt(s).")
 
+from orchestrator.mgr_telemetry import record_execution
+
+@record_execution(stage="act")
 def main():
     parser = argparse.ArgumentParser(description="Prompt Queue Manager")
     subparsers = parser.add_subparsers(dest="command", required=True)

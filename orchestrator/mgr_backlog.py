@@ -3,6 +3,8 @@ import subprocess
 import json
 import yaml
 import tempfile
+import argparse
+import sys
 from skills import github_client
 from skills.issue_factory import render_template
 
@@ -109,9 +111,10 @@ class BacklogManager:
         except Exception as e:
             print(f"Warning: Failed to check off Meta-Index for Node {node_id} in Path {path_id}: {e}")
 
+from orchestrator.mgr_telemetry import record_execution
+
+@record_execution(stage="sense")
 def main():
-    import argparse
-    import sys
     
     parser = argparse.ArgumentParser(description="Antigravity Backlog Manager")
     subparsers = parser.add_subparsers(dest="subcommand", required=True)

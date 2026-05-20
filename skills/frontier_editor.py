@@ -1,5 +1,6 @@
 import re
 from skills.file_locker import lock_file
+from orchestrator.mgr_telemetry import record_execution
 
 def read_active_node(filepath: str) -> str:
     """Reads the current active node from frontier_state.md."""
@@ -78,6 +79,7 @@ def extract_path_id(path_str: str) -> str | None:
         return match.group(1)
     return None
 
+@record_execution(stage="skill")
 def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str]) -> None:
     """Appends the completed node block above the Current Active Node header."""
     with lock_file(filepath):
@@ -127,6 +129,7 @@ def set_active_node(filepath: str, node_name: str) -> None:
     with open(filepath, 'w') as f:
         f.writelines(lines)
 
+@record_execution(stage="skill")
 def set_active_path(filepath: str, path_name: str) -> None:
     """Updates the text below Current Active Path."""
     with lock_file(filepath):
