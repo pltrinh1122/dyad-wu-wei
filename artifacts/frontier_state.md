@@ -1070,8 +1070,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 365: Activity 365: Reflect - Spike Path: SPAO Release Packaging, One-Step Onboarding & CLI Discoverability
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
-**Path 362: Spike Path: SPAO Release Packaging, One-Step Onboarding and CLI Discoverability**
+None
 
 ## Current Active Node
 None
