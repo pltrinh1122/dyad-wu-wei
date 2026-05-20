@@ -6,7 +6,7 @@ import yaml
 from skills import github_client
 from skills import frontier_editor
 from orchestrator import mgr_prompt, mgr_backlog, mgr_nba
-from orchestrator.mgr_telemetry import TelemetryManager
+from orchestrator.mgr_telemetry import TelemetryManager, record_execution
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -126,6 +126,7 @@ class TerminalNode(BaseNode):
             if current_goal and current_goal == other_goal:
                 raise Exception(f"Orthogonal Scope Violation: Node {self.issue_id} has an identical goal footprint to Node {issue['number']}")
 
+    @record_execution(stage="plan")
     def plan_start(self) -> None:
         in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
         if in_progress_label in self.gh_labels:
@@ -135,11 +136,9 @@ class TerminalNode(BaseNode):
             
         self.set_status("in_progress")
         
-        telemetry = TelemetryManager()
-        telemetry.log_event(stage="plan", event="start", node_id=self.issue_id)
-        
         log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} for multi-phase planning.")
 
+    @record_execution(stage="plan")
     def plan_finish(self, body: str) -> str:
         log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Issue #{self.issue_id}")
         
@@ -153,13 +152,11 @@ class TerminalNode(BaseNode):
             
         self.update_body(body)
         
-        telemetry = TelemetryManager()
-        telemetry.log_event(stage="plan", event="finish", node_id=self.issue_id)
-        
         issue_url = f"https://github.com/pltrinh1122/agent-antigravity/issues/{self.issue_id}"
         log_stage_advancement("plan", "Plan Phase Completed", f"Node issue #{self.issue_id} successfully planned. Transitioning to Act phase.")
         return issue_url
 
+    @record_execution(stage="act")
     def checkout(self, branch_name: str) -> None:
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
@@ -173,17 +170,15 @@ class TerminalNode(BaseNode):
         
         subprocess.run(["git", "worktree", "add", "-b", branch_name, worktree_path, "main"], check=True)
         
-        telemetry = TelemetryManager()
-        telemetry.log_event(stage="act", event="start", node_id=self.issue_id, metadata={"branch": branch_name})
-        
         print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
 
+    @record_execution(stage="reflect")
     def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str) -> None:
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
-
+ 
         log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
-
+ 
         self.close("Node completed via Flow-State Manager. Moving to PR.")
         
         # Automate Meta-Index Checkbox Synchronization
@@ -217,9 +212,6 @@ class TerminalNode(BaseNode):
         pr_body = f"Resolves #{self.issue_id}\n\n{learnings}"
         
         pr_url = github_client.create_pull_request(node_name, pr_body)
-        
-        telemetry = TelemetryManager()
-        telemetry.log_event(stage="reflect", event="finish", node_id=self.issue_id, metadata={"pr_url": pr_url})
         
         log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
 

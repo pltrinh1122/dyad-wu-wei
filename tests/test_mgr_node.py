@@ -2,17 +2,21 @@ import pytest
 from unittest.mock import patch, MagicMock
 from orchestrator.mgr_node import reflect_node, sync_and_clean_node, plan_start_node, plan_finish_node, checkout_node
 
+@patch('orchestrator.mgr_telemetry.TelemetryManager')
 @patch('orchestrator.node_lifecycle.TelemetryManager')
 @patch('orchestrator.node_lifecycle.TerminalNode._validate_orthogonal_scope')
 @patch('orchestrator.node_lifecycle.github_client')
-def test_plan_start_node(mock_gh, mock_validate, mock_tm):
+def test_plan_start_node(mock_gh, mock_validate, mock_tm_lifecycle, mock_tm_telemetry):
     mock_gh.get_issue_labels.return_value = ["backlog"]
     
     plan_start_node("100")
     
     mock_validate.assert_called_once()
     mock_gh.add_label.assert_called_once_with("100", "status: in-progress")
-    mock_tm.return_value.log_event.assert_called_once()
+    # log_event called once in plan_start itself, and twice in the decorator (START/FINISH)
+    # But wait, plan_start manual logging was removed!
+    # So it's called exactly twice by the decorator.
+    assert mock_tm_telemetry.return_value.log_event.call_count == 2
 
 @patch('orchestrator.node_lifecycle.github_client')
 def test_plan_start_node_locked(mock_gh):
@@ -48,10 +52,11 @@ def test_orthogonal_scope_validation(mock_details, mock_issues):
     with pytest.raises(Exception, match="Orthogonal Scope Violation: Node 100 has an identical title footprint to Node 101"):
         node._validate_orthogonal_scope()
 
+@patch('orchestrator.mgr_telemetry.TelemetryManager')
 @patch('orchestrator.node_lifecycle.TelemetryManager')
 @patch('orchestrator.node_lifecycle.subprocess.run')
 @patch('orchestrator.node_lifecycle.github_client')
-def test_plan_finish_node(mock_gh, mock_run, mock_tm):
+def test_plan_finish_node(mock_gh, mock_run, mock_tm_lifecycle, mock_tm_telemetry):
     mock_result = MagicMock()
     mock_result.stdout = '{"title": "Probe: Test Title"}'
     mock_run.return_value = mock_result
@@ -61,28 +66,30 @@ def test_plan_finish_node(mock_gh, mock_run, mock_tm):
     assert result == "https://github.com/pltrinh1122/agent-antigravity/issues/100"
     mock_gh.rename_issue_title.assert_called_once_with("100", "Node 100: Probe: Test Title")
     mock_gh.update_issue_body.assert_called_once_with("100", "Test Body")
-    mock_tm.return_value.log_event.assert_called_once()
+    assert mock_tm_telemetry.return_value.log_event.call_count == 2
 
+@patch('orchestrator.mgr_telemetry.TelemetryManager')
 @patch('orchestrator.node_lifecycle.TelemetryManager')
 @patch('orchestrator.node_lifecycle.subprocess.run')
 @patch('orchestrator.node_lifecycle.github_client')
 @patch('orchestrator.node_lifecycle.os.makedirs')
-def test_checkout_node(mock_makedirs, mock_gh, mock_run, mock_tm):
+def test_checkout_node(mock_makedirs, mock_gh, mock_run, mock_tm_lifecycle, mock_tm_telemetry):
     checkout_node("157", "node/157-test")
     
     mock_gh.add_label.assert_called_once_with("157", "status: in-progress")
     
     mock_run.assert_called_once()
     assert mock_run.call_args[0][0] == ["git", "worktree", "add", "-b", "node/157-test", ".worktrees/node/157-test", "main"]
-    mock_tm.return_value.log_event.assert_called_once()
+    assert mock_tm_telemetry.return_value.log_event.call_count == 2
 
+@patch('orchestrator.mgr_telemetry.TelemetryManager')
 @patch('orchestrator.node_lifecycle.TelemetryManager')
 @patch('orchestrator.node_lifecycle.github_client')
 @patch('orchestrator.node_lifecycle.frontier_editor')
 @patch('orchestrator.node_lifecycle.mgr_backlog')
 @patch('orchestrator.node_lifecycle.subprocess.run')
 @patch('orchestrator.node_lifecycle.mgr_nba')
-def test_reflect_node(mock_nba, mock_run, mock_backlog, mock_fe, mock_gh, mock_tm):
+def test_reflect_node(mock_nba, mock_run, mock_backlog, mock_fe, mock_gh, mock_tm_lifecycle, mock_tm_telemetry):
     mock_nba.NBAManager.return_value.evaluate.return_value = {
         "type": "path_switching",
         "recommendations": []
@@ -113,7 +120,7 @@ def test_reflect_node(mock_nba, mock_run, mock_backlog, mock_fe, mock_gh, mock_t
     assert call_args[2] == ["git", "push", "-u", "origin", "node/1-test-branch"]
     
     mock_gh.create_pull_request.assert_called_once_with("Node 1: Test", "Resolves #100\n\nIt worked")
-    mock_tm.return_value.log_event.assert_called_once()
+    assert mock_tm_telemetry.return_value.log_event.call_count == 2
 
 def test_reflect_node_invalid_branch():
     with pytest.raises(ValueError):
@@ -127,12 +134,13 @@ def test_reflect_node_invalid_branch():
             branch_name="invalid_branch_name"
         )
 
+@patch('orchestrator.mgr_telemetry.TelemetryManager')
 @patch('orchestrator.mgr_node.TelemetryManager')
 @patch('orchestrator.mgr_node.github_client.get_open_prs', return_value=[])
 @patch('orchestrator.mgr_node.github_client.get_merged_prs', return_value=[{"headRefName": "node/2-test"}])
 @patch('orchestrator.mgr_node.HookManager')
 @patch('orchestrator.mgr_node.subprocess.run')
-def test_sync_and_clean_node(mock_run, mock_hm, mock_get_merged_prs, mock_get_open_prs, mock_tm):
+def test_sync_and_clean_node(mock_run, mock_hm, mock_get_merged_prs, mock_get_open_prs, mock_tm_node, mock_tm_telemetry):
     mock_result = MagicMock()
     mock_result.stdout = "main\nnode/1-test\nold-branch\nnode/2-test\n"
     mock_run.return_value = mock_result
@@ -151,7 +159,7 @@ def test_sync_and_clean_node(mock_run, mock_hm, mock_get_merged_prs, mock_get_op
     mock_hm.return_value.execute_all.assert_called_once()
     mock_get_merged_prs.assert_called_once_with(limit=50)
     mock_get_open_prs.assert_called_once()
-    assert mock_tm.return_value.log_event.call_count == 2
+    assert mock_tm_telemetry.return_value.log_event.call_count == 2
 
 @patch('orchestrator.mgr_node.github_client.get_open_prs')
 def test_sync_and_clean_node_with_open_prs(mock_get_open_prs):
