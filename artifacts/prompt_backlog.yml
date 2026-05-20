@@ -1,7 +1,1 @@
-prompts:
-- id: p-1779259256-a6cf
-  timestamp: '2026-05-20T06:40:56Z'
-  text: 'Operator Observation: backlog new path behaves as a Node Factory (Align/Plan/Reflect
-    triple). Evaluate robustness and formalize with invariants as a dedicated Probe
-    Path.'
-  status: pending
+prompts: []

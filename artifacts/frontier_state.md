@@ -1052,8 +1052,26 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 369: Probe 369: Align - Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 370: Probe 370: Plan - Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 371: Activity 371: Reflect - Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
-**Path 368: Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite**
+**Path 362: Spike Path: SPAO Release Packaging, One-Step Onboarding and CLI Discoverability**
 
 ## Current Active Node
 None

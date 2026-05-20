@@ -1,5 +1,5 @@
-current_active_path: "Path 368: Spike Path: CI Hardening \u2014 Remediate and Prevent\
-  \ Live GitHub API Calls in Test Suite"
+current_active_path: 'Path 362: Spike Path: SPAO Release Packaging, One-Step Onboarding
+  and CLI Discoverability'
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -1237,6 +1237,11 @@ nodes:
   invariants: []
 - name: "Node 370: Probe 370: Plan - Spike Path: CI Hardening \u2014 Remediate and\
     \ Prevent Live GitHub API Calls in Test Suite"
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: "Node 371: Activity 371: Reflect - Spike Path: CI Hardening \u2014 Remediate\
+    \ and Prevent Live GitHub API Calls in Test Suite"
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
