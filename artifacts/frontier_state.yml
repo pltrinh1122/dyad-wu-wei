@@ -1453,3 +1453,25 @@ nodes:
   learnings: Final reflection and path closure for Implement NBA Strict Transition
     Enforcement Gate.
   invariants: []
+- name: 'Node 420: Path 420: Audit and Harden Inner-Loop Test Dependencies'
+  status: Backlog
+  learnings: Analyze the test suite to identify and catalog all files making external
+    network or GitHub API requests, establishing a baseline of network-isolated vs
+    network-dependent tests to answer whether we can confidently execute downstream
+    features.
+  invariants: []
+- name: 'Node 421: Probe 421: Align - Audit and Harden Inner-Loop Test Dependencies'
+  status: Backlog
+  learnings: Align on the philosophical and technical intent for Audit and Harden
+    Inner-Loop Test Dependencies.
+  invariants: []
+- name: 'Node 422: Probe 422: Plan - Audit and Harden Inner-Loop Test Dependencies'
+  status: Backlog
+  learnings: Technical design and proposed changes for Audit and Harden Inner-Loop
+    Test Dependencies.
+  invariants: []
+- name: 'Node 423: Activity 423: Reflect - Audit and Harden Inner-Loop Test Dependencies'
+  status: Backlog
+  learnings: Final reflection and path closure for Audit and Harden Inner-Loop Test
+    Dependencies.
+  invariants: []

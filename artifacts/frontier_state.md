@@ -1292,6 +1292,30 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 420: Path 420: Audit and Harden Inner-Loop Test Dependencies
+- **Status**: Backlog
+- **Learnings & Context**: Analyze the test suite to identify and catalog all files making external network or GitHub API requests, establishing a baseline of network-isolated vs network-dependent tests to answer whether we can confidently execute downstream features.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 421: Probe 421: Align - Audit and Harden Inner-Loop Test Dependencies
+- **Status**: Backlog
+- **Learnings & Context**: Align on the philosophical and technical intent for Audit and Harden Inner-Loop Test Dependencies.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 422: Probe 422: Plan - Audit and Harden Inner-Loop Test Dependencies
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Audit and Harden Inner-Loop Test Dependencies.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 423: Activity 423: Reflect - Audit and Harden Inner-Loop Test Dependencies
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Audit and Harden Inner-Loop Test Dependencies.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 
