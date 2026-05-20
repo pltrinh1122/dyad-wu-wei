@@ -16,6 +16,3 @@ To decide between Speculative Gap Analysis and Immediate Velocity Remediation, t
 2. **Deterministic Backlog Sorter**:
    - Classify all backlog paths as either `Velocity` or `Speculative`.
    - The strategic manager automatically ranks `Velocity` paths higher than `Speculative` paths in the Next-Best-Action recommendation queue if the test suite fails the hermetic audit.
-
-<!-- plan touched -->
-
