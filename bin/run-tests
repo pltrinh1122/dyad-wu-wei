@@ -1,4 +1,4 @@
 #!/bin/bash
 # Canonical test runner entrypoint
 export PYTHONPATH=.
-/home/pt/actions-runner/venv/bin/pytest "$@"
+python3 -m orchestrator.mgr_testing "$@"
