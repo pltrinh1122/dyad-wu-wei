@@ -1,4 +1,4 @@
-current_active_path: null
+current_active_path: '341'
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -1161,3 +1161,10 @@ nodes:
   - '- ''`Paths automatically initialize Align Probe'
   - Plan Probe
   - and Reflect Activity children`'\n- '`All 83 tests pass cleanly`'\n
+- name: 'Node 342: Probe 342: Align - Spike Path: Abstraction Doctrine - Python API
+    for git and gh'
+  status: Completed
+  learnings: Aligned on the core requirements of the Abstraction Doctrine, specifying
+    per-concept abstractions for Path/Backlog (consolidated) and Node (internal).
+  invariants:
+  - '- ''`WHY-0024 decision record created`''\n- ''`All 83 tests pass cleanly`''\n'
