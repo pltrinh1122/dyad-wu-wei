@@ -85,6 +85,35 @@ class BacklogManager:
                 path_body += f"\n\n## Meta-Index\n{checkbox_line}"
                 
             github_client.update_issue_body(path_id, path_body)
+
+        if is_non_terminal:
+            # 1. Align Probe
+            align_url = self.add(
+                node_type="probe",
+                title=f"Align - {title}",
+                goal=f"Align on the philosophical and technical intent for {title}.",
+                path_id=issue_id
+            )
+            align_id = align_url.split("/")[-1]
+
+            # 2. Plan Probe
+            plan_url = self.add(
+                node_type="probe",
+                title=f"Plan - {title}",
+                goal=f"Technical design and proposed changes for {title}.",
+                path_id=issue_id,
+                depends_on=align_id
+            )
+            plan_id = plan_url.split("/")[-1]
+
+            # 3. Reflect Activity
+            self.add(
+                node_type="activity",
+                title=f"Reflect - {title}",
+                goal=f"Final reflection and path closure for {title}.",
+                path_id=issue_id,
+                depends_on=plan_id
+            )
         
         return issue_url
 

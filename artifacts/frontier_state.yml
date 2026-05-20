@@ -1153,3 +1153,12 @@ nodes:
     in BacklogManager.
   invariants:
   - '- ''`WHAT-0023 document created`''\n- ''`All 82 tests pass cleanly`''\n'
+- name: 'Node 337: Activity 337: Reflect - Enforce Triple-Node Auto-Initialization
+    for Paths'
+  status: Completed
+  learnings: Implemented recursive automatic triple-node (Align, Plan, Reflect) issue
+    creation in BacklogManager.create for non-terminal paths.
+  invariants:
+  - '- ''`Paths automatically initialize Align Probe'
+  - Plan Probe
+  - and Reflect Activity children`'\n- '`All 83 tests pass cleanly`'\n

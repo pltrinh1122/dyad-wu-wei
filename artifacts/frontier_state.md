@@ -988,6 +988,14 @@
 - **Feedforward Invariants**:
   - - '`WHAT-0023 document created`'\n- '`All 82 tests pass cleanly`'\n
 
+## Node 337: Activity 337: Reflect - Enforce Triple-Node Auto-Initialization for Paths
+- **Status**: Completed
+- **Learnings & Context**: Implemented recursive automatic triple-node (Align, Plan, Reflect) issue creation in BacklogManager.create for non-terminal paths.
+- **Feedforward Invariants**:
+  - - '`Paths automatically initialize Align Probe
+  - `Plan Probe`
+  - and Reflect Activity children`'\n- '`All 83 tests pass cleanly`'\n
+
 ## Current Active Path
 **Path 331: Spike Path: Enforce Triple-Node Auto-Initialization for Paths**
 
