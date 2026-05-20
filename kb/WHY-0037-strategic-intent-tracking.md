@@ -18,6 +18,7 @@ Every strategic intent/goal is evaluated against the following structure. The Me
 
 - **Axiom (2) (Constraint Separation) [FALSIFIABLE]**: Constraints (e.g., API limits, unauthenticated runner environments) are environmental facts/boundary conditions and therefore are not the problem itself. The problem is how the system behaves under those constraints. Strategic goals must optimize system adaptability *within* constraints, not attempt to eliminate the constraint.
 - **Axiom (3) (Materializability) [FALSIFIABLE]**: Strategic goals must be materializable within current technology and physical constraints. They cannot rely on hypothetical future AI capabilities, infinite context windows, zero-latency network connections, or unmaterialized system features. Every goal must have a clear, realistic technical path of execution using tools and models that are physically available today.
+- **Axiom (4) (Architectural Coherence) [FALSIFIABLE]**: The North Star must encompass all Strategic Goals, while all Strategic Goals must be mutually orthogonal with each other (Mutually Exclusive, Collectively Exhaustive relative to the North Star's scope).
 
 ### 2. The Strategic Intent Ledger (`artifacts/strategic_intent.yml`)
 We will establish a structured, machine-readable ledger representing the source of truth for all strategic goals.
@@ -26,7 +27,7 @@ We will establish a structured, machine-readable ledger representing the source 
   - `strategic_goals`: A list of goals.
     - `id`: Unique string prefix (e.g., `SG-0001`).
     - `title`: Short descriptive name.
-    - `operator_problem`: Detailed grounding statement describing the human friction.
+    - `collaborative_gap`: Detailed grounding statement describing the relationship capability or communication breakdown.
     - `constraints`: Environment boundaries/facts.
     - `falsification_signal`: Testable hypothesis or observation that would refute the goal.
     - `status`: `Draft` (in development), `Active` (currently enforcing prioritization), `Achieved` (resolved), `Falsified` (proven invalid).
@@ -51,7 +52,7 @@ We will implement a CLI tool to manage and verify the ledger:
 ## Invariant Formalization
 
 A future `WHAT-*` document (to be designed in the Plan phase) will formalize the following constraints:
-1. `INVARIANT_STRATEGIC_GOAL_GROUNDING`: Strategic goals must document a concrete, human-facing operator problem.
+1. `INVARIANT_STRATEGIC_GOAL_GROUNDING`: Strategic goals must document a relationship-level collaborative gap.
 2. `INVARIANT_STRATEGIC_GOAL_CONSTRAINTS`: Context constraints must be environmental facts, not the problem.
 3. `INVARIANT_STRATEGIC_GOAL_FALSIFIABILITY`: Every strategic goal must define testable falsification signals.
 4. `INVARIANT_STRATEGIC_PRIORITIZATION_ENFORCEMENT`: Next-Best-Action recommendations must prioritize active strategic goals' paths.
