@@ -1165,6 +1165,20 @@
   - `[x] Aligned on Path template retrospectives`
   - `[x] Created WHY-0036-backlog-node-factory-robustness.md`
 
+## Node 399: Probe 399: Probe: Integrate Agent Retrospective section into Path Template
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 399: Probe 399: Reflect - Integrate Agent Retrospective section into Path Template
+- **Status**: Completed
+- **Learnings & Context**: Integrated the Agent Retrospective section directly into kb/templates/path_tracker.md and added unit tests in tests/test_issue_factory.py.
+- **Feedforward Invariants**:
+  - `[x] Updated kb/templates/path_tracker.md with Agent Retrospective`
+  - `[x] Added unit tests for path_tracker template rendering`
+  - `[x] Verified 124 tests pass successfully`
+
 ## Current Active Path
 None
 

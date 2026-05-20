@@ -37,3 +37,13 @@ def test_render_nba_banner():
     assert "Test Mode" in result
     assert "Path 1: Title" in result
     assert "#2: Rec" in result
+
+def test_render_path_tracker():
+    kwargs = {
+        "goal": "Design a new system."
+    }
+    result = render_template("path_tracker", kwargs)
+    assert "Design a new system." in result
+    assert "## Agent Retrospective" in result
+    assert "### Continue" in result
+
