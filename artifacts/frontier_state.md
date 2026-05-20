@@ -1034,6 +1034,12 @@
 - **Feedforward Invariants**:
   - `All SPAO scripts must distinguish execution path from workspace target path.`
 
+## Node 357: Probe 357: Plan - Path: Global SPAO System Containment, Deployment, and CLI Integration
+- **Status**: Completed
+- **Learnings & Context**: Documented the technical specification for dynamic path separation, path resolver utility, unified spao CLI command, and the global installation script in WHAT-0029.
+- **Feedforward Invariants**:
+  - `All SPAO scripts must distinguish execution path from workspace target path.`
+
 ## Current Active Path
 None
 
