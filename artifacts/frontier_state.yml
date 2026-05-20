@@ -1208,3 +1208,11 @@ nodes:
     to make the SPAO system globally accessible across target projects.
   invariants:
   - All SPAO scripts must distinguish execution path from workspace target path.
+- name: 'Node 357: Probe 357: Plan - Path: Global SPAO System Containment, Deployment,
+    and CLI Integration'
+  status: Completed
+  learnings: Documented the technical specification for dynamic path separation, path
+    resolver utility, unified spao CLI command, and the global installation script
+    in WHAT-0029.
+  invariants:
+  - All SPAO scripts must distinguish execution path from workspace target path.
