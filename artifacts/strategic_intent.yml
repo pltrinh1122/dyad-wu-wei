@@ -11,3 +11,37 @@ strategic_goals:
   prioritized_paths:
   - 404
   id: SG-0001
+- title: Gateless Autonomous Execution within Risk-Managed Sandbox
+  operator_problem: Binary gates (PR review gates, SENSE-phase gates) require high
+    manual oversight, causing cognitive load, context-switching fatigue, and system
+    stagnation.
+  constraints: The system operates under git tree transactions, virtual environment
+    sandboxes, and API/token consumption limits.
+  falsification_signal: The operator re-introduces manual approval gates to prevent
+    damage because the sandbox policies fail to isolate or rollback unsafe mutations.
+  status: Active
+  prioritized_paths: []
+  id: SG-0002
+- title: Preservation of Autonomous Velocity
+  operator_problem: Fragile testing infrastructure and flaky/non-deterministic tests
+    trigger false-positive auto-rollbacks, which stalls the agent's progress and requires
+    manual intervention.
+  constraints: Tests must run offline without making live network calls and must execute
+    in under 60 seconds.
+  falsification_signal: The agent's autonomous throughput (nodes completed per hour)
+    decreases due to repeating rollback loops caused by unresolved test flakiness.
+  status: Active
+  prioritized_paths:
+  - 368
+  id: SG-0003
+- title: Efficient Intent-to-Goal Policy Communication
+  operator_problem: Defining strategic goals and aligning on technical designs requires
+    verbose, high-overhead conversational alignment loops, leading to operator decision
+    fatigue.
+  constraints: Goals must be expressed in a structured format (strategic_intent.yml)
+    using falsifiable metrics.
+  falsification_signal: The operator spending more than 10% of their session time
+    in interactive alignment discussions rather than simple policy updates.
+  status: Active
+  prioritized_paths: []
+  id: SG-0004
