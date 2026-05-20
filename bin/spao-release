@@ -63,15 +63,22 @@ _ok "All tests passed"
 echo "$VERSION" > "$SPAO_CORE_DIR/VERSION"
 _ok "Updated VERSION → $VERSION"
 
-# ── 3. Commit & push via git_client skill ────────────────────────────────────
+# ── 3. Commit & push VERSION if changed ──────────────────────────────────────
 _info "Committing release via git_client skill..."
 python3 - "$SPAO_CORE_DIR" "$VERSION" << 'PY'
-import sys
+import sys, subprocess
 sys.path.insert(0, sys.argv[1])
 from skills import git_client
-git_client.add(["VERSION"])
-git_client.commit(f"chore: release {sys.argv[2]}")
-git_client.push("main")
+
+# Only commit if VERSION changed
+status = subprocess.run(["git", "status", "--porcelain", "VERSION"],
+                        capture_output=True, text=True).stdout.strip()
+if status:
+    git_client.add(["VERSION"])
+    git_client.commit(f"chore: release {sys.argv[2]}")
+    git_client.push("main")
+else:
+    print("  ℹ  VERSION unchanged — skipping commit")
 PY
 _ok "Committed and pushed"
 
