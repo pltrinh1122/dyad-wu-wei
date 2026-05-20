@@ -152,21 +152,14 @@ class TerminalNode(BaseNode):
                 
             raise Exception(f"State Dissonance: Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
 
-    def _validate_spao_purity(self):
+    def _validate_spao_purity(self, worktree_path: str | None = None):
         """Validates that a loop:spao branch only modifies policy/documentation paths."""
         from skills import path_resolver
         config = path_resolver.load_antigravity_yml()
         enforce = config.get("governance", {}).get("spao_purity_enforcement", True)
         
         try:
-            res = subprocess.run(["git", "diff", "--name-only", "main"], capture_output=True, text=True)
-            if res.returncode != 0:
-                return
-                
-            if res.stdout == "success":
-                return
-                
-            modified_files = [f.strip() for f in res.stdout.splitlines() if f.strip()]
+            modified_files = git_client.diff_names("main", cwd=worktree_path)
             violations = []
             for filepath in modified_files:
                 if filepath.startswith("kb/") or filepath.startswith("artifacts/") or filepath == "GEMINI.md":
@@ -304,10 +297,13 @@ class TerminalNode(BaseNode):
             print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
 
     @record_execution(stage="reflect")
-    def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str) -> None:
+    def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all") -> None:
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
  
+        main_repo = os.path.dirname(os.path.abspath(git_client.get_git_common_dir()))
+        worktree_dir = os.path.abspath(os.path.join(main_repo, self.get_worktree_path(branch_name)))
+
         with FlowTransaction(frontier_file) as tx:
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
      
@@ -346,14 +342,23 @@ class TerminalNode(BaseNode):
             
             # Run SPAO purity validation check before git commit/push
             if self.loop == "spao":
-                self._validate_spao_purity()
+                self._validate_spao_purity(worktree_path=worktree_dir)
             
-            git_client.add(["."])
-            git_client.commit(commit_msg)
+            # Execute staging strategy
+            if stage == "none":
+                pass
+            elif stage == "all":
+                git_client.add(["."], cwd=worktree_dir)
+            else:
+                files_to_stage = [f.strip() for f in stage.split(",") if f.strip()]
+                if files_to_stage:
+                    git_client.add(files_to_stage, cwd=worktree_dir)
+
+            git_client.commit(commit_msg, cwd=worktree_dir)
             # rollback the local commit if remote operations fail
-            tx.register_rollback(subprocess.run, ["git", "reset", "--hard", "HEAD~1"], check=True)
+            tx.register_rollback(git_client.reset_hard, cwd=worktree_dir)
             
-            git_client.push(branch_name)
+            git_client.push(branch_name, cwd=worktree_dir)
             
             loop_val = (self.loop or "unknown").upper()
             transition_summary = f"""

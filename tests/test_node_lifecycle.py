@@ -87,25 +87,27 @@ def test_get_worktree_path(mock_get_labels):
     node = BaseNode("390")
     assert node.get_worktree_path("node/390-test") == os.path.join(".worktrees", "node/390-test")
 
+@mock.patch("orchestrator.node_lifecycle.git_client.diff_names")
 @mock.patch("orchestrator.node_lifecycle.github_client.get_issue_labels")
-@mock.patch("subprocess.run")
-def test_validate_spao_purity_success(mock_run, mock_get_labels):
+def test_validate_spao_purity_success(mock_get_labels, mock_diff_names):
     mock_get_labels.return_value = ["loop:spao"]
-    mock_run.return_value = mock.MagicMock(returncode=0, stdout="kb/WHAT-0034.md\nartifacts/frontier_state.md\nGEMINI.md")
+    mock_diff_names.return_value = ["kb/WHAT-0034.md", "artifacts/frontier_state.md", "GEMINI.md"]
     
     node = TerminalNode("390")
     # Should not raise any exception
-    node._validate_spao_purity()
+    node._validate_spao_purity(worktree_path="/some/dir")
+    mock_diff_names.assert_called_once_with("main", cwd="/some/dir")
 
+@mock.patch("orchestrator.node_lifecycle.git_client.diff_names")
 @mock.patch("orchestrator.node_lifecycle.github_client.get_issue_labels")
-@mock.patch("subprocess.run")
-def test_validate_spao_purity_failure(mock_run, mock_get_labels):
+def test_validate_spao_purity_failure(mock_get_labels, mock_diff_names):
     mock_get_labels.return_value = ["loop:spao"]
-    mock_run.return_value = mock.MagicMock(returncode=0, stdout="skills/path_resolver.py\nkb/WHAT-0034.md")
+    mock_diff_names.return_value = ["skills/path_resolver.py", "kb/WHAT-0034.md"]
     
     node = TerminalNode("390")
     with pytest.raises(Exception, match="SPAO PR Purity Violation"):
-        node._validate_spao_purity()
+        node._validate_spao_purity(worktree_path="/some/dir")
+    mock_diff_names.assert_called_once_with("main", cwd="/some/dir")
 
 @mock.patch("orchestrator.node_lifecycle.github_client.get_issue_labels")
 @mock.patch("subprocess.run")
@@ -119,3 +121,24 @@ def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_lab
     with pytest.raises(Exception, match="SPEC file violation"):
         node.plan_finish("dummy body")
 
+@mock.patch("orchestrator.node_lifecycle.git_client")
+@mock.patch("orchestrator.node_lifecycle.github_client")
+@mock.patch("orchestrator.node_lifecycle.mgr_frontier")
+@mock.patch("orchestrator.node_lifecycle.mgr_nba")
+@mock.patch("orchestrator.node_lifecycle.TerminalNode.get_worktree_path")
+def test_reflect_success(mock_get_worktree_path, mock_nba, mock_frontier, mock_gh, mock_git):
+    mock_get_worktree_path.return_value = ".worktrees/node/390-test"
+    mock_frontier.read_active_path.return_value = None
+    mock_nba.NBAManager.return_value.evaluate.return_value = {"type": "continue"}
+    mock_gh.get_issue_labels.return_value = []
+    mock_git.get_git_common_dir.return_value = ".git"
+    
+    node = TerminalNode("390")
+    
+    with mock.patch("orchestrator.node_lifecycle.FlowTransaction") as mock_tx:
+        node.reflect("frontier.md", "node-390", "learnings", ["invariants"], "commit-msg", "node/390-test", stage="all")
+        
+    expected_worktree = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(".git")), ".worktrees/node/390-test"))
+    mock_git.add.assert_called_once_with(["."], cwd=expected_worktree)
+    mock_git.commit.assert_called_once_with("commit-msg", cwd=expected_worktree)
+    mock_git.push.assert_called_once_with("node/390-test", cwd=expected_worktree)
