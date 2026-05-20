@@ -65,7 +65,7 @@ def generate_markdown(data):
         for g in goals_list:
             paths_str = ", ".join(str(p) for p in g.get("prioritized_paths", [])) or "None"
             content.append(f"### {g.get('id')}: {g.get('title')}")
-            content.append(f"- **Operator Problem**: {g.get('operator_problem')}")
+            content.append(f"- **Collaborative Gap**: {g.get('collaborative_gap')}")
             content.append(f"- **Constraints**: {g.get('constraints')}")
             content.append(f"- **Falsification Signal**: {g.get('falsification_signal')}")
             content.append(f"- **Prioritized Paths**: {paths_str}")
@@ -79,9 +79,9 @@ def generate_markdown(data):
 def validate_goal(goal: dict) -> list[str]:
     errors = []
     
-    prob = goal.get("operator_problem", "")
-    if not prob or not str(prob).strip():
-        errors.append("Grounding error: 'operator_problem' is empty or missing.")
+    gap = goal.get("collaborative_gap", "")
+    if not gap or not str(gap).strip():
+        errors.append("Grounding error: 'collaborative_gap' is empty or missing.")
         
     constraints = goal.get("constraints", "")
     if not constraints or not str(constraints).strip():
@@ -96,7 +96,7 @@ def validate_goal(goal: dict) -> list[str]:
         # Axiom (3) (Materializability) Validation
         forbidden_assumptions = ["infinite", "instantaneous", "zero latency", "perfect network", "unlimited token", "unlimited context", "agi"]
         for word in forbidden_assumptions:
-            if word in constraints_lower or word in str(prob).lower():
+            if word in constraints_lower or word in str(gap).lower():
                 errors.append(f"Materializability error: goal assumes non-physical or speculative capabilities (contains term '{word}').")
                 
     falsification = goal.get("falsification_signal", "")
@@ -120,10 +120,10 @@ def cmd_list():
         print(f"{g.get('id'):<8} | {g.get('title', '')[:25]:<25} | {g.get('status', 'Draft'):<10} | {paths}")
 
 def cmd_add(args):
-    if args.title is None and args.problem is None and args.constraints is None and args.falsification is None:
+    if args.title is None and args.gap is None and args.constraints is None and args.falsification is None:
         print("=== Add a New Strategic Goal ===")
         title = input("Goal Title: ").strip()
-        problem = input("Operator Problem (grounding): ").strip()
+        gap = input("Collaborative Gap (grounding): ").strip()
         constraints = input("Constraints (facts, no action verbs): ").strip()
         falsification = input("Falsification Signal: ").strip()
         paths_str = input("Prioritized Path IDs (comma-separated, optional): ").strip()
@@ -135,7 +135,7 @@ def cmd_add(args):
                     paths.append(int(p.strip()))
     else:
         title = args.title or ""
-        problem = args.problem or ""
+        gap = args.gap or ""
         constraints = args.constraints or ""
         falsification = args.falsification or ""
         paths = []
@@ -144,7 +144,7 @@ def cmd_add(args):
             
     goal = {
         "title": title,
-        "operator_problem": problem,
+        "collaborative_gap": gap,
         "constraints": constraints,
         "falsification_signal": falsification,
         "status": "Active",
@@ -284,7 +284,7 @@ def main():
     
     add_parser = subparsers.add_parser("add", help="Add a new strategic goal.")
     add_parser.add_argument("--title", help="Goal title.")
-    add_parser.add_argument("--problem", help="Grounding operator problem.")
+    add_parser.add_argument("--gap", help="Collaborative relationship gap (grounding).")
     add_parser.add_argument("--constraints", help="Constraints.")
     add_parser.add_argument("--falsification", help="Falsification signal.")
     add_parser.add_argument("--paths", nargs="*", help="Prioritized path IDs.")

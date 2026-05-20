@@ -21,7 +21,7 @@ class TestMgrStrategic(unittest.TestCase):
     def test_validate_goal_valid(self):
         goal = {
             "title": "Robust Tests",
-            "operator_problem": "CI fails randomly due to unmocked network calls.",
+            "collaborative_gap": "CI fails randomly due to unmocked network calls.",
             "constraints": "CI runners are unauthenticated and do not have GitHub tokens.",
             "falsification_signal": "Mock drift causes real bugs to bypass local test suite."
         }
@@ -31,7 +31,7 @@ class TestMgrStrategic(unittest.TestCase):
     def test_validate_goal_invalid_grounding(self):
         goal = {
             "title": "Robust Tests",
-            "operator_problem": "",
+            "collaborative_gap": "",
             "constraints": "CI runners are unauthenticated.",
             "falsification_signal": "Mock drift occurs."
         }
@@ -41,7 +41,7 @@ class TestMgrStrategic(unittest.TestCase):
     def test_validate_goal_invalid_constraint_verb(self):
         goal = {
             "title": "Robust Tests",
-            "operator_problem": "CI fails randomly.",
+            "collaborative_gap": "CI fails randomly.",
             "constraints": "We must fix the unauthenticated runners.",
             "falsification_signal": "Mock drift occurs."
         }
@@ -51,7 +51,7 @@ class TestMgrStrategic(unittest.TestCase):
     def test_validate_goal_invalid_falsifiability(self):
         goal = {
             "title": "Robust Tests",
-            "operator_problem": "CI fails randomly.",
+            "collaborative_gap": "CI fails randomly.",
             "constraints": "CI runners are unauthenticated.",
             "falsification_signal": ""
         }
@@ -61,7 +61,7 @@ class TestMgrStrategic(unittest.TestCase):
     def test_validate_goal_invalid_materializability(self):
         goal = {
             "title": "AGI Integration",
-            "operator_problem": "The operator wants an AGI model to automate all repository work.",
+            "collaborative_gap": "The operator wants an AGI model to automate all repository work.",
             "constraints": "Requires infinite context window and zero latency connection.",
             "falsification_signal": "The agent makes a mistake."
         }
@@ -76,7 +76,7 @@ class TestMgrStrategic(unittest.TestCase):
                 {
                     "id": "SG-0001",
                     "title": "Goal 1",
-                    "operator_problem": "Problem 1",
+                    "collaborative_gap": "Problem 1",
                     "constraints": "Constraints 1",
                     "falsification_signal": "Signal 1",
                     "status": "Active",
@@ -104,7 +104,7 @@ class TestMgrStrategic(unittest.TestCase):
                 {
                     "id": "SG-0001",
                     "title": "Goal 1",
-                    "operator_problem": "Problem 1",
+                    "collaborative_gap": "Problem 1",
                     "constraints": "Constraints 1",
                     "falsification_signal": "Signal 1",
                     "status": "Active",
@@ -129,7 +129,7 @@ class TestMgrStrategic(unittest.TestCase):
                 {
                     "id": "SG-0001",
                     "title": "Goal 1",
-                    "operator_problem": "Problem 1",
+                    "collaborative_gap": "Problem 1",
                     "constraints": "Constraints 1",
                     "falsification_signal": "Signal 1",
                     "status": "Active",
