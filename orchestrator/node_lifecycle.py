@@ -4,8 +4,7 @@ import json
 import subprocess
 import yaml
 from skills import github_client
-from skills import frontier_editor
-from orchestrator import mgr_prompt, mgr_backlog, mgr_nba
+from orchestrator import mgr_frontier, mgr_prompt, mgr_backlog, mgr_nba
 from orchestrator.mgr_telemetry import TelemetryManager, record_execution
 
 def is_verbose() -> bool:
@@ -100,7 +99,7 @@ class TerminalNode(BaseNode):
         if not os.path.exists(frontier_file):
             return
             
-        current_active = frontier_editor.read_active_node(frontier_file)
+        current_active = mgr_frontier.read_active_node(frontier_file)
         if current_active and current_active != "None":
             # If we expect a specific node (e.g. during reflect), it must match
             if expected_active and current_active == expected_active:
@@ -165,7 +164,7 @@ class TerminalNode(BaseNode):
         # Atomically set active node in frontier
         details = github_client.get_issue_details(self.issue_id)
         node_title = details.get("title", f"Node {self.issue_id}")
-        frontier_editor.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
+        mgr_frontier.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
         
         log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} and updated frontier.")
 
@@ -215,9 +214,9 @@ class TerminalNode(BaseNode):
         self.close("Node completed via Flow-State Manager. Moving to PR.")
         
         # Automate Meta-Index Checkbox Synchronization
-        active_path_str = frontier_editor.read_active_path(frontier_file)
+        active_path_str = mgr_frontier.read_active_path(frontier_file)
         if active_path_str:
-            path_issue_id = frontier_editor.extract_path_id(active_path_str)
+            path_issue_id = mgr_frontier.extract_path_id(active_path_str)
             if path_issue_id:
                 backlog = mgr_backlog.BacklogManager()
                 backlog.check_off_meta_index(path_issue_id, self.issue_id)
@@ -231,16 +230,16 @@ class TerminalNode(BaseNode):
         clear_path = False
         if nba_result["type"] == "path_switching" and active_path_str:
             # We had an active path, but NBA now says we should switch (because it's exhausted)
-            path_issue_id = frontier_editor.extract_path_id(active_path_str)
+            path_issue_id = mgr_frontier.extract_path_id(active_path_str)
             if path_issue_id:
                 github_client.close_issue(path_issue_id, "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
                 log_stage_advancement("reflect", "Path Invariant Enforced", f"Automatically closed parent {active_path_str}")
                 clear_path = True
         
         # ATOMIC UPDATE: Mark node completed AND clear pointers
-        frontier_editor.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
+        mgr_frontier.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
         if clear_path:
-            frontier_editor.set_active_path(frontier_file, "None")
+            mgr_frontier.set_active_path(frontier_file, "None")
         
         subprocess.run(["git", "add", "."], check=True)
         subprocess.run(["git", "commit", "-m", commit_msg], check=True)

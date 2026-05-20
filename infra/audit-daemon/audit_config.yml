@@ -17,3 +17,7 @@ rules:
     file: "requirements-dev.txt"
     alert_level: "FAILURE"
     prompt_message: "Refresh CI Venv (requirements-dev.txt changed)"
+    
+  - id: "frontier-integrity"
+    type: "frontier_integrity"
+    alert_level: "FAILURE"

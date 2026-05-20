@@ -2,12 +2,12 @@
 set -euo pipefail
 
 if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
-    echo "Usage: $0 {link|check|active} [args...]"
+    echo "Usage: $0 {link|check|active|path|audit|rehash|lint} [args...]"
     exit 0
 fi
 
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 {link|check|active} [args...]"
+    echo "Usage: $0 {link|check|active|path|audit|rehash|lint} [args...]"
     exit 1
 fi
 
@@ -96,7 +96,7 @@ else:
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
 import json
-from skills.frontier_editor import append_active_node
+from orchestrator.mgr_frontier import append_active_node
 
 issue_id = int(sys.argv[1])
 node_title = sys.argv[2]
@@ -127,7 +127,7 @@ print(f"{node_title} set active in local ledger {filepath}!")
         FRONTIER_FILE="${2:-artifacts/frontier_state.md}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
 import sys
-from skills.frontier_editor import set_active_path
+from orchestrator.mgr_frontier import set_active_path
 
 path_name = sys.argv[1]
 filepath = sys.argv[2]
@@ -144,7 +144,7 @@ import re
 import json
 import subprocess
 from skills import github_client
-from skills import frontier_editor
+from orchestrator import mgr_frontier
 
 filepath = sys.argv[1]
 
@@ -164,9 +164,9 @@ print(f"Detected {len(completed_nodes)} completed nodes in frontier.")
 target_paths = set()
 
 # 1. Add the Current Active Path from frontier
-active_path_str = frontier_editor.read_active_path(filepath)
+active_path_str = mgr_frontier.read_active_path(filepath)
 if active_path_str:
-    active_id = frontier_editor.extract_path_id(active_path_str)
+    active_id = mgr_frontier.extract_path_id(active_path_str)
     if active_id:
         target_paths.add(active_id)
         print(f"Active Path detected: {active_id}")
@@ -206,9 +206,32 @@ for path_id in sorted(list(target_paths)):
 print("Audit complete.")
 ' "$FRONTIER_FILE"
         ;;
+    rehash)
+        FRONTIER_FILE="${1:-artifacts/frontier_state.yml}"
+        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
+import sys
+from orchestrator.mgr_frontier import rehash
+rehash(sys.argv[1])
+print(f"Successfully rehashed {sys.argv[1]}")
+' "$FRONTIER_FILE"
+        ;;
+    lint)
+        FRONTIER_FILE="${1:-artifacts/frontier_state.yml}"
+        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
+import sys
+from orchestrator.mgr_frontier import load_state, verify_checksum
+try:
+    verify_checksum(sys.argv[1])
+    load_state(sys.argv[1])
+    print(f"✓ {sys.argv[1]} is valid and pure.")
+except Exception as e:
+    print(f"✗ Frontier integrity check failed: {e}")
+    sys.exit(1)
+' "$FRONTIER_FILE"
+        ;;
     *)
         echo "Unknown subcommand: $SUBCOMMAND"
-        echo "Usage: $0 {link|check|active|path} [args...]"
+        echo "Usage: $0 {link|check|active|path|audit|rehash|lint} [args...]"
         exit 1
         ;;
 esac

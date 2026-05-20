@@ -52,14 +52,13 @@
 
 ## Node 8: Establish the Knowledge Base (kb/) Pillar
 - **Status**: Completed
-- **Learnings & Context**: Materialized the 4-pillar architecture by isolating all linguistic primitives into the `kb/` directory. This creates perfect architectural symmetry: `artifacts/` (RAM), `skills/` (Hands), `orchestrator/` (Engine), and `kb/` (ROM). 
+- **Learnings & Context**: Materialized the 4-pillar architecture by isolating all linguistic primitives into the `kb/` directory. This creates perfect architectural symmetry: `artifacts/` (RAM), `skills/` (Hands), `orchestrator/` (Engine), and `kb/` (ROM).
 - **Feedforward Invariants**:
   - `[x]` The repository root is clean, and the `kb/` directory is the authoritative source for system laws.
 
 ## Node 9: Formal Bootstrap Self-Audit
 - **Status**: Completed
-- **Learnings & Context**: Created the Epic Meta-Index issue to satisfy governance invariants. Generated the formal Bootstrap Audit Issue. Programmatically verified the existence of `AGENT.md`, `frontier_state.md`, the 4 pillars (`artifacts/`, `skills/`, `orchestrator/`, `kb/`), and the GH-Issue tracking model. 
-- **HITL Constraint Remediation**: Per Operator instruction, audited historical GH Issues (#1 through #9). Remediated Epic Meta-Index (#10) to perfectly link and map all historical nodes, establishing full backward-compliance with the Hybrid Epic-Ledger rule.
+- **Learnings & Context**: Created the Epic Meta-Index issue to satisfy governance invariants. Generated the formal Bootstrap Audit Issue. Programmatically verified the existence of `AGENT.md`, `frontier_state.md`, the 4 pillars (`artifacts/`, `skills/`, `orchestrator/`, `kb/`), and the GH-Issue tracking model.
 - **Feedforward Invariants**:
   - `[x]` The repository has passed the Bootstrap Audit and is officially cleared for "Operations."
 
@@ -72,9 +71,6 @@
 ## Node 11: Formal Bootstrap Self-Audit V2
 - **Status**: [///] Observe Phase (Paused for HITL)
 - **Learnings & Context**: Re-executed the audit to ensure compliance with the newly codified `kb/WHY-0004` Threshold Rule.
-  - Sensed the repository against `kb/HOW-0002`. All programmatic pillars are intact. 
-  - Identified a trivial failure: The Epic Meta-Index (#10) was missing links to Node 10 and Node 11. 
-  - **Inline Remediation Executed**: Safely invoked "Audit + Remediate" to update the Epic Meta-Index without needing a spin-out node.
 - **Feedforward Invariants**:
   - `[ ]` Await final operator sign-off before closing the ledger.
 
@@ -529,6 +525,7 @@
   - `Probe must not mutate functional logic`
   - `Terminal Node represents leaf/execution node`
   - `Non-Terminal Node represents composite/parent node`
+
 ## Node 157: Implement Soft-Locking for Node Checkout
 - **Status**: Completed
 - **Learnings & Context**: Implemented a soft-lock in flow_state_manager to emit a yellow warning instead of raising an exception. Preserved the backlog label to ensure visibility. Captured the architectural decision in WHY-0011.
@@ -552,6 +549,7 @@
   - `Epic Meta-Index must track all completed nodes`
   - `Active Node pointer in frontier_state.md must be accurate`
   - `Audit payloads must be materialized in artifacts/audit`
+
 ## Activity 161: Implement Multi-Phase Node Planning (plan-start and plan-finish)
 - **Status**: Completed
 - **Learnings & Context**: Successfully decomposed `bin/node plan` into `plan-start` (which acquires the GitHub label lock immediately) and `plan-finish` (which finalizes the contract). This architectural shift guarantees that the WIP-N=1 invariant is preserved even during protracted agentic planning and drafting phases. `checkout` has been updated to safely inherit the lock idempotently.
@@ -572,6 +570,7 @@
 - **Feedforward Invariants**:
   - `[x] Process logic implemented in mgr_prompt.py`
   - `[x] bin/prompt wrapper updated`
+
 ## Codify Manager and Dual-Agent Ontology
 - **Status**: Completed
 - **Learnings & Context**: Established the formal mathematical decoupling of Workflow from Agent, codified the concept of a Manager, and asserted the Dual-Agent (Operator/Auditor) paradigm for true system autonomy.
@@ -584,6 +583,7 @@
 - **Feedforward Invariants**:
   - `[x] Node SPAO lifecycle is object-oriented`
   - `[x] Abstract BaseNode and TerminalNode created`
+
 ## Abstract Nodes into Terminal and Non-Terminal Base Classes
 - **Status**: Completed
 - **Learnings & Context**: Abstracted Node classification into Terminal and Non-Terminal Base Classes via antigravity.yml configuration, unlocking domain portability.
@@ -601,6 +601,7 @@
 - **Learnings & Context**: Integrated test execution natively into mgr_node to align with domain manager separation of concerns. Fixed a critical bug in testing_harness.py where the exact exit code from pytest was swallowed, replacing capture_output with streaming output.
 - **Feedforward Invariants**:
   - `[ ]` None
+
 ## Activity 138: Decouple Prompt Lifecycle from PR Merge
 - **Status**: Completed
 - **Learnings & Context**: Removed consume_prompts and PR linkage entirely. Updated process_prompts to handle consumption definitively based on a resolution context. Cleaned up TerminalNode.reflect logic.
@@ -626,6 +627,7 @@
 - **Learnings & Context**: Conducted architectural evaluation of HITL gates, determining that a BaseManager OOP pattern (Option C) guided by modular {domain}-gates.yml configuration files provides the best systemic invariant.
 - **Feedforward Invariants**:
   - `- [x] kb/WHY-0012-configurable-operator-gates.md exists`
+
 ## Activity 182: Implement HookManager and Configuration Schema
 - **Status**: Completed
 - **Learnings & Context**: Implemented HookManager in orchestrator/sense_hooks.py to dynamically parse antigravity.yml and execute configurable hooks. Hook abstractions have been integrated into sync_and_clean_node.
@@ -736,15 +738,11 @@
 - **Feedforward Invariants**:
   - `Activities 223, 224, 225 generated`
 
-## Current Active Path
-None
-
 ## Probe 221: Holistic Evaluation of Path Modifications
 - **Status**: Completed
 - **Learnings & Context**: Identified Graph Traversal Fallacy, Flat-List Fallacy, and Closure Synchronization Bug. Scoped out 3 new Activities to evolve the Meta-Index into a DAG format and refactor the NBA evaluator to parse it dynamically.
 - **Feedforward Invariants**:
   - `Activities 227, 228, 229 generated`
-
 
 ## Activity 223: Enforce Contract Sections in Issue Templates
 - **Status**: Completed
@@ -752,7 +750,6 @@ None
 - **Feedforward Invariants**:
   - `Templates updated`
   - `tests pass`
-
 
 ## Activity 227: Evolve Meta-Index into a DAG Syntax
 - **Status**: Completed
@@ -762,7 +759,6 @@ None
   - `DAG injection validated`
   - `tests pass`
 
-
 ## Activity 228: Refactor nba_evaluator to parse Meta-Index DAG
 - **Status**: Completed
 - **Learnings & Context**: Replaced numeric guesswork in nba_evaluator with a native DAG parser that pulls the parent Path's GH issue body, parses all nodes and their dependencies, and mathematically surfaces the unblocked true Next-Best-Actions.
@@ -770,7 +766,6 @@ None
   - `DAG parsing implemented`
   - `numeric guessing removed`
   - `tests pass`
-
 
 ## Activity 229: Automate Meta-Index Checkbox Synchronization on Reflect
 - **Status**: Completed
@@ -780,14 +775,12 @@ None
   - `tests updated and passing`
   - `Activity 224 manually closed out successfully using this hook`
 
-
 ## Activity 225: Enforce Orthogonal Scope Validation
 - **Status**: Completed
 - **Learnings & Context**: Implemented Orthogonal Scope Validation guardrail inside TerminalNode.plan_start. This prevents duplicate/overlapping work generation by scanning the backlog for concurrent Activities with identical goals or canonical titles.
 - **Feedforward Invariants**:
   - `Orthogonal Scope Validation implemented`
   - `tests updated and passing`
-
 
 ## Probe 238: Formulate the Sense-Gate Invariant Architecture
 - **Status**: Completed
@@ -796,7 +789,6 @@ None
   - `Sense-Gate architecture formalized`
   - `Two-pronged enforcement strategy documented`
 
-
 ## Activity 239: Codify the Sense-Gate Invariant
 - **Status**: Completed
 - **Learnings & Context**: Implemented the behavioral and environmental gates to explicitly operator-gate the Sense Phase. Updated GEMINI.md and HOW-0001 with The Sense-Gate Invariant. Injected ANSI-colored warning into nba_evaluator.py.
@@ -804,7 +796,6 @@ None
   - `Sense-Gate Invariant added to GEMINI.md`
   - `Environmental warning added to nba_evaluator`
   - `tests pass`
-
 
 ## Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator
 - **Status**: Completed
@@ -821,7 +812,6 @@ None
   - `nba_evaluator.py refactored`
   - `tests pass`
 
-
 ## Hardened Meta-Index traceability and implemented bin/meta audit
 - **Status**: Completed
 - **Learnings & Context**: Meta-Index synchronization is now robust against formatting variations
@@ -830,7 +820,6 @@ None
   - `[x] bin/meta audit implemented`
   - `[x] Path labeling fixed`
 
-
 ## Implement NBAManager orchestrator
 - **Status**: Completed
 - **Learnings & Context**: Successfully migrated high-level navigation logic from legacy skill to a formal orchestrator.
@@ -838,7 +827,6 @@ None
   - `[x] NBAManager implemented`
   - `[x] integrated into sense_hooks`
   - `[x] verified with tests and manual execution.`
-
 
 ## Decommission legacy NBA skill and formalize primitive
 - **Status**: Completed
@@ -849,7 +837,6 @@ None
   - `[x] WHAT-0001 updated`
   - `[x] obsolete tests deleted.`
 
-
 ## Materialize template-driven NBA banners
 - **Status**: Completed
 - **Learnings & Context**: Successfully migrated NBA banner rendering to a formal template-driven system with ANSI support.
@@ -858,7 +845,6 @@ None
   - `[x] sense_hooks.py refactored`
   - `[x] tests updated and passed.`
 
-
 ## Verify NBA Orchestrator Accuracy
 - **Status**: Completed
 - **Learnings & Context**: Successfully verified that the new NBAManager correctly identifies Probe nodes in the backlog, resolving the failures observed in the legacy evaluator.
@@ -866,13 +852,11 @@ None
   - `[x] NBAManager verified`
   - `[x] Legacy issues 217-220 closed as resolved.`
 
-
 ## Probe 257: Refine NBA Presentation Requirements
 - **Status**: Completed
 - **Learnings & Context**: Reordered NBA banner to prioritize Path information with bold styling. Added robust newline handling to Meta-Index parser.
 - **Feedforward Invariants**:
   - `[ ]` None
-
 
 ## Probe 258: Scope NBA Presentation Enhancements
 - **Status**: Completed
@@ -880,13 +864,11 @@ None
 - **Feedforward Invariants**:
   - `[ ]` None
 
-
 ## Materialize NBA Presentation Enhancements
 - **Status**: Completed
 - **Learnings & Context**: Implemented framed, color-coded, and history-aware NBA banner.
 - **Feedforward Invariants**:
   - `[ ]` None
-
 
 ## Refactor Test Runner & Legacy Proxies
 - **Status**: Completed
@@ -897,7 +879,6 @@ None
   - `[x] Legacy proxies deleted`
   - `[x] Mocks updated in tests`
 
-
 ## Fix ModuleNotFoundError in PR #284
 - **Status**: Completed
 - **Learnings & Context**: Successfully resolved CI failures by removing stale test files (tests/test_testing_harness.py) and re-applying the Activity 279 refactoring on a clean branch. All 88 tests pass.
@@ -906,13 +887,11 @@ None
   - `[x] Refactoring re-applied`
   - `[x] 88 tests pass`
 
-
 ## Activity 280: Telemetry Decorator
 - **Status**: Completed
 - **Learnings & Context**: Implemented @record_execution decorator for automated telemetry. Refactored mgr_node and node_lifecycle to use it. Expanded schema for hierarchical reporting.
 - **Feedforward Invariants**:
   - `[x] TDD: 91 tests pass`
-
 
 ## Probe: Align - Refinement of Initialization Invariants
 - **Status**: Completed
@@ -920,7 +899,6 @@ None
 - **Feedforward Invariants**:
   - `[x] kb/WHY-0020 exists`
   - `[x] Trinity definition aligned`
-
 
 ## Probe: Plan - Technical Integration of Triple-Node Guardrails
 - **Status**: Completed
@@ -931,7 +909,6 @@ None
   - `[x] Hard-halt confirmed`
   - `[x] Backlog labeling confirmed`
 
-
 ## Activity: Reflect - Formal Adoption of Triple-Node Doctrine
 - **Status**: Completed
 - **Learnings & Context**: Implemented auto-initialization and branch-target invariant. Verified trinity spawning and branch guardrails.
@@ -940,14 +917,12 @@ None
   - `[x] Branch-Target invariant implemented`
   - `[x] Governance docs updated`
 
-
 ## Align - Metasystem State Hardening
 - **Status**: Completed
 - **Learnings & Context**: Established the Atomic State Invariant (WHY-0021) and updated the glossary. This doctrine mandates that ledger updates and pointer transitions occur as a single atomic unit.
 - **Feedforward Invariants**:
   - `Atomic State Invariant documented in WHY-0021`
   - `Atomic State Invariant added to GLOSSARY.md`
-
 
 ## Plan - Metasystem State Hardening
 - **Status**: Completed
@@ -990,6 +965,19 @@ None
   - `Test mock density remains under configured limit (10 patches/file)`
   - `All tests pass with 100% success rate`
   - `Frontier active nodes are formatted with Node id prefix`
+
+## Node 315: Probe 315: Plan - State Pointer Hardening
+- **Status**: Completed
+- **Learnings & Context**: Successfully migrated the Metasystem tracking ledger from Markdown to a schema-verified, checksum-verified YAML file (frontier_state.yml). Implemented atomic writes (save state -> rehash -> generate markdown) to prevent pointer corruption. Created bin/meta lint and rehash tools, and integrated a stale-pointer audit rule into audit_daemon.py.
+- **Feedforward Invariants**:
+  - `[x] Metasystem ledger successfully migrated to YAML format`
+  - `[x] Automated state pointer integrity guardrails in place`
+  - `[x] Continuous auditing integrated with audit daemon`
+  - `[x] Standardized Node prefixing implemented`
+  - `[x] All 82 unit and integration tests passing`
+
+## Current Active Path
+**Path 316: Metasystem State Hardening**
 
 ## Current Active Node
 None

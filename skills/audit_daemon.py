@@ -115,11 +115,26 @@ def evaluate_stale_active_node(rule, state):
         
     return False, state
 
+def evaluate_frontier_integrity(rule, state):
+    sys.path.append(str(REPO_ROOT))
+    from orchestrator import mgr_frontier
+    filepath = str(REPO_ROOT / "artifacts" / "frontier_state.yml")
+    try:
+        mgr_frontier.verify_checksum(filepath)
+        mgr_frontier.load_state(filepath)
+    except Exception as e:
+        alert_level = rule.get("alert_level", "FAILURE").upper()
+        msg = f"[{alert_level}] FRONTIER_INTEGRITY_VIOLATION: {str(e)}"
+        inject_prompt(msg)
+        return True, state
+    return False, state
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
     "file_modified": evaluate_file_modified,
-    "stale_active_node": evaluate_stale_active_node
+    "stale_active_node": evaluate_stale_active_node,
+    "frontier_integrity": evaluate_frontier_integrity
 }
 
 def main():

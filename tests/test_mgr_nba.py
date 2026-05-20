@@ -4,8 +4,8 @@ from orchestrator.mgr_nba import NBAManager
 
 class TestNBAManager(unittest.TestCase):
     
-    @patch("skills.frontier_editor.read_active_path")
-    @patch("skills.frontier_editor.extract_path_id")
+    @patch("orchestrator.mgr_nba.mgr_frontier.read_active_path")
+    @patch("orchestrator.mgr_nba.mgr_frontier.extract_path_id")
     @patch("skills.github_client.get_issue_details")
     @patch("skills.gh_graph_skill.get_next_nodes")
     def test_evaluate_path_continuation(self, mock_get_next, mock_get_details, mock_extract, mock_read):
@@ -22,7 +22,7 @@ class TestNBAManager(unittest.TestCase):
         self.assertEqual(len(result["recommendations"]), 1)
         self.assertEqual(result["recommendations"][0]["id"], "245")
 
-    @patch("skills.frontier_editor.read_active_path")
+    @patch("orchestrator.mgr_nba.mgr_frontier.read_active_path")
     @patch("skills.github_client.list_issues_by_label")
     def test_evaluate_path_switching(self, mock_list, mock_read):
         mock_read.return_value = None # No active path
