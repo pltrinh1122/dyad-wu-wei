@@ -983,5 +983,13 @@ None
 - **Feedforward Invariants**:
   - `Active node titles must include Node id prefix`
 
+## Reflect - Regression Testing Architecture Hardening (Orthogonality & Reuse)
+- **Status**: Completed
+- **Learnings & Context**: Refactored tests/test_mgr_node.py, tests/test_github_client.py, and tests/test_mgr_backlog.py to replace verbose manual patching with clean pytest fixtures defined in tests/conftest.py. Implemented a Patch Density Auditor in orchestrator/mgr_testing.py running on configuration limits defined in test_config.yml. This successfully reduced regression testing overhead, optimized test execution, and instituted automated governance checks to prevent future @patch bloat. Also verified node prefixing logic in skills/frontier_editor.py.
+- **Feedforward Invariants**:
+  - `Test mock density remains under configured limit (10 patches/file)`
+  - `All tests pass with 100% success rate`
+  - `Frontier active nodes are formatted with Node id prefix`
+
 ## Current Active Node
 None
