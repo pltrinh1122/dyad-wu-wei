@@ -1,28 +1,40 @@
 # Strategic Intent Ledger
 
 ## Active Goals
-### SG-0001: SPAO Prioritization and Backlog Governance
-- **Operator Problem**: The operator has low visibility into the urgency and priority of probes/paths, causing cognitive load and backlog stagnation because broader strategic intent is not tracked and enforced.
-- **Constraints**: The system operates under existing repository structures, GitHub API limits, and a dual-probe initialization pattern.
-- **Falsification Signal**: The operator manually overrides Next-Best-Action recommendations consistently even after intent prioritization is active.
+### NS-0001: Operational Leverage through Autonomous Reliability (North Star)
+- **Operator Problem**: The operator suffers from attention overhead and context-switching fatigue when guiding autonomous agents, preventing scale.
+- **Constraints**: The system must operate under real-time session limits, operator attention boundaries, and standard repository rules.
+- **Falsification Signal**: The ratio of operator attention time (conversation, reviews, debug gates) to completed backlog nodes increases over a 30-day window.
+- **Prioritized Paths**: None
+
+### SG-0001: Backlog Dynamics and Resource Budget Alignment
+- **Operator Problem**: The system wastes computational resources and LLM token budgets executing low-impact paths because backlog selection and path execution are decoupled from active strategic policies.
+- **Constraints**: Backlog prioritization must be evaluated deterministically during the SENSE phase using active ledger goals.
+- **Falsification Signal**: The agent spends resource/token budget on paths that are not prioritized in the strategic ledger.
 - **Prioritized Paths**: 404
 
 ### SG-0002: Gateless Autonomous Execution within Risk-Managed Sandbox
-- **Operator Problem**: Binary gates (PR review gates, SENSE-phase gates) require high manual oversight, causing cognitive load, context-switching fatigue, and system stagnation.
-- **Constraints**: The system operates under git tree transactions, virtual environment sandboxes, and API/token consumption limits.
-- **Falsification Signal**: The operator re-introduces manual approval gates to prevent damage because the sandbox policies fail to isolate or rollback unsafe mutations.
+- **Operator Problem**: The agent cannot execute autonomously because the lack of automated network egress isolation, process containment, and transaction rollback mechanics poses an unacceptable risk of codebase or workspace corruption.
+- **Constraints**: The sandbox must enforce hard CPU/memory limits, restrict network egress to an allowlist, and guarantee idempotent git tree state rollbacks.
+- **Falsification Signal**: The operator re-introduces manual human-in-the-loop review gates because the sandbox policies fail to isolate or rollback unsafe mutations.
 - **Prioritized Paths**: None
 
 ### SG-0003: Preservation of Autonomous Velocity
-- **Operator Problem**: Fragile testing infrastructure and flaky/non-deterministic tests trigger false-positive auto-rollbacks, which stalls the agent's progress and requires manual intervention.
-- **Constraints**: Tests must run offline without making live network calls and must execute in under 60 seconds.
-- **Falsification Signal**: The agent's autonomous throughput (nodes completed per hour) decreases due to repeating rollback loops caused by unresolved test flakiness.
+- **Operator Problem**: Autonomous agent velocity is degraded because non-deterministic (flaky) tests or slow validation runs trigger false-positive auto-rollbacks, stalling the agent in infinite repair loops.
+- **Constraints**: Validation test suites must execute completely offline, contain zero network dependencies, and run in under 60 seconds.
+- **Falsification Signal**: The agent's throughput (nodes completed per unit of time) decreases due to repeating rollback cycles caused by test flakiness or network timeouts.
 - **Prioritized Paths**: 368
 
 ### SG-0004: Efficient Intent-to-Goal Policy Communication
 - **Operator Problem**: Defining strategic goals and aligning on technical designs requires verbose, high-overhead conversational alignment loops, leading to operator decision fatigue.
-- **Constraints**: Goals must be expressed in a structured format (strategic_intent.yml) using falsifiable metrics.
-- **Falsification Signal**: The operator spending more than 10% of their session time in interactive alignment discussions rather than simple policy updates.
+- **Constraints**: Intent must be communicated exclusively through structured policy definitions (strategic_intent.yml) with falsifiable metrics.
+- **Falsification Signal**: The operator spends more than 10% of their session time in interactive conversational turns rather than simple policy updates.
+- **Prioritized Paths**: None
+
+### SG-0005: Autonomous Knowledge Accrual
+- **Operator Problem**: The human attention required to guide the agent remains static because the agent cannot autonomously capture, codify, and apply lessons from its execution failures to future plans.
+- **Constraints**: Knowledge mutations under the kb/ directory must be verified for structural validity and must not violate immutable core axioms.
+- **Falsification Signal**: The average number of agent repair cycles on repeat error patterns does not decrease over subsequent sessions targeting the same domain.
 - **Prioritized Paths**: None
 
 ## Draft Goals
