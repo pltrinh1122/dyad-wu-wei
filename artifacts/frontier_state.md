@@ -1244,6 +1244,54 @@
 - **Feedforward Invariants**:
   - `[x] Completed all child activities and probes of Path 404`
 
+## Node 412: Path 412: Implement Strategic Goal Path Alignment Verification
+- **Status**: Backlog
+- **Learnings & Context**: Implement a verification tool/test that programmatically asserts that all path IDs listed in active strategic goals under strategic_intent.yml correspond to existing, open backlog items on GitHub, preventing stale references.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 413: Probe 413: Align - Implement Strategic Goal Path Alignment Verification
+- **Status**: Backlog
+- **Learnings & Context**: Align on the philosophical and technical intent for Implement Strategic Goal Path Alignment Verification.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 414: Probe 414: Plan - Implement Strategic Goal Path Alignment Verification
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Implement Strategic Goal Path Alignment Verification.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 415: Activity 415: Reflect - Implement Strategic Goal Path Alignment Verification
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Implement Strategic Goal Path Alignment Verification.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 416: Path 416: Implement NBA Strict Transition Enforcement Gate
+- **Status**: Backlog
+- **Learnings & Context**: Implement an automated guardrail in the flow state manager that prevents starting or continuing any path unless that path is explicitly registered and prioritized in the active strategic ledger, enforcing strict transition compliance.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 417: Probe 417: Align - Implement NBA Strict Transition Enforcement Gate
+- **Status**: Backlog
+- **Learnings & Context**: Align on the philosophical and technical intent for Implement NBA Strict Transition Enforcement Gate.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 418: Probe 418: Plan - Implement NBA Strict Transition Enforcement Gate
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Implement NBA Strict Transition Enforcement Gate.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 419: Activity 419: Reflect - Implement NBA Strict Transition Enforcement Gate
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Implement NBA Strict Transition Enforcement Gate.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 
