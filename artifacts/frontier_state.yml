@@ -1146,3 +1146,10 @@ nodes:
     constraints inside the backlog manager.
   invariants:
   - '- ''`WHY-0022 document created`''\n- ''`All 82 tests pass cleanly`''\n'
+- name: 'Node 336: Probe 336: Plan - Enforce Triple-Node Auto-Initialization for Paths'
+  status: Completed
+  learnings: Planned and documented the technical specification for programmatically
+    generating Align Probe, Plan Probe, and Reflect Activity child nodes recursively
+    in BacklogManager.
+  invariants:
+  - '- ''`WHAT-0023 document created`''\n- ''`All 82 tests pass cleanly`''\n'
