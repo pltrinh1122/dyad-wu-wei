@@ -2,6 +2,19 @@ import os
 import subprocess
 import pytest
 
+# ── Hermetic gh stub ──────────────────────────────────────────────────────────
+# Prepend tests/fixtures/ to PATH so the stub gh replaces the real gh CLI for
+# every test in this module. Prevents live GitHub API calls in CI.
+_FIXTURES_DIR = os.path.join(os.path.dirname(__file__), "fixtures")
+
+@pytest.fixture(autouse=True, scope="module")
+def stub_gh_cli():
+    """Inject tests/fixtures/ into PATH, activating the hermetic gh stub."""
+    original_path = os.environ.get("PATH", "")
+    os.environ["PATH"] = _FIXTURES_DIR + os.pathsep + original_path
+    yield
+    os.environ["PATH"] = original_path
+
 def test_node_test_subcommand():
     """Verifies the bin/node test subcommand executes successfully."""
     if os.environ.get("ANTIGRAVITY_RUNNING_TESTS"):
