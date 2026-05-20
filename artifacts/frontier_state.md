@@ -996,8 +996,14 @@
   - `Plan Probe`
   - and Reflect Activity children`'\n- '`All 83 tests pass cleanly`'\n
 
+## Node 342: Probe 342: Align - Spike Path: Abstraction Doctrine - Python API for git and gh
+- **Status**: Completed
+- **Learnings & Context**: Aligned on the core requirements of the Abstraction Doctrine, specifying per-concept abstractions for Path/Backlog (consolidated) and Node (internal).
+- **Feedforward Invariants**:
+  - - '`WHY-0024 decision record created`'\n- '`All 83 tests pass cleanly`'\n
+
 ## Current Active Path
-None
+**341**
 
 ## Current Active Node
 None
