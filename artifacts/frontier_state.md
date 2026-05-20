@@ -1333,10 +1333,10 @@
   - `[x] WHAT-0043 is created`
 
 ## Node 426: Probe 426: Plan - Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority.
+- **Status**: Completed
+- **Learnings & Context**: Locked and verified WHAT-0043 strategic tradeoff spec, establishing the exact prioritization gate rules.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHAT-0043 verified and locked`
 
 ## Node 427: Activity 427: Reflect - Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority
 - **Status**: Backlog
