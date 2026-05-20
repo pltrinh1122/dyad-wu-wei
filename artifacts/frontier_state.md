@@ -970,8 +970,14 @@
   - `[x] Standardized Node prefixing implemented`
   - `[x] All 82 unit and integration tests passing`
 
+## Node 333: Activity 333: De-track Telemetry Log from Git
+- **Status**: Completed
+- **Learnings & Context**: De-tracked artifacts/telemetry.jsonl from Git tracking to avoid checkout and merge conflicts during node sync operations.
+- **Feedforward Invariants**:
+  - - '`artifacts/telemetry.jsonl is not tracked in Git`'\n- '`All 82 tests pass cleanly`'\n
+
 ## Current Active Path
-None
+**Path 292: Path: Agentic Infrastructure Hardening**
 
 ## Current Active Node
 None
