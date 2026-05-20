@@ -3,6 +3,7 @@ import sys
 import yaml
 import json
 import subprocess
+import re
 from pathlib import Path
 
 # Paths
@@ -88,10 +89,37 @@ def evaluate_file_modified(rule, state):
         
     return False, state
 
+def evaluate_stale_active_node(rule, state):
+    if not FRONTIER_FILE.exists():
+        return False, state
+        
+    with open(FRONTIER_FILE, "r") as f:
+        content = f.read()
+        
+    # Extract Active Node using simple regex to avoid complex imports
+    active_node = ""
+    match = re.search(r"## Current Active Node\n(.*?)(?=\n## |\Z)", content, re.DOTALL)
+    if match:
+        active_node = match.group(1).strip().strip('*')
+        
+    if not active_node or active_node == "None":
+        return False, state
+        
+    # Look for ## <active_node> followed by "- **Status**: Completed"
+    pattern = r"## " + re.escape(active_node) + r"\n- \*\*Status\*\*: Completed"
+    if re.search(pattern, content):
+        alert_level = rule.get("alert_level", "FAILURE").upper()
+        msg = f"[{alert_level}] STALE_POINTER: Node '{active_node}' is marked as Active but is already Completed in the ledger."
+        inject_prompt(msg)
+        return True, state
+        
+    return False, state
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
-    "file_modified": evaluate_file_modified
+    "file_modified": evaluate_file_modified,
+    "stale_active_node": evaluate_stale_active_node
 }
 
 def main():

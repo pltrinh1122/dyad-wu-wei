@@ -91,6 +91,30 @@ class TerminalNode(BaseNode):
     
     def __init__(self, issue_id: str):
         super().__init__(issue_id)
+
+    def _verify_state_purity(self, frontier_file: str = "artifacts/frontier_state.md", expected_active: str | None = None):
+        """
+        Verifies that the frontier state is 'pure' (no conflicting active nodes).
+        If expected_active is provided, it validates that the specific node is the only active one.
+        """
+        if not os.path.exists(frontier_file):
+            return
+            
+        current_active = frontier_editor.read_active_node(frontier_file)
+        if current_active and current_active != "None":
+            # If we expect a specific node (e.g. during reflect), it must match
+            if expected_active and current_active == expected_active:
+                return
+            
+            # Special case for "Node <ID>: Title" format
+            match = re.search(r"Node (\d+):", current_active)
+            active_id = match.group(1) if match else None
+            
+            if expected_active and active_id and str(expected_active) == str(active_id):
+                return
+                
+            raise Exception(f"State Dissonance: Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
+
     def _validate_orthogonal_scope(self):
         """Validates that the current node does not have an identical footprint to another open node."""
         current_node = github_client.get_issue_details(self.issue_id)
@@ -127,7 +151,9 @@ class TerminalNode(BaseNode):
                 raise Exception(f"Orthogonal Scope Violation: Node {self.issue_id} has an identical goal footprint to Node {issue['number']}")
 
     @record_execution(stage="plan")
-    def plan_start(self) -> None:
+    def plan_start(self, frontier_file: str = "artifacts/frontier_state.md") -> None:
+        self._verify_state_purity(frontier_file)
+        
         in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
         if in_progress_label in self.gh_labels:
             raise Exception(f"Node #{self.issue_id} is already in progress by another thread!")
@@ -136,7 +162,12 @@ class TerminalNode(BaseNode):
             
         self.set_status("in_progress")
         
-        log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} for multi-phase planning.")
+        # Atomically set active node in frontier
+        details = github_client.get_issue_details(self.issue_id)
+        node_title = details.get("title", f"Node {self.issue_id}")
+        frontier_editor.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
+        
+        log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} and updated frontier.")
 
     @record_execution(stage="plan")
     def plan_finish(self, body: str) -> str:
@@ -157,10 +188,12 @@ class TerminalNode(BaseNode):
         return issue_url
 
     @record_execution(stage="act")
-    def checkout(self, branch_name: str) -> None:
+    def checkout(self, branch_name: str, frontier_file: str = "artifacts/frontier_state.md") -> None:
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
             
+        self._verify_state_purity(frontier_file, expected_active=self.issue_id)
+        
         self.set_status("in_progress")
                 
         log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at .worktrees/{branch_name}")
@@ -195,15 +228,19 @@ class TerminalNode(BaseNode):
         nba = mgr_nba.NBAManager()
         nba_result = nba.evaluate(frontier_file=frontier_file)
         
+        clear_path = False
         if nba_result["type"] == "path_switching" and active_path_str:
             # We had an active path, but NBA now says we should switch (because it's exhausted)
             path_issue_id = frontier_editor.extract_path_id(active_path_str)
             if path_issue_id:
                 github_client.close_issue(path_issue_id, "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
                 log_stage_advancement("reflect", "Path Invariant Enforced", f"Automatically closed parent {active_path_str}")
-                frontier_editor.set_active_path(frontier_file, "None")
+                clear_path = True
         
-        frontier_editor.complete_active_node(frontier_file, node_name, learnings, invariants)
+        # ATOMIC UPDATE: Mark node completed AND clear pointers
+        frontier_editor.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
+        if clear_path:
+            frontier_editor.set_active_path(frontier_file, "None")
         
         subprocess.run(["git", "add", "."], check=True)
         subprocess.run(["git", "commit", "-m", commit_msg], check=True)

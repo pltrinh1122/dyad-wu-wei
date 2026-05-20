@@ -72,6 +72,10 @@ def sync_and_clean_node() -> None:
  
     log_stage_advancement("sense", "Sense Phase Completed", "Workspace successfully synchronized and pruned.")
  
+    # Trigger Metasystem Audit
+    print("\n🔍 Executing Metasystem Integrity Audit...")
+    subprocess.run([sys.executable, "skills/audit_daemon.py"], check=False)
+ 
     # Surface pending backlog items at Sense phase
     manager = HookManager()
     manager.execute_all()

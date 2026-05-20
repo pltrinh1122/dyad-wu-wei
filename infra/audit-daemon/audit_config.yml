@@ -8,6 +8,10 @@ rules:
     alert_level: "NOTIFICATION"
     prompt_message: "Periodic Health Audit (Node count: {current}) - Ensure architectural invariants"
 
+  - id: stale_pointer_check
+    type: stale_active_node
+    alert_level: FAILURE
+
   - id: "refresh-ci-venv"
     type: "file_modified"
     file: "requirements-dev.txt"
