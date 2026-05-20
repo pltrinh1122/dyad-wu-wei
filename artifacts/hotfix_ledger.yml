@@ -27,3 +27,7 @@ hotfixes:
   timestamp: '2026-05-20T04:55:21Z'
   file: artifacts/frontier_state.md
   message: 'chore: sync markdown derived state after closure'
+- hash: 457097fd51d005b4a6cf981fec375024355e5e0a
+  timestamp: '2026-05-20T06:01:37Z'
+  file: GEMINI.md
+  message: 'docs: update instructions to document unified spao CLI'
