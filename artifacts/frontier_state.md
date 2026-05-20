@@ -1397,6 +1397,19 @@
   - `[x] WHY-0045 created`
   - `[x] WHAT-0045 created`
 
+## Node 458: Activity 458: Activity: Implement Automated Labeling Invariants
+- **Status**: Backlog
+- **Learnings & Context**: Implement automated labeling invariants during node reflect and plan-start transitions.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 303: Probe 303: Probe: Design for Automated Labeling Invariants
+- **Status**: Completed
+- **Learnings & Context**: Designed rules for automated status label cleanup and path/node tagging. Registered the implementation activity node #458 in the backlog.
+- **Feedforward Invariants**:
+  - `[x] WHY-0046 created`
+  - `[x] WHAT-0046 created`
+
 ## Current Active Path
 None
 
