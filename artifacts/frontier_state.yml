@@ -1481,10 +1481,11 @@ nodes:
   - '[x] WHY-0041 is created'
   - '[x] WHAT-0041 is created'
 - name: 'Node 422: Probe 422: Plan - Audit and Harden Inner-Loop Test Dependencies'
-  status: Backlog
-  learnings: Technical design and proposed changes for Audit and Harden Inner-Loop
-    Test Dependencies.
-  invariants: []
+  status: Completed
+  learnings: Verified WHAT-0041 technical specification file and locked the test dependency
+    audit plan.
+  invariants:
+  - '[x] WHAT-0041 touched and tracked'
 - name: 'Node 423: Activity 423: Reflect - Audit and Harden Inner-Loop Test Dependencies'
   status: Backlog
   learnings: Final reflection and path closure for Audit and Harden Inner-Loop Test

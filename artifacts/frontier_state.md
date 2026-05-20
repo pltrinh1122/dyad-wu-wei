@@ -1307,10 +1307,10 @@
   - `[x] WHAT-0041 is created`
 
 ## Node 422: Probe 422: Plan - Audit and Harden Inner-Loop Test Dependencies
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Audit and Harden Inner-Loop Test Dependencies.
+- **Status**: Completed
+- **Learnings & Context**: Verified WHAT-0041 technical specification file and locked the test dependency audit plan.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHAT-0041 touched and tracked`
 
 ## Node 423: Activity 423: Reflect - Audit and Harden Inner-Loop Test Dependencies
 - **Status**: Backlog
