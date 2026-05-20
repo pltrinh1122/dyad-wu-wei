@@ -2,59 +2,6 @@ import re
 from skills.file_locker import lock_file
 from orchestrator.mgr_telemetry import record_execution
 
-def read_active_node(filepath: str) -> str:
-    """Reads the current active node from frontier_state.md."""
-    with lock_file(filepath):
-        with open(filepath, 'r') as f:
-            lines = f.readlines()
-        
-    for i, line in enumerate(lines):
-        if line.strip() == "## Current Active Node":
-            for j in range(i + 1, len(lines)):
-                next_line = lines[j].strip()
-                if next_line:
-                    # Strip bold asterisks
-                    return next_line.strip('*')
-    return ""
-
-def read_last_completed_node(filepath: str) -> str:
-    """Reads the most recently completed node (the one immediately above Current Active Node)."""
-    with lock_file(filepath):
-        with open(filepath, 'r') as f:
-            lines = f.readlines()
-            
-    active_idx = -1
-    for i, line in enumerate(lines):
-        if line.strip() == "## Current Active Node":
-            active_idx = i
-            break
-            
-    if active_idx == -1:
-        return ""
-        
-    # Search backwards from active_idx - 1 for the first "## " header
-    for i in range(active_idx - 1, -1, -1):
-        if lines[i].startswith("## "):
-            return lines[i].strip("# ").strip()
-            
-    return ""
-
-def read_active_path(filepath: str) -> str | None:
-    """Reads the current active path from frontier_state.md."""
-    with lock_file(filepath):
-        with open(filepath, 'r') as f:
-            lines = f.readlines()
-        
-    for i, line in enumerate(lines):
-        if line.strip() == "## Current Active Path":
-            for j in range(i + 1, len(lines)):
-                next_line = lines[j].strip()
-                if next_line:
-                    if next_line == "None":
-                        return None
-                    return next_line.strip('*')
-    return None
-
 def extract_path_id(path_str: str) -> str | None:
     """
     Extracts the numeric ID from a Path string.
@@ -79,115 +26,39 @@ def extract_path_id(path_str: str) -> str | None:
         return match.group(1)
     return None
 
+def read_active_node(filepath: str) -> str:
+    """Reads the current active node from the frontier state (via mgr_frontier)."""
+    from orchestrator import mgr_frontier
+    return mgr_frontier.read_active_node(filepath)
+
+def read_last_completed_node(filepath: str) -> str:
+    """Reads the most recently completed node (via mgr_frontier)."""
+    from orchestrator import mgr_frontier
+    return mgr_frontier.read_last_completed_node(filepath)
+
+def read_active_path(filepath: str) -> str | None:
+    """Reads the current active path (via mgr_frontier)."""
+    from orchestrator import mgr_frontier
+    return mgr_frontier.read_active_path(filepath)
+
 @record_execution(stage="skill")
 def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str], clear_pointers: bool = True) -> None:
-    """Appends the completed node block and optionally clears the active pointer."""
-    with lock_file(filepath):
-        with open(filepath, 'r') as f:
-            content = f.read()
-        
-        invariant_str = "\n".join([f"  - `{inv}`" for inv in invariants])
-        if not invariant_str:
-            invariant_str = "  - `[ ]` None"
-            
-        completed_block = f"""## {node_name}
-- **Status**: Completed
-- **Learnings & Context**: {learnings}
-- **Feedforward Invariants**:
-{invariant_str}
-
-"""
-        # Find the existing node block and replace it
-        pattern = r"## " + re.escape(node_name) + r"\n.*?(?=\n## |\Z)"
-        
-        content, count = re.subn(pattern, completed_block, content, count=1, flags=re.DOTALL)
-        
-        if count == 0 and "## Current Active Node" in content:
-            # Fallback: Insert above the active node header
-            content = content.replace("## Current Active Node", completed_block + "## Current Active Node")
-        
-        if clear_pointers:
-            # Clear Active Node
-            lines = content.splitlines(keepends=True)
-            for i, line in enumerate(lines):
-                if line.strip() == "## Current Active Node":
-                    for j in range(i + 1, len(lines)):
-                        if lines[j].strip():
-                            lines[j] = "None\n"
-                            break
-                    break
-            content = "".join(lines)
-
-        with open(filepath, 'w') as f:
-            f.write(content)
+    """Appends the completed node block (via mgr_frontier)."""
+    from orchestrator import mgr_frontier
+    mgr_frontier.complete_active_node(filepath, node_name, learnings, invariants, clear_pointers)
 
 def set_active_node(filepath: str, node_name: str) -> None:
-    """Updates the text below Current Active Node."""
-    with lock_file(filepath):
-        with open(filepath, 'r') as f:
-            lines = f.readlines()
-        
-    for i, line in enumerate(lines):
-        if line.strip() == "## Current Active Node":
-            # Find the next non-empty line and replace it
-            for j in range(i + 1, len(lines)):
-                if lines[j].strip():
-                    lines[j] = f"**{node_name}**\n"
-                    break
-            break
-            
-    with open(filepath, 'w') as f:
-        f.writelines(lines)
+    """Updates the active node (via mgr_frontier)."""
+    from orchestrator import mgr_frontier
+    mgr_frontier.set_active_node(filepath, node_name)
 
 @record_execution(stage="skill")
 def set_active_path(filepath: str, path_name: str) -> None:
-    """Updates the text below Current Active Path."""
-    with lock_file(filepath):
-        with open(filepath, 'r') as f:
-            lines = f.readlines()
-        
-    for i, line in enumerate(lines):
-        if line.strip() == "## Current Active Path":
-            # Find the next non-empty line and replace it
-            for j in range(i + 1, len(lines)):
-                if lines[j].strip():
-                    if path_name == "None" or path_name is None:
-                        lines[j] = "None\n"
-                    else:
-                        lines[j] = f"**{path_name}**\n"
-                    break
-            break
-            
-    with open(filepath, 'w') as f:
-        f.writelines(lines)
+    """Updates the active path (via mgr_frontier)."""
+    from orchestrator import mgr_frontier
+    mgr_frontier.set_active_path(filepath, path_name)
 
 def append_active_node(filepath: str, node_id: int, node_title: str, description: str, invariants: list[str]) -> None:
-    """Appends a new active node block above the Current Active Node header,
-    and sets it active.
-    """
-    with lock_file(filepath):
-        with open(filepath, 'r') as f:
-            content = f.read()
-
-    invariant_str = "\n".join([f"  - `{inv}`" for inv in invariants])
-    if not invariant_str:
-        invariant_str = "  - `[ ]` None"
-
-    node_name = f"Node {node_id}: {node_title}"
-
-    completed_block = f"""## {node_name}
-- **Status**: [///] Act Phase
-- **Learnings & Context**: {description}
-- **Feedforward Invariants**:
-{invariant_str}
-
-"""
-    # Find the Current Active Node block and insert before it
-    if "## Current Active Node" in content:
-        content = content.replace("## Current Active Node", completed_block + "## Current Active Node")
-
-    with open(filepath, 'w') as f:
-        f.write(content)
-
-    # Now set it active
-    set_active_node(filepath, node_name)
+    """Appends a new active node block (via mgr_frontier)."""
+    from orchestrator import mgr_frontier
+    mgr_frontier.append_active_node(filepath, node_id, node_title, description, invariants)

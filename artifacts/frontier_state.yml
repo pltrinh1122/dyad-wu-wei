@@ -1,0 +1,1133 @@
+current_active_path: null
+current_active_node: null
+nodes:
+- name: 'Node 0: Agentic Initialization & Flow-State Setup'
+  status: Completed
+  learnings: Injected `AGENT.md` and established the topological `frontier_state.md`
+    to persist the session architecture.
+  invariants:
+  - '`[x]` `AGENT.md` is present.'
+  - '`[x]` Flow-state anchor is established.'
+- name: 'Node 1: Formulate INTAKE_BOOTSTRAP.md Specification'
+  status: Completed
+  learnings: Drafted the core `INTAKE_BOOTSTRAP.md` standard based on the `agent-travel`
+    case study, defining the GH-Issue flow-state anchor and Agent vs Operator responsibility
+    matrix.
+  invariants:
+  - '`[x]` `INTAKE_BOOTSTRAP.md` successfully captures the standards.'
+- name: 'Node 2: Dry-Run Agentic Architecture Compliance'
+  status: Completed (Dry-Run)
+  learnings: 'Executed the `INTAKE_BOOTSTRAP.md` SPAO loop on the meta-repository
+    itself. Created GH Issue #3 as the Flow-State Ledger. Validated that `skills/`
+    and `orchestrator/` directories can be scaffolded following the standard.'
+  invariants:
+  - '`[x]` Full Agentic Architecture (`artifacts/`, `skills/`, `orchestrator/`) is
+    present.'
+  - '`[x]` GH Issue successfully acted as the Plan anchor.'
+- name: 'Node 3: Codify Side-Bar Rubrics & Materialization Boundary'
+  status: Completed
+  learnings: Materialized the off-ledger evaluation regarding conversational interaction
+    vs GH-Issue strictness. `INTAKE_BOOTSTRAP.md` was updated to explicitly define
+    the Side-Bar Rubrics and the Materialization Boundary, ensuring future agents
+    consistently interpret when to chat freely versus when to demand a GH-Issue.
+  invariants:
+  - '`[x]` Agent consistency rubrics are codified in the standard.'
+- name: 'Node 4: Codify Hybrid Epic-Ledger Issue Governance'
+  status: Completed
+  learnings: Materialized the hybrid approach to GitHub Issue lifecycle management.
+    Established the pattern of a long-lived "Epic Meta-Index" for macro-tracking and
+    ephemeral "Node Issues" for immutable micro-transactions. This bridges the gap
+    between clean audit narratives and strict execution contracts.
+  invariants:
+  - '`[x]` The SPAO loop standard mandates updating the Epic Meta-Index during Plan
+    and Reflect phases.'
+- name: 'Node 5: Implement Key Decision Record (KDR) Knowledge Base'
+  status: Completed
+  learnings: Materialized the `artifacts/kdr/` Knowledge Base structure. Identified
+    that while GH-Issues capture the *execution*, KDRs are required to capture the
+    *philosophical rationale* of Side-Bar conversations. Generated foundational KDRs
+    (0001 and 0002) to establish the repository's philosophical memory.
+  invariants:
+  - '`[x]` The SPAO standard mandates a KDR Handoff before GH-Issue creation for major
+    architectural decisions.'
+- name: 'Node 6: Establish Formal Bootstrap Audit Control Artifact'
+  status: Completed
+  learnings: Successfully executed the "KDR Handoff" pattern. Generated KDR-0003 to
+    document the decision to use dynamic GH-Issue ledgers for auditing. Created the
+    master `BOOTSTRAP_AUDIT_TEMPLATE.md` control artifact and updated `INTAKE_BOOTSTRAP.md`
+    to mandate the audit phase before a repository begins operations.
+  invariants:
+  - '`[x]` Formal Audit template exists and is integrated into the intake bootstrap
+    process.'
+- name: 'Node 7: Migrate to Primitive WHAT/WHY/HOW Architecture'
+  status: Completed
+  learnings: 'Successfully crossed the Materialization Boundary to completely restructure
+    the repository''s governance documents. De-jargonized the standards into pure
+    linguistic primitives: `WHAT-*` for Definitions/Ontology, `WHY-*` for Decision
+    Rationale, and `HOW-*` for Instructions. This creates an unambiguously orthogonal
+    system for LLM interpretation.'
+  invariants:
+  - '`[x]` All core files enforce the `WHAT/WHY/HOW` primitive prefix.'
+- name: 'Node 8: Establish the Knowledge Base (kb/) Pillar'
+  status: Completed
+  learnings: 'Materialized the 4-pillar architecture by isolating all linguistic primitives
+    into the `kb/` directory. This creates perfect architectural symmetry: `artifacts/`
+    (RAM), `skills/` (Hands), `orchestrator/` (Engine), and `kb/` (ROM).'
+  invariants:
+  - '`[x]` The repository root is clean, and the `kb/` directory is the authoritative
+    source for system laws.'
+- name: 'Node 9: Formal Bootstrap Self-Audit'
+  status: Completed
+  learnings: Created the Epic Meta-Index issue to satisfy governance invariants. Generated
+    the formal Bootstrap Audit Issue. Programmatically verified the existence of `AGENT.md`,
+    `frontier_state.md`, the 4 pillars (`artifacts/`, `skills/`, `orchestrator/`,
+    `kb/`), and the GH-Issue tracking model.
+  invariants:
+  - '`[x]` The repository has passed the Bootstrap Audit and is officially cleared
+    for "Operations."'
+- name: 'Node 10: Codify Audit Remediation Threshold'
+  status: Completed
+  learnings: Established the "Complexity Threshold" rule for audits. Agents are now
+    permitted to execute atomic "Audit + Remediate" operations for trivial, deterministic
+    fixes (to maintain velocity), but are strictly required to spawn dedicated GH-Issue
+    Nodes for complex logic fixes (to prevent masked mutations).
+  invariants:
+  - '`[x]` Audits allow trivial inline remediation; complex failures demand dedicated
+    spin-out nodes.'
+- name: 'Node 11: Formal Bootstrap Self-Audit V2'
+  status: '[///] Observe Phase (Paused for HITL)'
+  learnings: Re-executed the audit to ensure compliance with the newly codified `kb/WHY-0004`
+    Threshold Rule.
+  invariants:
+  - '`[ ]` Await final operator sign-off before closing the ledger.'
+- name: 'Node 12: Materialize Audit Payload Artifacts'
+  status: Completed
+  learnings: 'Materialized the "Ledger vs Payload" paradigm for audits. The GH-Issue
+    serves as the micro-state execution contract, but the final diagnostic result
+    is permanently outputted to `artifacts/audit/`. This provides excellent offline,
+    chronological traceability of repository health. Generated the first payload:
+    `0001-bootstrap-v2-compliance.md`.'
+  invariants:
+  - '`[x]` All future audits must generate a physical payload in `artifacts/audit/`
+    prior to ledger closure.'
+- name: 'Node 13: Implement Portable Flow-State Skills'
+  status: Completed
+  learnings: Successfully replaced brittle bash commands with pure Python modules
+    via rigorous TDD. Flow-State operations (Plan/Reflect) are now safely executed
+    via skills.flow_state_manager.
+  invariants:
+  - '`[x] TDD test suite achieves 100% pass rate`'
+- name: 'Node 14: Implement Testing Harness Skill'
+  status: Completed
+  learnings: Implemented testing_harness.py to run the pytest suite natively in python
+    inside the virtual environment. This prevents verbose bash chains like `source
+    .venv/bin/activate && PYTHONPATH=. pytest` from clogging the execution loop. Successfully
+    dogfooded the skill to verify all 9 tests pass.
+  invariants:
+  - '`[x] TDD is executed entirely through python testing harness`'
+- name: 'Node 15: Materialize Orthogonal GitHub CI Pipeline'
+  status: Completed
+  learnings: Materialized a pristine GitHub Actions CI pipeline (.github/workflows/python-ci.yml)
+    to serve as a cloud gatekeeper. Documented in WHY-0007 that this cloud layer remains
+    completely decoupled from the Agent's local testing_harness.py skill.
+  invariants:
+  - '`[x] GitHub CI runs raw pytest independently of Agent skills`'
+- name: 'Node 16: Establish Pull Request HITL Gate'
+  status: Completed
+  learnings: Successfully transitioned the SPAO loop to a Branch & Pull Request paradigm.
+    Strict branch naming (`node/<id>-<kebab-case>`) is now programmatically enforced
+    via regex in `flow_state_manager.py`. Local hygiene is automated via `sync_and_clean_node`.
+  invariants:
+  - '`[x] Agent is paralyzed from advancing to the next node until the Operator merges
+    the PR`'
+- name: 'Node 17: CI Budget Optimization'
+  status: Completed
+  learnings: Removed `pull_request` trigger from GitHub Actions to optimize compute
+    budget. Updated `WHY-0007` to document the decision to rely on local TDD instead
+    of burning cloud minutes on open PRs.
+  invariants:
+  - '`[x] GitHub CI only triggers on main pushes`'
+- name: 'Node 18: Materialize Local CI Runner Infrastructure'
+  status: Completed
+  learnings: Successfully established the `infra/` pillar and `infrastructure_state.md`.
+    Built the universal `infra_manager` skill with `systemd_user` routing. Materialized
+    `provision.sh` for the GitHub self-hosted runner and successfully routed CI traffic
+    to it. The runner is active.
+  invariants:
+  - '`[x] Infrastructure is formally tracked and agent-controllable`'
+  - '`[x] GitHub CI runs on self-hosted`'
+- name: 'Node 19: Establish Antigravity Hook'
+  status: Completed
+  learnings: Migrated AGENT.md to GEMINI.md to utilize the native Antigravity system
+    prompt hook. Formally codified a Hard Invariant banning raw LLM bash testing,
+    forcing the use of skills/testing_harness.py across all KB documents.
+  invariants:
+  - '`[x] Antigravity System reads GEMINI.md automatically`'
+  - '`[x] Native bash testing is forbidden`'
+- name: 'Node 20: Unblock CI Cache Stall'
+  status: Completed
+  learnings: 'Removed `cache: pip` from `python-ci.yml` because the `actions/setup-python`
+    pip cache synchronization protocol frequently hangs on raw self-hosted runners.
+    A raw pip install takes <2s on the local workstation, rendering the cloud cache
+    redundant anyway.'
+  invariants:
+  - '`[x] CI Pipeline no longer hangs`'
+- name: 'Node 21: Zero-Network CI Execution'
+  status: Completed
+  learnings: Eliminated all network calls from the CI test step by pre-baking a runner-level
+    venv at ~/actions-runner/venv/. Stripped setup-python and pip install steps from
+    python-ci.yml. The full 16-test suite now executes in 155ms with a 2-step workflow
+    (checkout + pytest). Operator duty for deps refresh is documented in infrastructure_state.md.
+  invariants:
+  - '`[x] CI completes in <10s with zero PyPI/CDN calls after checkout`'
+  - '`[x] ci-venv is tracked as a Managed Artifact in infrastructure_state.md`'
+  - '`[x] provision.sh is idempotent and bootstraps the venv on first run`'
+- name: 'Node 22: GitHub Native Backlog Primitives'
+  status: Completed
+  learnings: Established GitHub Issues as the native agentic backlog. Added list_issues_by_label()
+    and add_to_backlog() to github_client.py. Updated sync_and_clean_node() to surface
+    backlog items at every Sense phase. Codified pull convention in HOW-0001. Created
+    the backlog label on GitHub. 19/19 tests pass.
+  invariants:
+  - '`[x] Agent can add items to backlog via add_to_backlog()`'
+  - '`[x] Agent surfaces backlog at every Sense phase via sync_and_clean_node()`'
+  - '`[x] Backlog pull convention is codified in HOW-0001`'
+- name: 'Node 27: Materialize GLOSSARY.md'
+  status: Completed
+  learnings: Materialized the authoritative kb/GLOSSARY.md dictionary, defining Node,
+    Spike, Epic, Side-bar, Materialization Boundary, SPAO Loop, HITL, Frontier, Backlog,
+    WIP, Primitive, Feedforward Invariant, and Pillar terms to ensure strict vocabulary
+    consistency across sessions and models.
+  invariants:
+  - '`kb/GLOSSARY.md exists`'
+  - '`Terms from seed list are comprehensively defined`'
+- name: 'Node 30: Terminology Synchronization'
+  status: Completed
+  learnings: Successfully synchronized the entire repository with the authoritative
+    GLOSSARY terms. Evaluated and mapped the transition to topological graph theory
+    and SPAO loop terminologies, generated the physical coherence validation artifact,
+    renamed KDR-0001, and updated GEMINI.md, WHAT-0001, HOW-0001, HOW-0002, and historical
+    compliance records to cleanly use "Path" and "Probe".
+  invariants:
+  - '`All active files in kb/ and root use Path/Probe`'
+  - '`Coherence Validation artifact exists`'
+  - '`PR matches strict branch naming`'
+- name: 'Node 31: Automated Lexical Guard'
+  status: Completed
+  learnings: Implemented a highly robust Automated Lexical Guard unit test that automatically
+    scans all modified, added, renamed, or untracked files in the active git workspace
+    for stale words (epic/spike). Integrates seamlessly into our local TDD test harness,
+    failing loudly if violations occur. Strictly exempts legacy mapping documents
+    (kb/GLOSSARY.md, artifacts/frontier_state.md, artifacts/coherence_validation.md)
+    to preserve historical accuracy.
+  invariants:
+  - '`Lexical guard test suite passes cleanly`'
+  - '`Stale vocabulary is completely blocked on all new codebase mutations`'
+- name: 'Node 32: Shell Script Wrappers'
+  status: Completed
+  learnings: Designed, implemented, and thoroughly tested robust executable bash wrappers
+    (bin/run-tests, bin/sync-clean, bin/plan-node, bin/reflect-node) to encapsulate
+    raw python3 commands. This allows the human operator to tightly whitelist agentic
+    commands in their terminal guardrails without having to generally whitelist python3.
+    Updated all active operational documentation in GEMINI.md and kb/HOW-0001 to point
+    exclusively to the wrapper scripts.
+  invariants:
+  - '`All agentic python3 commands successfully wrapped in bin/`'
+  - '`bin/* is fully executable and handles arguments transparently`'
+  - '`Tests verify wrappers execute correctly and prevent recursive test loops`'
+  - '`Operational documents strictly use wrapper commands`'
+- name: 'Node 33: Backlog CLI Abstractions'
+  status: Completed
+  learnings: Materialized precise executable backlog script wrappers (bin/backlog-new,
+    bin/backlog-list, bin/backlog-view, bin/backlog-edit) in the git index with executable
+    permissions (mode 100755), eliminating raw gh calls and permitting secure operator
+    whitelisting. Full TDD subprocess unit testing implemented and verified green.
+  invariants:
+  - '`[x] bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit are
+    fully functional`'
+  - '`[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`'
+- name: 'Node 34: Consolidated Backlog CLI'
+  status: Completed
+  learnings: Consolidated multiple separate backlog CLI wrapper scripts into a single
+    unified bin/backlog wrapper script supporting list, new, view, and edit subcommands.
+    This reduces directory clutter, eliminates redundant environment resolver code,
+    and simplifies whitelisting.
+  invariants:
+  - '`[x] bin/backlog is fully functional supporting list, new, view, edit`'
+  - '`[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`'
+- name: 'Node 35: Verbose SPAO Stage Tracking'
+  status: Completed
+  learnings: Implemented operator-triggered verbose mode for SPAO loop stage tracking
+    to keep the human operator perfectly aligned and informed of all state transitions
+    and invariant assertions. Verified fully functional with TDD unit tests.
+  invariants:
+  - '`[x] SPAO_VERBOSE=1 triggers detailed stage logging banners`'
+  - '`[x] Standard non-verbose execution remains completely silent`'
+  - '`[x] Full TDD unit test coverage in tests/test_flow_state_manager.py`'
+- name: 'Node 36: Terminology Disambiguation'
+  status: Completed
+  learnings: Clarified the ontological definitions and relationships between Loop,
+    Flow, and Path across GLOSSARY.md and WHAT-0001-agentic-architecture.md to prevent
+    cognitive and terminological drift.
+  invariants:
+  - '`[x] GLOSSARY.md explicitly distinguishes Loop, Flow, and Path`'
+  - '`[x] WHAT-0001-agentic-architecture.md defines the relationship between Flow
+    and Path`'
+- name: 'Node 37: Ontology - Meta-Tracker Integration'
+  status: Completed
+  learnings: Refined the repository ontology to capture the hierarchies between the
+    Application Tier and the Metasystem Tier, clearly defining recursive 'Meta-' components
+    (Meta-Graph, Meta-Tracker, Meta-Index, Meta-Loop) and anchoring them around Graph
+    and SPAO loop concepts.
+  invariants:
+  - '`[x] GLOSSARY.md defines Hierarchical Differentiation and recursive Meta-prefix
+    rules`'
+  - '`[x] GLOSSARY.md defines Meta-Tracker and integrates it into the taxonomy`'
+  - '`[x] WHAT-0001-agentic-architecture.md aligns Section 3.1 and Section 5 with
+    Meta-Tracker taxonomy`'
+- name: 'Node 38: Refactor - Consolidate Node Wrappers'
+  status: Completed
+  learnings: Consolidated distinct bash wrapper entry points bin/plan-node and bin/reflect-node
+    into a single unified bin/node script with plan and reflect subcommands.
+  invariants:
+  - '`[x] bin/node implements plan and reflect subcommands`'
+  - '`[x] bin/plan-node and bin/reflect-node are deleted`'
+  - '`[x] tests/test_bash_wrappers.py validates bin/node arguments and usage`'
+- name: 'Node 39: Feature - Meta-Management CLI Integration'
+  status: '[///] Act Phase'
+  learnings: Implemented a unified bin/meta script to automate Metasystem-level state
+    operations, standardizing our execution transitions and eliminating manual python
+    scripting during the Plan and Reflect phases.
+  invariants:
+  - '`[ ] bin/meta implements link, check, and active subcommands`'
+  - '`[ ] skills/frontier_editor.py supports dynamic append_active_node template generation`'
+  - '`[ ] tests/test_bash_wrappers.py validates bin/meta arguments and usage`'
+- name: 'Node 40: Ontology - Multi-Layered SPAO, NC Invariance, and Tiered WIP'
+  status: '[///] Act Phase'
+  learnings: 'Codified four canonical GLOSSARY corrections: SPAO universality, NL
+    (Node-Loop), PML (Pre-Materialization Loop), NC (Node Contract), and tiered WIP-N/WIP-P
+    replacing flat WIP=1.'
+  invariants:
+  - '`[ ] GLOSSARY.md corrects SPAO as universal protocol and introduces NL, PML,
+    NC, WIP-N, WIP-P`'
+  - '`[ ] GLOSSARY.md extends Node definition with mandatory structural attributes`'
+  - '`[ ] WHAT-0001-agentic-architecture.md reflects the two-tier SPAO model`'
+- name: 'Node 41: Probe - Skill vs. Workflow Boundary & bin/ Classification'
+  status: Completed
+  learnings: Evaluated and formally resolved the Skill vs. Workflow boundary, identified
+    flow_state_manager.py as a misclassified Workflow, and classified bin/ as the
+    CLI Adapter Layer.
+  invariants:
+  - '`[x] WHY-0009 Decision Record codifies Skill/Workflow boundary and bin/ classification`'
+  - '`[x] GLOSSARY.md adds canonical Skill and Workflow definitions`'
+  - '`[x] WHAT-0001-agentic-architecture.md adds bin/ as CLI Adapter Layer pillar`'
+- name: 'Node 42: Migrate flow_state_manager Workflow'
+  status: Completed
+  learnings: Successfully migrated skills/flow_state_manager.py to orchestrator/flow_state_manager.py,
+    correcting its misclassification as per WHY-0009. Updated all imports in bin/
+    scripts and tests/ and confirmed 100% test passage.
+  invariants:
+  - '`[x] flow_state_manager.py exists in orchestrator/`'
+  - '`[x] all bin scripts import from orchestrator`'
+  - '`[x] all tests pass`'
+- name: 'Node 43: Decouple testing_harness Skill'
+  status: Completed
+  learnings: Stripped SPAO stage awareness from testing_harness.py and moved logging
+    to bin/run-tests. Acknowledged backlog creation invariant violation.
+  invariants:
+  - '`[x] log_stage_advancement removed from testing_harness.py`'
+  - '`[x] log_stage_advancement added to bin/run-tests`'
+  - '`[x] tests pass`'
+- name: 'Node 44: Enforce node plan Edit-Only Guardrail'
+  status: Completed
+  learnings: Modified orchestrator/flow_state_manager.py and bin/node to enforce that
+    plan_node strictly takes an existing Backlog Issue ID instead of creating a new
+    issue, ensuring all new nodes originate from the backlog. Updated tests and HOW-0001.
+  invariants:
+  - '`[x] flow_state_manager.py updated`'
+  - '`[x] bin/node updated`'
+  - '`[x] HOW-0001 updated`'
+  - '`[x] tests updated and pass`'
+- name: 'Node 45: Evaluate Meta-Rules Reference Pattern'
+  status: Completed
+  learnings: 'Expanded GEMINI.md to include Section 5: Meta-Rules & Guardrails index,
+    enforcing strict system invariants directly in the System Prompt Hook instead
+    of creating a fragmented rules/ directory.'
+  invariants:
+  - '`[x] GEMINI.md updated with Rules section`'
+- name: 'Node 46: Establish Repository .gitignore'
+  status: Completed
+  learnings: Created .gitignore at the repository root and purged .venv, .pytest_cache,
+    and __pycache__ from git tracking. The index now correctly ignores these dynamic
+    files, fixing the git pull sync-clean conflict.
+  invariants:
+  - '`[x] .gitignore created`'
+  - '`[x] __pycache__ untracked`'
+  - '`[x] .venv untracked`'
+  - '`[x] tests pass`'
+- name: 'Node 28: Issue Factory Skill'
+  status: Completed
+  learnings: Introduced Issue Factory skill to eliminate inline markdown generation
+    for GitHub Issues. All bodies (Backlog and Contracts) are now generated via strict
+    Operator-editable templates in kb/templates/. Enforced template usage in HOW-0001.
+  invariants:
+  - '`[x] kb/templates created`'
+  - '`[x] skills/issue_factory.py created`'
+  - '`[x] HOW-0001 updated`'
+  - '`[x] tests pass`'
+- name: 'Node 47: Abstract GH Issue View CLI'
+  status: Completed
+  learnings: Added the view subcommand to bin/node to provide native, zero-friction
+    payload inspection without breaking adapter encapsulation. bin/backlog view was
+    already implemented.
+  invariants:
+  - '`[x] bin/backlog updated`'
+  - '`[x] bin/node updated`'
+  - '`[x] tests updated and pass`'
+- name: 'Node 48: Probe: Architectural Placement of sync-clean (bin/rt)'
+  status: '[///] Plan Phase (Paused for Evaluation)'
+  learnings: 'Surfaced backlog Issue #78 via `sync-clean`. Formulated the Node Contract
+    to migrate `bin/sync-clean` to `bin/rt` and linked it to Epic #10. Evaluated whether
+    `rt` should be just a CLI adapter (Option A) or elevated to a core Pillar (Option
+    B). Suspended the node loop to persist state pending operator decision for future
+    pick-up.'
+  invariants:
+  - '`[ ]` Operator selects Option A or Option B.'
+  - '`[ ]` Node is resumed.'
+- name: 'Node 49: Feature - Refactor backlog-add to use templates'
+  status: Completed
+  learnings: Successfully refactored backlog new to take type, title, and goal, leveraging
+    the backlog_issue template. Also modified plan_node to enforce topological GH
+    title consistency.
+  invariants:
+  - '`[x] backlog-add updated`'
+  - '`[x] node plan updated`'
+  - '`[x] tests pass`'
+- name: 'Node 50: Node 50: Probe - Evaluate Node Numbering Scheme'
+  status: '[///] Act Phase'
+  learnings: Cross-reference options based on industry best practices.
+  invariants:
+  - '`[ ] Research best practices`'
+  - '`[ ] Output evaluation`'
+- name: 'Node 84: Feature - Refactor Node ID to match GH Issue ID'
+  status: Completed
+  learnings: Successfully refactored CLI wrappers to drop node_id parameter and implemented
+    Option 4. Tests pass and docs updated.
+  invariants:
+  - '`[x] Drop node_id from bin/node`'
+  - '`[x] Drop node_id from bin/meta`'
+  - '`[x] Update HOW and GLOSSARY`'
+- name: 'Node 81: Feature: Refactor backlog-list output format'
+  status: Completed
+  learnings: Refactored backlog list output to natively include the Node ID and stripped
+    legacy node ID prefixes from old backlog items. Fixed argument count bug in meta
+    active.
+  invariants:
+  - '`[x] Refactor backlog list`'
+- name: 'Node 89: Feature: Implement Asynchronous Prompt Backlog'
+  status: Completed
+  learnings: Successfully executed the Option A blueprint to establish an asynchronous
+    prompt/signal queue. Built bin/prompt and updated loop mechanics and glossary.
+  invariants:
+  - '`[x] Create bin/prompt`'
+  - '`[x] Update HOW-0001`'
+  - '`[x] Update GLOSSARY`'
+- name: 'Node 90: Feature: Inject Node ID during Backlog Creation'
+  status: Completed
+  learnings: Successfully implemented the feature to natively enforce the Hybrid Node
+    ID scheme at the exact moment of GH Issue creation by extracting the generated
+    Issue ID and immediately invoking a rename operation.
+  invariants:
+  - '`[x] Update github_client.py`'
+- name: 'Node 95: Activity 95: Audit Node Types against Enum'
+  status: Completed
+  learnings: Successfully enforced a strict node-type validation layer inside bin/backlog
+    to guarantee alignment.
+  invariants:
+  - '`[x] Update bin/backlog`'
+- name: 'Node 97: Activity 97: Clean up duplicate formatting in flow_state_manager.py'
+  status: Completed
+  learnings: Successfully removed the redundant `#{}` issue ID formatting from the
+    `sync-clean` pipeline.
+  invariants:
+  - '`[x] Update flow_state_manager.py`'
+- name: 'Node 100: Activity 100: Triage and resolve duplicate NodeID and Activity
+    ID'
+  status: Completed
+  learnings: 'Successfully removed the redundant `Node {id}: ` string interpolation
+    from the ledger update path.'
+  invariants:
+  - '`[x] Update frontier_editor.py`'
+- name: 'Activity 102: Abstract PR creation command sequence for node completion'
+  status: Completed
+  learnings: Implemented create_pull_request in github_client.py and repaired the
+    reflect_node git abstraction sequence.
+  invariants:
+  - '`[x] Update github_client.py`'
+  - '`[x] Update flow_state_manager.py`'
+  - '`[x] Close Probe 92`'
+- name: 'Probe 98: Architectural Evaluation of mgr-* Orchestrators'
+  status: Completed
+  learnings: Completed architectural evaluation. Updated WHAT-0001 to document the
+    new CLI Router layer architecture and spawned Activity 104 to formally execute
+    the migration.
+  invariants:
+  - '`[x] Draft implementation plan`'
+  - '`[x] Update WHAT-0001`'
+  - '`[x] Spawn execution node`'
+- name: 'Activity 106: Automate PR title injection in reflect_node'
+  status: Completed
+  learnings: Stripped the manual pr_title arg from the CLI and orchestrator layers
+    to eliminate double-prefixing.
+  invariants:
+  - '`[x] Update bin/node`'
+  - '`[x] Update flow_state_manager.py`'
+  - '`[x] Update test suite`'
+- name: 'Activity 108: Refactor prompt backlog to YAML'
+  status: Completed
+  learnings: Migrated markdown prompt list to structured YAML pipeline
+  invariants:
+  - '`All prompts must maintain status tracking`'
+- name: 'Activity 113: List items in prompt queue'
+  status: Completed
+  learnings: Abstracted shell wrapper logic into formal mgr_prompt python module
+  invariants:
+  - '`All CLI domains must be backed by a native mgr-* orchestrator`'
+- name: 'Activity 109: Link consumed prompts to PR bodies'
+  status: Completed
+  learnings: Integrated mgr_prompt into reflect phase to automatically trace and consume
+    prompts from the YAML backlog.
+  invariants:
+  - '`All consumed prompts must map to a PR body`'
+- name: 'Probe 125: Architectural Evaluation of Hot-Fix Workflow'
+  status: Completed
+  learnings: Concluded that a Tiered Governance Model is needed. Trivial documentation
+    changes warrant a formalized bin/hotfix tool rather than the heavy SPAO overhead,
+    provided they are logged to a lightweight ledger to prevent traceability loss.
+  invariants:
+  - '`Direct commits to main are forbidden without using the bin/hotfix tool`'
+  - '`which mandates traceability.`'
+- name: 'Activity 127: Implement bin/rt formal primitive'
+  status: Completed
+  learnings: Created mgr_rt.py orchestrator and bin/rt adapter. Learned that git push
+    origin main from a feature branch pushes the local main, not the checked-out branch,
+    requiring strict branch verification.
+  invariants:
+  - '`Hot-fixes must strictly execute only on the main branch to prevent cross-branch
+    contamination`'
+- name: 'Activity 124: Add prompt-processing hook into GEMINI.md SPAO instructions'
+  status: Completed
+  learnings: Explicitly updated GEMINI.md to require agents to run ./bin/prompt list
+    to check and process the queue, and then to consume them in reflect.
+  invariants:
+  - '`[x] GEMINI.md explicitly requires prompt queue processing`'
+- name: 'Activity 122: Implement file-locking mechanism for shared artifacts'
+  status: Completed
+  learnings: Implemented a reentrant cross-platform advisory file-locking mechanism
+    in skills/file_locker.py using fcntl and threading.local. Wrapped all reads and
+    writes to shared artifacts (frontier_state, prompt_backlog, hotfix_ledger) to
+    ensure orthogonal thread safety.
+  invariants:
+  - '`[x] file_locker implemented and integrated into shared artifacts`'
+- name: 'Activity 121: Implement git worktree management for orthogonal parallelism'
+  status: Completed
+  learnings: Implemented checkout subcommand in bin/node and flow_state_manager to
+    automatically provision isolated git worktrees inside .worktrees/ directory. Also
+    fixed the reflect_node commit sequence to ensure consumed prompts are properly
+    synced and traceability is maintained.
+  invariants:
+  - '`[x] bin/node supports checkout and provisions worktrees`'
+  - '`[x] prompt queue consumption bug fixed with a 2-commit strategy`'
+- name: 'Activity 134: Implement universal --help and -h support for all bin/ CLI
+    adapters'
+  status: Completed
+  learnings: Successfully implemented universal --help and -h parsing blocks for all
+    7 bin/ scripts, standardizing CLI help output and fulfilling the prompt requests.
+  invariants:
+  - '`All bin/ scripts gracefully handle --help and exit 0`'
+  - '`Test suite maintains 100% pass rate`'
+- name: 'Activity 136: Execute Architectural Migration of sync-clean to bin/node sync'
+  status: Completed
+  learnings: Successfully migrated the legacy `sync-clean` primitive into the canonical
+    `bin/node` wrapper as the `sync` subcommand. This aligns workspace cleaning perfectly
+    with the node abstraction lifecycle (sync, plan, checkout, reflect, view).
+  invariants:
+  - '`bin/sync-clean has been permanently deleted`'
+  - '`bin/node sync invokes the workspace synchronization loop`'
+  - '`Test suite maintains 100% pass rate`'
+- name: 'Activity 137: Implement prompt delete CLI command'
+  status: Completed
+  learnings: Successfully implemented prompt delete CLI command with interactive confirmation.
+    Removed the test prompt from the backlog as requested.
+  invariants:
+  - '`Prompt deletion is gated by CLI confirmation`'
+  - '`CLI usage instructions are updated`'
+- name: 'Activity 140: Implement Architectural TTY Hard-Gate'
+  status: Completed
+  learnings: Successfully implemented the TTY Isolation Principle via skills/tty_gate.py.
+    Tested piped bypass prevention successfully. It intercepts any automated inputs
+    and enforces true HITL.
+  invariants:
+  - '`TTY Isolation Principle mathematically prevents pipe spoofing`'
+- name: 'Activity 143: Implement prompt clean CLI command'
+  status: Completed
+  learnings: Successfully implemented the bin/prompt clean feature. It purges all
+    consumed prompts non-interactively to facilitate automated maintenance.
+  invariants:
+  - '`Added clean_prompts function in mgr_prompt.py`'
+  - '`Registered clean subcommand in argparse and bin/prompt adapter`'
+  - '`Verified that consumed prompts are permanently removed from the yaml file`'
+- name: 'Activity 146: Add meta-rule to GEMINI for gh issue mapping'
+  status: Completed
+  learnings: Mapped gh issue list and view to backlog list and node view respectively
+  invariants:
+  - '`[x] GEMINI.md updated`'
+- name: 'Activity 145: Implement GitHub Label-Based Node Locking'
+  status: Completed
+  learnings: 'Implemented a highly robust atomic distributed lock leveraging GitHub''s
+    Label API (`status: in-progress`). The Node Checkout phase now checks the GH API
+    before mutating the filesystem, raising a mathematical invariant if another thread
+    is already working on the Node. This prevents all future parallel merge conflicts
+    related to orthogonal identical-node checkout.'
+  invariants:
+  - '`checkout_node applies ''status: in-progress'' label`'
+  - '`checkout_node aborts if ''status: in-progress'' is present`'
+  - '`Test suite maintains 100% pass rate`'
+- name: 'Probe 149: Triage GitHub API Eventual Consistency on Issue State'
+  status: Completed
+  learnings: Identified the root cause of ghost-state backlog collisions as the architectural
+    lag between GitHub's strongly-consistent Issues API and its eventually-consistent
+    Search API. Formulated a mitigation strategy to double-verify issue states using
+    direct Issue API lookups, and generated Activity 150 to implement the patch in
+    `github_client.py`.
+  invariants:
+  - '`Probe must not mutate functional logic`'
+  - '`gh issue list (Search API) is eventually consistent`'
+  - '`gh issue view (Issue API) is strongly consistent`'
+- name: 'Activity 150: Mitigate GitHub API Eventual Consistency'
+  status: Completed
+  learnings: Implemented a double-verification pattern in `list_issues_by_label`.
+    The system now fetches issues via the eventually-consistent Search API (`gh issue
+    list`) and cross-verifies each issue's state using the strongly-consistent Issues
+    API (`gh issue view`). This mathematically eliminates the ghost-state bug where
+    closed issues momentarily reappear in the backlog.
+  invariants:
+  - '`list_issues_by_label cross-verifies state with Issues API`'
+  - '`Test suite maintains 100% pass rate`'
+- name: 'Activity 154: Add invariant check for closed PR before branch cleanup'
+  status: Completed
+  learnings: Implemented WIP-N=1 invariant check by querying GitHub API for open PRs
+    before proceeding with SENSE phase sync and cleanup.
+  invariants:
+  - '`sync_and_clean_node queries GitHub API for open PRs`'
+  - '`Raises Exception if PRs are open`'
+  - '`Test suite maintains 100% pass rate`'
+- name: 'Probe 153: Architectural Evaluation of Terminal vs Non-Terminal Node Abstraction'
+  status: Completed
+  learnings: Evaluated the benefit of abstracting nodes into Terminal (execution,
+    leaf) and Non-Terminal (composite, path) base classes. This purely graph-theoretic
+    abstraction decouples the Antigravity orchestration logic from the software development
+    domain, allowing generic reuse across arbitrary domains like `agent-travel`. Queued
+    Activity 156 to formally implement this abstraction.
+  invariants:
+  - '`Probe must not mutate functional logic`'
+  - '`Terminal Node represents leaf/execution node`'
+  - '`Non-Terminal Node represents composite/parent node`'
+- name: 'Node 157: Implement Soft-Locking for Node Checkout'
+  status: Completed
+  learnings: Implemented a soft-lock in flow_state_manager to emit a yellow warning
+    instead of raising an exception. Preserved the backlog label to ensure visibility.
+    Captured the architectural decision in WHY-0011.
+  invariants:
+  - '`[x] checkout_node acts as a soft-lock`'
+  - '`[x] backlog label is preserved`'
+  - '`[x] tests pass`'
+- name: 'Probe 159: Evaluate node plan-start and plan-finish commands'
+  status: Completed
+  learnings: Determined that planning must be a stateful, two-step protocol (`plan-start`
+    and `plan-finish`) to prevent race conditions during prolonged multi-turn drafting
+    sessions. `plan-start` acts as the immediate GH Label lock, while `plan-finish`
+    finalizes the contract. This definitively hardens the SPAO WIP-N=1 invariant against
+    parallel agentic collisions.
+  invariants:
+  - '`Probe must not mutate functional logic`'
+  - '`plan-start applies status: in-progress lock immediately`'
+  - '`plan-finish uploads final contract to Issue body`'
+- name: 'Node 163: Probe 163: Audit State Inconsistencies'
+  status: Completed
+  learnings: 'Executed the trivial inline remediation for Node 163. Synchronized the
+    Epic Meta-Index (Issue #10) to include all historical nodes up to Node 161. Corrected
+    the active node pointer in `frontier_state.md` and finalized the `0002-state-inconsistencies.md`
+    audit payload.'
+  invariants:
+  - '`Epic Meta-Index must track all completed nodes`'
+  - '`Active Node pointer in frontier_state.md must be accurate`'
+  - '`Audit payloads must be materialized in artifacts/audit`'
+- name: 'Activity 161: Implement Multi-Phase Node Planning (plan-start and plan-finish)'
+  status: Completed
+  learnings: Successfully decomposed `bin/node plan` into `plan-start` (which acquires
+    the GitHub label lock immediately) and `plan-finish` (which finalizes the contract).
+    This architectural shift guarantees that the WIP-N=1 invariant is preserved even
+    during protracted agentic planning and drafting phases. `checkout` has been updated
+    to safely inherit the lock idempotently.
+  invariants:
+  - '`bin/node plan is replaced by plan-start and plan-finish`'
+  - '`plan-start acquires status: in-progress immediately`'
+  - '`checkout applies lock idempotently without fatal exception`'
+- name: Audit State Inconsistencies
+  status: Completed
+  learnings: Successfully audited and corrected stale frontier_state and Epic Meta-Index
+    missing items.
+  invariants:
+  - '`State invariants have been restored.`'
+- name: 'Activity 167: allow manual triggering to process prompts-queue'
+  status: Completed
+  learnings: Implemented the process subcommand for bin/prompt to allow manual consumption
+    of prompts.
+  invariants:
+  - '`[x] Process logic implemented in mgr_prompt.py`'
+  - '`[x] bin/prompt wrapper updated`'
+- name: Codify Manager and Dual-Agent Ontology
+  status: Completed
+  learnings: Established the formal mathematical decoupling of Workflow from Agent,
+    codified the concept of a Manager, and asserted the Dual-Agent (Operator/Auditor)
+    paradigm for true system autonomy.
+  invariants:
+  - '`All future architectural references must align with the Manager = Agent + Workflow
+    paradigm.`'
+- name: 'Activity 171: Node internal lifecycle and workflow management'
+  status: Completed
+  learnings: 'Created orchestrator/node_lifecycle.py with BaseNode and TerminalNode
+    classes, migrating procedural SPAO logic into TerminalNode. Refactored flow_state_manager
+    to act as an adapter layer delegating to TerminalNode instances. This establishes
+    the OOP foundation. Also Resolves #156.'
+  invariants:
+  - '`[x] Node SPAO lifecycle is object-oriented`'
+  - '`[x] Abstract BaseNode and TerminalNode created`'
+- name: Abstract Nodes into Terminal and Non-Terminal Base Classes
+  status: Completed
+  learnings: Abstracted Node classification into Terminal and Non-Terminal Base Classes
+    via antigravity.yml configuration, unlocking domain portability.
+  invariants:
+  - '`All domain-specific Node Taxonomy mappings must be defined in antigravity.yml
+    at the repository root.`'
+- name: Execute Architectural Migration of mgr-* Orchestrators
+  status: Completed
+  learnings: Migrated flow_state_manager.py natively into orchestrator/mgr_node.py
+    to formally establish the Manager pattern. Refactored bin/node as a proxy wrapper
+    and added argparse.
+  invariants:
+  - '`Manager components must inherently own their workflows.`'
+- name: 116-run-tests-abstraction
+  status: Completed
+  learnings: Integrated test execution natively into mgr_node to align with domain
+    manager separation of concerns. Fixed a critical bug in testing_harness.py where
+    the exact exit code from pytest was swallowed, replacing capture_output with streaming
+    output.
+  invariants:
+  - '`[ ]` None'
+- name: 'Activity 138: Decouple Prompt Lifecycle from PR Merge'
+  status: Completed
+  learnings: Removed consume_prompts and PR linkage entirely. Updated process_prompts
+    to handle consumption definitively based on a resolution context. Cleaned up TerminalNode.reflect
+    logic.
+  invariants:
+  - '`[x] Prompt lifecycle decoupled from PRs`'
+  - '`[x] Activity 175 created for Node Clean requirements`'
+- name: 'Activity 175: Implement Node Clean Abstraction'
+  status: Completed
+  learnings: Implemented node clean abstraction to parse merged PRs from GitHub and
+    properly dismantle local git state. Switched to forced branch deletion to handle
+    squash merges.
+  invariants:
+  - '`[x] GitHub API queried for merged PRs`'
+  - '`[x] Local branch deletion forced for squash merges`'
+- name: 'Activity 32: Audit Daemon'
+  status: Completed
+  learnings: Implemented a modular Python-based Rules Engine (skills/audit_daemon.py)
+    triggered by a systemd --user timer. Configured via audit_config.yml to support
+    dynamic rules with distinct alert levels (FAILURE vs NOTIFICATION). Added robust
+    mock-based TDD tests.
+  invariants:
+  - '`[ ]` None'
+- name: 'Probe 179: Architectural Evaluation of Configurable Operator-Gates'
+  status: Completed
+  learnings: Conducted architectural evaluation of HITL gates, determining that a
+    BaseManager OOP pattern (Option C) guided by modular {domain}-gates.yml configuration
+    files provides the best systemic invariant.
+  invariants:
+  - '`- [x] kb/WHY-0012-configurable-operator-gates.md exists`'
+- name: 'Activity 182: Implement HookManager and Configuration Schema'
+  status: Completed
+  learnings: Implemented HookManager in orchestrator/sense_hooks.py to dynamically
+    parse antigravity.yml and execute configurable hooks. Hook abstractions have been
+    integrated into sync_and_clean_node.
+  invariants:
+  - '`[x] HookManager dynamically parses configuration`'
+  - '`[x] Sense Phase abstracted into modular execution pattern`'
+- name: 'Activity 187: Implement Prompt Queue Hook'
+  status: Completed
+  learnings: Implemented the execute_prompt_queue_hook function in sense_hooks.py
+    to consume the configurable backlog_file parameter. Updated mgr_prompt.py to support
+    non-default backlog file resolution, enabling dynamic configuration in the HookManager.
+  invariants:
+  - '`[x] Prompt Queue hooked into Sense cycle`'
+  - '`[x] mgr_prompt primitives support custom paths`'
+- name: 'Activity 189: Implement Next-Best-Action Skill and Hook'
+  status: Completed
+  learnings: 'Created skills/nba_evaluator.py as a stateless skill implementing two-tier
+    NBA logic: path continuation (finds pending activities within the active Path)
+    and path switching (falls back to global backlog). Wired into execute_next_best_action_hook
+    in sense_hooks.py.'
+  invariants:
+  - '`[x] NBA skill is stateless and pure`'
+  - '`[x] Two-tier logic: path continuation and path switching`'
+  - '`[x] Hook consumes NBA skill output`'
+- name: 'Probe 193: Architectural Evaluation of Normalized Status Labels'
+  status: Completed
+  learnings: Investigated and codified the node.yml schema and set_status abstraction
+    in WHY-0013.
+  invariants:
+  - '`WHY-0013 exists`'
+  - '`Schema maps logical to physical labels`'
+- name: 'Activity 191: Codify Path Invariant Enforcement'
+  status: Completed
+  learnings: Decoupled Active Path and Active Node in frontier_state.md. Hooked NBA
+    skill into TerminalNode.reflect to automatically assert path closure invariant.
+  invariants:
+  - '`[x] Current Active Path and Current Active Node are decoupled in frontier_state.md\n[x]
+    TerminalNode.reflect automatically closes Paths with 0 pending children`'
+- name: 'Activity 194: Implement node.yml Configuration Schema'
+  status: Completed
+  learnings: Created node.yml schema mapped to industry standard statuses and implemented
+    parsing logic in node_lifecycle.py
+  invariants:
+  - '`node.yml exists`'
+  - '`load_node_status_config implemented`'
+- name: 'Activity 195: Abstract State Changes to node set-status'
+  status: Completed
+  learnings: Implemented BaseNode set_status and set_classification to map logical
+    statuses to github labels, and exposed them via mgr_node CLI
+  invariants:
+  - '`set_status API exists`'
+  - '`bin/node set-status CLI wrapper exists`'
+  - '`Execution layer remains untouched (Node 196)`'
+- name: 'Activity 196: Refactor Node Locking to Use node set-status'
+  status: Completed
+  learnings: Refactored TerminalNode.plan_start and TerminalNode.checkout to use the
+    BaseNode.set_status abstraction instead of hardcoded github labels.
+  invariants:
+  - '`TerminalNode uses set_status`'
+  - '`Hardcoded status: in-progress eliminated from orchestrator`'
+- name: 'Probe 203: Refine Intent and Problem Statement for Topological Invariants'
+  status: Completed
+  learnings: Drafted WHY-0014 defining the Orphaned Node Fallacy and Dual-Probe Initialization
+    rule.
+  invariants:
+  - '`WHY-0014 exists`'
+- name: 'Probe 204: Scope Necessary Activities for Topological Invariants'
+  status: Completed
+  learnings: Created Activities 206, 207, and 208 to implement the topological invariants.
+  invariants:
+  - '`Backlog populated`'
+- name: 'Activity 208: Reopen and Reconstruct Path 202 Meta-Index'
+  status: Completed
+  learnings: Added reopen_issue skill to github_client and reconstructed the Meta-Index
+    payload for Path 202.
+  invariants:
+  - '`reopen_issue skill exists`'
+  - '`Path 202 Meta-Index contains 203, 204, 206, 207, 208`'
+- name: 'Activity 207: Enforce --path Constraint on bin/backlog new'
+  status: Completed
+  learnings: Implemented argparse in bin/backlog and refactored add_to_backlog to
+    mathematically link terminal nodes to their parent Path's Meta-Index. Auto-injection
+    logic verified with unit tests.
+  invariants:
+  - '`bin/backlog rejects orphaned nodes`'
+  - '`add_to_backlog updates parent body automatically`'
+  - '`tests pass`'
+- name: 'Activity 206: Update Core Ontologies (WHAT-0001 & HOW-0001)'
+  status: Completed
+  learnings: Formally codified the Orphaned Node Fallacy and Dual-Probe Initialization
+    constraints into WHAT-0001 and HOW-0001, permanently establishing these invariants
+    in the system's philosophical ROM.
+  invariants:
+  - '`WHAT-0001 updated`'
+  - '`HOW-0001 updated`'
+- name: 'Probe 215: Scope Necessary Activities for Path Execution Guardrails'
+  status: Completed
+  learnings: Scoped out the necessary Activities to enforce orthogonal scopes, pre/post-requisite
+    contracts, and dynamic children traversal order. Generated Activities 223, 224,
+    and 225 and injected them into the Path 213 Meta-Index.
+  invariants:
+  - '`Activities 223, 224, 225 generated`'
+- name: 'Probe 214: Refine Intent and Problem Statement for Path Execution Guardrails'
+  status: Completed
+  learnings: Drafted WHY-0015 to formalize orthogonal scope, pre/post-requisite contracts,
+    and dynamic children traversal order. Dog-fooded dynamic traversal by automatically
+    generating a third Probe for Path 213 mid-execution.
+  invariants:
+  - '`WHY-0015 exists`'
+  - '`Dog-food Probe generated`'
+- name: 'Probe 215: Scope Necessary Activities for Path Execution Guardrails'
+  status: Completed
+  learnings: Scoped out the necessary Activities to enforce orthogonal scopes, pre/post-requisite
+    contracts, and dynamic children traversal order. Generated Activities 223, 224,
+    and 225 and injected them into the Path 213 Meta-Index.
+  invariants:
+  - '`Activities 223, 224, 225 generated`'
+- name: 'Probe 221: Holistic Evaluation of Path Modifications'
+  status: Completed
+  learnings: Identified Graph Traversal Fallacy, Flat-List Fallacy, and Closure Synchronization
+    Bug. Scoped out 3 new Activities to evolve the Meta-Index into a DAG format and
+    refactor the NBA evaluator to parse it dynamically.
+  invariants:
+  - '`Activities 227, 228, 229 generated`'
+- name: 'Activity 223: Enforce Contract Sections in Issue Templates'
+  status: Completed
+  learnings: Replaced generic Invariants section with strict Pre-Requisite and Post-Requisite
+    sections in both backlog_issue.md and node_contract.md templates. Updated github_client.py
+    to inject these dependencies correctly during new node generation.
+  invariants:
+  - '`Templates updated`'
+  - '`tests pass`'
+- name: 'Activity 227: Evolve Meta-Index into a DAG Syntax'
+  status: Completed
+  learnings: 'Updated bin/backlog to accept --depends and modified github_client.py
+    to append DAG annotations (e.g., [Depends: 223, 224]) to both the parent Path
+    Meta-Index and the child issue body.'
+  invariants:
+  - '`CLI accepts --depends`'
+  - '`DAG injection validated`'
+  - '`tests pass`'
+- name: 'Activity 228: Refactor nba_evaluator to parse Meta-Index DAG'
+  status: Completed
+  learnings: Replaced numeric guesswork in nba_evaluator with a native DAG parser
+    that pulls the parent Path's GH issue body, parses all nodes and their dependencies,
+    and mathematically surfaces the unblocked true Next-Best-Actions.
+  invariants:
+  - '`DAG parsing implemented`'
+  - '`numeric guessing removed`'
+  - '`tests pass`'
+- name: 'Activity 229: Automate Meta-Index Checkbox Synchronization on Reflect'
+  status: Completed
+  learnings: Added github_client.check_off_meta_index() to automatically swap [ ]
+    with [x] in the parent Path's Meta-Index. Injected this synchronization call directly
+    into TerminalNode.reflect before the nba_evaluator runs, ensuring the DAG parser
+    recognizes the node's completion.
+  invariants:
+  - '`Meta-Index checkbox synchronization automated`'
+  - '`tests updated and passing`'
+  - '`Activity 224 manually closed out successfully using this hook`'
+- name: 'Activity 225: Enforce Orthogonal Scope Validation'
+  status: Completed
+  learnings: Implemented Orthogonal Scope Validation guardrail inside TerminalNode.plan_start.
+    This prevents duplicate/overlapping work generation by scanning the backlog for
+    concurrent Activities with identical goals or canonical titles.
+  invariants:
+  - '`Orthogonal Scope Validation implemented`'
+  - '`tests updated and passing`'
+- name: 'Probe 238: Formulate the Sense-Gate Invariant Architecture'
+  status: Completed
+  learnings: Formulated the architectural rationale for the two-pronged Sense-Gate
+    in kb/WHY-0013-sense-phase-operator-gate.md. This establishes the requirement
+    for both Behavioral (Meta-Instruction) and Environmental (CLI warning) gates to
+    prevent autonomous SENSE -> PLAN transitions.
+  invariants:
+  - '`Sense-Gate architecture formalized`'
+  - '`Two-pronged enforcement strategy documented`'
+- name: 'Activity 239: Codify the Sense-Gate Invariant'
+  status: Completed
+  learnings: Implemented the behavioral and environmental gates to explicitly operator-gate
+    the Sense Phase. Updated GEMINI.md and HOW-0001 with The Sense-Gate Invariant.
+    Injected ANSI-colored warning into nba_evaluator.py.
+  invariants:
+  - '`Sense-Gate Invariant added to GEMINI.md`'
+  - '`Environmental warning added to nba_evaluator`'
+  - '`tests pass`'
+- name: 'Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator'
+  status: Completed
+  learnings: Successfully analyzed the current implementation, drafted an architectural
+    promotion strategy, and spawned execution Activities 244-247. Decisions codified
+    in WHY-0016.
+  invariants:
+  - '`WHY-0016 exists`'
+  - '`Meta-Index updated`'
+- name: Implement gh_graph_skill.py stateless primitive
+  status: Completed
+  learnings: Successfully extracted graph-parsing logic from nba_evaluator.py into
+    a dedicated, stateless skill gh_graph_skill.py. Verified with 100% test coverage
+    (87/87 tests passed).
+  invariants:
+  - '`gh_graph_skill.py implemented`'
+  - '`nba_evaluator.py refactored`'
+  - '`tests pass`'
+- name: Hardened Meta-Index traceability and implemented bin/meta audit
+  status: Completed
+  learnings: Meta-Index synchronization is now robust against formatting variations
+  invariants:
+  - '`[x] Robust Path ID extraction implemented`'
+  - '`[x] bin/meta audit implemented`'
+  - '`[x] Path labeling fixed`'
+- name: Implement NBAManager orchestrator
+  status: Completed
+  learnings: Successfully migrated high-level navigation logic from legacy skill to
+    a formal orchestrator.
+  invariants:
+  - '`[x] NBAManager implemented`'
+  - '`[x] integrated into sense_hooks`'
+  - '`[x] verified with tests and manual execution.`'
+- name: Decommission legacy NBA skill and formalize primitive
+  status: Completed
+  learnings: Successfully promoted NBA to a first-class primitive and refactored the
+    legacy skill into a thin proxy.
+  invariants:
+  - '`[x] nba_evaluator.py refactored as proxy`'
+  - '`[x] WHAT-0017 materialized`'
+  - '`[x] WHAT-0001 updated`'
+  - '`[x] obsolete tests deleted.`'
+- name: Materialize template-driven NBA banners
+  status: Completed
+  learnings: Successfully migrated NBA banner rendering to a formal template-driven
+    system with ANSI support.
+  invariants:
+  - '`[x] kb/templates/nba_banner.md created`'
+  - '`[x] sense_hooks.py refactored`'
+  - '`[x] tests updated and passed.`'
+- name: Verify NBA Orchestrator Accuracy
+  status: Completed
+  learnings: Successfully verified that the new NBAManager correctly identifies Probe
+    nodes in the backlog, resolving the failures observed in the legacy evaluator.
+  invariants:
+  - '`[x] NBAManager verified`'
+  - '`[x] Legacy issues 217-220 closed as resolved.`'
+- name: 'Probe 257: Refine NBA Presentation Requirements'
+  status: Completed
+  learnings: Reordered NBA banner to prioritize Path information with bold styling.
+    Added robust newline handling to Meta-Index parser.
+  invariants:
+  - '`[ ]` None'
+- name: 'Probe 258: Scope NBA Presentation Enhancements'
+  status: Completed
+  learnings: Finalized technical scope for semantic color coding, visual framing,
+    and history surfacing.
+  invariants:
+  - '`[ ]` None'
+- name: Materialize NBA Presentation Enhancements
+  status: Completed
+  learnings: Implemented framed, color-coded, and history-aware NBA banner.
+  invariants:
+  - '`[ ]` None'
+- name: Refactor Test Runner & Legacy Proxies
+  status: Completed
+  learnings: Successfully migrated testing logic to orchestrator/mgr_testing.py and
+    decommissioned skills/nba_evaluator.py and skills/testing_harness.py. Updated
+    node_lifecycle and mgr_node to align with the new ontology.
+  invariants:
+  - '`[x] TestManager materialized`'
+  - '`[x] bin/run-tests purified`'
+  - '`[x] Legacy proxies deleted`'
+  - '`[x] Mocks updated in tests`'
+- name: 'Fix ModuleNotFoundError in PR #284'
+  status: Completed
+  learnings: Successfully resolved CI failures by removing stale test files (tests/test_testing_harness.py)
+    and re-applying the Activity 279 refactoring on a clean branch. All 88 tests pass.
+  invariants:
+  - '`[x] Stale tests deleted`'
+  - '`[x] Refactoring re-applied`'
+  - '`[x] 88 tests pass`'
+- name: 'Activity 280: Telemetry Decorator'
+  status: Completed
+  learnings: Implemented @record_execution decorator for automated telemetry. Refactored
+    mgr_node and node_lifecycle to use it. Expanded schema for hierarchical reporting.
+  invariants:
+  - '`[x] TDD: 91 tests pass`'
+- name: 'Probe: Align - Refinement of Initialization Invariants'
+  status: Completed
+  learnings: Codified the Triple-Node Doctrine in kb/WHY-0020. This supersedes the
+    Dual-Probe pattern.
+  invariants:
+  - '`[x] kb/WHY-0020 exists`'
+  - '`[x] Trinity definition aligned`'
+- name: 'Probe: Plan - Technical Integration of Triple-Node Guardrails'
+  status: Completed
+  learnings: Designed the branch-target invariant and the auto-initialization logic
+    for the Triple-Node trinity. Confirmed hard-halt and immediate backlog labeling
+    for trinity nodes.
+  invariants:
+  - '`[x] Branch-Target invariant designed`'
+  - '`[x] Triple-Node auto-init designed`'
+  - '`[x] Hard-halt confirmed`'
+  - '`[x] Backlog labeling confirmed`'
+- name: 'Activity: Reflect - Formal Adoption of Triple-Node Doctrine'
+  status: Completed
+  learnings: Implemented auto-initialization and branch-target invariant. Verified
+    trinity spawning and branch guardrails.
+  invariants:
+  - '`[x] Trinity auto-init implemented`'
+  - '`[x] Branch-Target invariant implemented`'
+  - '`[x] Governance docs updated`'
+- name: 'Node 317: Probe 317: Align - Metasystem State Hardening'
+  status: Completed
+  learnings: Established the Atomic State Invariant (WHY-0021) and updated the glossary.
+    This doctrine mandates that ledger updates and pointer transitions occur as a
+    single atomic unit.
+  invariants:
+  - '`Atomic State Invariant documented in WHY-0021`'
+  - '`Atomic State Invariant added to GLOSSARY.md`'
+- name: 'Node 318: Probe 318: Plan - Metasystem State Hardening'
+  status: Completed
+  learnings: Implemented atomic state transitions in frontier_editor.py and integrated
+    a stale-pointer audit rule into audit_daemon.py. Added mandatory state purity
+    gating to TerminalNode lifecycle methods.
+  invariants:
+  - '`Atomic completion and pointer clearing in frontier_editor.py`'
+  - '`State purity verification in TerminalNode lifecycle`'
+  - '`Stale active node detection in audit_daemon.py`'
+  - '`Audit trigger integrated into node sync`'
+- name: 'Node 319: Activity 319: Reflect - Metasystem State Hardening'
+  status: Completed
+  learnings: Completed the Path 316 cycle. Established the Atomic State Invariant
+    and implemented mandatory state-purity guardrails.
+  invariants:
+  - '`Metasystem state is now atomic and self-auditing`'
+- name: Plan - Regression Testing Architecture Hardening
+  status: Completed
+  learnings: Implemented centralized test support layer (conftest.py, harness.py)
+    and integrated a mandatory patch-density guardrail into mgr_testing.py. Refactored
+    major test files to comply with orthogonality requirements.
+  invariants:
+  - '`Test files MUST NOT exceed 10 patches`'
+  - '`Standardize on pytest fixtures`'
+- name: Format active node name with Node id prefix in frontier_editor
+  status: Completed
+  learnings: 'Updated skills/frontier_editor.py to format appended active node titles
+    using the Node {id}: prefix, ensuring consistent representation across the frontier
+    state file. Updated tests/test_frontier_editor.py assertions to verify the formatting.'
+  invariants:
+  - '`Active node titles must include Node id prefix`'
+- name: Reflect - Regression Testing Architecture Hardening (Orthogonality & Reuse)
+  status: Completed
+  learnings: Refactored tests/test_mgr_node.py, tests/test_github_client.py, and tests/test_mgr_backlog.py
+    to replace verbose manual patching with clean pytest fixtures defined in tests/conftest.py.
+    Implemented a Patch Density Auditor in orchestrator/mgr_testing.py running on
+    configuration limits defined in test_config.yml. This successfully reduced regression
+    testing overhead, optimized test execution, and instituted automated governance
+    checks to prevent future @patch bloat. Also verified node prefixing logic in skills/frontier_editor.py.
+  invariants:
+  - '`Test mock density remains under configured limit (10 patches/file)`'
+  - '`All tests pass with 100% success rate`'
+  - '`Frontier active nodes are formatted with Node id prefix`'
+- name: 'Node 315: Probe 315: Plan - State Pointer Hardening'
+  status: Completed
+  learnings: Successfully migrated the Metasystem tracking ledger from Markdown to
+    a schema-verified, checksum-verified YAML file (frontier_state.yml). Implemented
+    atomic writes (save state -> rehash -> generate markdown) to prevent pointer corruption.
+    Created bin/meta lint and rehash tools, and integrated a stale-pointer audit rule
+    into audit_daemon.py.
+  invariants:
+  - '[x] Metasystem ledger successfully migrated to YAML format'
+  - '[x] Automated state pointer integrity guardrails in place'
+  - '[x] Continuous auditing integrated with audit daemon'
+  - '[x] Standardized Node prefixing implemented'
+  - '[x] All 82 unit and integration tests passing'

@@ -2,7 +2,7 @@ import os
 import json
 import subprocess
 from skills import github_client
-from skills import frontier_editor
+from orchestrator import mgr_frontier
 from skills import gh_graph_skill
 
 class NBAManager:
@@ -20,10 +20,10 @@ class NBAManager:
         3. If pending children found -> Path Continuation.
         4. If no active path OR no pending children -> Path Switching (Global Backlog).
         """
-        active_path_str = frontier_editor.read_active_path(frontier_file)
+        active_path_str = mgr_frontier.read_active_path(frontier_file)
         active_id = None
         if active_path_str:
-            active_id = frontier_editor.extract_path_id(active_path_str)
+            active_id = mgr_frontier.extract_path_id(active_path_str)
             
         if active_id:
             # Tier 1: Path Continuation

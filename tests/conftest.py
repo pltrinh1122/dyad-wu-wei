@@ -12,8 +12,8 @@ def mock_gh():
 
 @pytest.fixture
 def mock_fe():
-    """Provides a centralized mock for frontier_editor."""
-    with patch("orchestrator.node_lifecycle.frontier_editor") as m:
+    """Provides a centralized mock for mgr_frontier."""
+    with patch("orchestrator.node_lifecycle.mgr_frontier") as m:
         m.read_active_node.return_value = "None"
         m.read_active_path.return_value = "None"
         yield m

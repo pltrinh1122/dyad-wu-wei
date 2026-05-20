@@ -2,7 +2,7 @@ import os
 import re
 import subprocess
 from skills import github_client
-from skills import frontier_editor
+from orchestrator import mgr_frontier
 from orchestrator import mgr_testing
 from orchestrator import mgr_prompt
 from orchestrator.sense_hooks import HookManager

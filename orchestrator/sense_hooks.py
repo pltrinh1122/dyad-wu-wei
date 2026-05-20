@@ -1,6 +1,6 @@
 import yaml
 import os
-from skills import frontier_editor
+from orchestrator import mgr_frontier
 
 class HookManager:
     """Manages the execution of configurable Sense hooks."""
@@ -49,7 +49,7 @@ class HookManager:
             return
 
         # History Extraction
-        last_step = frontier_editor.read_last_completed_node(frontier_file)
+        last_step = mgr_frontier.read_last_completed_node(frontier_file)
         if last_step:
             history_info = f"\033[1;30m(Last Step: {last_step})\033[0m"
         else:
