@@ -1350,10 +1350,11 @@
   - `[ ]` None
 
 ## Node 429: Probe 429: Align - Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation
-- **Status**: Backlog
-- **Learnings & Context**: Align on the philosophical and technical intent for Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation.
+- **Status**: Completed
+- **Learnings & Context**: Formulated WHY-0042 and WHAT-0042 documenting the value-comparison framework and prioritization matrix that favors immediate velocity remediation.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHY-0042 is created`
+  - `[x] WHAT-0042 is created`
 
 ## Node 430: Probe 430: Plan - Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation
 - **Status**: Backlog
