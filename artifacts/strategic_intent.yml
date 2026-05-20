@@ -21,7 +21,6 @@ strategic_goals:
     prioritized in the strategic ledger.
   status: Active
   prioritized_paths:
-  - 404
   - 412
   - 416
 - id: SG-0002
