@@ -1151,6 +1151,20 @@
 - **Feedforward Invariants**:
   - `[x] Completed all child activities and probes of Path 379`
 
+## Node 376: Probe 376: Align - Spike Path: Backlog Node Factory — Robustness Audit and Invariant Formalization
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 376: Probe 376: Reflect - Align Backlog Factory Robustness
+- **Status**: Completed
+- **Learnings & Context**: Aligned on idempotency, orphan prevention, dependency verification, and auto-registration in frontier state. Documented in WHY-0036.
+- **Feedforward Invariants**:
+  - `[x] Aligned on Backlog Node Factory robustness requirements`
+  - `[x] Aligned on Path template retrospectives`
+  - `[x] Created WHY-0036-backlog-node-factory-robustness.md`
+
 ## Current Active Path
 None
 
