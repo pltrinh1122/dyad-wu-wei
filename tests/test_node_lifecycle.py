@@ -111,7 +111,7 @@ def test_validate_spao_purity_failure(mock_run, mock_get_labels):
 @mock.patch("subprocess.run")
 @mock.patch("orchestrator.node_lifecycle.github_client.get_issue_details")
 def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_labels):
-    mock_get_details.return_value = {"title": "Test Issue", "body": "Goal"}
+    mock_get_details.return_value = {"title": "Probe 386: Plan - Test Issue", "body": "Goal"}
     mock_get_labels.return_value = []
     mock_run.return_value = mock.MagicMock(returncode=0, stdout="skills/path_resolver.py")
     

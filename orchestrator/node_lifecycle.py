@@ -243,31 +243,32 @@ class TerminalNode(BaseNode):
     def plan_finish(self, body: str) -> str:
         log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Issue #{self.issue_id}")
         
-        # Enforce WHAT- spec file tracking in git
-        try:
-            res = subprocess.run(["git", "diff", "--name-only", "main"], capture_output=True, text=True)
-            if res.returncode != 0:
-                res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
-                
-            if res.returncode == 0 and res.stdout != "success":
-                modified_files = []
-                if isinstance(res.stdout, str):
-                    for line in res.stdout.splitlines():
-                        parts = line.strip().split(None, 1)
-                        if len(parts) > 1:
-                            modified_files.append(parts[1])
-                        else:
-                            modified_files.append(line.strip())
-                            
-                has_spec = any(f.startswith("kb/WHAT-") and f.endswith(".md") for f in modified_files)
-                if not has_spec:
-                    raise Exception("SPEC file violation: A corresponding WHAT- specification file under kb/ (e.g. kb/WHAT-*.md) must be created and modified/added to finish the Plan phase.")
-        except Exception as e:
-            if "SPEC file violation" in str(e):
-                raise
-
         issue_details = github_client.get_issue_details(self.issue_id)
         current_title = issue_details.get("title", "")
+        
+        # Enforce WHAT- spec file tracking in git
+        if "plan" in current_title.lower():
+            try:
+                res = subprocess.run(["git", "diff", "--name-only", "main"], capture_output=True, text=True)
+                if res.returncode != 0:
+                    res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+                    
+                if res.returncode == 0 and res.stdout != "success":
+                    modified_files = []
+                    if isinstance(res.stdout, str):
+                        for line in res.stdout.splitlines():
+                            parts = line.strip().split(None, 1)
+                            if len(parts) > 1:
+                                modified_files.append(parts[1])
+                            else:
+                                modified_files.append(line.strip())
+                                
+                    has_spec = any(f.startswith("kb/WHAT-") and f.endswith(".md") for f in modified_files)
+                    if not has_spec:
+                        raise Exception("SPEC file violation: A corresponding WHAT- specification file under kb/ (e.g. kb/WHAT-*.md) must be created and modified/added to finish the Plan phase.")
+            except Exception as e:
+                if "SPEC file violation" in str(e):
+                    raise
         
         prefix = f"Node {self.issue_id}:"
         if not current_title.startswith(prefix):

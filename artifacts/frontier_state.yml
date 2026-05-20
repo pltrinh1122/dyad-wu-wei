@@ -1269,3 +1269,10 @@ nodes:
   - '[x] Loop/Area/Kind metadata parsed correctly'
   - '[x] Partition worktree path correctly resolved'
   - '[x] SPAO PR purity checks enforced'
+- name: 'Node 387: Activity 387: Reflect - Spike Path: Three-Loop Governance Framework'
+  status: Completed
+  learnings: Final retrospective and path closure completed. Gated SPEC check to run
+    only on Plan nodes to prevent blocking Align/Reflect operations.
+  invariants:
+  - '[x] Gated SPEC check by issue title in plan_finish'
+  - '[x] Path 384 closed automatically by Path Invariant check'

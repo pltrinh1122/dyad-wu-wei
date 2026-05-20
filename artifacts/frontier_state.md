@@ -1096,6 +1096,13 @@
   - `[x] Partition worktree path correctly resolved`
   - `[x] SPAO PR purity checks enforced`
 
+## Node 387: Activity 387: Reflect - Spike Path: Three-Loop Governance Framework
+- **Status**: Completed
+- **Learnings & Context**: Final retrospective and path closure completed. Gated SPEC check to run only on Plan nodes to prevent blocking Align/Reflect operations.
+- **Feedforward Invariants**:
+  - `[x] Gated SPEC check by issue title in plan_finish`
+  - `[x] Path 384 closed automatically by Path Invariant check`
+
 ## Current Active Path
 None
 
