@@ -1255,3 +1255,9 @@ nodes:
     for C1. Formalized loop mechanics and states under Concept F.'
   invariants:
   - None
+- name: 'Probe 386: Plan - Spike Path: Three-Loop Governance Framework'
+  status: Completed
+  learnings: Created WHAT-0034 specification documenting A1-F1 implementation decisions.
+    Created implementation_plan.md.
+  invariants:
+  - None
