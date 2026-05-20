@@ -914,5 +914,13 @@ None
   - `[x] TDD: 91 tests pass`
 
 
+## Probe: Align - Refinement of Initialization Invariants
+- **Status**: Completed
+- **Learnings & Context**: Codified the Triple-Node Doctrine in kb/WHY-0020. This supersedes the Dual-Probe pattern.
+- **Feedforward Invariants**:
+  - `[x] kb/WHY-0020 exists`
+  - `[x] Trinity definition aligned`
+
+
 ## Current Active Node
 **Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator**
