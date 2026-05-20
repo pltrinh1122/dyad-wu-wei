@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+# =============================================================================
+# Hermetic gh CLI stub for the SPAO test suite.
+#
+# Intercepts every gh subcommand pattern used by bin/backlog, bin/node,
+# bin/prompt, and bin/rt. Returns minimal valid JSON. Always exits 0.
+# No network calls, no GITHUB_TOKEN required.
+#
+# Injected into PATH by the stub_gh_cli autouse fixture in test_bash_wrappers.py
+# =============================================================================
+
+# Join all args into a single string for pattern matching
+CMD="$*"
+
+case "$CMD" in
+
+  # ── Issue list ──────────────────────────────────────────────────────────────
+  # get_open_issues() → _validate_orthogonal_scope, _verify_state_purity
+  "issue list --state open --limit 100 --json number,title,body")
+    echo '[{"number":1,"title":"Path 1: Test Path","body":"## Goal\nTest goal.\n\n## Meta-Index\n\n- [ ] Node 2: Probe 2: Align - Test Path"}]'
+    ;;
+
+  # ── Issue view (full details) ───────────────────────────────────────────────
+  # get_issue_details() → plan_start orthogonal scope check
+  issue\ view\ *\ --json\ number,title,body)
+    NUM=$(echo "$CMD" | grep -oE '[0-9]+' | head -1)
+    echo "{\"number\":$NUM,\"title\":\"Test Issue $NUM\",\"body\":\"## Goal\\nTest goal.\\n\\n## Depends On\\nTBD\"}"
+    ;;
+
+  # ── Issue view (state only) ─────────────────────────────────────────────────
+  # get_issue_state() → dependency checks
+  issue\ view\ *\ --json\ state)
+    echo '{"state":"OPEN"}'
+    ;;
+
+  # ── Issue view (state + title) ──────────────────────────────────────────────
+  issue\ view\ *\ --json\ state,title)
+    NUM=$(echo "$CMD" | grep -oE '[0-9]+' | head -1)
+    echo "{\"state\":\"OPEN\",\"title\":\"Test Issue $NUM\"}"
+    ;;
+
+  # ── Issue close ─────────────────────────────────────────────────────────────
+  issue\ close\ *)
+    echo "✓ Issue closed." >&2
+    ;;
+
+  # ── Issue reopen ────────────────────────────────────────────────────────────
+  issue\ reopen\ *)
+    echo "✓ Issue reopened." >&2
+    ;;
+
+  # ── Issue comment ───────────────────────────────────────────────────────────
+  issue\ comment\ *)
+    echo "✓ Comment added." >&2
+    ;;
+
+  # ── Issue edit ──────────────────────────────────────────────────────────────
+  issue\ edit\ *)
+    echo "✓ Issue edited." >&2
+    ;;
+
+  # ── Issue create ────────────────────────────────────────────────────────────
+  issue\ create\ *)
+    echo "https://github.com/pltrinh1122/agent-antigravity/issues/999"
+    ;;
+
+  # ── PR create ───────────────────────────────────────────────────────────────
+  "pr create"* | pr\ create\ *)
+    echo "https://github.com/pltrinh1122/agent-antigravity/pull/999"
+    ;;
+
+  # ── PR list (open PRs — WIP-N=1 check in sync) ─────────────────────────────
+  "pr list --state open --json number,title,headRefName")
+    echo '[]'
+    ;;
+
+  # ── PR view ─────────────────────────────────────────────────────────────────
+  pr\ view\ *)
+    echo '{"number":999,"state":"MERGED","title":"Test PR"}'
+    ;;
+
+  # ── Project / label operations ──────────────────────────────────────────────
+  issue\ label\ * | project\ *)
+    ;;
+
+  # ── GraphQL (gh_graph_skill) ─────────────────────────────────────────────────
+  "api graphql"* | api\ graphql\ *)
+    echo '{"data":{"repository":{"projectsV2":{"nodes":[]}}}}'
+    ;;
+
+  # ── Auth status (used in some diagnostics) ──────────────────────────────────
+  "auth status")
+    echo "github.com: Logged in (stub)"
+    ;;
+
+  # ── Fallback: unknown subcommand ─────────────────────────────────────────────
+  *)
+    echo "gh-stub: unhandled pattern: $CMD" >&2
+    exit 0
+    ;;
+esac
+
+exit 0

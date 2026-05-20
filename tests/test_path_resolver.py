@@ -16,13 +16,17 @@ def test_get_workspace_dir_env():
         assert ws_dir == "/tmp/mock-workspace"
 
 def test_get_workspace_dir_git_fallback():
-    with patch.dict(os.environ, {}):
+    # Explicitly remove SPAO_WORKSPACE_DIR so the git-toplevel fallback fires.
+    env = {k: v for k, v in os.environ.items() if k != "SPAO_WORKSPACE_DIR"}
+    with patch.dict(os.environ, env, clear=True):
         with patch("skills.git_client.get_show_toplevel", return_value="/tmp/git-workspace"):
             ws_dir = path_resolver.get_workspace_dir()
             assert ws_dir == "/tmp/git-workspace"
 
 def test_get_workspace_dir_cwd_fallback():
-    with patch.dict(os.environ, {}):
+    # Explicitly remove SPAO_WORKSPACE_DIR so the cwd fallback fires.
+    env = {k: v for k, v in os.environ.items() if k != "SPAO_WORKSPACE_DIR"}
+    with patch.dict(os.environ, env, clear=True):
         with patch("skills.git_client.get_show_toplevel", side_effect=Exception("not a git repo")):
             ws_dir = path_resolver.get_workspace_dir()
             assert ws_dir == os.path.abspath(os.getcwd())
