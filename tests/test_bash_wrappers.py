@@ -74,12 +74,12 @@ def test_backlog_wrapper_usage():
     # No args
     res = subprocess.run([bin_path], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
     # Invalid subcommand
     res = subprocess.run([bin_path, "invalid"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Unknown subcommand:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower() or "invalid choice" in res.stderr.lower()
 
 def test_backlog_subcommand_usage():
     """Verifies bin/backlog subcommands enforce argument counts and print usage on errors."""
@@ -94,12 +94,12 @@ def test_backlog_subcommand_usage():
     # view subcommand needs at least 1 arg
     res = subprocess.run([bin_path, "view"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
     # edit subcommand needs at least 2 args
     res = subprocess.run([bin_path, "edit"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
 def test_backlog_list_subcommand():
     """Verifies bin/backlog list executes successfully and outputs backlog items."""
@@ -118,7 +118,7 @@ def test_meta_wrapper_usage():
     # No args
     res = subprocess.run([bin_path], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
     # Invalid subcommand
     res = subprocess.run([bin_path, "invalid"], capture_output=True, text=True)
@@ -133,7 +133,7 @@ def test_meta_link_subcommand_usage():
     # link needs at least 2 args
     res = subprocess.run([bin_path, "link"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
 def test_meta_check_subcommand_usage():
     """Verifies bin/meta check enforces argument counts and prints usage on errors."""
@@ -143,7 +143,7 @@ def test_meta_check_subcommand_usage():
     # check needs at least 1 arg
     res = subprocess.run([bin_path, "check"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
 def test_meta_active_subcommand_usage():
     """Verifies bin/meta active enforces argument counts and prints usage on errors."""
@@ -153,6 +153,6 @@ def test_meta_active_subcommand_usage():
     # active needs at least 4 args
     res = subprocess.run([bin_path, "active"], capture_output=True, text=True)
     assert res.returncode != 0
-    assert "Usage:" in res.stdout
+    assert "usage:" in res.stderr.lower() or "usage:" in res.stdout.lower()
 
 

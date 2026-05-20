@@ -79,9 +79,10 @@ def test_checkout_node(mock_makedirs, mock_gh, mock_run, mock_tm):
 @patch('orchestrator.node_lifecycle.TelemetryManager')
 @patch('orchestrator.node_lifecycle.github_client')
 @patch('orchestrator.node_lifecycle.frontier_editor')
+@patch('orchestrator.node_lifecycle.mgr_backlog')
 @patch('orchestrator.node_lifecycle.subprocess.run')
 @patch('skills.nba_evaluator.evaluate')
-def test_reflect_node(mock_evaluate, mock_run, mock_fe, mock_gh, mock_tm):
+def test_reflect_node(mock_evaluate, mock_run, mock_backlog, mock_fe, mock_gh, mock_tm):
     mock_evaluate.return_value = {
         "mode": "path_switching",
         "active_path": "Path 181: Configurable Sense Hooks",
@@ -104,6 +105,8 @@ def test_reflect_node(mock_evaluate, mock_run, mock_fe, mock_gh, mock_tm):
     mock_gh.close_issue.assert_any_call("181", "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
     mock_fe.set_active_path.assert_called_once_with("/tmp/dummy.md", "None")
     mock_fe.complete_active_node.assert_called_once_with("/tmp/dummy.md", "Node 1: Test", "It worked", ["[x] Good"])
+    
+    mock_backlog.BacklogManager.return_value.check_off_meta_index.assert_called_once_with("181", "100")
     
     assert mock_run.call_count == 3
     call_args = [call[0][0] for call in mock_run.call_args_list]

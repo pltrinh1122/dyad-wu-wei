@@ -1,19 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
-    echo "Usage: $0 {list|new|view|edit} [args...]"
-    exit 0
-fi
-
-if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 {list|new|view|edit} [args...]"
-    exit 1
-fi
-
-SUBCOMMAND="$1"
-shift
-
 # Resolve repository root
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
@@ -26,68 +13,5 @@ else
     PYTHON_EXE="python3"
 fi
 
-case "$SUBCOMMAND" in
-    list)
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
-from skills.github_client import list_issues_by_label
-items = list_issues_by_label('backlog')
-if items:
-    print('\n📋 Backlog ({} item(s) pending):'.format(len(items)))
-    for item in items:
-        print('  {}'.format(item['title']))
-    print()
-else:
-    print('Backlog is empty.')
-"
-        ;;
-    new)
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
-import sys
-import argparse
-from skills.github_client import add_to_backlog
-
-parser = argparse.ArgumentParser(prog='bin/backlog new')
-parser.add_argument('type', help='Node type (probe, activity, path, etc)')
-parser.add_argument('title', help='Issue title')
-parser.add_argument('goal', help='Issue goal')
-parser.add_argument('--path', help='Parent Path ID for terminal nodes')
-parser.add_argument('--depends', help='Comma-separated list of issue IDs this node depends on')
-try:
-    args = parser.parse_args(sys.argv[1:])
-    print(add_to_backlog(args.type, args.title, args.goal, path_id=args.path, depends_on=args.depends))
-except SystemExit as e:
-    sys.exit(e.code)
-except Exception as e:
-    print(str(e))
-    sys.exit(1)
-" "$@"
-        ;;
-    view)
-        if [ "$#" -lt 1 ]; then
-            echo "Usage: $0 view <issue_id>"
-            exit 1
-        fi
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
-import subprocess, json, sys
-res = subprocess.run(['gh', 'issue', 'view', sys.argv[1], '--json', 'title,state,body'], capture_output=True, text=True, check=True)
-data = json.loads(res.stdout)
-print('='*40)
-print('Issue #{}: {} [{}]'.format(sys.argv[1], data['title'], data['state']))
-print('='*40)
-print(data['body'])
-print('='*40)
-" "$1"
-        ;;
-    edit)
-        if [ "$#" -lt 2 ]; then
-            echo "Usage: $0 edit <issue_id> <new_body>"
-            exit 1
-        fi
-        PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "import sys; from skills.github_client import update_issue_body; update_issue_body(sys.argv[1], sys.argv[2])" "$1" "$2"
-        ;;
-    *)
-        echo "Unknown subcommand: $SUBCOMMAND"
-        echo "Usage: $0 {list|new|view|edit} [args...]"
-        exit 1
-        ;;
-esac
+# Delegate to the orchestrator
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m orchestrator.mgr_backlog "$@"

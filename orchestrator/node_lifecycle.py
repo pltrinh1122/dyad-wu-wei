@@ -5,7 +5,7 @@ import subprocess
 import yaml
 from skills import github_client
 from skills import frontier_editor
-from orchestrator import mgr_prompt
+from orchestrator import mgr_prompt, mgr_backlog
 from orchestrator.mgr_telemetry import TelemetryManager
 
 def is_verbose() -> bool:
@@ -191,7 +191,8 @@ class TerminalNode(BaseNode):
         if active_path_str:
             path_issue_id = frontier_editor.extract_path_id(active_path_str)
             if path_issue_id:
-                github_client.check_off_meta_index(path_issue_id, self.issue_id)
+                backlog = mgr_backlog.BacklogManager()
+                backlog.check_off_meta_index(path_issue_id, self.issue_id)
             else:
                 print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
         
