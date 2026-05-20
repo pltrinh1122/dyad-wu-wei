@@ -1,4 +1,5 @@
-current_active_path: 'Path 292: Path: Agentic Infrastructure Hardening'
+current_active_path: 'Path 331: Spike Path: Enforce Triple-Node Auto-Initialization
+  for Paths'
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -1138,3 +1139,10 @@ nodes:
   invariants:
   - '- ''`artifacts/telemetry.jsonl is not tracked in Git`''\n- ''`All 82 tests pass
     cleanly`''\n'
+- name: 'Node 335: Probe 335: Align - Enforce Triple-Node Auto-Initialization for
+    Paths'
+  status: Completed
+  learnings: Aligned on WHY-0022 establishing automated triple-node auto-initialization
+    constraints inside the backlog manager.
+  invariants:
+  - '- ''`WHY-0022 document created`''\n- ''`All 82 tests pass cleanly`''\n'

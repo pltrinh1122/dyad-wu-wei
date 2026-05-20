@@ -976,8 +976,14 @@
 - **Feedforward Invariants**:
   - - '`artifacts/telemetry.jsonl is not tracked in Git`'\n- '`All 82 tests pass cleanly`'\n
 
+## Node 335: Probe 335: Align - Enforce Triple-Node Auto-Initialization for Paths
+- **Status**: Completed
+- **Learnings & Context**: Aligned on WHY-0022 establishing automated triple-node auto-initialization constraints inside the backlog manager.
+- **Feedforward Invariants**:
+  - - '`WHY-0022 document created`'\n- '`All 82 tests pass cleanly`'\n
+
 ## Current Active Path
-**Path 292: Path: Agentic Infrastructure Hardening**
+**Path 331: Spike Path: Enforce Triple-Node Auto-Initialization for Paths**
 
 ## Current Active Node
 None
