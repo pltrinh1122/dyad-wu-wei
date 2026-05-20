@@ -5,7 +5,7 @@ import subprocess
 import yaml
 from skills import github_client
 from skills import frontier_editor
-from orchestrator import mgr_prompt, mgr_backlog
+from orchestrator import mgr_prompt, mgr_backlog, mgr_nba
 from orchestrator.mgr_telemetry import TelemetryManager
 
 def is_verbose() -> bool:
@@ -197,12 +197,11 @@ class TerminalNode(BaseNode):
                 print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
         
         # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
-        from skills import nba_evaluator
-        repository = "pltrinh1122/agent-antigravity"  # Hardcoded for now, could be dynamic
-        nba_result = nba_evaluator.evaluate(repository=repository, frontier_file=frontier_file)
+        nba = mgr_nba.NBAManager()
+        nba_result = nba.evaluate(frontier_file=frontier_file)
         
-        if nba_result["mode"] == "path_switching" and nba_result["active_path"] is not None:
-            active_path_str = nba_result["active_path"]
+        if nba_result["type"] == "path_switching" and active_path_str:
+            # We had an active path, but NBA now says we should switch (because it's exhausted)
             path_issue_id = frontier_editor.extract_path_id(active_path_str)
             if path_issue_id:
                 github_client.close_issue(path_issue_id, "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")

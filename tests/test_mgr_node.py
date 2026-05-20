@@ -81,13 +81,11 @@ def test_checkout_node(mock_makedirs, mock_gh, mock_run, mock_tm):
 @patch('orchestrator.node_lifecycle.frontier_editor')
 @patch('orchestrator.node_lifecycle.mgr_backlog')
 @patch('orchestrator.node_lifecycle.subprocess.run')
-@patch('skills.nba_evaluator.evaluate')
-def test_reflect_node(mock_evaluate, mock_run, mock_backlog, mock_fe, mock_gh, mock_tm):
-    mock_evaluate.return_value = {
-        "mode": "path_switching",
-        "active_path": "Path 181: Configurable Sense Hooks",
-        "recommended": [],
-        "message": ""
+@patch('orchestrator.node_lifecycle.mgr_nba')
+def test_reflect_node(mock_nba, mock_run, mock_backlog, mock_fe, mock_gh, mock_tm):
+    mock_nba.NBAManager.return_value.evaluate.return_value = {
+        "type": "path_switching",
+        "recommendations": []
     }
     mock_fe.read_active_path.return_value = "Path 181: Configurable Sense Hooks"
     mock_fe.extract_path_id.return_value = "181"
