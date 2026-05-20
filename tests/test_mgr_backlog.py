@@ -46,3 +46,27 @@ def test_check_off_meta_index(mock_backlog_gh):
 
     mock_backlog_gh.get_issue_details.assert_called_once_with("213")
     mock_backlog_gh.update_issue_body.assert_called_once_with("213", "## Meta-Index\n- [x] Node 229: Title [Depends: 228]\n- [ ] Node 230: Title")
+
+@patch('orchestrator.mgr_backlog.render_template')
+def test_backlog_add_path(mock_render, mock_backlog_gh):
+    mock_backlog_gh.create_issue.side_effect = [
+        "https://github.com/pltrinh1122/agent-antigravity/issues/100",
+        "https://github.com/pltrinh1122/agent-antigravity/issues/101",
+        "https://github.com/pltrinh1122/agent-antigravity/issues/102",
+        "https://github.com/pltrinh1122/agent-antigravity/issues/103"
+    ]
+    mock_backlog_gh.get_issue_details.return_value = {"body": "## Meta-Index"}
+    mock_render.return_value = "Rendered Template Body"
+
+    manager = BacklogManager()
+    url = manager.add("path", "New Path Title", "Macro goal")
+
+    assert url == "https://github.com/pltrinh1122/agent-antigravity/issues/100"
+    assert mock_backlog_gh.create_issue.call_count == 4
+    assert mock_backlog_gh.add_label.call_count == 4
+    assert mock_backlog_gh.rename_issue_title.call_count == 4
+    
+    mock_backlog_gh.rename_issue_title.assert_any_call("100", "Path 100: New Path Title")
+    mock_backlog_gh.rename_issue_title.assert_any_call("101", "Probe 101: Align - New Path Title")
+    mock_backlog_gh.rename_issue_title.assert_any_call("102", "Probe 102: Plan - New Path Title")
+    mock_backlog_gh.rename_issue_title.assert_any_call("103", "Activity 103: Reflect - New Path Title")
