@@ -1,4 +1,4 @@
-# WHY-0060: Architectural Rationale for agent-SG1 Persona ID & Ownership Scope
+# WHY-0061: Architectural Rationale for agent-SG1 Persona ID & Ownership Scope
 
 ## 1. Context & Architectural Challenge
 
@@ -28,7 +28,7 @@ By requiring all SG-0001 policy commits and telemetry events to carry the `agent
 
 ## 3. Rationale for Scope Boundaries
 
-The boundaries defined in `WHAT-0060` map directly to the four tactical goals of SG-0001:
+The boundaries defined in `WHAT-0061` map directly to the four tactical goals of SG-0001:
 
 ### 3.1 Prioritization Schema & Intent Ledger (`TG-0001-01`)
 * **Rationale**: Defining which paths are prioritized belongs to the core prioritization schema. Isolating this under `agent-SG1` ensures prioritization checks cannot be dynamically disabled or weakened by coding agents.

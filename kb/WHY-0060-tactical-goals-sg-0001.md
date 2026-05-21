@@ -1,4 +1,4 @@
-# WHY-0059: Architectural Rationale for SG-0001 Tactical Goals
+# WHY-0060: Architectural Rationale for SG-0001 Tactical Goals
 
 ## 1. Context & Architectural Challenge
 

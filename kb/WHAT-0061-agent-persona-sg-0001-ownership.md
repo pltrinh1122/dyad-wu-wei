@@ -1,4 +1,4 @@
-# WHAT-0060: Agent-Persona ID (agent-SG1) Ownership of SG-0001
+# WHAT-0061: Agent-Persona ID (agent-SG1) Ownership of SG-0001
 
 This specification establishes the official identity, scope, and operational boundaries of the **`agent-SG1`** persona ID. This persona assumes exclusive ownership and custody over **SG-0001** (Backlog Dynamics and Resource Budget Alignment).
 
