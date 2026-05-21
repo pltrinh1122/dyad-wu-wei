@@ -1768,8 +1768,9 @@
 - **Learnings & Context**: Created design specification (WHAT-0064) and rationale (WHY-0064) for dynamic identity resolution.
 - **Feedforward Invariants**:
   - `[ ]` None
+
 ## Current Active Path
-**626**
+**Path 588: 578-C: Integrate Persona-Aware Filtering into NBA Scorer**
 
 ## Current Active Node
 None
