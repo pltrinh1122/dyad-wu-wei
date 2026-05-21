@@ -1703,3 +1703,10 @@ nodes:
   invariants:
   - kb/WHAT-0052-scoring-ab-test-plan.md exists and contains Detailed Implementation
     Specifications
+- name: 'Activity 479: Reflect - Path: Concurrent Audit & Performance Monitoring Agent
+    Deployment'
+  status: Completed
+  learnings: Successfully aligned and planned the A/B testing framework (WHAT-0052)
+    for comparing coarse and granular scoring models.
+  invariants:
+  - kb/WHAT-0052-scoring-ab-test-plan.md exists
