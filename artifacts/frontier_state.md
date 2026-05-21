@@ -1722,8 +1722,8 @@
   - `[ ]` None
 
 ## Node 628: Probe 628: Plan - Path: Implement Dynamic Agent Identity Resolution
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: Implement Dynamic Agent Identity Resolution.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1739,6 +1739,35 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 634: Path 634: Path: Refactor frontier_state for concurrent agent awareness
+- **Status**: Backlog
+- **Learnings & Context**: Refactor frontier_state.yml/md structure and flow state engine to handle concurrent agent executions without file contention or overwrite conflicts.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 635: Probe 635: Align - Path: Refactor frontier_state for concurrent agent awareness
+- **Status**: Backlog
+- **Learnings & Context**: Align on the philosophical and technical intent for Path: Refactor frontier_state for concurrent agent awareness.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 636: Probe 636: Plan - Path: Refactor frontier_state for concurrent agent awareness
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Path: Refactor frontier_state for concurrent agent awareness.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 637: Activity 637: Reflect - Path: Refactor frontier_state for concurrent agent awareness
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Path: Refactor frontier_state for concurrent agent awareness.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 628: Plan - Path: Implement Dynamic Agent Identity Resolution
+- **Status**: Completed
+- **Learnings & Context**: Created design specification (WHAT-0064) and rationale (WHY-0064) for dynamic identity resolution.
+- **Feedforward Invariants**:
+  - `[ ]` None
 ## Current Active Path
 **626**
 
