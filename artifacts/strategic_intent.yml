@@ -21,8 +21,7 @@ strategic_goals:
     prioritized in the strategic ledger.
   status: Active
   prioritized_paths:
-  - 412
-  - 416
+  - 299
 - id: SG-0002
   title: Gateless Autonomous Execution within Risk-Managed Sandbox
   collaborative_gap: The human cannot safely delegate execution authority to the agent,
@@ -34,7 +33,6 @@ strategic_goals:
     gates because the sandbox policies fail to isolate or rollback unsafe mutations.
   status: Active
   prioritized_paths:
-  - 476
   - 292
 - id: SG-0003
   title: Preservation of Autonomous Velocity
@@ -47,10 +45,7 @@ strategic_goals:
     decreases due to repeating rollback cycles caused by test flakiness or network
     timeouts.
   status: Active
-  prioritized_paths:
-  - 368
-  - 420
-  - 503
+  prioritized_paths: []
 - id: SG-0004
   title: Efficient Intent-to-Goal Policy Communication
   collaborative_gap: The communication interface requires verbose conversational turns
@@ -61,8 +56,7 @@ strategic_goals:
   falsification_signal: The operator spends more than 10% of their session time in
     interactive conversational turns rather than simple policy updates.
   status: Active
-  prioritized_paths:
-  - 428
+  prioritized_paths: []
 - id: SG-0005
   title: Autonomous Knowledge Accrual
   collaborative_gap: The agent cannot autonomously codify and recall lessons from
@@ -72,6 +66,4 @@ strategic_goals:
   falsification_signal: The average number of agent repair cycles on repeat error
     patterns does not decrease over subsequent sessions targeting the same domain.
   status: Active
-  prioritized_paths:
-  - 424
-  - 465
+  prioritized_paths: []
