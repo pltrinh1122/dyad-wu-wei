@@ -63,6 +63,9 @@ The **mandatory, non-null Plan-Stage output** of the **NL** for a given Node. Th
 ### HITL (Human-In-The-Loop)
 The **operator approval gate**. The Agent is completely paralyzed from advancing past the **Observe** phase or starting the next Node until the human operator reviews, approves, and merges the Node's active PR into `main`.
 
+### NS (North-Star)
+The overarching guiding objective or design ideal of the repository (e.g., that ultimately no gates are necessary for fully autonomous operational state). All architectural decisions, workflow rules, and next-best-actions must align with the North-Star.
+
 ### Materialization Boundary
 The strict threshold separating **PML** (low-friction conversational exploration) from formal **NL** execution (branch-mutating repository transitions):
 * **PML (Pre-Materialization Loop)**: The SPAO instantiation operating *below* this boundary. Ephemeral, unstructured, does not produce branch mutations. A PML cycle produces at most an **NC** proposal for operator review.

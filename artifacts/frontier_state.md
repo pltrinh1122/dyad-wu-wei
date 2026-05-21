@@ -1450,6 +1450,14 @@
 - **Feedforward Invariants**:
   - `All tests pass and the retrospective report is compiled under artifacts/`
 
+## Probe 481: Align - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic Alignment
+- **Status**: Completed
+- **Learnings & Context**: Created WHAT-0048 defining the mathematical formulation for the NBA scoring rubric, WHY-0048 rationale, and updated the system GLOSSARY.md with the NS (North-Star) definition.
+- **Feedforward Invariants**:
+  - `WHAT-0048`
+  - `WHY-0048`
+  - `and GLOSSARY.md exist and contain NS definitions`
+
 ## Current Active Path
 None
 
