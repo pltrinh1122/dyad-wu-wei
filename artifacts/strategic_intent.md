@@ -35,7 +35,7 @@
 - **Collaborative Gap**: The agent cannot autonomously codify and recall lessons from past failures, forcing the operator to repeatedly correct similar errors.
 - **Constraints**: Knowledge mutations under the kb/ directory must be verified for structural validity and must not violate immutable core axioms.
 - **Falsification Signal**: The average number of agent repair cycles on repeat error patterns does not decrease over subsequent sessions targeting the same domain.
-- **Prioritized Paths**: 541
+- **Prioritized Paths**: 566
 
 ## Draft Goals
 *No goals in this state.*

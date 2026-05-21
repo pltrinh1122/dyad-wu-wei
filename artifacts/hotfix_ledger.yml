@@ -47,3 +47,7 @@ hotfixes:
   timestamp: '2026-05-21T05:51:57Z'
   file: artifacts/strategic_intent.yml
   message: Prioritize Path 503 under SG-0003
+- hash: 05e95029855ac6439c2767890698cae825c7ce54
+  timestamp: '2026-05-21T18:18:09Z'
+  file: artifacts/frontier_state.md
+  message: 'reflect: finalize meta-state updates for Path 566'

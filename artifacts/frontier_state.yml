@@ -1827,3 +1827,37 @@ nodes:
   - git_client.switch supports detached switch
   - git_client.get_current_branch resolves detached HEAD as 'main'
   - Sync command operates on detached origin/main
+- name: 'Node 566: Path 566: Codify SG-0005 Tactical Goals and Persona Domain Ownership'
+  status: Backlog
+  learnings: Define the official agent persona, tactical goals, and selection rubrics
+    to claim domain ownership for SG-0005 (Autonomous Knowledge Accrual).
+  invariants: []
+- name: 'Node 567: Probe 567: Align - Codify SG-0005 Tactical Goals and Persona Domain
+    Ownership'
+  status: Completed
+  learnings: Verified correctness/completeness of SG-0005 documentation (WHAT-0058,
+    WHY-0058, WHAT-0059, WHY-0059), ensuring compliance with lexical rules and persona
+    invariants.
+  invariants:
+  - '[x] SG-0005 KB documents (WHAT-0058'
+  - WHAT-0059
+  - WHY-0058
+  - WHY-0059) are verified and validated.
+  - '[x] No legacy terminology is introduced (lexical guard passes).'
+- name: 'Node 568: Probe 568: Plan - Codify SG-0005 Tactical Goals and Persona Domain
+    Ownership'
+  status: Completed
+  learnings: Verified the planning specifications and confirmed alignment of verification
+    plans for SG-0005.
+  invariants:
+  - '[x] Verification criteria for agent-SG5 ownership are clearly defined.'
+  - '[x] Schema and template for path_566_digest.md are established.'
+- name: 'Node 569: Activity 569: Reflect - Codify SG-0005 Tactical Goals and Persona
+    Domain Ownership'
+  status: Completed
+  learnings: Successfully completed Path 566, registered agent-SG5, and compiled the
+    walkthrough digest.
+  invariants:
+  - '[x] The retrospective digest artifacts/path_566_digest.md is compiled and matches
+    the required template.'
+  - '[x] The path is formally marked as completed and closed in the meta-index.'
