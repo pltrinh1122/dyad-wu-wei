@@ -4,7 +4,7 @@
 #   - Is immutable per deployment (never overridden at runtime)
 #   - Absence or mismatch MUST cause the persona enforcement gate to fail-closed
 #   - Standard established by Path 591 (Activity 600), agent-SG5, SG-0005
-agent_id: agent-sg5
+# agent_id: agent-sg5
 
 node_taxonomy:
   terminal:

@@ -65,11 +65,11 @@ def load_strategic_goal_ids() -> list[str]:
     return [sg["id"] for sg in data.get("strategic_goals", [])]
 
 
+from skills import path_resolver
+
 def load_agent_id() -> str:
-    """Return the agent_id field from antigravity.yml."""
-    with open(ANTIGRAVITY_PATH, "r", encoding="utf-8") as f:
-        data = yaml.safe_load(f)
-    return data.get("agent_id", "")
+    """Return the resolved agent_id."""
+    return path_resolver.resolve_agent_id() or ""
 
 
 # ---------------------------------------------------------------------------
