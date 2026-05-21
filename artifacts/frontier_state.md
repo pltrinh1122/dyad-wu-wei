@@ -1490,6 +1490,12 @@
   - `tests pass`
   - `report generated and saved`
 
+## Probe 477: Align - Path: Concurrent Audit & Performance Monitoring Agent Deployment
+- **Status**: Completed
+- **Learnings & Context**: Created kb/WHAT-0052-scoring-ab-test-plan.md outlining the hypotheses, metrics, and controlled experimental design for comparing the coarse vs. granular scoring models.
+- **Feedforward Invariants**:
+  - `kb/WHAT-0052-scoring-ab-test-plan.md exists`
+
 ## Current Active Path
 None
 
