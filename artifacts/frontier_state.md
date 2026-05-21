@@ -1672,7 +1672,7 @@
   - `[ ]` None
 
 ## Current Active Path
-**Path 299: Path: Elevate Path Meta-Index from List to DAG**
+**Path 591: Path: [578-A] Codify Persona Ownership as ROM Primitives**
 
 ## Current Active Node
 None
