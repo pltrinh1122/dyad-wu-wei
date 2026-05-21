@@ -1,0 +1,37 @@
+{
+    "timestamp": "2026-05-21T22:08:27.131764+00:00",
+    "failures": [
+        {
+            "test_name": "TestOwnershipIndexCompleteness.test_every_active_sg_has_owner_entry",
+            "file_path": "tests/test_ownership_index.py",
+            "line_number": 36,
+            "error_type": "FileNotFoundError",
+            "error_message": "[Errno 2] No such file or directory: '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'",
+            "traceback": "self = <tests.test_ownership_index.TestOwnershipIndexCompleteness object at 0x7a6cf5354ce0>\n\n    def test_every_active_sg_has_owner_entry(self):\n        \"\"\"\n        Every Strategic Goal ID in strategic_intent.yml must have a\n        corresponding row in WHAT-0062. Missing rows indicate unregistered goals.\n        \"\"\"\n>       rows = parse_ownership_index(WHAT_0062_PATH)\n\ntests/test_ownership_index.py:86: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmd_path = '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'\n\n    def parse_ownership_index(md_path: str) -> list[dict]:\n        \"\"\"\n        Parse the pipe-delimited ownership table from WHAT-0062.\n        Returns a list of dicts with keys: sg_id, owner_persona, spec_file, why_file, status.\n        \"\"\"\n>       with open(md_path, \"r\", encoding=\"utf-8\") as f:\nE       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'\n\ntests/test_ownership_index.py:36: FileNotFoundError"
+        },
+        {
+            "test_name": "TestOwnershipIndexCompleteness.test_covered_spec_files_exist_on_disk",
+            "file_path": "tests/test_ownership_index.py",
+            "line_number": 36,
+            "error_type": "FileNotFoundError",
+            "error_message": "[Errno 2] No such file or directory: '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'",
+            "traceback": "self = <tests.test_ownership_index.TestOwnershipIndexCompleteness object at 0x7a6cf5354890>\n\n    def test_covered_spec_files_exist_on_disk(self):\n        \"\"\"\n        For every row with status='covered', the spec_file must exist on disk.\n        A dangling file path means the ownership spec was deleted or renamed.\n        \"\"\"\n>       rows = parse_ownership_index(WHAT_0062_PATH)\n\ntests/test_ownership_index.py:101: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmd_path = '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'\n\n    def parse_ownership_index(md_path: str) -> list[dict]:\n        \"\"\"\n        Parse the pipe-delimited ownership table from WHAT-0062.\n        Returns a list of dicts with keys: sg_id, owner_persona, spec_file, why_file, status.\n        \"\"\"\n>       with open(md_path, \"r\", encoding=\"utf-8\") as f:\nE       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'\n\ntests/test_ownership_index.py:36: FileNotFoundError"
+        },
+        {
+            "test_name": "TestOwnershipIndexCompleteness.test_agent_id_matches_ownership_index",
+            "file_path": "tests/test_ownership_index.py",
+            "line_number": 36,
+            "error_type": "FileNotFoundError",
+            "error_message": "[Errno 2] No such file or directory: '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'",
+            "traceback": "self = <tests.test_ownership_index.TestOwnershipIndexCompleteness object at 0x7a6cf5354590>\n\n    def test_agent_id_matches_ownership_index(self):\n        \"\"\"\n        The agent_id declared in antigravity.yml must appear as owner_persona\n        for at least one SG with status='covered' in WHAT-0062.\n        An agent operating without a registered identity cannot be gated correctly.\n        \"\"\"\n        agent_id = load_agent_id()\n        assert agent_id, (\n            \"antigravity.yml must contain a non-empty 'agent_id' field. \"\n            \"Add 'agent_id: agent-sg{N}' as the canonical ROM identity declaration.\"\n        )\n    \n>       rows = parse_ownership_index(WHAT_0062_PATH)\n\ntests/test_ownership_index.py:126: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmd_path = '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'\n\n    def parse_ownership_index(md_path: str) -> list[dict]:\n        \"\"\"\n        Parse the pipe-delimited ownership table from WHAT-0062.\n        Returns a list of dicts with keys: sg_id, owner_persona, spec_file, why_file, status.\n        \"\"\"\n>       with open(md_path, \"r\", encoding=\"utf-8\") as f:\nE       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'\n\ntests/test_ownership_index.py:36: FileNotFoundError"
+        },
+        {
+            "test_name": "TestOwnershipIndexCompleteness.test_no_duplicate_owners_for_non_shared",
+            "file_path": "tests/test_ownership_index.py",
+            "line_number": 36,
+            "error_type": "FileNotFoundError",
+            "error_message": "[Errno 2] No such file or directory: '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'",
+            "traceback": "self = <tests.test_ownership_index.TestOwnershipIndexCompleteness object at 0x7a6cf5354d70>\n\n    def test_no_duplicate_owners_for_non_shared(self):\n        \"\"\"\n        No two non-shared, non-unassigned SG rows may share the same owner_persona.\n        Each Strategic Goal must have exactly one responsible agent.\n        \"\"\"\n>       rows = parse_ownership_index(WHAT_0062_PATH)\n\ntests/test_ownership_index.py:140: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmd_path = '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'\n\n    def parse_ownership_index(md_path: str) -> list[dict]:\n        \"\"\"\n        Parse the pipe-delimited ownership table from WHAT-0062.\n        Returns a list of dicts with keys: sg_id, owner_persona, spec_file, why_file, status.\n        \"\"\"\n>       with open(md_path, \"r\", encoding=\"utf-8\") as f:\nE       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md'\n\ntests/test_ownership_index.py:36: FileNotFoundError"
+        }
+    ]
+}
