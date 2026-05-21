@@ -295,6 +295,11 @@ class TerminalNode(BaseNode):
                 if "SPEC file violation" in str(e):
                     raise
         
+        # Enforce static KB conflict checks (SG-0005)
+        from orchestrator import mgr_knowledge_accrual
+        from skills import path_resolver
+        mgr_knowledge_accrual.run_kb_check(repo_root=path_resolver.get_workspace_dir(), strict=True)
+        
         prefix = f"Node {self.issue_id}:"
         if not current_title.startswith(prefix):
             new_title = f"{prefix} {current_title}"
@@ -342,7 +347,11 @@ class TerminalNode(BaseNode):
 
         with FlowTransaction(frontier_file) as tx:
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
-     
+            
+            # Enforce post-failure reflection gate (SG-0005)
+            from orchestrator import mgr_knowledge_accrual
+            mgr_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo)
+            
             self.close("Node completed via Flow-State Manager. Moving to PR.")
             tx.register_rollback(self.reopen)
             

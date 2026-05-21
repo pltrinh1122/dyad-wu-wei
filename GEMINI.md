@@ -76,3 +76,5 @@ To realize the Synergistic Human-Agent Partnership (NS-0001) and satisfy Axiom (
 
 <!-- Testing True Hotfix -->
 
+<!-- CONTEXTUAL_ROM_INJECTION_START -->
+<!-- CONTEXTUAL_ROM_INJECTION_END -->

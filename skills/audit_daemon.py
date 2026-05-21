@@ -129,12 +129,81 @@ def evaluate_frontier_integrity(rule, state):
         return True, state
     return False, state
 
+def evaluate_lexical_guard(rule, state):
+    pattern = rule.get("pattern")
+    if not pattern:
+        return False, state
+        
+    res = subprocess.run(
+        ["git", "status", "--porcelain"],
+        capture_output=True,
+        text=True,
+        cwd=REPO_ROOT
+    )
+    if res.returncode != 0:
+        return False, state
+        
+    modified_files = []
+    for line in res.stdout.splitlines():
+        if not line:
+            continue
+        status = line[:2].strip()
+        filepath = line[3:].strip()
+        if '->' in filepath:
+            filepath = filepath.split('->')[-1].strip()
+        if status != 'D':
+            modified_files.append(filepath)
+            
+    import hashlib
+    exemptions = {
+        'kb/GLOSSARY.md',
+        'artifacts/frontier_state.md',
+        'artifacts/coherence_validation.md',
+        'tests/test_lexical_guard.py',
+        'kb/WHY-0054-glossary-alignment.md',
+        'kb/WHAT-0054-glossary-spec.md'
+    }
+    
+    regex = re.compile(pattern)
+    triggered = False
+    new_state = dict(state)
+    triggered_files_state = new_state.get("triggered_files", {})
+    
+    for f_rel in modified_files:
+        if f_rel in exemptions:
+            continue
+        if not (f_rel.endswith('.py') or f_rel.endswith('.md') or f_rel.endswith('.txt')):
+            continue
+            
+        full_path = REPO_ROOT / f_rel
+        if not full_path.exists():
+            continue
+            
+        try:
+            with open(full_path, "r", encoding="utf-8", errors="ignore") as f:
+                content = f.read()
+        except Exception:
+            continue
+            
+        if regex.search(content):
+            content_hash = hashlib.md5(content.encode('utf-8')).hexdigest()
+            if triggered_files_state.get(f_rel) != content_hash:
+                alert_level = rule.get("alert_level", "FAILURE").upper()
+                msg = f"[{alert_level}] " + rule.get("prompt_message", f"Lexical Guard Violation in {f_rel}")
+                inject_prompt(msg)
+                triggered_files_state[f_rel] = content_hash
+                triggered = True
+                
+    new_state["triggered_files"] = triggered_files_state
+    return triggered, new_state
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
     "file_modified": evaluate_file_modified,
     "stale_active_node": evaluate_stale_active_node,
-    "frontier_integrity": evaluate_frontier_integrity
+    "frontier_integrity": evaluate_frontier_integrity,
+    "lexical_guard": evaluate_lexical_guard
 }
 
 def main():

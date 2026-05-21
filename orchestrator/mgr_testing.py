@@ -84,13 +84,68 @@ class TestManager:
         result = subprocess.run(
             [pytest_exe] + targets,
             env=env,
-            cwd=self.repo_root
+            cwd=self.repo_root,
+            capture_output=True,
+            text=True
         )
+        
+        # Write captured stdout and stderr to physical output streams
+        sys.stdout.write(result.stdout)
+        sys.stderr.write(result.stderr)
         
         if result.returncode == 0:
             print("✅ All tests passed!")
         else:
             print(f"❌ Test suite failed with exit code {result.returncode}")
+            
+            # Post-failure diagnostics parsing & rule synthesis (SG-0005)
+            try:
+                from skills import knowledge_accrual_skill
+                import json
+                from datetime import datetime, timezone
+                
+                failures = knowledge_accrual_skill.parse_test_failure_diagnostics(result.stdout)
+                if failures:
+                    audit_dir = os.path.join(self.repo_root, "artifacts", "audit")
+                    os.makedirs(audit_dir, exist_ok=True)
+                    
+                    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+                    fail_file = os.path.join(audit_dir, f"test-fail-{timestamp}.json")
+                    with open(fail_file, "w", encoding="utf-8") as f:
+                        json.dump({
+                            "timestamp": datetime.now(timezone.utc).isoformat(),
+                            "failures": failures
+                        }, f, indent=4)
+                    print(f"Recorded test failures to {fail_file}")
+                    
+                    # Update audit_config.yml with synthesized rules
+                    config_path = os.path.join(self.repo_root, "infra", "audit-daemon", "audit_config.yml")
+                    if os.path.exists(config_path):
+                        try:
+                            with open(config_path, "r", encoding="utf-8") as f:
+                                config_data = yaml.safe_load(f) or {}
+                            
+                            if "rules" not in config_data:
+                                config_data["rules"] = []
+                                
+                            rules_updated = False
+                            for failure in failures:
+                                new_rule = knowledge_accrual_skill.synthesize_rule(failure)
+                                if new_rule:
+                                    existing_ids = {r.get("id") for r in config_data["rules"] if isinstance(r, dict)}
+                                    if new_rule["id"] not in existing_ids:
+                                        config_data["rules"].append(new_rule)
+                                        rules_updated = True
+                                        print(f"Synthesized new rule: {new_rule['id']} for term: {new_rule.get('pattern')}")
+                                        
+                            if rules_updated:
+                                with open(config_path, "w", encoding="utf-8") as f:
+                                    yaml.dump(config_data, f, default_flow_style=False, sort_keys=False)
+                                print("Updated audit_config.yml with synthesized rules.")
+                        except Exception as ex:
+                            print(f"Warning: Failed to update audit_config.yml with synthesized rules: {ex}")
+            except Exception as e:
+                print(f"Warning: Failed to execute knowledge accrual hooks: {e}")
             
         return result.returncode
 

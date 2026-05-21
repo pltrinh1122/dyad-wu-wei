@@ -1,0 +1,29 @@
+{
+    "timestamp": "2026-05-21T16:34:55.564941+00:00",
+    "failures": [
+        {
+            "test_name": "test_parse_test_failure_diagnostics",
+            "file_path": "tests/test_knowledge_accrual.py",
+            "line_number": 43,
+            "error_type": "UnknownError",
+            "error_message": "AssertionError",
+            "traceback": "def test_parse_test_failure_diagnostics():\n        pytest_output = \"\"\"\n    ============================= test session starts ==============================\n    collected 1 item\n    \n    tests/test_dummy.py F                                                     [100%]\n    \n    =================================== FAILURES ===================================\n    __________________________________ test_dummy __________________________________\n    \n        def test_dummy():\n    >       raise ValueError(\"This is a test error message\")\n    E       ValueError: This is a test error message\n    \n    tests/test_dummy.py:10: ValueError\n    =========================== short test summary info ============================\n        \"\"\"\n        failures = parse_test_failure_diagnostics(pytest_output)\n        assert len(failures) == 1\n        assert failures[0][\"test_name\"] == \"test_dummy\"\n        assert failures[0][\"file_path\"] == \"tests/test_dummy.py\"\n        assert failures[0][\"line_number\"] == 10\n        assert failures[0][\"error_type\"] == \"ValueError\"\n>       assert failures[0][\"error_message\"] == \"This is a test error message\"\nE       AssertionError: assert 'ValueError' == 'This is a test error message'\nE         \nE         - This is a test error message\nE         + ValueError\n\ntests/test_knowledge_accrual.py:43: AssertionError"
+        },
+        {
+            "test_name": "test_check_kb_conflicts_forbidden_words",
+            "file_path": "tests/test_knowledge_accrual.py",
+            "line_number": 57,
+            "error_type": "UnknownError",
+            "error_message": "AssertionError",
+            "traceback": "def test_check_kb_conflicts_forbidden_words():\n        diff_text = \"\"\"\n    diff --git a/kb/test.md b/kb/test.md\n    index 123456..7890ab 100644\n    --- a/kb/test.md\n    +++ b/kb/test.md\n    @@ -1,3 +1,4 @@\n     # Test\n    +This is an epic transition and spike task.\n     \"\"\"\n        conflicts = check_kb_conflicts(diff_text)\n>       assert len(conflicts) == 2\nE       assert 1 == 2\nE        +  where 1 = len([\"Forbidden term 'epic' found in kb/test.md: 'This is an epic transition and spike task.'\"])\n\ntests/test_knowledge_accrual.py:57: AssertionError"
+        },
+        {
+            "test_name": "test_modified_files_lexical_compliance",
+            "file_path": "tests/test_lexical_guard.py",
+            "line_number": 85,
+            "error_type": "UnknownError",
+            "error_message": "Failed",
+            "traceback": "def test_modified_files_lexical_compliance():\n        \"\"\"Enforces vocabulary invariants on all newly introduced/modified workspace files.\"\"\"\n        modified_files = get_modified_files()\n        violations = []\n    \n        for filepath in modified_files:\n            # Ignore files not ending with standard documentation or source formats\n            if not (filepath.endswith('.py') or filepath.endswith('.md') or filepath.endswith('.txt')):\n                continue\n    \n            # Ignore files in the strict exemptions list\n            if filepath in EXEMPTIONS:\n                continue\n    \n            # Read the file's current workspace content\n            if os.path.exists(filepath):\n                with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:\n                    content = f.read()\n    \n                found = check_content(content)\n                if found:\n                    violations.append(f\"{filepath} contains forbidden terms: {found}\")\n    \n        if violations:\n>           pytest.fail(\n                \"LEXICAL GUARD FAILURE: Stale terms detected in modified files!\\n\"\n                \"Please replace 'epic' with 'path', and 'spike' with 'probe'.\\n\"\n                \"Violations:\\n\" + \"\\n\".join(violations)\n            )\nE           Failed: LEXICAL GUARD FAILURE: Stale terms detected in modified files!\nE           Please replace 'epic' with 'path', and 'spike' with 'probe'.\nE           Violations:\nE           tests/test_knowledge_accrual.py contains forbidden terms: ['spike', 'epic']\n\ntests/test_lexical_guard.py:85: Failed"
+        }
+    ]
+}
