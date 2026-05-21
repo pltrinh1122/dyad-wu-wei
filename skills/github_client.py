@@ -198,3 +198,11 @@ def get_merged_prs(limit: int = 50) -> list[dict]:
     )
     import json
     return json.loads(result.stdout.strip() or "[]")
+
+def merge_pull_request(pr_number: int, method: str = "squash") -> None:
+    """Merges a pull request using the specified method."""
+    subprocess.run(
+        ["gh", "pr", "merge", str(pr_number), f"--{method}", "--delete-branch"],
+        check=True
+    )
+
