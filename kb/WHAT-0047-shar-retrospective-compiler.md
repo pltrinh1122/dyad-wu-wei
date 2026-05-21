@@ -52,3 +52,4 @@ For Section 4 (5 Whys) and Section 5 (Action Matrix), the compiler must generate
 - **Offline Invariant**: The compiler must run completely offline without executing any network calls.
 - **Idempotency Invariant**: Multiple runs of `bin/retro compile` over the same telemetry inputs must generate byte-for-byte identical output.
 - **Velocity Invariant**: Compilation of a 50-node range must complete in less than 2.0 seconds.
+<!-- Checked and verified during Probe 467 Plan phase -->
