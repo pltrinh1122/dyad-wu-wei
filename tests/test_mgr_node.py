@@ -1,6 +1,7 @@
 import pytest
-from unittest.mock import MagicMock
-from orchestrator.mgr_node import plan_start_node, plan_finish_node, checkout_node, reflect_node
+from unittest.mock import MagicMock, patch
+from orchestrator.mgr_node import plan_start_node, plan_finish_node, checkout_node, reflect_node, sync_and_clean_node
+
 
 def test_plan_start_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subprocess):
     # Setup
@@ -56,3 +57,61 @@ def test_reflect_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subpr
     mock_gh.close_issue.assert_any_call("181", "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
     mock_fe.set_active_path.assert_called_once_with("/tmp/dummy.md", "None")
     mock_fe.complete_active_node.assert_called_once_with("/tmp/dummy.md", "Node 1: Test", "It worked", ["[x] Good"], clear_pointers=True)
+
+
+def test_sync_and_clean_node_order():
+    manager = MagicMock()
+    with patch("orchestrator.mgr_node.git_client") as mock_git, \
+         patch("orchestrator.mgr_node.github_client") as mock_gh, \
+         patch("orchestrator.mgr_node.subprocess") as mock_sub, \
+         patch("orchestrator.mgr_node.HookManager") as mock_hook:
+        
+        manager.attach_mock(mock_git, 'git')
+        manager.attach_mock(mock_gh, 'gh')
+        
+        mock_gh.get_open_prs.return_value = []
+        mock_git.list_merged_branches.return_value = []
+        mock_git.list_local_branches.return_value = []
+        
+        sync_and_clean_node()
+        
+        calls = manager.mock_calls
+        filtered_calls = [
+            (call[0], call[1], call[2]) for call in calls 
+            if call[0] in ('git.switch', 'git.pull', 'gh.get_open_prs')
+        ]
+        
+        assert filtered_calls == [
+            ('git.switch', ('main',), {}),
+            ('git.pull', ('origin', 'main'), {'prune': True}),
+            ('gh.get_open_prs', (), {})
+        ]
+
+
+def test_sync_and_clean_node_wip_violation():
+    manager = MagicMock()
+    with patch("orchestrator.mgr_node.git_client") as mock_git, \
+         patch("orchestrator.mgr_node.github_client") as mock_gh, \
+         patch("orchestrator.mgr_node.subprocess") as mock_sub, \
+         patch("orchestrator.mgr_node.HookManager") as mock_hook:
+        
+        manager.attach_mock(mock_git, 'git')
+        manager.attach_mock(mock_gh, 'gh')
+        
+        mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "some-branch"}]
+        
+        with pytest.raises(Exception, match="WIP-N=1 Violation"):
+            sync_and_clean_node()
+            
+        calls = manager.mock_calls
+        filtered_calls = [
+            (call[0], call[1], call[2]) for call in calls 
+            if call[0] in ('git.switch', 'git.pull', 'gh.get_open_prs')
+        ]
+        
+        assert filtered_calls == [
+            ('git.switch', ('main',), {}),
+            ('git.pull', ('origin', 'main'), {'prune': True}),
+            ('gh.get_open_prs', (), {})
+        ]
+
