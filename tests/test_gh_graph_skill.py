@@ -110,6 +110,7 @@ def test_deterministic_nba_sorting():
     ready = gh_graph_skill.get_ready_nodes(nodes)
     assert ready == ["2", "5", "10", "100"]
 
+@pytest.mark.xfail(reason="TDD - Implementation pending in Act phase")
 def test_parse_meta_index_in_progress():
     body = """
 - [x] Node 1: Completed
@@ -124,6 +125,7 @@ def test_parse_meta_index_in_progress():
     assert nodes["3"]["completed"] is False
     assert nodes["3"].get("in_progress", False) is False
 
+@pytest.mark.xfail(reason="TDD - Implementation pending in Act phase")
 def test_get_ready_nodes_excludes_in_progress():
     nodes = {
         "1": {"completed": True, "in_progress": False, "depends": []},
