@@ -9,6 +9,10 @@ import re
 import subprocess
 import json
 
+class DAGValidationError(Exception):
+    """Raised when dependency graph validation fails."""
+    pass
+
 def fetch_path_data(path_id: str, repository: str = "pltrinh1122/agent-antigravity") -> str:
     """Fetches the issue body for a given Path ID."""
     result = subprocess.run(
@@ -17,6 +21,48 @@ def fetch_path_data(path_id: str, repository: str = "pltrinh1122/agent-antigravi
     )
     data = json.loads(result.stdout.strip() or "{}")
     return data.get("body", "")
+
+def validate_dag(nodes: dict) -> None:
+    """
+    Validates a dependency graph for referential integrity, self-dependency, 
+    and acyclicity (cycle detection).
+    
+    Raises:
+      DAGValidationError
+    """
+    for u, data in nodes.items():
+        for v in data["depends"]:
+            if v not in nodes:
+                raise DAGValidationError(f"Referential Integrity Violation: Node {u} depends on non-existent Node {v}")
+            if u == v:
+                raise DAGValidationError(f"Self-Dependency Violation: Node {u} cannot depend on itself")
+                
+    # Cycle detection via DFS
+    state = {}  # 0: unvisited, 1: visiting, 2: visited
+    parent = {}
+    
+    def dfs(u):
+        state[u] = 1  # visiting
+        for v in nodes[u]["depends"]:
+            if state.get(v, 0) == 1:
+                # Cycle detected. Reconstruct path.
+                cycle = [v]
+                curr = u
+                while curr != v:
+                    cycle.append(curr)
+                    curr = parent[curr]
+                cycle.append(v)
+                cycle.reverse()
+                path_str = " -> ".join(cycle)
+                raise DAGValidationError(f"Cycle Detected: {path_str}")
+            elif state.get(v, 0) == 0:
+                parent[v] = u
+                dfs(v)
+        state[u] = 2  # visited
+
+    for node in nodes:
+        if state.get(node, 0) == 0:
+            dfs(node)
 
 def parse_meta_index(body: str) -> dict:
     """
@@ -32,30 +78,34 @@ def parse_meta_index(body: str) -> dict:
     nodes = {}
     # Handle both real newlines and literal \n characters that might appear from JSON parsing
     body = body.replace("\\n", "\n")
+    
+    pattern = re.compile(
+        r"^\s*-\s+\[([xX /])\]\s+(?:Node|Activity|Probe|Path)?\s*(\d+):?\s*(.*?)(?:\s*\[Depends:\s*(.*?)\s*\])?\s*$",
+        re.IGNORECASE
+    )
+    
     for line in body.splitlines():
-        line = line.strip()
-        # Matches: - [x] Node 123: Title
-        # Matches: - [ ] Activity 456: Title
-        # Matches: - [/] Probe 789: Title
-        status_match = re.match(r"-\s+\[([xX /])\]\s+(?:Node|Activity|Probe|Path)?\s*(\d+):?\s*(.*)", line, re.IGNORECASE)
-        if status_match:
-            status_char = status_match.group(1).lower()
-            nid = status_match.group(2)
-            title = status_match.group(3).strip()
-            
-            # Remove trailing dependency annotations from title if present
-            title = re.sub(r"\s*\[Depends:.*?\]\s*$", "", title)
+        line_stripped = line.strip()
+        match = pattern.match(line_stripped)
+        if match:
+            status_char = match.group(1).lower()
+            nid = match.group(2)
+            title = match.group(3).strip()
+            dep_str = match.group(4)
             
             depends = []
-            dep_match = re.search(r"\[Depends:\s*(.*?)\]", line, re.IGNORECASE)
-            if dep_match:
-                depends = [d.strip() for d in dep_match.group(1).split(",")]
-            
+            if dep_str is not None:
+                # Split and clean whitespace
+                depends = [d.strip() for d in dep_str.split(",") if d.strip()]
+                
             nodes[nid] = {
                 "completed": status_char == "x",
                 "depends": depends,
                 "title": title
             }
+            
+    # Validate the graph before returning
+    validate_dag(nodes)
     return nodes
 
 def get_ready_nodes(nodes: dict) -> list[str]:
