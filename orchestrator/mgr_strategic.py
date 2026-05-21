@@ -323,17 +323,15 @@ def find_parent_path_id(node_id: str) -> str | None:
         return None
         
     try:
-        backlog_items = github_client.list_issues_by_label("backlog")
-        for item in backlog_items:
+        path_items = github_client.list_issues_by_label("path")
+        for item in path_items:
             num = str(item.get("number"))
-            labels = github_client.get_issue_labels(num)
-            if "path" in labels:
-                details = github_client.get_issue_details(num)
-                body = details.get("body", "")
-                
-                pattern = re.compile(r"-\s+\[\s*x?\s*\]\s+Node\s+" + re.escape(str(node_id)) + r"\b", re.IGNORECASE)
-                if pattern.search(body):
-                    return num
+            details = github_client.get_issue_details(num)
+            body = details.get("body", "")
+            
+            pattern = re.compile(r"-\s+\[\s*x?\s*\]\s+Node\s+" + re.escape(str(node_id)) + r"\b", re.IGNORECASE)
+            if pattern.search(body):
+                return num
     except Exception as e:
         print(f"Warning: Failed to find parent path for node {node_id} on GitHub: {e}")
     return None

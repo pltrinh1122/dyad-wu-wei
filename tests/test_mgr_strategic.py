@@ -289,6 +289,32 @@ class TestMgrStrategic(unittest.TestCase):
         finally:
             mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
 
+    def test_find_parent_path_id_success(self):
+        import os
+        from unittest.mock import MagicMock
+        from skills import github_client
+        
+        orig_list = github_client.list_issues_by_label
+        orig_details = github_client.get_issue_details
+        orig_environ = os.environ.get
+        
+        github_client.list_issues_by_label = MagicMock(return_value=[{"number": 416, "title": "Path: Some Path"}])
+        github_client.get_issue_details = MagicMock(return_value={
+            "number": 416,
+            "title": "Path: Some Path",
+            "body": "## Meta-Index\n- [ ] Node 419: Some activity"
+        })
+        os.environ.get = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else orig_environ(key, default)
+        
+        try:
+            parent_id = mgr_strategic.find_parent_path_id("419")
+            self.assertEqual(parent_id, "416")
+            github_client.list_issues_by_label.assert_called_once_with("path")
+        finally:
+            github_client.list_issues_by_label = orig_list
+            github_client.get_issue_details = orig_details
+            os.environ.get = orig_environ
+
 if __name__ == "__main__":
     unittest.main()
 
