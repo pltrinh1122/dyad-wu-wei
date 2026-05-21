@@ -1696,3 +1696,10 @@ nodes:
     scoring models.
   invariants:
   - kb/WHAT-0052-scoring-ab-test-plan.md exists
+- name: 'Probe 478: Plan - Path: Concurrent Audit & Performance Monitoring Agent Deployment'
+  status: Completed
+  learnings: Designed granular scoring metrics ({\text{Strategic}}$, {\text{Risk}}$)
+    and specified the controlled A/B test harness details in WHAT-0052.
+  invariants:
+  - kb/WHAT-0052-scoring-ab-test-plan.md exists and contains Detailed Implementation
+    Specifications

@@ -1496,6 +1496,12 @@
 - **Feedforward Invariants**:
   - `kb/WHAT-0052-scoring-ab-test-plan.md exists`
 
+## Probe 478: Plan - Path: Concurrent Audit & Performance Monitoring Agent Deployment
+- **Status**: Completed
+- **Learnings & Context**: Designed granular scoring metrics ({\text{Strategic}}$, {\text{Risk}}$) and specified the controlled A/B test harness details in WHAT-0052.
+- **Feedforward Invariants**:
+  - `kb/WHAT-0052-scoring-ab-test-plan.md exists and contains Detailed Implementation Specifications`
+
 ## Current Active Path
 None
 
