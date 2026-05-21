@@ -1515,6 +1515,12 @@
   - `kb/HOW-0000-manifest.md exists and contains reference to axioms`
   - `GEMINI.md requires reading manifest first`
 
+## Node 504: Probe 504: Align - Optimization of Node Sync Audit Performance (Lightweight Audit)
+- **Status**: Completed
+- **Learnings & Context**: Documented lightweight checksum audit design in kb/WHY-0053-lightweight-audit-design.md
+- **Feedforward Invariants**:
+  - `kb/WHY-0053-lightweight-audit-design.md exists`
+
 ## Current Active Path
 None
 

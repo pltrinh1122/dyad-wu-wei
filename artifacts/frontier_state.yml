@@ -1719,3 +1719,9 @@ nodes:
   invariants:
   - kb/HOW-0000-manifest.md exists and contains reference to axioms
   - GEMINI.md requires reading manifest first
+- name: 'Node 504: Probe 504: Align - Optimization of Node Sync Audit Performance
+    (Lightweight Audit)'
+  status: Completed
+  learnings: Documented lightweight checksum audit design in kb/WHY-0053-lightweight-audit-design.md
+  invariants:
+  - kb/WHY-0053-lightweight-audit-design.md exists
