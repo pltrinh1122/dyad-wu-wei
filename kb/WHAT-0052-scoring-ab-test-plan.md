@@ -32,3 +32,16 @@ We will implement an automated A/B test harness (`tests/test_scoring_ab_test.py`
 2. Scores all open backlog paths.
 3. Computes the Discernment Index ($D$) and topological feasibility for both groups.
 4. Outputs the comparative results and formally accepts or rejects the null hypothesis.
+
+## 5. Detailed Implementation Specifications
+
+### 5.1 Strategic Value ($C_{\text{Strategic}}$) Tiered Rules
+* Score = `1.0`: If the path is prioritized inside `strategic_intent.yml`.
+* Score = `0.7`: If the path matches keywords associated with active strategic goals (e.g., "sandbox", "audit", "telemetry", "velocity", "gate", "knowledge", "abtest") in its title or body.
+* Score = `0.3`: If no keyword match and not prioritized.
+
+### 5.2 Operational Risk ($C_{\text{Risk}}$) Complexity Rules
+* Score = `1.0`: If the path does not propose changes to any critical modules.
+* Score = `0.75`: If the path proposes changes to exactly 1 critical module (e.g., `git_client`, `github_client`, `node_lifecycle`, `infra_manager`).
+* Score = `0.5`: If the path proposes changes to 2 or more critical modules.
+
