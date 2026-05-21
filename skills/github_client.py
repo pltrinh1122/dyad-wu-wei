@@ -1,5 +1,6 @@
 import subprocess
 import tempfile
+import json
 from orchestrator.mgr_telemetry import record_execution
 
 @record_execution(stage="skill")
@@ -49,17 +50,6 @@ def update_issue_body(issue_id: str, new_body: str) -> None:
             check=True
         )
 
-def create_pull_request(title: str, body: str) -> str:
-    """Creates a Pull Request safely using a temp file for the body."""
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
-        temp_file.write(body)
-        temp_file.flush()
-        
-        result = subprocess.run(
-            ["gh", "pr", "create", "--title", title, "-F", temp_file.name],
-            capture_output=True, text=True, check=True
-        )
-        return result.stdout.strip()
 
 @record_execution(stage="skill")
 def list_issues_by_label(label: str) -> list[dict]:
@@ -117,8 +107,26 @@ def rename_issue_title(issue_id: str, new_title: str) -> None:
     )
 
 
+@record_execution(stage="skill")
 def create_pull_request(title: str, body: str, head: str = None) -> str:
-    """Creates a PR using gh pr create."""
+    """Creates a PR using gh pr create, or returns the existing PR URL if it already exists for the head branch."""
+    if not head:
+        res = subprocess.run(
+            ["git", "symbolic-ref", "--short", "HEAD"],
+            capture_output=True, text=True
+        )
+        if res.returncode == 0:
+            head = res.stdout.strip()
+
+    if head:
+        chk_res = subprocess.run(
+            ["gh", "pr", "list", "--head", head, "--state", "open", "--json", "url"],
+            capture_output=True, text=True, check=True
+        )
+        prs = json.loads(chk_res.stdout.strip() or "[]")
+        if prs and isinstance(prs, list) and len(prs) > 0:
+            return prs[0]["url"]
+
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
         temp_file.write(body)
         temp_file.flush()

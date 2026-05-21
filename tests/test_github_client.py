@@ -49,10 +49,71 @@ def test_update_issue_body(mock_tempfile, mock_subprocess):
 
 def test_create_pull_request(mock_tempfile, mock_subprocess):
     mock_gh_cmd, mock_file = mock_tempfile
-    mock_subprocess.return_value.stdout = "https://github.com/pltrinh1122/agent-antigravity/pull/99"
+    
+    mock_git_ref = MagicMock(returncode=0, stdout="node/294-test\n")
+    mock_pr_list = MagicMock(returncode=0, stdout="[]\n")
+    mock_pr_create = MagicMock(returncode=0, stdout="https://github.com/pltrinh1122/agent-antigravity/pull/99\n")
+    
+    mock_subprocess.side_effect = [mock_git_ref, mock_pr_list, mock_pr_create]
+    
     pr_url = create_pull_request("Test PR Title", "Test PR Body")
     assert pr_url == "https://github.com/pltrinh1122/agent-antigravity/pull/99"
     mock_file.write.assert_called_once_with("Test PR Body")
+    
+    assert mock_subprocess.call_count == 3
+    args0 = mock_subprocess.call_args_list[0][0][0]
+    assert args0 == ["git", "symbolic-ref", "--short", "HEAD"]
+    
+    args1 = mock_subprocess.call_args_list[1][0][0]
+    assert "pr" in args1
+    assert "list" in args1
+    assert "node/294-test" in args1
+    
+    args2 = mock_subprocess.call_args_list[2][0][0]
+    assert "pr" in args2
+    assert "create" in args2
+
+def test_create_pull_request_already_exists(mock_tempfile, mock_subprocess):
+    mock_gh_cmd, mock_file = mock_tempfile
+    
+    mock_git_ref = MagicMock(returncode=0, stdout="node/294-test\n")
+    mock_pr_list = MagicMock(returncode=0, stdout='[{"url": "https://github.com/pltrinh1122/agent-antigravity/pull/99"}]\n')
+    
+    mock_subprocess.side_effect = [mock_git_ref, mock_pr_list]
+    
+    pr_url = create_pull_request("Test PR Title", "Test PR Body")
+    assert pr_url == "https://github.com/pltrinh1122/agent-antigravity/pull/99"
+    
+    mock_file.write.assert_not_called()
+    assert mock_subprocess.call_count == 2
+    
+    args0 = mock_subprocess.call_args_list[0][0][0]
+    assert args0 == ["git", "symbolic-ref", "--short", "HEAD"]
+    
+    args1 = mock_subprocess.call_args_list[1][0][0]
+    assert "pr" in args1
+    assert "list" in args1
+    assert "node/294-test" in args1
+
+def test_create_pull_request_with_explicit_head(mock_tempfile, mock_subprocess):
+    mock_gh_cmd, mock_file = mock_tempfile
+    
+    mock_pr_list = MagicMock(returncode=0, stdout="[]\n")
+    mock_pr_create = MagicMock(returncode=0, stdout="https://github.com/pltrinh1122/agent-antigravity/pull/100\n")
+    
+    mock_subprocess.side_effect = [mock_pr_list, mock_pr_create]
+    
+    pr_url = create_pull_request("Test PR Title", "Test PR Body", head="custom-branch")
+    assert pr_url == "https://github.com/pltrinh1122/agent-antigravity/pull/100"
+    mock_file.write.assert_called_once_with("Test PR Body")
+    
+    assert mock_subprocess.call_count == 2
+    args0 = mock_subprocess.call_args_list[0][0][0]
+    assert "custom-branch" in args0
+    args1 = mock_subprocess.call_args_list[1][0][0]
+    assert "--head" in args1
+    assert "custom-branch" in args1
+
 
 def test_list_issues_by_label(mock_subprocess):
     mock_list_result = MagicMock(stdout='[{"number": 31, "title": "Backlog Item", "url": "https://...", "state": "OPEN"}]', returncode=0)
