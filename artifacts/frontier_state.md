@@ -1521,6 +1521,19 @@
 - **Feedforward Invariants**:
   - `kb/WHY-0053-lightweight-audit-design.md exists`
 
+## Node 505: Probe 505: Plan - Optimization of Node Sync Audit Performance (Lightweight Audit)
+- **Status**: Completed
+- **Learnings & Context**: Designed a checksum-based lightweight audit strategy cached in artifacts/audit_state.json and filtered active paths to resolve network latency in bin/meta audit. Drafted technical design WHAT-0053 and obtained operator approval on the implementation plan.
+- **Feedforward Invariants**:
+  - `kb/WHAT-0053-lightweight-audit-spec.md exists`
+
+## Node 506: Activity 506: Reflect - Optimization of Node Sync Audit Performance (Lightweight Audit)
+- **Status**: Completed
+- **Learnings & Context**: Optimized the bin/meta audit subcommand to perform lightweight caching (audit_state.json) and active path filtering. Added test suite and fixed title mapping suffix matching.
+- **Feedforward Invariants**:
+  - `[x] bin/meta implements audit subcommand with lightweight cache`
+  - `[x] test suite passes cleanly`
+
 ## Current Active Path
 None
 

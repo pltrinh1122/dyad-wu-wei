@@ -39,3 +39,11 @@ hotfixes:
   timestamp: '2026-05-21T01:38:07Z'
   file: artifacts/frontier_state.yml
   message: 'doc: update frontier state with Path 461 retrospective'
+- hash: c2d29a0e04371c5f0980e1ae23ecbcbdba1ba2fd
+  timestamp: '2026-05-21T05:47:43Z'
+  file: artifacts/strategic_intent.yml
+  message: Update strategic_intent.yml to prioritize Path 292
+- hash: 7534912ae9cde4113a3e3c3c0e6f79e57df08808
+  timestamp: '2026-05-21T05:51:57Z'
+  file: artifacts/strategic_intent.yml
+  message: Prioritize Path 503 under SG-0003
