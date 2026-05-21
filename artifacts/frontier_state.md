@@ -1418,6 +1418,32 @@
   - `[x] Path labeling in backlog manager`
   - `[x] Set status transitions cleanup`
 
+## Node 461: Path 461: Path: Retrospective Assessment & SHAR Framework Adoption
+- **Status**: Completed
+- **Learnings & Context**: Established a standardized high-reliability retrospective framework (SHAR) and conducted a post-mortem from Path 404 to the current backlog state.
+- **Feedforward Invariants**:
+  - `[x] Completed all child activities and probes of Path 461`
+
+## Node 462: Probe 462: Align - Path: Retrospective Assessment & SHAR Framework Adoption
+- **Status**: Completed
+- **Learnings & Context**: Aligned on the SHAR retrospective framework design, leveraging NASA ADLR close call tracking, Google SRE blameless action items, and Toyota 5 Whys. Documented the format proposal.
+- **Feedforward Invariants**:
+  - `[x] Created retrospective_format_proposal.md`
+  - `[x] Created retrospective_anomaly_taxonomy.md`
+
+## Node 463: Probe 463: Plan - Path: Retrospective Assessment & SHAR Framework Adoption
+- **Status**: Completed
+- **Learnings & Context**: Specified the four-tier Anomaly Classification Taxonomy (ACT) and defined precursor/discovery loop metrics.
+- **Feedforward Invariants**:
+  - `[x] Codified ACT taxonomy rules`
+
+## Node 464: Activity 464: Reflect - Path: Retrospective Assessment & SHAR Framework Adoption
+- **Status**: Completed
+- **Learnings & Context**: Completed the self-assessment report, compiled metrics from 5,000+ telemetry events, and hotfixed the reusable template to main under kb/templates/shar_retrospective.md.
+- **Feedforward Invariants**:
+  - `[x] Generated retrospective_post_mortem.md`
+  - `[x] Created kb/templates/shar_retrospective.md template`
+
 ## Current Active Path
 None
 
