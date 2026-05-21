@@ -75,7 +75,7 @@ def execute_hotfix(file_path, commit_msg):
     print(f"Hotfix complete! Logged to {ledger_file}")
 
 def execute_score_paths(start=None, end=None):
-    from orchestrator.nba_scorer import NBAScorer
+    from orchestrator.nba_scorer import GranularNBAScorer
     from skills import github_client
     
     # 1. Gather paths to evaluate
@@ -114,7 +114,7 @@ def execute_score_paths(start=None, end=None):
         print("No paths found to score in the specified criteria.")
         return
         
-    scorer = NBAScorer()
+    scorer = GranularNBAScorer()
     total_score = 0.0
     
     # Generate report
