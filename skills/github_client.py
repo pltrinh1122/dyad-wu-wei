@@ -77,14 +77,23 @@ def list_issues_by_label(label: str) -> list[dict]:
     issues = json.loads(result.stdout.strip() or "[]")
     
     valid_issues = []
+    import time
     for issue in issues:
-        view_res = subprocess.run(
-            ["gh", "issue", "view", str(issue["number"]), "--json", "state"],
-            capture_output=True, text=True, check=True
-        )
-        state_data = json.loads(view_res.stdout.strip() or "{}")
-        if state_data.get("state") == "OPEN":
-            valid_issues.append(issue)
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                view_res = subprocess.run(
+                    ["gh", "issue", "view", str(issue["number"]), "--json", "state"],
+                    capture_output=True, text=True, check=True
+                )
+                state_data = json.loads(view_res.stdout.strip() or "{}")
+                if state_data.get("state") == "OPEN":
+                    valid_issues.append(issue)
+                break
+            except subprocess.CalledProcessError as e:
+                if attempt == max_retries - 1:
+                    raise e
+                time.sleep(0.5)
             
     return valid_issues
 
