@@ -1,4 +1,4 @@
-current_active_path: 'Path 591: Path: [578-A] Codify Persona Ownership as ROM Primitives'
+current_active_path: '626'
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -1899,3 +1899,78 @@ nodes:
   - create_pull_request is decorated with record_execution
   - duplicate definition removed
   - 100% test coverage
+- name: 'Node 622: Path 622: Path: Dynamic agent identity resolution and policy ledger
+    alignment'
+  status: Backlog
+  learnings: Evaluate dynamic agent identity resolution against collaborative active
+    goals and update the policy ledger to properly encompass the resolution logic.
+  invariants: []
+- name: 'Node 623: Probe 623: Align - Path: Dynamic agent identity resolution and
+    policy ledger alignment'
+  status: Backlog
+  learnings: 'Align on the philosophical and technical intent for Path: Dynamic agent
+    identity resolution and policy ledger alignment.'
+  invariants: []
+- name: 'Node 624: Probe 624: Plan - Path: Dynamic agent identity resolution and policy
+    ledger alignment'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for Path: Dynamic agent identity
+    resolution and policy ledger alignment.'
+  invariants: []
+- name: 'Node 625: Activity 625: Reflect - Path: Dynamic agent identity resolution
+    and policy ledger alignment'
+  status: Backlog
+  learnings: 'Final reflection and path closure for Path: Dynamic agent identity resolution
+    and policy ledger alignment.'
+  invariants: []
+- name: 'Node 626: Path 626: Path: Implement Dynamic Agent Identity Resolution'
+  status: Backlog
+  learnings: Decouple agent_id from antigravity.yml and implement dynamic identity
+    resolution based on env var or workspace basename to prevent main branch conflicts.
+  invariants: []
+- name: 'Node 627: Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 628: Probe 628: Plan - Path: Implement Dynamic Agent Identity Resolution'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity
+    Resolution'
+  status: Backlog
+  learnings: 'Final reflection and path closure for Path: Implement Dynamic Agent
+    Identity Resolution.'
+  invariants: []
+- name: 'Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution'
+  status: Completed
+  learnings: Aligned on dynamic agent identity resolution policy.
+  invariants: []
+- name: 'Node 634: Path 634: Path: Refactor frontier_state for concurrent agent awareness'
+  status: Backlog
+  learnings: Refactor frontier_state.yml/md structure and flow state engine to handle
+    concurrent agent executions without file contention or overwrite conflicts.
+  invariants: []
+- name: 'Node 635: Probe 635: Align - Path: Refactor frontier_state for concurrent
+    agent awareness'
+  status: Backlog
+  learnings: 'Align on the philosophical and technical intent for Path: Refactor frontier_state
+    for concurrent agent awareness.'
+  invariants: []
+- name: 'Node 636: Probe 636: Plan - Path: Refactor frontier_state for concurrent
+    agent awareness'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for Path: Refactor frontier_state
+    for concurrent agent awareness.'
+  invariants: []
+- name: 'Node 637: Activity 637: Reflect - Path: Refactor frontier_state for concurrent
+    agent awareness'
+  status: Backlog
+  learnings: 'Final reflection and path closure for Path: Refactor frontier_state
+    for concurrent agent awareness.'
+  invariants: []
+- name: 'Probe 628: Plan - Path: Implement Dynamic Agent Identity Resolution'
+  status: Completed
+  learnings: Created design specification (WHAT-0064) and rationale (WHY-0064) for
+    dynamic identity resolution.
+  invariants: []
