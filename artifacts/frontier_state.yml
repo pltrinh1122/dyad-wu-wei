@@ -1751,3 +1751,10 @@ nodes:
     names.
   invariants:
   - All tests pass, no epic or spike references.
+- name: 'Node 512: Probe 512: Align - Observation: Node sync latency due to Metasystem
+    Integrity Check'
+  status: Completed
+  learnings: Documented the latency optimization analysis and proposed single-query
+    design in kb/WHY-0054-node-sync-latency.md.
+  invariants:
+  - kb/WHY-0054-node-sync-latency.md exists

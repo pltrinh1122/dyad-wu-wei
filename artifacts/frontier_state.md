@@ -1540,6 +1540,12 @@
 - **Feedforward Invariants**:
   - `All tests pass, no epic or spike references.`
 
+## Node 512: Probe 512: Align - Observation: Node sync latency due to Metasystem Integrity Check
+- **Status**: Completed
+- **Learnings & Context**: Documented the latency optimization analysis and proposed single-query design in kb/WHY-0054-node-sync-latency.md.
+- **Feedforward Invariants**:
+  - `kb/WHY-0054-node-sync-latency.md exists`
+
 ## Current Active Path
 None
 
