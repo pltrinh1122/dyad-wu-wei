@@ -1686,7 +1686,7 @@
   - `100% test coverage`
 
 ## Current Active Path
-**Path 591: Path: [578-A] Codify Persona Ownership as ROM Primitives**
+**588**
 
 ## Current Active Node
 None
