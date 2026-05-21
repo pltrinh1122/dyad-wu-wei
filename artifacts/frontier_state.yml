@@ -1759,10 +1759,11 @@ nodes:
   invariants:
   - kb/WHY-0054-node-sync-latency.md exists
 - name: 'Node 523: Probe 523: Design and Scoping for DAG Meta-Index Support'
-  status: Backlog
-  learnings: Design and specify the exact parsing and validation rules for DAG-based
-    checklists in Meta-Index.
-  invariants: []
+  status: Completed
+  learnings: Documented parsing and validation rules for DAG checklists in kb/WHAT-0055-dag-meta-index-spec.md.
+  invariants:
+  - WHAT-0055 specification document exists in kb/.
+  - All local tests pass.
 - name: 'Node 524: Activity 524: Implement DAG parsing in gh_graph_skill'
   status: Backlog
   learnings: Implement robust parsing, verification, and dependency ordering for DAGs

@@ -1547,10 +1547,11 @@
   - `kb/WHY-0054-node-sync-latency.md exists`
 
 ## Node 523: Probe 523: Design and Scoping for DAG Meta-Index Support
-- **Status**: Backlog
-- **Learnings & Context**: Design and specify the exact parsing and validation rules for DAG-based checklists in Meta-Index.
+- **Status**: Completed
+- **Learnings & Context**: Documented parsing and validation rules for DAG checklists in kb/WHAT-0055-dag-meta-index-spec.md.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `WHAT-0055 specification document exists in kb/.`
+  - `All local tests pass.`
 
 ## Node 524: Activity 524: Implement DAG parsing in gh_graph_skill
 - **Status**: Backlog
