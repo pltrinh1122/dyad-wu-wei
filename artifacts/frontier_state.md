@@ -1534,6 +1534,12 @@
   - `[x] bin/meta implements audit subcommand with lightweight cache`
   - `[x] test suite passes cleanly`
 
+## Node 293: Activity 293: Activity: Implement Sanitized Lock-File Naming
+- **Status**: Completed
+- **Learnings & Context**: Refactored file locker to use pure filesystem directory traversal, eliminating git subprocess mock conflicts. Centralized lock naming replaces worktree-specific file paths with sanitized names, avoiding leakage of node titles/paths in lock names.
+- **Feedforward Invariants**:
+  - `All tests pass, no epic or spike references.`
+
 ## Current Active Path
 None
 

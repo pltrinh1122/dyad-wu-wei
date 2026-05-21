@@ -1743,3 +1743,11 @@ nodes:
   invariants:
   - '[x] bin/meta implements audit subcommand with lightweight cache'
   - '[x] test suite passes cleanly'
+- name: 'Node 293: Activity 293: Activity: Implement Sanitized Lock-File Naming'
+  status: Completed
+  learnings: Refactored file locker to use pure filesystem directory traversal, eliminating
+    git subprocess mock conflicts. Centralized lock naming replaces worktree-specific
+    file paths with sanitized names, avoiding leakage of node titles/paths in lock
+    names.
+  invariants:
+  - All tests pass, no epic or spike references.
