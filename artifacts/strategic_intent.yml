@@ -36,6 +36,8 @@ strategic_goals:
   prioritized_paths:
   - 292
   - 532
+  - 622
+  - 626
   status: Active
   title: Gateless Autonomous Execution within Risk-Managed Sandbox
 - collaborative_gap: Low-fidelity validation feedback (flaky or slow tests) breaks
