@@ -31,3 +31,11 @@ hotfixes:
   timestamp: '2026-05-20T06:01:37Z'
   file: GEMINI.md
   message: 'docs: update instructions to document unified spao CLI'
+- hash: 15374fb8f06f0cb4b14ea60fadd1ca812cea18a9
+  timestamp: '2026-05-21T01:35:26Z'
+  file: kb/templates/shar_retrospective.md
+  message: 'feat: add SHAR framework template'
+- hash: c2d976770642f3dc028e2e808221beb18f92b7f1
+  timestamp: '2026-05-21T01:38:07Z'
+  file: artifacts/frontier_state.yml
+  message: 'doc: update frontier state with Path 461 retrospective'
