@@ -68,10 +68,21 @@ class HookManager:
 
         recommendations_list = ""
         if result["recommendations"]:
+            from orchestrator.nba_scorer import NBAScorer
+            scorer = NBAScorer(frontier_file=frontier_file)
             lines = []
             for item in result["recommendations"]:
                 issue_id = item.get("id") or item.get("number")
                 title = item['title']
+                
+                # Calculate score
+                try:
+                    score_data = scorer.calculate_score(issue_id)
+                    score_val = score_data.get("score", 0.0)
+                    comps = score_data.get("components", {})
+                    score_str = f" \033[1;36m[Score: {score_val:.3f} | dep={comps.get('dependency', 0.0)}, ax={comps.get('axiom', 0.0)}, str={comps.get('strategic', 0.0)}, rsk={comps.get('risk', 0.0)}]\033[0m"
+                except Exception:
+                    score_str = ""
                 
                 # Semantic Styling
                 if "Probe" in title:
@@ -81,7 +92,7 @@ class HookManager:
                 else:
                     styled_title = title
                     
-                lines.append(f"  → #{issue_id}: {styled_title}")
+                lines.append(f"  → #{issue_id}: {styled_title}{score_str}")
             recommendations_list = "\n".join(lines)
         else:
             recommendations_list = "  (No recommendations found.)"

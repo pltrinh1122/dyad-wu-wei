@@ -1657,3 +1657,12 @@ nodes:
     architectural specifications and file modifications planned for Activity 483.
   invariants:
   - kb/WHY-0049-nba-scorer-design.md exists
+- name: 'Activity 483: Reflect - Path: Next-Best-Action (NBA) Scoring Refinement &
+    Axiomatic Alignment'
+  status: Completed
+  learnings: Implemented the scoring algorithm under orchestrator/nba_scorer.py, integrated
+    it into the Next-Best-Action sense hook, and verified functionality with robust
+    unit tests.
+  invariants:
+  - orchestrator/nba_scorer.py and tests/test_nba_scorer.py exist
+  - all tests pass
