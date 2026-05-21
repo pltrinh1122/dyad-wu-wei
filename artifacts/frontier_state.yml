@@ -1650,3 +1650,10 @@ nodes:
   - WHAT-0048
   - WHY-0048
   - and GLOSSARY.md exist and contain NS definitions
+- name: 'Probe 482: Plan - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic
+    Alignment'
+  status: Completed
+  learnings: Created kb/WHY-0049-nba-scorer-design.md detailing the scoring engine
+    architectural specifications and file modifications planned for Activity 483.
+  invariants:
+  - kb/WHY-0049-nba-scorer-design.md exists
