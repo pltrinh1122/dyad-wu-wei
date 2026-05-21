@@ -50,7 +50,7 @@ def test_git_get_current_branch(mock_subprocess):
     mock_subprocess.return_value.stdout = "main\n"
     branch = git_client.get_current_branch()
     assert branch == "main"
-    mock_subprocess.assert_called_once_with(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True, check=True)
+    mock_subprocess.assert_called_once_with(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=None)
 
 def test_git_get_commit_hash(mock_subprocess):
     mock_subprocess.return_value.stdout = "abcdef123456\n"
@@ -140,3 +140,43 @@ def test_git_reset_hard(mock_subprocess):
     git_client.reset_hard(cwd="/some/dir")
     mock_subprocess.assert_called_once_with(["git", "reset", "--hard", "HEAD~1"], check=True, cwd="/some/dir")
 
+def test_git_switch_fallback(mock_subprocess):
+    import subprocess
+    # First call fails, second call (fallback) succeeds
+    mock_subprocess.side_effect = [
+        subprocess.CalledProcessError(128, ["git", "switch", "main"]),
+        MagicMock(returncode=0, stdout="success")
+    ]
+    git_client.switch("main")
+    assert mock_subprocess.call_count == 2
+    mock_subprocess.assert_any_call(["git", "switch", "main"], check=True)
+    mock_subprocess.assert_any_call(["git", "switch", "--detach", "main"], check=True)
+
+def test_git_switch_detach(mock_subprocess):
+    git_client.switch("main", detach=True)
+    mock_subprocess.assert_called_once_with(["git", "switch", "--detach", "main"], check=True)
+
+def test_git_get_current_branch_detached(mock_subprocess):
+    # Simulating detached HEAD pointing to origin/main
+    show_current_res = MagicMock(stdout="\n")
+    head_res = MagicMock(stdout="hash123\n")
+    origin_main_res = MagicMock(stdout="hash123\n")
+    main_res = MagicMock(stdout="hash456\n")
+    
+    mock_subprocess.side_effect = [show_current_res, head_res, origin_main_res, main_res]
+    
+    branch = git_client.get_current_branch()
+    assert branch == "main"
+    assert mock_subprocess.call_count == 4
+    mock_subprocess.assert_any_call(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=None)
+    mock_subprocess.assert_any_call(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True, cwd=None)
+    mock_subprocess.assert_any_call(["git", "rev-parse", "origin/main"], capture_output=True, text=True, check=True, cwd=None)
+    mock_subprocess.assert_any_call(["git", "rev-parse", "main"], capture_output=True, text=True, check=True, cwd=None)
+
+def test_git_fetch_default(mock_subprocess):
+    git_client.fetch()
+    mock_subprocess.assert_called_once_with(["git", "fetch", "--prune", "origin"], check=True, cwd=None)
+
+def test_git_fetch_custom(mock_subprocess):
+    git_client.fetch(remote="upstream", prune=False, cwd="/some/dir")
+    mock_subprocess.assert_called_once_with(["git", "fetch", "upstream"], check=True, cwd="/some/dir")

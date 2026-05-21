@@ -34,8 +34,8 @@ def sync_and_clean_node() -> None:
     """Syncs main, prunes merged local branches, and surfaces pending backlog items."""
     log_stage_advancement("sense", "Initiating Sense Phase", "Syncing main, cleaning up local branches, and refreshing backlog state.")
     
-    git_client.switch("main")
-    git_client.pull("origin", "main", prune=True)
+    git_client.fetch("origin", prune=True)
+    git_client.switch("origin/main", detach=True)
 
     open_prs = github_client.get_open_prs()
     if open_prs:

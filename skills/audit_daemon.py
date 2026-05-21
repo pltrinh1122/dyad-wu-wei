@@ -5,6 +5,7 @@ import json
 import subprocess
 import re
 from pathlib import Path
+from skills.git_client import get_current_branch
 
 # Paths
 REPO_ROOT = Path(__file__).parent.parent.resolve()
@@ -33,10 +34,6 @@ def save_state(state):
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(STATE_FILE, "w") as f:
         json.dump(state, f, indent=4)
-
-def get_current_branch():
-    res = subprocess.run(["git", "branch", "--show-current"], capture_output=True, text=True, cwd=REPO_ROOT)
-    return res.stdout.strip()
 
 def inject_prompt(message):
     print(f"Injecting prompt: {message}")

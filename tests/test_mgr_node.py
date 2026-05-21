@@ -78,12 +78,12 @@ def test_sync_and_clean_node_order():
         calls = manager.mock_calls
         filtered_calls = [
             (call[0], call[1], call[2]) for call in calls 
-            if call[0] in ('git.switch', 'git.pull', 'gh.get_open_prs')
+            if call[0] in ('git.fetch', 'git.switch', 'gh.get_open_prs')
         ]
         
         assert filtered_calls == [
-            ('git.switch', ('main',), {}),
-            ('git.pull', ('origin', 'main'), {'prune': True}),
+            ('git.fetch', ('origin',), {'prune': True}),
+            ('git.switch', ('origin/main',), {'detach': True}),
             ('gh.get_open_prs', (), {})
         ]
 
@@ -106,12 +106,12 @@ def test_sync_and_clean_node_wip_violation():
         calls = manager.mock_calls
         filtered_calls = [
             (call[0], call[1], call[2]) for call in calls 
-            if call[0] in ('git.switch', 'git.pull', 'gh.get_open_prs')
+            if call[0] in ('git.fetch', 'git.switch', 'gh.get_open_prs')
         ]
         
         assert filtered_calls == [
-            ('git.switch', ('main',), {}),
-            ('git.pull', ('origin', 'main'), {'prune': True}),
+            ('git.fetch', ('origin',), {'prune': True}),
+            ('git.switch', ('origin/main',), {'detach': True}),
             ('gh.get_open_prs', (), {})
         ]
 
