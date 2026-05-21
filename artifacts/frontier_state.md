@@ -1471,6 +1471,12 @@
   - `orchestrator/nba_scorer.py and tests/test_nba_scorer.py exist`
   - `all tests pass`
 
+## Probe 485: Align - Path: Next-Best-Action (NBA) Historical Decision Scoring Execution
+- **Status**: Completed
+- **Learnings & Context**: Created kb/WHAT-0050-historical-scoring-plan.md defining the execution plan and reporting format for historical path scoring.
+- **Feedforward Invariants**:
+  - `kb/WHAT-0050-historical-scoring-plan.md exists`
+
 ## Current Active Path
 None
 
