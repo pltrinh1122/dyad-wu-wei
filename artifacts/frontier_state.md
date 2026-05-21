@@ -1553,10 +1553,12 @@
   - `[ ]` None
 
 ## Node 524: Activity 524: Implement DAG parsing in gh_graph_skill
-- **Status**: Backlog
-- **Learnings & Context**: Implement robust parsing, verification, and dependency ordering for DAGs in gh_graph_skill.
+- **Status**: Completed
+- **Learnings & Context**: Implemented robust Directed Acyclic Graph (DAG) parsing and validation inside gh_graph_skill.py. It parses comma-separated lists of multi-dependencies, checks referential integrity, prevents self-dependencies, and performs cycle detection using Depth-First Search (DFS). Ready nodes are topologically sorted with deterministic numeric ID sorting for ties. All unit tests pass cleanly.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `DAGValidationError is successfully raised on invalid graphs.`
+  - `Topologically sorted list of ready nodes is returned deterministically.`
+  - `All unit tests in tests/test_gh_graph_skill.py pass cleanly.`
 
 ## Node 525: Activity 525: Implement CLI DAG rendering in node view
 - **Status**: Backlog
