@@ -66,4 +66,5 @@ strategic_goals:
   falsification_signal: The average number of agent repair cycles on repeat error
     patterns does not decrease over subsequent sessions targeting the same domain.
   status: Active
-  prioritized_paths: []
+  prioritized_paths:
+  - 541

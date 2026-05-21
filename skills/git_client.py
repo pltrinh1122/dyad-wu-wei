@@ -93,7 +93,11 @@ def branch_delete(branch: str) -> None:
 @record_execution(stage="skill")
 def switch(branch: str) -> None:
     """Switches to the specified branch."""
-    subprocess.run(["git", "switch", branch], check=True)
+    try:
+        subprocess.run(["git", "switch", branch], check=True)
+    except subprocess.CalledProcessError:
+        # Fall back to detached HEAD if the branch is locked in another worktree
+        subprocess.run(["git", "switch", "--detach", branch], check=True)
 
 @record_execution(stage="skill")
 def pull(remote: str, branch: str, prune: bool = False) -> None:
