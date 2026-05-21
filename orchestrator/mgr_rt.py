@@ -74,6 +74,85 @@ def execute_hotfix(file_path, commit_msg):
     save_data(ledger_file, data)
     print(f"Hotfix complete! Logged to {ledger_file}")
 
+def execute_score_paths(start=None, end=None):
+    from orchestrator.nba_scorer import NBAScorer
+    from skills import github_client
+    
+    # 1. Gather paths to evaluate
+    paths_to_evaluate = []
+    if start and end:
+        try:
+            start_val = int(start)
+            end_val = int(end)
+        except ValueError:
+            print("Error: --start and --end must be valid integer IDs.")
+            sys.exit(1)
+        if start_val > end_val:
+            print("Error: --start ID must be less than or equal to --end ID.")
+            sys.exit(1)
+            
+        for issue_id in range(start_val, end_val + 1):
+            try:
+                labels = github_client.get_issue_labels(str(issue_id))
+                if "path" in labels:
+                    details = github_client.get_issue_details(str(issue_id))
+                    paths_to_evaluate.append({
+                        "number": str(issue_id),
+                        "title": details.get("title", f"Path {issue_id}")
+                    })
+            except Exception:
+                continue
+    else:
+        # Default: list all open paths
+        try:
+            paths_to_evaluate = github_client.list_issues_by_label("path")
+        except Exception as e:
+            print(f"Error listing open paths: {e}")
+            sys.exit(1)
+            
+    if not paths_to_evaluate:
+        print("No paths found to score in the specified criteria.")
+        return
+        
+    scorer = NBAScorer()
+    total_score = 0.0
+    
+    # Generate report
+    report_lines = []
+    report_lines.append("# NBA Historical Decision Scoring Report")
+    report_lines.append("")
+    report_lines.append("This report presents Next-Best-Action (NBA) scores for the evaluated range of paths.")
+    report_lines.append("Scoring methodology and rubrics are defined in [WHAT-0048-nba-scoring-rubric.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0048-nba-scoring-rubric.md).")
+    report_lines.append("")
+    report_lines.append("| Path ID | Title | Overall Score | Dependency ($C_{\\text{Dependency}}$) | Axiom ($C_{\\text{Axiom}}$) | Strategic ($C_{\\text{Strategic}}$) | Risk ($C_{\\text{Risk}}$) |")
+    report_lines.append("| --- | --- | --- | --- | --- | --- | --- |")
+    
+    for path in paths_to_evaluate:
+        pid = path["number"]
+        title = path["title"]
+        try:
+            res = scorer.calculate_score(pid)
+            score = res.get("score", 0.0)
+            comps = res.get("components", {})
+            total_score += score
+            report_lines.append(f"| #{pid} | {title} | {score:.3f} | {comps.get('dependency', 0.0)} | {comps.get('axiom', 0.0)} | {comps.get('strategic', 0.0)} | {comps.get('risk', 0.0)} |")
+        except Exception as e:
+            report_lines.append(f"| #{pid} | {title} | Error: {e} | - | - | - | - |")
+            
+    report_lines.append("")
+    report_lines.append(f"### Total Sum of NBA Scores: {total_score:.3f}")
+    
+    report_content = "\n".join(report_lines)
+    print(report_content)
+    
+    # Save the report as an artifact
+    artifact_dir = "/home/pt/.gemini/antigravity-cli/brain/26a5d234-9e33-4b59-8f27-719b4738d389"
+    os.makedirs(artifact_dir, exist_ok=True)
+    report_file = os.path.join(artifact_dir, "nba_historical_scores_report.md")
+    with open(report_file, "w") as f:
+        f.write(report_content)
+    print(f"\nReport saved to: {report_file}")
+
 from orchestrator.mgr_telemetry import record_execution
 
 @record_execution(stage="act")
@@ -86,10 +165,17 @@ def main():
     parser_hotfix.add_argument("file", help="File to hotfix")
     parser_hotfix.add_argument("message", help="Commit message")
 
+    # Score paths command
+    parser_score = subparsers.add_parser("score-paths", help="Score historical paths and output report")
+    parser_score.add_argument("--start", help="Starting Path ID")
+    parser_score.add_argument("--end", help="Ending Path ID")
+
     args = parser.parse_args()
 
     if args.command == "hotfix":
         execute_hotfix(args.file, args.message)
+    elif args.command == "score-paths":
+        execute_score_paths(args.start, args.end)
 
 if __name__ == "__main__":
     main()

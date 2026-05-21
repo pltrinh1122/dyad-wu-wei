@@ -1483,6 +1483,13 @@
 - **Feedforward Invariants**:
   - `kb/WHY-0051-rt-scoring-cli-design.md exists`
 
+## Activity 487: Reflect - Path: Next-Best-Action (NBA) Historical Decision Scoring Execution
+- **Status**: Completed
+- **Learnings & Context**: Implemented the runtime score-paths CLI command, executed it to generate the historical evaluation report, and verified with unit tests.
+- **Feedforward Invariants**:
+  - `tests pass`
+  - `report generated and saved`
+
 ## Current Active Path
 None
 

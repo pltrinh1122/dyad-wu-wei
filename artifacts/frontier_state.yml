@@ -1680,3 +1680,11 @@ nodes:
     and options to expose historical path scoring through the runtime manager.
   invariants:
   - kb/WHY-0051-rt-scoring-cli-design.md exists
+- name: 'Activity 487: Reflect - Path: Next-Best-Action (NBA) Historical Decision
+    Scoring Execution'
+  status: Completed
+  learnings: Implemented the runtime score-paths CLI command, executed it to generate
+    the historical evaluation report, and verified with unit tests.
+  invariants:
+  - tests pass
+  - report generated and saved
