@@ -1546,8 +1546,38 @@
 - **Feedforward Invariants**:
   - `kb/WHY-0054-node-sync-latency.md exists`
 
+## Node 523: Probe 523: Design and Scoping for DAG Meta-Index Support
+- **Status**: Backlog
+- **Learnings & Context**: Design and specify the exact parsing and validation rules for DAG-based checklists in Meta-Index.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 524: Activity 524: Implement DAG parsing in gh_graph_skill
+- **Status**: Backlog
+- **Learnings & Context**: Implement robust parsing, verification, and dependency ordering for DAGs in gh_graph_skill.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 525: Activity 525: Implement CLI DAG rendering in node view
+- **Status**: Backlog
+- **Learnings & Context**: Implement visual rendering of the topologically sorted DAG in the node view and backlog list commands.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 526: Activity 526: Reflect - Elevate Path Meta-Index from List to DAG
+- **Status**: Backlog
+- **Learnings & Context**: Perform final verification of the DAG parsing and rendering implementations, update the path status, and close the path.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 300: Probe 300: Probe: Evaluation of DAG Visualization Requirements
+- **Status**: Completed
+- **Learnings & Context**: Documented DAG visualization requirements in WHY-0055 and registered 4 subsequent backlog nodes.
+- **Feedforward Invariants**:
+  - `kb/WHY-0055-dag-visualization-design.md exists`
+
 ## Current Active Path
-None
+**Path 299: Path: Elevate Path Meta-Index from List to DAG**
 
 ## Current Active Node
 None
