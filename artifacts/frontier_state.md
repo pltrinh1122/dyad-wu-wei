@@ -1464,6 +1464,13 @@
 - **Feedforward Invariants**:
   - `kb/WHY-0049-nba-scorer-design.md exists`
 
+## Activity 483: Reflect - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic Alignment
+- **Status**: Completed
+- **Learnings & Context**: Implemented the scoring algorithm under orchestrator/nba_scorer.py, integrated it into the Next-Best-Action sense hook, and verified functionality with robust unit tests.
+- **Feedforward Invariants**:
+  - `orchestrator/nba_scorer.py and tests/test_nba_scorer.py exist`
+  - `all tests pass`
+
 ## Current Active Path
 None
 
