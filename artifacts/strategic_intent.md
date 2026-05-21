@@ -17,7 +17,7 @@
 - **Collaborative Gap**: The human cannot safely delegate execution authority to the agent, creating a trust bottleneck where the human acts as a manual gatekeeper and the agent is blocked from executing autonomously.
 - **Constraints**: The sandbox must enforce hard CPU/memory limits, restrict network egress to an allowlist, and guarantee idempotent git tree state rollbacks.
 - **Falsification Signal**: The operator re-introduces manual human-in-the-loop review gates because the sandbox policies fail to isolate or rollback unsafe mutations.
-- **Prioritized Paths**: None
+- **Prioritized Paths**: 476
 
 ### SG-0003: Preservation of Autonomous Velocity
 - **Collaborative Gap**: Low-fidelity validation feedback (flaky or slow tests) breaks the agent's inner-loop verification, forcing the operator to intervene in tactical debugging rather than strategic governance.
@@ -35,7 +35,7 @@
 - **Collaborative Gap**: The agent cannot autonomously codify and recall lessons from past failures, forcing the operator to repeatedly correct similar errors.
 - **Constraints**: Knowledge mutations under the kb/ directory must be verified for structural validity and must not violate immutable core axioms.
 - **Falsification Signal**: The average number of agent repair cycles on repeat error patterns does not decrease over subsequent sessions targeting the same domain.
-- **Prioritized Paths**: 424
+- **Prioritized Paths**: 424, 465
 
 ## Draft Goals
 *No goals in this state.*
