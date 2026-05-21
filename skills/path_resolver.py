@@ -45,6 +45,27 @@ def load_node_yml() -> dict:
         config = yaml.safe_load(f) or {}
     return config
 
+def resolve_agent_id() -> str | None:
+    """Dynamically resolves the active agent persona identity."""
+    # 1. Check if SPAO_AGENT_ID exists in the environment
+    agent_id = os.environ.get("SPAO_AGENT_ID")
+    if agent_id:
+        return agent_id
+        
+    # 2. Fallback to parsing the workspace directory basename
+    try:
+        workspace_dir = get_workspace_dir()
+        basename = os.path.basename(workspace_dir)
+        if basename.lower().startswith("agent-"):
+            normalized = basename.lower().replace("_", "-")
+            if normalized.endswith("-auto"):
+                normalized = normalized[:-5]
+            return normalized
+    except Exception:
+        pass
+        
+    return None
+
 def load_antigravity_yml() -> dict:
     """Loads antigravity.yml from workspace directory, falling back to core directory if missing."""
     workspace_path = resolve_workspace_path("antigravity.yml")
@@ -58,5 +79,10 @@ def load_antigravity_yml() -> dict:
         
     with open(target_path, "r") as f:
         config = yaml.safe_load(f) or {}
+        
+    resolved_id = resolve_agent_id()
+    if resolved_id:
+        config["agent_id"] = resolved_id
+        
     return config
 

@@ -1,10 +1,9 @@
 # agent_id: Canonical ROM identity declaration for this agent deployment.
 # CONTRACT:
 #   - Must match an entry in kb/WHAT-0062-agent-persona-ownership-index.md
-#   - Is immutable per deployment (never overridden at runtime)
+#   - Is resolved dynamically at runtime (via env var or workspace basename)
 #   - Absence or mismatch MUST cause the persona enforcement gate to fail-closed
 #   - Standard established by Path 591 (Activity 600), agent-SG5, SG-0005
-agent_id: agent-sg5
 
 node_taxonomy:
   terminal:

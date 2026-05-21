@@ -79,3 +79,73 @@ def test_load_node_yml_fallback(tmp_path):
         with patch("skills.path_resolver.get_core_dir", return_value=core_dir):
             config = path_resolver.load_node_yml()
             assert config["node_attributes"]["status"]["fallback"] == "status/fallback"
+
+
+def test_resolve_agent_id_env():
+    # Test resolving agent_id from SPAO_AGENT_ID environment variable
+    with patch.dict(os.environ, {"SPAO_AGENT_ID": "agent-sg3"}):
+        assert path_resolver.resolve_agent_id() == "agent-sg3"
+
+def test_resolve_agent_id_basename_auto():
+    # Test resolving agent_id from workspace dir with -auto suffix
+    with patch.dict(os.environ, {}, clear=True):
+        with patch("skills.path_resolver.get_workspace_dir", return_value="/mnt/shared_data/git_repos/agent-SG2-auto"):
+            assert path_resolver.resolve_agent_id() == "agent-sg2"
+
+def test_resolve_agent_id_basename_normal():
+    # Test resolving agent_id from workspace dir without -auto suffix
+    with patch.dict(os.environ, {}, clear=True):
+        with patch("skills.path_resolver.get_workspace_dir", return_value="/mnt/shared_data/git_repos/agent-sg2"):
+            assert path_resolver.resolve_agent_id() == "agent-sg2"
+
+def test_resolve_agent_id_basename_other():
+    # Test resolving agent_id from workspace dir for a different agent
+    with patch.dict(os.environ, {}, clear=True):
+        with patch("skills.path_resolver.get_workspace_dir", return_value="/mnt/shared_data/git_repos/agent-sg5"):
+            assert path_resolver.resolve_agent_id() == "agent-sg5"
+
+def test_resolve_agent_id_non_agent_basename():
+    # Test resolving agent_id from a non-agent workspace directory
+    with patch.dict(os.environ, {}, clear=True):
+        with patch("skills.path_resolver.get_workspace_dir", return_value="/tmp/some-random-dir"):
+            assert path_resolver.resolve_agent_id() is None
+
+def test_load_antigravity_yml_override(tmp_path):
+    ws_dir_non_agent = str(tmp_path / "some-random-dir")
+    os.makedirs(ws_dir_non_agent)
+    
+    ws_dir_agent = str(tmp_path / "agent-SG2-auto")
+    os.makedirs(ws_dir_agent)
+    
+    anti_yml_content = {
+        "node_taxonomy": {
+            "terminal": ["activity"]
+        },
+        "agent_id": "agent-sg5"  # Should be overridden dynamically if dynamic matches, else fallback
+    }
+    
+    with open(os.path.join(ws_dir_non_agent, "antigravity.yml"), "w") as f:
+        yaml.safe_dump(anti_yml_content, f)
+    with open(os.path.join(ws_dir_agent, "antigravity.yml"), "w") as f:
+        yaml.safe_dump(anti_yml_content, f)
+        
+    # 1. When SPAO_AGENT_ID is set (override should happen)
+    with patch("skills.path_resolver.get_workspace_dir", return_value=ws_dir_non_agent):
+        with patch.dict(os.environ, {"SPAO_AGENT_ID": "agent-sg2"}):
+            config = path_resolver.load_antigravity_yml()
+            assert config["agent_id"] == "agent-sg2"
+            assert config["node_taxonomy"]["terminal"] == ["activity"]
+
+    # 2. When resolving from workspace dir name starting with agent-
+    with patch("skills.path_resolver.get_workspace_dir", return_value=ws_dir_agent):
+        with patch.dict(os.environ, {}, clear=True):
+            config = path_resolver.load_antigravity_yml()
+            assert config["agent_id"] == "agent-sg2"
+
+    # 3. Fallback to static if none resolved
+    with patch("skills.path_resolver.get_workspace_dir", return_value=ws_dir_non_agent):
+        with patch.dict(os.environ, {}, clear=True):
+            config = path_resolver.load_antigravity_yml()
+            assert config["agent_id"] == "agent-sg5"
+
+
