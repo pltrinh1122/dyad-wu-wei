@@ -79,7 +79,16 @@ def get_commit_hash(revision: str = "HEAD") -> str:
 @record_execution(stage="skill")
 def branch_delete(branch: str) -> None:
     """Deletes a local branch."""
-    subprocess.run(["git", "branch", "-D", branch], check=True)
+    try:
+        subprocess.run(["git", "branch", "-D", branch], check=True, capture_output=True, text=True)
+    except subprocess.CalledProcessError as e:
+        stderr = getattr(e, "stderr", "") or ""
+        if "used by worktree" in stderr:
+            print(f"Warning: Cannot delete branch '{branch}' because it is currently used by another worktree.")
+        elif "not found" in stderr:
+            pass  # It's already deleted
+        else:
+            raise e
 
 @record_execution(stage="skill")
 def switch(branch: str) -> None:

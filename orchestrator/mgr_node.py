@@ -34,13 +34,13 @@ def sync_and_clean_node() -> None:
     """Syncs main, prunes merged local branches, and surfaces pending backlog items."""
     log_stage_advancement("sense", "Initiating Sense Phase", "Syncing main, cleaning up local branches, and refreshing backlog state.")
     
+    git_client.switch("main")
+    git_client.pull("origin", "main", prune=True)
+
     open_prs = github_client.get_open_prs()
     if open_prs:
         pr_list = ", ".join([f"#{pr['number']} ({pr['headRefName']})" for pr in open_prs])
         raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
-        
-    git_client.switch("main")
-    git_client.pull("origin", "main", prune=True)
     
     merged_branches = set()
     

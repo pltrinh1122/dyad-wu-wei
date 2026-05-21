@@ -60,7 +60,29 @@ def test_git_get_commit_hash(mock_subprocess):
 
 def test_git_branch_delete(mock_subprocess):
     git_client.branch_delete("node-branch")
-    mock_subprocess.assert_called_once_with(["git", "branch", "-D", "node-branch"], check=True)
+    mock_subprocess.assert_called_once_with(["git", "branch", "-D", "node-branch"], check=True, capture_output=True, text=True)
+
+def test_git_branch_delete_in_use(mock_subprocess):
+    import subprocess
+    error = subprocess.CalledProcessError(1, ["git", "branch", "-D", "node-branch"])
+    error.stderr = "error: cannot delete branch 'node-branch' used by worktree at '/path'"
+    mock_subprocess.side_effect = error
+    git_client.branch_delete("node-branch")
+
+def test_git_branch_delete_not_found(mock_subprocess):
+    import subprocess
+    error = subprocess.CalledProcessError(1, ["git", "branch", "-D", "node-branch"])
+    error.stderr = "error: branch 'node-branch' not found"
+    mock_subprocess.side_effect = error
+    git_client.branch_delete("node-branch")
+
+def test_git_branch_delete_other_error(mock_subprocess):
+    import subprocess
+    error = subprocess.CalledProcessError(1, ["git", "branch", "-D", "node-branch"])
+    error.stderr = "fatal: some other error"
+    mock_subprocess.side_effect = error
+    with pytest.raises(subprocess.CalledProcessError):
+        git_client.branch_delete("node-branch")
 
 def test_git_switch(mock_subprocess):
     git_client.switch("main")

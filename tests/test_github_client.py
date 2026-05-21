@@ -55,14 +55,13 @@ def test_create_pull_request(mock_tempfile, mock_subprocess):
     mock_file.write.assert_called_once_with("Test PR Body")
 
 def test_list_issues_by_label(mock_subprocess):
-    mock_list_result = MagicMock(stdout='[{"number": 31, "title": "Backlog Item", "url": "https://..."}]', returncode=0)
-    mock_view_result = MagicMock(stdout='{"state": "OPEN"}', returncode=0)
-    mock_subprocess.side_effect = [mock_list_result, mock_view_result]
+    mock_list_result = MagicMock(stdout='[{"number": 31, "title": "Backlog Item", "url": "https://...", "state": "OPEN"}]', returncode=0)
+    mock_subprocess.side_effect = [mock_list_result]
 
     items = list_issues_by_label("backlog")
     assert len(items) == 1
     assert items[0]["number"] == 31
-    assert mock_subprocess.call_count == 2
+    assert mock_subprocess.call_count == 1
 
 def test_get_issue_labels(mock_subprocess):
     mock_subprocess.return_value.stdout = '{"labels": [{"name": "status: in-progress"}, {"name": "backlog"}]}'
