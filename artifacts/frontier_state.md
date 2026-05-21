@@ -1685,8 +1685,62 @@
   - `duplicate definition removed`
   - `100% test coverage`
 
+## Node 622: Path 622: Path: Dynamic agent identity resolution and policy ledger alignment
+- **Status**: Backlog
+- **Learnings & Context**: Evaluate dynamic agent identity resolution against collaborative active goals and update the policy ledger to properly encompass the resolution logic.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 623: Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger alignment
+- **Status**: Backlog
+- **Learnings & Context**: Align on the philosophical and technical intent for Path: Dynamic agent identity resolution and policy ledger alignment.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 624: Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger alignment
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Path: Dynamic agent identity resolution and policy ledger alignment.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 625: Activity 625: Reflect - Path: Dynamic agent identity resolution and policy ledger alignment
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Path: Dynamic agent identity resolution and policy ledger alignment.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 626: Path 626: Path: Implement Dynamic Agent Identity Resolution
+- **Status**: Backlog
+- **Learnings & Context**: Decouple agent_id from antigravity.yml and implement dynamic identity resolution based on env var or workspace basename to prevent main branch conflicts.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 627: Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 628: Probe 628: Plan - Path: Implement Dynamic Agent Identity Resolution
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Path: Implement Dynamic Agent Identity Resolution.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity Resolution
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Path: Implement Dynamic Agent Identity Resolution.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution
+- **Status**: Completed
+- **Learnings & Context**: Aligned on dynamic agent identity resolution policy.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
-**Path 591: Path: [578-A] Codify Persona Ownership as ROM Primitives**
+**626**
 
 ## Current Active Node
 None
