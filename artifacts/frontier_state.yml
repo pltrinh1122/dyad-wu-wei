@@ -1887,3 +1887,15 @@ nodes:
   learnings: Aligned on division of labor and technical intent for Path 587 (Path
     578-B). Established dynamic goal-to-persona parsing and enforcer gate design.
   invariants: []
+- name: 'Node 294: Activity 294: Activity: Implement Idempotent PR Management'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 294: Activity: Implement Idempotent PR Management'
+  status: Completed
+  learnings: Consolidated create_pull_request function definitions and added a branch-specific
+    idempotency check using 'gh pr list'.
+  invariants:
+  - create_pull_request is decorated with record_execution
+  - duplicate definition removed
+  - 100% test coverage

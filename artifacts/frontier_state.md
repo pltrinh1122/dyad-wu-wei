@@ -1671,6 +1671,20 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 294: Activity 294: Activity: Implement Idempotent PR Management
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 294: Activity: Implement Idempotent PR Management
+- **Status**: Completed
+- **Learnings & Context**: Consolidated create_pull_request function definitions and added a branch-specific idempotency check using 'gh pr list'.
+- **Feedforward Invariants**:
+  - `create_pull_request is decorated with record_execution`
+  - `duplicate definition removed`
+  - `100% test coverage`
+
 ## Current Active Path
 **Path 591: Path: [578-A] Codify Persona Ownership as ROM Primitives**
 
