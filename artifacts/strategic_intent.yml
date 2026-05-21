@@ -36,6 +36,8 @@ strategic_goals:
   prioritized_paths:
   - 292
   - 532
+  - 622
+  - 626
   status: Active
   title: Gateless Autonomous Execution within Risk-Managed Sandbox
 - collaborative_gap: Low-fidelity validation feedback (flaky or slow tests) breaks
@@ -58,7 +60,8 @@ strategic_goals:
   falsification_signal: The operator spends more than 10% of their session time in
     interactive conversational turns rather than simple policy updates.
   id: SG-0004
-  prioritized_paths: []
+  prioritized_paths:
+  - 615
   status: Active
   title: Efficient Intent-to-Goal Policy Communication
 - collaborative_gap: The agent cannot autonomously codify and recall lessons from
