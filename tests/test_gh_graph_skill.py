@@ -109,3 +109,35 @@ def test_deterministic_nba_sorting():
     }
     ready = gh_graph_skill.get_ready_nodes(nodes)
     assert ready == ["2", "5", "10", "100"]
+
+@pytest.mark.xfail(reason="TDD - Implementation pending in Act phase")
+def test_parse_meta_index_in_progress():
+    body = """
+- [x] Node 1: Completed
+- [/] Node 2: Locked/In-Progress
+- [ ] Node 3: Pending
+"""
+    nodes = gh_graph_skill.parse_meta_index(body)
+    assert nodes["1"]["completed"] is True
+    assert nodes["1"].get("in_progress", False) is False
+    assert nodes["2"]["completed"] is False
+    assert nodes["2"].get("in_progress") is True
+    assert nodes["3"]["completed"] is False
+    assert nodes["3"].get("in_progress", False) is False
+
+@pytest.mark.xfail(reason="TDD - Implementation pending in Act phase")
+def test_get_ready_nodes_excludes_in_progress():
+    nodes = {
+        "1": {"completed": True, "in_progress": False, "depends": []},
+        "2": {"completed": False, "in_progress": True, "depends": ["1"]},
+        "3": {"completed": False, "in_progress": False, "depends": ["1"]},
+        "4": {"completed": False, "in_progress": False, "depends": ["2"]}
+    }
+    ready = gh_graph_skill.get_ready_nodes(nodes)
+    # Node 2 is locked (in_progress), so it should NOT be ready
+    # Node 3 is pending, dep 1 is complete, so it SHOULD be ready
+    # Node 4 is pending, dep 2 is NOT complete, so it should NOT be ready
+    assert "2" not in ready
+    assert "3" in ready
+    assert "4" not in ready
+    assert ready == ["3"]

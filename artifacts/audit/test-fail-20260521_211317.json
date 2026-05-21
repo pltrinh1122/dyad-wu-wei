@@ -1,0 +1,21 @@
+{
+    "timestamp": "2026-05-21T21:13:17.839820+00:00",
+    "failures": [
+        {
+            "test_name": "test_parse_meta_index_in_progress",
+            "file_path": "tests/test_gh_graph_skill.py",
+            "line_number": 123,
+            "error_type": "UnknownError",
+            "error_message": "AssertionError",
+            "traceback": "def test_parse_meta_index_in_progress():\n        body = \"\"\"\n    - [x] Node 1: Completed\n    - [/] Node 2: Locked/In-Progress\n    - [ ] Node 3: Pending\n    \"\"\"\n        nodes = gh_graph_skill.parse_meta_index(body)\n        assert nodes[\"1\"][\"completed\"] is True\n        assert nodes[\"1\"].get(\"in_progress\", False) is False\n        assert nodes[\"2\"][\"completed\"] is False\n>       assert nodes[\"2\"].get(\"in_progress\") is True\nE       AssertionError: assert None is True\nE        +  where None = <built-in method get of dict object at 0x72c4c726bfc0>('in_progress')\nE        +    where <built-in method get of dict object at 0x72c4c726bfc0> = {'completed': False, 'depends': [], 'title': 'Locked/In-Progress'}.get\n\ntests/test_gh_graph_skill.py:123: AssertionError"
+        },
+        {
+            "test_name": "test_get_ready_nodes_excludes_in_progress",
+            "file_path": "tests/test_gh_graph_skill.py",
+            "line_number": 138,
+            "error_type": "AssertionError",
+            "error_message": "assert '2' not in ['2', '3']",
+            "traceback": "def test_get_ready_nodes_excludes_in_progress():\n        nodes = {\n            \"1\": {\"completed\": True, \"in_progress\": False, \"depends\": []},\n            \"2\": {\"completed\": False, \"in_progress\": True, \"depends\": [\"1\"]},\n            \"3\": {\"completed\": False, \"in_progress\": False, \"depends\": [\"1\"]},\n            \"4\": {\"completed\": False, \"in_progress\": False, \"depends\": [\"2\"]}\n        }\n        ready = gh_graph_skill.get_ready_nodes(nodes)\n        # Node 2 is locked (in_progress), so it should NOT be ready\n        # Node 3 is pending, dep 1 is complete, so it SHOULD be ready\n        # Node 4 is pending, dep 2 is NOT complete, so it should NOT be ready\n>       assert \"2\" not in ready\nE       AssertionError: assert '2' not in ['2', '3']\n\ntests/test_gh_graph_skill.py:138: AssertionError"
+        }
+    ]
+}
