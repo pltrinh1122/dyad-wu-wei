@@ -1688,3 +1688,11 @@ nodes:
   invariants:
   - tests pass
   - report generated and saved
+- name: 'Probe 477: Align - Path: Concurrent Audit & Performance Monitoring Agent
+    Deployment'
+  status: Completed
+  learnings: Created kb/WHAT-0052-scoring-ab-test-plan.md outlining the hypotheses,
+    metrics, and controlled experimental design for comparing the coarse vs. granular
+    scoring models.
+  invariants:
+  - kb/WHAT-0052-scoring-ab-test-plan.md exists
