@@ -1685,6 +1685,12 @@
   - `duplicate definition removed`
   - `100% test coverage`
 
+## Node 590: Probe 590: Align - 578-C: Integrate Persona-Aware Filtering into NBA Scorer
+- **Status**: Completed
+- **Learnings & Context**: Determined soft-routing strategy using c_persona modifier in NBA Evaluator. Fails open if WHAT-0062 is missing.
+- **Feedforward Invariants**:
+  - `Soft-routing MUST fail open to prevent deadlock during parallel bootstrapping.`
+
 ## Current Active Path
 **Path 591: Path: [578-A] Codify Persona Ownership as ROM Primitives**
 
