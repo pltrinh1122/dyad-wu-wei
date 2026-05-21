@@ -5,7 +5,7 @@ from orchestrator.mgr_rt import execute_score_paths
 
 class TestMgrRT(unittest.TestCase):
 
-    @patch("orchestrator.nba_scorer.NBAScorer.calculate_score")
+    @patch("orchestrator.nba_scorer.GranularNBAScorer.calculate_score")
     @patch("skills.github_client.list_issues_by_label")
     @patch("builtins.print")
     def test_execute_score_paths_default(self, mock_print, mock_list, mock_calc):

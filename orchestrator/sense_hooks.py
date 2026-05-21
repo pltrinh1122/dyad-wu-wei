@@ -68,8 +68,8 @@ class HookManager:
 
         recommendations_list = ""
         if result["recommendations"]:
-            from orchestrator.nba_scorer import NBAScorer
-            scorer = NBAScorer(frontier_file=frontier_file)
+            from orchestrator.nba_scorer import GranularNBAScorer
+            scorer = GranularNBAScorer(frontier_file=frontier_file)
             lines = []
             for item in result["recommendations"]:
                 issue_id = item.get("id") or item.get("number")
