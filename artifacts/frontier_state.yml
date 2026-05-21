@@ -1881,3 +1881,9 @@ nodes:
   - All files renamed successfully.
   - Heading titles and cross-references updated.
   - Local test suite passes.
+- name: 'Node 589: Probe 589: Align - Path 578-B: Implement Persona and Path Alignment
+    Gates in CLI Runtime'
+  status: Completed
+  learnings: Aligned on division of labor and technical intent for Path 587 (Path
+    578-B). Established dynamic goal-to-persona parsing and enforcer gate design.
+  invariants: []
