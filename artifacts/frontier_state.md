@@ -1611,6 +1611,36 @@
   - `INVARIANT_EXCLUSIVE_LEDGER_MUTATION`
   - `INVARIANT_FAIL_SAFE_MUTATION`
 
+## Node 566: Path 566: Codify SG-0005 Tactical Goals and Persona Domain Ownership
+- **Status**: Backlog
+- **Learnings & Context**: Define the official agent persona, tactical goals, and selection rubrics to claim domain ownership for SG-0005 (Autonomous Knowledge Accrual).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 567: Probe 567: Align - Codify SG-0005 Tactical Goals and Persona Domain Ownership
+- **Status**: Completed
+- **Learnings & Context**: Verified correctness/completeness of SG-0005 documentation (WHAT-0058, WHY-0058, WHAT-0059, WHY-0059), ensuring compliance with lexical rules and persona invariants.
+- **Feedforward Invariants**:
+  - `[x] SG-0005 KB documents (WHAT-0058`
+  - `WHAT-0059`
+  - `WHY-0058`
+  - `WHY-0059) are verified and validated.`
+  - `[x] No legacy terminology is introduced (lexical guard passes).`
+
+## Node 568: Probe 568: Plan - Codify SG-0005 Tactical Goals and Persona Domain Ownership
+- **Status**: Completed
+- **Learnings & Context**: Verified the planning specifications and confirmed alignment of verification plans for SG-0005.
+- **Feedforward Invariants**:
+  - `[x] Verification criteria for agent-SG5 ownership are clearly defined.`
+  - `[x] Schema and template for path_566_digest.md are established.`
+
+## Node 569: Activity 569: Reflect - Codify SG-0005 Tactical Goals and Persona Domain Ownership
+- **Status**: Completed
+- **Learnings & Context**: Successfully completed Path 566, registered agent-SG5, and compiled the walkthrough digest.
+- **Feedforward Invariants**:
+  - `[x] The retrospective digest artifacts/path_566_digest.md is compiled and matches the required template.`
+  - `[x] The path is formally marked as completed and closed in the meta-index.`
+
 ## Current Active Path
 **Path 299: Path: Elevate Path Meta-Index from List to DAG**
 
