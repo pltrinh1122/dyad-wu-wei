@@ -1,0 +1,56 @@
+probe: 599
+generated: "2026-05-21T19:41:00Z"
+authored_by: agent-sg5
+purpose: Input specification for Activity 601 (WHAT-0062 ownership index)
+
+strategic_goals_total: 6
+
+coverage:
+  fully_covered:
+    - sg_id: SG-0001
+      owner: agent-sg1
+      spec_file: kb/WHAT-0061-agent-persona-sg-0001-ownership.md
+      why_file: kb/WHY-0061-agent-persona-sg-0001-ownership.md
+    - sg_id: SG-0002
+      owner: agent-sg2
+      spec_file: kb/WHAT-0057-agent-persona-sg-0002-ownership.md
+      why_file: kb/WHY-0057-agent-persona-sg-0002-ownership.md
+    - sg_id: SG-0005
+      owner: agent-sg5
+      spec_file: kb/WHAT-0059-agent-persona-sg-0005-ownership.md
+      why_file: kb/WHY-0059-agent-persona-sg-0005-ownership.md
+
+  gaps:
+    - sg_id: SG-0003
+      title: "Preservation of Autonomous Velocity"
+      owner: "(unassigned)"
+      spec_file: "(missing)"
+      note: "No agent persona has claimed SG-0003. Ownership must be declared before WHAT-0062 can include it."
+    - sg_id: SG-0004
+      title: "Efficient Intent-to-Goal Policy Communication"
+      owner: "(unassigned)"
+      spec_file: "(missing)"
+      note: "No agent persona has claimed SG-0004. Ownership must be declared before WHAT-0062 can include it."
+
+  shared_no_single_owner:
+    - sg_id: NS-0001
+      title: "Synergistic Human-Agent Partnership (North Star)"
+      note: "North Star goal — intentionally shared across all agents, no single owner. WHAT-0062 will record this as 'shared'."
+
+wip_inconsistency:
+  - file: kb/WHAT-0035-git-transaction-ownership-spao.md
+    note: "Ownership file exists but does not map to a Strategic Goal ID. Appears to be a pre-SG-framework artifact. No action needed for WHAT-0062."
+
+what_0062_schema_requirements:
+  columns:
+    - sg_id: "Strategic Goal identifier (e.g. SG-0001)"
+    - owner_persona: "Canonical agent persona ID (e.g. agent-sg1) or 'shared' or 'unassigned'"
+    - spec_file: "Path to the WHAT-* ownership spec file, or '(pending)'"
+    - why_file: "Path to the WHY-* decision record, or '(pending)'"
+    - status: "one of: covered | gap | shared"
+  required_rows: 6  # NS-0001, SG-0001, SG-0002, SG-0003, SG-0004, SG-0005
+
+recommended_actions:
+  - "Activity 600: Add agent_id: agent-sg5 to antigravity.yml (unblocks identity resolution for gate)"
+  - "Activity 601: Create WHAT-0062 with all 6 SGs; mark SG-0003 and SG-0004 as 'unassigned' with (pending) spec files"
+  - "Operator action: Assign SG-0003 and SG-0004 to agent personas before 578-B gate can enforce those boundaries"
