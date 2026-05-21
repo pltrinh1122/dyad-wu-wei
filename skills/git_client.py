@@ -65,10 +65,29 @@ def worktree_remove(path: str, force: bool = False) -> None:
     subprocess.run(cmd, check=True)
 
 @record_execution(stage="skill")
-def get_current_branch() -> str:
-    """Returns the current branch name."""
-    res = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True, check=True)
-    return res.stdout.strip()
+def get_current_branch(cwd: str | None = None) -> str:
+    """Returns the current branch name, resolving detached HEAD at origin/main or main as 'main'."""
+    res = subprocess.run(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=cwd)
+    branch = res.stdout.strip()
+    if not branch:
+        try:
+            head_commit = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True, cwd=cwd).stdout.strip()
+            origin_main_commit = subprocess.run(["git", "rev-parse", "origin/main"], capture_output=True, text=True, check=True, cwd=cwd).stdout.strip()
+            main_commit = subprocess.run(["git", "rev-parse", "main"], capture_output=True, text=True, check=True, cwd=cwd).stdout.strip()
+            if head_commit in (origin_main_commit, main_commit):
+                return "main"
+        except Exception:
+            pass
+    return branch
+
+@record_execution(stage="skill")
+def fetch(remote: str = "origin", prune: bool = True, cwd: str | None = None) -> None:
+    """Fetches updates from the remote repository."""
+    cmd = ["git", "fetch"]
+    if prune:
+        cmd.append("--prune")
+    cmd.append(remote)
+    subprocess.run(cmd, check=True, cwd=cwd)
 
 @record_execution(stage="skill")
 def get_commit_hash(revision: str = "HEAD") -> str:
@@ -91,13 +110,20 @@ def branch_delete(branch: str) -> None:
             raise e
 
 @record_execution(stage="skill")
-def switch(branch: str) -> None:
-    """Switches to the specified branch."""
+def switch(branch: str, detach: bool = False) -> None:
+    """Switches to the specified branch, optionally detaching HEAD."""
+    cmd = ["git", "switch"]
+    if detach:
+        cmd.append("--detach")
+    cmd.append(branch)
     try:
-        subprocess.run(["git", "switch", branch], check=True)
-    except subprocess.CalledProcessError:
-        # Fall back to detached HEAD if the branch is locked in another worktree
-        subprocess.run(["git", "switch", "--detach", branch], check=True)
+        subprocess.run(cmd, check=True)
+    except subprocess.CalledProcessError as e:
+        if not detach:
+            # Fall back to detached HEAD if the branch is locked in another worktree
+            subprocess.run(["git", "switch", "--detach", branch], check=True)
+        else:
+            raise e
 
 @record_execution(stage="skill")
 def pull(remote: str, branch: str, prune: bool = False) -> None:

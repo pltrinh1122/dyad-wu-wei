@@ -135,3 +135,35 @@ def test_main_processes_rules(mock_registry, mock_save, mock_load, mock_get_bran
     
     mock_evaluator.assert_called_once()
     mock_save.assert_called_once_with({"rule1": {"last_val": "b"}})
+
+def test_get_current_branch_normal():
+    with patch("skills.git_client.subprocess.run") as mock_run:
+        from skills.audit_daemon import get_current_branch
+        mock_run.return_value.stdout = "main\n"
+        assert get_current_branch() == "main"
+        mock_run.assert_called_once_with(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=None)
+
+def test_get_current_branch_detached():
+    with patch("skills.git_client.subprocess.run") as mock_run:
+        from skills.audit_daemon import get_current_branch
+        
+        run_show_current = MagicMock()
+        run_show_current.stdout = "\n"
+        
+        run_head = MagicMock()
+        run_head.stdout = "abc123commit\n"
+        
+        run_origin = MagicMock()
+        run_origin.stdout = "abc123commit\n"
+        
+        run_main = MagicMock()
+        run_main.stdout = "abc123commit\n"
+        
+        mock_run.side_effect = [run_show_current, run_head, run_origin, run_main]
+        
+        assert get_current_branch() == "main"
+        
+        mock_run.assert_any_call(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=None)
+        mock_run.assert_any_call(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True, cwd=None)
+        mock_run.assert_any_call(["git", "rev-parse", "origin/main"], capture_output=True, text=True, check=True, cwd=None)
+        mock_run.assert_any_call(["git", "rev-parse", "main"], capture_output=True, text=True, check=True, cwd=None)

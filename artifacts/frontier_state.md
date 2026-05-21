@@ -1611,6 +1611,14 @@
   - `INVARIANT_EXCLUSIVE_LEDGER_MUTATION`
   - `INVARIANT_FAIL_SAFE_MUTATION`
 
+## Node 529: Activity 529: Implement Concurrent Pull Safety in Node Sync
+- **Status**: Completed
+- **Learnings & Context**: Implemented concurrent pull safety in node sync. Resolves worktree conflicts during node sync by switching to detached HEAD.
+- **Feedforward Invariants**:
+  - `git_client.switch supports detached switch`
+  - `git_client.get_current_branch resolves detached HEAD as 'main'`
+  - `Sync command operates on detached origin/main`
+
 ## Current Active Path
 **Path 299: Path: Elevate Path Meta-Index from List to DAG**
 
