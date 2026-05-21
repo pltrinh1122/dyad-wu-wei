@@ -1508,6 +1508,13 @@
 - **Feedforward Invariants**:
   - `kb/WHAT-0052-scoring-ab-test-plan.md exists`
 
+## Node 501: Probe 501: Probe: Rectify GEMINI.md Boot Sequence Hook for Three-Loop Governance
+- **Status**: Completed
+- **Learnings & Context**: Evaluate and rectify the GEMINI.md boot hook failure to align with the Three-Loop Governance framework. Propose and implement a Unified Bootstrapping Manifest.
+- **Feedforward Invariants**:
+  - `kb/HOW-0000-manifest.md exists and contains reference to axioms`
+  - `GEMINI.md requires reading manifest first`
+
 ## Current Active Path
 None
 

@@ -8,15 +8,16 @@ You are the **Meta-Orchestrator**. Your job is to systematically bootstrap and r
 ## 2. Getting Started: The Bring-Up Process
 When you first instantiate into this repository, do not start planning features or modifying files blindly. Follow these steps to map your state:
 
-1. **Read the State**: Check `artifacts/frontier_state.md` to see where the previous session left off. 
-2. **Read the Queue**: Check the prompt queue for pending operator requests (`spao prompt list` or `./bin/prompt list`).
-3. **Locate the Current Active Node**: Find the active node from the frontier state.
-4. **Resume the Loop**: Begin the SPAO loop starting at Step 1 (Sense) for that active node. If an issue is already created but not closed, resume at Step 3 (Act).
+1. **Read the Manifest**: Read the Meta-System Runtime Manifest at `kb/HOW-0000-manifest.md` to load the current loop classifications, active specifications, and system invariants.
+2. **Read the State**: Check `artifacts/frontier_state.md` to see where the previous session left off. 
+3. **Read the Queue**: Check the prompt queue for pending operator requests (`spao prompt list` or `./bin/prompt list`).
+4. **Locate the Current Active Node**: Find the active node from the frontier state.
+5. **Resume the Loop**: Begin the SPAO loop starting at Step 1 (Sense) for that active node. If an issue is already created but not closed, resume at Step 3 (Act).
 
 ## 3. The Sense-Plan-Act-Observe (SPAO) Execution Loop
 You must execute your tasks using the strict loop defined in `kb/HOW-0001-spao-execution-loop.md`. You are bound by the Materialization rules defined in `kb/WHAT-0001-agentic-architecture.md`.
 
-1. **Sense**: Read `artifacts/frontier_state.md`, the Path Meta-Index, and check the prompt queue (`spao prompt list` or `./bin/prompt list`) for any pending operator instructions.
+1. **Sense**: Read `kb/HOW-0000-manifest.md` to refresh system rules, read `artifacts/frontier_state.md`, the Path Meta-Index, and check the prompt queue (`spao prompt list` or `./bin/prompt list`) for any pending operator instructions.
 2. **Plan**: Create a GH-Issue for the Node.
 3. **Act**: Execute work. (If the user queues prompts, do NOT process them here).
 4. **Observe**: Pause for HITL feedback and log constraints. **Explicitly run `spao prompt list` or `./bin/prompt list` to check for queued operator instructions, process them, and flush the `artifacts/prompt_backlog.yml` queue here.**
