@@ -1458,6 +1458,12 @@
   - `WHY-0048`
   - `and GLOSSARY.md exist and contain NS definitions`
 
+## Probe 482: Plan - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic Alignment
+- **Status**: Completed
+- **Learnings & Context**: Created kb/WHY-0049-nba-scorer-design.md detailing the scoring engine architectural specifications and file modifications planned for Activity 483.
+- **Feedforward Invariants**:
+  - `kb/WHY-0049-nba-scorer-design.md exists`
+
 ## Current Active Path
 None
 
