@@ -1673,3 +1673,10 @@ nodes:
     plan and reporting format for historical path scoring.
   invariants:
   - kb/WHAT-0050-historical-scoring-plan.md exists
+- name: 'Probe 486: Plan - Path: Next-Best-Action (NBA) Historical Decision Scoring
+    Execution'
+  status: Completed
+  learnings: Created kb/WHY-0051-rt-scoring-cli-design.md detailing the CLI design
+    and options to expose historical path scoring through the runtime manager.
+  invariants:
+  - kb/WHY-0051-rt-scoring-cli-design.md exists

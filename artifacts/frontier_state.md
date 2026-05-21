@@ -1477,6 +1477,12 @@
 - **Feedforward Invariants**:
   - `kb/WHAT-0050-historical-scoring-plan.md exists`
 
+## Probe 486: Plan - Path: Next-Best-Action (NBA) Historical Decision Scoring Execution
+- **Status**: Completed
+- **Learnings & Context**: Created kb/WHY-0051-rt-scoring-cli-design.md detailing the CLI design and options to expose historical path scoring through the runtime manager.
+- **Feedforward Invariants**:
+  - `kb/WHY-0051-rt-scoring-cli-design.md exists`
+
 ## Current Active Path
 None
 
