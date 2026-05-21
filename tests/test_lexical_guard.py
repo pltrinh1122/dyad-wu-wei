@@ -7,7 +7,9 @@ EXEMPTIONS = {
     'kb/GLOSSARY.md',
     'artifacts/frontier_state.md',
     'artifacts/coherence_validation.md',
-    'tests/test_lexical_guard.py'
+    'tests/test_lexical_guard.py',
+    'kb/WHY-0054-glossary-alignment.md',
+    'kb/WHAT-0054-glossary-spec.md'
 }
 
 FORBIDDEN_WORDS = {'epic', 'spike'}

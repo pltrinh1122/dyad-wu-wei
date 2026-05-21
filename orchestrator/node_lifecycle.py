@@ -336,7 +336,8 @@ class TerminalNode(BaseNode):
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
  
-        main_repo = os.path.dirname(os.path.abspath(git_client.get_git_common_dir()))
+        from skills import path_resolver
+        main_repo = path_resolver.get_core_dir()
         worktree_dir = os.path.abspath(os.path.join(main_repo, self.get_worktree_path(branch_name)))
 
         with FlowTransaction(frontier_file) as tx:
