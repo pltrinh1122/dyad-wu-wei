@@ -1618,6 +1618,12 @@
   - `git_client.switch supports detached switch`
   - `git_client.get_current_branch resolves detached HEAD as 'main'`
   - `Sync command operates on detached origin/main`
+
+## Node 562: Probe 562: Plan - Codify SG-0001 Tactical Goals and Persona Domain Ownership
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
 ## Node 566: Path 566: Codify SG-0005 Tactical Goals and Persona Domain Ownership
 - **Status**: Backlog
 - **Learnings & Context**: Define the official agent persona, tactical goals, and selection rubrics to claim domain ownership for SG-0005 (Autonomous Knowledge Accrual).
@@ -1647,6 +1653,14 @@
 - **Feedforward Invariants**:
   - `[x] The retrospective digest artifacts/path_566_digest.md is compiled and matches the required template.`
   - `[x] The path is formally marked as completed and closed in the meta-index.`
+
+## Probe 562: Plan - Codify SG-0001 Tactical Goals and Persona Domain Ownership
+- **Status**: Completed
+- **Learnings & Context**: Successfully resolved the index collision between SG-0001 and SG-0005 by moving SG-0001 spec files to indices 0060 and 0061, and updating all references and titles.
+- **Feedforward Invariants**:
+  - `All files renamed successfully.`
+  - `Heading titles and cross-references updated.`
+  - `Local test suite passes.`
 
 ## Current Active Path
 **Path 299: Path: Elevate Path Meta-Index from List to DAG**
