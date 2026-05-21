@@ -1611,6 +1611,12 @@
   - `INVARIANT_EXCLUSIVE_LEDGER_MUTATION`
   - `INVARIANT_FAIL_SAFE_MUTATION`
 
+## Node 562: Probe 562: Plan - Codify SG-0001 Tactical Goals and Persona Domain Ownership
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Node 566: Path 566: Codify SG-0005 Tactical Goals and Persona Domain Ownership
 - **Status**: Backlog
 - **Learnings & Context**: Define the official agent persona, tactical goals, and selection rubrics to claim domain ownership for SG-0005 (Autonomous Knowledge Accrual).
@@ -1645,4 +1651,4 @@
 **Path 299: Path: Elevate Path Meta-Index from List to DAG**
 
 ## Current Active Node
-None
+**Node 562: Probe 562: Plan - Codify SG-0001 Tactical Goals and Persona Domain Ownership**

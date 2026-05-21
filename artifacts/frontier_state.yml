@@ -1,5 +1,6 @@
 current_active_path: 'Path 299: Path: Elevate Path Meta-Index from List to DAG'
-current_active_node: null
+current_active_node: 'Node 562: Probe 562: Plan - Codify SG-0001 Tactical Goals and
+  Persona Domain Ownership'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1819,6 +1820,11 @@ nodes:
   - INVARIANT_PERSONA_ISOLATION
   - INVARIANT_EXCLUSIVE_LEDGER_MUTATION
   - INVARIANT_FAIL_SAFE_MUTATION
+- name: 'Node 562: Probe 562: Plan - Codify SG-0001 Tactical Goals and Persona Domain
+    Ownership'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
 - name: 'Node 566: Path 566: Codify SG-0005 Tactical Goals and Persona Domain Ownership'
   status: Backlog
   learnings: Define the official agent persona, tactical goals, and selection rubrics
@@ -1853,3 +1859,4 @@ nodes:
   - '[x] The retrospective digest artifacts/path_566_digest.md is compiled and matches
     the required template.'
   - '[x] The path is formally marked as completed and closed in the meta-index.'
+
