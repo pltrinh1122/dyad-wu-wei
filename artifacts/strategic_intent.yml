@@ -35,6 +35,7 @@ strategic_goals:
   status: Active
   prioritized_paths:
   - 476
+  - 292
 - id: SG-0003
   title: Preservation of Autonomous Velocity
   collaborative_gap: Low-fidelity validation feedback (flaky or slow tests) breaks
