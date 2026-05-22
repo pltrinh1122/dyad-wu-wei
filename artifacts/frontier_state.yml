@@ -1,6 +1,5 @@
 current_active_path: '626'
-current_active_node: 'Node 725: Activity 725: Act - Remediate Synthesized Lexical
-  Guards in Audit Config'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1996,4 +1995,32 @@ nodes:
     Config'
   status: '[///] Act Phase'
   learnings: Planning Phase
+  invariants: []
+- name: 'Node 716: Path 716: Remediate Synthesized Lexical Guards in Audit Config'
+  status: Completed
+  learnings: Remediated directly via hotfix
+  invariants:
+  - '[x] None'
+- name: 'Node 727: Path 727: Prevent Overly Broad Synthesized Lexical Guards'
+  status: Backlog
+  learnings: Refactor synthesize_rule in skills/knowledge_accrual_skill.py to ensure
+    it does not synthesize overly broad lexical guards (e.g., single digits or absolute
+    file paths) by validating the target term against a strict set of domain-specific
+    lexical scoping constraints.
+  invariants: []
+- name: 'Node 728: Probe 728: Align - Prevent Overly Broad Synthesized Lexical Guards'
+  status: Backlog
+  learnings: Align on the philosophical and technical intent for Prevent Overly Broad
+    Synthesized Lexical Guards.
+  invariants: []
+- name: 'Node 729: Probe 729: Plan - Prevent Overly Broad Synthesized Lexical Guards'
+  status: Backlog
+  learnings: Technical design and proposed changes for Prevent Overly Broad Synthesized
+    Lexical Guards.
+  invariants: []
+- name: 'Node 730: Activity 730: Reflect - Prevent Overly Broad Synthesized Lexical
+    Guards'
+  status: Backlog
+  learnings: Final reflection and path closure for Prevent Overly Broad Synthesized
+    Lexical Guards.
   invariants: []
