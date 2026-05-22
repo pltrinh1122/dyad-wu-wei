@@ -29,7 +29,7 @@ Every command execution will record:
 ### 3.2 Implementation Strategy: The @record_execution Decorator
 We will implement a decorator in `TelemetryManager` to wrap entry points.
 ```python
-@record_execution(level="orchestrator")
+@record_execution(level="kernel")
 def main():
     ...
 ```
