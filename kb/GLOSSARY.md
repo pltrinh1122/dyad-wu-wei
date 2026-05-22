@@ -86,6 +86,18 @@ The strict threshold separating **PML** (low-friction conversational exploration
 * **PML (Pre-Materialization Loop)**: The SPAO instantiation operating *below* this boundary. Ephemeral, unstructured, does not produce branch mutations. A PML cycle produces at most an **NC** proposal for operator review.
 * **Materialization**: The moment a PML cycle produces an operator-approved **NC** and the Agent activates a formal Node (checkout branch, update `frontier_state.md`), crossing into the **NL**.
 
+### Ziran Flow
+The architectural principle that the system must rely on continuous execution velocity (SPAO loop responsiveness) rather than waiting for perfect upfront context (Analysis Paralysis). The path is generated through physical interaction with the terrain, modeled as water flowing through a Geological Riverbed.
+
+### Laminar Flow
+Flawless, frictionless execution where a Node or Path is traversed without exceptions or invariants breaking.
+
+### Turbulence
+Friction encountered during execution (e.g., failing offline tests or logic errors). In Ziran Flow, Turbulence does not halt the state machine; it is handled by the Flow and observed as passive telemetry.
+
+### Structural Rupture
+A catastrophic exception event that corrupts the execution engine, the state ledger, or remote invariants. Unlike Turbulence, Rupture requires an immediate Hard Gate halt to repair the bedrock infrastructure.
+
 ---
 
 ## 🗃️ Memory & State
