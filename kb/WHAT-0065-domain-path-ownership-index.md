@@ -10,7 +10,7 @@
 ## Classification
 - **Type**: WHAT (Structural Fact)
 - **ID**: WHAT-0065
-- **Author**: agent-platform
+- **Author**: agent-ziran
 - **Created**: 2026-05-21 (Node 642, Path 640)
 - **Depends on**: WHAT-0062
 - **Decision record**: WHY-0065
@@ -33,7 +33,7 @@ When the CLI alignment gate evaluates a node transition, it MUST:
 
 | domain_id         | owner_persona   | description                                      |
 |-------------------|-----------------|--------------------------------------------------|
-| domain:platform   | agent-platform  | Horizontal kernel, a2ai, o2ai, shared observability |
+| domain:platform   | agent-ziran  | Horizontal kernel, a2ai, o2ai, shared observability |
 
 ---
 

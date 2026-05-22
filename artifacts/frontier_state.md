@@ -1728,10 +1728,10 @@
   - `[ ]` None
 
 ## Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity Resolution
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Completed
+- **Learnings & Context**: Completed manually
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[ ] None`
 
 ## Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution
 - **Status**: Completed
@@ -1769,8 +1769,32 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 717: Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: Completed
+- **Learnings & Context**: Confirmed alignment
+- **Feedforward Invariants**:
+  - `[ ] None`
+
+## Node 718: Probe 718: Plan - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: Completed
+- **Learnings & Context**: Created Node 725 Act
+- **Feedforward Invariants**:
+  - `[ ] None`
+
+## Node 725: Activity 725: Act - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 **626**
 
 ## Current Active Node
-**Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity Resolution**
+**Node 725: Activity 725: Act - Remediate Synthesized Lexical Guards in Audit Config**

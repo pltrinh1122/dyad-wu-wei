@@ -1,6 +1,6 @@
 current_active_path: '626'
-current_active_node: 'Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent
-  Identity Resolution'
+current_active_node: 'Node 725: Activity 725: Act - Remediate Synthesized Lexical
+  Guards in Audit Config'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1939,9 +1939,10 @@ nodes:
   invariants: []
 - name: 'Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity
     Resolution'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
+  status: Completed
+  learnings: Completed manually
+  invariants:
+  - '[ ] None'
 - name: 'Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution'
   status: Completed
   learnings: Aligned on dynamic agent identity resolution policy.
@@ -1973,4 +1974,26 @@ nodes:
   status: Completed
   learnings: Created design specification (WHAT-0064) and rationale (WHY-0064) for
     dynamic identity resolution.
+  invariants: []
+- name: 'Node 717: Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards
+    in Audit Config'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards in Audit
+    Config'
+  status: Completed
+  learnings: Confirmed alignment
+  invariants:
+  - '[ ] None'
+- name: 'Node 718: Probe 718: Plan - Remediate Synthesized Lexical Guards in Audit
+    Config'
+  status: Completed
+  learnings: Created Node 725 Act
+  invariants:
+  - '[ ] None'
+- name: 'Node 725: Activity 725: Act - Remediate Synthesized Lexical Guards in Audit
+    Config'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
