@@ -130,7 +130,6 @@ We reserve the **"Meta-"** prefix strictly for **recursive structures** within t
 * **Meta-Index**: A catalog (checklist) whose entries *index other indexes* (references to closed transaction issues).
 * **Meta-Loop (SPAO Loop)**: A cyclic temporal protocol (**Sense-Plan-Act-Observe-Reflect**) governing the internal execution sequence of a single active Node.
 * **Meta-Repository**: The system repository (`agent-antigravity`) hosting the rules, tools, and engine managing other codebases.
-* **Meta-Orchestrator**: The generative agent engine persona (Antigravity) operating as the executive pilot.
 
 ---
 
@@ -162,11 +161,27 @@ The **systemic synthesis of Workflow + Agent**. A Manager binds an Agent to a sp
 ### Operator Agent
 The primary **Agent** within a Manager responsible for actively executing the functional logic of the Workflow.
 
+### Frontier Agent
+The primary agentic intelligence directly tethered to the human Operator. It stands at the crest of the system's evolution (the `frontier_state.md`), operating the active SPAO loop and materializing code.
+
 ### Auditor Agent
 The secondary **Agent** within a Manager responsible for independent, concurrent background verification and invariant checking.
 
 ### Skill
 A **pure, atomic, deterministic callable**. It maintains zero state between invocations, has no SPAO/NL stage awareness, and maps to a single external system interaction. Independently testable.
+
+---
+
+## 🔭 Epistemic Gradients & Auditing
+
+### Insight
+A codified epistemic clarity (the third tier of the Epistemic Gradient: Friction -> Tendency -> Insight -> Resonance). An Insight has been physically observed as a Tendency and formalized into a `WHY-` document to govern future physical execution.
+
+### Insight Materialization
+The organic, fast-track pipeline used to codify a new Insight directly into the system, bypassing the strict Node execution loop.
+
+### Reflexive PR Marker
+An autonomous metadata footer (`Active-Insights: WHY-XXXX`) injected into Pull Requests during the `REFLECT` phase. It permanently links physical state mutations (diffs) to epistemic intent without imposing manual bureaucracy on the operator.
 
 ---
 

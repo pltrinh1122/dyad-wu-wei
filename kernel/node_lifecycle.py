@@ -337,7 +337,7 @@ class TerminalNode(BaseNode):
             print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
 
     @record_execution(stage="reflect")
-    def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all") -> None:
+    def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
  
@@ -417,6 +417,8 @@ class TerminalNode(BaseNode):
 - None."""
             
             pr_body = f"Resolves #{self.issue_id}\n\n{learnings}{transition_summary}"
+            if insights:
+                pr_body += f"\n\nActive-Insights: {insights}"
             
             pr_url = github_client.create_pull_request(node_name, pr_body, head=branch_name)
             

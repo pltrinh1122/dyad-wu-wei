@@ -4,7 +4,7 @@
 **Status:** Accepted
 
 ## Context
-During the execution of numerous SPAO loops, the Meta-Orchestrator frequently encountered "quote-escaping collisions" when invoking the GitHub CLI (`gh`) via raw bash to create Node Ledgers with complex markdown bodies. Furthermore, programmatically mutating files like `frontier_state.md` required brittle string-replacement operations.
+During the execution of numerous SPAO loops, the Frontier Agent frequently encountered "quote-escaping collisions" when invoking the GitHub CLI (`gh`) via raw bash to create Node Ledgers with complex markdown bodies. Furthermore, programmatically mutating files like `frontier_state.md` required brittle string-replacement operations.
 
 ## Options Considered
 1. **Raw Bash (Status Quo):** Continue using `gh`, `sed`, and `git` commands natively. High cognitive overhead, high error rate due to escaping limits.

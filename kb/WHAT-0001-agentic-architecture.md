@@ -13,7 +13,7 @@ Modern agentic repositories abandon traditional SDLC in favor of an Agentic Arch
 ### The CLI Adapter Layer
 Bridging the operator and the architecture is the **`bin/`** directory. It is NOT a core Pillar, but rather the **CLI Adapter Layer**. It contains ultra-thin shell wrappers that delegate immediately to Python **Orchestrators** (e.g., `kernel/mgr_node.py`). These Python `mgr_*` orchestrators inherently own their Workflows and route execution to the underlying stateless `drivers/`.
 
-The Agent operates as a **Meta-Orchestrator**, driving a logical, topological frontier node-by-node.
+The Agent operates as a **Frontier Agent**, driving a logical, topological frontier node-by-node.
 
 ### 1.1 Managers, Workflows, and Agents
 To achieve true autonomy, the environment must be mathematically decoupled from the actor:
@@ -28,7 +28,7 @@ A production-grade Manager cannot rely on a single thread of execution to self-p
 
 ## 2. Session Continuity Invariants
 Because Agent sessions are ephemeral, the repository must be physically self-describing.
-- **`GEMINI.md` (System Prompt Hook)**: Mandated at the repository root. This ensures the Antigravity engine automatically injects the Meta-Orchestrator persona.
+- **`GEMINI.md` (System Prompt Hook)**: Mandated at the repository root. This ensures the Antigravity engine automatically injects the Frontier Agent persona.
 - **`artifacts/frontier_state.md` (Macro-State)**: Mandated to track topological nodes, execution status, and feedforward invariants (knowledge required for the next node).
 - **Episodic State (`task.md`)**: Strictly *optional*. Local checklist tracking in the episodic brain cache must not be relied upon for session continuity. Micro-state is deferred to GitHub Issues.
 

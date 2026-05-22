@@ -81,10 +81,10 @@ def sync_and_clean_node() -> None:
     manager = HookManager()
     manager.execute_all()
 
-def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all") -> None:
+def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
     """Closes the GH issue, creates a PR, and updates the frontier."""
     node = TerminalNode(issue_id)
-    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage)
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
 
 
 import argparse
@@ -117,7 +117,8 @@ def cmd_reflect(args):
         invariants=invariants,
         commit_msg=args.commit_msg,
         branch_name=args.branch_name,
-        stage=args.stage
+        stage=args.stage,
+        insights=args.insights
     )
 
 def cmd_view(args):
@@ -251,6 +252,7 @@ def main():
     parser_r.add_argument("branch_name")
     parser_r.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
     parser_r.add_argument("--stage", nargs="?", const="all", default="all", help="Granular files to stage: 'all' (default), 'none', or list.")
+    parser_r.add_argument("--insights", default="", help="Active Insights (e.g., WHY-0071, WHY-0075)")
 
     # view
     parser_v = subparsers.add_parser("view", help="View a Node issue")

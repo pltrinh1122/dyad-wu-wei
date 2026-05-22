@@ -1,6 +1,6 @@
 # HOW-0001: The SPAO + HITL Execution Loop
 
-This document contains the strict, deterministic instructions (The "How") for operating the Meta-Orchestrator loop.
+This document contains the strict, deterministic instructions (The "How") for operating the Frontier Agent loop.
 
 ## The Execution Loop Steps
 The master objective is decomposed into discrete topological **Nodes**. For each Node, the Agent **must** execute the following loop in exact order:
