@@ -74,7 +74,7 @@ def execute_hotfix(file_path, commit_msg):
     save_data(ledger_file, data)
     print(f"Hotfix complete! Logged to {ledger_file}")
 
-def execute_epiphany(files, title, message):
+def execute_epiphany(files, title, message, laws=""):
     from drivers import github_client
     
     # Validation
@@ -98,6 +98,9 @@ def execute_epiphany(files, title, message):
     git_client.commit(title)
     git_client.push(branch_name)
     
+    if laws:
+        message += f"\n\nGoverning-Laws: {laws}"
+        
     pr_url = github_client.create_pull_request(title, message, branch_name)
     print(f"Epiphany PR created successfully: {pr_url}")
     
@@ -205,6 +208,7 @@ def main():
     parser_epiphany.add_argument("files", nargs="+", help="Files to include in the PR")
     parser_epiphany.add_argument("--title", required=True, help="PR Title")
     parser_epiphany.add_argument("--message", default="", help="PR Body")
+    parser_epiphany.add_argument("--laws", default="", help="Governing Laws (e.g., WHY-0075)")
 
     args = parser.parse_args()
 
@@ -213,7 +217,7 @@ def main():
     elif args.command == "score-paths":
         execute_score_paths(args.start, args.end)
     elif args.command == "epiphany":
-        execute_epiphany(args.files, args.title, args.message)
+        execute_epiphany(args.files, args.title, args.message, laws=args.laws)
 
 if __name__ == "__main__":
     main()
