@@ -17,6 +17,7 @@ A new python module to wrap Git CLI commands under the hood:
 The existing wrapper module will be audited to ensure:
 - All commands use structured JSON output (e.g. `--json`) and parse it programmatically rather than scraping text.
 - No direct shell interpolation is used; commands are passed as lists to `subprocess.run` with `capture_output=True` and `text=True`.
+- **Sandbox Containment**: Direct execution of `gh` or `git` commands inside scratch scripts, temporary files, or custom subprocess calls is strictly prohibited. Any required CLI command must be added to this module as a reusable python function.
 
 ---
 
