@@ -1871,8 +1871,17 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Probe 733: Align - Formalize The Shaping Sequence
+- **Status**: Completed
+- **Learnings & Context**: Codified the Telos, Invariants, Intents, and Dao Engine as The Shaping ontology. Updated mgr_strategic to allow Pure Ziran bypass.
+- **Feedforward Invariants**:
+  - `The Shaping requires the exact Cybernetic lineage sequence (Telos`
+  - `Invariants`
+  - `Intents`
+  - `Engine) to leverage native LLM latent space.`
+
 ## Current Active Path
-**626**
+None
 
 ## Current Active Node
-**Node 733: Probe 733: Align - Formalize The Shaping Sequence**
+None
