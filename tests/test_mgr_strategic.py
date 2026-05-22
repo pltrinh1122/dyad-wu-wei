@@ -198,7 +198,9 @@ class TestMgrStrategic(unittest.TestCase):
         mgr_strategic.save_ledger(data)
         
         mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         mgr_strategic._MOCK_PARENT_PATHS = {"419": "416"}
+        os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         
         try:
             mgr_strategic.verify_node_transition_allowed("419")
@@ -219,7 +221,9 @@ class TestMgrStrategic(unittest.TestCase):
         mgr_strategic.save_ledger(data)
         
         mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         mgr_strategic._MOCK_PARENT_PATHS = {"419": "416"}
+        os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         
         try:
             with self.assertRaises(Exception) as ctx:
@@ -242,6 +246,7 @@ class TestMgrStrategic(unittest.TestCase):
         mgr_strategic.save_ledger(data)
         
         mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         mgr_strategic._MOCK_PARENT_PATHS = {}
         
         try:
@@ -264,6 +269,7 @@ class TestMgrStrategic(unittest.TestCase):
         mgr_strategic.save_ledger(data)
         
         mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         try:
             mgr_strategic.verify_path_activation_allowed("416")
         finally:
@@ -282,6 +288,7 @@ class TestMgrStrategic(unittest.TestCase):
         mgr_strategic.save_ledger(data)
         
         mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         try:
             with self.assertRaises(Exception) as ctx:
                 mgr_strategic.verify_path_activation_allowed("416")
