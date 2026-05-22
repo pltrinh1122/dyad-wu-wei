@@ -48,3 +48,4 @@ When the CLI alignment gate evaluates a node transition, it MUST:
 | 588     | domain:platform   | claimed | 578-C: Integrate Persona-Aware Filtering into NBA Scorer |
 | 587     | domain:platform   | claimed | Path 578-B: Implement Persona and Path Alignment Gates in CLI Runtime |
 | 640     | domain:platform   | claimed | Codify Platform Domain Path Ownership Index |
+| 716     | domain:platform   | claimed | Remediate Synthesized Lexical Guards in Audit Config |
