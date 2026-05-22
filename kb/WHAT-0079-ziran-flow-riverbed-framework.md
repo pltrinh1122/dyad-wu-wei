@@ -30,3 +30,9 @@ If the triage identifies the exception as mere Turbulence, the pure Ziran princi
 *   **Action (Trivial Turbulence)**: Remediate the issue inline using offline test containment (`./bin/run-tests`). 
 *   **Action (Complex but Non-Blocking)**: If the fix requires deep work but *does not* block the parent Path's primary intent, isolate it into a new orthogonal Activity in the backlog. Revert the active branch to a known-laminar state and continue the primary sequence.
 *   **Rule**: Treat the friction as passive telemetry. Push the SPAO state machine forward without over-analyzing the noise.
+
+## 4. The Operator's Role in the Ecosystem
+In Ziran Flow, the Operator does not micromanage the water (the Agent). The Operator acts as the macro-forces of nature:
+*   **Gravity (Strategic Intent)**: The Operator's intent (defined in Path Issues and Node Contracts) provides the topographical gradient. It is the absolute force that ensures the flow always travels toward the North Star, no matter how the river winds.
+*   **The Tectonic Force**: When the Operator creates macro-Paths or edits `kb/` rules, they are lifting mountains and shaping the macro-terrain that the river will carve through.
+*   **The Dam**: When a Structural Rupture occurs, the Operator physically halts the flow to repair the bedrock.
