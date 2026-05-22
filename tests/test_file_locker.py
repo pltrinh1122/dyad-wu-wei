@@ -33,8 +33,8 @@ def test_get_logical_path(tmp_path):
     git_dir.mkdir()
     
     main_repo = str(tmp_path)
-    filepath = str(tmp_path / "skills" / "some_file.py")
-    assert file_locker.get_logical_path(filepath, main_repo) == os.path.join("skills", "some_file.py")
+    filepath = str(tmp_path / "drivers" / "some_file.py")
+    assert file_locker.get_logical_path(filepath, main_repo) == os.path.join("drivers", "some_file.py")
 
 def test_get_logical_path_worktree(tmp_path):
     git_dir = tmp_path / ".git"
@@ -45,9 +45,9 @@ def test_get_logical_path_worktree(tmp_path):
     wt_git.mkdir(parents=True)
     
     main_repo = str(tmp_path)
-    filepath = str(wt_dir / "skills" / "some_file.py")
+    filepath = str(wt_dir / "drivers" / "some_file.py")
     
-    assert file_locker.get_logical_path(filepath, main_repo) == os.path.join("skills", "some_file.py")
+    assert file_locker.get_logical_path(filepath, main_repo) == os.path.join("drivers", "some_file.py")
 
 def test_lock_file_sanitization(tmp_path):
     git_dir = tmp_path / ".git"

@@ -165,7 +165,7 @@ class RetroCompiler:
                 timeline.append(f"{ts.strftime('%Y-%m-%d %H:%M:%S')} - Node #{node_id} completed {stage} phase via {func_name} in {dur:.2f}s ({status})")
 
             # Track API Latency
-            if e.get("stage") == "SKILL" and e.get("domain") == "skills":
+            if e.get("stage") == "SKILL" and e.get("domain") == "drivers":
                 dur = e.get("metadata", {}).get("duration_sec")
                 if dur is not None:
                     api_durations.append(dur)
