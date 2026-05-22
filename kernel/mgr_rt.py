@@ -74,6 +74,36 @@ def execute_hotfix(file_path, commit_msg):
     save_data(ledger_file, data)
     print(f"Hotfix complete! Logged to {ledger_file}")
 
+def execute_epiphany(files, title, message):
+    from drivers import github_client
+    
+    # Validation
+    for f in files:
+        if not os.path.exists(f):
+            print(f"Error: File {f} does not exist.")
+            sys.exit(1)
+            
+    current_branch = git_client.get_current_branch()
+    if current_branch != "main":
+        print(f"Error: Epiphanies MUST be initiated from the 'main' branch. You are currently on '{current_branch}'.")
+        sys.exit(1)
+        
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+    branch_name = f"rt/epiphany-{timestamp}"
+    
+    print(f"Executing Fast-Track Epiphany Pipeline for {len(files)} file(s)...")
+    
+    git_client.checkout_b(branch_name)
+    git_client.add(files)
+    git_client.commit(title)
+    git_client.push(branch_name)
+    
+    pr_url = github_client.create_pull_request(title, message, branch_name)
+    print(f"Epiphany PR created successfully: {pr_url}")
+    
+    git_client.switch("main")
+    print("Switched back to main.")
+
 def execute_score_paths(start=None, end=None):
     from kernel.nba_scorer import GranularNBAScorer
     from drivers import github_client
@@ -170,12 +200,20 @@ def main():
     parser_score.add_argument("--start", help="Starting Path ID")
     parser_score.add_argument("--end", help="Ending Path ID")
 
+    # Epiphany command
+    parser_epiphany = subparsers.add_parser("epiphany", help="Fast-track an epiphany to a PR organically without a node")
+    parser_epiphany.add_argument("files", nargs="+", help="Files to include in the PR")
+    parser_epiphany.add_argument("--title", required=True, help="PR Title")
+    parser_epiphany.add_argument("--message", default="", help="PR Body")
+
     args = parser.parse_args()
 
     if args.command == "hotfix":
         execute_hotfix(args.file, args.message)
     elif args.command == "score-paths":
         execute_score_paths(args.start, args.end)
+    elif args.command == "epiphany":
+        execute_epiphany(args.files, args.title, args.message)
 
 if __name__ == "__main__":
     main()

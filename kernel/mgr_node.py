@@ -121,11 +121,89 @@ def cmd_reflect(args):
     )
 
 def cmd_view(args):
+    import re
+    from drivers import gh_graph_skill
+    
     data = github_client.get_issue_details(args.issue_id)
     print('='*40)
     print(f"Issue #{args.issue_id}: {data['title']} [{data['state']}]")
     print('='*40)
-    print(data['body'])
+    
+    body = data.get('body', '')
+    
+    if "## Meta-Index" in body:
+        parts = body.split("## Meta-Index")
+        pre_meta = parts[0]
+        meta_section = parts[1]
+        
+        meta_parts = re.split(r'\n## ', meta_section, maxsplit=1)
+        meta_text = meta_parts[0]
+        post_meta = "\n## " + meta_parts[1] if len(meta_parts) > 1 else ""
+        
+        try:
+            nodes = gh_graph_skill.parse_meta_index(meta_text)
+            ready_nodes = set(gh_graph_skill.get_ready_nodes(nodes))
+            
+            rendered_lines = ["## Meta-Index"]
+            
+            roots = [nid for nid, ndata in nodes.items() if not ndata["depends"]]
+            roots.sort(key=int)
+            
+            visited = set()
+            
+            def render_node(nid, prefix, is_last, is_root):
+                if nid not in nodes:
+                    return
+                ndata = nodes[nid]
+                
+                if ndata["completed"]:
+                    status_str = "[x]"
+                elif nid in ready_nodes:
+                    status_str = "[Ready]"
+                else:
+                    status_str = "[Blocked]"
+                
+                dep_str = ""
+                if ndata["depends"]:
+                    dep_str = f" [Depends: {', '.join(ndata['depends'])}]"
+                
+                # Check visited before printing to prevent duplicate printing
+                if nid in visited:
+                    if not is_root:
+                        connector = "└──► " if is_last else "├──► "
+                        rendered_lines.append(f"{prefix}{connector}{status_str} Node {nid} (Already rendered above)")
+                    return
+                visited.add(nid)
+                    
+                if is_root:
+                    rendered_lines.append(f"{status_str} Node {nid}: {ndata['title']}")
+                    new_prefix = ""
+                else:
+                    connector = "└──► " if is_last else "├──► "
+                    rendered_lines.append(f"{prefix}{connector}{status_str} Node {nid}: {ndata['title']}{dep_str}")
+                    new_prefix = prefix + ("    " if is_last else "│   ")
+                
+                children = [cid for cid, cdata in nodes.items() if nid in cdata["depends"]]
+                children.sort(key=int)
+                
+                for i, child_id in enumerate(children):
+                    render_node(child_id, new_prefix, i == len(children) - 1, False)
+            
+            for root in roots:
+                render_node(root, "", True, True)
+                
+            print(pre_meta.strip())
+            print("\n")
+            print("\n".join(rendered_lines))
+            print("\n")
+            print(post_meta.strip() if post_meta.strip() != "##" else "")
+            
+        except Exception as e:
+            # Fallback to raw body if parsing fails
+            print(body)
+    else:
+        print(body)
+        
     print('='*40)
 
 def cmd_set_status(args):
