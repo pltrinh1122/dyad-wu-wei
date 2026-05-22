@@ -25,17 +25,44 @@ def _get_persona_ownership():
         import os
         from skills import path_resolver
         md_path = path_resolver.resolve_workspace_path("kb", "WHAT-0062-agent-persona-ownership-index.md")
-        if not os.path.exists(md_path):
-            return mapping
-        with open(md_path, "r") as f:
-            for line in f:
-                if "|" in line:
-                    parts = [p.strip() for p in line.split("|")]
-                    if len(parts) >= 3:
-                        sg_id = parts[1]
-                        agent_id = parts[2]
-                        if sg_id.startswith("SG-"):
-                            mapping[sg_id] = agent_id
+        if os.path.exists(md_path):
+            with open(md_path, "r") as f:
+                for line in f:
+                    if "|" in line:
+                        parts = [p.strip() for p in line.split("|")]
+                        if len(parts) >= 3:
+                            sg_id = parts[1]
+                            agent_id = parts[2]
+                            if sg_id.startswith("SG-"):
+                                mapping[sg_id] = agent_id
+
+        domain_md_path = path_resolver.resolve_workspace_path("kb", "WHAT-0065-domain-path-ownership-index.md")
+        domain_to_agent = {}
+        if os.path.exists(domain_md_path):
+            with open(domain_md_path, "r") as f:
+                content = f.read()
+            import re
+            domain_match = re.search(r"## Domain-to-Persona Index\s*\n(.*?)(?=\n##|\Z)", content, re.DOTALL)
+            if domain_match:
+                for line in domain_match.group(1).splitlines():
+                    line = line.strip()
+                    if line.startswith("|") and not line.startswith("| domain_id"):
+                        parts = [p.strip() for p in line.split("|")]
+                        if len(parts) >= 3 and parts[1]:
+                            domain_to_agent[parts[1]] = parts[2]
+                            
+            path_match = re.search(r"## Path-to-Domain Index\s*\n(.*?)(?=\n##|\Z)", content, re.DOTALL)
+            if path_match:
+                for line in path_match.group(1).splitlines():
+                    line = line.strip()
+                    if line.startswith("|") and not line.startswith("| path_id"):
+                        parts = [p.strip() for p in line.split("|")]
+                        if len(parts) >= 3 and parts[1]:
+                            path_id = parts[1]
+                            domain_id = parts[2]
+                            if domain_id in domain_to_agent:
+                                mapping[path_id] = domain_to_agent[domain_id]
+                                
     except Exception:
         pass
     return mapping
@@ -138,16 +165,20 @@ class NBAScorer:
         ownership_map = _get_persona_ownership()
 
         if active_persona and ownership_map and path_id:
-            ledger = mgr_strategic.load_ledger()
-            parent_sg = None
-            for goal in ledger.get("strategic_goals", []):
-                if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
-                    parent_sg = goal.get("id")
-                    break
-
-            if parent_sg and parent_sg in ownership_map:
-                if ownership_map[parent_sg] != active_persona:
+            if str(path_id) in ownership_map:
+                if ownership_map[str(path_id)] != active_persona:
                     c_persona = 0.0
+            else:
+                ledger = mgr_strategic.load_ledger()
+                parent_sg = None
+                for goal in ledger.get("strategic_goals", []):
+                    if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
+                        parent_sg = goal.get("id")
+                        break
+
+                if parent_sg and parent_sg in ownership_map:
+                    if ownership_map[parent_sg] != active_persona:
+                        c_persona = 0.0
 
         # Calculate overall score: S_NBA = C_dep * C_persona * (0.40 * C_axiom + 0.40 * C_strategic + 0.20 * C_risk)
         score = c_dep * c_persona * (0.40 * c_axiom + 0.40 * c_strategic + 0.20 * c_risk)
@@ -284,16 +315,20 @@ class GranularNBAScorer(NBAScorer):
         ownership_map = _get_persona_ownership()
 
         if active_persona and ownership_map and path_id:
-            ledger = mgr_strategic.load_ledger()
-            parent_sg = None
-            for goal in ledger.get("strategic_goals", []):
-                if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
-                    parent_sg = goal.get("id")
-                    break
-
-            if parent_sg and parent_sg in ownership_map:
-                if ownership_map[parent_sg] != active_persona:
+            if str(path_id) in ownership_map:
+                if ownership_map[str(path_id)] != active_persona:
                     c_persona = 0.0
+            else:
+                ledger = mgr_strategic.load_ledger()
+                parent_sg = None
+                for goal in ledger.get("strategic_goals", []):
+                    if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
+                        parent_sg = goal.get("id")
+                        break
+
+                if parent_sg and parent_sg in ownership_map:
+                    if ownership_map[parent_sg] != active_persona:
+                        c_persona = 0.0
 
         score = c_dep * c_persona * (0.40 * c_axiom + 0.40 * c_strategic + 0.20 * c_risk)
         
