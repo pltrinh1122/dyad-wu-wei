@@ -71,6 +71,7 @@ To realize the Synergistic Human-Agent Partnership (NS-0001) and satisfy Axiom (
 4. **Policy-Driven Communication (SG-0004)**: To avoid verbose chat alignment loops, strategic intent must be communicated via the structured ledger (`artifacts/strategic_intent.yml`). The agent must keep chat explanations concise, focusing on structural policy deltas and formal verification status.
 5. **Knowledge Mutation (SG-0005)**: When the operator corrects the agent's logic or design, the agent must not rely on the conversation history for long-term memory. The correction must be codified as an immutable knowledge primitive under `kb/` or as an explicit guardrail rule update in this document to prevent repeat errors.
    - *Reflexive Guidance*: If instructed to skip reflection, the agent must ask: *"Skipping this documentation violates SG-0005. How will we prevent this same error pattern from recurring in future sessions if we do not codify this lesson?"*
+6. **The Agentic Retro Trigger**: If the Operator issues a correction regarding a policy violation, logic error, or workflow failure via chat, the Agent MUST autonomously create an `artifacts/audit/retro-<id>.md` file detailing the violation and the codified insight BEFORE sending its chat response.
 
 <!-- Testing True Hotfix -->
 
