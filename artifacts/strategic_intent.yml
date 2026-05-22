@@ -62,6 +62,7 @@ strategic_goals:
   id: SG-0004
   prioritized_paths:
   - 615
+  - 640
   status: Active
   title: Efficient Intent-to-Goal Policy Communication
 - collaborative_gap: The agent cannot autonomously codify and recall lessons from
