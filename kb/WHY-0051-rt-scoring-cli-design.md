@@ -2,7 +2,7 @@
 
 ## 1. CLI Commands & Options
 
-We will implement path scoring as a new command in the runtime orchestrator `orchestrator/mgr_rt.py`.
+We will implement path scoring as a new command in the runtime orchestrator `kernel/mgr_rt.py`.
 
 ```python
 def score_paths(start_id: str = None, end_id: str = None):

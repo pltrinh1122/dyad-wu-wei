@@ -4,7 +4,7 @@
 2026-05-18
 
 ## Context
-As the Antigravity architecture scales to encompass multiple orchestrator domains (`mgr_prompt`, `mgr_node`, `mgr_rt`), the system requires human-in-the-loop (HITL) safeguards to prevent autonomous mutations during critical operations. Previously, these gates (e.g., `tty_gate.require_operator_approval`) were hardcoded directly within the execution logic of each orchestrator. This monolithic approach lacked flexibility, tightly coupled the gating mechanism to specific workflows, and prevented clean domain exportation (e.g., sharing a domain with `agent-travel`).
+As the Antigravity architecture scales to encompass multiple orchestrator domains (`mgr_prompt`, `mgr_node`, `mgr_rt`), the system requires human-in-the-loop (HITL) safeguards to prevent autonomous mutations during critical operations. Previously, these gates (e.g., `tty_gate.require_operator_approval`) were hardcoded directly within the execution logic of each kernel. This monolithic approach lacked flexibility, tightly coupled the gating mechanism to specific workflows, and prevented clean domain exportation (e.g., sharing a domain with `agent-travel`).
 
 Probe 179 evaluated the best architectural pattern to standardize and enforce these gates across the `mgr_*` ecosystem.
 

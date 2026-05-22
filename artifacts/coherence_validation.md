@@ -63,5 +63,5 @@ graph TD
 | **Node** | Graph Theory | Yes | Represents a single vertex in the DAG of codebase evolution. |
 | **Path** | Graph Theory | Yes | Represents a directed sequence of dependent vertices (replaces "Epic"). |
 | **Probe** | Systems Theory | Yes | Represents an informational query/exploration (replaces "Spike"). |
-| **Pillar** | Architecture | Yes | Represents a top-level isolated namespace (`kb/`, `skills/`, etc.). |
+| **Pillar** | Architecture | Yes | Represents a top-level isolated namespace (`kb/`, `drivers/`, etc.). |
 | **Primitive** | Linguistics | Yes | Represents the atomic types of reasoning documents (`WHAT`, `WHY`, `HOW`). |

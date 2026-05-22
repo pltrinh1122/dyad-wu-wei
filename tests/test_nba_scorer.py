@@ -1,8 +1,8 @@
 import unittest
-from orchestrator.nba_scorer import NBAScorer
-from skills import github_client
-from orchestrator import mgr_strategic
-import orchestrator.nba_scorer as nba_scorer_module
+from kernel.nba_scorer import NBAScorer
+from drivers import github_client
+from kernel import mgr_strategic
+import kernel.nba_scorer as nba_scorer_module
 
 class TestNBAScorer(unittest.TestCase):
     def setUp(self):

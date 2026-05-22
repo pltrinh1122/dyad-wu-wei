@@ -68,7 +68,7 @@ _info "Committing release via git_client skill..."
 python3 - "$SPAO_CORE_DIR" "$VERSION" << 'PY'
 import sys, subprocess
 sys.path.insert(0, sys.argv[1])
-from skills import git_client
+from drivers import git_client
 
 # Only commit if VERSION changed
 status = subprocess.run(["git", "status", "--porcelain", "VERSION"],
@@ -87,7 +87,7 @@ _info "Creating annotated tag $VERSION via git_client skill..."
 python3 - "$SPAO_CORE_DIR" "$VERSION" "$NOTES" << 'PY'
 import sys
 sys.path.insert(0, sys.argv[1])
-from skills import git_client
+from drivers import git_client
 git_client.tag(sys.argv[2], sys.argv[3])
 git_client.tag_push(sys.argv[2])
 PY

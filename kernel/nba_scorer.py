@@ -1,8 +1,8 @@
 import os
 import re
 import yaml
-from skills import github_client
-from orchestrator import mgr_strategic
+from drivers import github_client
+from kernel import mgr_strategic
 
 def _get_active_persona():
     import os
@@ -10,7 +10,7 @@ def _get_active_persona():
     if env_id:
         return env_id
     try:
-        from skills import path_resolver
+        from drivers import path_resolver
         import yaml
         yaml_path = path_resolver.resolve_workspace_path("antigravity.yml")
         with open(yaml_path, "r") as f:
@@ -23,7 +23,7 @@ def _get_persona_ownership():
     mapping = {}
     try:
         import os
-        from skills import path_resolver
+        from drivers import path_resolver
         md_path = path_resolver.resolve_workspace_path("kb", "WHAT-0062-agent-persona-ownership-index.md")
         if os.path.exists(md_path):
             with open(md_path, "r") as f:

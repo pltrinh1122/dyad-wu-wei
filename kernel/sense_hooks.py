@@ -1,6 +1,6 @@
 import yaml
 import os
-from orchestrator import mgr_frontier
+from kernel import mgr_frontier
 
 class HookManager:
     """Manages the execution of configurable Sense hooks."""
@@ -30,14 +30,14 @@ class HookManager:
     def execute_prompt_queue_hook(self, config):
         """Surfaces pending operator prompts from a configurable file path."""
         location = config.get("location", "artifacts/prompt_backlog.yml")
-        from orchestrator.mgr_prompt import list_prompts
+        from kernel.mgr_prompt import list_prompts
         print()
         list_prompts(all_prompts=False, backlog_file=location)
 
     def execute_next_best_action_hook(self, config):
-        """Dynamically evaluates and surfaces the next best action using NBAManager orchestrator."""
-        from orchestrator.mgr_nba import NBAManager
-        from skills import issue_factory
+        """Dynamically evaluates and surfaces the next best action using NBAManager kernel."""
+        from kernel.mgr_nba import NBAManager
+        from drivers import issue_factory
         repository = config.get("repository", "pltrinh1122/agent-antigravity")
         frontier_file = config.get("frontier_file", "artifacts/frontier_state.md")
 
@@ -68,7 +68,7 @@ class HookManager:
 
         recommendations_list = ""
         if result["recommendations"]:
-            from orchestrator.nba_scorer import GranularNBAScorer
+            from kernel.nba_scorer import GranularNBAScorer
             scorer = GranularNBAScorer(frontier_file=frontier_file)
             lines = []
             for item in result["recommendations"]:

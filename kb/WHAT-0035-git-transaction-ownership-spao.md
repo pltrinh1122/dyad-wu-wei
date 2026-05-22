@@ -4,9 +4,9 @@ This specification codifies the API extensions, CLI arguments, and execution mec
 
 ---
 
-## 1. Git Client API Extensions (`skills/git_client.py`)
+## 1. Git Client API Extensions (`drivers/git_client.py`)
 
-All workspace mutating/inspecting functions in `skills/git_client.py` will be extended to accept an optional `cwd` parameter (defaulting to `None`). This allows executing git subcommands relative to a specific directory (such as a partitioned worktree) without changing the process's working directory.
+All workspace mutating/inspecting functions in `drivers/git_client.py` will be extended to accept an optional `cwd` parameter (defaulting to `None`). This allows executing git subcommands relative to a specific directory (such as a partitioned worktree) without changing the process's working directory.
 
 ### 1.1 Modified Signatures
 - `add(files: list[str], cwd: str | None = None)`
@@ -15,9 +15,9 @@ All workspace mutating/inspecting functions in `skills/git_client.py` will be ex
 
 ---
 
-## 2. CLI Parser Updates (`orchestrator/mgr_node.py`)
+## 2. CLI Parser Updates (`kernel/mgr_node.py`)
 
-The `reflect` CLI parser command in `orchestrator/mgr_node.py` is updated to include an optional `--stage` flag.
+The `reflect` CLI parser command in `kernel/mgr_node.py` is updated to include an optional `--stage` flag.
 
 ### 2.1 Argument Definition
 ```python
@@ -32,7 +32,7 @@ parser_r.add_argument(
 
 ---
 
-## 3. Reflect Implementation & Worktree Resolution (`orchestrator/node_lifecycle.py`)
+## 3. Reflect Implementation & Worktree Resolution (`kernel/node_lifecycle.py`)
 
 The `reflect` method in `TerminalNode` is refactored to dynamically resolve the worktree directory, execute staging based on the `--stage` flag, and run all git-related commands/rollbacks relative to the resolved worktree path.
 

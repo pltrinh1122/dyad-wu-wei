@@ -2,7 +2,7 @@
 
 <!-- MACHINE-PARSE CONTRACT
   Format:    GitHub Flavored Markdown pipe-delimited tables
-  Consumers: orchestrator/mgr_strategic.py (578-B enforcement gate)
+  Consumers: kernel/mgr_strategic.py (578-B enforcement gate)
   Parse hint: The indices begin after the respective headings.
               Each data row (non-header, non-separator) is one authoritative record.
 -->

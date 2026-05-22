@@ -297,7 +297,7 @@ class RetroCompiler:
 
 def main():
     if len(sys.argv) < 4 or sys.argv[1] != "compile":
-        print("Usage: python -m orchestrator.mgr_retro compile <start_path_id> <end_path_id> [output_path]")
+        print("Usage: python -m kernel.mgr_retro compile <start_path_id> <end_path_id> [output_path]")
         sys.exit(1)
 
     start_path = sys.argv[2]

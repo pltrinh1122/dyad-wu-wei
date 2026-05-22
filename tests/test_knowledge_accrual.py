@@ -3,18 +3,18 @@ import json
 import pytest
 from unittest.mock import patch, MagicMock, mock_open
 
-from skills.knowledge_accrual_skill import (
+from drivers.knowledge_accrual_skill import (
     parse_test_failure_diagnostics,
     check_kb_conflicts,
     synthesize_rule,
     build_contextual_prompt_injection
 )
-from orchestrator.mgr_knowledge_accrual import (
+from kernel.mgr_knowledge_accrual import (
     run_kb_check,
     enforce_reflection_hook,
     inject_contextual_rules
 )
-from skills.audit_daemon import evaluate_lexical_guard
+from drivers.audit_daemon import evaluate_lexical_guard
 
 
 def test_parse_test_failure_diagnostics():
@@ -128,7 +128,7 @@ strategic_goals:
 
 def test_run_kb_check_success():
     with patch("subprocess.run") as mock_run, \
-         patch("skills.knowledge_accrual_skill.check_kb_conflicts", return_value=[]):
+         patch("drivers.knowledge_accrual_skill.check_kb_conflicts", return_value=[]):
         mock_result = MagicMock()
         mock_result.returncode = 0
         mock_result.stdout = "diff text"
@@ -139,7 +139,7 @@ def test_run_kb_check_success():
 
 def test_run_kb_check_failure():
     with patch("subprocess.run") as mock_run, \
-         patch("skills.knowledge_accrual_skill.check_kb_conflicts", return_value=["conflict"]):
+         patch("drivers.knowledge_accrual_skill.check_kb_conflicts", return_value=["conflict"]):
         mock_result = MagicMock()
         mock_result.returncode = 0
         mock_result.stdout = "diff text"
@@ -197,7 +197,7 @@ def test_inject_contextual_rules():
     
     with patch("os.path.exists", return_value=True), \
          patch("builtins.open", mock_open()) as mock_file, \
-         patch("skills.knowledge_accrual_skill.build_contextual_prompt_injection", return_value="<!-- CONTEXTUAL_ROM_INJECTION_START -->\nInjected Content\n<!-- CONTEXTUAL_ROM_INJECTION_END -->") as mock_inject:
+         patch("drivers.knowledge_accrual_skill.build_contextual_prompt_injection", return_value="<!-- CONTEXTUAL_ROM_INJECTION_START -->\nInjected Content\n<!-- CONTEXTUAL_ROM_INJECTION_END -->") as mock_inject:
              
         # Mock file reads and writes
         file_handles = [
@@ -227,8 +227,8 @@ def test_evaluate_lexical_guard():
     state = {}
     
     # Mock git status --porcelain returning modified file
-    with patch("skills.audit_daemon.subprocess.run") as mock_run, \
-         patch("skills.audit_daemon.inject_prompt") as mock_inject, \
+    with patch("drivers.audit_daemon.subprocess.run") as mock_run, \
+         patch("drivers.audit_daemon.inject_prompt") as mock_inject, \
          patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data="This contains forbidden_word!")):
              

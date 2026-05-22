@@ -4,11 +4,11 @@ import sys
 import json
 import yaml
 import argparse
-from orchestrator.mgr_telemetry import record_execution
-from skills import knowledge_accrual_skill
+from kernel.mgr_telemetry import record_execution
+from drivers import knowledge_accrual_skill
 
 def get_repo_root():
-    from skills import path_resolver
+    from drivers import path_resolver
     return path_resolver.get_workspace_dir()
 
 def run_kb_check(repo_root: str, strict: bool = True) -> bool:

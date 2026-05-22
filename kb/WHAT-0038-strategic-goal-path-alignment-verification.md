@@ -18,7 +18,7 @@ The ledger validation command (`./bin/strategic verify`) will enforce two new in
 ## 2. Integration and Enforcement Behavior
 
 To prevent decay of the strategic intent ledger:
-*   **Command execution**: Running `./bin/strategic verify` will perform live checks against the GitHub API wrapper (`skills/github_client.py`).
+*   **Command execution**: Running `./bin/strategic verify` will perform live checks against the GitHub API wrapper (`drivers/github_client.py`).
 *   **Strict Exit Code**: If any path violates `INVARIANT_STRATEGIC_PATH_EXISTS` or `INVARIANT_STRATEGIC_PATH_OPEN`, the tool must print a detailed error summary and terminate with a non-zero exit status (`exit 1`).
 
 ---

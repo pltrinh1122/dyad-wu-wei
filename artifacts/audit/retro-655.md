@@ -7,4 +7,4 @@ During the initiation of the Plan phase (`./bin/node plan-start 655`), the orche
 The active node pointer in the local frontier ledger was not successfully cleared in the upstream branch (`main`). The manual lock clear executed in Node 654 was on a detached HEAD and not integrated into the branch that was merged.
 
 ## Corrective Action
-The lock was manually released again via a temporary python script calling `skills.frontier_editor.set_active_node` to `"None"`. Moving forward, the `sync` command or the PR merge process must be audited to ensure that node pointer locks are robustly cleared on `main`.
+The lock was manually released again via a temporary python script calling `drivers.frontier_editor.set_active_node` to `"None"`. Moving forward, the `sync` command or the PR merge process must be audited to ensure that node pointer locks are robustly cleared on `main`.

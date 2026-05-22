@@ -1,15 +1,15 @@
 import sys
-from skills.file_locker import lock_file
+from drivers.file_locker import lock_file
 import yaml
 import os
 import time
 import uuid
 import argparse
 from datetime import datetime, timezone
-from skills.tty_gate import require_operator_approval
+from drivers.tty_gate import require_operator_approval
 
 def get_backlog_file():
-    from skills import path_resolver
+    from drivers import path_resolver
     return path_resolver.resolve_workspace_path("artifacts", "prompt_backlog.yml")
 
 def load_data(backlog_file):
@@ -114,7 +114,7 @@ def clean_prompts():
     save_data(backlog_file, data)
     print(f"Purged {removed_count} consumed prompt(s).")
 
-from orchestrator.mgr_telemetry import record_execution
+from kernel.mgr_telemetry import record_execution
 
 @record_execution(stage="act")
 def main():

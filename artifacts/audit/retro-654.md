@@ -7,4 +7,4 @@ During the initiation of the Plan phase (`./bin/node plan-start 654`), the orche
 The active node pointer in the local frontier ledger was not successfully cleared during the previous loop cycles. When `plan-start` attempted to acquire the lock for Node 654, it was blocked by the stale pointer.
 
 ## Corrective Action
-The lock was manually released by executing `skills.frontier_editor.set_active_node` and `set_active_path` to `"None"`. Moving forward, the system should ensure that `sync` handles upstream active node pointer clearing robustly even when local ledger commits are detached.
+The lock was manually released by executing `drivers.frontier_editor.set_active_node` and `set_active_path` to `"None"`. Moving forward, the system should ensure that `sync` handles upstream active node pointer clearing robustly even when local ledger commits are detached.

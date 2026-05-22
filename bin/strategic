@@ -14,4 +14,4 @@ else
 fi
 
 # Delegate to the orchestrator
-PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m orchestrator.mgr_strategic "$@"
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m kernel.mgr_strategic "$@"

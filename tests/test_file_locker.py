@@ -2,7 +2,7 @@ import os
 import threading
 import time
 import pytest
-from skills import file_locker
+from drivers import file_locker
 
 def test_get_main_repo_dir_standard(tmp_path):
     git_dir = tmp_path / ".git"

@@ -1,5 +1,5 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 738: Probe 738: Plan - Restructure Repository for Dao Portability'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -2042,18 +2042,16 @@ nodes:
   learnings: Technical design and proposed changes for Formalize The Shaping Sequence.
   invariants: []
 - name: 'Node 736: Probe 736: Align - Restructure Repository for Dao Portability'
-  status: Backlog
-  learnings: Align on the philosophical and technical intent for Restructure Repository
-    for Dao Portability.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 737: Activity 737: Reflect - Formalize The Shaping Sequence'
   status: Backlog
   learnings: Final reflection and path closure for Formalize The Shaping Sequence.
   invariants: []
 - name: 'Node 738: Probe 738: Plan - Restructure Repository for Dao Portability'
-  status: Backlog
-  learnings: Technical design and proposed changes for Restructure Repository for
-    Dao Portability.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 739: Activity 739: Reflect - Restructure Repository for Dao Portability'
   status: Backlog
@@ -2064,3 +2062,11 @@ nodes:
   status: Completed
   learnings: ''
   invariants: ''
+- name: 'Probe 736: Align - Restructure Repository for Dao Portability'
+  status: Completed
+  learnings: The DZ-CIL is an OS. Its physical manifestation is kernel, drivers, bin,
+    kb, artifacts, and tests. We do not need arbitrary nested directories. Everything
+    in CWD is an artificial manifestation of The Shaping.
+  invariants:
+  - None explicitly updated
+  - but reaffirmed Dao fa Ziran (The Dao follows Ziran).

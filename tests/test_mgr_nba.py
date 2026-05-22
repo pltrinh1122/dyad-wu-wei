@@ -1,13 +1,13 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from orchestrator.mgr_nba import NBAManager
+from kernel.mgr_nba import NBAManager
 
 class TestNBAManager(unittest.TestCase):
     
-    @patch("orchestrator.mgr_nba.mgr_frontier.read_active_path")
-    @patch("orchestrator.mgr_nba.mgr_frontier.extract_path_id")
-    @patch("skills.github_client.get_issue_details")
-    @patch("skills.gh_graph_skill.get_next_nodes")
+    @patch("kernel.mgr_nba.mgr_frontier.read_active_path")
+    @patch("kernel.mgr_nba.mgr_frontier.extract_path_id")
+    @patch("drivers.github_client.get_issue_details")
+    @patch("drivers.gh_graph_skill.get_next_nodes")
     def test_evaluate_path_continuation(self, mock_get_next, mock_get_details, mock_extract, mock_read):
         mock_read.return_value = "**Refactor and Promote NBA Evaluator (#242)**"
         mock_extract.return_value = "242"
@@ -22,8 +22,8 @@ class TestNBAManager(unittest.TestCase):
         self.assertEqual(len(result["recommendations"]), 1)
         self.assertEqual(result["recommendations"][0]["id"], "245")
 
-    @patch("orchestrator.mgr_nba.mgr_frontier.read_active_path")
-    @patch("skills.github_client.list_issues_by_label")
+    @patch("kernel.mgr_nba.mgr_frontier.read_active_path")
+    @patch("drivers.github_client.list_issues_by_label")
     def test_evaluate_path_switching(self, mock_list, mock_read):
         mock_read.return_value = None # No active path
         mock_list.return_value = [{"number": "100", "title": "Global Task"}]

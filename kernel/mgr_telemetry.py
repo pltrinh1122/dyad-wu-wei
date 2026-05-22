@@ -4,7 +4,7 @@ import subprocess
 import uuid
 import functools
 from datetime import datetime, timezone, timedelta
-from skills.file_locker import lock_file
+from drivers.file_locker import lock_file
 
 class SynthesisEngine:
     """Processes raw telemetry events into actionable metrics."""
@@ -73,7 +73,7 @@ class TelemetryManager:
 
     def _get_default_ledger_path(self):
         """Anchors the default ledger path to the git repository root."""
-        from skills import path_resolver
+        from drivers import path_resolver
         return path_resolver.resolve_workspace_path("artifacts", "telemetry.jsonl")
 
     def log_event(self, stage, event, node_id=None, path_id=None, domain=None, component=None, execution_id=None, metadata=None):

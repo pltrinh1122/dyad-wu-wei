@@ -23,7 +23,7 @@ During the execution of Node 524, the plan-start step failed:
 3. **Checkout Node Worktree**:
    - Checked out the dedicated git worktree for Node 524 (`node/524-implement-dag-parsing`) using `./bin/node checkout 524 node/524-implement-dag-parsing`.
 4. **Implementation and Verification**:
-   - Implemented `DAGValidationError` and robust graph validation rules in `skills/gh_graph_skill.py`.
+   - Implemented `DAGValidationError` and robust graph validation rules in `drivers/gh_graph_skill.py`.
    - Wrote comprehensive TDD tests in `tests/test_gh_graph_skill.py`.
    - Verified that all TDD tests pass cleanly using `./bin/run-tests`.
 

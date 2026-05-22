@@ -3,10 +3,10 @@ import re
 import json
 import subprocess
 import yaml
-from skills import github_client, git_client
-from orchestrator import mgr_frontier, mgr_prompt, mgr_backlog, mgr_nba
-from orchestrator.mgr_telemetry import TelemetryManager, record_execution
-from orchestrator.mgr_transaction import FlowTransaction
+from drivers import github_client, git_client
+from kernel import mgr_frontier, mgr_prompt, mgr_backlog, mgr_nba
+from kernel.mgr_telemetry import TelemetryManager, record_execution
+from kernel.mgr_transaction import FlowTransaction
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -14,13 +14,13 @@ def is_verbose() -> bool:
 
 def load_node_status_config() -> dict:
     """Loads the node status mapping from node.yml."""
-    from skills import path_resolver
+    from drivers import path_resolver
     config = path_resolver.load_node_yml()
     return config.get("node_attributes", {}).get("status", {})
 
 def load_node_classification_config() -> dict:
     """Loads the node classification mapping from node.yml."""
-    from skills import path_resolver
+    from drivers import path_resolver
     config = path_resolver.load_node_yml()
     return config.get("node_attributes", {}).get("classification", {})
 
@@ -164,7 +164,7 @@ class TerminalNode(BaseNode):
 
     def _validate_spao_purity(self, worktree_path: str | None = None):
         """Validates that a loop:spao branch only modifies policy/documentation paths."""
-        from skills import path_resolver
+        from drivers import path_resolver
         config = path_resolver.load_antigravity_yml()
         enforce = config.get("governance", {}).get("spao_purity_enforcement", True)
         
@@ -226,7 +226,7 @@ class TerminalNode(BaseNode):
         with FlowTransaction(frontier_file) as tx:
             self._verify_state_purity(frontier_file)
             
-            from orchestrator.mgr_strategic import verify_node_transition_allowed
+            from kernel.mgr_strategic import verify_node_transition_allowed
             verify_node_transition_allowed(self.issue_id)
             
             in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
@@ -296,8 +296,8 @@ class TerminalNode(BaseNode):
                     raise
         
         # Enforce static KB conflict checks (SG-0005)
-        from orchestrator import mgr_knowledge_accrual
-        from skills import path_resolver
+        from kernel import mgr_knowledge_accrual
+        from drivers import path_resolver
         mgr_knowledge_accrual.run_kb_check(repo_root=path_resolver.get_workspace_dir(), strict=True)
         
         prefix = f"Node {self.issue_id}:"
@@ -316,7 +316,7 @@ class TerminalNode(BaseNode):
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
             
-        from orchestrator.mgr_strategic import verify_node_transition_allowed
+        from kernel.mgr_strategic import verify_node_transition_allowed
         verify_node_transition_allowed(self.issue_id)
 
         with FlowTransaction(frontier_file) as tx:
@@ -341,7 +341,7 @@ class TerminalNode(BaseNode):
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
  
-        from skills import path_resolver
+        from drivers import path_resolver
         main_repo = path_resolver.get_core_dir()
         worktree_dir = os.path.abspath(os.path.join(main_repo, self.get_worktree_path(branch_name)))
 
@@ -349,7 +349,7 @@ class TerminalNode(BaseNode):
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
             
             # Enforce post-failure reflection gate (SG-0005)
-            from orchestrator import mgr_knowledge_accrual
+            from kernel import mgr_knowledge_accrual
             mgr_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo)
             
             self.close("Node completed via Flow-State Manager. Moving to PR.")

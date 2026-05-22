@@ -34,7 +34,7 @@ For each filtered active path ID:
    - If `unverified` is not empty:
      1. Fetch the path issue body via `gh issue view`.
      2. Update the body by marking the completed nodes in the checklist.
-     3. If updates were made, write the new body via `skills/github_client.update_issue_body`.
+     3. If updates were made, write the new body via `drivers/github_client.update_issue_body`.
      4. Update `path_states[path_id]` to include all currently completed nodes.
      5. Save the updated states to `artifacts/audit_state.json`.
 

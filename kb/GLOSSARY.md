@@ -169,10 +169,10 @@ A physical post-condition/assertion of a completed Node that acts as a mandatory
 ### Pillar
 A top-level directory in the agentic architecture, defining a specific systemic function:
 * **`artifacts/` (RAM)**: Mutable runtime memory and outputs.
-* **`skills/` (Hands)**: Deterministic, tested tools and interfaces (contains exclusively **Skills**).
-* **`orchestrator/` (Engine)**: Generative runtime state and execution loop (contains **Workflows**).
+* **`drivers/` (Hands)**: Deterministic, tested tools and interfaces (contains exclusively **Skills**).
+* **`kernel/` (Engine)**: Generative runtime state and execution loop (contains **Workflows**).
 * **`kb/` (ROM)**: Immutable laws and primitives.
 * **`infra/` (Infrastructure)**: Orchestrated daemons and runner environments.
 
 ### CLI Adapter Layer (`bin/`)
-*Not a core execution Pillar.* Thin interface shell scripts that bridge human operators and agent intent to the underlying `skills/` or `orchestrator/` layers.
+*Not a core execution Pillar.* Thin interface shell scripts that bridge human operators and agent intent to the underlying `drivers/` or `kernel/` layers.
