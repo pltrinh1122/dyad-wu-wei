@@ -59,3 +59,11 @@ hotfixes:
   timestamp: '2026-05-21T18:40:35Z'
   file: artifacts/frontier_state.md
   message: 'reflect: finalize meta-state updates for Node 524'
+- hash: 9ef03c07bd5ae08423b3377e24f6b9122fe13164
+  timestamp: '2026-05-22T00:19:00Z'
+  file: GEMINI.md
+  message: Refine rule 8 to strictly prohibit direct git/gh in scratch scripts
+- hash: 2a96cd8b8e3110d6c86a772e7e74c205f7af2954
+  timestamp: '2026-05-22T00:20:01Z'
+  file: kb/WHAT-0025-abstraction-doctrine-spec.md
+  message: Update WHAT-0025 spec to prohibit raw gh and git in scratch scripts
