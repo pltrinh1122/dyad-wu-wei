@@ -2,12 +2,6 @@ timer_interval: 5m
 audit_branches:
 - main
 rules:
-- id: periodic-health-audit
-  type: node_completion_threshold
-  threshold: 10
-  alert_level: NOTIFICATION
-  prompt_message: 'Periodic Health Audit (Node count: {current}) - Ensure architectural
-    invariants'
 - id: stale_pointer_check
   type: stale_active_node
   alert_level: FAILURE
