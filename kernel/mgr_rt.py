@@ -74,7 +74,7 @@ def execute_hotfix(file_path, commit_msg):
     save_data(ledger_file, data)
     print(f"Hotfix complete! Logged to {ledger_file}")
 
-def execute_epiphany(files, title, message, laws=""):
+def execute_insight(files, title, message, insights=""):
     from drivers import github_client
     
     # Validation
@@ -85,24 +85,24 @@ def execute_epiphany(files, title, message, laws=""):
             
     current_branch = git_client.get_current_branch()
     if current_branch != "main":
-        print(f"Error: Epiphanies MUST be initiated from the 'main' branch. You are currently on '{current_branch}'.")
+        print(f"Error: Insights MUST be initiated from the 'main' branch. You are currently on '{current_branch}'.")
         sys.exit(1)
         
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
-    branch_name = f"rt/epiphany-{timestamp}"
+    branch_name = f"rt/insight-{timestamp}"
     
-    print(f"Executing Fast-Track Epiphany Pipeline for {len(files)} file(s)...")
+    print(f"Executing Fast-Track Insight Materialization Pipeline for {len(files)} file(s)...")
     
     git_client.checkout_b(branch_name)
     git_client.add(files)
     git_client.commit(title)
     git_client.push(branch_name)
     
-    if laws:
-        message += f"\n\nGoverning-Laws: {laws}"
+    if insights:
+        message += f"\n\nActive-Insights: {insights}"
         
     pr_url = github_client.create_pull_request(title, message, branch_name)
-    print(f"Epiphany PR created successfully: {pr_url}")
+    print(f"Insight PR created successfully: {pr_url}")
     
     git_client.switch("main")
     print("Switched back to main.")
@@ -203,12 +203,12 @@ def main():
     parser_score.add_argument("--start", help="Starting Path ID")
     parser_score.add_argument("--end", help="Ending Path ID")
 
-    # Epiphany command
-    parser_epiphany = subparsers.add_parser("epiphany", help="Fast-track an epiphany to a PR organically without a node")
-    parser_epiphany.add_argument("files", nargs="+", help="Files to include in the PR")
-    parser_epiphany.add_argument("--title", required=True, help="PR Title")
-    parser_epiphany.add_argument("--message", default="", help="PR Body")
-    parser_epiphany.add_argument("--laws", default="", help="Governing Laws (e.g., WHY-0075)")
+    # Insight command
+    parser_insight = subparsers.add_parser("insight", help="Fast-track an insight materialization to a PR organically without a node")
+    parser_insight.add_argument("files", nargs="+", help="Files to include in the PR")
+    parser_insight.add_argument("--title", required=True, help="PR Title")
+    parser_insight.add_argument("--message", default="", help="PR Body")
+    parser_insight.add_argument("--insights", default="", help="Active Insights (e.g., WHY-0075)")
 
     args = parser.parse_args()
 
@@ -216,8 +216,8 @@ def main():
         execute_hotfix(args.file, args.message)
     elif args.command == "score-paths":
         execute_score_paths(args.start, args.end)
-    elif args.command == "epiphany":
-        execute_epiphany(args.files, args.title, args.message, laws=args.laws)
+    elif args.command == "insight":
+        execute_insight(args.files, args.title, args.message, insights=args.insights)
 
 if __name__ == "__main__":
     main()

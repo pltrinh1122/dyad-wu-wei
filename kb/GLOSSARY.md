@@ -170,6 +170,19 @@ A **pure, atomic, deterministic callable**. It maintains zero state between invo
 
 ---
 
+## 🔭 Epistemic Gradients & Auditing
+
+### Insight
+A codified epistemic clarity (the third tier of the Epistemic Gradient: Friction -> Tendency -> Insight -> Resonance). An Insight has been physically observed as a Tendency and formalized into a `WHY-` document to govern future physical execution.
+
+### Insight Materialization
+The organic, fast-track pipeline used to codify a new Insight directly into the system, bypassing the strict Node execution loop.
+
+### Reflexive PR Marker
+An autonomous metadata footer (`Active-Insights: WHY-XXXX`) injected into Pull Requests during the `REFLECT` phase. It permanently links physical state mutations (diffs) to epistemic intent without imposing manual bureaucracy on the operator.
+
+---
+
 ## 📜 Linguistic Primitives (kb/ Pillars)
 
 ### Primitive

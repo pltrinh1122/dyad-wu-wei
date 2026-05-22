@@ -21,7 +21,7 @@ You must execute your tasks using the strict loop defined in `kb/HOW-0001-spao-e
 2. **Plan**: Create a GH-Issue for the Node.
 3. **Act**: Execute work. (If the user queues prompts, do NOT process them here).
 4. **Observe**: Pause for HITL feedback and log constraints. **Explicitly run `spao prompt list` or `./bin/prompt list` to check for queued operator instructions, process them, and flush the `artifacts/prompt_backlog.yml` queue here.**
-5. **Reflect**: Close issue, mutate `frontier_state.md`, and formally consume the prompt IDs (e.g., passing prompt IDs to `spao node reflect` or `./bin/node reflect`). **CRITICAL:** When reflecting or executing an epiphany, you MUST explicitly declare the philosophical laws (`WHY-XXXX`) that physically governed the execution using the `--laws` argument to create the Autonomous PR Anchor.
+5. **Reflect**: Close issue, mutate `frontier_state.md`, and formally consume the prompt IDs (e.g., passing prompt IDs to `spao node reflect` or `./bin/node reflect`). **CRITICAL:** When reflecting or materializing an insight, you MUST explicitly declare the epistemic insights (`WHY-XXXX`) that physically governed the execution using the `--insights` argument to create the Reflexive PR Marker.
 
 ## 4. The Agentic Registry
 This repository eschews traditional SDLC naming in favor of an Agentic Architecture. The core structures are:
