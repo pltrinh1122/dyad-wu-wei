@@ -79,12 +79,20 @@ def parse_meta_index(body: str) -> dict:
     # Handle both real newlines and literal \n characters that might appear from JSON parsing
     body = body.replace("\\n", "\n")
     
+    # Pre-process to merge wrapped lines. If a line doesn't start with '- [', it's likely a continuation.
+    merged_lines = []
+    for line in body.splitlines():
+        if re.match(r'^\s*-\s+\[', line):
+            merged_lines.append(line)
+        elif merged_lines and line.strip():
+            merged_lines[-1] = merged_lines[-1] + " " + line.strip()
+            
     pattern = re.compile(
         r"^\s*-\s+\[([xX /])\]\s+(?:Node|Activity|Probe|Path)?\s*(\d+):?\s*(.*?)(?:\s*\[Depends:\s*(.*?)\s*\])?\s*$",
         re.IGNORECASE
     )
     
-    for line in body.splitlines():
+    for line in merged_lines:
         line_stripped = line.strip()
         match = pattern.match(line_stripped)
         if match:

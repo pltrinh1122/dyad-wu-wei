@@ -9,6 +9,16 @@ def add(files: list[str], cwd: str | None = None) -> None:
     subprocess.run(["git", "add"] + files, check=True, cwd=cwd)
 
 @record_execution(stage="skill")
+def checkout_b(branch: str, cwd: str | None = None) -> None:
+    """Creates a new branch and switches to it."""
+    subprocess.run(["git", "checkout", "-b", branch], check=True, cwd=cwd)
+
+@record_execution(stage="skill")
+def switch(branch: str, cwd: str | None = None) -> None:
+    """Switches to an existing branch."""
+    subprocess.run(["git", "switch", branch], check=True, cwd=cwd)
+
+@record_execution(stage="skill")
 def commit(message: str, cwd: str | None = None) -> None:
     """Commits staged changes."""
     subprocess.run(["git", "commit", "-m", message], check=True, cwd=cwd)
