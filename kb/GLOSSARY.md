@@ -40,6 +40,21 @@ The **checklist data structure** (`- [x] Node ...`) contained inside the body of
 
 ---
 
+## ⚙️ The Tripartite Operating Environment
+
+To resolve ontological confusion between the logic, the file system, and the host platform, the architecture is divided into three distinct operational boundaries:
+
+### The Dao Engine (The Logic / State Machine)
+The conceptual, logical mechanism that governs the system (Stage 4 of The Shaping). It is the abstract SPAO loop, the rules of Next-Best-Action (NBA) calculation, and the deterministic state-machine that channels our Intent vectors safely toward the North Star. *Analogy: The rules of the game.*
+
+### The DZ-OS (The Physical Substrate)
+The Dao-Ziran Operating System. This is the physical footprint and materialization of the Dao Engine on a hard drive. It is the specific architecture of folders (`kernel/`, `drivers/`, `kb/`, `artifacts/`) bounded by the Current Working Directory (`cwd = "."`). *Analogy: The physical game board and pieces.*
+
+### The Platform (The Clock Signal / Agentic OS)
+The external host (e.g., the `agy` platform) that provides the raw LLM API connection (Semantic Entropy) and the infinite `while True:` execution loop. The DZ-OS inherits its "clock ticks" from the Platform. *Analogy: The players moving the pieces and the clock ticking on the wall.*
+
+---
+
 ## 🔄 Execution Loop & Governance
 
 ### SPAO (Meta-Loop)
