@@ -191,6 +191,16 @@ def record_execution(stage=None):
                         "duration_sec": duration,
                         "status": "success"
                     }
+                if "insights" in kwargs and kwargs["insights"]:
+                    metadata["insights"] = kwargs["insights"]
+                manager.log_event(
+                    stage=stage or "ACT",
+                    event="FINISH",
+                    node_id=node_id,
+                    domain=domain,
+                    component=component,
+                    execution_id=execution_id,
+                    metadata=metadata
                 )
                 return result
             except Exception as e:
