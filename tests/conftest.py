@@ -16,7 +16,7 @@ def stub_gh_cli():
 @pytest.fixture
 def mock_gh():
     """Provides a centralized mock for github_client."""
-    with patch("orchestrator.node_lifecycle.github_client") as m:
+    with patch("kernel.node_lifecycle.github_client") as m:
         m.get_issue_details.return_value = {"title": "Dummy Issue", "body": "## Goal\nDummy Goal"}
         m.list_issues_by_label.return_value = []
         yield m
@@ -24,7 +24,7 @@ def mock_gh():
 @pytest.fixture
 def mock_fe():
     """Provides a centralized mock for mgr_frontier."""
-    with patch("orchestrator.node_lifecycle.mgr_frontier") as m:
+    with patch("kernel.node_lifecycle.mgr_frontier") as m:
         m.read_active_node.return_value = "None"
         m.read_active_path.return_value = "None"
         yield m
@@ -32,7 +32,7 @@ def mock_fe():
 @pytest.fixture
 def mock_telemetry():
     """Provides a centralized mock for TelemetryManager."""
-    with patch("orchestrator.mgr_telemetry.TelemetryManager") as m:
+    with patch("kernel.mgr_telemetry.TelemetryManager") as m:
         instance = m.return_value
         yield instance
 
@@ -46,13 +46,13 @@ def mock_subprocess():
 @pytest.fixture
 def mock_backlog():
     """Provides a centralized mock for mgr_backlog."""
-    with patch("orchestrator.node_lifecycle.mgr_backlog") as m:
+    with patch("kernel.node_lifecycle.mgr_backlog") as m:
         yield m
 
 @pytest.fixture
 def mock_nba():
     """Provides a centralized mock for mgr_nba."""
-    with patch("orchestrator.node_lifecycle.mgr_nba") as m:
+    with patch("kernel.node_lifecycle.mgr_nba") as m:
         instance = m.NBAManager.return_value
         instance.evaluate.return_value = {"type": "path_switching", "recommendations": []}
         yield m
@@ -60,7 +60,7 @@ def mock_nba():
 @pytest.fixture
 def mock_backlog_gh():
     """Provides a centralized mock for github_client inside mgr_backlog."""
-    with patch("orchestrator.mgr_backlog.github_client") as m:
+    with patch("kernel.mgr_backlog.github_client") as m:
         yield m
 
 @pytest.fixture

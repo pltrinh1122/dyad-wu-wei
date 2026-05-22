@@ -1,7 +1,7 @@
 import os
 import re
 import yaml
-from skills import git_client
+from drivers import git_client
 
 def get_core_dir() -> str:
     """Returns the absolute path to the SPAO installation/core codebase directory."""

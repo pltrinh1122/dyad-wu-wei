@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import MagicMock
-from skills.github_client import create_issue, close_issue, reopen_issue, update_issue_body, create_pull_request, list_issues_by_label, get_issue_labels, add_label, remove_label, get_open_prs, get_open_issues, get_issue_details
+from drivers.github_client import create_issue, close_issue, reopen_issue, update_issue_body, create_pull_request, list_issues_by_label, get_issue_labels, add_label, remove_label, get_open_prs, get_open_issues, get_issue_details
 
 def test_create_issue(mock_tempfile, mock_subprocess):
     mock_gh_cmd, mock_file = mock_tempfile

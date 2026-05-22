@@ -17,6 +17,6 @@ We decided to adopt **Option 3** and establish the `kb/` (Knowledge Base) direct
 ## Rationale
 This decision creates perfect architectural symmetry. It physically separates the "Laws of the System" from the "State of the System." The Agentic Architecture is now composed of four clean pillars:
 1. `artifacts/`: The **RAM** (Mutable state, `frontier_state.md`).
-2. `skills/`: The **Hands** (Tools).
-3. `orchestrator/`: The **Engine** (Execution loop).
+2. `drivers/`: The **Hands** (Tools).
+3. `kernel/`: The **Engine** (Execution loop).
 4. `kb/`: The **ROM** (Immutable `WHAT`, `WHY`, and `HOW` primitives).

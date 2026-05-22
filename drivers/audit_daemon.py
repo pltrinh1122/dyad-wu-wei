@@ -5,7 +5,7 @@ import json
 import subprocess
 import re
 from pathlib import Path
-from skills.git_client import get_current_branch
+from drivers.git_client import get_current_branch
 
 # Paths
 REPO_ROOT = Path(__file__).parent.parent.resolve()
@@ -114,7 +114,7 @@ def evaluate_stale_active_node(rule, state):
 
 def evaluate_frontier_integrity(rule, state):
     sys.path.append(str(REPO_ROOT))
-    from orchestrator import mgr_frontier
+    from kernel import mgr_frontier
     filepath = str(REPO_ROOT / "artifacts" / "frontier_state.yml")
     try:
         mgr_frontier.verify_checksum(filepath)

@@ -4,8 +4,8 @@ import yaml
 import hashlib
 import argparse
 import re
-from skills import path_resolver
-from skills import github_client
+from drivers import path_resolver
+from drivers import github_client
 
 def get_ledger_path():
     env_path = os.environ.get("SPAO_STRATEGIC_LEDGER_PATH")
@@ -336,7 +336,7 @@ def find_parent_path_id(node_id: str) -> str | None:
         print(f"Warning: Failed to find parent path for node {node_id} on GitHub: {e}")
     return None
 
-from skills.markdown_parser import parse_md_table
+from drivers.markdown_parser import parse_md_table
 
 def _is_pure_ziran(path_id: str, ledger: dict) -> bool:
     """Returns True if the path is unassigned to any domain or SG (Pure Ziran)."""

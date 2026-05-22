@@ -1,9 +1,9 @@
 import os
 import json
 import subprocess
-from skills import github_client
-from orchestrator import mgr_frontier
-from skills import gh_graph_skill
+from drivers import github_client
+from kernel import mgr_frontier
+from drivers import gh_graph_skill
 
 class NBAManager:
     """Manages the Next-Best-Action (NBA) orchestration logic."""
@@ -20,7 +20,7 @@ class NBAManager:
         3. If pending children found -> Path Continuation.
         4. If no active path OR no pending children -> Path Switching (Global Backlog).
         """
-        from skills import path_resolver
+        from drivers import path_resolver
         if not os.path.isabs(frontier_file):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
         active_path_str = mgr_frontier.read_active_path(frontier_file)
@@ -52,7 +52,7 @@ class NBAManager:
             
             # Reorder backlog_items based on active strategic goals
             prioritized_ids = []
-            from orchestrator import mgr_strategic
+            from kernel import mgr_strategic
             yaml_path = mgr_strategic.get_ledger_path()
             if os.path.exists(yaml_path):
                 import yaml

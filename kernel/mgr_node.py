@@ -1,14 +1,14 @@
 import os
 import re
 import subprocess
-from skills import github_client, git_client
-from orchestrator import mgr_frontier
-from orchestrator import mgr_testing
-from orchestrator import mgr_prompt
-from orchestrator.sense_hooks import HookManager
+from drivers import github_client, git_client
+from kernel import mgr_frontier
+from kernel import mgr_testing
+from kernel import mgr_prompt
+from kernel.sense_hooks import HookManager
 
-from orchestrator.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement
-from orchestrator.mgr_telemetry import TelemetryManager, record_execution
+from kernel.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement
+from kernel.mgr_telemetry import TelemetryManager, record_execution
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -72,7 +72,7 @@ def sync_and_clean_node() -> None:
  
     # Trigger Metasystem Audit
     print("\n🔍 Executing Metasystem Integrity Audit...")
-    from skills import path_resolver
+    from drivers import path_resolver
     audit_script = path_resolver.resolve_core_path("skills", "audit_daemon.py")
     subprocess.run([sys.executable, audit_script], check=False)
  

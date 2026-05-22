@@ -1,13 +1,13 @@
 import pytest
 from unittest.mock import patch, mock_open, MagicMock
-from orchestrator.mgr_telemetry import TelemetryManager, SynthesisEngine
+from kernel.mgr_telemetry import TelemetryManager, SynthesisEngine
 import json
 import os
 from datetime import datetime, timezone, timedelta
 
 def test_log_event():
     with patch("os.makedirs"):
-        with patch("skills.file_locker.lock_file"):
+        with patch("drivers.file_locker.lock_file"):
             with patch("builtins.open", mock_open()) as mocked_file:
                 with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
                     tm = TelemetryManager(ledger_path="/tmp/test.jsonl")
@@ -63,7 +63,7 @@ def test_generate_report_with_bottleneck():
             assert "**Node #1** stalled in **PLAN** phase for 2:00:00" in report
 
 def test_ledger_anchoring():
-    with patch("skills.path_resolver.resolve_workspace_path") as mock_resolve:
+    with patch("drivers.path_resolver.resolve_workspace_path") as mock_resolve:
         mock_resolve.return_value = "/repo/root/artifacts/telemetry.jsonl"
         with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
             tm = TelemetryManager()

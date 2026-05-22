@@ -65,7 +65,7 @@ def load_strategic_goal_ids() -> list[str]:
     return [sg["id"] for sg in data.get("strategic_goals", [])]
 
 
-from skills import path_resolver
+from drivers import path_resolver
 
 def load_agent_id() -> str:
     """Return the resolved agent_id."""

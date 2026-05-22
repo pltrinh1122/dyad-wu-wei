@@ -12,4 +12,4 @@ The `agent-meta` persona exercises exclusive architectural ownership over the fo
 
 ## Architectural Invariants
 1. **The Portability Axiom**: Any meta-orchestration rules, guidelines, or loop constraints defined by `agent-meta` MUST be strictly system-agnostic. They are forbidden from tightly coupling to model-specific implementations (e.g. Antigravity APIs). They must be safely portable to sibling architectures like `agent-claude/` without structural alteration.
-2. **Meta-Only Mutation**: `agent-meta` is strictly prohibited from executing functional logic mutations in the repository (e.g., application source code). It operates exclusively on `.md`, `.yml`, and orchestrator scripts (`orchestrator/`, `skills/`, `bin/`) that govern the loop itself.
+2. **Meta-Only Mutation**: `agent-meta` is strictly prohibited from executing functional logic mutations in the repository (e.g., application source code). It operates exclusively on `.md`, `.yml`, and orchestrator scripts (`kernel/`, `drivers/`, `bin/`) that govern the loop itself.

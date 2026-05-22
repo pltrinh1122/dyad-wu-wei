@@ -1,7 +1,7 @@
 import pytest
 import os
 from unittest.mock import patch, mock_open
-from skills.issue_factory import render_template
+from drivers.issue_factory import render_template
 
 def test_render_template_success():
     mock_template = "Hello {name}, your score is {score}."

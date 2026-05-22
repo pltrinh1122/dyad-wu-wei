@@ -1,6 +1,6 @@
 import pytest
-from skills import gh_graph_skill
-from skills.gh_graph_skill import DAGValidationError
+from drivers import gh_graph_skill
+from drivers.gh_graph_skill import DAGValidationError
 
 def test_parse_meta_index_simple():
     body = """

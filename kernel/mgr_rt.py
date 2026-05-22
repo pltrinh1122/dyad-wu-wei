@@ -1,6 +1,6 @@
 import sys
-from skills.file_locker import lock_file
-from skills import git_client
+from drivers.file_locker import lock_file
+from drivers import git_client
 import yaml
 import os
 import argparse
@@ -75,8 +75,8 @@ def execute_hotfix(file_path, commit_msg):
     print(f"Hotfix complete! Logged to {ledger_file}")
 
 def execute_score_paths(start=None, end=None):
-    from orchestrator.nba_scorer import GranularNBAScorer
-    from skills import github_client
+    from kernel.nba_scorer import GranularNBAScorer
+    from drivers import github_client
     
     # 1. Gather paths to evaluate
     paths_to_evaluate = []
@@ -153,7 +153,7 @@ def execute_score_paths(start=None, end=None):
         f.write(report_content)
     print(f"\nReport saved to: {report_file}")
 
-from orchestrator.mgr_telemetry import record_execution
+from kernel.mgr_telemetry import record_execution
 
 @record_execution(stage="act")
 def main():

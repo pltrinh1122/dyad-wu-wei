@@ -1,8 +1,8 @@
 import hashlib
 import os
 import yaml
-from skills.file_locker import lock_file
-from orchestrator.mgr_telemetry import record_execution
+from drivers.file_locker import lock_file
+from kernel.mgr_telemetry import record_execution
 
 class StateCorruptionError(Exception):
     """Raised when frontier_state.yml checksum fails or syntax is invalid."""
@@ -161,7 +161,7 @@ def read_active_path(filepath: str) -> str | None:
 
 def extract_path_id(path_str: str) -> str | None:
     """Extracts the numeric ID from a Path string."""
-    from skills.frontier_editor import extract_path_id as raw_extract
+    from drivers.frontier_editor import extract_path_id as raw_extract
     return raw_extract(path_str)
 
 @record_execution(stage="skill")
@@ -174,7 +174,7 @@ def set_active_path(filepath: str, path_name: str) -> None:
     else:
         path_id = extract_path_id(path_name)
         if path_id:
-            from orchestrator.mgr_strategic import verify_path_activation_allowed
+            from kernel.mgr_strategic import verify_path_activation_allowed
             verify_path_activation_allowed(path_id)
         state["current_active_path"] = path_name
     save_state(yml_path, state)
@@ -191,7 +191,7 @@ def set_active_node(filepath: str, node_name: str) -> None:
 
 def get_node_metadata(node_id: int | str) -> dict:
     """Queries issue labels to extract loop, area, and kind metadata."""
-    from skills import github_client
+    from drivers import github_client
     metadata = {}
     try:
         labels = github_client.get_issue_labels(str(node_id))

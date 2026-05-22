@@ -30,7 +30,7 @@ This repository eschews traditional SDLC naming in favor of an Agentic Architect
 
 To aid in the bring-up process, refer to the following capabilities registries.
 
-### Skills Registry (`skills/`)
+### Skills Registry (`drivers/`)
 Skills are pure, stateless, deterministic tools and Python scripts.
 - **`github_client.py`**: Interacts with the GitHub API (creating/closing issues, managing PRs).
 - **`frontier_editor.py`**: Reads and mutates the `frontier_state.md` topological tracker.
@@ -39,8 +39,8 @@ Skills are pure, stateless, deterministic tools and Python scripts.
 - **`issue_factory.py`**: Generates templated GH-issues.
 - **`file_locker.py`**: Manages concurrency locks across parallel agent sessions.
 
-### Orchestrator Registry (`orchestrator/` & `bin/`)
-The orchestrator manages stateful, multi-step, stage-aware orchestration sequences. The `bin/` layer exposes these via CLI, which are also globally wrapped by the unified `spao` script.
+### Kernel Registry (`kernel/` & `bin/`)
+The kernel manages stateful, multi-step, stage-aware orchestration sequences. The `bin/` layer exposes these via CLI, which are also globally wrapped by the unified `spao` script.
 - **`spao node`** (wraps `bin/node` via `flow_state_manager.py`): Manages the SPAO loop lifecycle (plan, checkout, sync, reflect).
 - **`spao prompt`** (wraps `bin/prompt` via `mgr_prompt.py`): Manages the async prompt backlog queues and consumption logic.
 - **`spao rt`** (wraps `bin/rt` via `mgr_rt.py`): Manages direct runtime operations (e.g., tier-2 hot-fixes directly to main).
@@ -54,12 +54,12 @@ You are mathematically forbidden from violating the following constraints:
 2. **The Backlog Invariant**: Node Issues MUST be pulled from the backlog (`spao backlog new` or `bin/backlog new`). Generating a new issue out of thin air during the Plan phase is strictly forbidden. The `spao node plan-start` or `./bin/node plan` script is an **edit-only** guardrail.
 3. **The WIP Invariant (WIP-N=1)**: Only one Node can be active at a time. During the Observe phase, you MUST halt under a HARD HITL block until the Operator merges the PR.
 4. **The Architectural Boundary**: 
-   - `skills/`: Must contain ONLY pure, stateless, deterministic callables mapping to a single system interaction.
-   - `orchestrator/`: Manages stateful, multi-step, stage-aware orchestration sequences.
+   - `drivers/`: Must contain ONLY pure, stateless, deterministic callables mapping to a single system interaction.
+   - `kernel/`: Manages stateful, multi-step, stage-aware orchestration sequences.
 5. **The Probe Invariant**: A Probe is strictly investigatory. It MUST NOT execute functional logic mutations. Its outcome is exclusively architectural decisions (`WHY-*` documents) and new Activity nodes in the backlog.
 6. **The CLI Abstraction Invariant**: You must NEVER execute raw `gh issue list` or `gh issue view`. You must EXCLUSIVELY use `spao backlog list` (or `./bin/backlog list`) and `spao node view` (or `./bin/node view` / `spao backlog view`) respectively to inspect the state.
 7. **The Sense-Gate Invariant**: After executing `spao node sync` or `bin/node sync` (or observing the Next-Best-Action output), you MUST HALT and request explicit operator approval before initiating `spao node plan-start` (or `./bin/node plan-start`) on any node. Autonomous transition from SENSE to PLAN is strictly forbidden.
-8. **The Abstraction Doctrine Invariant**: You must NEVER execute raw `git` or `gh` commands directly. All Git actions must be performed using the Python client API wrapper (`skills/git_client.py`) or via `./bin/git` in terminal invocations. Direct shell executions of `git` or `gh` are strictly prohibited. This includes executing `git` or `gh` via `subprocess` or shell invocations inside temporary/scratch scripts. Any required GitHub CLI operation must be defined as a clean wrapper function in `skills/github_client.py` and called from there.
+8. **The Abstraction Doctrine Invariant**: You must NEVER execute raw `git` or `gh` commands directly. All Git actions must be performed using the Python client API wrapper (`drivers/git_client.py`) or via `./bin/git` in terminal invocations. Direct shell executions of `git` or `gh` are strictly prohibited. This includes executing `git` or `gh` via `subprocess` or shell invocations inside temporary/scratch scripts. Any required GitHub CLI operation must be defined as a clean wrapper function in `drivers/github_client.py` and called from there.
 
 ## 6. Bilateral Chat Interaction Protocol (North Star Coherence)
 To realize the Synergistic Human-Agent Partnership (NS-0001) and satisfy Axiom (1) (Collaborative Grounding) and Axiom (4) (Architectural Coherence), all chat exchanges between the Operator and the Agent must adhere to the following protocol, mapping directly to our Strategic Goals:

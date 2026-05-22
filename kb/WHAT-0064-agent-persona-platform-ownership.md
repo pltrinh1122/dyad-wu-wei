@@ -28,7 +28,7 @@ The `agent-ziran` persona claims exclusive design, implementation, and audit res
 *   **Boundaries**: Defines the physical data structures and payload contracts that agents use to pass state.
 
 ### 2.3 Dependency and Concurrency Lifecycle
-*   **Ownership**: The topological DAG execution lifecycle mechanics (`orchestrator/node_lifecycle.py`) and shared concurrency infrastructure (`skills/file_locker.py`).
+*   **Ownership**: The topological DAG execution lifecycle mechanics (`kernel/node_lifecycle.py`) and shared concurrency infrastructure (`drivers/file_locker.py`).
 *   **Boundaries**: Ensures that agents respect execution locks and prerequisite dependency closures before initiating work.
 
 ---

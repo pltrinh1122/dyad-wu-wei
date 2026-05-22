@@ -1,10 +1,10 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from orchestrator.mgr_backlog import BacklogManager
+from kernel.mgr_backlog import BacklogManager
 
 @pytest.fixture(autouse=True)
 def mock_register_backlog_node():
-    with patch('orchestrator.mgr_frontier.register_backlog_node') as mock_reg:
+    with patch('kernel.mgr_frontier.register_backlog_node') as mock_reg:
         yield mock_reg
 
 
@@ -16,7 +16,7 @@ def test_backlog_list(mock_backlog_gh):
     assert items[0]["number"] == 31
     mock_backlog_gh.list_issues_by_label.assert_called_once_with("backlog")
 
-@patch('orchestrator.mgr_backlog.render_template')
+@patch('kernel.mgr_backlog.render_template')
 def test_backlog_add(mock_render, mock_backlog_gh):
     mock_backlog_gh.create_issue.return_value = "https://github.com/pltrinh1122/agent-antigravity/issues/31"
     mock_backlog_gh.get_issue_details.return_value = {
@@ -90,8 +90,8 @@ def test_backlog_add_duplicate(mock_backlog_gh):
     assert "200" in url
     mock_backlog_gh.create_issue.assert_not_called()
 
-@patch('orchestrator.mgr_frontier.register_backlog_node')
-@patch('orchestrator.mgr_backlog.render_template')
+@patch('kernel.mgr_frontier.register_backlog_node')
+@patch('kernel.mgr_backlog.render_template')
 def test_backlog_add_frontier_registration(mock_render, mock_register, mock_backlog_gh):
     mock_backlog_gh.create_issue.return_value = "https://github.com/pltrinh1122/agent-antigravity/issues/100"
     mock_backlog_gh.get_issue_details.return_value = {
@@ -115,7 +115,7 @@ def test_check_off_meta_index(mock_backlog_gh):
     mock_backlog_gh.get_issue_details.assert_called_once_with("213")
     mock_backlog_gh.update_issue_body.assert_called_once_with("213", "## Meta-Index\n- [x] Node 229: Title [Depends: 228]\n- [ ] Node 230: Title")
 
-@patch('orchestrator.mgr_backlog.render_template')
+@patch('kernel.mgr_backlog.render_template')
 def test_backlog_add_path(mock_render, mock_backlog_gh):
     mock_backlog_gh.create_issue.side_effect = [
         "https://github.com/pltrinh1122/agent-antigravity/issues/100",

@@ -1,0 +1,21 @@
+{
+    "timestamp": "2026-05-22T14:40:37.815500+00:00",
+    "failures": [
+        {
+            "test_name": "TestMgrStrategic.test_verify_node_transition_allowed_blocked",
+            "file_path": "tests/test_mgr_strategic.py",
+            "line_number": 229,
+            "error_type": "AssertionError",
+            "error_message": "Exception not raised",
+            "traceback": "self = <tests.test_mgr_strategic.TestMgrStrategic testMethod=test_verify_node_transition_allowed_blocked>\n\n    def test_verify_node_transition_allowed_blocked(self):\n        data = {\n            \"strategic_goals\": [\n                {\n                    \"id\": \"SG-0001\",\n                    \"status\": \"Active\",\n                    \"prioritized_paths\": [412]\n                }\n            ]\n        }\n        mgr_strategic.save_ledger(data)\n    \n        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True\n        os.environ[\"SPAO_PERSONA_ID\"] = \"agent-sg1\"\n        mgr_strategic._MOCK_PARENT_PATHS = {\"419\": \"416\"}\n        os.environ[\"SPAO_PERSONA_ID\"] = \"agent-sg1\"\n    \n        try:\n>           with self.assertRaises(Exception) as ctx:\nE           AssertionError: Exception not raised\n\ntests/test_mgr_strategic.py:229: AssertionError"
+        },
+        {
+            "test_name": "TestMgrStrategic.test_verify_path_activation_allowed_blocked",
+            "file_path": "tests/test_mgr_strategic.py",
+            "line_number": 293,
+            "error_type": "AssertionError",
+            "error_message": "Exception not raised",
+            "traceback": "self = <tests.test_mgr_strategic.TestMgrStrategic testMethod=test_verify_path_activation_allowed_blocked>\n\n    def test_verify_path_activation_allowed_blocked(self):\n        data = {\n            \"strategic_goals\": [\n                {\n                    \"id\": \"SG-0001\",\n                    \"status\": \"Active\",\n                    \"prioritized_paths\": [412]\n                }\n            ]\n        }\n        mgr_strategic.save_ledger(data)\n    \n        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True\n        os.environ[\"SPAO_PERSONA_ID\"] = \"agent-sg1\"\n        try:\n>           with self.assertRaises(Exception) as ctx:\nE           AssertionError: Exception not raised\n\ntests/test_mgr_strategic.py:293: AssertionError"
+        }
+    ]
+}

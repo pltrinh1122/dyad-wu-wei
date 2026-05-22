@@ -2,7 +2,7 @@ import re
 import os
 import yaml
 import hashlib
-from orchestrator.mgr_telemetry import record_execution
+from kernel.mgr_telemetry import record_execution
 
 @record_execution(stage="skill")
 def parse_test_failure_diagnostics(pytest_output: str) -> list[dict]:

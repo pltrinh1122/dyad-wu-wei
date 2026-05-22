@@ -5,8 +5,8 @@ import yaml
 import tempfile
 import argparse
 import sys
-from skills import github_client
-from skills.issue_factory import render_template
+from drivers import github_client
+from drivers.issue_factory import render_template
 
 class BacklogManager:
     """Orchestrator for GitHub Backlog operations."""
@@ -16,7 +16,7 @@ class BacklogManager:
 
     def load_node_taxonomy(self) -> dict:
         """Loads the domain-specific node taxonomy from antigravity.yml."""
-        from skills import path_resolver
+        from drivers import path_resolver
         workspace_path = path_resolver.resolve_workspace_path("antigravity.yml")
         if os.path.exists(workspace_path):
             config_path = workspace_path
@@ -105,7 +105,7 @@ class BacklogManager:
         
         # Apply labels from node.yml
         try:
-            from skills import path_resolver
+            from drivers import path_resolver
             node_yml = path_resolver.load_node_yml()
             status_config = node_yml.get("node_attributes", {}).get("status", {})
             class_config = node_yml.get("node_attributes", {}).get("classification", {})
@@ -145,8 +145,8 @@ class BacklogManager:
 
         # Frontier Auto-Registration
         try:
-            from orchestrator import mgr_frontier
-            from skills import path_resolver
+            from kernel import mgr_frontier
+            from drivers import path_resolver
             frontier_file = path_resolver.resolve_workspace_path("artifacts", "frontier_state.md")
             mgr_frontier.register_backlog_node(frontier_file, int(issue_id), new_title, goal)
         except Exception:
@@ -221,7 +221,7 @@ class BacklogManager:
         except Exception as e:
             print(f"Warning: Failed to uncheck Meta-Index for Node {node_id} in Path {path_id}: {e}")
 
-from orchestrator.mgr_telemetry import record_execution
+from kernel.mgr_telemetry import record_execution
 
 @record_execution(stage="sense")
 def main():
