@@ -12,7 +12,8 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Axiom Validation Rules**: Read [WHAT-0037-strategic-intent-tracking.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0037-strategic-intent-tracking.md#L28-L37)
 * **North Star (NS) & Strategic Goals (SG)**: Read [strategic_intent.yml](file:///mnt/shared_data/git_repos/agent-antigravity/artifacts/strategic_intent.yml)
   - Details **NS-0001** (Synergistic Human-Agent Partnership) and **SG-0001** through **SG-0005** (Prioritization, Containment, Inner-Loop Velocity, Policy-Driven Communication, Knowledge Mutation).
-* **Metasystem Principles (Future)**: *[Reserved for future engineering principles/doctrine guidelines]*
+* **Metasystem Principles & Invariants**:
+  - *The Epistemic Invariant (Definition Precedes Execution)*: To prevent semantic entropy and uncontrolled terminology drift across multiple models and sessions, no new foundational mechanics, rules, or system components may be implemented or heavily referenced before they are formally defined in `kb/GLOSSARY.md` or a native `WHAT-` primitive. The linguistic bedrock must be established before Ziran Flow execution can carve through it.
 
 ## 2. Core Agentic Architecture & Execution
 * **System Design & Materialization Rules**: Read [WHAT-0001-agentic-architecture.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0001-agentic-architecture.md)
