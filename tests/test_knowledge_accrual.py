@@ -102,6 +102,19 @@ def test_synthesize_rule():
     assert "legacy_term" in rule["pattern"]
     assert rule["alert_level"] == "FAILURE"
 
+def test_synthesize_rule_constraints():
+    # Length constraint
+    assert synthesize_rule({"error_message": "forbidden term 'a'"}) is None
+    assert synthesize_rule({"error_message": "forbidden term '123'"}) is None
+    
+    # Generic word blacklist
+    assert synthesize_rule({"error_message": "forbidden term 'epic'"}) is None
+    assert synthesize_rule({"error_message": "forbidden term 'THE'"}) is None
+    
+    # Path constraint
+    assert synthesize_rule({"error_message": "forbidden term '/absolute/path/file.py'"}) is None
+
+
 
 def test_build_contextual_prompt_injection():
     mock_yaml = """

@@ -144,6 +144,19 @@ def synthesize_rule(error_details: dict) -> dict | None:
     if not target_term:
         return None
 
+    # Constraint 1: Length constraint
+    if len(target_term) < 4:
+        return None
+        
+    # Constraint 2: Generic Word Blacklist
+    generic_words = {"the", "epic", "path", "issue", "node", "and", "for", "with"}
+    if target_term.lower() in generic_words:
+        return None
+        
+    # Constraint 3: Path Constraint (Absolute paths)
+    if target_term.startswith("/"):
+        return None
+
     safe_pattern = r"\b" + re.escape(target_term) + r"\b"
     h = hashlib.md5(target_term.encode('utf-8')).hexdigest()[:8]
     rule_id = f"synthesized-guard-{h}"
