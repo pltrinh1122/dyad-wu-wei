@@ -7,6 +7,7 @@ strategic_goals:
   falsification_signal: The dyad fails to achieve greater throughput and architectural
     stability than the operator working alone or the agent executing without oversight.
   id: NS-0001
+  # Completed: Path 652 (Codify Metasystem Domain Tactical Goals and Persona Ownership)
   prioritized_paths: []
   status: Active
   title: Synergistic Human-Agent Partnership (North Star - 1+1=3)
@@ -49,6 +50,7 @@ strategic_goals:
     decreases due to repeating rollback cycles caused by test flakiness or network
     timeouts.
   id: SG-0003
+  # Completed: Path 652 (Codify Metasystem Domain Tactical Goals and Persona Ownership)
   prioritized_paths: []
   status: Active
   title: Preservation of Autonomous Velocity
