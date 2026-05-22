@@ -4,6 +4,41 @@ import yaml
 from skills import github_client
 from orchestrator import mgr_strategic
 
+def _get_active_persona():
+    import os
+    env_id = os.environ.get("SPAO_PERSONA_ID")
+    if env_id:
+        return env_id
+    try:
+        from skills import path_resolver
+        import yaml
+        yaml_path = path_resolver.resolve_workspace_path("antigravity.yml")
+        with open(yaml_path, "r") as f:
+            data = yaml.safe_load(f)
+            return data.get("agent_id")
+    except Exception:
+        return None
+
+def _get_persona_ownership():
+    mapping = {}
+    try:
+        import os
+        from skills import path_resolver
+        md_path = path_resolver.resolve_workspace_path("kb", "WHAT-0062-agent-persona-ownership-index.md")
+        if not os.path.exists(md_path):
+            return mapping
+        with open(md_path, "r") as f:
+            for line in f:
+                if "|" in line:
+                    parts = [p.strip() for p in line.split("|")]
+                    if len(parts) >= 3:
+                        sg_id = parts[1]
+                        agent_id = parts[2]
+                        if sg_id.startswith("SG-"):
+                            mapping[sg_id] = agent_id
+    except Exception:
+        pass
+    return mapping
 class NBAScorer:
     """Computes Next-Best-Action (NBA) prioritization scores based on WHAT-0048."""
     
@@ -18,6 +53,7 @@ class NBAScorer:
         c_axiom = 1.0
         c_strategic = 0.5
         c_risk = 1.0
+        c_persona = 1.0
         
         try:
             details = github_client.get_issue_details(node_id_str)
@@ -33,7 +69,8 @@ class NBAScorer:
                     "dependency": 0.0,
                     "axiom": 0.0,
                     "strategic": 0.0,
-                    "risk": 0.0
+                    "risk": 0.0,
+                    "persona": 0.0
                 },
                 "error": str(e)
             }
@@ -96,8 +133,24 @@ class NBAScorer:
                     c_risk = 0.5
                     break
                     
-        # Calculate overall score: S_NBA = C_dep * (0.40 * C_axiom + 0.40 * C_strategic + 0.20 * C_risk)
-        score = c_dep * (0.40 * c_axiom + 0.40 * c_strategic + 0.20 * c_risk)
+        # 5. Persona Alignment (C_persona)
+        active_persona = _get_active_persona()
+        ownership_map = _get_persona_ownership()
+
+        if active_persona and ownership_map and path_id:
+            ledger = mgr_strategic.load_ledger()
+            parent_sg = None
+            for goal in ledger.get("strategic_goals", []):
+                if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
+                    parent_sg = goal.get("id")
+                    break
+
+            if parent_sg and parent_sg in ownership_map:
+                if ownership_map[parent_sg] != active_persona:
+                    c_persona = 0.0
+
+        # Calculate overall score: S_NBA = C_dep * C_persona * (0.40 * C_axiom + 0.40 * C_strategic + 0.20 * C_risk)
+        score = c_dep * c_persona * (0.40 * c_axiom + 0.40 * c_strategic + 0.20 * c_risk)
         
         return {
             "node_id": node_id_str,
@@ -107,7 +160,8 @@ class NBAScorer:
                 "dependency": float(c_dep),
                 "axiom": float(c_axiom),
                 "strategic": float(c_strategic),
-                "risk": float(c_risk)
+                "risk": float(c_risk),
+                "persona": float(c_persona)
             }
         }
 
@@ -123,6 +177,7 @@ class GranularNBAScorer(NBAScorer):
         c_axiom = 1.0
         c_strategic = 0.3
         c_risk = 1.0
+        c_persona = 1.0
         
         try:
             details = github_client.get_issue_details(node_id_str)
@@ -137,7 +192,8 @@ class GranularNBAScorer(NBAScorer):
                     "dependency": 0.0,
                     "axiom": 0.0,
                     "strategic": 0.0,
-                    "risk": 0.0
+                    "risk": 0.0,
+                    "persona": 0.0
                 },
                 "error": str(e)
             }
@@ -223,7 +279,23 @@ class GranularNBAScorer(NBAScorer):
         else:
             c_risk = 0.5
             
-        score = c_dep * (0.40 * c_axiom + 0.40 * c_strategic + 0.20 * c_risk)
+        # 5. Persona Alignment (C_persona)
+        active_persona = _get_active_persona()
+        ownership_map = _get_persona_ownership()
+
+        if active_persona and ownership_map and path_id:
+            ledger = mgr_strategic.load_ledger()
+            parent_sg = None
+            for goal in ledger.get("strategic_goals", []):
+                if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
+                    parent_sg = goal.get("id")
+                    break
+
+            if parent_sg and parent_sg in ownership_map:
+                if ownership_map[parent_sg] != active_persona:
+                    c_persona = 0.0
+
+        score = c_dep * c_persona * (0.40 * c_axiom + 0.40 * c_strategic + 0.20 * c_risk)
         
         return {
             "node_id": node_id_str,
@@ -233,6 +305,7 @@ class GranularNBAScorer(NBAScorer):
                 "dependency": float(c_dep),
                 "axiom": float(c_axiom),
                 "strategic": float(c_strategic),
-                "risk": float(c_risk)
+                "risk": float(c_risk),
+                "persona": float(c_persona)
             }
         }

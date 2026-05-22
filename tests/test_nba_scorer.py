@@ -1,21 +1,34 @@
 import unittest
-from unittest.mock import patch, MagicMock
 from orchestrator.nba_scorer import NBAScorer
+from skills import github_client
+from orchestrator import mgr_strategic
+import orchestrator.nba_scorer as nba_scorer_module
 
 class TestNBAScorer(unittest.TestCase):
-    
-    @patch("skills.github_client.get_issue_details")
-    @patch("skills.github_client.get_issue_labels")
-    @patch("orchestrator.mgr_strategic.find_parent_path_id")
-    @patch("orchestrator.mgr_strategic.load_ledger")
-    def test_calculate_score_clean(self, mock_load, mock_find, mock_labels, mock_details):
-        mock_details.side_effect = lambda issue_id: {
+    def setUp(self):
+        self.old_get_issue_details = github_client.get_issue_details
+        self.old_get_issue_labels = github_client.get_issue_labels
+        self.old_find_parent_path_id = mgr_strategic.find_parent_path_id
+        self.old_load_ledger = mgr_strategic.load_ledger
+        self.old_get_persona_ownership = nba_scorer_module._get_persona_ownership
+        self.old_get_active_persona = nba_scorer_module._get_active_persona
+
+    def tearDown(self):
+        github_client.get_issue_details = self.old_get_issue_details
+        github_client.get_issue_labels = self.old_get_issue_labels
+        mgr_strategic.find_parent_path_id = self.old_find_parent_path_id
+        mgr_strategic.load_ledger = self.old_load_ledger
+        nba_scorer_module._get_persona_ownership = self.old_get_persona_ownership
+        nba_scorer_module._get_active_persona = self.old_get_active_persona
+
+    def test_calculate_score_clean(self):
+        github_client.get_issue_details = lambda issue_id: {
             "483": {"title": "Activity 483: Reflect", "body": "## Depends On\n482"},
             "482": {"state": "CLOSED"}
         }[str(issue_id)]
-        mock_labels.return_value = ["activity"]
-        mock_find.return_value = "480"
-        mock_load.return_value = {
+        github_client.get_issue_labels = lambda x: ["activity"]
+        mgr_strategic.find_parent_path_id = lambda x: "480"
+        mgr_strategic.load_ledger = lambda: {
             "strategic_goals": [
                 {
                     "status": "Active",
@@ -23,45 +36,76 @@ class TestNBAScorer(unittest.TestCase):
                 }
             ]
         }
-        
+
         scorer = NBAScorer()
         res = scorer.calculate_score("483")
-        
+
         self.assertEqual(res["score"], 1.0)
         self.assertEqual(res["components"]["dependency"], 1.0)
         self.assertEqual(res["components"]["axiom"], 1.0)
         self.assertEqual(res["components"]["strategic"], 1.0)
         self.assertEqual(res["components"]["risk"], 1.0)
 
-    @patch("skills.github_client.get_issue_details")
-    @patch("skills.github_client.get_issue_labels")
-    def test_calculate_score_blocked_dependency(self, mock_labels, mock_details):
-        mock_details.side_effect = lambda issue_id: {
+    def test_calculate_score_blocked_dependency(self):
+        github_client.get_issue_details = lambda issue_id: {
             "483": {"title": "Activity 483: Reflect", "body": "## Depends On\n482"},
             "482": {"state": "OPEN"}
         }[str(issue_id)]
-        mock_labels.return_value = ["activity"]
-        
+        github_client.get_issue_labels = lambda x: ["activity"]
+
         scorer = NBAScorer()
         res = scorer.calculate_score("483")
-        
+
         self.assertEqual(res["score"], 0.0)
         self.assertEqual(res["components"]["dependency"], 0.0)
 
-    @patch("skills.github_client.get_issue_details")
-    @patch("skills.github_client.get_issue_labels")
-    def test_calculate_score_axiom_violation(self, mock_labels, mock_details):
+    def test_calculate_score_axiom_violation(self):
         forbidden_title = "Sp" + "ike 483: Align on NBA"
-        mock_details.return_value = {"title": forbidden_title, "body": ""}
-        mock_labels.return_value = ["activity"]
-        
+        github_client.get_issue_details = lambda issue_id: {"title": forbidden_title, "body": ""}
+        github_client.get_issue_labels = lambda x: ["activity"]
+
         scorer = NBAScorer()
         res = scorer.calculate_score("483")
-        
-        # c_axiom is 0.0, c_strategic is 0.0 (no parent/backlog), c_risk is 1.0
-        # Score = 1.0 * (0.4 * 0.0 + 0.4 * 0.0 + 0.2 * 1.0) = 0.2
+
         self.assertEqual(res["score"], 0.2)
         self.assertEqual(res["components"]["axiom"], 0.0)
+
+    def test_calculate_score_persona_fail_open(self):
+        github_client.get_issue_details = lambda issue_id: {"title": "Test", "body": ""}
+        github_client.get_issue_labels = lambda x: ["activity"]
+        mgr_strategic.find_parent_path_id = lambda x: "480"
+        mgr_strategic.load_ledger = lambda: {"strategic_goals": [{"id": "SG-123", "status": "Active", "prioritized_paths": [480]}]}
+        nba_scorer_module._get_active_persona = lambda: "agent-platform"
+        nba_scorer_module._get_persona_ownership = lambda: {} # WHAT-0062 does not exist or empty
+
+        scorer = NBAScorer()
+        res = scorer.calculate_score("483")
+        self.assertEqual(res["components"]["persona"], 1.0)
+
+    def test_calculate_score_persona_match(self):
+        github_client.get_issue_details = lambda issue_id: {"title": "Test", "body": ""}
+        github_client.get_issue_labels = lambda x: ["activity"]
+        mgr_strategic.find_parent_path_id = lambda x: "480"
+        mgr_strategic.load_ledger = lambda: {"strategic_goals": [{"id": "SG-123", "status": "Active", "prioritized_paths": [480]}]}
+        nba_scorer_module._get_active_persona = lambda: "agent-platform"
+        nba_scorer_module._get_persona_ownership = lambda: {"SG-123": "agent-platform"}
+
+        scorer = NBAScorer()
+        res = scorer.calculate_score("483")
+        self.assertEqual(res["components"]["persona"], 1.0)
+
+    def test_calculate_score_persona_mismatch(self):
+        github_client.get_issue_details = lambda issue_id: {"title": "Test", "body": ""}
+        github_client.get_issue_labels = lambda x: ["activity"]
+        mgr_strategic.find_parent_path_id = lambda x: "480"
+        mgr_strategic.load_ledger = lambda: {"strategic_goals": [{"id": "SG-123", "status": "Active", "prioritized_paths": [480]}]}
+        nba_scorer_module._get_active_persona = lambda: "agent-sg1"
+        nba_scorer_module._get_persona_ownership = lambda: {"SG-123": "agent-platform"}
+
+        scorer = NBAScorer()
+        res = scorer.calculate_score("483")
+        self.assertEqual(res["components"]["persona"], 0.0)
+        self.assertEqual(res["score"], 0.0)
 
 if __name__ == "__main__":
     unittest.main()

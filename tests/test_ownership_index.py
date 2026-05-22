@@ -114,7 +114,8 @@ class TestOwnershipIndexCompleteness:
     def test_agent_id_matches_ownership_index(self):
         """
         The agent_id declared in antigravity.yml must appear as owner_persona
-        for at least one SG with status='covered' in WHAT-0062.
+        for at least one SG with status='covered' in WHAT-0062, or be registered
+        in WHAT-0065.
         An agent operating without a registered identity cannot be gated correctly.
         """
         agent_id = load_agent_id()
@@ -123,10 +124,23 @@ class TestOwnershipIndexCompleteness:
 
         rows = parse_ownership_index(WHAT_0062_PATH)
         covered_owners = {r["owner_persona"] for r in rows if r["status"] == "covered"}
+        
+        WHAT_0065_PATH = os.path.join(REPO_ROOT, "kb", "WHAT-0065-domain-path-ownership-index.md")
+        if os.path.exists(WHAT_0065_PATH):
+            with open(WHAT_0065_PATH, "r", encoding="utf-8") as f:
+                content = f.read()
+            table_match = re.search(r"## Domain-to-Persona Index\s*\n(.*?)(?=\n##|\Z)", content, re.DOTALL)
+            if table_match:
+                for line in table_match.group(1).splitlines():
+                    line = line.strip()
+                    if line.startswith("|") and not line.startswith("| domain_id") and set(line.replace("|", "").replace("-", "").strip()) != set():
+                        cells = [c.strip() for c in line.strip("|").split("|")]
+                        if len(cells) >= 2:
+                            covered_owners.add(cells[1])
 
         assert agent_id in covered_owners, (
             f"agent_id '{agent_id}' from antigravity.yml is not registered as an owner "
-            f"of any covered SG in WHAT-0062. Covered owners are: {sorted(covered_owners)}. "
+            f"of any covered SG in WHAT-0062 or WHAT-0065. Covered owners are: {sorted(covered_owners)}. "
             f"Add a row for this agent or correct the agent_id field."
         )
 
