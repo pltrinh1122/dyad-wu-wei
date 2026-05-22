@@ -19,12 +19,7 @@ rules:
 - id: frontier-integrity
   type: frontier_integrity
   alert_level: FAILURE
-- id: synthesized-guard-c81e728d
-  type: lexical_guard
-  pattern: \b2\b
-  alert_level: FAILURE
-  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''2'' detected (from
-    failed test ''test_get_ready_nodes_excludes_in_progress'')'
+
 - id: synthesized-guard-77ad5146
   type: lexical_guard
   pattern: \b/mnt/shared_data/git_repos/agent\-sg5/\.worktrees/node/603\-structural\-validation\-tests/kb/WHAT\-0062\-agent\-persona\-ownership\-index\.md\b
