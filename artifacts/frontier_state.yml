@@ -1,5 +1,5 @@
 current_active_path: '626'
-current_active_node: null
+current_active_node: 'Node 733: Probe 733: Align - Formalize The Shaping Sequence'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -2023,4 +2023,40 @@ nodes:
   status: Backlog
   learnings: Final reflection and path closure for Prevent Overly Broad Synthesized
     Lexical Guards.
+  invariants: []
+- name: 'Node 732: Path 732: Formalize The Shaping Sequence'
+  status: Backlog
+  learnings: Codify the sequence to instantiate new Dao instances.
+  invariants: []
+- name: 'Node 733: Probe 733: Align - Formalize The Shaping Sequence'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 734: Path 734: Restructure Repository for Dao Portability'
+  status: Backlog
+  learnings: Decouple the generic Dao engine from project-specific logic to allow
+    clean instantiation.
+  invariants: []
+- name: 'Node 735: Probe 735: Plan - Formalize The Shaping Sequence'
+  status: Backlog
+  learnings: Technical design and proposed changes for Formalize The Shaping Sequence.
+  invariants: []
+- name: 'Node 736: Probe 736: Align - Restructure Repository for Dao Portability'
+  status: Backlog
+  learnings: Align on the philosophical and technical intent for Restructure Repository
+    for Dao Portability.
+  invariants: []
+- name: 'Node 737: Activity 737: Reflect - Formalize The Shaping Sequence'
+  status: Backlog
+  learnings: Final reflection and path closure for Formalize The Shaping Sequence.
+  invariants: []
+- name: 'Node 738: Probe 738: Plan - Restructure Repository for Dao Portability'
+  status: Backlog
+  learnings: Technical design and proposed changes for Restructure Repository for
+    Dao Portability.
+  invariants: []
+- name: 'Node 739: Activity 739: Reflect - Restructure Repository for Dao Portability'
+  status: Backlog
+  learnings: Final reflection and path closure for Restructure Repository for Dao
+    Portability.
   invariants: []

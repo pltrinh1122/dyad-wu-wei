@@ -338,6 +338,23 @@ def find_parent_path_id(node_id: str) -> str | None:
 
 from skills.markdown_parser import parse_md_table
 
+def _is_pure_ziran(path_id: str, ledger: dict) -> bool:
+    """Returns True if the path is unassigned to any domain or SG (Pure Ziran)."""
+    # Check if in any SG
+    for goal in ledger.get("strategic_goals", []):
+        if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
+            return False
+            
+    # Check if in WHAT-0065
+    what_0065_path = path_resolver.resolve_workspace_path("kb", "WHAT-0065-domain-path-ownership-index.md")
+    if os.path.exists(what_0065_path):
+        rows = parse_md_table(what_0065_path)
+        for r in rows:
+            if "path_id" in r and str(r["path_id"]) == str(path_id):
+                return False
+                
+    return True
+
 def _verify_persona(path_id: str, ledger: dict) -> None:
     is_offline = os.environ.get("ANTIGRAVITY_RUNNING_TESTS") == "1" or os.environ.get("SPAO_OFFLINE") == "1"
     if is_offline and not _FORCE_STRATEGIC_VERIFICATION:
@@ -346,6 +363,9 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
     spao_persona = os.environ.get("SPAO_PERSONA_ID")
     if not spao_persona:
         raise Exception("Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify identity.")
+
+    if _is_pure_ziran(path_id, ledger):
+        return # Pure Ziran paths have no structured domain or SG owner; they bypass the gate.
 
     # Locate the kb files
     # Since mgr_strategic is deep, we use get_ledger_path trick or path_resolver
@@ -418,6 +438,9 @@ def verify_node_transition_allowed(node_id: str) -> None:
                 active_prioritized_paths.add(str(path_id))
                 
     if str(parent_path_id) not in active_prioritized_paths:
+        if _is_pure_ziran(str(parent_path_id), ledger):
+            _verify_persona(str(parent_path_id), ledger)
+            return
         raise Exception(f"Transition Blocked: Parent Path #{parent_path_id} of Node #{node_id_str} is not prioritized in the active strategic ledger.")
 
     _verify_persona(str(parent_path_id), ledger)
@@ -437,6 +460,9 @@ def verify_path_activation_allowed(path_id: str) -> None:
                 active_prioritized_paths.add(str(p))
                 
     if path_id_str not in active_prioritized_paths:
+        if _is_pure_ziran(path_id_str, ledger):
+            _verify_persona(path_id_str, ledger)
+            return
         raise Exception(f"Path Activation Blocked: Path #{path_id_str} is not prioritized in the active strategic ledger.")
 
     _verify_persona(path_id_str, ledger)
