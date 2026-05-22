@@ -336,30 +336,7 @@ def find_parent_path_id(node_id: str) -> str | None:
         print(f"Warning: Failed to find parent path for node {node_id} on GitHub: {e}")
     return None
 
-def _parse_md_table(filepath: str) -> list[dict]:
-    if not os.path.exists(filepath):
-        return []
-    with open(filepath, 'r') as f:
-        lines = f.readlines()
-    
-    in_table = False
-    headers = []
-    rows = []
-    for line in lines:
-        line = line.strip()
-        if line.startswith('|') and line.endswith('|'):
-            cols = [c.strip() for c in line.split('|')[1:-1]]
-            if not in_table:
-                headers = cols
-                in_table = True
-            elif all(c.replace('-', '').strip() == '' for c in cols):
-                pass
-            else:
-                row = dict(zip(headers, cols))
-                rows.append(row)
-        else:
-            in_table = False
-    return rows
+from skills.markdown_parser import parse_md_table
 
 def _verify_persona(path_id: str, ledger: dict) -> None:
     is_offline = os.environ.get("ANTIGRAVITY_RUNNING_TESTS") == "1" or os.environ.get("SPAO_OFFLINE") == "1"
@@ -378,7 +355,7 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
 
     # 1. Check WHAT-0065 (Horizontal Domain Override)
     if os.path.exists(what_0065_path):
-        rows = _parse_md_table(what_0065_path)
+        rows = parse_md_table(what_0065_path)
         path_to_domain = {}
         domain_to_owner = {}
         for r in rows:
@@ -407,7 +384,7 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
         raise Exception(f"Persona Gate Blocked: Path #{path_id} is not associated with any Strategic Goal.")
         
     if os.path.exists(what_0062_path):
-        rows = _parse_md_table(what_0062_path)
+        rows = parse_md_table(what_0062_path)
         sg_to_owner = {r.get("sg_id"): r.get("owner_persona") for r in rows if "sg_id" in r}
         owner = sg_to_owner.get(sg_id)
         if not owner:
