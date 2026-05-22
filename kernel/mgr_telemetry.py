@@ -179,6 +179,13 @@ def record_execution(stage=None):
                 result = func(*args, **kwargs)
                 duration = (datetime.now(timezone.utc) - start_time).total_seconds()
                 
+                metadata = {
+                    "function": func.__name__,
+                    "duration_sec": duration,
+                    "status": "success"
+                }
+                if "insights" in kwargs and kwargs["insights"]:
+                    metadata["insights"] = kwargs["insights"]
                 manager.log_event(
                     stage=stage or "ACT",
                     event="FINISH",
@@ -186,11 +193,7 @@ def record_execution(stage=None):
                     domain=domain,
                     component=component,
                     execution_id=execution_id,
-                    metadata={
-                        "function": func.__name__,
-                        "duration_sec": duration,
-                        "status": "success"
-                    }
+                    metadata=metadata
                 )
                 return result
             except Exception as e:
