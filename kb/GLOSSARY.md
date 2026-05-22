@@ -130,7 +130,6 @@ We reserve the **"Meta-"** prefix strictly for **recursive structures** within t
 * **Meta-Index**: A catalog (checklist) whose entries *index other indexes* (references to closed transaction issues).
 * **Meta-Loop (SPAO Loop)**: A cyclic temporal protocol (**Sense-Plan-Act-Observe-Reflect**) governing the internal execution sequence of a single active Node.
 * **Meta-Repository**: The system repository (`agent-antigravity`) hosting the rules, tools, and engine managing other codebases.
-* **Meta-Orchestrator**: The generative agent engine persona (Antigravity) operating as the executive pilot.
 
 ---
 
@@ -161,6 +160,9 @@ The **systemic synthesis of Workflow + Agent**. A Manager binds an Agent to a sp
 
 ### Operator Agent
 The primary **Agent** within a Manager responsible for actively executing the functional logic of the Workflow.
+
+### Frontier Agent
+The primary agentic intelligence directly tethered to the human Operator. It stands at the crest of the system's evolution (the `frontier_state.md`), operating the active SPAO loop and materializing code.
 
 ### Auditor Agent
 The secondary **Agent** within a Manager responsible for independent, concurrent background verification and invariant checking.

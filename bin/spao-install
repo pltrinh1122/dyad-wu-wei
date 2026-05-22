@@ -126,25 +126,25 @@ _update_gemini_rules() {
     [ -f "$src_gemini" ] || return
     mkdir -p "$HOME/.gemini"
 
-    local marker="# SPAO Meta-Orchestrator Rules"
+    local marker="# SPAO Frontier Agent Rules"
     if [ -f "$global_gemini" ] && grep -q "$marker" "$global_gemini"; then
         _info "Updating SPAO rules in ~/.gemini/GEMINI.md..."
         python3 - "$global_gemini" "$src_gemini" << 'PY'
 import re, sys
 target, src = sys.argv[1], sys.argv[2]
 with open(target) as f: c = f.read()
-c = re.sub(r'# SPAO Meta-Orchestrator Rules Start.*?# SPAO Meta-Orchestrator Rules End',
+c = re.sub(r'# SPAO Frontier Agent Rules Start.*?# SPAO Frontier Agent Rules End',
            '', c, flags=re.DOTALL).strip()
 with open(src) as f: rules = f.read().strip()
 with open(target, 'w') as f:
-    f.write(c + '\n\n# SPAO Meta-Orchestrator Rules Start\n' + rules + '\n# SPAO Meta-Orchestrator Rules End\n')
+    f.write(c + '\n\n# SPAO Frontier Agent Rules Start\n' + rules + '\n# SPAO Frontier Agent Rules End\n')
 PY
     elif [ -f "$global_gemini" ]; then
         _info "Appending SPAO rules to ~/.gemini/GEMINI.md..."
-        { printf '\n# SPAO Meta-Orchestrator Rules Start\n'; cat "$src_gemini"; printf '\n# SPAO Meta-Orchestrator Rules End\n'; } >> "$global_gemini"
+        { printf '\n# SPAO Frontier Agent Rules Start\n'; cat "$src_gemini"; printf '\n# SPAO Frontier Agent Rules End\n'; } >> "$global_gemini"
     else
         _info "Creating ~/.gemini/GEMINI.md with SPAO rules..."
-        { printf '# SPAO Meta-Orchestrator Rules Start\n'; cat "$src_gemini"; printf '\n# SPAO Meta-Orchestrator Rules End\n'; } > "$global_gemini"
+        { printf '# SPAO Frontier Agent Rules Start\n'; cat "$src_gemini"; printf '\n# SPAO Frontier Agent Rules End\n'; } > "$global_gemini"
     fi
     _ok "~/.gemini/GEMINI.md updated"
 }
@@ -155,25 +155,25 @@ _update_local_gemini() {
     local local_gemini="$target_dir/GEMINI.md"
     [ -f "$src_gemini" ] || return
 
-    local marker="# SPAO Meta-Orchestrator Rules"
+    local marker="# SPAO Frontier Agent Rules"
     if [ -f "$local_gemini" ] && grep -q "$marker" "$local_gemini"; then
         _info "Updating SPAO rules in GEMINI.md..."
         python3 - "$local_gemini" "$src_gemini" << 'PY'
 import re, sys
 target, src = sys.argv[1], sys.argv[2]
 with open(target) as f: c = f.read()
-c = re.sub(r'# SPAO Meta-Orchestrator Rules Start.*?# SPAO Meta-Orchestrator Rules End',
+c = re.sub(r'# SPAO Frontier Agent Rules Start.*?# SPAO Frontier Agent Rules End',
            '', c, flags=re.DOTALL).strip()
 with open(src) as f: rules = f.read().strip()
 with open(target, 'w') as f:
-    f.write(c + '\n\n# SPAO Meta-Orchestrator Rules Start\n' + rules + '\n# SPAO Meta-Orchestrator Rules End\n')
+    f.write(c + '\n\n# SPAO Frontier Agent Rules Start\n' + rules + '\n# SPAO Frontier Agent Rules End\n')
 PY
     elif [ -f "$local_gemini" ]; then
         _info "Appending SPAO rules to GEMINI.md..."
-        { printf '\n# SPAO Meta-Orchestrator Rules Start\n'; cat "$src_gemini"; printf '\n# SPAO Meta-Orchestrator Rules End\n'; } >> "$local_gemini"
+        { printf '\n# SPAO Frontier Agent Rules Start\n'; cat "$src_gemini"; printf '\n# SPAO Frontier Agent Rules End\n'; } >> "$local_gemini"
     else
         _info "Creating GEMINI.md with SPAO rules..."
-        { printf '# SPAO Meta-Orchestrator Rules Start\n'; cat "$src_gemini"; printf '\n# SPAO Meta-Orchestrator Rules End\n'; } > "$local_gemini"
+        { printf '# SPAO Frontier Agent Rules Start\n'; cat "$src_gemini"; printf '\n# SPAO Frontier Agent Rules End\n'; } > "$local_gemini"
     fi
     _ok "GEMINI.md configured"
 }
@@ -269,7 +269,7 @@ _write_readme() {
     cat > "$readme" << 'README_EOF'
 # SPAO — Sense-Plan-Act-Observe System
 
-This project is managed by the **SPAO meta-orchestrator** via
+This project is managed by the **SPAO Frontier Agent** via
 [Antigravity CLI (`agy`)](https://github.com/pltrinh1122/agent-antigravity).
 
 ## Quick Start
@@ -314,7 +314,7 @@ README_EOF
 
 usage() {
     cat << 'USAGE'
-SPAO Installer — distributes the SPAO meta-orchestrator system
+SPAO Installer — distributes the SPAO Frontier Agent system
 
 Usage:
   spao-install                              Fetch latest release, install globally

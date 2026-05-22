@@ -1,7 +1,7 @@
 # WHY-0013: Sense-Phase Operator Gating
 
 ## 1. Context
-Antigravity agents are designed to execute the SPAO (Sense-Plan-Act-Observe) loop autonomously. As the meta-orchestrator, the agent reads the topological state, consults the `nba_evaluator`, and sequentially processes Nodes from the backlog.
+Antigravity agents are designed to execute the SPAO (Sense-Plan-Act-Observe) loop autonomously. As the Frontier Agent, the agent reads the topological state, consults the `nba_evaluator`, and sequentially processes Nodes from the backlog.
 
 However, a fundamental architectural flaw was observed: agents consistently execute `bin/node sync` (Sense phase), observe the `Next-Best-Action` output, and autonomously jump straight into `bin/node plan-start` (Plan phase). This creates a runaway train effect, stripping the human operator of the ability to re-prioritize, pause execution, or seamlessly switch Paths without forcibly interrupting the agent mid-plan.
 

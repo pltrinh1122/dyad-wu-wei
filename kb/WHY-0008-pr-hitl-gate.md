@@ -4,7 +4,7 @@
 **Status:** Accepted
 
 ## Context
-During the repository bootstrapping phase, the Meta-Orchestrator operated on a "direct-to-main" integration model. The `drivers/flow_state_manager.py` skill would automatically commit and push codebase mutations directly to `main` at the conclusion of every Node. As we transition into Active Operations, direct-to-main pushes pose an unacceptable risk of integrating unverified, hallucinated code.
+During the repository bootstrapping phase, the Frontier Agent operated on a "direct-to-main" integration model. The `drivers/flow_state_manager.py` skill would automatically commit and push codebase mutations directly to `main` at the conclusion of every Node. As we transition into Active Operations, direct-to-main pushes pose an unacceptable risk of integrating unverified, hallucinated code.
 
 ## Decision
 We establish the **Branch & Pull Request (PR) HITL Gate** as the mandatory integration pathway for all future operations, grandfathering in all previous direct-to-main commits.

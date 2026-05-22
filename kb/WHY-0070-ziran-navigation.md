@@ -4,7 +4,7 @@
 **Status:** Accepted
 
 ## Context
-During a philosophical evaluation of the Meta-Orchestrator's execution logic, two fundamental engineering fallacies were challenged:
+During a philosophical evaluation of the Frontier Agent's execution logic, two fundamental engineering fallacies were challenged:
 1. The assumption that a "Ziran-optimal path" pre-exists and merely needs to be selected from a static menu.
 2. The assumption that the primary obstacle to autonomy is gathering "sufficient signal, information, or context" before execution.
 
