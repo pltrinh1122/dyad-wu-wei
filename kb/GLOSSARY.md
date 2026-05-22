@@ -182,6 +182,12 @@ The secondary **Agent** within a Manager responsible for independent, concurrent
 ### Skill
 A **pure, atomic, deterministic callable**. It maintains zero state between invocations, has no SPAO/NL stage awareness, and maps to a single external system interaction. Independently testable.
 
+### Daemon
+An automated, orchestration-level background process (e.g., `audit_daemon.py`). A Daemon runs continuously or on a scheduled interval outside the primary SPAO loop, executing passive observations on the system state.
+
+### Sensor
+A specific, modular evaluator rule executed by a **Daemon** (e.g., `stale_active_node` check). A Sensor monitors a single environmental condition. If the condition is met, the Sensor injects a signal into the **Prompt Backlog**.
+
 ---
 
 ## 🔭 Epistemic Gradients & Auditing
