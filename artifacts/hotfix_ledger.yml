@@ -67,3 +67,11 @@ hotfixes:
   timestamp: '2026-05-22T00:20:01Z'
   file: kb/WHAT-0025-abstraction-doctrine-spec.md
   message: Update WHAT-0025 spec to prohibit raw gh and git in scratch scripts
+- hash: 11bf2c1fe5a94bc3da13f2629c92817c7bf7056a
+  timestamp: '2026-05-22T00:46:16Z'
+  file: artifacts/audit/retro-606.md
+  message: 'doc: add retrospective for Node 606'
+- hash: 3f61ebbe572da049799a51156961e4688ab3b1ef
+  timestamp: '2026-05-22T00:46:21Z'
+  file: artifacts/audit/retro-607.md
+  message: 'doc: add retrospective for Node 607'
