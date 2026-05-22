@@ -1,0 +1,13 @@
+{
+    "timestamp": "2026-05-21T23:42:45.301837+00:00",
+    "failures": [
+        {
+            "test_name": "TestOwnershipIndexCompleteness.test_agent_id_matches_ownership_index",
+            "file_path": "tests/test_ownership_index.py",
+            "line_number": 129,
+            "error_type": "UnknownError",
+            "error_message": "AssertionError",
+            "traceback": "self = <tests.test_ownership_index.TestOwnershipIndexCompleteness object at 0x737b6faa4b60>\n\n    def test_agent_id_matches_ownership_index(self):\n        \"\"\"\n        The agent_id declared in antigravity.yml must appear as owner_persona\n        for at least one SG with status='covered' in WHAT-0062.\n        An agent operating without a registered identity cannot be gated correctly.\n        \"\"\"\n        agent_id = load_agent_id()\n        assert agent_id, (\n            \"antigravity.yml must contain a non-empty 'agent_id' field. \"\n            \"Add 'agent_id: agent-sg{N}' as the canonical ROM identity declaration.\"\n        )\n    \n        rows = parse_ownership_index(WHAT_0062_PATH)\n        covered_owners = {r[\"owner_persona\"] for r in rows if r[\"status\"] == \"covered\"}\n    \n>       assert agent_id in covered_owners, (\n            f\"agent_id '{agent_id}' from antigravity.yml is not registered as an owner \"\n            f\"of any covered SG in WHAT-0062. Covered owners are: {sorted(covered_owners)}. \"\n            f\"Add a row for this agent or correct the agent_id field.\"\n        )\nE       AssertionError: agent_id 'agent-antigravity' from antigravity.yml is not registered as an owner of any covered SG in WHAT-0062. Covered owners are: ['agent-sg1', 'agent-sg2', 'agent-sg5']. Add a row for this agent or correct the agent_id field.\nE       assert 'agent-antigravity' in {'agent-sg1', 'agent-sg2', 'agent-sg5'}\n\ntests/test_ownership_index.py:129: AssertionError"
+        }
+    ]
+}

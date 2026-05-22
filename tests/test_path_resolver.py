@@ -79,3 +79,27 @@ def test_load_node_yml_fallback(tmp_path):
         with patch("skills.path_resolver.get_core_dir", return_value=core_dir):
             config = path_resolver.load_node_yml()
             assert config["node_attributes"]["status"]["fallback"] == "status/fallback"
+
+def test_resolve_agent_id_env():
+    mock_env = {"SPAO_AGENT_ID": "agent-test-env"}
+    with patch.dict(os.environ, mock_env):
+        assert path_resolver.resolve_agent_id() == "agent-test-env"
+
+def test_resolve_agent_id_workspace_basename():
+    env = {k: v for k, v in os.environ.items() if k != "SPAO_AGENT_ID"}
+    with patch.dict(os.environ, env, clear=True):
+        with patch("skills.path_resolver.get_workspace_dir", return_value="/mnt/shared_data/git_repos/agent-SG2-auto"):
+            assert path_resolver.resolve_agent_id() == "agent-sg2"
+
+def test_resolve_agent_id_worktree_parent():
+    env = {k: v for k, v in os.environ.items() if k != "SPAO_AGENT_ID"}
+    with patch.dict(os.environ, env, clear=True):
+        with patch("skills.path_resolver.get_workspace_dir", return_value="/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/629-dynamic-agent-identity"):
+            assert path_resolver.resolve_agent_id() == "agent-sg5"
+
+def test_resolve_agent_id_fallback():
+    env = {k: v for k, v in os.environ.items() if k != "SPAO_AGENT_ID"}
+    with patch.dict(os.environ, env, clear=True):
+        with patch("skills.path_resolver.get_workspace_dir", return_value="/tmp/some-random-dir"):
+            assert path_resolver.resolve_agent_id() is None
+
