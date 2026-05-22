@@ -1,0 +1,77 @@
+{
+    "timestamp": "2026-05-22T00:26:06.644984+00:00",
+    "failures": [
+        {
+            "test_name": "test_parse_meta_index_simple",
+            "file_path": "skills/gh_graph_skill.py",
+            "line_number": 36,
+            "error_type": "UnknownError",
+            "error_message": "DAGValidationError",
+            "traceback": "def test_parse_meta_index_simple():\n        body = \"\"\"\n    ## Meta-Index\n    - [x] Node 1: Completed Node\n    - [ ] Node NodeB: Pending Node\n    - [ ] Activity 3: Unblocked Activity [Depends: 1]\n    - [ ] Probe 4: Blocked Probe [Depends: NodeB]\n    \"\"\"\n>       nodes = gh_graph_skill.parse_meta_index(body)\n\ntests/test_gh_graph_skill.py:13: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nskills/gh_graph_skill.py:109: in parse_meta_index\n    validate_dag(nodes)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nnodes = {'1': {'completed': True, 'depends': [], 'in_progress': False, 'title': 'Completed Node'}, '3': {'completed': False, '...'Unblocked Activity'}, '4': {'completed': False, 'depends': ['NodeB'], 'in_progress': False, 'title': 'Blocked Probe'}}\n\n    def validate_dag(nodes: dict) -> None:\n        \"\"\"\n        Validates a dependency graph for referential integrity, self-dependency,\n        and acyclicity (cycle detection).\n    \n        Raises:\n          DAGValidationError\n        \"\"\"\n        for u, data in nodes.items():\n            for v in data[\"depends\"]:\n                if v not in nodes:\n>                   raise DAGValidationError(f\"Referential Integrity Violation: Node {u} depends on non-existent Node {v}\")\nE                   skills.gh_graph_skill.DAGValidationError: Referential Integrity Violation: Node 4 depends on non-existent Node NodeB\n\nskills/gh_graph_skill.py:36: DAGValidationError"
+        },
+        {
+            "test_name": "test_get_ready_nodes",
+            "file_path": "skills/gh_graph_skill.py",
+            "line_number": 126,
+            "error_type": "ValueError",
+            "error_message": "invalid literal for int() with base 10: 'NodeB'",
+            "traceback": "def test_get_ready_nodes():\n        nodes = {\n            \"NodeA\": {\"completed\": True, \"depends\": []},\n            \"NodeB\": {\"completed\": False, \"depends\": []},\n            \"NodeC\": {\"completed\": False, \"depends\": [\"NodeA\"]},\n            \"NodeD\": {\"completed\": False, \"depends\": [\"NodeB\"]}\n        }\n>       ready = gh_graph_skill.get_ready_nodes(nodes)\n\ntests/test_gh_graph_skill.py:27: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nnodes = {'NodeA': {'completed': True, 'depends': []}, 'NodeB': {'completed': False, 'depends': []}, 'NodeC': {'completed': False, 'depends': ['NodeA']}, 'NodeD': {'completed': False, 'depends': ['NodeB']}}\n\n    def get_ready_nodes(nodes: dict) -> list[str]:\n        \"\"\"\n        Returns a list of Node IDs that are incomplete and whose\n        dependencies are all satisfied (completed).\n        \"\"\"\n        incomplete_ids = {nid for nid, data in nodes.items() if not data[\"completed\"]}\n        ready_ids = []\n        for nid in incomplete_ids:\n            deps = nodes[nid][\"depends\"]\n            # A node is ready if none of its dependencies are in the incomplete list AND the node itself is not in-progress\n            if not any(dep in incomplete_ids for dep in deps) and not nodes[nid].get(\"in_progress\", False):\n                ready_ids.append(nid)\n    \n        # Sort by numeric ID to ensure deterministic order\n>       return sorted(ready_ids, key=int)\nE       ValueError: invalid literal for int() with base 10: 'NodeB'\n\nskills/gh_graph_skill.py:126: ValueError"
+        },
+        {
+            "test_name": "test_parse_meta_index_mixed_formats",
+            "file_path": "tests/test_gh_graph_skill.py",
+            "line_number": 45,
+            "error_type": "AssertionError",
+            "error_message": "assert '10NodeB' in {'10': {'completed': False, 'depends': [], 'in_progress': False, 'title': 'NodeB: Raw ID'}, '100': {'completed': True,..._progress': False, 'title': 'Done'}, '101': {'completed': False, 'depends': [], 'in_progress': False, 'title': 'Wait'}}",
+            "traceback": "def test_parse_meta_index_mixed_formats():\n        body = \"\"\"\n    - [x] Activity 100: Done\n    - [ ] Probe 101: Wait\n    - [ ] 10NodeB: Raw ID\n    \"\"\"\n        nodes = gh_graph_skill.parse_meta_index(body)\n        assert \"100\" in nodes\n        assert \"101\" in nodes\n>       assert \"10NodeB\" in nodes\nE       AssertionError: assert '10NodeB' in {'10': {'completed': False, 'depends': [], 'in_progress': False, 'title': 'NodeB: Raw ID'}, '100': {'completed': True,..._progress': False, 'title': 'Done'}, '101': {'completed': False, 'depends': [], 'in_progress': False, 'title': 'Wait'}}\n\ntests/test_gh_graph_skill.py:45: AssertionError"
+        },
+        {
+            "test_name": "test_parse_multi_dependencies",
+            "file_path": "skills/gh_graph_skill.py",
+            "line_number": 36,
+            "error_type": "UnknownError",
+            "error_message": "DAGValidationError",
+            "traceback": "def test_parse_multi_dependencies():\n        body = \"\"\"\n    - [x] Node 1: First\n    - [x] Node NodeB: Second\n    - [ ] Node 3: Multi-dependent [Depends: 1, NodeB]\n    - [ ] Node 4: Spaces dependency [Depends: 1 , NodeB]\n    - [ ] Node 5: Empty dependency [Depends: ]\n    \"\"\"\n>       nodes = gh_graph_skill.parse_meta_index(body)\n\ntests/test_gh_graph_skill.py:58: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nskills/gh_graph_skill.py:109: in parse_meta_index\n    validate_dag(nodes)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nnodes = {'1': {'completed': True, 'depends': [], 'in_progress': False, 'title': 'First'}, '3': {'completed': False, 'depends':...le': 'Spaces dependency'}, '5': {'completed': False, 'depends': [], 'in_progress': False, 'title': 'Empty dependency'}}\n\n    def validate_dag(nodes: dict) -> None:\n        \"\"\"\n        Validates a dependency graph for referential integrity, self-dependency,\n        and acyclicity (cycle detection).\n    \n        Raises:\n          DAGValidationError\n        \"\"\"\n        for u, data in nodes.items():\n            for v in data[\"depends\"]:\n                if v not in nodes:\n>                   raise DAGValidationError(f\"Referential Integrity Violation: Node {u} depends on non-existent Node {v}\")\nE                   skills.gh_graph_skill.DAGValidationError: Referential Integrity Violation: Node 3 depends on non-existent Node NodeB\n\nskills/gh_graph_skill.py:36: DAGValidationError"
+        },
+        {
+            "test_name": "test_cycle_detection_direct",
+            "file_path": "tests/test_gh_graph_skill.py",
+            "line_number": 87,
+            "error_type": "AssertionError",
+            "error_message": "assert 'Cycle Detected:' in 'Referential Integrity Violation: Node 1 depends on non-existent Node NodeB'",
+            "traceback": "def test_cycle_detection_direct():\n        body = \"\"\"\n    - [ ] Node 1: Cycle A [Depends: NodeB]\n    - [ ] Node NodeB: Cycle B [Depends: 1]\n    \"\"\"\n        with pytest.raises(DAGValidationError) as excinfo:\n            gh_graph_skill.parse_meta_index(body)\n        err_msg = str(excinfo.value)\n>       assert \"Cycle Detected:\" in err_msg\nE       AssertionError: assert 'Cycle Detected:' in 'Referential Integrity Violation: Node 1 depends on non-existent Node NodeB'\n\ntests/test_gh_graph_skill.py:87: AssertionError"
+        },
+        {
+            "test_name": "test_cycle_detection_three_nodes",
+            "file_path": "tests/test_gh_graph_skill.py",
+            "line_number": 99,
+            "error_type": "AssertionError",
+            "error_message": "assert 'Cycle Detected:' in 'Referential Integrity Violation: Node 1 depends on non-existent Node NodeB'",
+            "traceback": "def test_cycle_detection_three_nodes():\n        body = \"\"\"\n    - [ ] Node 1: First [Depends: NodeB]\n    - [ ] Node NodeB: Second [Depends: 3]\n    - [ ] Node 3: Third [Depends: 1]\n    \"\"\"\n        with pytest.raises(DAGValidationError) as excinfo:\n            gh_graph_skill.parse_meta_index(body)\n        err_msg = str(excinfo.value)\n>       assert \"Cycle Detected:\" in err_msg\nE       AssertionError: assert 'Cycle Detected:' in 'Referential Integrity Violation: Node 1 depends on non-existent Node NodeB'\n\ntests/test_gh_graph_skill.py:99: AssertionError"
+        },
+        {
+            "test_name": "test_deterministic_nba_sorting",
+            "file_path": "skills/gh_graph_skill.py",
+            "line_number": 126,
+            "error_type": "ValueError",
+            "error_message": "invalid literal for int() with base 10: 'NodeB'",
+            "traceback": "def test_deterministic_nba_sorting():\n        nodes = {\n            \"10\": {\"completed\": False, \"depends\": []},\n            \"NodeB\": {\"completed\": False, \"depends\": []},\n            \"100\": {\"completed\": False, \"depends\": []},\n            \"NodeA\": {\"completed\": True, \"depends\": []},\n            \"5\": {\"completed\": False, \"depends\": [\"NodeA\"]}\n        }\n>       ready = gh_graph_skill.get_ready_nodes(nodes)\n\ntests/test_gh_graph_skill.py:110: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nnodes = {'10': {'completed': False, 'depends': []}, '100': {'completed': False, 'depends': []}, '5': {'completed': False, 'depends': ['NodeA']}, 'NodeA': {'completed': True, 'depends': []}, ...}\n\n    def get_ready_nodes(nodes: dict) -> list[str]:\n        \"\"\"\n        Returns a list of Node IDs that are incomplete and whose\n        dependencies are all satisfied (completed).\n        \"\"\"\n        incomplete_ids = {nid for nid, data in nodes.items() if not data[\"completed\"]}\n        ready_ids = []\n        for nid in incomplete_ids:\n            deps = nodes[nid][\"depends\"]\n            # A node is ready if none of its dependencies are in the incomplete list AND the node itself is not in-progress\n            if not any(dep in incomplete_ids for dep in deps) and not nodes[nid].get(\"in_progress\", False):\n                ready_ids.append(nid)\n    \n        # Sort by numeric ID to ensure deterministic order\n>       return sorted(ready_ids, key=int)\nE       ValueError: invalid literal for int() with base 10: 'NodeB'\n\nskills/gh_graph_skill.py:126: ValueError"
+        },
+        {
+            "test_name": "test_parse_meta_index_in_progress",
+            "file_path": "tests/test_gh_graph_skill.py",
+            "line_number": 120,
+            "error_type": "KeyError",
+            "error_message": "'NodeA'",
+            "traceback": "def test_parse_meta_index_in_progress():\n        body = \"\"\"\n    - [x] Node 1: Completed\n    - [/] Node NodeB: Locked/In-Progress\n    - [ ] Node 3: Pending\n    \"\"\"\n        nodes = gh_graph_skill.parse_meta_index(body)\n>       assert nodes[\"NodeA\"][\"completed\"] is True\nE       KeyError: 'NodeA'\n\ntests/test_gh_graph_skill.py:120: KeyError"
+        },
+        {
+            "test_name": "test_get_ready_nodes_excludes_in_progress",
+            "file_path": "skills/gh_graph_skill.py",
+            "line_number": 126,
+            "error_type": "ValueError",
+            "error_message": "invalid literal for int() with base 10: 'NodeC'",
+            "traceback": "def test_get_ready_nodes_excludes_in_progress():\n        nodes = {\n            \"NodeA\": {\"completed\": True, \"in_progress\": False, \"depends\": []},\n            \"NodeB\": {\"completed\": False, \"in_progress\": True, \"depends\": [\"NodeA\"]},\n            \"NodeC\": {\"completed\": False, \"in_progress\": False, \"depends\": [\"NodeA\"]},\n            \"NodeD\": {\"completed\": False, \"in_progress\": False, \"depends\": [\"NodeB\"]}\n        }\n>       ready = gh_graph_skill.get_ready_nodes(nodes)\n\ntests/test_gh_graph_skill.py:134: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nnodes = {'NodeA': {'completed': True, 'depends': [], 'in_progress': False}, 'NodeB': {'completed': False, 'depends': ['NodeA']...'depends': ['NodeA'], 'in_progress': False}, 'NodeD': {'completed': False, 'depends': ['NodeB'], 'in_progress': False}}\n\n    def get_ready_nodes(nodes: dict) -> list[str]:\n        \"\"\"\n        Returns a list of Node IDs that are incomplete and whose\n        dependencies are all satisfied (completed).\n        \"\"\"\n        incomplete_ids = {nid for nid, data in nodes.items() if not data[\"completed\"]}\n        ready_ids = []\n        for nid in incomplete_ids:\n            deps = nodes[nid][\"depends\"]\n            # A node is ready if none of its dependencies are in the incomplete list AND the node itself is not in-progress\n            if not any(dep in incomplete_ids for dep in deps) and not nodes[nid].get(\"in_progress\", False):\n                ready_ids.append(nid)\n    \n        # Sort by numeric ID to ensure deterministic order\n>       return sorted(ready_ids, key=int)\nE       ValueError: invalid literal for int() with base 10: 'NodeC'\n\nskills/gh_graph_skill.py:126: ValueError"
+        }
+    ]
+}
