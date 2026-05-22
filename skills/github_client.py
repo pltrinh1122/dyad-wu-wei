@@ -204,3 +204,9 @@ def merge_pull_request(pr_number: int, method: str = "squash") -> None:
         check=True
     )
 
+def close_pull_request(pr_number: int) -> None:
+    """Closes a pull request without merging."""
+    subprocess.run(
+        ["gh", "pr", "close", str(pr_number)],
+        check=True
+    )
