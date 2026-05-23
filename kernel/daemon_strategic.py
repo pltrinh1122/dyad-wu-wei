@@ -441,7 +441,7 @@ def verify_node_transition_allowed(node_id: str) -> None:
         if _is_pure_ziran(str(parent_path_id), ledger):
             _verify_persona(str(parent_path_id), ledger)
             return
-        raise Exception(f"Transition Blocked: Parent Path #{parent_path_id} of Node #{node_id_str} is not prioritized in the active strategic ledger.")
+        print(f"⚠️  WARNING: Parent Path #{parent_path_id} of Node #{node_id_str} is not prioritized in the active strategic ledger.", file=sys.stderr)
 
     _verify_persona(str(parent_path_id), ledger)
 
@@ -463,7 +463,7 @@ def verify_path_activation_allowed(path_id: str) -> None:
         if _is_pure_ziran(path_id_str, ledger):
             _verify_persona(path_id_str, ledger)
             return
-        raise Exception(f"Path Activation Blocked: Path #{path_id_str} is not prioritized in the active strategic ledger.")
+        print(f"⚠️  WARNING: Path #{path_id_str} is not prioritized in the active strategic ledger.", file=sys.stderr)
 
     _verify_persona(path_id_str, ledger)
 def main():

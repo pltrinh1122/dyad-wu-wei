@@ -84,10 +84,10 @@ The five SPAO stages as applied within the **NL**:
 5. **Reflect**: Close the transaction ledger, push the branch, and open the PR for squash-merging.
 
 ### NC (Node Contract)
-The **mandatory, non-null Plan-Stage output** of the **NL** for a given Node. The NC is the formal pre-condition for the Node's Act-Phase edge traversal in the Meta-Graph. No Node may advance from Plan to Act without a complete, operator-approved NC.
+The **mandatory, non-null Plan-Stage output** of the **NL** for a given Node. The NC is the formal pre-condition for the Node's Act-Phase edge traversal in the Meta-Graph. No Node may advance from Plan to Act without a complete NC locked into the micro-ledger. Under the Universal Merge Gate (HTIL) model, the Agent may autonomously transition from Plan to Act once the NC is locked, without requiring conversational operator approval in chat.
 
 ### HITL (Human-In-The-Loop)
-The **operator approval gate**. The Agent is completely paralyzed from advancing past the **Observe** phase or starting the next Node until the human operator reviews, approves, and merges the Node's active PR into `main`.
+The **operator approval gate**, consolidated entirely into the **Universal Merge Gate (HTIL)**. Under this model, the Agent is completely paralyzed from advancing past the **Observe** phase or starting the next Node until the human operator reviews and merges the Node's active Pull Request (PR) into `main`. Intermediate conversational or local gates are deprecated.
 
 ### NS (North-Star)
 The overarching guiding objective or design ideal of the repository (e.g., that ultimately no gates are necessary for fully autonomous operational state). All architectural decisions, workflow rules, and next-best-actions must align with the North-Star.

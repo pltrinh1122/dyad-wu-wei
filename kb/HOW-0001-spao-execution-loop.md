@@ -14,11 +14,11 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - **Backlog Generation Invariant:** When the Agent generates new items for the backlog (e.g., scoping activities), it MUST utilize the `--path` argument in `bin/backlog new` to bind it to a parent Path, preventing Orphaned Nodes.
 
 1. **Plan (Contract Formulation):** 
-   - Execute the shell script: `./bin/node plan "ISSUE_ID" "Body content..."` to lock the Node Contract into the existing **Backlog Issue** and automatically prepend the Node ID to the GitHub Issue title.
+   - Execute the shell script: `./bin/node plan-start "ISSUE_ID"` to lock the backlog issue. Follow up with `./bin/node plan-finish "ISSUE_ID" "Body content..."` to upload the finalized Node Contract. This automatically prepends the Node ID to the GitHub Issue title.
    - **Meta-Rule Invariant:** Node Issues MUST be pulled from the backlog. It is mathematically forbidden to generate a new issue out of thin air during the Plan phase. The Node ID is mathematically isomorphic to the GitHub Issue ID.
    - **Template Invariant:** The Agent must NEVER generate inline markdown strings for GitHub Issues. All issue bodies (Backlog and Node Contracts) MUST be rendered using strict, Operator-editable templates located in `kb/templates/`.
    - Mutate the body of the **Path Issue** to link to the newly active Node Issue via `./bin/meta link "Node X: Title" "ISSUE_ID"`.
-   - *Do not execute codebase mutations until the Node Issue is explicitly locked.*
+   - *Do not execute codebase mutations until the Node Issue is explicitly locked. Under the Universal Merge Gate (HTIL) model, the Agent may autonomously transition from Plan to Act once the NC is locked, without waiting for chat approval.*
 
 3. **Act (Execution):** 
    - Execute codebase generation, tool invocations, and artifact mutations required by the Scope.
@@ -32,10 +32,10 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - The Agent must formally log any constraints or feedback provided by the Operator as a comment on the Node Issue.
 
 5. **Reflect & Advance (Post-Condition):** 
-   - Execute the shell script: `./bin/reflect-node "ISSUE_ID" "Node X: Title" "Learnings..." "['[x] Invariant']" "commit message" "node/XX-kebab-case" "PR Title"
+   - Execute the shell script: `./bin/node reflect "ISSUE_ID" "Node X: Title" "Learnings..." "['[x] Invariant']" "commit message" "node/XX-kebab-case" --insights WHY-XXXX`
    - This atomic skill will rigorously enforce branch naming, update `artifacts/frontier_state.md`, push the branch, and automatically open a Pull Request.
    - Mutate the **Path Issue** body to check off the completed node.
-   - **HARD HITL BLOCK:** The Agent must absolutely halt and wait for the Operator to review and merge the PR before proceeding to the next node.
+   - **HARD HITL BLOCK (Universal Merge Gate):** The Agent must absolutely halt and wait for the Operator to review and merge the PR on GitHub before proceeding to the next node. The Pull Request merge is the sole hard integration gate.
 
 ## Executing the Formal Bootstrap Audit
 Before a newly bootstrapped repository can transition into active "Operations," it must pass an audit.
