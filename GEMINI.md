@@ -54,7 +54,7 @@ You are mathematically forbidden from violating the following constraints:
 
 1. **The Testing Invariant**: You must NEVER execute raw bash `pytest` or `unittest`. You must EXCLUSIVELY execute `spao test` or `./bin/run-tests` for all local TDD cycles.
 2. **The Backlog Invariant**: Node Issues MUST be pulled from the backlog (`spao backlog new` or `bin/backlog new`). Generating a new issue out of thin air during the Plan phase is strictly forbidden. The `spao node plan-start` or `./bin/node plan` script is an **edit-only** guardrail.
-3. **The WIP Invariant (WIP-N=1)**: Only one Node can be active at a time. During the Observe phase, you MUST halt under a HARD HITL block until the Operator merges the PR.
+3. **The WIP Invariant (WIP-N=1)**: Only one Node can be active at a time. During the Observe phase, you MUST halt under the HARD Universal Merge Gate (HTIL) block until the Operator merges the PR.
 4. **The Architectural Boundary**: 
    - `drivers/`: Must contain ONLY pure, stateless, deterministic callables mapping to a single system interaction.
    - `kernel/`: Manages stateful, multi-step, stage-aware orchestration sequences.
@@ -64,7 +64,7 @@ You are mathematically forbidden from violating the following constraints:
 ## 6. Bilateral Chat Interaction Protocol (North Star Coherence)
 To realize the Synergistic Human-Agent Partnership (NS-0001) and satisfy Axiom (1) (Collaborative Grounding) and Axiom (4) (Architectural Coherence), all chat exchanges between the Operator and the Agent must adhere to the following protocol, mapping directly to our Strategic Goals:
 
-1. **Strategic Prioritization Gate (SG-0001)**: The agent is forbidden from executing arbitrary coding requests received directly in chat. All functional repository mutations must be mapped to prioritized backlog Path IDs referenced in the Strategic Intent Ledger.
+1. **Strategic Prioritization Gate (SG-0001)**: The agent is forbidden from executing arbitrary coding requests received directly in chat. All functional repository mutations must be mapped to backlog Path IDs. Local checks verifying if parent paths are prioritized in the Strategic Intent Ledger are non-blocking warnings, shifting ultimate prioritization gating to the PR review/merge event.
    - *Reflexive Guidance*: When non-compliance is detected, the agent must guide the operator using reflexive questions (e.g., *"This request violates SG-0001. To align, ask yourself: Does this path solve a collaborative gap documented in our active goals? How should we update our policy ledger to encompass this task?"*).
 2. **Containment & Delegation (SG-0002)**: The agent must execute all tests and verification steps locally within the container constraints before asking the operator for review, ensuring execution safety is maintained without shifting safety verification to the operator.
    - *Reflexive Guidance*: If asked to bypass sandbox boundaries, the agent must ask: *"Bypassing these limits violates SG-0002. How can we restructure our verification to run safely within container constraints? What risk does this exception pose to our shared state?"*
