@@ -2065,6 +2065,37 @@
   - `Unit tests pass 100% green`
   - `Operational guidelines contain Root Execution and Semantic Purity rules`
 
+## Node 887: Path 887: Optimize Next-Best-Action Hook Execution Speed
+- **Status**: Backlog
+- **Learnings & Context**: Implement local-first next-best-action evaluation to eliminate network calls during node sync.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 888: Discovery 888: Harmonize - Optimize Next-Best-Action Hook Execution Speed
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 889: Discovery 889: Plan - Optimize Next-Best-Action Hook Execution Speed
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Optimize Next-Best-Action Hook Execution Speed.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 890: Activity 890: Reflect - Optimize Next-Best-Action Hook Execution Speed
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Optimize Next-Best-Action Hook Execution Speed.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 888: Harmonize - Optimize Next-Best-Action Hook Execution Speed
+- **Status**: Completed
+- **Learnings & Context**: Successfully harmonized on Option 4 (Reactive Local-First NBA) by applying dialectical falsification to all proposed technical options in kb/WHY-0091-dialectical-falsification.md. Option 4 achieves sub-second synchronization execution offline by default by querying the local frontier state yml file directly.
+- **Feedforward Invariants**:
+  - `[x] kb/WHY-0091-dialectical-falsification.md contains the dialectical falsification analysis`
+  - `[x] Local tests pass 100% green`
+
 ## Current Active Path
 None
 
