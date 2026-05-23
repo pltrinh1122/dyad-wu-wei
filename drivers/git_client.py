@@ -153,13 +153,23 @@ def pull(remote: str, branch: str, prune: bool = False) -> None:
 def list_merged_branches() -> list[str]:
     """Returns a list of local branches that have been merged into HEAD."""
     res = subprocess.run(["git", "branch", "--merged"], capture_output=True, text=True, check=True)
-    return [b.strip().strip("* ") for b in res.stdout.splitlines() if b.strip()]
+    branches = []
+    for line in res.stdout.splitlines():
+        line = line.strip().lstrip("*+ ")
+        if line and not line.startswith("(") and "detached" not in line:
+            branches.append(line)
+    return branches
 
 @record_execution(stage="skill")
 def list_local_branches() -> list[str]:
     """Returns a list of all local branch names."""
     res = subprocess.run(["git", "branch", "--format", "%(refname:short)"], capture_output=True, text=True, check=True)
-    return [b.strip() for b in res.stdout.splitlines() if b.strip()]
+    branches = []
+    for line in res.stdout.splitlines():
+        line = line.strip()
+        if line and not line.startswith("(") and "detached" not in line:
+            branches.append(line)
+    return branches
 
 @record_execution(stage="skill")
 def worktree_prune() -> None:

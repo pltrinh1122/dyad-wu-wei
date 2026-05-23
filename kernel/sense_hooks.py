@@ -16,14 +16,14 @@ class HookDaemon:
             config = yaml.safe_load(f)
         return config.get("sense_hooks", [])
 
-    def execute_all(self):
+    def execute_all(self, local_mode=False):
         """Iterates over all configured hooks and executes them."""
         for hook_config in self.hooks:
             hook_type = hook_config.get("type")
             if hook_type == "prompt_queue":
                 self.execute_prompt_queue_hook(hook_config)
             elif hook_type == "next_best_action":
-                self.execute_next_best_action_hook(hook_config)
+                self.execute_next_best_action_hook(hook_config, local_mode=local_mode)
             else:
                 print(f"Warning: Unknown hook type '{hook_type}'")
 
@@ -34,7 +34,7 @@ class HookDaemon:
         print()
         list_prompts(all_prompts=False, backlog_file=location)
 
-    def execute_next_best_action_hook(self, config):
+    def execute_next_best_action_hook(self, config, local_mode=False):
         """Dynamically evaluates and surfaces the next best action using NBADaemon kernel."""
         from kernel.daemon_nba import NBADaemon
         from drivers import issue_factory
@@ -42,7 +42,7 @@ class HookDaemon:
         frontier_file = config.get("frontier_file", "artifacts/frontier_state.md")
 
         nba = NBADaemon(repository=repository)
-        result = nba.evaluate(frontier_file=frontier_file)
+        result = nba.evaluate(frontier_file=frontier_file, local_mode=local_mode)
 
         if result["type"] == "error":
             print(f"\n❌ Next-Best-Action Error: {result['message']}")

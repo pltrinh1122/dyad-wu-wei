@@ -145,7 +145,7 @@ def sync_and_clean_node() -> None:
  
     # Surface pending backlog items at Sense phase
     daemon = HookDaemon()
-    daemon.execute_all()
+    daemon.execute_all(local_mode=not remote_mode)
 
 def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
     """Closes the GH issue, creates a PR, and updates the frontier."""
