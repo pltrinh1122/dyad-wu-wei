@@ -8,6 +8,7 @@ def test_plan_start_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_su
     mock_gh.get_issue_labels.return_value = []
     mock_gh.get_issue_details.return_value = {"title": "Test Title"}
     mock_fe.read_active_node.return_value = "None"
+    mock_gh.get_open_prs.return_value = []
     
     # Act
     plan_start_node("157")
@@ -20,6 +21,7 @@ def test_plan_start_node_locked(mock_gh, mock_fe):
     # Setup
     mock_gh.get_issue_labels.return_value = ["status: in-progress"]
     mock_fe.read_active_node.return_value = "None"
+    mock_gh.get_open_prs.return_value = []
     
     # Act & Assert
     with pytest.raises(Exception, match="already in progress"):
@@ -28,6 +30,7 @@ def test_plan_start_node_locked(mock_gh, mock_fe):
 def test_checkout_node(mock_gh, mock_fe, mock_telemetry, mock_subprocess):
     # Setup
     mock_fe.read_active_node.return_value = "None"
+    mock_gh.get_open_prs.return_value = []
     
     # Act
     checkout_node("157", "node/157-test-branch")
