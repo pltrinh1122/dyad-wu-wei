@@ -86,6 +86,7 @@ def check_kb_conflicts(diff_text: str) -> list[str]:
 
     # Dynamic semantic ledger parsing for malleable terminology
     terms = []
+    immune_zones = []
     try:
         from drivers import path_resolver
         repo_root = path_resolver.get_workspace_dir()
@@ -97,6 +98,8 @@ def check_kb_conflicts(diff_text: str) -> list[str]:
                     for term, meta in ledger['terms'].items():
                         if meta.get('state') == 'deprecated':
                             terms.append(re.escape(term))
+                if ledger and 'immune_zones' in ledger:
+                    immune_zones = ledger['immune_zones']
     except Exception:
         pass
         
@@ -128,9 +131,18 @@ def check_kb_conflicts(diff_text: str) -> list[str]:
                 content = line[1:]
 
                 basename = os.path.basename(current_file)
-                is_historical = basename == "GLOSSARY.md" or basename.startswith("WHY-")
+                is_immune = False
+                for zone in immune_zones:
+                    z_type = zone.get("type")
+                    z_val = zone.get("value")
+                    if z_type == "exact" and basename == z_val:
+                        is_immune = True
+                        break
+                    elif z_type == "prefix" and basename.startswith(z_val):
+                        is_immune = True
+                        break
                 
-                if not is_historical:
+                if not is_immune:
                     word_match = word_pattern.search(content)
                     if word_match:
                         conflicts.append(f"Forbidden term '{word_match.group(1)}' found in {current_file}: '{content.strip()}'")

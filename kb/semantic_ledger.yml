@@ -1,3 +1,9 @@
+immune_zones:
+  - type: exact
+    value: "GLOSSARY.md"
+  - type: prefix
+    value: "WHY-"
+    
 terms:
   epic:
     state: deprecated

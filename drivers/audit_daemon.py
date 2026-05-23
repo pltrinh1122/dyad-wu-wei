@@ -266,8 +266,21 @@ def evaluate_semantic_immune_system(rule, state):
         
         term_patterns = {term: re.compile(rf"\b{re.escape(term)}\b", re.IGNORECASE) for term in deprecated_terms}
         
+        immune_zones = ledger.get("immune_zones", [])
+        
         for md_file in kb_dir.rglob("*.md"):
-            if md_file.name == "GLOSSARY.md" or md_file.name.startswith("WHY-"):
+            is_immune = False
+            for zone in immune_zones:
+                zone_type = zone.get("type")
+                zone_val = zone.get("value")
+                if zone_type == "exact" and md_file.name == zone_val:
+                    is_immune = True
+                    break
+                elif zone_type == "prefix" and md_file.name.startswith(zone_val):
+                    is_immune = True
+                    break
+                    
+            if is_immune:
                 continue
                 
             try:
