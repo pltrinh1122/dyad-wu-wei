@@ -225,3 +225,4 @@ A top-level directory in the agentic architecture, defining a specific systemic 
 *Not a core execution Pillar.* Thin interface shell scripts that bridge human operators and agent intent to the underlying `drivers/` or `kernel/` layers.
 
 
+
