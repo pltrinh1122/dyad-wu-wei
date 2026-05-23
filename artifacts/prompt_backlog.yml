@@ -315,3 +315,8 @@ prompts:
   text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
     ''align'' found in WHAT-0060-tactical-goals-sg-0001.md. Please remediate.'
   status: pending
+- id: p-1779555432-a08f
+  timestamp: '2026-05-23T16:57:12Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''align'' found in HOW-0006-decision-making-invariant.md. Please remediate.'
+  status: pending

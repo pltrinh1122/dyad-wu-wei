@@ -93,7 +93,8 @@
             "probe_WHAT-0023-triple-node-auto-initialization-spec.md",
             "align_WHAT-0023-triple-node-auto-initialization-spec.md",
             "probe_WHAT-0055-dag-meta-index-spec.md",
-            "align_WHAT-0060-tactical-goals-sg-0001.md"
+            "align_WHAT-0060-tactical-goals-sg-0001.md",
+            "align_HOW-0006-decision-making-invariant.md"
         ]
     }
 }
