@@ -325,7 +325,12 @@ RULE_REGISTRY = {
     "semantic_immune_system": evaluate_semantic_immune_system
 }
 
-def main():
+def main(args=None):
+    import argparse
+    parser = argparse.ArgumentParser(description="Metasystem Integrity Audit Daemon")
+    parser.add_argument("--local", action="store_true", help="Bypass remote network-bound checks")
+    parsed_args, _ = parser.parse_known_args(args)
+
     config = load_config()
     
     audit_branches = config.get("audit_branches", ["main"])
@@ -351,6 +356,10 @@ def main():
         if not rule_id or not rule_type:
             continue
             
+        if parsed_args.local and rule_type == "pr_merged_monitor":
+            print(f"Skipping remote-bound rule {rule_id} in local mode.")
+            continue
+
         evaluator = RULE_REGISTRY.get(rule_type)
         if not evaluator:
             print(f"Unknown rule type: {rule_type} for rule {rule_id}")
