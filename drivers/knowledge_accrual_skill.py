@@ -127,9 +127,13 @@ def check_kb_conflicts(diff_text: str) -> list[str]:
             if line.startswith('+') and not line.startswith('+++'):
                 content = line[1:]
 
-                word_match = word_pattern.search(content)
-                if word_match:
-                    conflicts.append(f"Forbidden term '{word_match.group(1)}' found in {current_file}: '{content.strip()}'")
+                basename = os.path.basename(current_file)
+                is_historical = basename == "GLOSSARY.md" or basename.startswith("WHY-")
+                
+                if not is_historical:
+                    word_match = word_pattern.search(content)
+                    if word_match:
+                        conflicts.append(f"Forbidden term '{word_match.group(1)}' found in {current_file}: '{content.strip()}'")
 
                 git_match = git_cmd_pattern.search(content)
                 if git_match:
