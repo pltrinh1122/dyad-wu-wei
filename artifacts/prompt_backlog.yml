@@ -6,3 +6,177 @@ prompts:
   status: consumed
   resolution_context: Node 629
   read_timestamp: '2026-05-21T23:49:39Z'
+- id: p-1779546932-38a8
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''epic'' found in GLOSSARY.md. Please remediate.'
+  status: pending
+- id: p-1779546932-ee79
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''meta-orchestrator'' found in HOW-0002-bootstrap-audit-template.md. Please remediate.'
+  status: pending
+- id: p-1779546932-cd93
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in HOW-0002-bootstrap-audit-template.md. Please remediate.'
+  status: pending
+- id: p-1779546932-8048
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHAT-0001-agentic-architecture.md. Please remediate.'
+  status: pending
+- id: p-1779546932-2e77
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHAT-0005-frontier-agent.md. Please remediate.'
+  status: pending
+- id: p-1779546932-d1c6
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHAT-0017-nba-primitive.md. Please remediate.'
+  status: pending
+- id: p-1779546932-a1e4
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHAT-0018-telemetry-primitive.md. Please remediate.'
+  status: pending
+- id: p-1779546932-d597
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHAT-0029-global-spao-containment-and-deployment-spec.md.
+    Please remediate.'
+  status: pending
+- id: p-1779546932-a1a0
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''spike'' found in WHAT-0034-three-loop-governance-spec.md. Please remediate.'
+  status: pending
+- id: p-1779546932-7ead
+  timestamp: '2026-05-23T14:35:32Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0019-ontological-refinement-telemetry.md. Please
+    remediate.'
+  status: pending
+- id: p-1779546933-0615
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0051-rt-scoring-cli-design.md. Please remediate.'
+  status: pending
+- id: p-1779546933-4b24
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHAT-0064-agent-persona-platform-ownership.md. Please
+    remediate.'
+  status: pending
+- id: p-1779546933-596d
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0000-the-shaping-ontology.md. Please remediate.'
+  status: pending
+- id: p-1779546933-ef20
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0002-github-api-eventual-consistency.md. Please
+    remediate.'
+  status: pending
+- id: p-1779546933-30fd
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0003-terminal-node-abstraction.md. Please remediate.'
+  status: pending
+- id: p-1779546933-36e2
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0006-flow-state-skills.md. Please remediate.'
+  status: pending
+- id: p-1779546933-403b
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0008-pr-hitl-gate.md. Please remediate.'
+  status: pending
+- id: p-1779546933-cca2
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0012-configurable-operator-gates.md. Please remediate.'
+  status: pending
+- id: p-1779546933-5379
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0015-path-execution-guardrails.md. Please remediate.'
+  status: pending
+- id: p-1779546933-3ccd
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0016-nba-promotion.md. Please remediate.'
+  status: pending
+- id: p-1779546933-63fe
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0026-remediation-and-atomic-transactions-intent.md.
+    Please remediate.'
+  status: pending
+- id: p-1779546933-21f3
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0028-global-spao-containment-and-deployment-intent.md.
+    Please remediate.'
+  status: pending
+- id: p-1779546933-46e5
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''spike'' found in WHY-0030-spao-onboarding-and-discoverability.md. Please remediate.'
+  status: pending
+- id: p-1779546933-4434
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0035-git-transaction-ownership-spao.md. Please remediate.'
+  status: pending
+- id: p-1779546933-1617
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0039-nba-strict-transition-enforcement-gate.md.
+    Please remediate.'
+  status: pending
+- id: p-1779546933-f159
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0046-automated-labeling-invariants.md. Please remediate.'
+  status: pending
+- id: p-1779546933-1adc
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''epic'' found in WHY-0054-glossary-alignment.md. Please remediate.'
+  status: pending
+- id: p-1779546933-495e
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''spike'' found in WHY-0054-glossary-alignment.md. Please remediate.'
+  status: pending
+- id: p-1779546933-2def
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0066-ziran-and-the-cwd.md. Please remediate.'
+  status: pending
+- id: p-1779546933-6033
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''meta-orchestrator'' found in WHY-0085-agent-rom-drift-safeguard.md. Please remediate.'
+  status: pending
+- id: p-1779546933-2285
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0085-agent-rom-drift-safeguard.md. Please remediate.'
+  status: pending
+- id: p-1779546933-d295
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''meta-orchestrator'' found in WHY-0086-epistemic-retrospective-synthesis.md.
+    Please remediate.'
+  status: pending
+- id: p-1779546933-e67f
+  timestamp: '2026-05-23T14:35:33Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''orchestrator'' found in WHY-0086-epistemic-retrospective-synthesis.md. Please
+    remediate.'
+  status: pending

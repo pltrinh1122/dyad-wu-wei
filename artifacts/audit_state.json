@@ -32,5 +32,42 @@
             "430",
             "431"
         ]
+    },
+    "semantic_immune_system_scanner": {
+        "created_activities": [
+            "epic_GLOSSARY.md",
+            "meta-orchestrator_HOW-0002-bootstrap-audit-template.md",
+            "orchestrator_HOW-0002-bootstrap-audit-template.md",
+            "orchestrator_WHAT-0001-agentic-architecture.md",
+            "orchestrator_WHAT-0005-frontier-agent.md",
+            "orchestrator_WHAT-0017-nba-primitive.md",
+            "orchestrator_WHAT-0018-telemetry-primitive.md",
+            "orchestrator_WHAT-0029-global-spao-containment-and-deployment-spec.md",
+            "spike_WHAT-0034-three-loop-governance-spec.md",
+            "orchestrator_WHY-0019-ontological-refinement-telemetry.md",
+            "orchestrator_WHY-0051-rt-scoring-cli-design.md",
+            "orchestrator_WHAT-0064-agent-persona-platform-ownership.md",
+            "orchestrator_WHY-0000-the-shaping-ontology.md",
+            "orchestrator_WHY-0002-github-api-eventual-consistency.md",
+            "orchestrator_WHY-0003-terminal-node-abstraction.md",
+            "orchestrator_WHY-0006-flow-state-skills.md",
+            "orchestrator_WHY-0008-pr-hitl-gate.md",
+            "orchestrator_WHY-0012-configurable-operator-gates.md",
+            "orchestrator_WHY-0015-path-execution-guardrails.md",
+            "orchestrator_WHY-0016-nba-promotion.md",
+            "orchestrator_WHY-0026-remediation-and-atomic-transactions-intent.md",
+            "orchestrator_WHY-0028-global-spao-containment-and-deployment-intent.md",
+            "spike_WHY-0030-spao-onboarding-and-discoverability.md",
+            "orchestrator_WHY-0035-git-transaction-ownership-spao.md",
+            "orchestrator_WHY-0039-nba-strict-transition-enforcement-gate.md",
+            "orchestrator_WHY-0046-automated-labeling-invariants.md",
+            "epic_WHY-0054-glossary-alignment.md",
+            "spike_WHY-0054-glossary-alignment.md",
+            "orchestrator_WHY-0066-ziran-and-the-cwd.md",
+            "meta-orchestrator_WHY-0085-agent-rom-drift-safeguard.md",
+            "orchestrator_WHY-0085-agent-rom-drift-safeguard.md",
+            "meta-orchestrator_WHY-0086-epistemic-retrospective-synthesis.md",
+            "orchestrator_WHY-0086-epistemic-retrospective-synthesis.md"
+        ]
     }
 }

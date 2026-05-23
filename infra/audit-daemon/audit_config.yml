@@ -34,3 +34,5 @@ rules:
   alert_level: FAILURE
   prompt_message: 'Synthesized Lexical Guard: Forbidden term ''mock_open'' detected
     (from failed test ''test_sync_and_clean_node_rom_drift'')'
+- id: semantic_immune_system_scanner
+  type: semantic_immune_system
