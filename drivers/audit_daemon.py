@@ -267,6 +267,9 @@ def evaluate_semantic_immune_system(rule, state):
         term_patterns = {term: re.compile(rf"\b{re.escape(term)}\b", re.IGNORECASE) for term in deprecated_terms}
         
         for md_file in kb_dir.rglob("*.md"):
+            if md_file.name == "GLOSSARY.md" or md_file.name.startswith("WHY-"):
+                continue
+                
             try:
                 with open(md_file, "r") as f:
                     content = f.read()
