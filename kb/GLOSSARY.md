@@ -25,8 +25,11 @@ A leaf Node in the Meta-Graph that performs functional execution (e.g., an Activ
 A grouping or parent Node in the Meta-Graph that encapsulates a themed subgraph (e.g., a Path). It does not create branch mutations directly but acts as a macro-ledger container for tracking Terminal Nodes.
 
 ### Probe
-A **time-boxed, purely investigatory Node** designed to evaluate feasibility, research techniques, or resolve architectural ambiguity.
-* **Outcome**: A Probe does **not** produce functional logic mutations. It exclusively materializes a new Decision Record (`WHY-*` document) in `kb/` or an implementation plan, feeding forward critical constraints to subsequent Nodes.
+**[DEPRECATED]** See **Discovery**. A legacy term for a purely investigatory Node. Replaced by the DZ-CIL Hybrid Triad to reflect the synthesis of mathematical execution and organic intent (see `WHY-0072`).
+
+### Discovery
+The **DZ-CIL Hybrid Triad** action for identifying the next step. A time-boxed, investigatory Node that synthesizes the Agent's mathematical execution (localized queries) with the Operator's high-level organic intent (macro-strategy).
+* **Outcome**: A Discovery action does **not** produce functional logic mutations. It exclusively materializes a new Decision Record (`WHY-*` document) in `kb/` or an implementation plan, feeding forward critical constraints to subsequent Nodes.
 
 ### Path
 A **themed sequence of Nodes** grouped together to achieve a macro-objective.
@@ -39,6 +42,12 @@ The **physical cloud container** (the specific long-lived GitHub Issue, e.g. Iss
 The **checklist data structure** (`- [x] Node ...`) contained inside the body of the **Meta-Tracker**. Entries index references to closed transaction issues.
 
 ---
+
+### Harmonization
+The **DZ-CIL Hybrid Triad** action for effortless adaptation. It replaces the mechanical concept of "Structural Alignment." Harmonization is the active negotiation between the Operator's fluid intent and the Agent's structural boundaries, ensuring the system yields to intent without breaking constraints.
+
+### Refinement
+The **DZ-CIL Hybrid Triad** action for increasing metabolic efficiency. It replaces the purely mathematical "Optimization" and the purely spiritual "Cultivation." Refinement ensures that as the system travels toward the North Star, it simultaneously streamlines code execution while preserving the epistemic history needed to prevent future errors.
 
 ## ⚙️ The Tripartite Operating Environment
 
