@@ -1,5 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 738: Probe 738: Plan - Restructure Repository for Dao Portability'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -495,8 +495,8 @@ nodes:
   - '`All CLI domains must be backed by a native mgr-* orchestrator`'
 - name: 'Activity 109: Link consumed prompts to PR bodies'
   status: Completed
-  learnings: Integrated daemon_prompt into reflect phase to automatically trace and consume
-    prompts from the YAML backlog.
+  learnings: Integrated daemon_prompt into reflect phase to automatically trace and
+    consume prompts from the YAML backlog.
   invariants:
   - '`All consumed prompts must map to a PR body`'
 - name: 'Probe 125: Architectural Evaluation of Hot-Fix Workflow'
@@ -509,9 +509,9 @@ nodes:
   - '`which mandates traceability.`'
 - name: 'Activity 127: Implement bin/rt formal primitive'
   status: Completed
-  learnings: Created daemon_rt.py orchestrator and bin/rt adapter. Learned that git push
-    origin main from a feature branch pushes the local main, not the checked-out branch,
-    requiring strict branch verification.
+  learnings: Created daemon_rt.py orchestrator and bin/rt adapter. Learned that git
+    push origin main from a feature branch pushes the local main, not the checked-out
+    branch, requiring strict branch verification.
   invariants:
   - '`Hot-fixes must strictly execute only on the main branch to prevent cross-branch
     contamination`'
@@ -768,8 +768,9 @@ nodes:
 - name: 'Activity 187: Implement Prompt Queue Hook'
   status: Completed
   learnings: Implemented the execute_prompt_queue_hook function in sense_hooks.py
-    to consume the configurable backlog_file parameter. Updated daemon_prompt.py to support
-    non-default backlog file resolution, enabling dynamic configuration in the HookManager.
+    to consume the configurable backlog_file parameter. Updated daemon_prompt.py to
+    support non-default backlog file resolution, enabling dynamic configuration in
+    the HookManager.
   invariants:
   - '`[x] Prompt Queue hooked into Sense cycle`'
   - '`[x] daemon_prompt primitives support custom paths`'
@@ -1020,8 +1021,8 @@ nodes:
   - '`[ ]` None'
 - name: Refactor Test Runner & Legacy Proxies
   status: Completed
-  learnings: Successfully migrated testing logic to orchestrator/daemon_testing.py and
-    decommissioned skills/nba_evaluator.py and skills/testing_harness.py. Updated
+  learnings: Successfully migrated testing logic to orchestrator/daemon_testing.py
+    and decommissioned skills/nba_evaluator.py and skills/testing_harness.py. Updated
     node_lifecycle and daemon_node to align with the new ontology.
   invariants:
   - '`[x] TestManager materialized`'
@@ -1108,12 +1109,13 @@ nodes:
   - '`Active node titles must include Node id prefix`'
 - name: Reflect - Regression Testing Architecture Hardening (Orthogonality & Reuse)
   status: Completed
-  learnings: Refactored tests/test_daemon_node.py, tests/test_github_client.py, and tests/test_daemon_backlog.py
-    to replace verbose manual patching with clean pytest fixtures defined in tests/conftest.py.
-    Implemented a Patch Density Auditor in orchestrator/daemon_testing.py running on
-    configuration limits defined in test_config.yml. This successfully reduced regression
-    testing overhead, optimized test execution, and instituted automated governance
-    checks to prevent future @patch bloat. Also verified node prefixing logic in skills/frontier_editor.py.
+  learnings: Refactored tests/test_daemon_node.py, tests/test_github_client.py, and
+    tests/test_daemon_backlog.py to replace verbose manual patching with clean pytest
+    fixtures defined in tests/conftest.py. Implemented a Patch Density Auditor in
+    orchestrator/daemon_testing.py running on configuration limits defined in test_config.yml.
+    This successfully reduced regression testing overhead, optimized test execution,
+    and instituted automated governance checks to prevent future @patch bloat. Also
+    verified node prefixing logic in skills/frontier_editor.py.
   invariants:
   - '`Test mock density remains under configured limit (10 patches/file)`'
   - '`All tests pass with 100% success rate`'
@@ -1635,9 +1637,9 @@ nodes:
 - name: 'Node 468: Activity 468: Reflect - Path: SHAR Compilation CLI & Retrospective
     Execution'
   status: Completed
-  learnings: Implemented bin/retro CLI and orchestrator/daemon_retro.py compilation engine,
-    resolving worktree paths, and compiled the retrospective report for Paths 404
-    to 461.
+  learnings: Implemented bin/retro CLI and orchestrator/daemon_retro.py compilation
+    engine, resolving worktree paths, and compiled the retrospective report for Paths
+    404 to 461.
   invariants:
   - All tests pass and the retrospective report is compiled under artifacts/
 - name: 'Probe 481: Align - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic
@@ -2070,3 +2072,11 @@ nodes:
   invariants:
   - None explicitly updated
   - but reaffirmed Dao fa Ziran (The Dao follows Ziran).
+- name: 'Probe 770: Align - Autonomous Learning Loop'
+  status: Completed
+  learnings: Defined the architectural necessity and technical intent for the Autonomous
+    Learning Loop. Materialized WHY-0082 and spawned Activity 806 to implement the
+    retro subcommand. Handled status latency correction via WHY-0081 and retro-770.
+  invariants:
+  - Autonomous Learning Loop must trigger for soft-policy chat corrections. State
+    retrieval must be deterministic.
