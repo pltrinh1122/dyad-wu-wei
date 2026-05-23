@@ -20,6 +20,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Temporal Execution Sequence (SPAO Loop)**: Read [HOW-0001-spao-execution-loop.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/HOW-0001-spao-execution-loop.md)
 * **Terminology Promotion Lifecycle (Wu-wei)**: Read [HOW-0005-terminology-lifecycle.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/HOW-0005-terminology-lifecycle.md)
 * **Semantic Indirection Invariant**: Read [WHY-0075-semantic-indirection.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0075-semantic-indirection.md)
+* **Dao-Compliant Runtime Hotfix**: Read [WHY-0076-dao-compliant-rt-hotfix.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0076-dao-compliant-rt-hotfix.md)
 
 ## 3. Multi-Loop Governance (SPAO vs. SDLC)
 * **Three-Loop Governance Alignment & Concept Breakdown**: Read [WHY-0034-three-loop-governance-alignment.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0034-three-loop-governance-alignment.md)
