@@ -2039,10 +2039,10 @@
   - `[x] All tests pass`
 
 ## Node 878: Discovery 878: Plan - Path: Optimize SPAO Loop Inner-Loop Velocity
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: Optimize SPAO Loop Inner-Loop Velocity.
+- **Status**: Completed
+- **Learnings & Context**: Refined manifest references to reactive sync and renamed WHY spec to avoid forbidden terms.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Node 879: Activity 879: Reflect - Path: Optimize SPAO Loop Inner-Loop Velocity
 - **Status**: Backlog
@@ -2053,6 +2053,12 @@
 ## Node 880: Activity 880: Activity: Optimize Node Sync Execution Speed
 - **Status**: Backlog
 - **Learnings & Context**: Investigate and optimize the execution performance of bin/node sync to maximize inner-loop velocity (SG-0003), preventing potential exponential slowdowns.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 882: Activity 882: Reflect - Synthesize Epistemic Retrospective retro-878.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-878.md into the system's operational guidelines (the Dao).
 - **Feedforward Invariants**:
   - `[ ]` None
 
