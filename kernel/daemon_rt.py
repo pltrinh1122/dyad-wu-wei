@@ -28,84 +28,84 @@ def save_data(ledger_file, data):
             yaml.dump(data, f, default_flow_style=False, sort_keys=False)
 
 def execute_hotfix(file_path, commit_msg):
+    from drivers import github_client
+
     valid_exts = (".md", ".yml", ".yaml", ".gitignore")
     if not any(file_path.endswith(ext) for ext in valid_exts):
         print(f"Error: Hotfixes are strictly limited to {valid_exts}. Attempted to hotfix: {file_path}")
         sys.exit(1)
-        
+
     if not os.path.exists(file_path):
         print(f"Error: File {file_path} does not exist.")
         sys.exit(1)
 
-    current_branch = git_client.get_current_branch()
-    if current_branch != "main":
-        print(f"Error: Hotfixes MUST be executed on the 'main' branch. You are currently on '{current_branch}'.")
-        print(f"Hint: Use 'git stash', 'git switch main', run the hotfix, and then 'git switch -', 'git stash pop'.")
-        sys.exit(1)
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+    branch_name = f"hotfix/rt-{timestamp}"
 
-    print(f"Executing Tier-2 Hotfix for {file_path}...")
-    
-    # 1. git add
+    print(f"Executing Dao-Compliant Tier-2 Hotfix for {file_path}...")
+    print(f"Creating branch '{branch_name}' off origin/main...")
+
+    # 1. Fetch latest main
+    git_client.fetch("origin")
+
+    # 2. Create hotfix branch off origin/main (works from any context)
+    git_client.checkout_b(branch_name)
+
+    # 3. Stage and commit
     git_client.add([file_path])
-    
-    # 2. git commit
     git_client.commit(commit_msg)
-    
-    # 3. git rev-parse HEAD
-    commit_hash = git_client.get_commit_hash("HEAD")
-    
-    # 4. git push origin main
-    git_client.push("main")
 
-    # 5. append to ledger
+    # 4. Push branch
+    git_client.push(branch_name)
+
+    # 5. Open PR for Operator review (HITL preserved)
+    pr_body = f"{commit_msg}\n\n> Dao-compliant Tier-2 hotfix via `spao rt hotfix`. Operator review required before merge."
+    pr_url = github_client.create_pull_request(commit_msg, pr_body, head=branch_name)
+    print(f"Hotfix PR created: {pr_url}")
+    print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
+
+    # 6. Append to ledger
+    commit_hash = git_client.get_commit_hash("HEAD")
     ledger_file = get_ledger_file()
     data = load_data(ledger_file)
-    
-    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    
-    new_hotfix = {
+    timestamp_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    data["hotfixes"].append({
         "hash": commit_hash,
-        "timestamp": timestamp,
+        "timestamp": timestamp_str,
         "file": file_path,
-        "message": commit_msg
-    }
-    
-    data["hotfixes"].append(new_hotfix)
+        "message": commit_msg,
+        "pr": pr_url,
+        "dao_compliant": True
+    })
     save_data(ledger_file, data)
-    print(f"Hotfix complete! Logged to {ledger_file}")
+    print(f"Hotfix logged to {ledger_file}")
 
 def execute_insight(files, title, message, insights=""):
     from drivers import github_client
-    
+
     # Validation
     for f in files:
         if not os.path.exists(f):
             print(f"Error: File {f} does not exist.")
             sys.exit(1)
-            
-    current_branch = git_client.get_current_branch()
-    if current_branch != "main":
-        print(f"Error: Insights MUST be initiated from the 'main' branch. You are currently on '{current_branch}'.")
-        sys.exit(1)
-        
+
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
     branch_name = f"rt/insight-{timestamp}"
-    
+
     print(f"Executing Fast-Track Insight Materialization Pipeline for {len(files)} file(s)...")
-    
+
+    # Fetch latest main, create branch from origin/main (works from any context)
+    git_client.fetch("origin")
     git_client.checkout_b(branch_name)
     git_client.add(files)
     git_client.commit(title)
     git_client.push(branch_name)
-    
+
     if insights:
         message += f"\n\nActive-Insights: {insights}"
-        
+
     pr_url = github_client.create_pull_request(title, message, branch_name)
     print(f"Insight PR created successfully: {pr_url}")
-    
-    git_client.switch("main")
-    print("Switched back to main.")
 
 def execute_score_paths(start=None, end=None):
     from kernel.nba_scorer import GranularNBAScorer
