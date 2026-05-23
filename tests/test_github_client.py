@@ -143,7 +143,7 @@ def test_get_open_prs(mock_subprocess):
     assert len(prs) == 1
 
 def test_get_open_issues(mock_subprocess):
-    mock_subprocess.return_value.stdout = '[{"number": 1, "title": "A", "body": "B"}]'
+    mock_subprocess.return_value.stdout = '[{"number": 1, "title": "A", "body": "B", "labels": [{"name": "backlog"}]}]'
     issues = get_open_issues()
     assert len(issues) == 1
 
