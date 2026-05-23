@@ -3,6 +3,31 @@ immune_zones:
     value: "GLOSSARY.md"
   - type: prefix
     value: "WHY-"
+
+# Proposed terms: declared semantic intent, not yet active.
+# These represent known debt to be resolved via Harmonization when gravitational pull demands it.
+proposed:
+  discovery_exploration:
+    intent: >
+      A Discovery node at the root level (no parent Path) that crosses an epistemic boundary
+      into unknown territory. May reshape the backlog by spawning new Paths.
+      Distinct from discovery_scoping in nature: boundary-crossing vs. boundary-narrowing.
+    status: known_debt
+    debt_node: 847
+    notes: >
+      Currently conflated with discovery_scoping under the single term 'discovery'.
+      Positional disambiguation (root vs. child-of-Path) is the interim heuristic.
+      Not Wu-wei aligned long-term. Harmonization node to be pulled when friction accumulates.
+  discovery_scoping:
+    intent: >
+      A Discovery node within an existing Path that narrows and clarifies scope for
+      Activities on that Path. Does not cross epistemic boundaries — it operates within
+      already-declared territory.
+    status: known_debt
+    debt_node: 847
+    notes: >
+      Currently conflated with discovery_exploration under the single term 'discovery'.
+      Same interim heuristic applies. Same Harmonization node will resolve both.
     
 terms:
   epic:
