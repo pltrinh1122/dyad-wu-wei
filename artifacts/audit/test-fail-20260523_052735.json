@@ -1,0 +1,13 @@
+{
+    "timestamp": "2026-05-23T05:27:35.004650+00:00",
+    "failures": [
+        {
+            "test_name": "ERROR collecting tests/test_daemon_status.py",
+            "file_path": "kernel/daemon_status.py",
+            "line_number": 9,
+            "error_type": "ModuleNotFoundError",
+            "error_message": "in <module>",
+            "traceback": "ImportError while importing test module '/mnt/shared_data/git_repos/agent-antigravity/.worktrees/node/805-status-dashboard/tests/test_daemon_status.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_daemon_status.py:5: in <module>\n    from kernel.daemon_status import get_prompt_backlog_size, main\nkernel/daemon_status.py:9: in <module>\n    from drivers.frontier_editor import read_active_path, read_active_node\nE   ModuleNotFoundError: No module named 'drivers'"
+        }
+    ]
+}
