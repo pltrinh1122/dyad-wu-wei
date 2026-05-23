@@ -2080,3 +2080,68 @@ nodes:
   invariants:
   - Autonomous Learning Loop must trigger for soft-policy chat corrections. State
     retrieval must be deterministic.
+- name: 'Node 854: Discovery 854: Harmonize - Transition to Single-PR-Gate Governance'
+  status: Completed
+  learnings: Formalized the Single Pull Request Gate principle as the sole integration
+    boundary and deprecated intermediate manual checks to optimize inner-loop velocity
+    under the Anti-Forced Coordination Principle.
+  invariants:
+  - '[ ] None'
+- name: 'Node 855: Discovery 855: Plan - Transition to Single-PR-Gate Governance'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 855: Plan - Transition to Single-PR-Gate Governance'
+  status: Completed
+  learnings: Relaxed the strategic prioritized path blocks to non-blocking warning
+    notifications in daemon_strategic.py, and updated GLOSSARY.md, HOW-0001-spao-execution-loop.md,
+    and GEMINI.md to unify all project governance under the existing Universal Merge
+    Gate (HTIL) on GitHub.
+  invariants:
+  - '[ ] None'
+- name: 'Node 856: Activity 856: Reflect - Transition to Single-PR-Gate Governance'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 856: Reflect - Transition to Single-PR-Gate Governance'
+  status: Completed
+  learnings: Finalized and verified the transition to the Universal Merge Gate (HTIL)
+    model, completing Path 853.
+  invariants:
+  - '[ ] None'
+- name: 'Node 860: Path 860: Path: Codify Substrate-Embedded Playbooks'
+  status: Backlog
+  learnings: Codify WHY-0088 and HOW-0000 changes to establish the self-documenting
+    interface as playbook model
+  invariants: []
+- name: 'Node 861: Discovery 861: Harmonize - Path: Codify Substrate-Embedded Playbooks'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 862: Discovery 862: Plan - Path: Codify Substrate-Embedded Playbooks'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 863: Activity 863: Reflect - Path: Codify Substrate-Embedded Playbooks'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 861: Harmonize - Path: Codify Substrate-Embedded Playbooks'
+  status: Completed
+  learnings: Codified WHY-0088 and referenced it in HOW-0000-manifest.md to establish
+    the Interface-as-Playbook paradigm, remediating the out-of-cycle mutation.
+  invariants:
+  - '[x] kb/WHY-0088-interface-as-playbook.md exists'
+  - '[x] kb/HOW-0000-manifest.md references WHY-0088'
+- name: 'Discovery 862: Plan - Path: Codify Substrate-Embedded Playbooks'
+  status: Completed
+  learnings: Verified planning specifications and walkthrough templates for Path 860.
+  invariants:
+  - '[x] kb/WHY-0088-interface-as-playbook.md exists'
+  - '[x] kb/HOW-0000-manifest.md references WHY-0088'
+- name: 'Activity 863: Reflect - Path: Codify Substrate-Embedded Playbooks'
+  status: Completed
+  learnings: Successfully verified the integration and closed Path 860.
+  invariants:
+  - '[x] kb/WHY-0088-interface-as-playbook.md exists'
+  - '[x] kb/HOW-0000-manifest.md references WHY-0088'
