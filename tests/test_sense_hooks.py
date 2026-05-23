@@ -27,7 +27,7 @@ def test_execute_all(mock_nba, mock_pq):
     hm.execute_all()
     
     mock_pq.assert_called_once_with({"type": "prompt_queue", "location": "a"})
-    mock_nba.assert_called_once_with({"type": "next_best_action", "repository": "b"})
+    mock_nba.assert_called_once_with({"type": "next_best_action", "repository": "b"}, local_mode=False)
 
 @patch('kernel.sense_hooks.HookDaemon._load_config', return_value=[])
 @patch('kernel.daemon_prompt.list_prompts')
@@ -60,7 +60,7 @@ def test_execute_next_best_action_hook(mock_evaluate, mock_load_config, capsys):
     }
     hm = HookDaemon("fake.yml")
     hm.execute_next_best_action_hook({"repository": "owner/repo"})
-    mock_evaluate.assert_called_once_with(frontier_file="artifacts/frontier_state.md")
+    mock_evaluate.assert_called_once_with(frontier_file="artifacts/frontier_state.md", local_mode=False)
     out = capsys.readouterr().out
     assert "Next-Best-Action" in out
     assert "#189" in out
@@ -77,6 +77,7 @@ def test_execute_next_best_action_hook_empty(mock_evaluate, mock_load_config, ca
     }
     hm = HookDaemon("fake.yml")
     hm.execute_next_best_action_hook({})
+    mock_evaluate.assert_called_once_with(frontier_file="artifacts/frontier_state.md", local_mode=False)
     out = capsys.readouterr().out
     assert "Global backlog empty" in out
     assert "┌─" in out

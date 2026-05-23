@@ -11,7 +11,7 @@ class NBADaemon:
     def __init__(self, repository: str = None):
         self.repository = repository
         
-    def evaluate(self, frontier_file: str) -> dict:
+    def evaluate(self, frontier_file: str, local_mode: bool = False) -> dict:
         """Evaluates the current state and returns the Next-Best-Action recommendations.
         
         Logic:
@@ -20,6 +20,7 @@ class NBADaemon:
         3. If pending children found -> Path Continuation.
         4. If no active path OR no pending children -> Path Switching (Global Backlog).
         """
+        import re
         from drivers import path_resolver
         if not os.path.isabs(frontier_file):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
@@ -29,26 +30,108 @@ class NBADaemon:
             active_id = agent_frontier.extract_path_id(active_path_str)
             
         if active_id:
-            # Tier 1: Path Continuation
-            try:
-                path_details = github_client.get_issue_details(active_id)
-                path_body = path_details.get("body", "")
-                
-                next_nodes = gh_graph_skill.get_next_nodes(path_body)
-                if next_nodes:
-                    return {
-                        "type": "path_continuation",
-                        "path_id": active_id,
-                        "path_title": path_details.get("title", f"Path {active_id}"),
-                        "recommendations": next_nodes
-                    }
-            except Exception as e:
-                # Log error and fallback to Path Switching
-                print(f"Warning: Failed to evaluate active Path {active_id}: {e}")
-                
+            if local_mode:
+                # Local-First Path Continuation
+                try:
+                    state = agent_frontier.load_state(frontier_file)
+                    
+                    # Clean active path string to get core title
+                    core_title = active_path_str.strip("*")
+                    while True:
+                        prev = core_title
+                        core_title = re.sub(r"^(Node|Path|Discovery|Activity|Act|Align|Harmonize|Plan|Reflect)\s*\d*:\s*", "", core_title, flags=re.IGNORECASE)
+                        core_title = re.sub(r"^(Node|Path|Discovery|Activity|Act|Align|Harmonize|Plan|Reflect)\s*\d*\s*-\s*", "", core_title, flags=re.IGNORECASE)
+                        core_title = core_title.strip()
+                        if core_title == prev:
+                            break
+                    
+                    # Find child nodes in state
+                    child_candidates = []
+                    for n in state.get("nodes", []):
+                        n_name = n.get("name", "")
+                        if core_title in n_name and f"Path {active_id}" not in n_name:
+                            # Reconstruct item
+                            match = re.search(r"Node (\d+)", n_name)
+                            if match:
+                                issue_num = int(match.group(1))
+                                title = n_name.split(":", 1)[1].strip()
+                                child_candidates.append({
+                                    "number": issue_num,
+                                    "id": str(issue_num),
+                                    "title": title,
+                                    "status": n.get("status", "")
+                                })
+                    
+                    # Group by subtype and status
+                    harmonize_nodes = [n for n in child_candidates if "Harmonize" in n["title"] or "Align" in n["title"]]
+                    plan_nodes = [n for n in child_candidates if "Plan" in n["title"]]
+                    reflect_nodes = [n for n in child_candidates if "Reflect" in n["title"]]
+                    other_nodes = [n for n in child_candidates if n not in harmonize_nodes + plan_nodes + reflect_nodes]
+                    
+                    next_nodes = []
+                    
+                    # Lifecycle sequence: Harmonize -> Plan -> Others -> Reflect
+                    uncompleted_harmonize = [n for n in harmonize_nodes if n["status"] != "Completed"]
+                    uncompleted_plan = [n for n in plan_nodes if n["status"] != "Completed"]
+                    uncompleted_others = [n for n in other_nodes if n["status"] != "Completed"]
+                    uncompleted_reflect = [n for n in reflect_nodes if n["status"] != "Completed"]
+                    
+                    if uncompleted_harmonize:
+                        next_nodes = uncompleted_harmonize
+                    elif uncompleted_plan:
+                        next_nodes = uncompleted_plan
+                    elif uncompleted_others:
+                        next_nodes = uncompleted_others
+                    elif uncompleted_reflect:
+                        next_nodes = uncompleted_reflect
+                    
+                    if next_nodes:
+                        recs = [{"number": n["number"], "id": n["id"], "title": n["title"]} for n in next_nodes]
+                        return {
+                            "type": "path_continuation",
+                            "path_id": active_id,
+                            "path_title": active_path_str,
+                            "recommendations": recs
+                        }
+                except Exception as e:
+                    print(f"Warning: Failed to evaluate active Path {active_id} locally: {e}")
+            else:
+                # Tier 1: Path Continuation
+                try:
+                    path_details = github_client.get_issue_details(active_id)
+                    path_body = path_details.get("body", "")
+                    
+                    next_nodes = gh_graph_skill.get_next_nodes(path_body)
+                    if next_nodes:
+                        return {
+                            "type": "path_continuation",
+                            "path_id": active_id,
+                            "path_title": path_details.get("title", f"Path {active_id}"),
+                            "recommendations": next_nodes
+                        }
+                except Exception as e:
+                    # Log error and fallback to Path Switching
+                    print(f"Warning: Failed to evaluate active Path {active_id}: {e}")
+                    
         # Tier 2: Path Switching / Global Backlog
         try:
-            backlog_items = github_client.list_issues_by_label("backlog")
+            if local_mode:
+                state = agent_frontier.load_state(frontier_file)
+                backlog_items = []
+                for n in state.get("nodes", []):
+                    if n.get("status") == "Backlog":
+                        n_name = n.get("name", "")
+                        match = re.search(r"Node (\d+)", n_name)
+                        if match:
+                            issue_num = int(match.group(1))
+                            title = n_name.split(":", 1)[1].strip()
+                            backlog_items.append({
+                                "number": issue_num,
+                                "id": str(issue_num),
+                                "title": title
+                            })
+            else:
+                backlog_items = github_client.list_issues_by_label("backlog")
             
             # Reorder backlog_items based on active strategic goals
             prioritized_ids = []
