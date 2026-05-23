@@ -27,14 +27,14 @@ def test_backlog_add(mock_render, mock_backlog_gh):
     mock_render.return_value = "Rendered Template Body"
 
     daemon = BacklogDaemon()
-    url = daemon.add("probe", "Future Work Item", "Description of work", path_id="10")
+    url = daemon.add("discovery", "Future Work Item", "Description of work", path_id="10")
 
     assert url == "https://github.com/pltrinh1122/agent-antigravity/issues/31"
     mock_backlog_gh.create_issue.assert_called_once()
     # Now labels are fetched dynamically or defaults to status: todo, backlog
     mock_backlog_gh.add_label.assert_any_call("31", "backlog")
     mock_backlog_gh.add_label.assert_any_call("31", "status: todo")
-    mock_backlog_gh.rename_issue_title.assert_called_once_with("31", "Probe 31: Future Work Item")
+    mock_backlog_gh.rename_issue_title.assert_called_once_with("31", "Discovery 31: Future Work Item")
     mock_backlog_gh.update_issue_body.assert_called_once()
     
     mock_render.assert_called_once_with("backlog_issue", {
@@ -47,8 +47,8 @@ def test_backlog_add(mock_render, mock_backlog_gh):
 
 def test_backlog_add_missing_path():
     daemon = BacklogDaemon()
-    with pytest.raises(ValueError, match="Terminal nodes \\(Activities and Probes\\) must belong to a parent Path"):
-        daemon.add("probe", "Title", "Goal")
+    with pytest.raises(ValueError, match="Terminal nodes \\(Activities and Discoveries\\) must belong to a parent Path"):
+        daemon.add("discovery", "Title", "Goal")
 
 def test_backlog_add_invalid_path_cases(mock_backlog_gh):
     daemon = BacklogDaemon()
@@ -56,7 +56,7 @@ def test_backlog_add_invalid_path_cases(mock_backlog_gh):
     # Case 1: Parent Path doesn't exist
     mock_backlog_gh.get_issue_details.return_value = None
     with pytest.raises(ValueError, match="Parent Path issue 10 does not exist"):
-        daemon.add("probe", "Title", "Goal", path_id="10")
+        daemon.add("discovery", "Title", "Goal", path_id="10")
         
     # Case 2: Parent Path is closed
     mock_backlog_gh.get_issue_details.return_value = {
@@ -64,19 +64,19 @@ def test_backlog_add_invalid_path_cases(mock_backlog_gh):
         "state": "CLOSED"
     }
     with pytest.raises(ValueError, match="Parent Path issue 10 is already closed"):
-        daemon.add("probe", "Title", "Goal", path_id="10")
+        daemon.add("discovery", "Title", "Goal", path_id="10")
         
     # Case 3: Parent issue is not a Path
     mock_backlog_gh.get_issue_details.return_value = {
-        "title": "Probe 10: Align - title",
+        "title": "Discovery 10: Harmonize - title",
         "state": "OPEN"
     }
     with pytest.raises(ValueError, match="Parent issue 10 is not classified as a Path"):
-        daemon.add("probe", "Title", "Goal", path_id="10")
+        daemon.add("discovery", "Title", "Goal", path_id="10")
 
 def test_backlog_add_duplicate(mock_backlog_gh):
     mock_backlog_gh.get_open_issues.return_value = [
-        {"number": 200, "title": "Probe 200: Existing Title"}
+        {"number": 200, "title": "Discovery 200: Existing Title"}
     ]
     mock_backlog_gh.get_issue_details.return_value = {
         "title": "Path 10: Parent Path Title",
@@ -85,7 +85,7 @@ def test_backlog_add_duplicate(mock_backlog_gh):
     }
     
     daemon = BacklogDaemon()
-    url = daemon.add("probe", "Existing Title", "Goal", path_id="10")
+    url = daemon.add("discovery", "Existing Title", "Goal", path_id="10")
     
     assert "200" in url
     mock_backlog_gh.create_issue.assert_not_called()
@@ -102,7 +102,7 @@ def test_backlog_add_frontier_registration(mock_render, mock_register, mock_back
     mock_render.return_value = "Rendered Template Body"
 
     daemon = BacklogDaemon()
-    daemon.add("probe", "New Title", "Goal", path_id="10")
+    daemon.add("discovery", "New Title", "Goal", path_id="10")
     
     mock_register.assert_called_once()
 
@@ -141,6 +141,6 @@ def test_backlog_add_path(mock_render, mock_backlog_gh):
     assert mock_backlog_gh.rename_issue_title.call_count == 4
     
     mock_backlog_gh.rename_issue_title.assert_any_call("100", "Path 100: New Path Title")
-    mock_backlog_gh.rename_issue_title.assert_any_call("101", "Probe 101: Align - New Path Title")
-    mock_backlog_gh.rename_issue_title.assert_any_call("102", "Probe 102: Plan - New Path Title")
+    mock_backlog_gh.rename_issue_title.assert_any_call("101", "Discovery 101: Harmonize - New Path Title")
+    mock_backlog_gh.rename_issue_title.assert_any_call("102", "Discovery 102: Plan - New Path Title")
     mock_backlog_gh.rename_issue_title.assert_any_call("103", "Activity 103: Reflect - New Path Title")

@@ -9,9 +9,9 @@ def test_load_nodes_and_paths():
     fake_frontier = {
         "nodes": [
             {"name": "Node 404: S" + "pike Path: Strategic Intent Tracking"},
-            {"name": "Node 405: Probe 405: Align - Strategic Intent Tracking"},
+            {"name": "Node 405: Discovery 405: Harmonize - Strategic Intent Tracking"},
             {"name": "Node 412: Path 412: Verify Goals"},
-            {"name": "Node 413: Probe 413: Align - Verify Goals"},
+            {"name": "Node 413: Discovery 413: Harmonize - Verify Goals"},
             {"name": "Node 420: Path 420: TBD"},
         ]
     }

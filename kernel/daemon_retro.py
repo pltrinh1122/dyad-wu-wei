@@ -56,10 +56,10 @@ class RetroCompiler:
         node_to_path = {}
         current_path_id = None
         
-        # Regex to parse 'Node X: Path Y:' or 'Node X: Probe Y:' or 'Node X: Node Y:'
+        # Regex to parse 'Node X: Path Y:' or 'Node X: Discovery Y:' or 'Node X: Node Y:'
         # and fallback for older node names
         node_regex = re.compile(r"^Node\s+(\d+)\b", re.IGNORECASE)
-        type_regex = re.compile(r"\b(Path|Probe)\s+(\d+)\b", re.IGNORECASE)
+        type_regex = re.compile(r"\b(Path|Discovery|Activity)\s+(\d+)\b", re.IGNORECASE)
 
         for idx, node in enumerate(nodes):
             name = node.get("name", "")

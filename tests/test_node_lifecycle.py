@@ -122,7 +122,7 @@ def test_validate_spao_purity_failure(mock_get_labels, mock_diff_names):
 @mock.patch("subprocess.run")
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_details")
 def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_labels):
-    mock_get_details.return_value = {"title": "Probe 386: Plan - Test Issue", "body": "Goal"}
+    mock_get_details.return_value = {"title": "Discovery 386: Plan - Test Issue", "body": "Goal"}
     mock_get_labels.return_value = []
     mock_run.return_value = mock.MagicMock(returncode=0, stdout="skills/path_resolver.py")
     
@@ -168,13 +168,13 @@ def test_plan_start_dependency_violation(mock_append, mock_set_status, mock_vali
     def side_effect(issue_id):
         if str(issue_id) == "390":
             return {
-                "title": "Probe 390: Plan - title",
+                "title": "Discovery 390: Plan - title",
                 "body": "## Goal\nSome goal\n\n## Depends On\nNode 380",
                 "state": "OPEN"
             }
         elif str(issue_id) == "380":
             return {
-                "title": "Probe 380: Align - title",
+                "title": "Discovery 380: Harmonize - title",
                 "body": "Some body",
                 "state": "OPEN"
             }
@@ -203,13 +203,13 @@ def test_plan_start_dependency_satisfied(mock_append, mock_set_status, mock_vali
     def side_effect(issue_id):
         if str(issue_id) == "390":
             return {
-                "title": "Probe 390: Plan - title",
+                "title": "Discovery 390: Plan - title",
                 "body": "## Goal\nSome goal\n\n## Depends On\nNode 380",
                 "state": "OPEN"
             }
         elif str(issue_id) == "380":
             return {
-                "title": "Probe 380: Align - title",
+                "title": "Discovery 380: Harmonize - title",
                 "body": "Some body",
                 "state": "CLOSED"
             }
