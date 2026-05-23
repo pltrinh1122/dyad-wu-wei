@@ -42,3 +42,9 @@ rules:
   alert_level: FAILURE
   prompt_message: 'Synthesized Lexical Guard: Forbidden term ''probe'' detected (from
     failed test ''test_backlog_add_path'')'
+- id: synthesized-guard-aec877d5
+  type: lexical_guard
+  pattern: \bkernel\.daemon_node\b
+  alert_level: FAILURE
+  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''kernel.daemon_node''
+    detected (from failed test ''test_cmd_retro_compile'')'

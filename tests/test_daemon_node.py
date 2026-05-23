@@ -139,3 +139,44 @@ def test_sync_and_clean_node_rom_drift(capsys):
         
         captured = capsys.readouterr()
         assert "CRITICAL ROM DRIFT DETECTED" in captured.out
+
+
+def test_cmd_retro_compile():
+    args = MagicMock()
+    args.retro_command = "compile"
+    args.start_path = "860"
+    args.end_path = "860"
+    args.output_path = None
+    
+    with patch("kernel.daemon_retro.RetroCompiler") as mock_compiler_cls:
+        from kernel.daemon_node import cmd_retro
+        cmd_retro(args)
+        
+        mock_compiler_cls.assert_called_once_with("860", "860")
+        mock_compiler_cls.return_value.compile.assert_called_once_with(None)
+
+def test_cmd_retro_list(capsys):
+    args = MagicMock()
+    args.retro_command = "list"
+    
+    with patch("glob.glob") as mock_glob:
+        mock_glob.return_value = ["artifacts/retrospective_path_860_860.md"]
+        from kernel.daemon_node import cmd_retro
+        cmd_retro(args)
+        
+        captured = capsys.readouterr()
+        assert "retrospective_path_860_860.md" in captured.out
+
+def test_cmd_retro_view():
+    args = MagicMock()
+    args.retro_command = "view"
+    args.start_path = "860"
+    args.end_path = None
+    
+    from unittest.mock import mock_open
+    with patch("os.path.exists", return_value=True), \
+         patch("builtins.open", mock_open(read_data="retro contents")):
+        from kernel.daemon_node import cmd_retro
+        with patch("builtins.print") as mock_print:
+            cmd_retro(args)
+            mock_print.assert_called_once_with("retro contents")

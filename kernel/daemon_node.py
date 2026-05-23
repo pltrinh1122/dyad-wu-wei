@@ -226,6 +226,35 @@ def cmd_view(args):
         
     print('='*40)
 
+def cmd_retro(args):
+    import glob
+    import os
+    import sys
+    from kernel.daemon_retro import RetroCompiler
+    
+    if args.retro_command == "compile":
+        compiler = RetroCompiler(args.start_path, args.end_path)
+        compiler.compile(args.output_path)
+    elif args.retro_command == "list":
+        files = glob.glob(os.path.join("artifacts", "retrospective_path_*.md"))
+        if not files:
+            print("No compiled retrospectives found.")
+        else:
+            print("\n📋 Compiled Retrospectives:")
+            for f in sorted(files):
+                basename = os.path.basename(f)
+                print(f"  - {basename}")
+            print()
+    elif args.retro_command == "view":
+        start = args.start_path
+        end = args.end_path or start
+        file_path = os.path.join("artifacts", f"retrospective_path_{start}_{end}.md")
+        if not os.path.exists(file_path):
+            print(f"Error: Retrospective file {file_path} not found.")
+            sys.exit(1)
+        with open(file_path, "r") as f:
+            print(f.read())
+
 def cmd_set_status(args):
     node = BaseNode(args.issue_id)
     node.set_status(args.status_key)
@@ -291,6 +320,24 @@ def main():
     parser_t = subparsers.add_parser("test", help="Execute test harness validation")
     parser_t.add_argument("target", nargs="?", default="tests/", help="Target directory or file for pytest")
 
+    # retro
+    parser_retro = subparsers.add_parser("retro", help="Compile, list, or view retrospectives")
+    subparsers_retro = parser_retro.add_subparsers(dest="retro_command", required=True)
+
+    # retro compile
+    parser_rc = subparsers_retro.add_parser("compile", help="Compile a retrospective for a range of path IDs")
+    parser_rc.add_argument("start_path", help="Starting path ID")
+    parser_rc.add_argument("end_path", help="Ending path ID")
+    parser_rc.add_argument("output_path", nargs="?", default=None, help="Optional output path")
+
+    # retro list
+    subparsers_retro.add_parser("list", help="List compiled retrospectives")
+
+    # retro view
+    parser_rv = subparsers_retro.add_parser("view", help="View a compiled retrospective")
+    parser_rv.add_argument("start_path", help="Starting path ID")
+    parser_rv.add_argument("end_path", nargs="?", default=None, help="Optional ending path ID")
+
     args = parser.parse_args()
 
     if args.subcommand == "sync":
@@ -311,6 +358,8 @@ def main():
         cmd_set_classification(args)
     elif args.subcommand == "test":
         cmd_test(args)
+    elif args.subcommand == "retro":
+        cmd_retro(args)
 
 if __name__ == "__main__":
     main()
