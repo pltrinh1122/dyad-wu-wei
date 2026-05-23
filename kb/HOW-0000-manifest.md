@@ -27,6 +27,8 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Dao-Compliant Runtime Hotfix**: Read [WHY-0076-dao-compliant-rt-hotfix.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0076-dao-compliant-rt-hotfix.md)
 * **Refining Node Sync for Velocity**: Read [WHY-0090-refine-node-sync.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0090-refine-node-sync.md)
 * **Reactive Event-Driven Sync Spec**: Read [WHAT-0090-reactive-node-sync.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0090-reactive-node-sync.md)
+* **Local-First NBA Spec**: Read [WHAT-0092-local-first-nba.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0092-local-first-nba.md)
+
 
 ## 3. Multi-Loop Governance (SPAO vs. SDLC)
 * **Three-Loop Governance Alignment & Concept Breakdown**: Read [WHY-0034-three-loop-governance-alignment.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0034-three-loop-governance-alignment.md)

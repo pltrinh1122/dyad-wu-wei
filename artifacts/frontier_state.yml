@@ -2258,9 +2258,8 @@ nodes:
   invariants: []
 - name: 'Node 889: Discovery 889: Plan - Optimize Next-Best-Action Hook Execution
     Speed'
-  status: Backlog
-  learnings: Technical design and proposed changes for Optimize Next-Best-Action Hook
-    Execution Speed.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 890: Activity 890: Reflect - Optimize Next-Best-Action Hook Execution
     Speed'
@@ -2277,4 +2276,12 @@ nodes:
   invariants:
   - '[x] kb/WHY-0091-dialectical-falsification.md contains the dialectical falsification
     analysis'
+  - '[x] Local tests pass 100% green'
+- name: 'Discovery 889: Plan - Optimize Next-Best-Action Hook Execution Speed'
+  status: Completed
+  learnings: Formulated the technical implementation plan for Option 4 (Reactive Local-First
+    NBA) in the implementation_plan.md artifact and created the WHAT-0092 specification
+    document under the local-only sync framework.
+  invariants:
+  - '[x] implementation_plan.md is updated and detailed for the chosen Option 4 changes'
   - '[x] Local tests pass 100% green'
