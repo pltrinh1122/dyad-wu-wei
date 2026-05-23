@@ -1,4 +1,4 @@
-current_active_path: 'Path 809: Synthesize and Surface Epistemic Retrospectives'
+current_active_path: null
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -2171,4 +2171,12 @@ nodes:
     frontier state files to the worktree prior to staging.
   invariants:
   - '[x] Path 809 is closed'
+  - '[x] All local tests pass'
+- name: 'Node 828: Activity 828: Implement Epistemic Retro Surfacing in daemon_knowledge_accrual'
+  status: Completed
+  learnings: Successfully implemented autonomous retrospective surfacing in enforce_reflection_hook,
+    enabling the system to auto-surface un-synthesized post-failure retrospectives
+    into the backlog. Added unit tests to verify both surfaced and un-surfaced branches.
+  invariants:
+  - '[x] Retrospectives are autonomously surfaced in backlog'
   - '[x] All local tests pass'
