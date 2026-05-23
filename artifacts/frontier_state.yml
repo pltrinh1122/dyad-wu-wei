@@ -1,6 +1,5 @@
-current_active_path: '626'
-current_active_node: 'Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent
-  Identity Resolution'
+current_active_path: null
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1974,3 +1973,11 @@ nodes:
   learnings: Created design specification (WHAT-0064) and rationale (WHY-0064) for
     dynamic identity resolution.
   invariants: []
+- name: 'Probe 770: Align - Autonomous Learning Loop'
+  status: Completed
+  learnings: Defined the architectural necessity and technical intent for the Autonomous
+    Learning Loop. Materialized WHY-0082 and spawned Activity 806 to implement the
+    retro subcommand. Handled status latency correction via WHY-0081 and retro-770.
+  invariants:
+  - Autonomous Learning Loop must trigger for soft-policy chat corrections. State
+    retrieval must be deterministic.

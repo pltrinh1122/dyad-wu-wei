@@ -1769,8 +1769,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Probe 770: Align - Autonomous Learning Loop
+- **Status**: Completed
+- **Learnings & Context**: Defined the architectural necessity and technical intent for the Autonomous Learning Loop. Materialized WHY-0082 and spawned Activity 806 to implement the retro subcommand. Handled status latency correction via WHY-0081 and retro-770.
+- **Feedforward Invariants**:
+  - `Autonomous Learning Loop must trigger for soft-policy chat corrections. State retrieval must be deterministic.`
+
 ## Current Active Path
-**626**
+None
 
 ## Current Active Node
-**Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity Resolution**
+None
