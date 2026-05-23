@@ -2118,8 +2118,8 @@
   - `[x] kb/WHY-0093-decouple-prompt-backlog.md exists`
 
 ## Node 896: Discovery 896: Plan - Decouple Prompt Backlog from Git Tracking
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Decouple Prompt Backlog from Git Tracking.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2134,6 +2134,12 @@
 - **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-895.md into the system's operational guidelines (the Dao).
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## Discovery 896: Plan - Decouple Prompt Backlog from Git Tracking
+- **Status**: Completed
+- **Learnings & Context**: Created specification kb/WHAT-0093-decouple-prompt-backlog.md and registered in manifest, wrote implementation plan.
+- **Feedforward Invariants**:
+  - `[x] kb/WHAT-0093-decouple-prompt-backlog.md exists`
 
 ## Current Active Path
 None
