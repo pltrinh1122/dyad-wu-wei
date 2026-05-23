@@ -9,7 +9,7 @@ from drivers import github_client
 from drivers.issue_factory import render_template
 
 class BacklogDaemon:
-    """Orchestrator for GitHub Backlog operations."""
+    """Kernel daemon for GitHub Backlog operations."""
     
     def __init__(self, repository: str = "pltrinh1122/agent-antigravity"):
         self.repository = repository
@@ -25,13 +25,13 @@ class BacklogDaemon:
             
         if not os.path.exists(config_path):
             return {
-                "terminal": ["activity", "probe"],
+                "terminal": ["activity", "discovery"],
                 "non_terminal": ["path"]
             }
         with open(config_path, "r") as f:
             config = yaml.safe_load(f)
         return config.get("node_taxonomy", {
-            "terminal": ["activity", "probe"],
+            "terminal": ["activity", "discovery"],
             "non_terminal": ["path"]
         })
 
@@ -53,7 +53,7 @@ class BacklogDaemon:
             raise ValueError(f"Error: Invalid node type '{node_type}'. Must be one of: {', '.join(valid_types)}")
             
         if is_terminal and not path_id:
-            raise ValueError("Terminal nodes (Activities and Probes) must belong to a parent Path. Please provide a path_id.")
+            raise ValueError("Terminal nodes (Activities and Discoveries) must belong to a parent Path. Please provide a path_id.")
             
         if is_terminal and path_id:
             try:
@@ -78,7 +78,7 @@ class BacklogDaemon:
             open_issues = github_client.get_open_issues()
             for issue in open_issues:
                 curr_title = issue.get("title", "")
-                clean_curr = re.sub(r"^(Probe|Node|Path)\s*\d+:\s*", r"\1: ", curr_title, flags=re.IGNORECASE)
+                clean_curr = re.sub(r"^(Discovery|Activity|Node|Path)\s*\d+:\s*", r"\1: ", curr_title, flags=re.IGNORECASE)
                 expected_clean = f"{node_type.capitalize()}: {title}"
                 if clean_curr.lower() == expected_clean.lower():
                     print(f"Warning: Reusing existing issue for {node_type} '{title}'")
@@ -153,18 +153,18 @@ class BacklogDaemon:
             pass
 
         if is_non_terminal:
-            # 1. Align Probe
+            # 1. Discovery: Harmonization scoping
             align_url = self.add(
-                node_type="probe",
-                title=f"Align - {title}",
-                goal=f"Align on the philosophical and technical intent for {title}.",
+                node_type="discovery",
+                title=f"Harmonize - {title}",
+                goal=f"Harmonize on the philosophical and technical intent for {title}.",
                 path_id=issue_id
             )
             align_id = align_url.split("/")[-1]
 
-            # 2. Plan Probe
+            # 2. Discovery: Plan
             plan_url = self.add(
-                node_type="probe",
+                node_type="discovery",
                 title=f"Plan - {title}",
                 goal=f"Technical design and proposed changes for {title}.",
                 path_id=issue_id,
@@ -235,7 +235,7 @@ def main():
     
     # new
     parser_new = subparsers.add_parser("new", help="Add a new item to the backlog")
-    parser_new.add_argument("type", help="Node type (path, activity, probe)")
+    parser_new.add_argument("type", help="Node type (path, activity, discovery)")
     parser_new.add_argument("title", help="Issue title")
     parser_new.add_argument("goal", help="Issue goal")
     parser_new.add_argument("--path", help="Parent Path ID (required for terminal nodes)")

@@ -9,7 +9,7 @@
 node_taxonomy:
   terminal:
     - activity
-    - probe
+    - discovery
   non_terminal:
     - path
 

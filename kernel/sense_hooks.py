@@ -85,7 +85,7 @@ class HookDaemon:
                     score_str = ""
                 
                 # Semantic Styling
-                if "Probe" in title:
+                if "Discovery" in title:
                     styled_title = f"\033[1;33m{title}\033[0m" # Bold Yellow
                 elif "Activity" in title:
                     styled_title = f"\033[1;32m{title}\033[0m" # Bold Green

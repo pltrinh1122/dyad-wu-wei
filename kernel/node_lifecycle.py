@@ -197,7 +197,7 @@ class TerminalNode(BaseNode):
             return match.group(1).strip().lower() if match else ""
             
         def extract_core_title(title: str) -> str:
-            clean = re.sub(r"^(Node \d+: )?(Activity|Probe|Path)( \d+)?: ", "", title, flags=re.IGNORECASE)
+            clean = re.sub(r"^(Node \d+: )?(Activity|Discovery|Path)( \d+)?: ", "", title, flags=re.IGNORECASE)
             return clean.strip().lower()
 
         current_goal = extract_goal(current_body)

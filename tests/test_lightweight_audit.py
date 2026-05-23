@@ -38,7 +38,7 @@ def test_lightweight_audit_workflow(tmp_path):
         # Node 506 is child of Path 503 and is completed
         {"name": "Node 506: Activity 506: Reflect - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "activity"},
         # Node 505 is child of Path 503 and is completed
-        {"name": "Node 505: Probe 505: Plan - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "probe"},
+        {"name": "Node 505: Discovery 505: Plan - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "discovery"},
         # Completed path (should be filtered out unless active)
         {"name": "Path 100: Previous Task Completed", "status": "Completed", "kind": "path"},
         # Child node of Path 100
@@ -54,7 +54,7 @@ def test_lightweight_audit_workflow(tmp_path):
     code = extract_audit_python_code()
     
     mock_load_state = MagicMock(return_value=state_data)
-    mock_taxonomy = MagicMock(return_value={"terminal": ["activity", "probe"], "non_terminal": ["path"]})
+    mock_taxonomy = MagicMock(return_value={"terminal": ["activity", "discovery"], "non_terminal": ["path"]})
     mock_update_body = MagicMock()
     
     issue_body_content = """
@@ -121,7 +121,7 @@ def test_lightweight_audit_bypasses_network_when_cached(tmp_path):
     mock_nodes = [
         {"name": "Path 503: Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "In Progress", "kind": "path"},
         {"name": "Node 506: Activity 506: Reflect - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "activity"},
-        {"name": "Node 505: Probe 505: Plan - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "probe"}
+        {"name": "Node 505: Discovery 505: Plan - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "discovery"}
     ]
     
     state_data = {
@@ -133,7 +133,7 @@ def test_lightweight_audit_bypasses_network_when_cached(tmp_path):
     code = extract_audit_python_code()
     
     mock_load_state = MagicMock(return_value=state_data)
-    mock_taxonomy = MagicMock(return_value={"terminal": ["activity", "probe"], "non_terminal": ["path"]})
+    mock_taxonomy = MagicMock(return_value={"terminal": ["activity", "discovery"], "non_terminal": ["path"]})
     mock_update_body = MagicMock()
     mock_sub_run = MagicMock()
     
@@ -170,7 +170,7 @@ def test_lightweight_audit_with_new_completed_node(tmp_path):
     mock_nodes = [
         {"name": "Path 503: Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "In Progress", "kind": "path"},
         {"name": "Node 506: Activity 506: Reflect - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "activity"},
-        {"name": "Node 505: Probe 505: Plan - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "probe"},
+        {"name": "Node 505: Discovery 505: Plan - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "discovery"},
         {"name": "Node 507: Activity 507: Verify performance fixes - Optimization of Node Sync Audit Performance (Lightweight Audit)", "status": "Completed", "kind": "activity"}
     ]
     
@@ -183,7 +183,7 @@ def test_lightweight_audit_with_new_completed_node(tmp_path):
     code = extract_audit_python_code()
     
     mock_load_state = MagicMock(return_value=state_data)
-    mock_taxonomy = MagicMock(return_value={"terminal": ["activity", "probe"], "non_terminal": ["path"]})
+    mock_taxonomy = MagicMock(return_value={"terminal": ["activity", "discovery"], "non_terminal": ["path"]})
     mock_update_body = MagicMock()
     
     issue_body_content = """
@@ -250,7 +250,7 @@ def test_lightweight_audit_path_detection_formats(tmp_path):
     code = extract_audit_python_code()
     
     mock_load_state = MagicMock(return_value=state_data)
-    mock_taxonomy = MagicMock(return_value={"terminal": ["activity", "probe"], "non_terminal": ["path"]})
+    mock_taxonomy = MagicMock(return_value={"terminal": ["activity", "discovery"], "non_terminal": ["path"]})
     mock_update_body = MagicMock()
     mock_sub_run = MagicMock()
     
