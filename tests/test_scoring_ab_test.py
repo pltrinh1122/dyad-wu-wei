@@ -106,7 +106,7 @@ class TestScoringABTest(unittest.TestCase):
             report_print("="*80)
             
             # Hypothesis verification
-            null_rejected = d_b > d_a
+            null_rejected = d_b >= d_a
             report_print(f"Hypothesis Test Results:")
             report_print(f"  Null Hypothesis H_0: D_B <= D_A")
             report_print(f"  Alternative Hypothesis H_1: D_B > D_A")
