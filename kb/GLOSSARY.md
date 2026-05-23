@@ -159,27 +159,24 @@ To prevent terminology drift and ensure absolute precision across models and ope
 
 ---
 
-## 🛠️ Managers, Workflows, and Agents
+## 🛠️ Agents, Daemons, and Subagents
 
 ### Agent
 A **non-deterministic reasoning engine** (e.g., an LLM instance). It possesses intent, interprets context, and executes actions to navigate a deterministic Workflow.
 
 ### Workflow
-A **deterministic state machine** and orchestration sequence. It sequences Skills across phase transitions (e.g., the SPAO loop) and maintains the rules and active state context.
-
-### Manager (Orchestrator)
-The **systemic synthesis of Workflow + Agent**. A Manager binds an Agent to a specific Workflow to achieve a domain objective.
-
-### Operator Agent
-The primary **Agent** within a Manager responsible for actively executing the functional logic of the Workflow.
+A **deterministic state machine** and orchestration sequence. It sequences Skills/Drivers across phase transitions (e.g., the SPAO loop) and maintains the rules and active state context.
 
 ### Frontier Agent
 The primary agentic intelligence directly tethered to the human Operator. It stands at the crest of the system's evolution (the `frontier_state.md`), operating the active SPAO loop and materializing code.
 
-### Auditor Agent
-The secondary **Agent** within a Manager responsible for independent, concurrent background verification and invariant checking.
+### Subagent
+An autonomous, LLM-driven entity spawned by the Frontier Agent to handle deterministic, orthogonal execution tasks (e.g., writing tests in parallel) within a sandbox environment. Subagents possess reasoning and tool access but are strictly gated from mutating the active Node without Frontier Agent review.
 
-### Skill
+### Daemon
+A pure, stateless, deterministic background script (e.g., `audit_daemon.py`). Daemons have no LLM backend, no reasoning, and no context window. They operate passively as system sensors (e.g., fetching GitHub PR states) to trigger downstream events.
+
+### Skill (Driver)
 A **pure, atomic, deterministic callable**. It maintains zero state between invocations, has no SPAO/NL stage awareness, and maps to a single external system interaction. Independently testable.
 
 ---
