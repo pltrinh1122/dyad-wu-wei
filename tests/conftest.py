@@ -31,8 +31,8 @@ def mock_fe():
 
 @pytest.fixture
 def mock_telemetry():
-    """Provides a centralized mock for TelemetryManager."""
-    with patch("kernel.daemon_telemetry.TelemetryManager") as m:
+    """Provides a centralized mock for TelemetryDaemon."""
+    with patch("kernel.daemon_telemetry.TelemetryDaemon") as m:
         instance = m.return_value
         yield instance
 
@@ -53,7 +53,7 @@ def mock_backlog():
 def mock_nba():
     """Provides a centralized mock for daemon_nba."""
     with patch("kernel.node_lifecycle.daemon_nba") as m:
-        instance = m.NBAManager.return_value
+        instance = m.NBADaemon.return_value
         instance.evaluate.return_value = {"type": "path_switching", "recommendations": []}
         yield m
 

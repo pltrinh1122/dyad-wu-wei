@@ -53,21 +53,21 @@ def test_reflect_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subpr
     )
 
     # Assert
-    mock_gh.close_issue.assert_any_call("100", "Node completed via Flow-State Manager. Moving to PR.")
+    mock_gh.close_issue.assert_any_call("100", "Node completed via Node Lifecycle Daemon. Moving to PR.")
     mock_gh.close_issue.assert_any_call("181", "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
     mock_fe.set_active_path.assert_called_once_with("/tmp/dummy.md", "None")
     mock_fe.complete_active_node.assert_called_once_with("/tmp/dummy.md", "Node 1: Test", "It worked", ["[x] Good"], clear_pointers=True)
 
 
 def test_sync_and_clean_node_order():
-    manager = MagicMock()
+    daemon = MagicMock()
     with patch("kernel.daemon_node.git_client") as mock_git, \
          patch("kernel.daemon_node.github_client") as mock_gh, \
          patch("kernel.daemon_node.subprocess") as mock_sub, \
-         patch("kernel.daemon_node.HookManager") as mock_hook:
+         patch("kernel.daemon_node.HookDaemon") as mock_hook:
         
-        manager.attach_mock(mock_git, 'git')
-        manager.attach_mock(mock_gh, 'gh')
+        daemon.attach_mock(mock_git, 'git')
+        daemon.attach_mock(mock_gh, 'gh')
         
         mock_gh.get_open_prs.return_value = []
         mock_git.list_merged_branches.return_value = []
@@ -75,7 +75,7 @@ def test_sync_and_clean_node_order():
         
         sync_and_clean_node()
         
-        calls = manager.mock_calls
+        calls = daemon.mock_calls
         filtered_calls = [
             (call[0], call[1], call[2]) for call in calls 
             if call[0] in ('git.fetch', 'git.switch', 'gh.get_open_prs')
@@ -89,21 +89,21 @@ def test_sync_and_clean_node_order():
 
 
 def test_sync_and_clean_node_wip_violation():
-    manager = MagicMock()
+    daemon = MagicMock()
     with patch("kernel.daemon_node.git_client") as mock_git, \
          patch("kernel.daemon_node.github_client") as mock_gh, \
          patch("kernel.daemon_node.subprocess") as mock_sub, \
-         patch("kernel.daemon_node.HookManager") as mock_hook:
+         patch("kernel.daemon_node.HookDaemon") as mock_hook:
         
-        manager.attach_mock(mock_git, 'git')
-        manager.attach_mock(mock_gh, 'gh')
+        daemon.attach_mock(mock_git, 'git')
+        daemon.attach_mock(mock_gh, 'gh')
         
         mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "some-branch"}]
         
         with pytest.raises(Exception, match="WIP-N=1 Violation"):
             sync_and_clean_node()
             
-        calls = manager.mock_calls
+        calls = daemon.mock_calls
         filtered_calls = [
             (call[0], call[1], call[2]) for call in calls 
             if call[0] in ('git.fetch', 'git.switch', 'gh.get_open_prs')

@@ -2,7 +2,7 @@ import yaml
 import os
 from kernel import agent_frontier
 
-class HookManager:
+class HookDaemon:
     """Manages the execution of configurable Sense hooks."""
     
     def __init__(self, config_path="antigravity.yml"):
@@ -35,13 +35,13 @@ class HookManager:
         list_prompts(all_prompts=False, backlog_file=location)
 
     def execute_next_best_action_hook(self, config):
-        """Dynamically evaluates and surfaces the next best action using NBAManager kernel."""
-        from kernel.daemon_nba import NBAManager
+        """Dynamically evaluates and surfaces the next best action using NBADaemon kernel."""
+        from kernel.daemon_nba import NBADaemon
         from drivers import issue_factory
         repository = config.get("repository", "pltrinh1122/agent-antigravity")
         frontier_file = config.get("frontier_file", "artifacts/frontier_state.md")
 
-        nba = NBAManager(repository=repository)
+        nba = NBADaemon(repository=repository)
         result = nba.evaluate(frontier_file=frontier_file)
 
         if result["type"] == "error":

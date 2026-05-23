@@ -6,7 +6,7 @@ import re
 import yaml
 from typing import List
 
-class TestManager:
+class TestDaemon:
     """Manages the execution and orchestration of the test suite."""
 
     def __init__(self, repo_root: str = None):
@@ -169,13 +169,13 @@ from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="act")
 def main():
-    parser = argparse.ArgumentParser(description="SPAO Test Manager")
+    parser = argparse.ArgumentParser(description="SPAO Test Daemon")
     parser.add_argument("targets", nargs="*", help="Test files or directories to run")
     
     args = parser.parse_args()
     
-    manager = TestManager()
-    sys.exit(manager.run(args.targets))
+    daemon = TestDaemon()
+    sys.exit(daemon.run(args.targets))
 
 if __name__ == "__main__":
     main()

@@ -8,7 +8,7 @@ import sys
 from drivers import github_client
 from drivers.issue_factory import render_template
 
-class BacklogManager:
+class BacklogDaemon:
     """Orchestrator for GitHub Backlog operations."""
     
     def __init__(self, repository: str = "pltrinh1122/agent-antigravity"):
@@ -226,7 +226,7 @@ from kernel.daemon_telemetry import record_execution
 @record_execution(stage="sense")
 def main():
     
-    parser = argparse.ArgumentParser(description="Antigravity Backlog Manager")
+    parser = argparse.ArgumentParser(description="Antigravity Backlog Daemon")
     subparsers = parser.add_subparsers(dest="subcommand", required=True)
     
     # list
@@ -251,10 +251,10 @@ def main():
     parser_edit.add_argument("new_body", help="New body content")
     
     args = parser.parse_args()
-    manager = BacklogManager()
+    daemon = BacklogDaemon()
     
     if args.subcommand == "list":
-        items = manager.list(args.label)
+        items = daemon.list(args.label)
         if items:
             print(f"\n📋 Backlog ({len(items)} item(s) pending):")
             for item in items:
@@ -265,14 +265,14 @@ def main():
             
     elif args.subcommand == "new":
         try:
-            url = manager.add(args.type, args.title, args.goal, path_id=args.path, depends_on=args.depends)
+            url = daemon.add(args.type, args.title, args.goal, path_id=args.path, depends_on=args.depends)
             print(url)
         except Exception as e:
             print(str(e))
             sys.exit(1)
             
     elif args.subcommand == "view":
-        data = manager.view(args.issue_id)
+        data = daemon.view(args.issue_id)
         print('='*40)
         print(f"Issue #{args.issue_id}: {data['title']} [OPEN]")
         print('='*40)
@@ -280,7 +280,7 @@ def main():
         print('='*40)
         
     elif args.subcommand == "edit":
-        manager.edit(args.issue_id, args.new_body)
+        daemon.edit(args.issue_id, args.new_body)
 
 if __name__ == "__main__":
     main()
