@@ -401,6 +401,18 @@ class TerminalNode(BaseNode):
             if clear_path:
                 agent_frontier.set_active_path(frontier_file, "None")
             
+            # Sync frontier state updates to worktree so they are committed in the branch
+            try:
+                import shutil
+                for ext in [".yml", ".yml.sha256", ".md"]:
+                    src = os.path.join(main_repo, "artifacts", f"frontier_state{ext}")
+                    dest = os.path.join(worktree_dir, "artifacts", f"frontier_state{ext}")
+                    if os.path.exists(src):
+                        os.makedirs(os.path.dirname(dest), exist_ok=True)
+                        shutil.copy2(src, dest)
+            except Exception as e:
+                print(f"Warning: Failed to sync frontier state files to worktree: {e}")
+            
             # Run SPAO purity validation check before git commit/push
             if self.loop == "spao":
                 self._validate_spao_purity(worktree_path=worktree_dir)
