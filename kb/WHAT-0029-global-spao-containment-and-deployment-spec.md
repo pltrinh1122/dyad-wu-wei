@@ -5,7 +5,7 @@
 To run the SPAO system globally, we must separate the **SPAO Core (source code and modules)** from the **Active Workspace (target project repository)**. 
 
 ### 1.1 Core Environments
-- **`SPAO_CORE_DIR`**: The absolute path to the directory containing the SPAO orchestrator clone. This is where Python modules (`orchestrator/`, `skills/`) are located.
+- **`SPAO_CORE_DIR`**: The absolute path to the directory containing the SPAO orchestrator clone. This is where Python modules (`kernel/`, `drivers/`) are located.
 - **`SPAO_WORKSPACE_DIR`**: The active target repository root where files, ledgers, and backlog items are managed. Defaults to the closest parent directory containing a `.git` folder relative to the current working directory of invocation.
 
 ### 1.2 Path Resolution Mapping
@@ -32,11 +32,11 @@ We will implement a unified `spao` script that acts as the single entry point fo
 
 The unified CLI maps subcommands directly to their respective orchestrator entry points:
 
-- `spao node [args]` ➔ `orchestrator.mgr_node`
-- `spao backlog [args]` ➔ `orchestrator.mgr_backlog`
-- `spao prompt [args]` ➔ `orchestrator.mgr_prompt`
-- `spao rt [args]` ➔ `orchestrator.mgr_rt`
-- `spao test [args]` ➔ `orchestrator.mgr_testing`
+- `spao node [args]` ➔ `kernel.daemon_node`
+- `spao backlog [args]` ➔ `kernel.daemon_backlog`
+- `spao prompt [args]` ➔ `kernel.daemon_prompt`
+- `spao rt [args]` ➔ `kernel.daemon_rt`
+- `spao test [args]` ➔ `kernel.daemon_testing`
 
 ### 2.2 Wrapper Script Design
 
@@ -70,19 +70,19 @@ shift
 
 case "$SUB" in
     node)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_node.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_node.py" "$@"
         ;;
     backlog)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_backlog.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_backlog.py" "$@"
         ;;
     prompt)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_prompt.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_prompt.py" "$@"
         ;;
     rt)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_rt.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_rt.py" "$@"
         ;;
     test)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/orchestrator/mgr_testing.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_testing.py" "$@"
         ;;
     *)
         echo "Usage: spao {node|backlog|prompt|rt|test} [options]"

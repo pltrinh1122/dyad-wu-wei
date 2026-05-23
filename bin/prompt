@@ -19,8 +19,8 @@ fi
 
 CMD=$1
 if [[ "$CMD" == "list" || "$CMD" == "add" || "$CMD" == "process" || "$CMD" == "delete" || "$CMD" == "clean" ]]; then
-    PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m orchestrator.mgr_prompt "$@"
+    PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m kernel.daemon_prompt "$@"
 else
     # Legacy fallback: assume they just typed ./prompt "some text"
-    PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m orchestrator.mgr_prompt add "$*"
+    PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m kernel.daemon_prompt add "$*"
 fi

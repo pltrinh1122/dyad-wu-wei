@@ -6,7 +6,7 @@ This document specifies the technical design and API constraints for programmati
 ## Component Specification
 
 ### Backlog Manager (`BacklogManager.create`)
-The `BacklogManager.create` function in `orchestrator/mgr_backlog.py` is the entry point for declaring nodes.
+The `BacklogManager.create` function in `kernel/daemon_backlog.py` is the entry point for declaring nodes.
 
 #### Parameters:
 - `node_type`: `str` (e.g. `'path'`, `'probe'`, `'activity'`)

@@ -13,4 +13,4 @@ else
     PYTHON_EXE="python3"
 fi
 
-PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m skills.git_wrapper "$@"
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m drivers.git_wrapper "$@"

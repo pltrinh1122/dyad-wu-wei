@@ -1,7 +1,7 @@
 # WHY-0026: Abstraction Doctrine Remediation & Atomic Transaction Lifecycle
 
 ## Context & Rationale
-While Path 341 introduced wrapper interfaces for basic Git and GitHub operations, our subsequent audit surfaced that several orchestrator files (`node_lifecycle.py`, `mgr_node.py`, and `mgr_telemetry.py`) still execute raw shell commands directly. This bypasses the Abstraction Doctrine, exposing the system to:
+While Path 341 introduced wrapper interfaces for basic Git and GitHub operations, our subsequent audit surfaced that several orchestrator files (`node_lifecycle.py`, `daemon_node.py`, and `daemon_telemetry.py`) still execute raw shell commands directly. This bypasses the Abstraction Doctrine, exposing the system to:
 - Test fragility due to incomplete subprocess mocking.
 - Inconsistent state tracking between git, frontier state files, and remote GitHub issues.
 
@@ -14,9 +14,9 @@ We need a formal design to:
 ## Architectural Decision
 
 ### 1. Complete Abstraction Doctrine Remediation
-We will expand the wrappers under `skills/` to encapsulate all required operations, fully removing direct subprocess invocations of `git` and `gh` from the orchestrator layer.
+We will expand the wrappers under `drivers/` to encapsulate all required operations, fully removing direct subprocess invocations of `git` and `gh` from the orchestrator layer.
 
-#### Target Extensions for `skills/git_client.py`:
+#### Target Extensions for `drivers/git_client.py`:
 - `switch(branch: str)`: Encapsulates `git switch`.
 - `pull(remote: str, branch: str, prune: bool = False)`: Encapsulates pulling with optional pruning.
 - `list_merged_branches() -> list[str]`: Encapsulates querying merged local branches.
@@ -24,7 +24,7 @@ We will expand the wrappers under `skills/` to encapsulate all required operatio
 - `worktree_prune()`: Encapsulates pruning of dead worktrees.
 - `get_git_common_dir() -> str` & `get_show_toplevel() -> str`: Standardizes repository path resolution.
 
-#### Target Extensions for `skills/github_client.py`:
+#### Target Extensions for `drivers/github_client.py`:
 - Standardize the `get_issue_details` function to cleanly read specific issue schemas.
 
 ---

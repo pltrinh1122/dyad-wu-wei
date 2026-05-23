@@ -1,8 +1,0 @@
-# Test Governance Configuration
-# Used by mgr_testing.py to enforce architectural invariants.
-
-guardrails:
-  patch_density:
-    threshold: 10
-    strict: true # If true, exceeds threshold fails the test suite
-    exclude_files: []

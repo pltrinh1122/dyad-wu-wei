@@ -6,7 +6,7 @@ During the execution of the metasystem integrity check and backlog synchronizati
 Historically, this check has suffered from extremely high latency (typically taking upwards of 2 minutes to complete).
 
 ## Problem Statement
-The latency of `./bin/node sync` acts as a direct bottleneck on the inner-loop execution velocity (violating SG-0003). Profiling reveals that the primary source of latency is `skills/github_client.py:list_issues_by_label`. 
+The latency of `./bin/node sync` acts as a direct bottleneck on the inner-loop execution velocity (violating SG-0003). Profiling reveals that the primary source of latency is `drivers/github_client.py:list_issues_by_label`. 
 
 The function was designed to:
 1. List issues matching a label by calling `gh issue list --label <label> --state open --json number,title,url`.

@@ -2,7 +2,7 @@
 
 <!-- MACHINE-PARSE CONTRACT
   Format:    GitHub Flavored Markdown pipe-delimited tables
-  Consumers: orchestrator/mgr_strategic.py (578-B enforcement gate)
+  Consumers: kernel/daemon_strategic.py (578-B enforcement gate)
   Parse hint: The indices begin after the respective headings.
               Each data row (non-header, non-separator) is one authoritative record.
 -->
@@ -10,7 +10,7 @@
 ## Classification
 - **Type**: WHAT (Structural Fact)
 - **ID**: WHAT-0065
-- **Author**: agent-platform
+- **Author**: agent-ziran
 - **Created**: 2026-05-21 (Node 642, Path 640)
 - **Depends on**: WHAT-0062
 - **Decision record**: WHY-0065
@@ -33,7 +33,7 @@ When the CLI alignment gate evaluates a node transition, it MUST:
 
 | domain_id         | owner_persona   | description                                      |
 |-------------------|-----------------|--------------------------------------------------|
-| domain:platform   | agent-platform  | Horizontal kernel, a2ai, o2ai, shared observability |
+| domain:platform   | agent-ziran  | Horizontal kernel, a2ai, o2ai, shared observability |
 
 ---
 
@@ -48,3 +48,5 @@ When the CLI alignment gate evaluates a node transition, it MUST:
 | 588     | domain:platform   | claimed | 578-C: Integrate Persona-Aware Filtering into NBA Scorer |
 | 587     | domain:platform   | claimed | Path 578-B: Implement Persona and Path Alignment Gates in CLI Runtime |
 | 640     | domain:platform   | claimed | Codify Platform Domain Path Ownership Index |
+| 716     | domain:platform   | claimed | Remediate Synthesized Lexical Guards in Audit Config |
+| 727     | domain:platform   | claimed | Prevent Overly Broad Synthesized Lexical Guards |

@@ -22,7 +22,7 @@ To generalize the infrastructure, we must elevate the abstraction to pure graph 
 By re-architecting the system to recognize `TerminalNode` and `NonTerminalNode` as the fundamental base classes, we achieve ultimate reusability:
 
 1. **The SPAO Contract is tied to the Base Node**: The SPAO loop (`bin/node plan`, `checkout`, `reflect`), locking mechanisms (GitHub Labels), and frontier state tracking apply globally to the `TerminalNode` abstraction, regardless of its domain implementation.
-2. **Domain-Specific Typing**: `Activity` and `Probe` become mere string labels or subclasses injected by the domain configuration. The core orchestrator (`mgr_node`) no longer cares *what* the node is, only that it is a `TerminalNode` requiring execution.
+2. **Domain-Specific Typing**: `Activity` and `Probe` become mere string labels or subclasses injected by the domain configuration. The core orchestrator (`daemon_node`) no longer cares *what* the node is, only that it is a `TerminalNode` requiring execution.
 
 ## 4. Conclusion
 Adopting the Terminal vs Non-Terminal abstraction perfectly decouples the orchestration engine from the SDLC domain. It allows the Antigravity infrastructure to be dropped into any generic problem space (`agent-travel`, `agent-research`, `agent-finance`) simply by defining new domain-specific labels that inherit from the universal Terminal Node contract.

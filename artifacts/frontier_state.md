@@ -403,13 +403,13 @@
 
 ## Activity 113: List items in prompt queue
 - **Status**: Completed
-- **Learnings & Context**: Abstracted shell wrapper logic into formal mgr_prompt python module
+- **Learnings & Context**: Abstracted shell wrapper logic into formal daemon_prompt python module
 - **Feedforward Invariants**:
   - `All CLI domains must be backed by a native mgr-* orchestrator`
 
 ## Activity 109: Link consumed prompts to PR bodies
 - **Status**: Completed
-- **Learnings & Context**: Integrated mgr_prompt into reflect phase to automatically trace and consume prompts from the YAML backlog.
+- **Learnings & Context**: Integrated daemon_prompt into reflect phase to automatically trace and consume prompts from the YAML backlog.
 - **Feedforward Invariants**:
   - `All consumed prompts must map to a PR body`
 
@@ -422,7 +422,7 @@
 
 ## Activity 127: Implement bin/rt formal primitive
 - **Status**: Completed
-- **Learnings & Context**: Created mgr_rt.py orchestrator and bin/rt adapter. Learned that git push origin main from a feature branch pushes the local main, not the checked-out branch, requiring strict branch verification.
+- **Learnings & Context**: Created daemon_rt.py orchestrator and bin/rt adapter. Learned that git push origin main from a feature branch pushes the local main, not the checked-out branch, requiring strict branch verification.
 - **Feedforward Invariants**:
   - `Hot-fixes must strictly execute only on the main branch to prevent cross-branch contamination`
 
@@ -477,7 +477,7 @@
 - **Status**: Completed
 - **Learnings & Context**: Successfully implemented the bin/prompt clean feature. It purges all consumed prompts non-interactively to facilitate automated maintenance.
 - **Feedforward Invariants**:
-  - `Added clean_prompts function in mgr_prompt.py`
+  - `Added clean_prompts function in daemon_prompt.py`
   - `Registered clean subcommand in argparse and bin/prompt adapter`
   - `Verified that consumed prompts are permanently removed from the yaml file`
 
@@ -568,7 +568,7 @@
 - **Status**: Completed
 - **Learnings & Context**: Implemented the process subcommand for bin/prompt to allow manual consumption of prompts.
 - **Feedforward Invariants**:
-  - `[x] Process logic implemented in mgr_prompt.py`
+  - `[x] Process logic implemented in daemon_prompt.py`
   - `[x] bin/prompt wrapper updated`
 
 ## Codify Manager and Dual-Agent Ontology
@@ -592,13 +592,13 @@
 
 ## Execute Architectural Migration of mgr-* Orchestrators
 - **Status**: Completed
-- **Learnings & Context**: Migrated flow_state_manager.py natively into orchestrator/mgr_node.py to formally establish the Manager pattern. Refactored bin/node as a proxy wrapper and added argparse.
+- **Learnings & Context**: Migrated flow_state_manager.py natively into orchestrator/daemon_node.py to formally establish the Manager pattern. Refactored bin/node as a proxy wrapper and added argparse.
 - **Feedforward Invariants**:
   - `Manager components must inherently own their workflows.`
 
 ## 116-run-tests-abstraction
 - **Status**: Completed
-- **Learnings & Context**: Integrated test execution natively into mgr_node to align with domain manager separation of concerns. Fixed a critical bug in testing_harness.py where the exact exit code from pytest was swallowed, replacing capture_output with streaming output.
+- **Learnings & Context**: Integrated test execution natively into daemon_node to align with domain manager separation of concerns. Fixed a critical bug in testing_harness.py where the exact exit code from pytest was swallowed, replacing capture_output with streaming output.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -637,10 +637,10 @@
 
 ## Activity 187: Implement Prompt Queue Hook
 - **Status**: Completed
-- **Learnings & Context**: Implemented the execute_prompt_queue_hook function in sense_hooks.py to consume the configurable backlog_file parameter. Updated mgr_prompt.py to support non-default backlog file resolution, enabling dynamic configuration in the HookManager.
+- **Learnings & Context**: Implemented the execute_prompt_queue_hook function in sense_hooks.py to consume the configurable backlog_file parameter. Updated daemon_prompt.py to support non-default backlog file resolution, enabling dynamic configuration in the HookManager.
 - **Feedforward Invariants**:
   - `[x] Prompt Queue hooked into Sense cycle`
-  - `[x] mgr_prompt primitives support custom paths`
+  - `[x] daemon_prompt primitives support custom paths`
 
 ## Activity 189: Implement Next-Best-Action Skill and Hook
 - **Status**: Completed
@@ -672,7 +672,7 @@
 
 ## Activity 195: Abstract State Changes to node set-status
 - **Status**: Completed
-- **Learnings & Context**: Implemented BaseNode set_status and set_classification to map logical statuses to github labels, and exposed them via mgr_node CLI
+- **Learnings & Context**: Implemented BaseNode set_status and set_classification to map logical statuses to github labels, and exposed them via daemon_node CLI
 - **Feedforward Invariants**:
   - `set_status API exists`
   - `bin/node set-status CLI wrapper exists`
@@ -872,7 +872,7 @@
 
 ## Refactor Test Runner & Legacy Proxies
 - **Status**: Completed
-- **Learnings & Context**: Successfully migrated testing logic to orchestrator/mgr_testing.py and decommissioned skills/nba_evaluator.py and skills/testing_harness.py. Updated node_lifecycle and mgr_node to align with the new ontology.
+- **Learnings & Context**: Successfully migrated testing logic to orchestrator/daemon_testing.py and decommissioned skills/nba_evaluator.py and skills/testing_harness.py. Updated node_lifecycle and daemon_node to align with the new ontology.
 - **Feedforward Invariants**:
   - `[x] TestManager materialized`
   - `[x] bin/run-tests purified`
@@ -889,7 +889,7 @@
 
 ## Activity 280: Telemetry Decorator
 - **Status**: Completed
-- **Learnings & Context**: Implemented @record_execution decorator for automated telemetry. Refactored mgr_node and node_lifecycle to use it. Expanded schema for hierarchical reporting.
+- **Learnings & Context**: Implemented @record_execution decorator for automated telemetry. Refactored daemon_node and node_lifecycle to use it. Expanded schema for hierarchical reporting.
 - **Feedforward Invariants**:
   - `[x] TDD: 91 tests pass`
 
@@ -941,7 +941,7 @@
 
 ## Plan - Regression Testing Architecture Hardening
 - **Status**: Completed
-- **Learnings & Context**: Implemented centralized test support layer (conftest.py, harness.py) and integrated a mandatory patch-density guardrail into mgr_testing.py. Refactored major test files to comply with orthogonality requirements.
+- **Learnings & Context**: Implemented centralized test support layer (conftest.py, harness.py) and integrated a mandatory patch-density guardrail into daemon_testing.py. Refactored major test files to comply with orthogonality requirements.
 - **Feedforward Invariants**:
   - `Test files MUST NOT exceed 10 patches`
   - `Standardize on pytest fixtures`
@@ -954,7 +954,7 @@
 
 ## Reflect - Regression Testing Architecture Hardening (Orthogonality & Reuse)
 - **Status**: Completed
-- **Learnings & Context**: Refactored tests/test_mgr_node.py, tests/test_github_client.py, and tests/test_mgr_backlog.py to replace verbose manual patching with clean pytest fixtures defined in tests/conftest.py. Implemented a Patch Density Auditor in orchestrator/mgr_testing.py running on configuration limits defined in test_config.yml. This successfully reduced regression testing overhead, optimized test execution, and instituted automated governance checks to prevent future @patch bloat. Also verified node prefixing logic in skills/frontier_editor.py.
+- **Learnings & Context**: Refactored tests/test_daemon_node.py, tests/test_github_client.py, and tests/test_daemon_backlog.py to replace verbose manual patching with clean pytest fixtures defined in tests/conftest.py. Implemented a Patch Density Auditor in orchestrator/daemon_testing.py running on configuration limits defined in test_config.yml. This successfully reduced regression testing overhead, optimized test execution, and instituted automated governance checks to prevent future @patch bloat. Also verified node prefixing logic in skills/frontier_editor.py.
 - **Feedforward Invariants**:
   - `Test mock density remains under configured limit (10 patches/file)`
   - `All tests pass with 100% success rate`
@@ -1010,7 +1010,7 @@
 
 ## Node 344: Activity 344: Reflect - Spike Path: Abstraction Doctrine - Python API for git and gh
 - **Status**: Completed
-- **Learnings & Context**: Implemented skills/git_client.py wrapping all git commands in safe subprocess functions. Refactored orchestrator/node_lifecycle.py and orchestrator/mgr_rt.py to call git_client instead of direct CLI subprocess execution, and verified execution via test suite.
+- **Learnings & Context**: Implemented skills/git_client.py wrapping all git commands in safe subprocess functions. Refactored orchestrator/node_lifecycle.py and orchestrator/daemon_rt.py to call git_client instead of direct CLI subprocess execution, and verified execution via test suite.
 - **Feedforward Invariants**:
   - - '`skills/git_client.py wraps add
   - `commit`
@@ -1233,8 +1233,8 @@
 - **Status**: Completed
 - **Learnings & Context**: Implemented the Backlog Node Factory robustness improvements: duplicate reuse (idempotency), parent path verification, dynamic labeling from node.yml, and active dependency checking during plan-start. Added 6 new unit tests and verified all 130 tests pass successfully.
 - **Feedforward Invariants**:
-  - `[x] Implemented register_backlog_node in mgr_frontier.py`
-  - `[x] Implemented duplicate checks and parent path verification in mgr_backlog.py`
+  - `[x] Implemented register_backlog_node in agent_frontier.py`
+  - `[x] Implemented duplicate checks and parent path verification in daemon_backlog.py`
   - `[x] Implemented dependency validation in node_lifecycle.py`
   - `[x] Added 6 new unit tests covering all features`
   - `[x] Verified 130 tests pass successfully`
@@ -1446,7 +1446,7 @@
 
 ## Node 468: Activity 468: Reflect - Path: SHAR Compilation CLI & Retrospective Execution
 - **Status**: Completed
-- **Learnings & Context**: Implemented bin/retro CLI and orchestrator/mgr_retro.py compilation engine, resolving worktree paths, and compiled the retrospective report for Paths 404 to 461.
+- **Learnings & Context**: Implemented bin/retro CLI and orchestrator/daemon_retro.py compilation engine, resolving worktree paths, and compiled the retrospective report for Paths 404 to 461.
 - **Feedforward Invariants**:
   - `All tests pass and the retrospective report is compiled under artifacts/`
 
@@ -1728,10 +1728,10 @@
   - `[ ]` None
 
 ## Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity Resolution
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Completed
+- **Learnings & Context**: Completed manually
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[ ] None`
 
 ## Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution
 - **Status**: Completed
@@ -1769,8 +1769,129 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 717: Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: Completed
+- **Learnings & Context**: Confirmed alignment
+- **Feedforward Invariants**:
+  - `[ ] None`
+
+## Node 718: Probe 718: Plan - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: Completed
+- **Learnings & Context**: Created Node 725 Act
+- **Feedforward Invariants**:
+  - `[ ] None`
+
+## Node 725: Activity 725: Act - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 716: Path 716: Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: Completed
+- **Learnings & Context**: Remediated directly via hotfix
+- **Feedforward Invariants**:
+  - `[x] None`
+
+## Node 727: Path 727: Prevent Overly Broad Synthesized Lexical Guards
+- **Status**: Backlog
+- **Learnings & Context**: Refactor synthesize_rule in skills/knowledge_accrual_skill.py to ensure it does not synthesize overly broad lexical guards (e.g., single digits or absolute file paths) by validating the target term against a strict set of domain-specific lexical scoping constraints.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 728: Probe 728: Align - Prevent Overly Broad Synthesized Lexical Guards
+- **Status**: Backlog
+- **Learnings & Context**: Align on the philosophical and technical intent for Prevent Overly Broad Synthesized Lexical Guards.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 729: Probe 729: Plan - Prevent Overly Broad Synthesized Lexical Guards
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Prevent Overly Broad Synthesized Lexical Guards.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 730: Activity 730: Reflect - Prevent Overly Broad Synthesized Lexical Guards
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Prevent Overly Broad Synthesized Lexical Guards.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 732: Path 732: Formalize The Shaping Sequence
+- **Status**: Backlog
+- **Learnings & Context**: Codify the sequence to instantiate new Dao instances.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 733: Probe 733: Align - Formalize The Shaping Sequence
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 734: Path 734: Restructure Repository for Dao Portability
+- **Status**: Backlog
+- **Learnings & Context**: Decouple the generic Dao engine from project-specific logic to allow clean instantiation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 735: Probe 735: Plan - Formalize The Shaping Sequence
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Formalize The Shaping Sequence.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 736: Probe 736: Align - Restructure Repository for Dao Portability
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 737: Activity 737: Reflect - Formalize The Shaping Sequence
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Formalize The Shaping Sequence.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 738: Probe 738: Plan - Restructure Repository for Dao Portability
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 739: Activity 739: Reflect - Restructure Repository for Dao Portability
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Restructure Repository for Dao Portability.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 733: Align - Formalize The Shaping Sequence
+- **Status**: Completed
+- **Learnings & Context**: 
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 736: Align - Restructure Repository for Dao Portability
+- **Status**: Completed
+- **Learnings & Context**: The DZ-CIL is an OS. Its physical manifestation is kernel, drivers, bin, kb, artifacts, and tests. We do not need arbitrary nested directories. Everything in CWD is an artificial manifestation of The Shaping.
+- **Feedforward Invariants**:
+  - `None explicitly updated`
+  - `but reaffirmed Dao fa Ziran (The Dao follows Ziran).`
+
+## Probe 770: Align - Autonomous Learning Loop
+- **Status**: Completed
+- **Learnings & Context**: Defined the architectural necessity and technical intent for the Autonomous Learning Loop. Materialized WHY-0082 and spawned Activity 806 to implement the retro subcommand. Handled status latency correction via WHY-0081 and retro-770.
+- **Feedforward Invariants**:
+  - `Autonomous Learning Loop must trigger for soft-policy chat corrections. State retrieval must be deterministic.`
+
 ## Current Active Path
-**626**
+None
 
 ## Current Active Node
-**Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity Resolution**
+None
