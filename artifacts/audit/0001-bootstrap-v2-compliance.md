@@ -11,13 +11,13 @@ This audit verifies that the `agent-antigravity` meta-repository strictly compli
 ## Verification Checklist
 
 ### 1. Persona & Memory Invariants
-- `[PASS]` **`AGENT.md`**: Present at the repository root and correctly defines the Meta-Orchestrator persona.
+- `[PASS]` **`AGENT.md`**: Present at the repository root and correctly defines the Frontier Agent persona.
 - `[PASS]` **`artifacts/frontier_state.md`**: Present, initialized, and actively tracking the topological frontier.
 
 ### 2. Agentic Architecture Scaffolding
 - `[PASS]` **`artifacts/`**: RAM pillar exists.
-- `[PASS]` **`skills/`**: Hands pillar exists.
-- `[PASS]` **`orchestrator/`**: Engine pillar exists.
+- `[PASS]` **`drivers/`**: Hands pillar exists.
+- `[PASS]` **`kernel/`**: Engine pillar exists.
 - `[PASS]` **`kb/`**: ROM pillar exists (containing `WHAT/WHY/HOW` primitives).
 
 ### 3. Flow-State Governance

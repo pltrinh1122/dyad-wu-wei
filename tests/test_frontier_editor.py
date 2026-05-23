@@ -2,7 +2,7 @@ import os
 import pytest
 import textwrap
 import hashlib
-from skills.frontier_editor import (
+from drivers.frontier_editor import (
     read_active_node,
     complete_active_node,
     set_active_node,
@@ -10,7 +10,7 @@ from skills.frontier_editor import (
     read_active_path,
     set_active_path
 )
-from orchestrator import mgr_frontier
+from kernel import agent_frontier
 
 @pytest.fixture
 def dummy_frontier(tmp_path):
@@ -31,7 +31,7 @@ def dummy_frontier(tmp_path):
     (tmp_path / "frontier_state.yml.sha256").write_text(checksum + "\n")
     
     # Also write initial markdown representation so it exists
-    mgr_frontier.write_markdown_derived(str(filepath), str(tmp_path / "frontier_state.md"))
+    agent_frontier.write_markdown_derived(str(filepath), str(tmp_path / "frontier_state.md"))
     
     return str(tmp_path / "frontier_state.md")
 
@@ -97,18 +97,18 @@ def test_checksum_mismatch(dummy_frontier):
     with open(yml_path, "a") as f:
         f.write("\n# manual edit\n")
         
-    with pytest.raises(mgr_frontier.StateCorruptionError) as exc_info:
+    with pytest.raises(agent_frontier.StateCorruptionError) as exc_info:
         read_active_node(dummy_frontier)
         
     assert "checksum mismatch" in str(exc_info.value)
     
     # Rehash and check if it resolves
-    mgr_frontier.rehash(dummy_frontier)
+    agent_frontier.rehash(dummy_frontier)
     node = read_active_node(dummy_frontier)
     assert node == "Node 2: Do the next thing"
 
 def test_register_backlog_node(dummy_frontier):
-    mgr_frontier.register_backlog_node(
+    agent_frontier.register_backlog_node(
         dummy_frontier,
         node_id=45,
         node_title="Backlog Task",

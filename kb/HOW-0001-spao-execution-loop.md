@@ -1,6 +1,6 @@
 # HOW-0001: The SPAO + HITL Execution Loop
 
-This document contains the strict, deterministic instructions (The "How") for operating the Meta-Orchestrator loop.
+This document contains the strict, deterministic instructions (The "How") for operating the Frontier Agent loop.
 
 ## The Execution Loop Steps
 The master objective is decomposed into discrete topological **Nodes**. For each Node, the Agent **must** execute the following loop in exact order:
@@ -9,8 +9,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - Execute the shell script: `./bin/node sync` to fetch `main`, safely delete old merged branches, and **surface any pending backlog items**.
    - Read `artifacts/frontier_state.md` and the cloud-hosted Path Meta-Index (GH Issue).
    - Validate that the feedforward invariants from the previous node are met.
-   - If backlog items are surfaced, pull the highest-priority item as the next Node (unless the Operator specifies otherwise).
-   - **The Sense-Gate Invariant:** After executing SENSE, the Agent MUST HALT and await explicit operator approval before calling `plan-start` on the next node. Autonomous transition is forbidden.
+   - **The WIP Invariant:** The system operates strictly on a single node execution thread (`WIP-N=1` and `WIP-P=1`). Node branches MUST be uniquely derived from their execution path (`node/<id>-...`).
    - **Path Initialization Invariant:** When embarking on a new Path, the Agent MUST execute the **Dual-Probe Initialization** pattern before advancing to any codebase-mutating Activities.
    - **Backlog Generation Invariant:** When the Agent generates new items for the backlog (e.g., scoping activities), it MUST utilize the `--path` argument in `bin/backlog new` to bind it to a parent Path, preventing Orphaned Nodes.
 

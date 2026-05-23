@@ -37,7 +37,7 @@ case "$SUBCOMMAND" in
 import sys
 import subprocess
 import json
-from skills.github_client import update_issue_body
+from drivers.github_client import update_issue_body
 
 node_title = sys.argv[1]
 issue_id = sys.argv[2]
@@ -66,7 +66,7 @@ import sys
 import subprocess
 import json
 import re
-from skills.github_client import update_issue_body
+from drivers.github_client import update_issue_body
 
 issue_id = sys.argv[1]
 path_issue = sys.argv[2]
@@ -96,7 +96,7 @@ else:
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
 import json
-from orchestrator.mgr_frontier import append_active_node
+from kernel.agent_frontier import append_active_node
 
 issue_id = int(sys.argv[1])
 node_title = sys.argv[2]
@@ -127,7 +127,7 @@ print(f"{node_title} set active in local ledger {filepath}!")
         FRONTIER_FILE="${2:-artifacts/frontier_state.md}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c "
 import sys
-from orchestrator.mgr_frontier import set_active_path
+from kernel.agent_frontier import set_active_path
 
 path_name = sys.argv[1]
 filepath = sys.argv[2]
@@ -144,19 +144,19 @@ import re
 import json
 import os
 import subprocess
-from skills import github_client
-from skills.file_locker import lock_file
-from orchestrator import mgr_frontier
-from orchestrator.mgr_backlog import BacklogManager
+from drivers import github_client
+from drivers.file_locker import lock_file
+from kernel import agent_frontier
+from kernel.daemon_backlog import BacklogDaemon
 
 filepath = sys.argv[1]
 
 # Load taxonomy to find non-terminal types
-taxonomy = BacklogManager().load_node_taxonomy()
+taxonomy = BacklogDaemon().load_node_taxonomy()
 non_terminals = taxonomy.get("non_terminal", ["path"])
 
 # Load frontier state
-state_data = mgr_frontier.load_state(filepath)
+state_data = agent_frontier.load_state(filepath)
 nodes = state_data.get("nodes", [])
 current_active_path_id = state_data.get("current_active_path")
 
@@ -176,7 +176,7 @@ def extract_node_id(name: str) -> str | None:
     match = re.search(r"\b(?:Node|Activity|Probe|Path)\s*(\d+)\b", name, re.IGNORECASE)
     if match:
         return match.group(1)
-    return mgr_frontier.extract_path_id(name)
+    return agent_frontier.extract_path_id(name)
 
 # Find all completed nodes in the frontier
 completed_nodes = []
@@ -330,7 +330,7 @@ print("Audit complete.")
         FRONTIER_FILE="${1:-artifacts/frontier_state.yml}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
-from orchestrator.mgr_frontier import rehash
+from kernel.agent_frontier import rehash
 rehash(sys.argv[1])
 print(f"Successfully rehashed {sys.argv[1]}")
 ' "$FRONTIER_FILE"
@@ -339,7 +339,7 @@ print(f"Successfully rehashed {sys.argv[1]}")
         FRONTIER_FILE="${1:-artifacts/frontier_state.yml}"
         PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -c '
 import sys
-from orchestrator.mgr_frontier import load_state, verify_checksum
+from kernel.agent_frontier import load_state, verify_checksum
 try:
     verify_checksum(sys.argv[1])
     load_state(sys.argv[1])

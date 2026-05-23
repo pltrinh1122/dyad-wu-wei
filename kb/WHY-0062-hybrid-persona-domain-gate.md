@@ -98,7 +98,7 @@ At plan-start:
 
 **Layer separation is intentional and enforced by domain ownership:**
 - agent-SG5 (SG-0005) owns and maintains the ROM (WHAT-0062, agent_id standard)
-- agent-SG2 (SG-0002) owns and maintains the enforcement code (mgr_strategic.py,
+- agent-SG2 (SG-0002) owns and maintains the enforcement code (daemon_strategic.py,
   node_lifecycle.py, PersonaScopeConflictException)
 - agent-SG1 (SG-0001) extends the NBA evaluator to filter path recommendations
   by ownership, preventing incorrect goal surfacing before plan-start is even

@@ -6,4 +6,4 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 export PYTHONPATH="$REPO_ROOT"
 
 # Delegate to the orchestrator
-python3 "$REPO_ROOT/orchestrator/mgr_telemetry.py" "$@"
+python3 "$REPO_ROOT/kernel/daemon_telemetry.py" "$@"

@@ -2,7 +2,7 @@
 
 ## 1. Interface Design
 
-The scoring engine will be implemented in `orchestrator/nba_scorer.py` under the class `NBAScorer`. 
+The scoring engine will be implemented in `kernel/nba_scorer.py` under the class `NBAScorer`. 
 
 ```python
 class NBAScorer:

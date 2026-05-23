@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import MagicMock
-from skills import git_client
+from drivers import git_client
 
 def test_git_add(mock_subprocess):
     git_client.add(["file1.txt", "file2.txt"], cwd="/some/dir")

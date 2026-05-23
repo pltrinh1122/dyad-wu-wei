@@ -17,7 +17,7 @@ By defining the Platform Domain horizontally, we achieve true **Domain-Driven De
 
 ## 3. Rationale for TG-PLAT-02: DAG Concurrency Lock Enforcement (a2ai)
 *   **The Problem**: Multiple agents executing asynchronously will eventually attempt to transition or mutate the same topological node or path (e.g., two agents trying to `plan-start` the same backlog issue).
-*   **The Solution**: The Platform Domain owns the concurrency locks (`skills/file_locker.py`), establishing a single source of truth for execution state.
+*   **The Solution**: The Platform Domain owns the concurrency locks (`drivers/file_locker.py`), establishing a single source of truth for execution state.
 *   **The Trade-off**: File-based locking introduces minimal latency and a theoretical risk of stale locks if an agent hard-crashes. This is mitigated by robust timeout implementations and atomic locking mechanisms, which are strictly preferable to version control collisions in the artifacts tree.
 
 ## 4. Rationale for TG-PLAT-03: Operator Intent Parser (o2ai)

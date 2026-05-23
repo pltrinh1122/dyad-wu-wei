@@ -29,8 +29,8 @@ Because terminal nodes do not natively store a hard back-link to their parent Pa
 
 #### B. Enforcement Points
 The guardrail will be integrated into:
-1.  **Node Planning & Checkout**: `plan_start` and `checkout` methods in `orchestrator/node_lifecycle.py` will verify that the parent Path ID of the target terminal node is listed in the `prioritized_paths` of an `Active` goal.
-2.  **Path Activation**: The `set_active_path` command in `orchestrator/mgr_frontier.py` will verify that any new active path is prioritized.
+1.  **Node Planning & Checkout**: `plan_start` and `checkout` methods in `kernel/node_lifecycle.py` will verify that the parent Path ID of the target terminal node is listed in the `prioritized_paths` of an `Active` goal.
+2.  **Path Activation**: The `set_active_path` command in `kernel/agent_frontier.py` will verify that any new active path is prioritized.
 
 #### C. Error Handling
 If verification fails, the orchestrator will print a descriptive alignment failure message and exit with code `1`, preventing branch checkout, planning locks, or active path updates.

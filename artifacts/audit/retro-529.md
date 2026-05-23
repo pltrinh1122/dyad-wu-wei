@@ -17,7 +17,7 @@
 
 ## 3. Anomaly Classification Taxonomy (ACT) Log
 - **Tier 1: Mishaps (Actual Failures)**:
-  - Local TDD run failed due to AssertionError in `tests/test_audit_daemon.py` and `tests/test_mgr_node.py`.
+  - Local TDD run failed due to AssertionError in `tests/test_audit_daemon.py` and `tests/test_daemon_node.py`.
 - **Tier 2: Close Calls (Latent Gaps)**:
   - Mock signatures did not automatically align with the new implementation.
 - **Tier 3: Precursors (Weak Signals / Mundane Seeds)**:
@@ -41,7 +41,7 @@
 
 ## 6. Closed-Loop Policy Infusion
 - **Rule/Template Updates**: None
-- **Code/Guardrail Updates**: Updated `tests/test_audit_daemon.py`, `tests/test_git_client.py`, and `tests/test_mgr_node.py` to match new `git_client` functionality.
+- **Code/Guardrail Updates**: Updated `tests/test_audit_daemon.py`, `tests/test_git_client.py`, and `tests/test_daemon_node.py` to match new `git_client` functionality.
 
 ---
 

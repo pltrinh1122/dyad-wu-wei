@@ -1,6 +1,6 @@
 # WHAT-0054: Metasystem Integrity / Node Sync Latency Optimization — Specification
 
-This specification defines the single-query optimization mechanism for `skills/github_client.py:list_issues_by_label` to resolve the inner-loop latency bottleneck.
+This specification defines the single-query optimization mechanism for `drivers/github_client.py:list_issues_by_label` to resolve the inner-loop latency bottleneck.
 
 ## 1. Current Implementation Bottleneck
 The function `list_issues_by_label` performs the following steps:
@@ -27,7 +27,7 @@ To achieve $O(1)$ query scaling and maximize performance, the process is consoli
 
 ## 3. Reference Implementation Outline
 
-The optimized implementation of `list_issues_by_label` inside `skills/github_client.py` will have the following signature and body:
+The optimized implementation of `list_issues_by_label` inside `drivers/github_client.py` will have the following signature and body:
 
 ```python
 @record_execution(stage="skill")

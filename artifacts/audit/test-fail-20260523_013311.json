@@ -1,0 +1,13 @@
+{
+    "timestamp": "2026-05-23T01:33:11.808022+00:00",
+    "failures": [
+        {
+            "test_name": "test_load_nodes_and_paths",
+            "file_path": "tests/test_daemon_retro.py",
+            "line_number": 27,
+            "error_type": "AssertionError",
+            "error_message": "assert '404' in set()",
+            "traceback": "def test_load_nodes_and_paths():\n        fake_frontier = {\n            \"nodes\": [\n                {\"name\": \"Node 404: S\" + \"pike Path: Strategic Intent Tracking\"},\n                {\"name\": \"Node 405: Probe 405: Align - Strategic Intent Tracking\"},\n                {\"name\": \"Node 412: Path 412: Verify Goals\"},\n                {\"name\": \"Node 413: Probe 413: Align - Verify Goals\"},\n                {\"name\": \"Node 420: Path 420: TBD\"},\n            ]\n        }\n        fake_yaml = yaml.dump(fake_frontier)\n    \n        with patch(\"builtins.open\", mock_open(read_data=fake_yaml)):\n            with patch(\"os.path.exists\", return_value=True):\n                compiler = RetroCompiler(404, 412, frontier_path=\"/dummy/frontier.yml\")\n                target_nodes, mapping = compiler.load_nodes_and_paths()\n    \n                # Nodes for Path 404 (404, 405) and Path 412 (412, 413) should be included.\n                # Path 420 (node 420) should not be included.\n>               assert \"404\" in target_nodes\nE               AssertionError: assert '404' in set()\n\ntests/test_daemon_retro.py:27: AssertionError"
+        }
+    ]
+}

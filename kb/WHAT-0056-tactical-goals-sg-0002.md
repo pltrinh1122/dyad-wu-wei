@@ -58,10 +58,10 @@ Applying the invariants above, we define six tactical milestones:
 *   **Backlog Mapping**: Path 292 (Activity 294 - Implement Idempotent PR Management)
 
 ### TG-0002-04: Skill-Level Lexical Guardrails
-*   **Definition**: Validate that the agent's code modifications adhere to structural and import purity rules (e.g., forbidding direct usage of raw subprocesses in `skills/`, enforcing telemetry wrappers).
+*   **Definition**: Validate that the agent's code modifications adhere to structural and import purity rules (e.g., forbidding direct usage of raw subprocesses in `drivers/`, enforcing telemetry wrappers).
 *   **Invariance Matching**:
     *   *Risk Mitigation*: Blocks the agent from bypassing skills wrappers to execute arbitrary shell commands.
-    *   *Verification Metric*: The static analysis gate must flag and reject any commit modifying `skills/` that uses `subprocess` directly instead of wrapping it via `skills.git_client` or designated runner skills.
+    *   *Verification Metric*: The static analysis gate must flag and reject any commit modifying `drivers/` that uses `subprocess` directly instead of wrapping it via `drivers.git_client` or designated runner drivers.
     *   *Inner-Loop Purity*: AST scanning executes in under 50ms.
     *   *Enforcement Gradient*: Custom regex patterns and warnings configurable in `audit_config.yml`.
 *   **Backlog Mapping**: Path 292 (Activity 295)
