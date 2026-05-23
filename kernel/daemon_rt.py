@@ -186,7 +186,7 @@ def execute_score_paths(start=None, end=None):
         f.write(report_content)
     print(f"\nReport saved to: {report_file}")
 
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="act")
 def main():

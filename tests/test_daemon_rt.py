@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock
 import os
-from kernel.mgr_rt import execute_score_paths
+from kernel.daemon_rt import execute_score_paths
 
 class TestMgrRT(unittest.TestCase):
 

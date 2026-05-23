@@ -3,7 +3,7 @@ import os
 import json
 import uuid
 from unittest.mock import patch, MagicMock
-from kernel.mgr_telemetry import TelemetryManager, record_execution
+from kernel.daemon_telemetry import TelemetryManager, record_execution
 
 class TestTelemetryDecorator(unittest.TestCase):
     def setUp(self):
@@ -22,7 +22,7 @@ class TestTelemetryDecorator(unittest.TestCase):
         def sample_func(arg1):
             return f"hello {arg1}"
 
-        with patch('kernel.mgr_telemetry.TelemetryManager._get_default_ledger_path', return_value=self.test_ledger):
+        with patch('kernel.daemon_telemetry.TelemetryManager._get_default_ledger_path', return_value=self.test_ledger):
             result = sample_func("world")
             
         self.assertEqual(result, "hello world")
@@ -47,7 +47,7 @@ class TestTelemetryDecorator(unittest.TestCase):
         def failing_func():
             raise ValueError("boom")
 
-        with patch('kernel.mgr_telemetry.TelemetryManager._get_default_ledger_path', return_value=self.test_ledger):
+        with patch('kernel.daemon_telemetry.TelemetryManager._get_default_ledger_path', return_value=self.test_ledger):
             with self.assertRaises(ValueError):
                 failing_func()
                 
@@ -69,7 +69,7 @@ class TestTelemetryDecorator(unittest.TestCase):
                 pass
 
         node = MockNode("123")
-        with patch('kernel.mgr_telemetry.TelemetryManager._get_default_ledger_path', return_value=self.test_ledger):
+        with patch('kernel.daemon_telemetry.TelemetryManager._get_default_ledger_path', return_value=self.test_ledger):
             node.do_work()
             
         with open(self.test_ledger, "r") as f:

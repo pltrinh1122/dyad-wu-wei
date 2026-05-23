@@ -15,9 +15,9 @@ All workspace mutating/inspecting functions in `drivers/git_client.py` will be e
 
 ---
 
-## 2. CLI Parser Updates (`kernel/mgr_node.py`)
+## 2. CLI Parser Updates (`kernel/daemon_node.py`)
 
-The `reflect` CLI parser command in `kernel/mgr_node.py` is updated to include an optional `--stage` flag.
+The `reflect` CLI parser command in `kernel/daemon_node.py` is updated to include an optional `--stage` flag.
 
 ### 2.1 Argument Definition
 ```python

@@ -114,11 +114,11 @@ def evaluate_stale_active_node(rule, state):
 
 def evaluate_frontier_integrity(rule, state):
     sys.path.append(str(REPO_ROOT))
-    from kernel import mgr_frontier
+    from kernel import agent_frontier
     filepath = str(REPO_ROOT / "artifacts" / "frontier_state.yml")
     try:
-        mgr_frontier.verify_checksum(filepath)
-        mgr_frontier.load_state(filepath)
+        agent_frontier.verify_checksum(filepath)
+        agent_frontier.load_state(filepath)
     except Exception as e:
         alert_level = rule.get("alert_level", "FAILURE").upper()
         msg = f"[{alert_level}] FRONTIER_INTEGRITY_VIOLATION: {str(e)}"

@@ -7,7 +7,7 @@ While WHY-0020 established the Triple-Node Path Initialization Doctrine, enforce
 We will automate the creation of the mandatory Align Probe, Plan Probe, and Reflect Activity directly within the backlog manager during the execution of `backlog new path`.
 
 ### Implementation Rules
-1. **Atomic Creation**: Creating a `path` node type via `mgr_backlog.py` will trigger the sequential creation of the Align Probe, Plan Probe, and Reflect Activity issues on GitHub.
+1. **Atomic Creation**: Creating a `path` node type via `daemon_backlog.py` will trigger the sequential creation of the Align Probe, Plan Probe, and Reflect Activity issues on GitHub.
 2. **Dependency Chaining**:
    - The **Align Probe** is created first (no dependencies).
    - The **Plan Probe** is created second, with a dependency on the **Align Probe**'s issue ID.

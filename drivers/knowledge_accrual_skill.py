@@ -2,7 +2,7 @@ import re
 import os
 import yaml
 import hashlib
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="skill")
 def parse_test_failure_diagnostics(pytest_output: str) -> list[dict]:
@@ -149,7 +149,7 @@ def synthesize_rule(error_details: dict) -> dict | None:
         return None
         
     # Constraint 2: Generic Word Blacklist
-    generic_words = {"the", "epic", "path", "issue", "node", "and", "for", "with"}
+    generic_words = {"the", "path", "path", "issue", "node", "and", "for", "with"}
     if target_term.lower() in generic_words:
         return None
         

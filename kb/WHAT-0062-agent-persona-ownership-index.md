@@ -2,8 +2,8 @@
 
 <!-- MACHINE-PARSE CONTRACT
   Format:    GitHub Flavored Markdown pipe-delimited table
-  Consumers: kernel/mgr_strategic.py (578-B enforcement gate)
-             kernel/mgr_nba.py (578-C NBA path filter)
+  Consumers: kernel/daemon_strategic.py (578-B enforcement gate)
+             kernel/daemon_nba.py (578-C NBA path filter)
   Key field: sg_id (exact match to strategic_intent.yml id values)
   Parse hint: The ownership table begins after the "## Ownership Index" heading.
               Each data row (non-header, non-separator) is one authoritative record.

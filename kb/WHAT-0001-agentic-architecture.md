@@ -6,12 +6,12 @@ This document defines the *Ontology* (The "What" and "Why") of the Antigravity e
 Modern agentic repositories abandon traditional SDLC in favor of an Agentic Architecture. This architecture is composed of five strict pillars:
 - **`artifacts/`**: The **RAM** of the system. Holds mutable Agent state, memory, schemas, and output definitions (e.g., `frontier_state.md`).
 - **`drivers/`**: The **Hands** of the system. Deterministic, stateless Python interfaces (**Skills**).
-- **`kernel/`**: The **Engine** of the system. Contains stateful, stage-aware **Workflows** and the live LLM SPAO loop (e.g. `mgr_node.py`).
+- **`kernel/`**: The **Engine** of the system. Contains stateful, stage-aware **Workflows** and the live LLM SPAO loop (e.g. `daemon_node.py`).
 - **`kb/`**: The **ROM** of the system. The Knowledge Base holds the immutable Laws of the System, strictly categorized into `WHAT` (Ontology), `WHY` (Decision Records), and `HOW` (Instructions) linguistic primitives.
 - **`infra/`**: The **Infrastructure** of the system. Contains Infrastructure as Code (IaC) provisioning scripts for daemons (e.g., Local CI Runners). The Agent strictly provisions infrastructure here, but does not execute the daemons directly in its cognitive loop. User-Level Systemd (`systemctl --user`) is the standard for Agent-controllable daemons.
 
 ### The CLI Adapter Layer
-Bridging the operator and the architecture is the **`bin/`** directory. It is NOT a core Pillar, but rather the **CLI Adapter Layer**. It contains ultra-thin shell wrappers that delegate immediately to Python **Orchestrators** (e.g., `kernel/mgr_node.py`). These Python `mgr_*` orchestrators inherently own their Workflows and route execution to the underlying stateless `drivers/`.
+Bridging the operator and the architecture is the **`bin/`** directory. It is NOT a core Pillar, but rather the **CLI Adapter Layer**. It contains ultra-thin shell wrappers that delegate immediately to Python **Orchestrators** (e.g., `kernel/daemon_node.py`). These Python `mgr_*` orchestrators inherently own their Workflows and route execution to the underlying stateless `drivers/`.
 
 The Agent operates as a **Frontier Agent**, driving a logical, topological frontier node-by-node.
 

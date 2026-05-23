@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, mock_open, MagicMock
-from kernel.mgr_telemetry import TelemetryManager, SynthesisEngine
+from kernel.daemon_telemetry import TelemetryManager, SynthesisEngine
 import json
 import os
 from datetime import datetime, timezone, timedelta

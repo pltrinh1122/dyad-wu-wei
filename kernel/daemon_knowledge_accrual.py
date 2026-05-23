@@ -4,7 +4,7 @@ import sys
 import json
 import yaml
 import argparse
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 from drivers import knowledge_accrual_skill
 
 def get_repo_root():

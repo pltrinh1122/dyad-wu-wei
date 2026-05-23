@@ -368,7 +368,7 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
         return # Pure Ziran paths have no structured domain or SG owner; they bypass the gate.
 
     # Locate the kb files
-    # Since mgr_strategic is deep, we use get_ledger_path trick or path_resolver
+    # Since daemon_strategic is deep, we use get_ledger_path trick or path_resolver
     # Wait, we imported path_resolver at the top!
     what_0065_path = path_resolver.resolve_workspace_path("kb", "WHAT-0065-domain-path-ownership-index.md")
     what_0062_path = path_resolver.resolve_workspace_path("kb", "WHAT-0062-agent-persona-ownership-index.md")

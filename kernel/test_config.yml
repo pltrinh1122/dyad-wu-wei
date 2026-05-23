@@ -1,5 +1,5 @@
 # Test Governance Configuration
-# Used by mgr_testing.py to enforce architectural invariants.
+# Used by daemon_testing.py to enforce architectural invariants.
 
 guardrails:
   patch_density:

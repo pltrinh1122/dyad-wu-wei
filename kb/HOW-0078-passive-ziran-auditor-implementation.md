@@ -11,7 +11,7 @@ To observe the "wake" of an Agent's execution, we implement a structured telemet
 - **Format**: Append-only JSON Lines.
 
 ### Event Schema
-Whenever an Agent completes a Node, encounters a friction point (crash), or undergoes an Audit hook, `mgr_telemetry.py` must append a record:
+Whenever an Agent completes a Node, encounters a friction point (crash), or undergoes an Audit hook, `daemon_telemetry.py` must append a record:
 ```json
 {
   "timestamp": "2026-05-22T21:44:48Z",
@@ -55,6 +55,6 @@ A new pure function module will be introduced to process the event stream and mu
 
 ## 5. Implementation Sequence
 The corresponding Backlog Activities must implement these layers sequentially:
-1. `Activity 763`: Modify `mgr_telemetry.py` to write `events.jsonl`.
+1. `Activity 763`: Modify `daemon_telemetry.py` to write `events.jsonl`.
 2. `Activity 764`: Create `kernel/ziran_auditor.py` for mathematical calculation of gradients.
 3. `Activity 765`: Implement the mutation logic in `kernel/ziran_auditor.py` that reads/writes `kb_ledger.yml`.

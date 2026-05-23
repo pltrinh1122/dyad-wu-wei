@@ -64,7 +64,7 @@ class TestScoringABTest(unittest.TestCase):
         with patch("drivers.github_client.get_issue_details", side_effect=mock_get_issue_details), \
              patch("drivers.github_client.get_issue_labels", side_effect=mock_get_issue_labels), \
              patch("drivers.github_client.list_issues_by_label", side_effect=mock_list_issues_by_label), \
-             patch("kernel.mgr_strategic.github_client.get_issue_details", side_effect=mock_get_issue_details):
+             patch("kernel.daemon_strategic.github_client.get_issue_details", side_effect=mock_get_issue_details):
              
             # 3. Instantiate Scorers
             control_scorer = NBAScorer()

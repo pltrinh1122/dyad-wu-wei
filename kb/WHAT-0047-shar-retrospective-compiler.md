@@ -9,7 +9,7 @@ The system follows a two-tier hybrid model:
 
 ```
 ┌─────────────────────────┐      ┌─────────────────────────┐
-│ telemetry.jsonl (Raw)   │ ───> │  mgr_retro.py (Parser)   │
+│ telemetry.jsonl (Raw)   │ ───> │  daemon_retro.py (Parser)   │
 └─────────────────────────┘      └───────────┬─────────────┘
                                              │ (Generates metrics/timeline)
                                              ▼

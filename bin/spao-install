@@ -106,11 +106,11 @@ export SPAO_WORKSPACE_DIR="\${SPAO_WORKSPACE_DIR:-\$WORKSPACE_ROOT}"
 
 SUB=\$1; shift
 case "\$SUB" in
-    node)    PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/orchestrator/mgr_node.py" "\$@" ;;
-    backlog) PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/orchestrator/mgr_backlog.py" "\$@" ;;
-    prompt)  PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/orchestrator/mgr_prompt.py" "\$@" ;;
-    rt)      PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/orchestrator/mgr_rt.py" "\$@" ;;
-    test)    PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/orchestrator/mgr_testing.py" "\$@" ;;
+    node)    PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/kernel/daemon_node.py" "\$@" ;;
+    backlog) PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/kernel/daemon_backlog.py" "\$@" ;;
+    prompt)  PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/kernel/daemon_prompt.py" "\$@" ;;
+    rt)      PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/kernel/daemon_rt.py" "\$@" ;;
+    test)    PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/kernel/daemon_testing.py" "\$@" ;;
     version) cat "\$SPAO_HOME/current/VERSION" 2>/dev/null || echo "unknown" ;;
     *)       echo "Usage: spao {node|backlog|prompt|rt|test|version} [options]"; exit 1 ;;
 esac

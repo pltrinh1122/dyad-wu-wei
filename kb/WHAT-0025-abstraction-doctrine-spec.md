@@ -25,7 +25,7 @@ The existing wrapper module will be audited to ensure:
 We evaluated the overlap between backlog and path responsibilities:
 - **Backlog**: Inventory and registry of all work items (both paths and terminal nodes).
 - **Path**: A sequential sub-graph of dependencies (Align -> Plan -> Reflect).
-- **Decision**: While backlog and path represent different structures, they are highly coupled. We will consolidate path management inside `BacklogManager` in `kernel/mgr_backlog.py`:
+- **Decision**: While backlog and path represent different structures, they are highly coupled. We will consolidate path management inside `BacklogManager` in `kernel/daemon_backlog.py`:
   - `./bin/backlog` will be the unified public CLI entrypoint for both path-level and node-level work registration.
   - Active path state mutation (e.g., setting the active path) will be exposed through `BacklogManager` public methods.
   - `./bin/meta path` will be deprecated in favor of `./bin/backlog path`.

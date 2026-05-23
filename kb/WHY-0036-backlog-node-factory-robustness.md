@@ -2,7 +2,7 @@
 
 ## Context
 
-The Backlog Node Factory (primarily managed via `BacklogManager` in `kernel/mgr_backlog.py`) orchestrates the creation of Path issues and terminal child nodes on GitHub. During an audit of this system, several robustness gaps were identified that can compromise state synchronization:
+The Backlog Node Factory (primarily managed via `BacklogManager` in `kernel/daemon_backlog.py`) orchestrates the creation of Path issues and terminal child nodes on GitHub. During an audit of this system, several robustness gaps were identified that can compromise state synchronization:
 1. **Partial Failures**: If creation fails mid-way, duplicate issues or orphaned child nodes are created.
 2. **Orphan Control**: API-level guards are needed to completely enforce that terminal nodes cannot exist without parent paths.
 3. **Dependency Mapping**: Inconsistencies or TBD strings in dependencies.

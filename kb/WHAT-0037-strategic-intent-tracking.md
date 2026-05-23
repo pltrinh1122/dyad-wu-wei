@@ -41,9 +41,9 @@ The CLI and the validator must enforce the following invariants on any strategic
 
 ---
 
-## 3. CLI Commands (`bin/strategic` / `kernel/mgr_strategic.py`)
+## 3. CLI Commands (`bin/strategic` / `kernel/daemon_strategic.py`)
 
-A new script `bin/strategic` (delegating to `kernel.mgr_strategic`) will expose:
+A new script `bin/strategic` (delegating to `kernel.daemon_strategic`) will expose:
 
 * **`list`**: Render all strategic goals in a clean, hierarchical table format grouped by status (`Active`, `Draft`, `Achieved`, `Falsified`).
 * **`add`**: Interactive prompt to draft a new strategic goal. Validates inputs against all invariants before writing. Assigns incremental ID (`SG-0001`, `SG-0002`, etc.).
@@ -55,7 +55,7 @@ A new script `bin/strategic` (delegating to `kernel.mgr_strategic`) will expose:
 
 ## 4. Next-Best-Action (NBA) Integration
 
-In `kernel/mgr_nba.py`:
+In `kernel/daemon_nba.py`:
 - Load `artifacts/strategic_intent.yml` if it exists.
 - Extract the ordered list of all `prioritized_paths` from `Active` strategic goals.
 - In `NBAManager.evaluate`, intercept the global backlog recommendation list:

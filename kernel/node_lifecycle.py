@@ -4,9 +4,9 @@ import json
 import subprocess
 import yaml
 from drivers import github_client, git_client
-from kernel import mgr_frontier, mgr_prompt, mgr_backlog, mgr_nba
-from kernel.mgr_telemetry import TelemetryManager, record_execution
-from kernel.mgr_transaction import FlowTransaction
+from kernel import agent_frontier, daemon_prompt, daemon_backlog, daemon_nba
+from kernel.daemon_telemetry import TelemetryManager, record_execution
+from kernel.daemon_transaction import FlowTransaction
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -147,7 +147,7 @@ class TerminalNode(BaseNode):
         if not os.path.exists(frontier_file):
             return
             
-        current_active = mgr_frontier.read_active_node(frontier_file)
+        current_active = agent_frontier.read_active_node(frontier_file)
         if current_active and current_active != "None":
             # If we expect a specific node (e.g. during reflect), it must match
             if expected_active and current_active == expected_active:
@@ -226,7 +226,7 @@ class TerminalNode(BaseNode):
         with FlowTransaction(frontier_file) as tx:
             self._verify_state_purity(frontier_file)
             
-            from kernel.mgr_strategic import verify_node_transition_allowed
+            from kernel.daemon_strategic import verify_node_transition_allowed
             verify_node_transition_allowed(self.issue_id)
             
             in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
@@ -260,7 +260,7 @@ class TerminalNode(BaseNode):
             
             # Atomically set active node in frontier
             node_title = details.get("title", f"Node {self.issue_id}")
-            mgr_frontier.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
+            agent_frontier.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
             
             log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} and updated frontier.")
 
@@ -296,9 +296,9 @@ class TerminalNode(BaseNode):
                     raise
         
         # Enforce static KB conflict checks (SG-0005)
-        from kernel import mgr_knowledge_accrual
+        from kernel import daemon_knowledge_accrual
         from drivers import path_resolver
-        mgr_knowledge_accrual.run_kb_check(repo_root=path_resolver.get_workspace_dir(), strict=True)
+        daemon_knowledge_accrual.run_kb_check(repo_root=path_resolver.get_workspace_dir(), strict=True)
         
         prefix = f"Node {self.issue_id}:"
         if not current_title.startswith(prefix):
@@ -316,7 +316,7 @@ class TerminalNode(BaseNode):
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
             
-        from kernel.mgr_strategic import verify_node_transition_allowed
+        from kernel.daemon_strategic import verify_node_transition_allowed
         verify_node_transition_allowed(self.issue_id)
 
         with FlowTransaction(frontier_file) as tx:
@@ -349,31 +349,31 @@ class TerminalNode(BaseNode):
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
             
             # Enforce post-failure reflection gate (SG-0005)
-            from kernel import mgr_knowledge_accrual
-            mgr_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo)
+            from kernel import daemon_knowledge_accrual
+            daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo)
             
             self.close("Node completed via Flow-State Manager. Moving to PR.")
             tx.register_rollback(self.reopen)
             
             # Automate Meta-Index Checkbox Synchronization
-            active_path_str = mgr_frontier.read_active_path(frontier_file)
+            active_path_str = agent_frontier.read_active_path(frontier_file)
             if active_path_str:
-                path_issue_id = mgr_frontier.extract_path_id(active_path_str)
+                path_issue_id = agent_frontier.extract_path_id(active_path_str)
                 if path_issue_id:
-                    backlog = mgr_backlog.BacklogManager()
+                    backlog = daemon_backlog.BacklogManager()
                     backlog.check_off_meta_index(path_issue_id, self.issue_id)
                     tx.register_rollback(backlog.uncheck_meta_index, path_issue_id, self.issue_id)
                 else:
                     print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
             
             # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
-            nba = mgr_nba.NBAManager()
+            nba = daemon_nba.NBAManager()
             nba_result = nba.evaluate(frontier_file=frontier_file)
             
             clear_path = False
             if nba_result["type"] == "path_switching" and active_path_str:
                 # We had an active path, but NBA now says we should switch (because it's exhausted)
-                path_issue_id = mgr_frontier.extract_path_id(active_path_str)
+                path_issue_id = agent_frontier.extract_path_id(active_path_str)
                 if path_issue_id:
                     github_client.close_issue(path_issue_id, "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
                     tx.register_rollback(github_client.reopen_issue, path_issue_id)
@@ -381,9 +381,9 @@ class TerminalNode(BaseNode):
                     clear_path = True
             
             # ATOMIC UPDATE: Mark node completed AND clear pointers
-            mgr_frontier.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
+            agent_frontier.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
             if clear_path:
-                mgr_frontier.set_active_path(frontier_file, "None")
+                agent_frontier.set_active_path(frontier_file, "None")
             
             # Run SPAO purity validation check before git commit/push
             if self.loop == "spao":

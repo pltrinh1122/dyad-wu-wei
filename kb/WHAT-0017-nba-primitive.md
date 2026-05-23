@@ -20,7 +20,7 @@ NBA evaluation relies on a Directed Acyclic Graph (DAG) materialized in the `Met
 
 ## 4. Architectural Boundaries
 - **Skill Layer**: Uses `gh_graph_skill.py` for stateless DAG parsing and task discovery.
-- **Orchestrator Layer**: Uses `mgr_nba.py` to handle the high-level decision logic and frontier state management.
+- **Orchestrator Layer**: Uses `daemon_nba.py` to handle the high-level decision logic and frontier state management.
 - **Sense Hooks**: Triggered automatically via `bin/node sync` to ensure the operator is always informed of the Next-Best-Action.
 
 2. **Action Filtering**: Translates logical actions into specific CLI tool invocations based on the current context constraints.

@@ -3,7 +3,7 @@ from unittest.mock import patch, mock_open
 import json
 import yaml
 import os
-from kernel.mgr_retro import RetroCompiler
+from kernel.daemon_retro import RetroCompiler
 
 def test_load_nodes_and_paths():
     fake_frontier = {

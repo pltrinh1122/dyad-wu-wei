@@ -2,7 +2,7 @@ import hashlib
 import os
 import yaml
 from drivers.file_locker import lock_file
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 
 class StateCorruptionError(Exception):
     """Raised when frontier_state.yml checksum fails or syntax is invalid."""
@@ -174,7 +174,7 @@ def set_active_path(filepath: str, path_name: str) -> None:
     else:
         path_id = extract_path_id(path_name)
         if path_id:
-            from kernel.mgr_strategic import verify_path_activation_allowed
+            from kernel.daemon_strategic import verify_path_activation_allowed
             verify_path_activation_allowed(path_id)
         state["current_active_path"] = path_name
     save_state(yml_path, state)

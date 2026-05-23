@@ -32,7 +32,7 @@ In `BacklogManager.add`:
   - Validate that the parent issue exists, has state `OPEN`, and is labeled/classified as a `Path`. If validation fails, raise `ValueError`.
 
 ### 3. Frontier Auto-Registration
-In `kernel/mgr_frontier.py`:
+In `kernel/agent_frontier.py`:
 - Implement a helper:
   ```python
   def register_backlog_node(filepath: str, node_id: int, node_title: str, description: str) -> None

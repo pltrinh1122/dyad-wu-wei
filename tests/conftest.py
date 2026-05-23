@@ -23,8 +23,8 @@ def mock_gh():
 
 @pytest.fixture
 def mock_fe():
-    """Provides a centralized mock for mgr_frontier."""
-    with patch("kernel.node_lifecycle.mgr_frontier") as m:
+    """Provides a centralized mock for agent_frontier."""
+    with patch("kernel.node_lifecycle.agent_frontier") as m:
         m.read_active_node.return_value = "None"
         m.read_active_path.return_value = "None"
         yield m
@@ -32,7 +32,7 @@ def mock_fe():
 @pytest.fixture
 def mock_telemetry():
     """Provides a centralized mock for TelemetryManager."""
-    with patch("kernel.mgr_telemetry.TelemetryManager") as m:
+    with patch("kernel.daemon_telemetry.TelemetryManager") as m:
         instance = m.return_value
         yield instance
 
@@ -45,22 +45,22 @@ def mock_subprocess():
 
 @pytest.fixture
 def mock_backlog():
-    """Provides a centralized mock for mgr_backlog."""
-    with patch("kernel.node_lifecycle.mgr_backlog") as m:
+    """Provides a centralized mock for daemon_backlog."""
+    with patch("kernel.node_lifecycle.daemon_backlog") as m:
         yield m
 
 @pytest.fixture
 def mock_nba():
-    """Provides a centralized mock for mgr_nba."""
-    with patch("kernel.node_lifecycle.mgr_nba") as m:
+    """Provides a centralized mock for daemon_nba."""
+    with patch("kernel.node_lifecycle.daemon_nba") as m:
         instance = m.NBAManager.return_value
         instance.evaluate.return_value = {"type": "path_switching", "recommendations": []}
         yield m
 
 @pytest.fixture
 def mock_backlog_gh():
-    """Provides a centralized mock for github_client inside mgr_backlog."""
-    with patch("kernel.mgr_backlog.github_client") as m:
+    """Provides a centralized mock for github_client inside daemon_backlog."""
+    with patch("kernel.daemon_backlog.github_client") as m:
         yield m
 
 @pytest.fixture
