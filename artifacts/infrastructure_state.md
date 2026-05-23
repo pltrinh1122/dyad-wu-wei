@@ -7,7 +7,7 @@ This document mathematically tracks the physical state of the Host OS infrastruc
 | Daemon Name | Type | Status | Provisioning Script | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `github-runner` | `systemd_user` | Pending | `infra/github-runner/provision.sh` | Local Pre-Merge CI verification. |
-| `audit-daemon` | `systemd_user` | Active | `infra/audit-daemon/provision.sh` | Modular rules engine for automated repository health and prompt injection. |
+| `audit-daemon` | `agy_schedule` | Active | Agent Managed | Modular rules engine for automated repository health and prompt injection. |
 
 ## Daemon Governance
 The Agent must use `skills/infra_manager.py` to programmatically interact with these daemons.

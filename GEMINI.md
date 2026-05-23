@@ -12,7 +12,8 @@ When you first instantiate into this repository, do not start planning features 
 2. **Read the State**: Check `artifacts/frontier_state.md` to see where the previous session left off. 
 3. **Read the Queue**: Check the prompt queue for pending operator requests (`spao prompt list` or `./bin/prompt list`).
 4. **Locate the Current Active Node**: Find the active node from the frontier state.
-5. **Resume the Loop**: Begin the SPAO loop starting at Step 1 (Sense) for that active node. If an issue is already created but not closed, resume at Step 3 (Act).
+5. **Establish Background Daemons**: Invoke your `schedule` tool to establish the required background cron jobs. Set `CronExpression` according to `infra/audit-daemon/audit_config.yml` (e.g., `*/5 * * * *`) and set `Prompt="Run ./skills/audit_daemon.py"`.
+6. **Resume the Loop**: Begin the SPAO loop starting at Step 1 (Sense) for that active node. If an issue is already created but not closed, resume at Step 3 (Act).
 
 ## 3. The Sense-Plan-Act-Observe (SPAO) Execution Loop
 You must execute your tasks using the strict loop defined in `kb/HOW-0001-spao-execution-loop.md`. You are bound by the Materialization rules defined in `kb/WHAT-0001-agentic-architecture.md`.
