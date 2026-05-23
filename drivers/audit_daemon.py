@@ -219,7 +219,7 @@ def evaluate_pr_merged_monitor(rule, state):
         return False, state
         
     sys.path.append(str(REPO_ROOT))
-    from skills.github_client import get_merged_prs
+    from drivers.github_client import get_merged_prs
     
     try:
         merged_prs = get_merged_prs()

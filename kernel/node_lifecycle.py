@@ -348,6 +348,10 @@ class TerminalNode(BaseNode):
         with FlowTransaction(frontier_file) as tx:
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
             
+            # Enforce Conflict-Free Reflection Invariant (WHY-0083)
+            if git_client.check_merge_conflicts("origin/main", cwd=worktree_dir):
+                raise Exception(f"Reflection Blocked (WHY-0083): Branch '{branch_name}' has unresolved merge conflicts with 'origin/main'. You must resolve these conflicts locally before reflecting.")
+            
             # Enforce post-failure reflection gate (SG-0005)
             from kernel import daemon_knowledge_accrual
             daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo)

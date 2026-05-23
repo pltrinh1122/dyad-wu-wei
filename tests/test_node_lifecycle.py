@@ -141,6 +141,7 @@ def test_reflect_success(mock_get_worktree_path, mock_nba, mock_frontier, mock_g
     mock_nba.NBADaemon.return_value.evaluate.return_value = {"type": "continue"}
     mock_gh.get_issue_labels.return_value = []
     mock_git.get_git_common_dir.return_value = ".git"
+    mock_git.check_merge_conflicts.return_value = False
     
     node = TerminalNode("390")
     
