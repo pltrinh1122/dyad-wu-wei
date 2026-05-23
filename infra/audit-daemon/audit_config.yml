@@ -16,3 +16,9 @@ rules:
 - id: frontier-integrity
   type: frontier_integrity
   alert_level: FAILURE
+- id: synthesized-guard-5667bebb
+  type: lexical_guard
+  pattern: \bnode/390\-test\b
+  alert_level: FAILURE
+  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''node/390-test'' detected
+    (from failed test ''test_reflect_success'')'

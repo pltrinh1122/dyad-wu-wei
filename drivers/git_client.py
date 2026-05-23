@@ -181,3 +181,14 @@ def get_show_toplevel() -> str:
     res = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True, check=True)
     return res.stdout.strip()
 
+@record_execution(stage="skill")
+def check_merge_conflicts(target: str = "origin/main", cwd: str | None = None) -> bool:
+    """Returns True if merging the target into HEAD would result in conflicts, False otherwise."""
+    res = subprocess.run(["git", "merge-tree", "--write-tree", "HEAD", target], capture_output=True, text=True, cwd=cwd)
+    if res.returncode == 1:
+        return True
+    elif res.returncode == 0:
+        return False
+    else:
+        res.check_returncode() # Will raise CalledProcessError
+        return False # Fallback
