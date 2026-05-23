@@ -29,6 +29,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Reactive Event-Driven Sync Spec**: Read [WHAT-0090-reactive-node-sync.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0090-reactive-node-sync.md)
 * **Local-First NBA Spec**: Read [WHAT-0092-local-first-nba.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0092-local-first-nba.md)
 * **Decoupled Prompt Backlog Spec**: Read [WHAT-0093-decouple-prompt-backlog.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0093-decouple-prompt-backlog.md)
+* **Backlog Strategic Alignment Spec**: Read [WHAT-0095-backlog-alignment.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0095-backlog-alignment.md)
 
 
 
