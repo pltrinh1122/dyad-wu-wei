@@ -36,6 +36,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - This atomic skill will rigorously enforce branch naming, update `artifacts/frontier_state.md`, push the branch, and automatically open a Pull Request.
    - Mutate the **Path Issue** body to check off the completed node.
    - **HARD HITL BLOCK (Universal Merge Gate):** The Agent must absolutely halt and wait for the Operator to review and merge the PR on GitHub before proceeding to the next node. The Pull Request merge is the sole hard integration gate.
+   - **The Rollback Invariant:** If a command or API failure triggers a transaction rollback during the reflect phase, the Agent MUST execute the state recovery protocol: (1) delete the remote branch on GitHub, (2) reset the local worktree branch to `origin/main`, (3) document the failure in `artifacts/audit/retro-<id>.md`, and (4) only then re-execute the reflection command.
 
 ## Executing the Formal Bootstrap Audit
 Before a newly bootstrapped repository can transition into active "Operations," it must pass an audit.

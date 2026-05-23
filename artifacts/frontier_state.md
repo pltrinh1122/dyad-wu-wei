@@ -2012,10 +2012,11 @@
   - `[x] All local tests pass`
 
 ## Node 872: Activity 872: Reflect - Synthesize Epistemic Retrospective retro-803.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-803.md into the system's operational guidelines (the Dao).
+- **Status**: Completed
+- **Learnings & Context**: Synthesized the epistemic learnings from retro-803.md into GEMINI.md and kb/HOW-0001-spao-execution-loop.md, codifying the Rollback Invariant for transient reflect failures.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] GEMINI.md contains the recovery guidelines`
+  - `[x] All tests pass`
 
 ## Node 805: Activity 805: Implement bin/status deterministic dashboard
 - **Status**: Completed

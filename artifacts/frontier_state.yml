@@ -2189,10 +2189,13 @@ nodes:
   - '[x] kb/WHY-0089-deterministic-state-retrieval.md exists'
   - '[x] All local tests pass'
 - name: 'Node 872: Activity 872: Reflect - Synthesize Epistemic Retrospective retro-803.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-803.md into the system's operational guidelines (the Dao).
-  invariants: []
+  status: Completed
+  learnings: Synthesized the epistemic learnings from retro-803.md into GEMINI.md
+    and kb/HOW-0001-spao-execution-loop.md, codifying the Rollback Invariant for transient
+    reflect failures.
+  invariants:
+  - '[x] GEMINI.md contains the recovery guidelines'
+  - '[x] All tests pass'
 - name: 'Node 805: Activity 805: Implement bin/status deterministic dashboard'
   status: Completed
   learnings: Implemented a local worktree scanner to list open PRs entirely offline
