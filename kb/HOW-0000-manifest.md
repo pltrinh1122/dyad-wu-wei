@@ -14,6 +14,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
   - Details **NS-0001** (Synergistic Human-Agent Partnership) and **SG-0001** through **SG-0005** (Prioritization, Containment, Inner-Loop Velocity, Policy-Driven Communication, Knowledge Mutation).
 * **Metasystem Principles (Future)**: *[Reserved for future engineering principles/doctrine guidelines]*
 * **Agent Decision-Making Invariant (NS-0001 → Wu-wei → Ziran)**: Read [HOW-0006-decision-making-invariant.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/HOW-0006-decision-making-invariant.md)
+* **Consolidation under Universal Merge Gate (HTIL) (Ziran)**: Read [WHY-0087-universal-merge-gate.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0087-universal-merge-gate.md)
 
 ## 2. Core Agentic Architecture & Execution
 * **System Design & Materialization Rules**: Read [WHAT-0001-agentic-architecture.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0001-agentic-architecture.md)
