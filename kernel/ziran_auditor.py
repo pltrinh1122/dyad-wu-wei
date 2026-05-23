@@ -1,5 +1,8 @@
 import os
 import yaml
+import json
+from collections import defaultdict
+from typing import Dict, List
 
 def get_ledger_path(repo_root: str) -> str:
     """Returns the absolute path to the kb_ledger.yml artifact."""
@@ -55,3 +58,80 @@ def mutate_primitive(repo_root: str, primitive_id: str, state: str, gradient: st
     }
     
     write_ledger(repo_root, data)
+
+def parse_telemetry(repo_root: str, max_events: int = 1000) -> Dict[str, List[Dict]]:
+    """
+    Reads the trailing telemetry events from artifacts/telemetry/events.jsonl.
+    Groups them by kb_target.
+    Gracefully handles missing telemetry directory or file.
+    """
+    telemetry_path = os.path.join(repo_root, "artifacts", "telemetry", "events.jsonl")
+    grouped_events = defaultdict(list)
+    
+    if not os.path.exists(telemetry_path):
+        return dict(grouped_events)
+        
+    try:
+        with open(telemetry_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+            
+        recent_lines = lines[-max_events:] if max_events > 0 else lines
+        
+        for line in recent_lines:
+            if not line.strip():
+                continue
+            try:
+                event = json.loads(line)
+                kb_target = event.get("kb_target")
+                if kb_target:
+                    grouped_events[kb_target].append(event)
+            except json.JSONDecodeError:
+                continue
+    except Exception as e:
+        print(f"Warning: Failed to parse telemetry: {e}")
+        
+    return dict(grouped_events)
+
+def calculate_gradient(laminar_count: int, turbulent_count: int) -> float:
+    """
+    Implements the Daoist formula: delta = S / (S + T)
+    where S is Laminar completions and T is Turbulent events.
+    """
+    total = laminar_count + turbulent_count
+    if total == 0:
+        return 1.0
+    return float(laminar_count) / float(total)
+
+def evaluate_and_apply_gradients(repo_root: str) -> None:
+    """
+    Retrieves grouped events, calculates gradients, and mutates the ledger.
+    - Promotes to Laminar if delta > 0.9.
+    - Demotes to Turbulent if delta < 0.6.
+    """
+    grouped_events = parse_telemetry(repo_root)
+    if not grouped_events:
+        return
+        
+    current_ledger = read_ledger(repo_root)
+    
+    for kb_target, events in grouped_events.items():
+        laminar_count = sum(1 for e in events if str(e.get("status")).upper() == "LAMINAR")
+        turbulent_count = sum(1 for e in events if str(e.get("status")).upper() == "TURBULENT")
+        
+        total_events = laminar_count + turbulent_count
+        if total_events == 0:
+            continue
+            
+        delta = calculate_gradient(laminar_count, turbulent_count)
+        confidence = min(total_events / 10.0, 1.0)
+        
+        new_gradient = None
+        if delta > 0.9:
+            new_gradient = "Laminar"
+        elif delta < 0.6:
+            new_gradient = "Turbulent"
+            
+        if new_gradient:
+            existing_prim = current_ledger.get("primitives", {}).get(kb_target, {})
+            current_state = existing_prim.get("state", "Active")
+            mutate_primitive(repo_root, kb_target, current_state, new_gradient, confidence)
