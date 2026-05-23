@@ -85,7 +85,7 @@ index 123456..7890ab 100644
 +++ b/kb/test.md
 @@ -1,3 +1,4 @@
  # Test
-+This is a clean path and probe task.
++This is a clean path and discovery task.
  """
     conflicts = check_kb_conflicts(diff_text)
     assert len(conflicts) == 0

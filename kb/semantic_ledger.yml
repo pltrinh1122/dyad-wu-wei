@@ -23,3 +23,15 @@ terms:
   orchestrator:
     state: deprecated
     superseded_by: kernel_daemon
+  probe:
+    state: deprecated
+    superseded_by: discovery
+  probes:
+    state: deprecated
+    superseded_by: discoveries
+  align:
+    state: deprecated
+    superseded_by: harmonize
+  optimize:
+    state: deprecated
+    superseded_by: refine
