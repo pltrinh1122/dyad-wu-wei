@@ -180,3 +180,138 @@ prompts:
     ''orchestrator'' found in WHY-0086-epistemic-retrospective-synthesis.md. Please
     remediate.'
   status: pending
+- id: p-1779552979-3edc
+  timestamp: '2026-05-23T16:16:19Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''optimize'' found in HOW-0000-manifest.md. Please remediate.'
+  status: pending
+- id: p-1779552979-b612
+  timestamp: '2026-05-23T16:16:19Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in HOW-0001-spao-execution-loop.md. Please remediate.'
+  status: pending
+- id: p-1779552979-f8ad
+  timestamp: '2026-05-23T16:16:19Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0001-agentic-architecture.md. Please remediate.'
+  status: pending
+- id: p-1779552979-d2ca
+  timestamp: '2026-05-23T16:16:19Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probes'' found in WHAT-0001-agentic-architecture.md. Please remediate.'
+  status: pending
+- id: p-1779552979-a8e4
+  timestamp: '2026-05-23T16:16:19Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probes'' found in WHAT-0017-nba-primitive.md. Please remediate.'
+  status: pending
+- id: p-1779552980-8ece
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''align'' found in WHAT-0025-abstraction-doctrine-spec.md. Please remediate.'
+  status: pending
+- id: p-1779552980-8c2b
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0031-spao-onboarding-discoverability-spec.md. Please remediate.'
+  status: pending
+- id: p-1779552980-4f72
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0033-ci-hardening-gh-fixture-stub-spec.md. Please remediate.'
+  status: pending
+- id: p-1779552980-dfc2
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0034-three-loop-governance-spec.md. Please remediate.'
+  status: pending
+- id: p-1779552980-1d9b
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probes'' found in WHAT-0036-backlog-node-factory-robustness.md. Please remediate.'
+  status: pending
+- id: p-1779552980-6039
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0039-nba-strict-transition-enforcement-gate.md. Please
+    remediate.'
+  status: pending
+- id: p-1779552980-0f4c
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probes'' found in WHAT-0042-value-comparison-gap-analysis-velocity.md. Please
+    remediate.'
+  status: pending
+- id: p-1779552980-b383
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0043-strategic-evaluation-knowledge-accrual-velocity.md.
+    Please remediate.'
+  status: pending
+- id: p-1779552980-abdf
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0044-sandboxing-containment-experimentation.md. Please
+    remediate.'
+  status: pending
+- id: p-1779552980-d724
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0045-global-metadata-audit-divergence-mapping.md. Please
+    remediate.'
+  status: pending
+- id: p-1779552980-174e
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0046-automated-labeling-invariants.md. Please remediate.'
+  status: pending
+- id: p-1779552980-41ad
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0047-shar-retrospective-compiler.md. Please remediate.'
+  status: pending
+- id: p-1779552980-f6ae
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0048-nba-scoring-rubric.md. Please remediate.'
+  status: pending
+- id: p-1779552980-778c
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''align'' found in WHAT-0048-nba-scoring-rubric.md. Please remediate.'
+  status: pending
+- id: p-1779552980-748e
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0053-lightweight-audit-spec.md. Please remediate.'
+  status: pending
+- id: p-1779552980-b9f9
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''optimize'' found in WHAT-0053-lightweight-audit-spec.md. Please remediate.'
+  status: pending
+- id: p-1779552980-0407
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0054-node-sync-optimization.md. Please remediate.'
+  status: pending
+- id: p-1779552980-bc86
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0023-triple-node-auto-initialization-spec.md. Please remediate.'
+  status: pending
+- id: p-1779552980-b662
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''align'' found in WHAT-0023-triple-node-auto-initialization-spec.md. Please remediate.'
+  status: pending
+- id: p-1779552980-2b5d
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''probe'' found in WHAT-0055-dag-meta-index-spec.md. Please remediate.'
+  status: pending
+- id: p-1779552980-43dd
+  timestamp: '2026-05-23T16:16:20Z'
+  text: '[NOTIFICATION] Semantic immune system detected pollution: deprecated term
+    ''align'' found in WHAT-0060-tactical-goals-sg-0001.md. Please remediate.'
+  status: pending

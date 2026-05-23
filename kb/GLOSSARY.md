@@ -45,9 +45,11 @@ The **checklist data structure** (`- [x] Node ...`) contained inside the body of
 
 ### Harmonization
 The **DZ-CIL Hybrid Triad** action for effortless adaptation. It replaces the mechanical concept of "Structural Alignment." Harmonization is the active negotiation between the Operator's fluid intent and the Agent's structural boundaries, ensuring the system yields to intent without breaking constraints.
+* **Domain Boundary**: Read/Write access to codebase logic, adding tests, and altering functional pathways to build features or fix bugs. See `WHAT-0073`.
 
 ### Refinement
 The **DZ-CIL Hybrid Triad** action for increasing metabolic efficiency. It replaces the purely mathematical "Optimization" and the purely spiritual "Cultivation." Refinement ensures that as the system travels toward the North Star, it simultaneously streamlines code execution while preserving the epistemic history needed to prevent future errors.
+* **Domain Boundary**: Read/Write access to codebase logic and tests, but *strictly constrained* to not altering external feature behavior. Strictly metabolic (speed, safety, clarity). See `WHAT-0073`.
 
 ## ⚙️ The Tripartite Operating Environment
 
