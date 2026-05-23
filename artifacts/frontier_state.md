@@ -1990,6 +1990,13 @@
   - `[x] bin/node retro subcommand functions correctly`
   - `[x] All local tests pass`
 
+## Node 812: Activity 812: Reflect - Synthesize and Surface Epistemic Retrospectives
+- **Status**: Completed
+- **Learnings & Context**: Successfully compiled the retrospective for Path 809, closed out the path lifecycle, and resolved the worktree path divergence anomaly by copying modified frontier state files to the worktree prior to staging.
+- **Feedforward Invariants**:
+  - `[x] Path 809 is closed`
+  - `[x] All local tests pass`
+
 ## Current Active Path
 **Path 809: Synthesize and Surface Epistemic Retrospectives**
 
