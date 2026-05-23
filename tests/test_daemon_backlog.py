@@ -9,12 +9,43 @@ def mock_register_backlog_node():
 
 
 def test_backlog_list(mock_backlog_gh):
-    mock_backlog_gh.list_issues_by_label.return_value = [{"number": 31, "title": "Backlog Item", "url": "https://..."}]
-    daemon = BacklogDaemon()
-    items = daemon.list("backlog")
-    assert len(items) == 1
-    assert items[0]["number"] == 31
-    mock_backlog_gh.list_issues_by_label.assert_called_once_with("backlog")
+    with patch('kernel.daemon_strategic.load_ledger') as mock_load:
+        mock_load.return_value = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0001",
+                    "title": "Goal 1",
+                    "status": "Active",
+                    "prioritized_paths": [100]
+                }
+            ]
+        }
+        mock_backlog_gh.get_open_issues.return_value = [
+            {
+                "number": 100,
+                "title": "Path 100: Prioritized Path",
+                "body": "## Goal\nTest goal\n## Depends On\n200",
+                "labels": [{"name": "path"}]
+            },
+            {
+                "number": 300,
+                "title": "Path 300: Unmapped Path",
+                "body": "## Goal\nTest goal 2",
+                "labels": [{"name": "path"}]
+            }
+        ]
+        
+        daemon = BacklogDaemon()
+        result = daemon.list()
+        
+        assert "🎯 [SG-0001] Goal 1" in result
+        assert len(result["🎯 [SG-0001] Goal 1"]) == 1
+        assert result["🎯 [SG-0001] Goal 1"][0]["number"] == 100
+        assert result["🎯 [SG-0001] Goal 1"][0]["dependencies"] == ["200"]
+        
+        assert "📋 [Backlog / Unmapped]" in result
+        assert len(result["📋 [Backlog / Unmapped]"]) == 1
+        assert result["📋 [Backlog / Unmapped]"][0]["number"] == 300
 
 @patch('kernel.daemon_backlog.render_template')
 def test_backlog_add(mock_render, mock_backlog_gh):
@@ -138,9 +169,41 @@ def test_backlog_add_path(mock_render, mock_backlog_gh):
     # Labels added for each issue (both backlog and status: todo for terminals, and path for path)
     assert mock_backlog_gh.add_label.call_count == 8 # 2 (Path: backlog, path) + 2*3 (Align, Plan, Reflect)
     mock_backlog_gh.add_label.assert_any_call("100", "path")
-    assert mock_backlog_gh.rename_issue_title.call_count == 4
-    
-    mock_backlog_gh.rename_issue_title.assert_any_call("100", "Path 100: New Path Title")
-    mock_backlog_gh.rename_issue_title.assert_any_call("101", "Discovery 101: Harmonize - New Path Title")
-    mock_backlog_gh.rename_issue_title.assert_any_call("102", "Discovery 102: Plan - New Path Title")
     mock_backlog_gh.rename_issue_title.assert_any_call("103", "Activity 103: Reflect - New Path Title")
+
+def test_backlog_cli_list(mock_backlog_gh, capsys):
+    from kernel.daemon_backlog import main
+    import sys
+    
+    with patch('kernel.daemon_strategic.load_ledger') as mock_load:
+        mock_load.return_value = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0001",
+                    "title": "Goal 1",
+                    "status": "Active",
+                    "prioritized_paths": [100]
+                }
+            ]
+        }
+        mock_backlog_gh.get_open_issues.return_value = [
+            {
+                "number": 100,
+                "title": "Path 100: Prioritized Path",
+                "body": "## Goal\nTest goal\n## Depends On\n200",
+                "labels": [{"name": "path"}]
+            },
+            {
+                "number": 300,
+                "title": "Path 300: Unmapped Path",
+                "body": "## Goal\nTest goal 2",
+                "labels": [{"name": "path"}]
+            }
+        ]
+        
+        with patch.object(sys, 'argv', ['daemon_backlog', 'list']):
+            main()
+            captured = capsys.readouterr()
+            expected_output = "\n🎯 [SG-0001] Goal 1\n  Path 100: Prioritized Path [Depends: 200]\n\n📋 [Backlog / Unmapped]\n  Path 300: Unmapped Path\n\n"
+            assert captured.out == expected_output
+

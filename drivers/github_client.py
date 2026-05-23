@@ -80,10 +80,10 @@ def list_issues_by_label(label: str) -> list[dict]:
 def get_open_issues() -> list[dict]:
     """Returns a list of open issues in the repository.
     
-    Each item is a dict with 'number', 'title', and 'body' keys.
+    Each item is a dict with 'number', 'title', 'body', and 'labels' keys.
     """
     result = subprocess.run(
-        ["gh", "issue", "list", "--state", "open", "--limit", "100", "--json", "number,title,body"],
+        ["gh", "issue", "list", "--state", "open", "--limit", "100", "--json", "number,title,body,labels"],
         capture_output=True, text=True, check=True
     )
     import json

@@ -2359,9 +2359,8 @@ nodes:
   - '[x] implementation_plan.md is updated'
 - name: 'Node 908: Activity 908: Reflect - Group and align backlog list output with
     Strategic Goals'
-  status: Backlog
-  learnings: Final reflection and path closure for Group and align backlog list output
-    with Strategic Goals.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 909: Activity 909: Reflect - Synthesize Epistemic Retrospective retro-906.md'
   status: '[///] Act Phase'
@@ -2376,3 +2375,11 @@ nodes:
   invariants:
   - '[x] GEMINI.md is updated'
   - '[x] kb/HOW-0001-spao-execution-loop.md is updated'
+- name: 'Activity 908: Reflect - Group and align backlog list output with Strategic
+    Goals'
+  status: Completed
+  learnings: Successfully refactored backlog list output to group by active strategic
+    goals and display inline DAG dependencies in a single remote call.
+  invariants:
+  - '[x] Backlog list command groups by active Strategic Goals and displays DAG dependencies
+    inline.'

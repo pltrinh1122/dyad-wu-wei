@@ -35,10 +35,65 @@ class BacklogDaemon:
             "non_terminal": ["path"]
         })
 
-    def list(self, label: str = "backlog") -> list[dict]:
-        """Returns a list of open issues matching the given label, verified via strong consistency."""
-        issues = github_client.list_issues_by_label(label)
-        return issues
+    def list(self, label: str = "backlog") -> dict[str, list[dict]]:
+        """Returns open backlog paths grouped by active strategic goals and unmapped paths, with dependencies resolved."""
+        import re
+        from kernel.daemon_strategic import load_ledger
+        
+        # 1. Fetch all open issues in a single request
+        open_issues = github_client.get_open_issues()
+        
+        # 2. Path Filtering: isolate issues containing the 'path' label
+        path_issues = []
+        for issue in open_issues:
+            labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
+            # Also support string labels if mocked as list of strings
+            labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
+            if "path" in labels:
+                # Resolve dependencies from issue body
+                body = issue.get("body") or ""
+                deps = []
+                dep_match = re.search(r"## Depends On\s*\n+([^\n#]+)", body, re.IGNORECASE)
+                if dep_match:
+                    dep_content = dep_match.group(1).strip()
+                    if dep_content.upper() != "TBD" and dep_content:
+                        deps = re.findall(r"\d+", dep_content)
+                issue["dependencies"] = deps
+                path_issues.append(issue)
+                
+        # 3. Load Strategic intent ledger
+        ledger = load_ledger()
+        goals = ledger.get("strategic_goals", [])
+        active_goals = [g for g in goals if g.get("status") == "Active"]
+        
+        path_by_id = {str(issue["number"]): issue for issue in path_issues}
+        mapped_ids = set()
+        
+        grouped = {}
+        # 4. Group by active prioritized goals
+        for goal in active_goals:
+            goal_id = goal.get("id")
+            goal_title = goal.get("title")
+            header = f"🎯 [{goal_id}] {goal_title}"
+            
+            prioritized = goal.get("prioritized_paths", [])
+            goal_paths = []
+            for p_id in prioritized:
+                p_id_str = str(p_id)
+                if p_id_str in path_by_id:
+                    goal_paths.append(path_by_id[p_id_str])
+                    mapped_ids.add(p_id_str)
+            grouped[header] = goal_paths
+            
+        # 5. Group remaining paths under Backlog / Unmapped
+        unmapped_paths = []
+        for issue in path_issues:
+            issue_id_str = str(issue["number"])
+            if issue_id_str not in mapped_ids:
+                unmapped_paths.append(issue)
+        
+        grouped["📋 [Backlog / Unmapped]"] = unmapped_paths
+        return grouped
 
     def add(self, node_type: str, title: str, goal: str, path_id: str = None, depends_on: str = None) -> str:
         """Creates a GH issue based on whether the node type maps to a Terminal or Non-Terminal Base Class."""
@@ -254,12 +309,18 @@ def main():
     daemon = BacklogDaemon()
     
     if args.subcommand == "list":
-        items = daemon.list(args.label)
-        if items:
-            print(f"\n📋 Backlog ({len(items)} item(s) pending):")
-            for item in items:
-                print(f"  {item['title']}")
+        grouped_data = daemon.list(args.label)
+        has_paths = any(len(paths) > 0 for paths in grouped_data.values())
+        if has_paths:
             print()
+            for header, paths in grouped_data.items():
+                print(header)
+                for path in paths:
+                    dep_str = ""
+                    if path.get("dependencies"):
+                        dep_str = f" [Depends: {', '.join(path['dependencies'])}]"
+                    print(f"  {path['title']}{dep_str}")
+                print()
         else:
             print("Backlog is empty.")
             
