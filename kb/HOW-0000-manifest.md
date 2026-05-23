@@ -15,6 +15,8 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Metasystem Principles (Future)**: *[Reserved for future engineering principles/doctrine guidelines]*
 * **Agent Decision-Making Invariant (NS-0001 → Wu-wei → Ziran)**: Read [HOW-0006-decision-making-invariant.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/HOW-0006-decision-making-invariant.md)
 * **Consolidation under Universal Merge Gate (HTIL) (Ziran)**: Read [WHY-0087-universal-merge-gate.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0087-universal-merge-gate.md)
+* **Interface as the Playbook (Ziran)**: Read [WHY-0088-interface-as-playbook.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0088-interface-as-playbook.md)
+
 
 ## 2. Core Agentic Architecture & Execution
 * **System Design & Materialization Rules**: Read [WHAT-0001-agentic-architecture.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0001-agentic-architecture.md)
