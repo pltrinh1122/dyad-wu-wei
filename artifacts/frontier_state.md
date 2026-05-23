@@ -2058,10 +2058,11 @@
   - `Bypasses remote fetches when no PR merge event is pending`
 
 ## Node 882: Activity 882: Reflect - Synthesize Epistemic Retrospective retro-878.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-878.md into the system's operational guidelines (the Dao).
+- **Status**: Completed
+- **Learnings & Context**: Synthesized epistemic learnings from retro-878.md by codifying Rule 6 (The Root Execution Invariant) and Rule 9 (The Semantic and Command Purity Invariant) in GEMINI.md, and updating the plan/reflect loop steps in kb/HOW-0001-spao-execution-loop.md.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `Unit tests pass 100% green`
+  - `Operational guidelines contain Root Execution and Semantic Purity rules`
 
 ## Current Active Path
 None
