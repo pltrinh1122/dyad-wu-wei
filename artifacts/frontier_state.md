@@ -2052,9 +2052,10 @@
 
 ## Node 880: Activity 880: Activity: Optimize Node Sync Execution Speed
 - **Status**: Completed
-- **Learnings & Context**: Implemented reactive event-driven synchronization workflow (Option D) and local-only option in audit daemon.
+- **Learnings & Context**: Implemented reactive event-driven synchronization speedup in bin/node sync to bypass remote fetches when no PR merge events are pending, optimizing inner-loop velocity while preserving WIP-N=1 invariants.
 - **Feedforward Invariants**:
-  - `None`
+  - `Unit tests pass 100% green`
+  - `Bypasses remote fetches when no PR merge event is pending`
 
 ## Node 882: Activity 882: Reflect - Synthesize Epistemic Retrospective retro-878.md
 - **Status**: Backlog
