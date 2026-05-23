@@ -1,4 +1,4 @@
-# WHAT-0095: Group and Align Backlog list with Strategic Goals Specification
+# WHAT-0095: Group and Harmonize Backlog list with Strategic Goals Specification
 
 This document codifies the requirements, schema, and layout mapping rules for grouping backlog items by Strategic Goals and rendering DAG dependencies in the CLI backlog output.
 
