@@ -159,25 +159,19 @@ To prevent terminology drift and ensure absolute precision across models and ope
 
 ---
 
-## 🛠️ Managers, Workflows, and Agents
+## 🛠️ Agents, Sub-Agents, and Daemons
+
+### Daemon
+A **pure, deterministic background process** containing zero Semantic Entropy (no LLM). It enforces physics mathematically via deterministic algorithms (e.g., Sluice Gate Sensor, Ziran Auditor).
 
 ### Agent
-A **non-deterministic reasoning engine** (e.g., an LLM instance). It possesses intent, interprets context, and executes actions to navigate a deterministic Workflow.
-
-### Workflow
-A **deterministic state machine** and orchestration sequence. It sequences Skills across phase transitions (e.g., the SPAO loop) and maintains the rules and active state context.
-
-### Manager (Orchestrator)
-The **systemic synthesis of Workflow + Agent**. A Manager binds an Agent to a specific Workflow to achieve a domain objective.
-
-### Operator Agent
-The primary **Agent** within a Manager responsible for actively executing the functional logic of the Workflow.
+A **non-deterministic reasoning engine** containing Semantic Entropy (an LLM). It interprets context, navigates ambiguity, and possesses intent.
 
 ### Frontier Agent
-The primary agentic intelligence directly tethered to the human Operator. It stands at the crest of the system's evolution (the `frontier_state.md`), operating the active SPAO loop and materializing code.
+The primary synchronous **Agent** directly tethered to the human Operator. It stands at the crest of the system's evolution, serves as the physical operator of the Sluice Gate, and orchestrates the primary SPAO loop.
 
-### Auditor Agent
-The secondary **Agent** within a Manager responsible for independent, concurrent background verification and invariant checking.
+### Sub-Agent
+An **asynchronous, orthogonal Agent** spawned by the Frontier Agent to handle high-friction, non-deterministic tasks in the background (e.g., Backlog Triage, sweeping branches). It possesses the full intelligence of an Agent but operates without blocking the Single-Piece Flow of the Frontier.
 
 ### Skill
 A **pure, atomic, deterministic callable**. It maintains zero state between invocations, has no SPAO/NL stage awareness, and maps to a single external system interaction. Independently testable.
