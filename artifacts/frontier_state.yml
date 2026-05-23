@@ -1,4 +1,4 @@
-current_active_path: 'Path 802: Deterministic State Retrieval'
+current_active_path: null
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -2193,3 +2193,10 @@ nodes:
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-803.md into the system's operational guidelines (the Dao).
   invariants: []
+- name: 'Node 805: Activity 805: Implement bin/status deterministic dashboard'
+  status: Completed
+  learnings: Implemented a local worktree scanner to list open PRs entirely offline
+    with zero network latency.
+  invariants:
+  - '[x] bin/status performs no remote network calls to GitHub'
+  - '[x] All tests pass'

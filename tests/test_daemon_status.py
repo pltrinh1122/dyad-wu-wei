@@ -2,7 +2,7 @@ import os
 import sys
 from unittest.mock import patch, MagicMock
 
-from kernel.daemon_status import get_prompt_backlog_size, main
+from kernel.daemon_status import get_prompt_backlog_size, get_local_worktrees, main
 
 def test_get_prompt_backlog_size(tmp_path):
     repo_root = str(tmp_path)
@@ -15,15 +15,62 @@ def test_get_prompt_backlog_size(tmp_path):
         
     assert get_prompt_backlog_size(repo_root) == 2
 
+def test_get_local_worktrees(tmp_path):
+    repo_root = str(tmp_path)
+    worktrees_dir = os.path.join(repo_root, ".worktrees")
+    
+    # Empty case
+    assert get_local_worktrees(repo_root) == []
+    
+    # Create worktrees directory and subdirectories
+    os.makedirs(os.path.join(worktrees_dir, "node", "805-implement-status-dashboard"))
+    os.makedirs(os.path.join(worktrees_dir, "spao", "806-spao-rules"))
+    os.makedirs(os.path.join(worktrees_dir, "sdlc", "807-sdlc-features"))
+    os.makedirs(os.path.join(worktrees_dir, "other-worktree"))
+    
+    # Should be empty because .git file is missing
+    assert get_local_worktrees(repo_root) == []
+    
+    # Create .git files
+    with open(os.path.join(worktrees_dir, "node", "805-implement-status-dashboard", ".git"), "w") as f:
+        f.write("gitdir: ...")
+    with open(os.path.join(worktrees_dir, "spao", "806-spao-rules", ".git"), "w") as f:
+        f.write("gitdir: ...")
+    with open(os.path.join(worktrees_dir, "sdlc", "807-sdlc-features", ".git"), "w") as f:
+        f.write("gitdir: ...")
+    with open(os.path.join(worktrees_dir, "other-worktree", ".git"), "w") as f:
+        f.write("gitdir: ...")
+        
+    result = get_local_worktrees(repo_root)
+    assert len(result) == 4
+    
+    # They should be sorted numerically
+    assert result[0]["number"] == 805
+    assert result[0]["title"] == "Implement status dashboard"
+    assert result[0]["url"] == "local:node/805-implement-status-dashboard"
+    
+    assert result[1]["number"] == 806
+    assert result[1]["title"] == "Spao rules"
+    assert result[1]["url"] == "local:spao/806-spao-rules"
+    
+    assert result[2]["number"] == 807
+    assert result[2]["title"] == "Sdlc features"
+    assert result[2]["url"] == "local:sdlc/807-sdlc-features"
+    
+    # The one directly under .worktrees
+    assert result[3]["number"] == "?"
+    assert result[3]["title"] == "Other worktree"
+    assert result[3]["url"] == "local:other-worktree"
+
 @patch("kernel.daemon_status.get_current_branch")
-@patch("kernel.daemon_status.get_open_prs")
+@patch("kernel.daemon_status.get_local_worktrees")
 @patch("kernel.daemon_status.read_active_path")
 @patch("kernel.daemon_status.read_active_node")
-def test_main(mock_node, mock_path, mock_prs, mock_branch, capsys):
+def test_main(mock_node, mock_path, mock_worktrees, mock_branch, capsys):
     mock_node.return_value = "805"
     mock_path.return_value = "802"
     mock_branch.return_value = "node/805-status-dashboard"
-    mock_prs.return_value = [{"number": 1, "title": "Test PR", "url": "http"}]
+    mock_worktrees.return_value = [{"number": 1, "title": "Test PR", "url": "local:node/1-test-pr"}]
     
     with patch("kernel.daemon_status.repo_root", "/tmp"):
         with patch("os.path.exists", return_value=True):
