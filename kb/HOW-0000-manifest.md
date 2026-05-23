@@ -17,6 +17,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 ## 2. Core Agentic Architecture & Execution
 * **System Design & Materialization Rules**: Read [WHAT-0001-agentic-architecture.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0001-agentic-architecture.md)
 * **Temporal Execution Sequence (SPAO Loop)**: Read [HOW-0001-spao-execution-loop.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/HOW-0001-spao-execution-loop.md)
+* **Terminology Promotion Lifecycle (Wu-wei)**: Read [HOW-0005-terminology-lifecycle.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/HOW-0005-terminology-lifecycle.md)
 
 ## 3. Multi-Loop Governance (SPAO vs. SDLC)
 * **Three-Loop Governance Alignment & Concept Breakdown**: Read [WHY-0034-three-loop-governance-alignment.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0034-three-loop-governance-alignment.md)
