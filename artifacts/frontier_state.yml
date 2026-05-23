@@ -1,4 +1,4 @@
-current_active_path: null
+current_active_path: 'Path 802: Deterministic State Retrieval'
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -2180,3 +2180,16 @@ nodes:
   invariants:
   - '[x] Retrospectives are autonomously surfaced in backlog'
   - '[x] All local tests pass'
+- name: 'Node 803: Probe 803: Align - Deterministic State Retrieval'
+  status: Completed
+  learnings: Aligned on zero-latency local proxy for open PRs tracking by leveraging
+    the presence of active worktrees under .worktrees/. Codified the architecture
+    in kb/WHY-0089-deterministic-state-retrieval.md.
+  invariants:
+  - '[x] kb/WHY-0089-deterministic-state-retrieval.md exists'
+  - '[x] All local tests pass'
+- name: 'Node 872: Activity 872: Reflect - Synthesize Epistemic Retrospective retro-803.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-803.md into the system's operational guidelines (the Dao).
+  invariants: []

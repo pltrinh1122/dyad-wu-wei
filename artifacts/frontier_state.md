@@ -2004,8 +2004,21 @@
   - `[x] Retrospectives are autonomously surfaced in backlog`
   - `[x] All local tests pass`
 
+## Node 803: Probe 803: Align - Deterministic State Retrieval
+- **Status**: Completed
+- **Learnings & Context**: Aligned on zero-latency local proxy for open PRs tracking by leveraging the presence of active worktrees under .worktrees/. Codified the architecture in kb/WHY-0089-deterministic-state-retrieval.md.
+- **Feedforward Invariants**:
+  - `[x] kb/WHY-0089-deterministic-state-retrieval.md exists`
+  - `[x] All local tests pass`
+
+## Node 872: Activity 872: Reflect - Synthesize Epistemic Retrospective retro-803.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-803.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
-None
+**Path 802: Deterministic State Retrieval**
 
 ## Current Active Node
 None
