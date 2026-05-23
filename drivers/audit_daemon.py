@@ -238,6 +238,66 @@ def evaluate_pr_merged_monitor(rule, state):
     return False, state
 
 
+def evaluate_semantic_immune_system(rule, state):
+    sys.path.append(str(REPO_ROOT))
+    import yaml
+    import re
+    from pathlib import Path
+    
+    ledger_path = REPO_ROOT / "kb" / "semantic_ledger.yml"
+    if not ledger_path.exists():
+        return False, state
+        
+    try:
+        with open(ledger_path, "r") as f:
+            ledger = yaml.safe_load(f)
+            
+        deprecated_terms = []
+        if ledger and "terms" in ledger:
+            for term, meta in ledger["terms"].items():
+                if meta.get("state") == "deprecated":
+                    deprecated_terms.append(term)
+                    
+        if not deprecated_terms:
+            return False, state
+            
+        kb_dir = REPO_ROOT / "kb"
+        pollution_found = []
+        
+        term_patterns = {term: re.compile(rf"\b{re.escape(term)}\b", re.IGNORECASE) for term in deprecated_terms}
+        
+        for md_file in kb_dir.rglob("*.md"):
+            try:
+                with open(md_file, "r") as f:
+                    content = f.read()
+                    
+                for term, pattern in term_patterns.items():
+                    if pattern.search(content):
+                        pollution_found.append((term, md_file.name))
+            except Exception:
+                continue
+                
+        if pollution_found:
+            created_activities = state.get("created_activities", [])
+            state_changed = False
+            
+            for term, filename in pollution_found:
+                activity_key = f"{term}_{filename}"
+                if activity_key not in created_activities:
+                    msg = f"[NOTIFICATION] Semantic immune system detected pollution: deprecated term '{term}' found in {filename}. Please remediate."
+                    inject_prompt(msg)
+                    created_activities.append(activity_key)
+                    state_changed = True
+                    
+            if state_changed:
+                state["created_activities"] = created_activities
+                return True, state
+                
+    except Exception as e:
+        print(f"Error in evaluate_semantic_immune_system: {e}")
+        
+    return False, state
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
@@ -245,7 +305,8 @@ RULE_REGISTRY = {
     "stale_active_node": evaluate_stale_active_node,
     "frontier_integrity": evaluate_frontier_integrity,
     "lexical_guard": evaluate_lexical_guard,
-    "pr_merged_monitor": evaluate_pr_merged_monitor
+    "pr_merged_monitor": evaluate_pr_merged_monitor,
+    "semantic_immune_system": evaluate_semantic_immune_system
 }
 
 def main():
@@ -258,7 +319,7 @@ def main():
     
     if current_branch not in audit_branches:
         print(f"Audit daemon ignoring branch: {current_branch}. Target branches: {audit_branches}. Evaluating global rules only.")
-        rules_to_evaluate = [r for r in rules if r.get("type") == "pr_merged_monitor"]
+        rules_to_evaluate = [r for r in rules if r.get("type") in ("pr_merged_monitor", "semantic_immune_system")]
         if not rules_to_evaluate:
             return
     else:

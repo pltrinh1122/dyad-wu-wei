@@ -1,0 +1,19 @@
+terms:
+  epic:
+    state: deprecated
+    superseded_by: path
+  epics:
+    state: deprecated
+    superseded_by: paths
+  spike:
+    state: deprecated
+    superseded_by: probe
+  spikes:
+    state: deprecated
+    superseded_by: probes
+  meta-orchestrator:
+    state: deprecated
+    superseded_by: dao_engine
+  orchestrator:
+    state: deprecated
+    superseded_by: kernel_daemon

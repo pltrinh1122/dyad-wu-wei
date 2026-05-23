@@ -84,10 +84,26 @@ def check_kb_conflicts(diff_text: str) -> list[str]:
     conflicts = []
     current_file = None
 
-    # Strict regex matching word boundaries for stale terminology (case-insensitive)
-    terms = ["e" + "p" + "i" + "c", "e" + "p" + "i" + "c" + "s", "s" + "p" + "i" + "k" + "e", "s" + "p" + "i" + "k" + "e" + "s"]
+    # Dynamic semantic ledger parsing for malleable terminology
+    terms = []
+    try:
+        from drivers import path_resolver
+        repo_root = path_resolver.get_workspace_dir()
+        ledger_path = os.path.join(repo_root, 'kb', 'semantic_ledger.yml')
+        if os.path.exists(ledger_path):
+            with open(ledger_path, 'r') as f:
+                ledger = yaml.safe_load(f)
+                if ledger and 'terms' in ledger:
+                    for term, meta in ledger['terms'].items():
+                        if meta.get('state') == 'deprecated':
+                            terms.append(re.escape(term))
+    except Exception:
+        pass
+        
+    if not terms:
+        terms = ["e" + "p" + "i" + "c", "e" + "p" + "i" + "c" + "s", "s" + "p" + "i" + "k" + "e", "s" + "p" + "i" + "k" + "e" + "s"]
+        
     word_pattern = re.compile(r'\b(' + '|'.join(terms) + r')\b', re.IGNORECASE)
-
     # Regex targeting direct shell usage of git or gh commands
     git_cmd_pattern = re.compile(
         r'\b(git\s+(checkout|commit|add|push|pull|switch|stash|status|worktree|branch|reset|restore|clone|init|merge|rebase|fetch|log))\b',
