@@ -9,3 +9,6 @@ venv/
 .worktrees/
 *.lock
 artifacts/telemetry.jsonl
+artifacts/prompt_backlog.yml
+artifacts/prompt_backlog.yml.lock
+

@@ -2306,9 +2306,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 897: Activity 897: Reflect - Decouple Prompt Backlog from Git Tracking'
-  status: Backlog
-  learnings: Final reflection and path closure for Decouple Prompt Backlog from Git
-    Tracking.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 898: Activity 898: Reflect - Synthesize Epistemic Retrospective retro-895.md'
   status: '[///] Act Phase'
@@ -2327,3 +2326,11 @@ nodes:
   invariants:
   - '[x] GEMINI.md is updated'
   - '[x] kb/HOW-0001-spao-execution-loop.md is updated'
+- name: 'Activity 897: Reflect - Decouple Prompt Backlog from Git Tracking'
+  status: Completed
+  learnings: Successfully decoupled prompt_backlog.yml from Git by running git rm
+    --cached and ignoring it in .gitignore. Verified that daemon_prompt.py and status
+    commands handle file absence gracefully.
+  invariants:
+  - '[x] artifacts/prompt_backlog.yml is untracked'
+  - '[x] .gitignore ignores prompt_backlog.yml and lock file'
