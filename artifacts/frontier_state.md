@@ -2026,11 +2026,10 @@
   - `[x] All tests pass`
 
 ## Node 876: Path 876: Path: Optimize SPAO Loop Inner-Loop Velocity
-- **Status**: Completed
-- **Learnings & Context**: Compiled and finalized the path retrospective for Path 876, closing the path.
+- **Status**: Backlog
+- **Learnings & Context**: Optimize SPAO Loop execution and sync performance to maximize inner-loop velocity.
 - **Feedforward Invariants**:
-  - `Unit tests pass 100% green`
-  - `Path retrospective file compiled successfully`
+  - `[ ]` None
 
 ## Node 877: Discovery 877: Harmonize - Path: Optimize SPAO Loop Inner-Loop Velocity
 - **Status**: Completed
@@ -2157,6 +2156,36 @@
 - **Feedforward Invariants**:
   - `[x] artifacts/prompt_backlog.yml is untracked`
   - `[x] .gitignore ignores prompt_backlog.yml and lock file`
+
+## Node 905: Path 905: Group and align backlog list output with Strategic Goals
+- **Status**: Backlog
+- **Learnings & Context**: Enhance backlog list command to natively group and display paths under their active Strategic Goal alignment to reduce operator cognitive pivoting load.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 906: Discovery 906: Harmonize - Group and align backlog list output with Strategic Goals
+- **Status**: Completed
+- **Learnings & Context**: Harmonized design options and completed WHY-0095 for grouping backlog paths by strategic goals and showing DAG dependencies.
+- **Feedforward Invariants**:
+  - `[x] kb/WHY-0095-backlog-alignment.md exists`
+
+## Node 907: Discovery 907: Plan - Group and align backlog list output with Strategic Goals
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Group and align backlog list output with Strategic Goals.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 908: Activity 908: Reflect - Group and align backlog list output with Strategic Goals
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Group and align backlog list output with Strategic Goals.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 909: Activity 909: Reflect - Synthesize Epistemic Retrospective retro-906.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-906.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Current Active Path
 None
