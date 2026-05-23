@@ -19,7 +19,8 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - **Template Invariant:** The Agent must NEVER generate inline markdown strings for GitHub Issues. All issue bodies (Backlog and Node Contracts) MUST be rendered using strict, Operator-editable templates located in `kb/templates/`.
    - **Semantic and Command Purity Invariant:** Any specifications added under `kb/` (e.g. `WHAT-` files) during planning must not introduce deprecated terms defined in `kb/semantic_ledger.yml` or raw shell command strings (such as `git fetch`), which trigger static KB conflict validation failures.
    - Mutate the body of the **Path Issue** to link to the newly active Node Issue via `./bin/meta link "Node X: Title" "ISSUE_ID"`.
-   - *Do not execute codebase mutations until the Node Issue is explicitly locked. Under the Universal Merge Gate (HTIL) model, the Agent may autonomously transition from Plan to Act once the NC is locked, without waiting for chat approval.*
+   - Execute the checkout command to establish the worktree: `SPAO_PERSONA_ID=frontier ./bin/node checkout "ISSUE_ID" "branch_name"` from the repository root.
+   - *Do not execute codebase mutations until the Node Issue is explicitly locked and the worktree is checked out. Under the Universal Merge Gate (HTIL) model, the Agent may autonomously transition from Plan to Act once the NC is locked, without waiting for chat approval.*
 
 3. **Act (Execution):** 
    - Execute codebase generation, tool invocations, and artifact mutations required by the Scope.

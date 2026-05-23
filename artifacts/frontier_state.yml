@@ -2311,9 +2311,8 @@ nodes:
     Tracking.
   invariants: []
 - name: 'Node 898: Activity 898: Reflect - Synthesize Epistemic Retrospective retro-895.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-895.md into the system's operational guidelines (the Dao).
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Discovery 896: Plan - Decouple Prompt Backlog from Git Tracking'
   status: Completed
@@ -2321,3 +2320,10 @@ nodes:
     in manifest, wrote implementation plan.
   invariants:
   - '[x] kb/WHAT-0093-decouple-prompt-backlog.md exists'
+- name: 'Activity 898: Reflect - Synthesize Epistemic Retrospective retro-895.md'
+  status: Completed
+  learnings: Synthesized retro-895.md by updating GEMINI.md Rule 6 and kb/HOW-0001-spao-execution-loop.md
+    to explicitly mandate setting SPAO_PERSONA_ID for all orchestration transitions.
+  invariants:
+  - '[x] GEMINI.md is updated'
+  - '[x] kb/HOW-0001-spao-execution-loop.md is updated'

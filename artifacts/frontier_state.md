@@ -2130,8 +2130,8 @@
   - `[ ]` None
 
 ## Node 898: Activity 898: Reflect - Synthesize Epistemic Retrospective retro-895.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-895.md into the system's operational guidelines (the Dao).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2140,6 +2140,13 @@
 - **Learnings & Context**: Created specification kb/WHAT-0093-decouple-prompt-backlog.md and registered in manifest, wrote implementation plan.
 - **Feedforward Invariants**:
   - `[x] kb/WHAT-0093-decouple-prompt-backlog.md exists`
+
+## Activity 898: Reflect - Synthesize Epistemic Retrospective retro-895.md
+- **Status**: Completed
+- **Learnings & Context**: Synthesized retro-895.md by updating GEMINI.md Rule 6 and kb/HOW-0001-spao-execution-loop.md to explicitly mandate setting SPAO_PERSONA_ID for all orchestration transitions.
+- **Feedforward Invariants**:
+  - `[x] GEMINI.md is updated`
+  - `[x] kb/HOW-0001-spao-execution-loop.md is updated`
 
 ## Current Active Path
 None
