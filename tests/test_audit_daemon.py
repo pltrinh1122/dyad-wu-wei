@@ -3,7 +3,7 @@ import json
 import pytest
 from unittest.mock import patch, MagicMock, mock_open
 
-from skills.audit_daemon import (
+from drivers.audit_daemon import (
     evaluate_node_completion_threshold,
     evaluate_file_modified,
     main
@@ -25,7 +25,7 @@ def test_evaluate_node_completion_threshold():
     
     with patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=mock_frontier)), \
-         patch("skills.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
              
         triggered, new_state = evaluate_node_completion_threshold(rule, state.copy())
         
@@ -44,7 +44,7 @@ def test_evaluate_node_completion_threshold_not_reached():
     
     with patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=mock_frontier)), \
-         patch("skills.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
              
         triggered, new_state = evaluate_node_completion_threshold(rule, state.copy())
         
@@ -62,8 +62,8 @@ def test_evaluate_file_modified():
     }
     state = {"last_hash": "old_hash"}
     
-    with patch("skills.audit_daemon.subprocess.run") as mock_run, \
-         patch("skills.audit_daemon.inject_prompt") as mock_inject:
+    with patch("drivers.audit_daemon.subprocess.run") as mock_run, \
+         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
              
         mock_result = MagicMock()
         mock_result.stdout = "new_hash\n"
@@ -83,8 +83,8 @@ def test_evaluate_file_modified_initial_run():
     }
     state = {} # First run
     
-    with patch("skills.audit_daemon.subprocess.run") as mock_run, \
-         patch("skills.audit_daemon.inject_prompt") as mock_inject:
+    with patch("drivers.audit_daemon.subprocess.run") as mock_run, \
+         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
              
         mock_result = MagicMock()
         mock_result.stdout = "new_hash\n"
@@ -97,10 +97,10 @@ def test_evaluate_file_modified_initial_run():
         assert new_state["last_hash"] == "new_hash"
         mock_inject.assert_not_called()
 
-@patch("skills.audit_daemon.load_config")
-@patch("skills.audit_daemon.get_current_branch")
-@patch("skills.audit_daemon.load_state")
-@patch("skills.audit_daemon.save_state")
+@patch("drivers.audit_daemon.load_config")
+@patch("drivers.audit_daemon.get_current_branch")
+@patch("drivers.audit_daemon.load_state")
+@patch("drivers.audit_daemon.save_state")
 def test_main_ignores_unconfigured_branch(mock_save, mock_load, mock_get_branch, mock_config):
     mock_config.return_value = {
         "audit_branches": ["main"]
@@ -112,11 +112,11 @@ def test_main_ignores_unconfigured_branch(mock_save, mock_load, mock_get_branch,
     mock_load.assert_not_called()
     mock_save.assert_not_called()
 
-@patch("skills.audit_daemon.load_config")
-@patch("skills.audit_daemon.get_current_branch")
-@patch("skills.audit_daemon.load_state")
-@patch("skills.audit_daemon.save_state")
-@patch("skills.audit_daemon.RULE_REGISTRY")
+@patch("drivers.audit_daemon.load_config")
+@patch("drivers.audit_daemon.get_current_branch")
+@patch("drivers.audit_daemon.load_state")
+@patch("drivers.audit_daemon.save_state")
+@patch("drivers.audit_daemon.RULE_REGISTRY")
 def test_main_processes_rules(mock_registry, mock_save, mock_load, mock_get_branch, mock_config):
     mock_config.return_value = {
         "audit_branches": ["main"],
@@ -137,15 +137,15 @@ def test_main_processes_rules(mock_registry, mock_save, mock_load, mock_get_bran
     mock_save.assert_called_once_with({"rule1": {"last_val": "b"}})
 
 def test_get_current_branch_normal():
-    with patch("skills.git_client.subprocess.run") as mock_run:
-        from skills.audit_daemon import get_current_branch
+    with patch("drivers.git_client.subprocess.run") as mock_run:
+        from drivers.audit_daemon import get_current_branch
         mock_run.return_value.stdout = "main\n"
         assert get_current_branch() == "main"
         mock_run.assert_called_once_with(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=None)
 
 def test_get_current_branch_detached():
-    with patch("skills.git_client.subprocess.run") as mock_run:
-        from skills.audit_daemon import get_current_branch
+    with patch("drivers.git_client.subprocess.run") as mock_run:
+        from drivers.audit_daemon import get_current_branch
         
         run_show_current = MagicMock()
         run_show_current.stdout = "\n"

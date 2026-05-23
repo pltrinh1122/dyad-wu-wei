@@ -39,7 +39,7 @@ Applying the invariants above, we define four tactical milestones for the Platfo
     *   *Enforcement Gradient*: Can be tuned from structural warnings to hard execution halts.
 
 ### TG-PLAT-02: DAG Concurrency Lock Enforcement (a2ai)
-*   **Definition**: Enforce rigorous concurrency control mechanisms (`skills/file_locker.py`) and topological checks during node state transitions.
+*   **Definition**: Enforce rigorous concurrency control mechanisms (`drivers/file_locker.py`) and topological checks during node state transitions.
 *   **Invariance Matching**:
     *   *Risk Mitigation*: Prevents race conditions, orphaned processes, and corrupted state when multiple agents attempt to access or modify the same topological frontier concurrently.
     *   *Verification Metric*: Attempts to mutate a locked node or a node missing prerequisite closures must raise an immediate deterministic exception.

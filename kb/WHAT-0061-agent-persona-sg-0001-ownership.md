@@ -24,7 +24,7 @@ The `agent-SG1` persona claims exclusive design, implementation, and audit respo
 *   **Boundaries**: Verify that any active node matches a prioritized path in the strategic intent ledger.
 
 ### 2.2 Next-Best-Action (NBA) Dynamic Re-ranking (`TG-0001-02`)
-*   **Ownership**: The backlog scoring and ranking algorithms implemented in `orchestrator/nba_scorer.py` and integrated hooks.
+*   **Ownership**: The backlog scoring and ranking algorithms implemented in `kernel/nba_scorer.py` and integrated hooks.
 *   **Boundaries**: Automatically re-order backlog selections based on operator intent and active goal weights.
 
 ### 2.3 Resource and Token Budget Monitoring (`TG-0001-03`)

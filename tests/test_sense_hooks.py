@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, mock_open, MagicMock
-from orchestrator.sense_hooks import HookManager
+from kernel.sense_hooks import HookManager
 import yaml
 
 def test_hook_manager_load_config():
@@ -29,8 +29,8 @@ def test_execute_all(mock_nba, mock_pq):
     mock_pq.assert_called_once_with({"type": "prompt_queue", "location": "a"})
     mock_nba.assert_called_once_with({"type": "next_best_action", "repository": "b"})
 
-@patch('orchestrator.sense_hooks.HookManager._load_config', return_value=[])
-@patch('orchestrator.mgr_prompt.list_prompts')
+@patch('kernel.sense_hooks.HookManager._load_config', return_value=[])
+@patch('kernel.mgr_prompt.list_prompts')
 def test_execute_prompt_queue_hook(mock_list_prompts, mock_load_config):
     hm = HookManager("fake.yml")
     config = {"location": "custom/path.yml"}
@@ -39,8 +39,8 @@ def test_execute_prompt_queue_hook(mock_list_prompts, mock_load_config):
     
     mock_list_prompts.assert_called_once_with(all_prompts=False, backlog_file="custom/path.yml")
     
-@patch('orchestrator.sense_hooks.HookManager._load_config', return_value=[])
-@patch('orchestrator.mgr_prompt.list_prompts')
+@patch('kernel.sense_hooks.HookManager._load_config', return_value=[])
+@patch('kernel.mgr_prompt.list_prompts')
 def test_execute_prompt_queue_hook_default(mock_list_prompts, mock_load_config):
     hm = HookManager("fake.yml")
     config = {}
@@ -49,8 +49,8 @@ def test_execute_prompt_queue_hook_default(mock_list_prompts, mock_load_config):
     
     mock_list_prompts.assert_called_once_with(all_prompts=False, backlog_file="artifacts/prompt_backlog.yml")
 
-@patch('orchestrator.sense_hooks.HookManager._load_config', return_value=[])
-@patch('orchestrator.mgr_nba.NBAManager.evaluate')
+@patch('kernel.sense_hooks.HookManager._load_config', return_value=[])
+@patch('kernel.mgr_nba.NBAManager.evaluate')
 def test_execute_next_best_action_hook(mock_evaluate, mock_load_config, capsys):
     mock_evaluate.return_value = {
         "type": "path_continuation",
@@ -68,8 +68,8 @@ def test_execute_next_best_action_hook(mock_evaluate, mock_load_config, capsys):
     assert "┌─" in out
     assert "└─" in out
 
-@patch('orchestrator.sense_hooks.HookManager._load_config', return_value=[])
-@patch('orchestrator.mgr_nba.NBAManager.evaluate')
+@patch('kernel.sense_hooks.HookManager._load_config', return_value=[])
+@patch('kernel.mgr_nba.NBAManager.evaluate')
 def test_execute_next_best_action_hook_empty(mock_evaluate, mock_load_config, capsys):
     mock_evaluate.return_value = {
         "type": "path_switching",

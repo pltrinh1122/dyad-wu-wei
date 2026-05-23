@@ -2,7 +2,7 @@ import os
 import pytest
 import textwrap
 import hashlib
-from skills.frontier_editor import (
+from drivers.frontier_editor import (
     read_active_node,
     complete_active_node,
     set_active_node,
@@ -10,7 +10,7 @@ from skills.frontier_editor import (
     read_active_path,
     set_active_path
 )
-from orchestrator import mgr_frontier
+from kernel import mgr_frontier
 
 @pytest.fixture
 def dummy_frontier(tmp_path):

@@ -1,6 +1,5 @@
-current_active_path: '626'
-current_active_node: 'Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent
-  Identity Resolution'
+current_active_path: null
+current_active_node: 'Node 738: Probe 738: Plan - Restructure Repository for Dao Portability'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1939,9 +1938,10 @@ nodes:
   invariants: []
 - name: 'Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity
     Resolution'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
+  status: Completed
+  learnings: Completed manually
+  invariants:
+  - '[ ] None'
 - name: 'Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution'
   status: Completed
   learnings: Aligned on dynamic agent identity resolution policy.
@@ -1974,3 +1974,99 @@ nodes:
   learnings: Created design specification (WHAT-0064) and rationale (WHY-0064) for
     dynamic identity resolution.
   invariants: []
+- name: 'Node 717: Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards
+    in Audit Config'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards in Audit
+    Config'
+  status: Completed
+  learnings: Confirmed alignment
+  invariants:
+  - '[ ] None'
+- name: 'Node 718: Probe 718: Plan - Remediate Synthesized Lexical Guards in Audit
+    Config'
+  status: Completed
+  learnings: Created Node 725 Act
+  invariants:
+  - '[ ] None'
+- name: 'Node 725: Activity 725: Act - Remediate Synthesized Lexical Guards in Audit
+    Config'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 716: Path 716: Remediate Synthesized Lexical Guards in Audit Config'
+  status: Completed
+  learnings: Remediated directly via hotfix
+  invariants:
+  - '[x] None'
+- name: 'Node 727: Path 727: Prevent Overly Broad Synthesized Lexical Guards'
+  status: Backlog
+  learnings: Refactor synthesize_rule in skills/knowledge_accrual_skill.py to ensure
+    it does not synthesize overly broad lexical guards (e.g., single digits or absolute
+    file paths) by validating the target term against a strict set of domain-specific
+    lexical scoping constraints.
+  invariants: []
+- name: 'Node 728: Probe 728: Align - Prevent Overly Broad Synthesized Lexical Guards'
+  status: Backlog
+  learnings: Align on the philosophical and technical intent for Prevent Overly Broad
+    Synthesized Lexical Guards.
+  invariants: []
+- name: 'Node 729: Probe 729: Plan - Prevent Overly Broad Synthesized Lexical Guards'
+  status: Backlog
+  learnings: Technical design and proposed changes for Prevent Overly Broad Synthesized
+    Lexical Guards.
+  invariants: []
+- name: 'Node 730: Activity 730: Reflect - Prevent Overly Broad Synthesized Lexical
+    Guards'
+  status: Backlog
+  learnings: Final reflection and path closure for Prevent Overly Broad Synthesized
+    Lexical Guards.
+  invariants: []
+- name: 'Node 732: Path 732: Formalize The Shaping Sequence'
+  status: Backlog
+  learnings: Codify the sequence to instantiate new Dao instances.
+  invariants: []
+- name: 'Node 733: Probe 733: Align - Formalize The Shaping Sequence'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 734: Path 734: Restructure Repository for Dao Portability'
+  status: Backlog
+  learnings: Decouple the generic Dao engine from project-specific logic to allow
+    clean instantiation.
+  invariants: []
+- name: 'Node 735: Probe 735: Plan - Formalize The Shaping Sequence'
+  status: Backlog
+  learnings: Technical design and proposed changes for Formalize The Shaping Sequence.
+  invariants: []
+- name: 'Node 736: Probe 736: Align - Restructure Repository for Dao Portability'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 737: Activity 737: Reflect - Formalize The Shaping Sequence'
+  status: Backlog
+  learnings: Final reflection and path closure for Formalize The Shaping Sequence.
+  invariants: []
+- name: 'Node 738: Probe 738: Plan - Restructure Repository for Dao Portability'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 739: Activity 739: Reflect - Restructure Repository for Dao Portability'
+  status: Backlog
+  learnings: Final reflection and path closure for Restructure Repository for Dao
+    Portability.
+  invariants: []
+- name: 'Probe 733: Align - Formalize The Shaping Sequence'
+  status: Completed
+  learnings: ''
+  invariants: ''
+- name: 'Probe 736: Align - Restructure Repository for Dao Portability'
+  status: Completed
+  learnings: The DZ-CIL is an OS. Its physical manifestation is kernel, drivers, bin,
+    kb, artifacts, and tests. We do not need arbitrary nested directories. Everything
+    in CWD is an artificial manifestation of The Shaping.
+  invariants:
+  - None explicitly updated
+  - but reaffirmed Dao fa Ziran (The Dao follows Ziran).

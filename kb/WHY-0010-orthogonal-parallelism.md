@@ -30,7 +30,7 @@ To resolve this, we will implement an explicit **File-Locking Mechanism** (e.g.,
 ### 2.3 Probe vs Activity Invariant Re-Assertion
 This architectural shift does NOT change the definition of a Probe.
 - **Probe**: Investigatory. Produces architectural decisions (`WHY-*`) and Backlog nodes. NO logic mutations.
-- **Activity**: Functional implementation. Modifies `skills/`, `orchestrator/`, `bin/`, etc.
+- **Activity**: Functional implementation. Modifies `drivers/`, `kernel/`, `bin/`, etc.
 
 ---
 

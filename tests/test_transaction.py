@@ -2,7 +2,7 @@ import os
 import tempfile
 import pytest
 from unittest.mock import MagicMock
-from orchestrator.mgr_transaction import FlowTransaction
+from kernel.mgr_transaction import FlowTransaction
 
 def test_transaction_success():
     with tempfile.TemporaryDirectory() as tmp_dir:

@@ -15,8 +15,8 @@ If the Agent discovers an unchecked requirement during the audit:
 
 ## 2. Agentic Architecture Scaffolding
 - [ ] **`artifacts/`**: Directory exists to hold state and output memory.
-- [ ] **`skills/`**: Directory exists to hold deterministic tool interfaces.
-- **`orchestrator/`**: Directory exists to hold the generative runtime and SPAO loop mechanics.
+- [ ] **`drivers/`**: Directory exists to hold deterministic tool interfaces.
+- **`kernel/`**: Directory exists to hold the generative runtime and SPAO loop mechanics.
 - [ ] **`kb/`**: Knowledge Base directory exists to hold WHAT/WHY/HOW linguistic primitives.
 
 ## 3. Flow-State Governance

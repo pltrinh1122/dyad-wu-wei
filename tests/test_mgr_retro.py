@@ -3,7 +3,7 @@ from unittest.mock import patch, mock_open
 import json
 import yaml
 import os
-from orchestrator.mgr_retro import RetroCompiler
+from kernel.mgr_retro import RetroCompiler
 
 def test_load_nodes_and_paths():
     fake_frontier = {
@@ -41,7 +41,7 @@ def test_process_telemetry():
         {"timestamp": "2026-05-20T00:02:00.000000Z", "node_id": "405", "stage": "ACT", "event": "START", "metadata": {"function": "checkout"}},
         {"timestamp": "2026-05-20T00:04:00.000000Z", "node_id": "405", "stage": "ACT", "event": "FINISH", "metadata": {"function": "checkout", "status": "success", "duration_sec": 120.0}},
         # API call
-        {"timestamp": "2026-05-20T00:03:00.000000Z", "node_id": "405", "stage": "SKILL", "domain": "skills", "event": "FINISH", "metadata": {"function": "get_issue_details", "duration_sec": 0.5}},
+        {"timestamp": "2026-05-20T00:03:00.000000Z", "node_id": "405", "stage": "SKILL", "domain": "drivers", "event": "FINISH", "metadata": {"function": "get_issue_details", "duration_sec": 0.5}},
         # Error event (Close call)
         {"timestamp": "2026-05-20T00:03:30.000000Z", "node_id": "405", "stage": "PLAN", "event": "FINISH", "metadata": {"function": "plan_finish", "status": "error", "error": "SPEC file violation: A corresponding WHAT- specification file must exist"}},
     ]

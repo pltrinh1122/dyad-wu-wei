@@ -40,6 +40,21 @@ The **checklist data structure** (`- [x] Node ...`) contained inside the body of
 
 ---
 
+## ⚙️ The Tripartite Operating Environment
+
+To resolve ontological confusion between the logic, the file system, and the host platform, the architecture is divided into three distinct operational boundaries:
+
+### The Dao Engine (The Logic / State Machine)
+The conceptual, logical mechanism that governs the system (Stage 4 of The Shaping). It is the abstract SPAO loop, the rules of Next-Best-Action (NBA) calculation, and the deterministic state-machine that channels our Intent vectors safely toward the North Star. *Analogy: The rules of the game.*
+
+### The DZ-OS (The Physical Substrate)
+The Dao-Ziran Operating System. This is the physical footprint and materialization of the Dao Engine on a hard drive. It is the specific architecture of folders (`kernel/`, `drivers/`, `kb/`, `artifacts/`) bounded by the Current Working Directory (`cwd = "."`). *Analogy: The physical game board and pieces.*
+
+### The Platform (The Clock Signal / Agentic OS)
+The external host (e.g., the `agy` platform) that provides the raw LLM API connection (Semantic Entropy) and the infinite `while True:` execution loop. The DZ-OS inherits its "clock ticks" from the Platform. *Analogy: The players moving the pieces and the clock ticking on the wall.*
+
+---
+
 ## 🔄 Execution Loop & Governance
 
 ### SPAO (Meta-Loop)
@@ -70,6 +85,18 @@ The overarching guiding objective or design ideal of the repository (e.g., that 
 The strict threshold separating **PML** (low-friction conversational exploration) from formal **NL** execution (branch-mutating repository transitions):
 * **PML (Pre-Materialization Loop)**: The SPAO instantiation operating *below* this boundary. Ephemeral, unstructured, does not produce branch mutations. A PML cycle produces at most an **NC** proposal for operator review.
 * **Materialization**: The moment a PML cycle produces an operator-approved **NC** and the Agent activates a formal Node (checkout branch, update `frontier_state.md`), crossing into the **NL**.
+
+### Ziran Flow
+The architectural principle that the system must rely on continuous execution velocity (SPAO loop responsiveness) rather than waiting for perfect upfront context (Analysis Paralysis). The path is generated through physical interaction with the terrain, modeled as water flowing through a Geological Riverbed.
+
+### Laminar Flow
+Flawless, frictionless execution where a Node or Path is traversed without exceptions or invariants breaking.
+
+### Turbulence
+Friction encountered during execution (e.g., failing offline tests or logic errors). In Ziran Flow, Turbulence does not halt the state machine; it is handled by the Flow and observed as passive telemetry.
+
+### Structural Rupture
+A catastrophic exception event that corrupts the execution engine, the state ledger, or remote invariants. Unlike Turbulence, Rupture requires an immediate Hard Gate halt to repair the bedrock infrastructure.
 
 ---
 
@@ -115,7 +142,6 @@ We reserve the **"Meta-"** prefix strictly for **recursive structures** within t
 * **Meta-Index**: A catalog (checklist) whose entries *index other indexes* (references to closed transaction issues).
 * **Meta-Loop (SPAO Loop)**: A cyclic temporal protocol (**Sense-Plan-Act-Observe-Reflect**) governing the internal execution sequence of a single active Node.
 * **Meta-Repository**: The system repository (`agent-antigravity`) hosting the rules, tools, and engine managing other codebases.
-* **Meta-Orchestrator**: The generative agent engine persona (Antigravity) operating as the executive pilot.
 
 ---
 
@@ -152,6 +178,19 @@ A **pure, atomic, deterministic callable**. It maintains zero state between invo
 
 ---
 
+## 🔭 Epistemic Gradients & Auditing
+
+### Insight
+A codified epistemic clarity (the third tier of the Epistemic Gradient: Friction -> Tendency -> Insight -> Resonance). An Insight has been physically observed as a Tendency and formalized into a `WHY-` document to govern future physical execution.
+
+### Insight Materialization
+The organic, fast-track pipeline used to codify a new Insight directly into the system, bypassing the strict Node execution loop.
+
+### Reflexive PR Marker
+An autonomous metadata footer (`Active-Insights: WHY-XXXX`) injected into Pull Requests during the `REFLECT` phase. It permanently links physical state mutations (diffs) to epistemic intent without imposing manual bureaucracy on the operator.
+
+---
+
 ## 📜 Linguistic Primitives (kb/ Pillars)
 
 ### Primitive
@@ -166,10 +205,10 @@ A physical post-condition/assertion of a completed Node that acts as a mandatory
 ### Pillar
 A top-level directory in the agentic architecture, defining a specific systemic function:
 * **`artifacts/` (RAM)**: Mutable runtime memory and outputs.
-* **`skills/` (Hands)**: Deterministic, tested tools and interfaces (contains exclusively **Skills**).
-* **`orchestrator/` (Engine)**: Generative runtime state and execution loop (contains **Workflows**).
+* **`drivers/` (Hands)**: Deterministic, tested tools and interfaces (contains exclusively **Skills**).
+* **`kernel/` (Engine)**: Generative runtime state and execution loop (contains **Workflows**).
 * **`kb/` (ROM)**: Immutable laws and primitives.
 * **`infra/` (Infrastructure)**: Orchestrated daemons and runner environments.
 
 ### CLI Adapter Layer (`bin/`)
-*Not a core execution Pillar.* Thin interface shell scripts that bridge human operators and agent intent to the underlying `skills/` or `orchestrator/` layers.
+*Not a core execution Pillar.* Thin interface shell scripts that bridge human operators and agent intent to the underlying `drivers/` or `kernel/` layers.

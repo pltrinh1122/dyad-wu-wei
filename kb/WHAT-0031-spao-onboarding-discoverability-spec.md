@@ -1,7 +1,7 @@
 # WHAT-0031: SPAO One-Step Onboarding & CLI Discoverability — Technical Specification
 
 ## Overview
-**Path**: #362 — Spike Path: SPAO Release Packaging, One-Step Onboarding & CLI Discoverability
+**Path**: #362 — Probe Path: SPAO Release Packaging, One-Step Onboarding & CLI Discoverability
 **Plan Node**: #364
 **Implements decisions from**: WHY-0030
 
@@ -81,7 +81,7 @@ Content:
 ```markdown
 # SPAO — Sense-Plan-Act-Observe System
 
-This project is managed by the **SPAO meta-orchestrator** via
+This project is managed by the **SPAO Frontier Agent** via
 [Antigravity CLI (`agy`)](https://github.com/pltrinh1122/agent-antigravity).
 
 ## Quick Start
@@ -121,7 +121,7 @@ Upgrade to latest SPAO:
 - `SPAO_CORE_DIR` — path to the installed SPAO orchestration codebase
 - `SPAO_WORKSPACE_DIR` — this project's root
 
-`agy` reads `GEMINI.md` from the workspace root for its meta-orchestrator
+`agy` reads `GEMINI.md` from the workspace root for its Frontier Agent
 instructions. The `--add-dir` flag makes the SPAO core scripts available
 as an additional workspace for the agent.
 ```

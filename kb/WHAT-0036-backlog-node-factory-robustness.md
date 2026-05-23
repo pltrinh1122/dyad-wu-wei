@@ -32,7 +32,7 @@ In `BacklogManager.add`:
   - Validate that the parent issue exists, has state `OPEN`, and is labeled/classified as a `Path`. If validation fails, raise `ValueError`.
 
 ### 3. Frontier Auto-Registration
-In `orchestrator/mgr_frontier.py`:
+In `kernel/mgr_frontier.py`:
 - Implement a helper:
   ```python
   def register_backlog_node(filepath: str, node_id: int, node_title: str, description: str) -> None
@@ -41,7 +41,7 @@ In `orchestrator/mgr_frontier.py`:
 - In `BacklogManager.add`, invoke `register_backlog_node` for each successfully created path/node issue.
 
 ### 4. Dependency Constraint Enforcement
-In `orchestrator/node_lifecycle.py` inside `plan_start`:
+In `kernel/node_lifecycle.py` inside `plan_start`:
 - Parse the issue body to extract dependent issue IDs under `## Depends On`.
 - For each dependency ID, call `github_client.get_issue_details(dep_id)`.
 - If `state` is not `CLOSED`, raise `Exception("Dependency Violation: ...")`.

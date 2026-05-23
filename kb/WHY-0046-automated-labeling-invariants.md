@@ -6,7 +6,7 @@ Manual updates to GitHub issue labels during node transitions are error-prone an
 To ensure complete metadata integrity and consistency with local ledger files (`frontier_state.yml` and `frontier_state.md`), labeling invariants must be enforced programmatically by the orchestrator commands.
 
 ## Solution Design
-1. **Unified Status Management**: Introduce automated status label transition logic within `orchestrator/mgr_node.py` and `orchestrator/node_lifecycle.py`.
+1. **Unified Status Management**: Introduce automated status label transition logic within `kernel/mgr_node.py` and `kernel/node_lifecycle.py`.
 2. **Hook Execution**: During transitions:
    - `plan_start`: Apply the `status: in-progress` label.
    - `reflect`: Close the issue and remove all `status:` prefix labels.

@@ -2,12 +2,9 @@ timer_interval: 5m
 audit_branches:
 - main
 rules:
-- id: periodic-health-audit
-  type: node_completion_threshold
-  threshold: 10
+- id: sluice-gate-sensor
+  type: pr_merged_monitor
   alert_level: NOTIFICATION
-  prompt_message: 'Periodic Health Audit (Node count: {current}) - Ensure architectural
-    invariants'
 - id: stale_pointer_check
   type: stale_active_node
   alert_level: FAILURE
@@ -19,15 +16,3 @@ rules:
 - id: frontier-integrity
   type: frontier_integrity
   alert_level: FAILURE
-- id: synthesized-guard-c81e728d
-  type: lexical_guard
-  pattern: \b2\b
-  alert_level: FAILURE
-  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''2'' detected (from
-    failed test ''test_get_ready_nodes_excludes_in_progress'')'
-- id: synthesized-guard-77ad5146
-  type: lexical_guard
-  pattern: \b/mnt/shared_data/git_repos/agent\-sg5/\.worktrees/node/603\-structural\-validation\-tests/kb/WHAT\-0062\-agent\-persona\-ownership\-index\.md\b
-  alert_level: FAILURE
-  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''/mnt/shared_data/git_repos/agent-sg5/.worktrees/node/603-structural-validation-tests/kb/WHAT-0062-agent-persona-ownership-index.md''
-    detected (from failed test ''TestOwnershipIndexCompleteness.test_every_active_sg_has_owner_entry'')'

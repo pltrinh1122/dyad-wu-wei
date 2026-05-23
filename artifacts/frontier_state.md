@@ -15,9 +15,9 @@
 
 ## Node 2: Dry-Run Agentic Architecture Compliance
 - **Status**: Completed (Dry-Run)
-- **Learnings & Context**: Executed the `INTAKE_BOOTSTRAP.md` SPAO loop on the meta-repository itself. Created GH Issue #3 as the Flow-State Ledger. Validated that `skills/` and `orchestrator/` directories can be scaffolded following the standard.
+- **Learnings & Context**: Executed the `INTAKE_BOOTSTRAP.md` SPAO loop on the meta-repository itself. Created GH Issue #3 as the Flow-State Ledger. Validated that `drivers/` and `kernel/` directories can be scaffolded following the standard.
 - **Feedforward Invariants**:
-  - `[x]` Full Agentic Architecture (`artifacts/`, `skills/`, `orchestrator/`) is present.
+  - `[x]` Full Agentic Architecture (`artifacts/`, `drivers/`, `kernel/`) is present.
   - `[x]` GH Issue successfully acted as the Plan anchor.
 
 ## Node 3: Codify Side-Bar Rubrics & Materialization Boundary
@@ -52,13 +52,13 @@
 
 ## Node 8: Establish the Knowledge Base (kb/) Pillar
 - **Status**: Completed
-- **Learnings & Context**: Materialized the 4-pillar architecture by isolating all linguistic primitives into the `kb/` directory. This creates perfect architectural symmetry: `artifacts/` (RAM), `skills/` (Hands), `orchestrator/` (Engine), and `kb/` (ROM).
+- **Learnings & Context**: Materialized the 4-pillar architecture by isolating all linguistic primitives into the `kb/` directory. This creates perfect architectural symmetry: `artifacts/` (RAM), `drivers/` (Hands), `kernel/` (Engine), and `kb/` (ROM).
 - **Feedforward Invariants**:
   - `[x]` The repository root is clean, and the `kb/` directory is the authoritative source for system laws.
 
 ## Node 9: Formal Bootstrap Self-Audit
 - **Status**: Completed
-- **Learnings & Context**: Created the Epic Meta-Index issue to satisfy governance invariants. Generated the formal Bootstrap Audit Issue. Programmatically verified the existence of `AGENT.md`, `frontier_state.md`, the 4 pillars (`artifacts/`, `skills/`, `orchestrator/`, `kb/`), and the GH-Issue tracking model.
+- **Learnings & Context**: Created the Epic Meta-Index issue to satisfy governance invariants. Generated the formal Bootstrap Audit Issue. Programmatically verified the existence of `AGENT.md`, `frontier_state.md`, the 4 pillars (`artifacts/`, `drivers/`, `kernel/`, `kb/`), and the GH-Issue tracking model.
 - **Feedforward Invariants**:
   - `[x]` The repository has passed the Bootstrap Audit and is officially cleared for "Operations."
 
@@ -82,7 +82,7 @@
 
 ## Node 13: Implement Portable Flow-State Skills
 - **Status**: Completed
-- **Learnings & Context**: Successfully replaced brittle bash commands with pure Python modules via rigorous TDD. Flow-State operations (Plan/Reflect) are now safely executed via skills.flow_state_manager.
+- **Learnings & Context**: Successfully replaced brittle bash commands with pure Python modules via rigorous TDD. Flow-State operations (Plan/Reflect) are now safely executed via drivers.flow_state_manager.
 - **Feedforward Invariants**:
   - `[x] TDD test suite achieves 100% pass rate`
 
@@ -119,7 +119,7 @@
 
 ## Node 19: Establish Antigravity Hook
 - **Status**: Completed
-- **Learnings & Context**: Migrated AGENT.md to GEMINI.md to utilize the native Antigravity system prompt hook. Formally codified a Hard Invariant banning raw LLM bash testing, forcing the use of skills/testing_harness.py across all KB documents.
+- **Learnings & Context**: Migrated AGENT.md to GEMINI.md to utilize the native Antigravity system prompt hook. Formally codified a Hard Invariant banning raw LLM bash testing, forcing the use of drivers/testing_harness.py across all KB documents.
 - **Feedforward Invariants**:
   - `[x] Antigravity System reads GEMINI.md automatically`
   - `[x] Native bash testing is forbidden`
@@ -227,7 +227,7 @@
 - **Learnings & Context**: Implemented a unified bin/meta script to automate Metasystem-level state operations, standardizing our execution transitions and eliminating manual python scripting during the Plan and Reflect phases.
 - **Feedforward Invariants**:
   - `[ ] bin/meta implements link, check, and active subcommands`
-  - `[ ] skills/frontier_editor.py supports dynamic append_active_node template generation`
+  - `[ ] drivers/frontier_editor.py supports dynamic append_active_node template generation`
   - `[ ] tests/test_bash_wrappers.py validates bin/meta arguments and usage`
 
 ## Node 40: Ontology - Multi-Layered SPAO, NC Invariance, and Tiered WIP
@@ -248,10 +248,10 @@
 
 ## Node 42: Migrate flow_state_manager Workflow
 - **Status**: Completed
-- **Learnings & Context**: Successfully migrated skills/flow_state_manager.py to orchestrator/flow_state_manager.py, correcting its misclassification as per WHY-0009. Updated all imports in bin/ scripts and tests/ and confirmed 100% test passage.
+- **Learnings & Context**: Successfully migrated drivers/flow_state_manager.py to kernel/flow_state_manager.py, correcting its misclassification as per WHY-0009. Updated all imports in bin/ scripts and tests/ and confirmed 100% test passage.
 - **Feedforward Invariants**:
-  - `[x] flow_state_manager.py exists in orchestrator/`
-  - `[x] all bin scripts import from orchestrator`
+  - `[x] flow_state_manager.py exists in kernel/`
+  - `[x] all bin scripts import from kernel`
   - `[x] all tests pass`
 
 ## Node 43: Decouple testing_harness Skill
@@ -264,7 +264,7 @@
 
 ## Node 44: Enforce node plan Edit-Only Guardrail
 - **Status**: Completed
-- **Learnings & Context**: Modified orchestrator/flow_state_manager.py and bin/node to enforce that plan_node strictly takes an existing Backlog Issue ID instead of creating a new issue, ensuring all new nodes originate from the backlog. Updated tests and HOW-0001.
+- **Learnings & Context**: Modified kernel/flow_state_manager.py and bin/node to enforce that plan_node strictly takes an existing Backlog Issue ID instead of creating a new issue, ensuring all new nodes originate from the backlog. Updated tests and HOW-0001.
 - **Feedforward Invariants**:
   - `[x] flow_state_manager.py updated`
   - `[x] bin/node updated`
@@ -291,7 +291,7 @@
 - **Learnings & Context**: Introduced Issue Factory skill to eliminate inline markdown generation for GitHub Issues. All bodies (Backlog and Contracts) are now generated via strict Operator-editable templates in kb/templates/. Enforced template usage in HOW-0001.
 - **Feedforward Invariants**:
   - `[x] kb/templates created`
-  - `[x] skills/issue_factory.py created`
+  - `[x] drivers/issue_factory.py created`
   - `[x] HOW-0001 updated`
   - `[x] tests pass`
 
@@ -434,7 +434,7 @@
 
 ## Activity 122: Implement file-locking mechanism for shared artifacts
 - **Status**: Completed
-- **Learnings & Context**: Implemented a reentrant cross-platform advisory file-locking mechanism in skills/file_locker.py using fcntl and threading.local. Wrapped all reads and writes to shared artifacts (frontier_state, prompt_backlog, hotfix_ledger) to ensure orthogonal thread safety.
+- **Learnings & Context**: Implemented a reentrant cross-platform advisory file-locking mechanism in drivers/file_locker.py using fcntl and threading.local. Wrapped all reads and writes to shared artifacts (frontier_state, prompt_backlog, hotfix_ledger) to ensure orthogonal thread safety.
 - **Feedforward Invariants**:
   - `[x] file_locker implemented and integrated into shared artifacts`
 
@@ -469,7 +469,7 @@
 
 ## Activity 140: Implement Architectural TTY Hard-Gate
 - **Status**: Completed
-- **Learnings & Context**: Successfully implemented the TTY Isolation Principle via skills/tty_gate.py. Tested piped bypass prevention successfully. It intercepts any automated inputs and enforces true HITL.
+- **Learnings & Context**: Successfully implemented the TTY Isolation Principle via drivers/tty_gate.py. Tested piped bypass prevention successfully. It intercepts any automated inputs and enforces true HITL.
 - **Feedforward Invariants**:
   - `TTY Isolation Principle mathematically prevents pipe spoofing`
 
@@ -579,7 +579,7 @@
 
 ## Activity 171: Node internal lifecycle and workflow management
 - **Status**: Completed
-- **Learnings & Context**: Created orchestrator/node_lifecycle.py with BaseNode and TerminalNode classes, migrating procedural SPAO logic into TerminalNode. Refactored flow_state_manager to act as an adapter layer delegating to TerminalNode instances. This establishes the OOP foundation. Also Resolves #156.
+- **Learnings & Context**: Created kernel/node_lifecycle.py with BaseNode and TerminalNode classes, migrating procedural SPAO logic into TerminalNode. Refactored flow_state_manager to act as an adapter layer delegating to TerminalNode instances. This establishes the OOP foundation. Also Resolves #156.
 - **Feedforward Invariants**:
   - `[x] Node SPAO lifecycle is object-oriented`
   - `[x] Abstract BaseNode and TerminalNode created`
@@ -592,7 +592,7 @@
 
 ## Execute Architectural Migration of mgr-* Orchestrators
 - **Status**: Completed
-- **Learnings & Context**: Migrated flow_state_manager.py natively into orchestrator/mgr_node.py to formally establish the Manager pattern. Refactored bin/node as a proxy wrapper and added argparse.
+- **Learnings & Context**: Migrated flow_state_manager.py natively into kernel/mgr_node.py to formally establish the Manager pattern. Refactored bin/node as a proxy wrapper and added argparse.
 - **Feedforward Invariants**:
   - `Manager components must inherently own their workflows.`
 
@@ -618,7 +618,7 @@
 
 ## Activity 32: Audit Daemon
 - **Status**: Completed
-- **Learnings & Context**: Implemented a modular Python-based Rules Engine (skills/audit_daemon.py) triggered by a systemd --user timer. Configured via audit_config.yml to support dynamic rules with distinct alert levels (FAILURE vs NOTIFICATION). Added robust mock-based TDD tests.
+- **Learnings & Context**: Implemented a modular Python-based Rules Engine (drivers/audit_daemon.py) triggered by a systemd --user timer. Configured via audit_config.yml to support dynamic rules with distinct alert levels (FAILURE vs NOTIFICATION). Added robust mock-based TDD tests.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -630,7 +630,7 @@
 
 ## Activity 182: Implement HookManager and Configuration Schema
 - **Status**: Completed
-- **Learnings & Context**: Implemented HookManager in orchestrator/sense_hooks.py to dynamically parse antigravity.yml and execute configurable hooks. Hook abstractions have been integrated into sync_and_clean_node.
+- **Learnings & Context**: Implemented HookManager in kernel/sense_hooks.py to dynamically parse antigravity.yml and execute configurable hooks. Hook abstractions have been integrated into sync_and_clean_node.
 - **Feedforward Invariants**:
   - `[x] HookManager dynamically parses configuration`
   - `[x] Sense Phase abstracted into modular execution pattern`
@@ -644,7 +644,7 @@
 
 ## Activity 189: Implement Next-Best-Action Skill and Hook
 - **Status**: Completed
-- **Learnings & Context**: Created skills/nba_evaluator.py as a stateless skill implementing two-tier NBA logic: path continuation (finds pending activities within the active Path) and path switching (falls back to global backlog). Wired into execute_next_best_action_hook in sense_hooks.py.
+- **Learnings & Context**: Created drivers/nba_evaluator.py as a stateless skill implementing two-tier NBA logic: path continuation (finds pending activities within the active Path) and path switching (falls back to global backlog). Wired into execute_next_best_action_hook in sense_hooks.py.
 - **Feedforward Invariants**:
   - `[x] NBA skill is stateless and pure`
   - `[x] Two-tier logic: path continuation and path switching`
@@ -683,7 +683,7 @@
 - **Learnings & Context**: Refactored TerminalNode.plan_start and TerminalNode.checkout to use the BaseNode.set_status abstraction instead of hardcoded github labels.
 - **Feedforward Invariants**:
   - `TerminalNode uses set_status`
-  - `Hardcoded status: in-progress eliminated from orchestrator`
+  - `Hardcoded status: in-progress eliminated from kernel`
 
 ## Probe 203: Refine Intent and Problem Statement for Topological Invariants
 - **Status**: Completed
@@ -822,7 +822,7 @@
 
 ## Implement NBAManager orchestrator
 - **Status**: Completed
-- **Learnings & Context**: Successfully migrated high-level navigation logic from legacy skill to a formal orchestrator.
+- **Learnings & Context**: Successfully migrated high-level navigation logic from legacy skill to a formal kernel.
 - **Feedforward Invariants**:
   - `[x] NBAManager implemented`
   - `[x] integrated into sense_hooks`
@@ -872,7 +872,7 @@
 
 ## Refactor Test Runner & Legacy Proxies
 - **Status**: Completed
-- **Learnings & Context**: Successfully migrated testing logic to orchestrator/mgr_testing.py and decommissioned skills/nba_evaluator.py and skills/testing_harness.py. Updated node_lifecycle and mgr_node to align with the new ontology.
+- **Learnings & Context**: Successfully migrated testing logic to kernel/mgr_testing.py and decommissioned drivers/nba_evaluator.py and drivers/testing_harness.py. Updated node_lifecycle and mgr_node to align with the new ontology.
 - **Feedforward Invariants**:
   - `[x] TestManager materialized`
   - `[x] bin/run-tests purified`
@@ -948,13 +948,13 @@
 
 ## Format active node name with Node id prefix in frontier_editor
 - **Status**: Completed
-- **Learnings & Context**: Updated skills/frontier_editor.py to format appended active node titles using the Node {id}: prefix, ensuring consistent representation across the frontier state file. Updated tests/test_frontier_editor.py assertions to verify the formatting.
+- **Learnings & Context**: Updated drivers/frontier_editor.py to format appended active node titles using the Node {id}: prefix, ensuring consistent representation across the frontier state file. Updated tests/test_frontier_editor.py assertions to verify the formatting.
 - **Feedforward Invariants**:
   - `Active node titles must include Node id prefix`
 
 ## Reflect - Regression Testing Architecture Hardening (Orthogonality & Reuse)
 - **Status**: Completed
-- **Learnings & Context**: Refactored tests/test_mgr_node.py, tests/test_github_client.py, and tests/test_mgr_backlog.py to replace verbose manual patching with clean pytest fixtures defined in tests/conftest.py. Implemented a Patch Density Auditor in orchestrator/mgr_testing.py running on configuration limits defined in test_config.yml. This successfully reduced regression testing overhead, optimized test execution, and instituted automated governance checks to prevent future @patch bloat. Also verified node prefixing logic in skills/frontier_editor.py.
+- **Learnings & Context**: Refactored tests/test_mgr_node.py, tests/test_github_client.py, and tests/test_mgr_backlog.py to replace verbose manual patching with clean pytest fixtures defined in tests/conftest.py. Implemented a Patch Density Auditor in kernel/mgr_testing.py running on configuration limits defined in test_config.yml. This successfully reduced regression testing overhead, optimized test execution, and instituted automated governance checks to prevent future @patch bloat. Also verified node prefixing logic in drivers/frontier_editor.py.
 - **Feedforward Invariants**:
   - `Test mock density remains under configured limit (10 patches/file)`
   - `All tests pass with 100% success rate`
@@ -1010,9 +1010,9 @@
 
 ## Node 344: Activity 344: Reflect - Spike Path: Abstraction Doctrine - Python API for git and gh
 - **Status**: Completed
-- **Learnings & Context**: Implemented skills/git_client.py wrapping all git commands in safe subprocess functions. Refactored orchestrator/node_lifecycle.py and orchestrator/mgr_rt.py to call git_client instead of direct CLI subprocess execution, and verified execution via test suite.
+- **Learnings & Context**: Implemented drivers/git_client.py wrapping all git commands in safe subprocess functions. Refactored kernel/node_lifecycle.py and kernel/mgr_rt.py to call git_client instead of direct CLI subprocess execution, and verified execution via test suite.
 - **Feedforward Invariants**:
-  - - '`skills/git_client.py wraps add
+  - - '`drivers/git_client.py wraps add
   - `commit`
   - `push`
   - `restore`
@@ -1042,7 +1042,7 @@
 
 ## Node 358: Activity 358: Reflect - Path: Global SPAO System Containment, Deployment, and CLI Integration
 - **Status**: Completed
-- **Learnings & Context**: Implemented dynamic path resolution, refactored all managers to use skills.path_resolver, introduced a global installer script bin/spao-install, and verified functionality using unit tests and manual multi-workspace validation.
+- **Learnings & Context**: Implemented dynamic path resolution, refactored all managers to use drivers.path_resolver, introduced a global installer script bin/spao-install, and verified functionality using unit tests and manual multi-workspace validation.
 - **Feedforward Invariants**:
   - `All SPAO scripts must distinguish execution path from workspace target path.`
 
@@ -1121,7 +1121,7 @@
 - **Status**: Completed
 - **Learnings & Context**: Implemented and verified git auto-staging, worktree path auto-resolution, and git client cwd abstractions.
 - **Feedforward Invariants**:
-  - `[x] Extended skills/git_client.py with cwd and staged restore capabilities`
+  - `[x] Extended drivers/git_client.py with cwd and staged restore capabilities`
   - `[x] Implemented --stage flag in CLI parser`
   - `[x] Implemented worktree auto-resolution in node_lifecycle.py`
   - `[x] Verified with 122 tests passing`
@@ -1134,10 +1134,10 @@
 
 ## Node 396: Activity 396: Reflect - Spike Path: bin/git CLI wrapper
 - **Status**: Completed
-- **Learnings & Context**: Implemented and verified the bin/git script wrapper and skills/git_wrapper.py backend.
+- **Learnings & Context**: Implemented and verified the bin/git script wrapper and drivers/git_wrapper.py backend.
 - **Feedforward Invariants**:
   - `[x] Created bin/git shell wrapper`
-  - `[x] Created skills/git_wrapper.py backend`
+  - `[x] Created drivers/git_wrapper.py backend`
   - `[x] Created tests/test_git_wrapper.py and verified all 123 tests pass`
 
 ## Node 379: Path 379: Spike Path: spao node reflect Auto-Stage — Git Transaction Ownership by SPAO
@@ -1446,7 +1446,7 @@
 
 ## Node 468: Activity 468: Reflect - Path: SHAR Compilation CLI & Retrospective Execution
 - **Status**: Completed
-- **Learnings & Context**: Implemented bin/retro CLI and orchestrator/mgr_retro.py compilation engine, resolving worktree paths, and compiled the retrospective report for Paths 404 to 461.
+- **Learnings & Context**: Implemented bin/retro CLI and kernel/mgr_retro.py compilation engine, resolving worktree paths, and compiled the retrospective report for Paths 404 to 461.
 - **Feedforward Invariants**:
   - `All tests pass and the retrospective report is compiled under artifacts/`
 
@@ -1466,9 +1466,9 @@
 
 ## Activity 483: Reflect - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic Alignment
 - **Status**: Completed
-- **Learnings & Context**: Implemented the scoring algorithm under orchestrator/nba_scorer.py, integrated it into the Next-Best-Action sense hook, and verified functionality with robust unit tests.
+- **Learnings & Context**: Implemented the scoring algorithm under kernel/nba_scorer.py, integrated it into the Next-Best-Action sense hook, and verified functionality with robust unit tests.
 - **Feedforward Invariants**:
-  - `orchestrator/nba_scorer.py and tests/test_nba_scorer.py exist`
+  - `kernel/nba_scorer.py and tests/test_nba_scorer.py exist`
   - `all tests pass`
 
 ## Probe 485: Align - Path: Next-Best-Action (NBA) Historical Decision Scoring Execution
@@ -1728,10 +1728,10 @@
   - `[ ]` None
 
 ## Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity Resolution
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Completed
+- **Learnings & Context**: Completed manually
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[ ] None`
 
 ## Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution
 - **Status**: Completed
@@ -1769,8 +1769,130 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 717: Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 717: Probe 717: Align - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: Completed
+- **Learnings & Context**: Confirmed alignment
+- **Feedforward Invariants**:
+  - `[ ] None`
+
+## Node 718: Probe 718: Plan - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: Completed
+- **Learnings & Context**: Created Node 725 Act
+- **Feedforward Invariants**:
+  - `[ ] None`
+
+## Node 725: Activity 725: Act - Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 716: Path 716: Remediate Synthesized Lexical Guards in Audit Config
+- **Status**: Completed
+- **Learnings & Context**: Remediated directly via hotfix
+- **Feedforward Invariants**:
+  - `[x] None`
+
+## Node 727: Path 727: Prevent Overly Broad Synthesized Lexical Guards
+- **Status**: Backlog
+- **Learnings & Context**: Refactor synthesize_rule in drivers/knowledge_accrual_skill.py to ensure it does not synthesize overly broad lexical guards (e.g., single digits or absolute file paths) by validating the target term against a strict set of domain-specific lexical scoping constraints.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 728: Probe 728: Align - Prevent Overly Broad Synthesized Lexical Guards
+- **Status**: Backlog
+- **Learnings & Context**: Align on the philosophical and technical intent for Prevent Overly Broad Synthesized Lexical Guards.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 729: Probe 729: Plan - Prevent Overly Broad Synthesized Lexical Guards
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Prevent Overly Broad Synthesized Lexical Guards.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 730: Activity 730: Reflect - Prevent Overly Broad Synthesized Lexical Guards
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Prevent Overly Broad Synthesized Lexical Guards.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 732: Path 732: Formalize The Shaping Sequence
+- **Status**: Backlog
+- **Learnings & Context**: Codify the sequence to instantiate new Dao instances.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 733: Probe 733: Align - Formalize The Shaping Sequence
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 734: Path 734: Restructure Repository for Dao Portability
+- **Status**: Backlog
+- **Learnings & Context**: Decouple the generic Dao engine from project-specific logic to allow clean instantiation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 735: Probe 735: Plan - Formalize The Shaping Sequence
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Formalize The Shaping Sequence.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 736: Probe 736: Align - Restructure Repository for Dao Portability
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 737: Activity 737: Reflect - Formalize The Shaping Sequence
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Formalize The Shaping Sequence.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 738: Probe 738: Plan - Restructure Repository for Dao Portability
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 739: Activity 739: Reflect - Restructure Repository for Dao Portability
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Restructure Repository for Dao Portability.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 733: Align - Formalize The Shaping Sequence
+- **Status**: Completed
+- **Learnings & Context**: 
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 736: Align - Restructure Repository for Dao Portability
+- **Status**: Completed
+- **Learnings & Context**: The DZ-CIL is an OS. Its physical manifestation is kernel, drivers, bin, kb, artifacts, and tests. We do not need arbitrary nested directories. Everything in CWD is an artificial manifestation of The Shaping.
+- **Feedforward Invariants**:
+  - `None explicitly updated`
+  - `but reaffirmed Dao fa Ziran (The Dao follows Ziran).`
+
 ## Current Active Path
-**626**
+None
 
 ## Current Active Node
-**Node 629: Activity 629: Reflect - Path: Implement Dynamic Agent Identity Resolution**
+**Node 738: Probe 738: Plan - Restructure Repository for Dao Portability**
+
+## Node 525: Implement CLI DAG rendering in node view
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented the DFS-based ASCII DAG renderer in `kernel/mgr_node.py` to parse Meta-Indices. Concurrently built the Fast-Track Epiphany pipeline (`spao rt epiphany`) to organically capture philosophical breakthroughs without bureaucratic overhead.
+- **Feedforward Invariants**:
+  - `[x]` DAG rendering accurately visualizes dependency trees via `spao node view`.
+  - `[x]` `epiphany` command is available for fast-tracking non-functional documentation PRs.

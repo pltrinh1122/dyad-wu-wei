@@ -54,7 +54,7 @@ The operator must select between two directory layouts for local checkouts:
 
 ### Option B: Partitioned `.worktrees/spao/<branch-name>` vs `.worktrees/sdlc/<branch-name>`
 * **Pros**: Filesystem layout mirrors the loop ontology. Easy to clean up code checkouts while preserving policy documentation workspaces. Loop context is instantly visible from path string.
-* **Cons**: Requires refactoring `skills/path_resolver.py` and `orchestrator/node_lifecycle.py` to route paths dynamically based on node metadata labels.
+* **Cons**: Requires refactoring `drivers/path_resolver.py` and `kernel/node_lifecycle.py` to route paths dynamically based on node metadata labels.
 
 ---
 
@@ -73,7 +73,7 @@ To prevent structural confusion, the operational mechanics and states are define
 
 ### 3.2 SDLC Loop (Inner Software Development)
 * **Role**: Implements software specifications, compiles code, runs test suites, and provisions tools.
-* **Target Workspace Files**: `bin/*`, `orchestrator/*`, `skills/*`, `tests/*`, `infra/*`.
+* **Target Workspace Files**: `bin/*`, `kernel/*`, `drivers/*`, `tests/*`, `infra/*`.
 * **Transitions**: Cross-loop dependencies are registered in the SPAO work-graph. SDLC consumes SPECs produced in SPAO.
 * **States**:
   1. **Align (Probe)**: Clarifies interface boundaries and software requirements. Outputs: `kb/WHY-*.md` design record.

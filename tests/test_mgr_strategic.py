@@ -3,8 +3,8 @@ import unittest
 from unittest.mock import patch, MagicMock
 import tempfile
 import yaml
-from orchestrator import mgr_strategic
-from orchestrator.mgr_nba import NBAManager
+from kernel import mgr_strategic
+from kernel.mgr_nba import NBAManager
 
 class TestMgrStrategic(unittest.TestCase):
 
@@ -95,8 +95,8 @@ class TestMgrStrategic(unittest.TestCase):
         self.assertEqual(len(loaded["strategic_goals"]), 1)
         self.assertEqual(loaded["strategic_goals"][0]["id"], "SG-0001")
 
-    @patch("skills.github_client.list_issues_by_label")
-    @patch("skills.github_client.get_issue_labels")
+    @patch("drivers.github_client.list_issues_by_label")
+    @patch("drivers.github_client.get_issue_labels")
     def test_verify_command(self, mock_labels, mock_list):
         # 1. Valid goal, no unmapped open paths
         data = {
@@ -120,8 +120,8 @@ class TestMgrStrategic(unittest.TestCase):
         # Should run without sys.exit
         mgr_strategic.cmd_verify()
 
-    @patch("skills.github_client.list_issues_by_label")
-    @patch("skills.github_client.get_issue_labels")
+    @patch("drivers.github_client.list_issues_by_label")
+    @patch("drivers.github_client.get_issue_labels")
     def test_nba_reordering(self, mock_labels, mock_list):
         # Setup strategic ledger with prioritized paths
         data = {
@@ -147,7 +147,7 @@ class TestMgrStrategic(unittest.TestCase):
         
         nba = NBAManager()
         # Mock active path as None to test global switching logic reordering
-        with patch("orchestrator.mgr_frontier.read_active_path", return_value=None):
+        with patch("kernel.mgr_frontier.read_active_path", return_value=None):
             result = nba.evaluate("dummy_frontier.md")
             
         recs = result["recommendations"]
@@ -157,7 +157,7 @@ class TestMgrStrategic(unittest.TestCase):
         self.assertEqual(recs[1]["number"], 362)
         self.assertEqual(recs[2]["number"], 355)
 
-    @patch("skills.github_client.get_issue_details")
+    @patch("drivers.github_client.get_issue_details")
     @patch("os.environ.get")
     def test_verify_prioritized_paths_success(self, mock_env_get, mock_details):
         mock_env_get.side_effect = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else os.environ.get(key, default)
@@ -167,7 +167,7 @@ class TestMgrStrategic(unittest.TestCase):
         self.assertTrue(res)
         mock_details.assert_called_once_with("368")
 
-    @patch("skills.github_client.get_issue_details")
+    @patch("drivers.github_client.get_issue_details")
     @patch("os.environ.get")
     def test_verify_prioritized_paths_closed(self, mock_env_get, mock_details):
         mock_env_get.side_effect = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else os.environ.get(key, default)
@@ -176,7 +176,7 @@ class TestMgrStrategic(unittest.TestCase):
         res = mgr_strategic.verify_prioritized_paths(goals)
         self.assertFalse(res)
 
-    @patch("skills.github_client.get_issue_details")
+    @patch("drivers.github_client.get_issue_details")
     @patch("os.environ.get")
     def test_verify_prioritized_paths_missing(self, mock_env_get, mock_details):
         mock_env_get.side_effect = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else os.environ.get(key, default)
@@ -208,7 +208,7 @@ class TestMgrStrategic(unittest.TestCase):
             mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
             mgr_strategic._MOCK_PARENT_PATHS = {}
 
-    def test_verify_node_transition_allowed_blocked(self):
+    def test_verify_node_transition_allowed_pure_ziran(self):
         data = {
             "strategic_goals": [
                 {
@@ -226,9 +226,9 @@ class TestMgrStrategic(unittest.TestCase):
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         
         try:
-            with self.assertRaises(Exception) as ctx:
-                mgr_strategic.verify_node_transition_allowed("419")
-            self.assertIn("Transition Blocked", str(ctx.exception))
+            # Path 416 is not in the ledger, so it is Pure Ziran.
+            # Pure Ziran should flow through without being blocked by Strategic Goal constraints.
+            mgr_strategic.verify_node_transition_allowed("419")
         finally:
             mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
             mgr_strategic._MOCK_PARENT_PATHS = {}
@@ -275,7 +275,7 @@ class TestMgrStrategic(unittest.TestCase):
         finally:
             mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
 
-    def test_verify_path_activation_allowed_blocked(self):
+    def test_verify_path_activation_allowed_pure_ziran(self):
         data = {
             "strategic_goals": [
                 {
@@ -290,16 +290,16 @@ class TestMgrStrategic(unittest.TestCase):
         mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         try:
-            with self.assertRaises(Exception) as ctx:
-                mgr_strategic.verify_path_activation_allowed("416")
-            self.assertIn("Path Activation Blocked", str(ctx.exception))
+            # Path 416 is not in the ledger, so it is Pure Ziran.
+            # Pure Ziran should flow through without being blocked by Strategic Goal constraints.
+            mgr_strategic.verify_path_activation_allowed("416")
         finally:
             mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
 
     def test_find_parent_path_id_success(self):
         import os
         from unittest.mock import MagicMock
-        from skills import github_client
+        from drivers import github_client
         
         orig_list = github_client.list_issues_by_label
         orig_details = github_client.get_issue_details

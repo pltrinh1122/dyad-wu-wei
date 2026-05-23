@@ -1,7 +1,7 @@
 # Probe 125: Architectural Evaluation of Hot-Fix Workflow
 
 ## Background
-During a recent operation, the Meta-Orchestrator bypassed the formal Sense-Plan-Act-Observe (SPAO) loop and executed a direct commit/push to the `main` branch to update the `GEMINI.md` hook. This "hot-fix" operation allowed a concurrent thread to immediately pick up the new instructions. 
+During a recent operation, the Frontier Agent bypassed the formal Sense-Plan-Act-Observe (SPAO) loop and executed a direct commit/push to the `main` branch to update the `GEMINI.md` hook. This "hot-fix" operation allowed a concurrent thread to immediately pick up the new instructions. 
 
 This Probe evaluates whether this behavior should be formally adopted as a "Hot-Fix Workflow" or strictly outlawed.
 

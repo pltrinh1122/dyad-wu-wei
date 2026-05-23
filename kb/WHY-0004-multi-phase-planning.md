@@ -22,4 +22,4 @@ Currently, `bin/node checkout` enforces locking by verifying the *absence* of th
 Therefore, `checkout` must be refactored to verify that the active agent legitimately owns the locked Node (e.g., by checking the local agent context or safely assuming ownership if the current thread possesses the plan context).
 
 ## 4. Conclusion
-Decomposing the `plan` command into `plan-start` and `plan-finish` fundamentally hardens the Antigravity infrastructure against parallel-planning race conditions. This strategy has been formally queued as an Activity for implementation in the core orchestrator.
+Decomposing the `plan` command into `plan-start` and `plan-finish` fundamentally hardens the Antigravity infrastructure against parallel-planning race conditions. This strategy has been formally queued as an Activity for implementation in the core kernel.

@@ -10,7 +10,7 @@ This document mathematically tracks the physical state of the Host OS infrastruc
 | `audit-daemon` | `systemd_user` | Active | `infra/audit-daemon/provision.sh` | Modular rules engine for automated repository health and prompt injection. |
 
 ## Daemon Governance
-The Agent must use `skills/infra_manager.py` to programmatically interact with these daemons.
+The Agent must use `drivers/infra_manager.py` to programmatically interact with these daemons.
 
 ## Managed Artifacts
 

@@ -13,4 +13,4 @@ else
     PYTHON_EXE="python3"
 fi
 
-PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m orchestrator.mgr_node "$@"
+PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m kernel.mgr_node "$@"
