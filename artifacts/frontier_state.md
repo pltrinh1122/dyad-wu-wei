@@ -2124,8 +2124,8 @@
   - `[ ]` None
 
 ## Node 897: Activity 897: Reflect - Decouple Prompt Backlog from Git Tracking
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Decouple Prompt Backlog from Git Tracking.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2147,6 +2147,13 @@
 - **Feedforward Invariants**:
   - `[x] GEMINI.md is updated`
   - `[x] kb/HOW-0001-spao-execution-loop.md is updated`
+
+## Activity 897: Reflect - Decouple Prompt Backlog from Git Tracking
+- **Status**: Completed
+- **Learnings & Context**: Successfully decoupled prompt_backlog.yml from Git by running git rm --cached and ignoring it in .gitignore. Verified that daemon_prompt.py and status commands handle file absence gracefully.
+- **Feedforward Invariants**:
+  - `[x] artifacts/prompt_backlog.yml is untracked`
+  - `[x] .gitignore ignores prompt_backlog.yml and lock file`
 
 ## Current Active Path
 None
