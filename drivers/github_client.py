@@ -222,3 +222,30 @@ def close_pull_request(pr_number: int) -> None:
         ["gh", "pr", "close", str(pr_number)],
         check=True
     )
+
+def get_pr_checks(pr_number: int) -> str:
+    """Retrieves check runs status for a PR."""
+    res = subprocess.run(
+        ["gh", "pr", "checks", str(pr_number)],
+        capture_output=True, text=True, check=False
+    )
+    return res.stdout + res.stderr
+
+def get_run_view(run_id: str) -> str:
+    """Retrieves run details and logs."""
+    res = subprocess.run(
+        ["gh", "run", "view", run_id],
+        capture_output=True, text=True, check=False
+    )
+    return res.stdout + res.stderr
+
+def get_run_failed_log(run_id: str) -> str:
+    """Retrieves logs of failed steps in a run."""
+    res = subprocess.run(
+        ["gh", "run", "view", run_id, "--log-failed"],
+        capture_output=True, text=True, check=False
+    )
+    return res.stdout + res.stderr
+
+
+
