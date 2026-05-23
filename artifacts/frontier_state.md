@@ -2025,6 +2025,37 @@
   - `[x] bin/status performs no remote network calls to GitHub`
   - `[x] All tests pass`
 
+## Node 876: Path 876: Path: Optimize SPAO Loop Inner-Loop Velocity
+- **Status**: Backlog
+- **Learnings & Context**: Optimize SPAO Loop execution and sync performance to maximize inner-loop velocity.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 877: Discovery 877: Harmonize - Path: Optimize SPAO Loop Inner-Loop Velocity
+- **Status**: Completed
+- **Learnings & Context**: Harmonized on the performance optimization strategy for node sync, documenting Options A, B, and C in kb/WHY-0090-optimize-node-sync.md, choosing the local mode flag approach.
+- **Feedforward Invariants**:
+  - `[x] kb/WHY-0090-optimize-node-sync.md exists`
+  - `[x] All tests pass`
+
+## Node 878: Discovery 878: Plan - Path: Optimize SPAO Loop Inner-Loop Velocity
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Path: Optimize SPAO Loop Inner-Loop Velocity.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 879: Activity 879: Reflect - Path: Optimize SPAO Loop Inner-Loop Velocity
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Path: Optimize SPAO Loop Inner-Loop Velocity.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 880: Activity 880: Activity: Optimize Node Sync Execution Speed
+- **Status**: Backlog
+- **Learnings & Context**: Investigate and optimize the execution performance of bin/node sync to maximize inner-loop velocity (SG-0003), preventing potential exponential slowdowns.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 

@@ -16,6 +16,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Agent Decision-Making Invariant (NS-0001 → Wu-wei → Ziran)**: Read [HOW-0006-decision-making-invariant.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/HOW-0006-decision-making-invariant.md)
 * **Consolidation under Universal Merge Gate (HTIL) (Ziran)**: Read [WHY-0087-universal-merge-gate.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0087-universal-merge-gate.md)
 * **Interface as the Playbook (Ziran)**: Read [WHY-0088-interface-as-playbook.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0088-interface-as-playbook.md)
+* **Dialectical Falsification**: Read [WHY-0091-dialectical-falsification.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0091-dialectical-falsification.md)
 
 
 ## 2. Core Agentic Architecture & Execution
@@ -24,6 +25,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Terminology Promotion Lifecycle (Wu-wei)**: Read [HOW-0005-terminology-lifecycle.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/HOW-0005-terminology-lifecycle.md)
 * **Semantic Indirection Invariant**: Read [WHY-0075-semantic-indirection.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0075-semantic-indirection.md)
 * **Dao-Compliant Runtime Hotfix**: Read [WHY-0076-dao-compliant-rt-hotfix.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0076-dao-compliant-rt-hotfix.md)
+* **Optimizing Node Sync for Velocity**: Read [WHY-0090-optimize-node-sync.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0090-optimize-node-sync.md)
 
 ## 3. Multi-Loop Governance (SPAO vs. SDLC)
 * **Three-Loop Governance Alignment & Concept Breakdown**: Read [WHY-0034-three-loop-governance-alignment.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0034-three-loop-governance-alignment.md)

@@ -2203,3 +2203,32 @@ nodes:
   invariants:
   - '[x] bin/status performs no remote network calls to GitHub'
   - '[x] All tests pass'
+- name: 'Node 876: Path 876: Path: Optimize SPAO Loop Inner-Loop Velocity'
+  status: Backlog
+  learnings: Optimize SPAO Loop execution and sync performance to maximize inner-loop
+    velocity.
+  invariants: []
+- name: 'Node 877: Discovery 877: Harmonize - Path: Optimize SPAO Loop Inner-Loop
+    Velocity'
+  status: Completed
+  learnings: Harmonized on the performance optimization strategy for node sync, documenting
+    Options A, B, and C in kb/WHY-0090-optimize-node-sync.md, choosing the local mode
+    flag approach.
+  invariants:
+  - '[x] kb/WHY-0090-optimize-node-sync.md exists'
+  - '[x] All tests pass'
+- name: 'Node 878: Discovery 878: Plan - Path: Optimize SPAO Loop Inner-Loop Velocity'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for Path: Optimize SPAO Loop Inner-Loop
+    Velocity.'
+  invariants: []
+- name: 'Node 879: Activity 879: Reflect - Path: Optimize SPAO Loop Inner-Loop Velocity'
+  status: Backlog
+  learnings: 'Final reflection and path closure for Path: Optimize SPAO Loop Inner-Loop
+    Velocity.'
+  invariants: []
+- name: 'Node 880: Activity 880: Activity: Optimize Node Sync Execution Speed'
+  status: Backlog
+  learnings: Investigate and optimize the execution performance of bin/node sync to
+    maximize inner-loop velocity (SG-0003), preventing potential exponential slowdowns.
+  invariants: []
