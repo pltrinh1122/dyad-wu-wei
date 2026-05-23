@@ -111,8 +111,9 @@ case "\$SUB" in
     prompt)  PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/kernel/daemon_prompt.py" "\$@" ;;
     rt)      PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/kernel/daemon_rt.py" "\$@" ;;
     test)    PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/kernel/daemon_testing.py" "\$@" ;;
+    status)  PYTHONPATH="\$SPAO_CORE_DIR" python3 "\$SPAO_CORE_DIR/kernel/daemon_status.py" "\$@" ;;
     version) cat "\$SPAO_HOME/current/VERSION" 2>/dev/null || echo "unknown" ;;
-    *)       echo "Usage: spao {node|backlog|prompt|rt|test|version} [options]"; exit 1 ;;
+    *)       echo "Usage: spao {node|backlog|prompt|rt|test|status|version} [options]"; exit 1 ;;
 esac
 SHIM_EOF
 

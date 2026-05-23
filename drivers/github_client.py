@@ -100,11 +100,23 @@ def get_issue_details(issue_id: str) -> dict:
     return json.loads(result.stdout.strip() or "{}")
 
 def rename_issue_title(issue_id: str, new_title: str) -> None:
-    """Renames an existing GH issue's title."""
+    """Renames an issue's title."""
     subprocess.run(
         ["gh", "issue", "edit", str(issue_id), "--title", new_title],
         check=True
     )
+
+@record_execution(stage="skill")
+def get_issue_comments(issue_id: str) -> list[dict]:
+    """Retrieves comments for an issue."""
+    res = subprocess.run(
+        ["gh", "issue", "view", str(issue_id), "--json", "comments"],
+        capture_output=True,
+        text=True,
+        check=True
+    )
+    data = json.loads(res.stdout)
+    return data.get("comments", [])
 
 
 @record_execution(stage="skill")

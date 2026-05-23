@@ -47,6 +47,7 @@ The kernel manages stateful, multi-step, stage-aware orchestration sequences. Th
 - **`spao rt`** (wraps `bin/rt` via `daemon_rt.py`): Manages direct runtime operations (e.g., tier-2 hot-fixes directly to main).
 - **`spao backlog`** (wraps `bin/backlog`): Interfaces directly with the GitHub project backlog.
 - **`spao test`** (wraps `bin/run-tests`): The canonical entrypoint for all local TDD testing.
+- **`spao status`** (wraps `bin/status` via `daemon_status.py`): Deterministic zero-latency system readout.
 
 ## 5. Meta-Rules & Guardrails (The Invariants)
 You are mathematically forbidden from violating the following constraints:

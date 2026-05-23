@@ -340,7 +340,8 @@ class TerminalNode(BaseNode):
             
             os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
             
-            git_client.worktree_add(branch_name, worktree_path, "main")
+            git_client.fetch("origin")
+            git_client.worktree_add(branch_name, worktree_path, "origin/main")
             tx.register_rollback(git_client.worktree_remove, worktree_path, force=True)
             tx.register_rollback(git_client.branch_delete, branch_name)
             
@@ -359,6 +360,7 @@ class TerminalNode(BaseNode):
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
             
             # Enforce Conflict-Free Reflection Invariant (WHY-0083)
+            git_client.fetch("origin")
             if git_client.check_merge_conflicts("origin/main", cwd=worktree_dir):
                 raise Exception(f"Reflection Blocked (WHY-0083): Branch '{branch_name}' has unresolved merge conflicts with 'origin/main'. You must resolve these conflicts locally before reflecting.")
             
