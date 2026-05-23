@@ -194,13 +194,58 @@ def evaluate_lexical_guard(rule, state):
     new_state["triggered_files"] = triggered_files_state
     return triggered, new_state
 
+def evaluate_pr_merged_monitor(rule, state):
+    if not FRONTIER_FILE.exists():
+        return False, state
+        
+    with open(FRONTIER_FILE, "r") as f:
+        content = f.read()
+        
+    active_node = ""
+    match = re.search(r"## Current Active Node\n(.*?)(?=\n## |\Z)", content, re.DOTALL)
+    if match:
+        active_node = match.group(1).strip().strip('*')
+        
+    if not active_node or active_node == "None":
+        return False, state
+        
+    id_match = re.search(r"(\d+)", active_node)
+    if not id_match:
+        return False, state
+        
+    node_id = id_match.group(1)
+    
+    if state.get("last_alerted_node") == node_id:
+        return False, state
+        
+    sys.path.append(str(REPO_ROOT))
+    from skills.github_client import get_merged_prs
+    
+    try:
+        merged_prs = get_merged_prs()
+        for pr in merged_prs:
+            head_ref = pr.get("headRefName", "")
+            if head_ref.startswith(f"node/{node_id}-"):
+                alert_level = rule.get("alert_level", "NOTIFICATION").upper()
+                msg = f"[{alert_level}] Sluice Gate Opened: PR for Node {node_id} merged. Run `./bin/node sync` to continue."
+                inject_prompt(msg)
+                
+                state["last_alerted_node"] = node_id
+                return True, state
+    except Exception:
+        pass
+        
+    return False, state
+
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
     "file_modified": evaluate_file_modified,
     "stale_active_node": evaluate_stale_active_node,
     "frontier_integrity": evaluate_frontier_integrity,
-    "lexical_guard": evaluate_lexical_guard
+    "lexical_guard": evaluate_lexical_guard,
+    "pr_merged_monitor": evaluate_pr_merged_monitor
 }
 
 def main():
@@ -209,15 +254,20 @@ def main():
     audit_branches = config.get("audit_branches", ["main"])
     current_branch = get_current_branch()
     
+    rules = config.get("rules", [])
+    
     if current_branch not in audit_branches:
-        print(f"Audit daemon ignoring branch: {current_branch}. Target branches: {audit_branches}")
-        return
+        print(f"Audit daemon ignoring branch: {current_branch}. Target branches: {audit_branches}. Evaluating global rules only.")
+        rules_to_evaluate = [r for r in rules if r.get("type") == "pr_merged_monitor"]
+        if not rules_to_evaluate:
+            return
+    else:
+        rules_to_evaluate = rules
         
     state = load_state()
     state_changed = False
-    
-    rules = config.get("rules", [])
-    for rule in rules:
+        
+    for rule in rules_to_evaluate:
         rule_id = rule.get("id")
         rule_type = rule.get("type")
         
