@@ -2183,10 +2183,17 @@
   - `[ ]` None
 
 ## Node 909: Activity 909: Reflect - Synthesize Epistemic Retrospective retro-906.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-906.md into the system's operational guidelines (the Dao).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## Node 909: Activity 909: Reflect - Synthesize Epistemic Retrospectives retro-906.md and retro-backlog-usability.md
+- **Status**: Completed
+- **Learnings & Context**: Synthesized retro-906.md and retro-backlog-usability.md by updating GEMINI.md and HOW-0001 to codify branch format requirements and the Operator Cognitive Load Invariant.
+- **Feedforward Invariants**:
+  - `[x] GEMINI.md is updated`
+  - `[x] kb/HOW-0001-spao-execution-loop.md is updated`
 
 ## Current Active Path
 None
