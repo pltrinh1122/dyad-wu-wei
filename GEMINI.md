@@ -42,8 +42,8 @@ Skills are pure, stateless, deterministic tools and Python scripts.
 ### Kernel Registry (`kernel/` & `bin/`)
 The kernel manages stateful, multi-step, stage-aware orchestration sequences. The `bin/` layer exposes these via CLI, which are also globally wrapped by the unified `spao` script.
 - **`spao node`** (wraps `bin/node` via `flow_state_manager.py`): Manages the SPAO loop lifecycle (plan, checkout, sync, reflect).
-- **`spao prompt`** (wraps `bin/prompt` via `mgr_prompt.py`): Manages the async prompt backlog queues and consumption logic.
-- **`spao rt`** (wraps `bin/rt` via `mgr_rt.py`): Manages direct runtime operations (e.g., tier-2 hot-fixes directly to main).
+- **`spao prompt`** (wraps `bin/prompt` via `daemon_prompt.py`): Manages the async prompt backlog queues and consumption logic.
+- **`spao rt`** (wraps `bin/rt` via `daemon_rt.py`): Manages direct runtime operations (e.g., tier-2 hot-fixes directly to main).
 - **`spao backlog`** (wraps `bin/backlog`): Interfaces directly with the GitHub project backlog.
 - **`spao test`** (wraps `bin/run-tests`): The canonical entrypoint for all local TDD testing.
 

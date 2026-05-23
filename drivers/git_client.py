@@ -1,5 +1,5 @@
 import subprocess
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="skill")
 def add(files: list[str], cwd: str | None = None) -> None:

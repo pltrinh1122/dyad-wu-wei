@@ -43,7 +43,7 @@ We will implement a CLI tool to manage and verify the ledger:
 - `bin/strategic prioritize <id> <path_ids...>`: Define the sequencing of Path IDs for that goal.
 
 ### 4. Next-Best-Action (NBA) Sequencing
-- **Decision**: Update `kernel/mgr_nba.py` to intercept global backlog recommendations. Instead of listing paths in chronological order, the recommendations must be ordered dynamically:
+- **Decision**: Update `kernel/daemon_nba.py` to intercept global backlog recommendations. Instead of listing paths in chronological order, the recommendations must be ordered dynamically:
   1. Paths that are explicitly mapped in the `prioritized_paths` of `Active` strategic goals (in their defined sequence order).
   2. All other open backlog paths (as fallback).
 

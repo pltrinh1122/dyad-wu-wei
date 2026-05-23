@@ -2,7 +2,7 @@
 
 ## Decision Record
 **Date**: 2026-05-20
-**Path**: #368 — Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
+**Path**: #368 — Probe Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
 **Probe Node**: #369 Align
 
 ---
@@ -14,7 +14,7 @@
 **Failure chain**:
 ```
 bin/backlog list
-  → mgr_backlog.py list
+  → daemon_backlog.py list
     → github_client.get_open_issues()
       → subprocess.run(['gh', 'issue', 'list', '--state', 'open', ...])
         → per-issue: gh issue view 298 --json state  ← EXIT CODE 1

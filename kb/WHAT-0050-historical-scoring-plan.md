@@ -9,7 +9,7 @@ The scoring engine will evaluate all paths within a range specified by the user.
 
 ## 2. CLI Interface Design
 
-A new option will be added to the runtime CLI helper (`./bin/rt` or `kernel/mgr_rt.py`):
+A new option will be added to the runtime CLI helper (`./bin/rt` or `kernel/daemon_rt.py`):
 ```bash
 ./bin/rt score-paths --start <ID> --end <ID>
 ```

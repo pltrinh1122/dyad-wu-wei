@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from kernel.mgr_node import plan_start_node, plan_finish_node, checkout_node, reflect_node, sync_and_clean_node
+from kernel.daemon_node import plan_start_node, plan_finish_node, checkout_node, reflect_node, sync_and_clean_node
 
 
 def test_plan_start_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subprocess):
@@ -61,10 +61,10 @@ def test_reflect_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subpr
 
 def test_sync_and_clean_node_order():
     manager = MagicMock()
-    with patch("kernel.mgr_node.git_client") as mock_git, \
-         patch("kernel.mgr_node.github_client") as mock_gh, \
-         patch("kernel.mgr_node.subprocess") as mock_sub, \
-         patch("kernel.mgr_node.HookManager") as mock_hook:
+    with patch("kernel.daemon_node.git_client") as mock_git, \
+         patch("kernel.daemon_node.github_client") as mock_gh, \
+         patch("kernel.daemon_node.subprocess") as mock_sub, \
+         patch("kernel.daemon_node.HookManager") as mock_hook:
         
         manager.attach_mock(mock_git, 'git')
         manager.attach_mock(mock_gh, 'gh')
@@ -90,10 +90,10 @@ def test_sync_and_clean_node_order():
 
 def test_sync_and_clean_node_wip_violation():
     manager = MagicMock()
-    with patch("kernel.mgr_node.git_client") as mock_git, \
-         patch("kernel.mgr_node.github_client") as mock_gh, \
-         patch("kernel.mgr_node.subprocess") as mock_sub, \
-         patch("kernel.mgr_node.HookManager") as mock_hook:
+    with patch("kernel.daemon_node.git_client") as mock_git, \
+         patch("kernel.daemon_node.github_client") as mock_gh, \
+         patch("kernel.daemon_node.subprocess") as mock_sub, \
+         patch("kernel.daemon_node.HookManager") as mock_hook:
         
         manager.attach_mock(mock_git, 'git')
         manager.attach_mock(mock_gh, 'gh')

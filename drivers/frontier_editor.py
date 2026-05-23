@@ -1,6 +1,6 @@
 import re
 from drivers.file_locker import lock_file
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 
 def extract_path_id(path_str: str) -> str | None:
     """
@@ -27,38 +27,38 @@ def extract_path_id(path_str: str) -> str | None:
     return None
 
 def read_active_node(filepath: str) -> str:
-    """Reads the current active node from the frontier state (via mgr_frontier)."""
-    from kernel import mgr_frontier
-    return mgr_frontier.read_active_node(filepath)
+    """Reads the current active node from the frontier state (via agent_frontier)."""
+    from kernel import agent_frontier
+    return agent_frontier.read_active_node(filepath)
 
 def read_last_completed_node(filepath: str) -> str:
-    """Reads the most recently completed node (via mgr_frontier)."""
-    from kernel import mgr_frontier
-    return mgr_frontier.read_last_completed_node(filepath)
+    """Reads the most recently completed node (via agent_frontier)."""
+    from kernel import agent_frontier
+    return agent_frontier.read_last_completed_node(filepath)
 
 def read_active_path(filepath: str) -> str | None:
-    """Reads the current active path (via mgr_frontier)."""
-    from kernel import mgr_frontier
-    return mgr_frontier.read_active_path(filepath)
+    """Reads the current active path (via agent_frontier)."""
+    from kernel import agent_frontier
+    return agent_frontier.read_active_path(filepath)
 
 @record_execution(stage="skill")
 def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str], clear_pointers: bool = True) -> None:
-    """Appends the completed node block (via mgr_frontier)."""
-    from kernel import mgr_frontier
-    mgr_frontier.complete_active_node(filepath, node_name, learnings, invariants, clear_pointers)
+    """Appends the completed node block (via agent_frontier)."""
+    from kernel import agent_frontier
+    agent_frontier.complete_active_node(filepath, node_name, learnings, invariants, clear_pointers)
 
 def set_active_node(filepath: str, node_name: str) -> None:
-    """Updates the active node (via mgr_frontier)."""
-    from kernel import mgr_frontier
-    mgr_frontier.set_active_node(filepath, node_name)
+    """Updates the active node (via agent_frontier)."""
+    from kernel import agent_frontier
+    agent_frontier.set_active_node(filepath, node_name)
 
 @record_execution(stage="skill")
 def set_active_path(filepath: str, path_name: str) -> None:
-    """Updates the active path (via mgr_frontier)."""
-    from kernel import mgr_frontier
-    mgr_frontier.set_active_path(filepath, path_name)
+    """Updates the active path (via agent_frontier)."""
+    from kernel import agent_frontier
+    agent_frontier.set_active_path(filepath, path_name)
 
 def append_active_node(filepath: str, node_id: int, node_title: str, description: str, invariants: list[str]) -> None:
-    """Appends a new active node block (via mgr_frontier)."""
-    from kernel import mgr_frontier
-    mgr_frontier.append_active_node(filepath, node_id, node_title, description, invariants)
+    """Appends a new active node block (via agent_frontier)."""
+    from kernel import agent_frontier
+    agent_frontier.append_active_node(filepath, node_id, node_title, description, invariants)

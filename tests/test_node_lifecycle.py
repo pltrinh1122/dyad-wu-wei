@@ -132,8 +132,8 @@ def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_lab
 
 @mock.patch("kernel.node_lifecycle.git_client")
 @mock.patch("kernel.node_lifecycle.github_client")
-@mock.patch("kernel.node_lifecycle.mgr_frontier")
-@mock.patch("kernel.node_lifecycle.mgr_nba")
+@mock.patch("kernel.node_lifecycle.agent_frontier")
+@mock.patch("kernel.node_lifecycle.daemon_nba")
 @mock.patch("kernel.node_lifecycle.TerminalNode.get_worktree_path")
 def test_reflect_success(mock_get_worktree_path, mock_nba, mock_frontier, mock_gh, mock_git):
     mock_get_worktree_path.return_value = ".worktrees/node/390-test"
@@ -159,7 +159,7 @@ def test_reflect_success(mock_get_worktree_path, mock_nba, mock_frontier, mock_g
 @mock.patch("kernel.node_lifecycle.TerminalNode._verify_state_purity")
 @mock.patch("kernel.node_lifecycle.TerminalNode._validate_orthogonal_scope")
 @mock.patch("kernel.node_lifecycle.TerminalNode.set_status")
-@mock.patch("kernel.node_lifecycle.mgr_frontier.append_active_node")
+@mock.patch("kernel.node_lifecycle.agent_frontier.append_active_node")
 def test_plan_start_dependency_violation(mock_append, mock_set_status, mock_validate_scope, mock_verify_purity, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
     mock_load_config.return_value = {"in_progress": "status: in-progress"}
     mock_get_labels.return_value = []
@@ -194,7 +194,7 @@ def test_plan_start_dependency_violation(mock_append, mock_set_status, mock_vali
 @mock.patch("kernel.node_lifecycle.TerminalNode._verify_state_purity")
 @mock.patch("kernel.node_lifecycle.TerminalNode._validate_orthogonal_scope")
 @mock.patch("kernel.node_lifecycle.TerminalNode.set_status")
-@mock.patch("kernel.node_lifecycle.mgr_frontier.append_active_node")
+@mock.patch("kernel.node_lifecycle.agent_frontier.append_active_node")
 def test_plan_start_dependency_satisfied(mock_append, mock_set_status, mock_validate_scope, mock_verify_purity, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
     mock_load_config.return_value = {"in_progress": "status: in-progress"}
     mock_get_labels.return_value = []

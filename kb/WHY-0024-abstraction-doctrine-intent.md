@@ -1,7 +1,7 @@
 # WHY-0024: Abstraction Doctrine Intent
 
 ## Context & Rationale
-Currently, the codebase executes raw `git` and `gh` shell commands across several modules (e.g. `flow_state_manager.py`, `mgr_backlog.py`, etc.). Invoking system commands directly in bash wrapper subprocesses has several downsides:
+Currently, the codebase executes raw `git` and `gh` shell commands across several modules (e.g. `flow_state_manager.py`, `daemon_backlog.py`, etc.). Invoking system commands directly in bash wrapper subprocesses has several downsides:
 - **Portability**: Dependent on local binaries of `git` and `gh` CLI being correctly installed and authenticated.
 - **Safety**: Risk of shell argument injections or unhandled process errors.
 - **Aesthetics**: Raw subprocess calls lack structured data types, forcing string splitting and scraping.

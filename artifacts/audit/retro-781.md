@@ -11,7 +11,7 @@ During the execution of Node 781, two `bin/node` execution failures occurred due
    *Cause*: Executed `./bin/node plan-start 781` without the mandatory `SPAO_PERSONA_ID="frontier"` environment variable.
 2. **Missing Checkout Argument**:
    ```
-   mgr_node.py checkout: error: the following arguments are required: branch_name
+   daemon_node.py checkout: error: the following arguments are required: branch_name
    ```
    *Cause*: Executed `./bin/node checkout 781` without specifying the target `branch_name`, which is a required argument for this CLI tool.
 

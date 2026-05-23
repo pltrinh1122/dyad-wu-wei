@@ -2,13 +2,13 @@ import os
 import re
 import subprocess
 from drivers import github_client, git_client
-from kernel import mgr_frontier
-from kernel import mgr_testing
-from kernel import mgr_prompt
+from kernel import agent_frontier
+from kernel import daemon_testing
+from kernel import daemon_prompt
 from kernel.sense_hooks import HookManager
 
 from kernel.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement
-from kernel.mgr_telemetry import TelemetryManager, record_execution
+from kernel.daemon_telemetry import TelemetryManager, record_execution
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -217,7 +217,7 @@ def cmd_set_classification(args):
 
 def cmd_test(args):
     log_stage_advancement("act", "Executing TDD Test Harness Validation", f"Running pytest on target: {args.target}")
-    manager = mgr_testing.TestManager()
+    manager = daemon_testing.TestManager()
     exit_code = manager.run([args.target] if args.target else [])
     sys.exit(exit_code)
 

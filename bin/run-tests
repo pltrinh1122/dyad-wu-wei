@@ -1,8 +1,8 @@
 #!/bin/bash
 # Canonical test runner entrypoint
 export PYTHONPATH=.
-python3 -m kernel.mgr_telemetry log ACT START --domain bin --component run-tests
-python3 -m kernel.mgr_testing "$@"
+python3 -m kernel.daemon_telemetry log ACT START --domain bin --component run-tests
+python3 -m kernel.daemon_testing "$@"
 EXIT_CODE=$?
-python3 -m kernel.mgr_telemetry log ACT FINISH --domain bin --component run-tests --metadata "{\"exit_code\": $EXIT_CODE}"
+python3 -m kernel.daemon_telemetry log ACT FINISH --domain bin --component run-tests --metadata "{\"exit_code\": $EXIT_CODE}"
 exit $EXIT_CODE

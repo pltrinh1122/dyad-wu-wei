@@ -114,7 +114,7 @@ def clean_prompts():
     save_data(backlog_file, data)
     print(f"Purged {removed_count} consumed prompt(s).")
 
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="act")
 def main():

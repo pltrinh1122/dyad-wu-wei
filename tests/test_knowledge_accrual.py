@@ -9,7 +9,7 @@ from drivers.knowledge_accrual_skill import (
     synthesize_rule,
     build_contextual_prompt_injection
 )
-from kernel.mgr_knowledge_accrual import (
+from kernel.daemon_knowledge_accrual import (
     run_kb_check,
     enforce_reflection_hook,
     inject_contextual_rules
@@ -108,7 +108,7 @@ def test_synthesize_rule_constraints():
     assert synthesize_rule({"error_message": "forbidden term '123'"}) is None
     
     # Generic word blacklist
-    assert synthesize_rule({"error_message": "forbidden term 'epic'"}) is None
+    assert synthesize_rule({"error_message": "forbidden term 'path'"}) is None
     assert synthesize_rule({"error_message": "forbidden term 'THE'"}) is None
     
     # Path constraint

@@ -2,7 +2,7 @@ import os
 import re
 import yaml
 from drivers import github_client
-from kernel import mgr_strategic
+from kernel import daemon_strategic
 
 def _get_active_persona():
     import os
@@ -130,10 +130,10 @@ class NBAScorer:
         if "path" in labels:
             path_id = node_id_str
         else:
-            path_id = mgr_strategic.find_parent_path_id(node_id_str)
+            path_id = daemon_strategic.find_parent_path_id(node_id_str)
             
         if path_id:
-            ledger = mgr_strategic.load_ledger()
+            ledger = daemon_strategic.load_ledger()
             active_paths = set()
             for goal in ledger.get("strategic_goals", []):
                 if goal.get("status") == "Active":
@@ -169,7 +169,7 @@ class NBAScorer:
                 if ownership_map[str(path_id)] != active_persona:
                     c_persona = 0.0
             else:
-                ledger = mgr_strategic.load_ledger()
+                ledger = daemon_strategic.load_ledger()
                 parent_sg = None
                 for goal in ledger.get("strategic_goals", []):
                     if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
@@ -256,10 +256,10 @@ class GranularNBAScorer(NBAScorer):
         if "path" in labels:
             path_id = node_id_str
         else:
-            path_id = mgr_strategic.find_parent_path_id(node_id_str)
+            path_id = daemon_strategic.find_parent_path_id(node_id_str)
             
         if path_id:
-            ledger = mgr_strategic.load_ledger()
+            ledger = daemon_strategic.load_ledger()
             active_paths = set()
             for goal in ledger.get("strategic_goals", []):
                 if goal.get("status") == "Active":
@@ -319,7 +319,7 @@ class GranularNBAScorer(NBAScorer):
                 if ownership_map[str(path_id)] != active_persona:
                     c_persona = 0.0
             else:
-                ledger = mgr_strategic.load_ledger()
+                ledger = daemon_strategic.load_ledger()
                 parent_sg = None
                 for goal in ledger.get("strategic_goals", []):
                     if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:

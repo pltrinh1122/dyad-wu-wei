@@ -10,7 +10,7 @@ Per `WHAT-0001`, the execution flow must strictly follow:
 `Operator/Agent` -> `bin/ (CLI)` -> `kernel/ (Manager/Workflow)` -> `drivers/ (Hands)`.
 
 ### 2.1 Backlog Consolidation
-`bin/backlog` currently contains embedded Python logic that calls `drivers/github_client.py`. This logic (taxonomy resolution, templating) is stateful and stage-aware. It must be moved to a new `kernel/mgr_backlog.py`.
+`bin/backlog` currently contains embedded Python logic that calls `drivers/github_client.py`. This logic (taxonomy resolution, templating) is stateful and stage-aware. It must be moved to a new `kernel/daemon_backlog.py`.
 
 ### 2.2 Skill Purity
 `drivers/github_client.py` will be stripped of orchestration logic (`add_to_backlog`, `check_off_meta_index`) and reduced to pure, stateless wrappers around the `gh` CLI. `drivers/nba_evaluator.py`, which acts as a proxy for an orchestrator, will be removed.

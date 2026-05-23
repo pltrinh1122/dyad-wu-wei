@@ -21,7 +21,7 @@ The flow state manager and frontier editor will enforce the following invariants
 The enforcement gate must be integrated into the following modules:
 
 ### A. Parent Path Resolution
-*   **Module**: `kernel/mgr_backlog.py` (or a dedicated helper in `mgr_strategic.py`).
+*   **Module**: `kernel/daemon_backlog.py` (or a dedicated helper in `daemon_strategic.py`).
 *   **Signature**: `find_parent_path_id(node_id: str) -> str | None`
 *   **Behavior**:
     1.  Query GitHub for open issues with the `path` label.
@@ -29,7 +29,7 @@ The enforcement gate must be integrated into the following modules:
     3.  Return the path issue ID if found.
 
 ### B. Node Transition Verification Hook
-*   **Module**: `kernel/mgr_strategic.py`
+*   **Module**: `kernel/daemon_strategic.py`
 *   **Signature**: `verify_node_transition_allowed(node_id: str) -> None`
 *   **Behavior**:
     1.  Check for `INVARIANT_OFFLINE_BYPASS`. If true, return.
@@ -40,7 +40,7 @@ The enforcement gate must be integrated into the following modules:
 ### C. Hook Integration Points
 1.  **Node Planning Lock**: In `BaseNode.plan_start` ([node_lifecycle.py](file:///mnt/shared_data/git_repos/agent-antigravity/kernel/node_lifecycle.py)), call `verify_node_transition_allowed(self.issue_id)` inside the `FlowTransaction` context before setting status to `in_progress`.
 2.  **Node Branch Checkout**: In `TerminalNode.checkout` ([node_lifecycle.py](file:///mnt/shared_data/git_repos/agent-antigravity/kernel/node_lifecycle.py)), call `verify_node_transition_allowed(self.issue_id)`.
-3.  **Active Path Management**: In `set_active_path` ([mgr_frontier.py](file:///mnt/shared_data/git_repos/agent-antigravity/kernel/mgr_frontier.py)), if `path_name` is not `None` or `"None"`, extract the Path ID and verify that it exists in the strategic prioritized paths list. If not, raise an Exception.
+3.  **Active Path Management**: In `set_active_path` ([agent_frontier.py](file:///mnt/shared_data/git_repos/agent-antigravity/kernel/agent_frontier.py)), if `path_name` is not `None` or `"None"`, extract the Path ID and verify that it exists in the strategic prioritized paths list. If not, raise an Exception.
 
 ---
 

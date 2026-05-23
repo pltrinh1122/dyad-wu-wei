@@ -1,7 +1,7 @@
 # WHAT-0033: CI Hardening — Technical Specification for Hermetic gh Fixture Stub
 
 ## Overview
-**Path**: #368 — Spike Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
+**Path**: #368 — Probe Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
 **Plan Node**: #370
 **Implements decisions from**: WHY-0032
 
@@ -31,7 +31,7 @@ used by `bin/backlog`, `bin/node`, `bin/prompt`, and `bin/rt`.
 
 case "$*" in
 
-  # bin/backlog list → mgr_backlog → get_open_issues()
+  # bin/backlog list → daemon_backlog → get_open_issues()
   "issue list --state open --limit 100 --json number,title,body")
     echo '[{"number":1,"title":"Path 1: Test Path","body":"## Goal\nTest goal."}]'
     ;;

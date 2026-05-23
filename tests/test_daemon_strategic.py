@@ -3,8 +3,8 @@ import unittest
 from unittest.mock import patch, MagicMock
 import tempfile
 import yaml
-from kernel import mgr_strategic
-from kernel.mgr_nba import NBAManager
+from kernel import daemon_strategic
+from kernel.daemon_nba import NBAManager
 
 class TestMgrStrategic(unittest.TestCase):
 
@@ -25,7 +25,7 @@ class TestMgrStrategic(unittest.TestCase):
             "constraints": "CI runners are unauthenticated and do not have GitHub tokens.",
             "falsification_signal": "Mock drift causes real bugs to bypass local test suite."
         }
-        errors = mgr_strategic.validate_goal(goal)
+        errors = daemon_strategic.validate_goal(goal)
         self.assertEqual(len(errors), 0)
 
     def test_validate_goal_invalid_grounding(self):
@@ -35,7 +35,7 @@ class TestMgrStrategic(unittest.TestCase):
             "constraints": "CI runners are unauthenticated.",
             "falsification_signal": "Mock drift occurs."
         }
-        errors = mgr_strategic.validate_goal(goal)
+        errors = daemon_strategic.validate_goal(goal)
         self.assertTrue(any("Grounding error" in e for e in errors))
 
     def test_validate_goal_invalid_constraint_verb(self):
@@ -45,7 +45,7 @@ class TestMgrStrategic(unittest.TestCase):
             "constraints": "We must fix the unauthenticated runners.",
             "falsification_signal": "Mock drift occurs."
         }
-        errors = mgr_strategic.validate_goal(goal)
+        errors = daemon_strategic.validate_goal(goal)
         self.assertTrue(any("contains action verb 'fix'" in e for e in errors))
 
     def test_validate_goal_invalid_falsifiability(self):
@@ -55,7 +55,7 @@ class TestMgrStrategic(unittest.TestCase):
             "constraints": "CI runners are unauthenticated.",
             "falsification_signal": ""
         }
-        errors = mgr_strategic.validate_goal(goal)
+        errors = daemon_strategic.validate_goal(goal)
         self.assertTrue(any("Falsifiability error" in e for e in errors))
 
     def test_validate_goal_invalid_materializability(self):
@@ -65,7 +65,7 @@ class TestMgrStrategic(unittest.TestCase):
             "constraints": "Requires infinite context window and zero latency connection.",
             "falsification_signal": "The agent makes a mistake."
         }
-        errors = mgr_strategic.validate_goal(goal)
+        errors = daemon_strategic.validate_goal(goal)
         self.assertTrue(any("Materializability error" in e for e in errors))
         self.assertTrue(any("speculative capabilities" in e for e in errors))
 
@@ -84,14 +84,14 @@ class TestMgrStrategic(unittest.TestCase):
                 }
             ]
         }
-        mgr_strategic.save_ledger(data)
+        daemon_strategic.save_ledger(data)
         
         # Check files exist
         self.assertTrue(os.path.exists(self.ledger_path))
         self.assertTrue(os.path.exists(self.ledger_path + ".sha256"))
         self.assertTrue(os.path.exists(self.ledger_path.replace(".yml", ".md")))
         
-        loaded = mgr_strategic.load_ledger()
+        loaded = daemon_strategic.load_ledger()
         self.assertEqual(len(loaded["strategic_goals"]), 1)
         self.assertEqual(loaded["strategic_goals"][0]["id"], "SG-0001")
 
@@ -112,13 +112,13 @@ class TestMgrStrategic(unittest.TestCase):
                 }
             ]
         }
-        mgr_strategic.save_ledger(data)
+        daemon_strategic.save_ledger(data)
         
         mock_list.return_value = [{"number": 368, "title": "Path 368"}]
         mock_labels.return_value = ["backlog", "path"]
         
         # Should run without sys.exit
-        mgr_strategic.cmd_verify()
+        daemon_strategic.cmd_verify()
 
     @patch("drivers.github_client.list_issues_by_label")
     @patch("drivers.github_client.get_issue_labels")
@@ -137,7 +137,7 @@ class TestMgrStrategic(unittest.TestCase):
                 }
             ]
         }
-        mgr_strategic.save_ledger(data)
+        daemon_strategic.save_ledger(data)
         
         mock_list.return_value = [
             {"number": 362, "title": "Path 362"},
@@ -147,7 +147,7 @@ class TestMgrStrategic(unittest.TestCase):
         
         nba = NBAManager()
         # Mock active path as None to test global switching logic reordering
-        with patch("kernel.mgr_frontier.read_active_path", return_value=None):
+        with patch("kernel.agent_frontier.read_active_path", return_value=None):
             result = nba.evaluate("dummy_frontier.md")
             
         recs = result["recommendations"]
@@ -163,7 +163,7 @@ class TestMgrStrategic(unittest.TestCase):
         mock_env_get.side_effect = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else os.environ.get(key, default)
         mock_details.return_value = {"number": 368, "state": "OPEN"}
         goals = [{"status": "Active", "prioritized_paths": [368]}]
-        res = mgr_strategic.verify_prioritized_paths(goals)
+        res = daemon_strategic.verify_prioritized_paths(goals)
         self.assertTrue(res)
         mock_details.assert_called_once_with("368")
 
@@ -173,7 +173,7 @@ class TestMgrStrategic(unittest.TestCase):
         mock_env_get.side_effect = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else os.environ.get(key, default)
         mock_details.return_value = {"number": 368, "state": "CLOSED"}
         goals = [{"status": "Active", "prioritized_paths": [368]}]
-        res = mgr_strategic.verify_prioritized_paths(goals)
+        res = daemon_strategic.verify_prioritized_paths(goals)
         self.assertFalse(res)
 
     @patch("drivers.github_client.get_issue_details")
@@ -182,7 +182,7 @@ class TestMgrStrategic(unittest.TestCase):
         mock_env_get.side_effect = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else os.environ.get(key, default)
         mock_details.side_effect = Exception("Issue not found")
         goals = [{"status": "Active", "prioritized_paths": [368]}]
-        res = mgr_strategic.verify_prioritized_paths(goals)
+        res = daemon_strategic.verify_prioritized_paths(goals)
         self.assertFalse(res)
 
     def test_verify_node_transition_allowed_success(self):
@@ -195,18 +195,18 @@ class TestMgrStrategic(unittest.TestCase):
                 }
             ]
         }
-        mgr_strategic.save_ledger(data)
+        daemon_strategic.save_ledger(data)
         
-        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
-        mgr_strategic._MOCK_PARENT_PATHS = {"419": "416"}
+        daemon_strategic._MOCK_PARENT_PATHS = {"419": "416"}
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         
         try:
-            mgr_strategic.verify_node_transition_allowed("419")
+            daemon_strategic.verify_node_transition_allowed("419")
         finally:
-            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
-            mgr_strategic._MOCK_PARENT_PATHS = {}
+            daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
+            daemon_strategic._MOCK_PARENT_PATHS = {}
 
     def test_verify_node_transition_allowed_pure_ziran(self):
         data = {
@@ -218,20 +218,20 @@ class TestMgrStrategic(unittest.TestCase):
                 }
             ]
         }
-        mgr_strategic.save_ledger(data)
+        daemon_strategic.save_ledger(data)
         
-        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
-        mgr_strategic._MOCK_PARENT_PATHS = {"419": "416"}
+        daemon_strategic._MOCK_PARENT_PATHS = {"419": "416"}
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         
         try:
             # Path 416 is not in the ledger, so it is Pure Ziran.
             # Pure Ziran should flow through without being blocked by Strategic Goal constraints.
-            mgr_strategic.verify_node_transition_allowed("419")
+            daemon_strategic.verify_node_transition_allowed("419")
         finally:
-            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
-            mgr_strategic._MOCK_PARENT_PATHS = {}
+            daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
+            daemon_strategic._MOCK_PARENT_PATHS = {}
 
     def test_verify_node_transition_allowed_missing_parent(self):
         data = {
@@ -243,18 +243,18 @@ class TestMgrStrategic(unittest.TestCase):
                 }
             ]
         }
-        mgr_strategic.save_ledger(data)
+        daemon_strategic.save_ledger(data)
         
-        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
-        mgr_strategic._MOCK_PARENT_PATHS = {}
+        daemon_strategic._MOCK_PARENT_PATHS = {}
         
         try:
             with self.assertRaises(ValueError) as ctx:
-                mgr_strategic.verify_node_transition_allowed("419")
+                daemon_strategic.verify_node_transition_allowed("419")
             self.assertIn("Alignment Failure", str(ctx.exception))
         finally:
-            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
+            daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
 
     def test_verify_path_activation_allowed_success(self):
         data = {
@@ -266,14 +266,14 @@ class TestMgrStrategic(unittest.TestCase):
                 }
             ]
         }
-        mgr_strategic.save_ledger(data)
+        daemon_strategic.save_ledger(data)
         
-        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         try:
-            mgr_strategic.verify_path_activation_allowed("416")
+            daemon_strategic.verify_path_activation_allowed("416")
         finally:
-            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
+            daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
 
     def test_verify_path_activation_allowed_pure_ziran(self):
         data = {
@@ -285,16 +285,16 @@ class TestMgrStrategic(unittest.TestCase):
                 }
             ]
         }
-        mgr_strategic.save_ledger(data)
+        daemon_strategic.save_ledger(data)
         
-        mgr_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         try:
             # Path 416 is not in the ledger, so it is Pure Ziran.
             # Pure Ziran should flow through without being blocked by Strategic Goal constraints.
-            mgr_strategic.verify_path_activation_allowed("416")
+            daemon_strategic.verify_path_activation_allowed("416")
         finally:
-            mgr_strategic._FORCE_STRATEGIC_VERIFICATION = False
+            daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
 
     def test_find_parent_path_id_success(self):
         import os
@@ -314,7 +314,7 @@ class TestMgrStrategic(unittest.TestCase):
         os.environ.get = lambda key, default=None: "0" if key in ("ANTIGRAVITY_RUNNING_TESTS", "SPAO_OFFLINE") else orig_environ(key, default)
         
         try:
-            parent_id = mgr_strategic.find_parent_path_id("419")
+            parent_id = daemon_strategic.find_parent_path_id("419")
             self.assertEqual(parent_id, "416")
             github_client.list_issues_by_label.assert_called_once_with("path")
         finally:

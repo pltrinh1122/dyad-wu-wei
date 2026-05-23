@@ -32,11 +32,11 @@ We will implement a unified `spao` script that acts as the single entry point fo
 
 The unified CLI maps subcommands directly to their respective orchestrator entry points:
 
-- `spao node [args]` ➔ `kernel.mgr_node`
-- `spao backlog [args]` ➔ `kernel.mgr_backlog`
-- `spao prompt [args]` ➔ `kernel.mgr_prompt`
-- `spao rt [args]` ➔ `kernel.mgr_rt`
-- `spao test [args]` ➔ `kernel.mgr_testing`
+- `spao node [args]` ➔ `kernel.daemon_node`
+- `spao backlog [args]` ➔ `kernel.daemon_backlog`
+- `spao prompt [args]` ➔ `kernel.daemon_prompt`
+- `spao rt [args]` ➔ `kernel.daemon_rt`
+- `spao test [args]` ➔ `kernel.daemon_testing`
 
 ### 2.2 Wrapper Script Design
 
@@ -70,19 +70,19 @@ shift
 
 case "$SUB" in
     node)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/mgr_node.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_node.py" "$@"
         ;;
     backlog)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/mgr_backlog.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_backlog.py" "$@"
         ;;
     prompt)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/mgr_prompt.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_prompt.py" "$@"
         ;;
     rt)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/mgr_rt.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_rt.py" "$@"
         ;;
     test)
-        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/mgr_testing.py" "$@"
+        PYTHONPATH="$SPAO_CORE_DIR" python3 "$SPAO_CORE_DIR/kernel/daemon_testing.py" "$@"
         ;;
     *)
         echo "Usage: spao {node|backlog|prompt|rt|test} [options]"

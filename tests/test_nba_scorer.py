@@ -1,23 +1,23 @@
 import unittest
 from kernel.nba_scorer import NBAScorer
 from drivers import github_client
-from kernel import mgr_strategic
+from kernel import daemon_strategic
 import kernel.nba_scorer as nba_scorer_module
 
 class TestNBAScorer(unittest.TestCase):
     def setUp(self):
         self.old_get_issue_details = github_client.get_issue_details
         self.old_get_issue_labels = github_client.get_issue_labels
-        self.old_find_parent_path_id = mgr_strategic.find_parent_path_id
-        self.old_load_ledger = mgr_strategic.load_ledger
+        self.old_find_parent_path_id = daemon_strategic.find_parent_path_id
+        self.old_load_ledger = daemon_strategic.load_ledger
         self.old_get_persona_ownership = nba_scorer_module._get_persona_ownership
         self.old_get_active_persona = nba_scorer_module._get_active_persona
 
     def tearDown(self):
         github_client.get_issue_details = self.old_get_issue_details
         github_client.get_issue_labels = self.old_get_issue_labels
-        mgr_strategic.find_parent_path_id = self.old_find_parent_path_id
-        mgr_strategic.load_ledger = self.old_load_ledger
+        daemon_strategic.find_parent_path_id = self.old_find_parent_path_id
+        daemon_strategic.load_ledger = self.old_load_ledger
         nba_scorer_module._get_persona_ownership = self.old_get_persona_ownership
         nba_scorer_module._get_active_persona = self.old_get_active_persona
 
@@ -27,8 +27,8 @@ class TestNBAScorer(unittest.TestCase):
             "482": {"state": "CLOSED"}
         }[str(issue_id)]
         github_client.get_issue_labels = lambda x: ["activity"]
-        mgr_strategic.find_parent_path_id = lambda x: "480"
-        mgr_strategic.load_ledger = lambda: {
+        daemon_strategic.find_parent_path_id = lambda x: "480"
+        daemon_strategic.load_ledger = lambda: {
             "strategic_goals": [
                 {
                     "status": "Active",
@@ -73,8 +73,8 @@ class TestNBAScorer(unittest.TestCase):
     def test_calculate_score_persona_fail_open(self):
         github_client.get_issue_details = lambda issue_id: {"title": "Test", "body": ""}
         github_client.get_issue_labels = lambda x: ["activity"]
-        mgr_strategic.find_parent_path_id = lambda x: "480"
-        mgr_strategic.load_ledger = lambda: {"strategic_goals": [{"id": "SG-123", "status": "Active", "prioritized_paths": [480]}]}
+        daemon_strategic.find_parent_path_id = lambda x: "480"
+        daemon_strategic.load_ledger = lambda: {"strategic_goals": [{"id": "SG-123", "status": "Active", "prioritized_paths": [480]}]}
         nba_scorer_module._get_active_persona = lambda: "agent-platform"
         nba_scorer_module._get_persona_ownership = lambda: {} # WHAT-0062 does not exist or empty
 
@@ -85,8 +85,8 @@ class TestNBAScorer(unittest.TestCase):
     def test_calculate_score_persona_match(self):
         github_client.get_issue_details = lambda issue_id: {"title": "Test", "body": ""}
         github_client.get_issue_labels = lambda x: ["activity"]
-        mgr_strategic.find_parent_path_id = lambda x: "480"
-        mgr_strategic.load_ledger = lambda: {"strategic_goals": [{"id": "SG-123", "status": "Active", "prioritized_paths": [480]}]}
+        daemon_strategic.find_parent_path_id = lambda x: "480"
+        daemon_strategic.load_ledger = lambda: {"strategic_goals": [{"id": "SG-123", "status": "Active", "prioritized_paths": [480]}]}
         nba_scorer_module._get_active_persona = lambda: "agent-platform"
         nba_scorer_module._get_persona_ownership = lambda: {"SG-123": "agent-platform"}
 
@@ -97,8 +97,8 @@ class TestNBAScorer(unittest.TestCase):
     def test_calculate_score_persona_mismatch(self):
         github_client.get_issue_details = lambda issue_id: {"title": "Test", "body": ""}
         github_client.get_issue_labels = lambda x: ["activity"]
-        mgr_strategic.find_parent_path_id = lambda x: "480"
-        mgr_strategic.load_ledger = lambda: {"strategic_goals": [{"id": "SG-123", "status": "Active", "prioritized_paths": [480]}]}
+        daemon_strategic.find_parent_path_id = lambda x: "480"
+        daemon_strategic.load_ledger = lambda: {"strategic_goals": [{"id": "SG-123", "status": "Active", "prioritized_paths": [480]}]}
         nba_scorer_module._get_active_persona = lambda: "agent-sg1"
         nba_scorer_module._get_persona_ownership = lambda: {"SG-123": "agent-platform"}
 

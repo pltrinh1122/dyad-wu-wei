@@ -1,7 +1,7 @@
 # WHY-0026: Abstraction Doctrine Remediation & Atomic Transaction Lifecycle
 
 ## Context & Rationale
-While Path 341 introduced wrapper interfaces for basic Git and GitHub operations, our subsequent audit surfaced that several orchestrator files (`node_lifecycle.py`, `mgr_node.py`, and `mgr_telemetry.py`) still execute raw shell commands directly. This bypasses the Abstraction Doctrine, exposing the system to:
+While Path 341 introduced wrapper interfaces for basic Git and GitHub operations, our subsequent audit surfaced that several orchestrator files (`node_lifecycle.py`, `daemon_node.py`, and `daemon_telemetry.py`) still execute raw shell commands directly. This bypasses the Abstraction Doctrine, exposing the system to:
 - Test fragility due to incomplete subprocess mocking.
 - Inconsistent state tracking between git, frontier state files, and remote GitHub issues.
 

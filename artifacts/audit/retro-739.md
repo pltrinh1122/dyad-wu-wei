@@ -6,9 +6,9 @@ Following the Dao Portability restructure (Node 738) where `orchestrator/` becam
 ## 2. Actions Taken
 - **Source Code Search**: Grepped the `kernel/`, `drivers/`, `bin/`, `tests/`, and `kb/` directories for hardcoded `"skills"` and `"orchestrator"` string literals.
 - **Code Modifications**:
-  - Replaced `"skills"` with `"drivers"` in `kernel/mgr_node.py` and `kernel/mgr_retro.py`.
+  - Replaced `"skills"` with `"drivers"` in `kernel/daemon_node.py` and `kernel/daemon_retro.py`.
   - Replaced `"orchestrator"` with `"kernel"` in `kb/WHY-0019-ontological-refinement-telemetry.md`.
-  - Fixed test assertions matching these literals in `tests/test_file_locker.py` and `tests/test_mgr_retro.py`.
+  - Fixed test assertions matching these literals in `tests/test_file_locker.py` and `tests/test_daemon_retro.py`.
 - **Validation**: Executed `spao test` (`./bin/run-tests`). 214 tests passed, confirming architectural stability.
 
 ## 3. Learnings & Future Invariants

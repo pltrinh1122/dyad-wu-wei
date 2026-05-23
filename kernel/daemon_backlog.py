@@ -78,7 +78,7 @@ class BacklogManager:
             open_issues = github_client.get_open_issues()
             for issue in open_issues:
                 curr_title = issue.get("title", "")
-                clean_curr = re.sub(r"^(Probe|Activity|Path)\s*\d+:\s*", r"\1: ", curr_title, flags=re.IGNORECASE)
+                clean_curr = re.sub(r"^(Probe|Node|Path)\s*\d+:\s*", r"\1: ", curr_title, flags=re.IGNORECASE)
                 expected_clean = f"{node_type.capitalize()}: {title}"
                 if clean_curr.lower() == expected_clean.lower():
                     print(f"Warning: Reusing existing issue for {node_type} '{title}'")
@@ -145,10 +145,10 @@ class BacklogManager:
 
         # Frontier Auto-Registration
         try:
-            from kernel import mgr_frontier
+            from kernel import agent_frontier
             from drivers import path_resolver
             frontier_file = path_resolver.resolve_workspace_path("artifacts", "frontier_state.md")
-            mgr_frontier.register_backlog_node(frontier_file, int(issue_id), new_title, goal)
+            agent_frontier.register_backlog_node(frontier_file, int(issue_id), new_title, goal)
         except Exception:
             pass
 
@@ -172,7 +172,7 @@ class BacklogManager:
             )
             plan_id = plan_url.split("/")[-1]
 
-            # 3. Reflect Activity
+            # 3. Reflect Node
             self.add(
                 node_type="activity",
                 title=f"Reflect - {title}",
@@ -221,7 +221,7 @@ class BacklogManager:
         except Exception as e:
             print(f"Warning: Failed to uncheck Meta-Index for Node {node_id} in Path {path_id}: {e}")
 
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="sense")
 def main():

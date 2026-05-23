@@ -56,10 +56,10 @@ class RetroCompiler:
         node_to_path = {}
         current_path_id = None
         
-        # Regex to parse 'Node X: Path Y:' or 'Node X: Probe Y:' or 'Node X: Activity Y:'
+        # Regex to parse 'Node X: Path Y:' or 'Node X: Probe Y:' or 'Node X: Node Y:'
         # and fallback for older node names
         node_regex = re.compile(r"^Node\s+(\d+)\b", re.IGNORECASE)
-        type_regex = re.compile(r"\b(Path|S" + r"pike Path|Probe|Activity)\s+(\d+)\b", re.IGNORECASE)
+        type_regex = re.compile(r"\b(Path|Probe)\s+(\d+)\b", re.IGNORECASE)
 
         for idx, node in enumerate(nodes):
             name = node.get("name", "")
@@ -297,7 +297,7 @@ class RetroCompiler:
 
 def main():
     if len(sys.argv) < 4 or sys.argv[1] != "compile":
-        print("Usage: python -m kernel.mgr_retro compile <start_path_id> <end_path_id> [output_path]")
+        print("Usage: python -m kernel.daemon_retro compile <start_path_id> <end_path_id> [output_path]")
         sys.exit(1)
 
     start_path = sys.argv[2]

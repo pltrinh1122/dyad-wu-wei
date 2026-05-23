@@ -77,8 +77,8 @@ def test_lightweight_audit_workflow(tmp_path):
         
     mock_sub_run = MagicMock(side_effect=dummy_run)
     
-    with patch("kernel.mgr_frontier.load_state", mock_load_state), \
-         patch("kernel.mgr_backlog.BacklogManager.load_node_taxonomy", mock_taxonomy), \
+    with patch("kernel.agent_frontier.load_state", mock_load_state), \
+         patch("kernel.daemon_backlog.BacklogManager.load_node_taxonomy", mock_taxonomy), \
          patch("drivers.github_client.update_issue_body", mock_update_body), \
          patch("subprocess.run", mock_sub_run), \
          patch("sys.argv", ["bin/meta", str(frontier_file)]):
@@ -137,8 +137,8 @@ def test_lightweight_audit_bypasses_network_when_cached(tmp_path):
     mock_update_body = MagicMock()
     mock_sub_run = MagicMock()
     
-    with patch("kernel.mgr_frontier.load_state", mock_load_state), \
-         patch("kernel.mgr_backlog.BacklogManager.load_node_taxonomy", mock_taxonomy), \
+    with patch("kernel.agent_frontier.load_state", mock_load_state), \
+         patch("kernel.daemon_backlog.BacklogManager.load_node_taxonomy", mock_taxonomy), \
          patch("drivers.github_client.update_issue_body", mock_update_body), \
          patch("subprocess.run", mock_sub_run), \
          patch("sys.argv", ["bin/meta", str(frontier_file)]):
@@ -207,8 +207,8 @@ def test_lightweight_audit_with_new_completed_node(tmp_path):
         
     mock_sub_run = MagicMock(side_effect=dummy_run)
     
-    with patch("kernel.mgr_frontier.load_state", mock_load_state), \
-         patch("kernel.mgr_backlog.BacklogManager.load_node_taxonomy", mock_taxonomy), \
+    with patch("kernel.agent_frontier.load_state", mock_load_state), \
+         patch("kernel.daemon_backlog.BacklogManager.load_node_taxonomy", mock_taxonomy), \
          patch("drivers.github_client.update_issue_body", mock_update_body), \
          patch("subprocess.run", mock_sub_run), \
          patch("sys.argv", ["bin/meta", str(frontier_file)]):
@@ -264,8 +264,8 @@ def test_lightweight_audit_path_detection_formats(tmp_path):
         
     mock_sub_run.side_effect = dummy_run
     
-    with patch("kernel.mgr_frontier.load_state", mock_load_state), \
-         patch("kernel.mgr_backlog.BacklogManager.load_node_taxonomy", mock_taxonomy), \
+    with patch("kernel.agent_frontier.load_state", mock_load_state), \
+         patch("kernel.daemon_backlog.BacklogManager.load_node_taxonomy", mock_taxonomy), \
          patch("drivers.github_client.update_issue_body", mock_update_body), \
          patch("subprocess.run", mock_sub_run), \
          patch("sys.argv", ["bin/meta", str(frontier_file)]):

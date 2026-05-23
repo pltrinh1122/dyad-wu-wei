@@ -165,7 +165,7 @@ class TestManager:
 
         return "pytest"
 
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="act")
 def main():

@@ -69,7 +69,7 @@ Refactor the following components to replace direct subprocess invocations:
   +current_title = issue_details.get("title", "")
   ```
 
-### B. `kernel/mgr_node.py`
+### B. `kernel/daemon_node.py`
 - **Line 42–43 (in `sync_and_clean_node`)**:
   ```diff
   -subprocess.run(["git", "switch", "main"], check=True)
@@ -101,7 +101,7 @@ Refactor the following components to replace direct subprocess invocations:
   +data = github_client.get_issue_details(args.issue_id)
   ```
 
-### C. `kernel/mgr_telemetry.py`
+### C. `kernel/daemon_telemetry.py`
 - **Line 80 & 83 (in `_get_default_ledger_path`)**:
   ```diff
   -common_dir = subprocess.check_output(["git", "rev-parse", "--git-common-dir"], text=True).strip()
@@ -113,7 +113,7 @@ Refactor the following components to replace direct subprocess invocations:
 
 ---
 
-## 3. Transaction Boundary (`kernel/mgr_transaction.py`)
+## 3. Transaction Boundary (`kernel/daemon_transaction.py`)
 
 A new transaction manager, `FlowTransaction`, will wrap all phase state transitions.
 
@@ -193,6 +193,6 @@ def plan_start(self, frontier_file: str = "artifacts/frontier_state.md") -> None
         
         details = github_client.get_issue_details(self.issue_id)
         node_title = details.get("title", f"Node {self.issue_id}")
-        mgr_frontier.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
+        agent_frontier.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
 ```
 Similar transactional context management will be implemented for `checkout` and `reflect` transitions.

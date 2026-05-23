@@ -2,7 +2,7 @@ import os
 import json
 import subprocess
 from drivers import github_client
-from kernel import mgr_frontier
+from kernel import agent_frontier
 from drivers import gh_graph_skill
 
 class NBAManager:
@@ -23,10 +23,10 @@ class NBAManager:
         from drivers import path_resolver
         if not os.path.isabs(frontier_file):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
-        active_path_str = mgr_frontier.read_active_path(frontier_file)
+        active_path_str = agent_frontier.read_active_path(frontier_file)
         active_id = None
         if active_path_str:
-            active_id = mgr_frontier.extract_path_id(active_path_str)
+            active_id = agent_frontier.extract_path_id(active_path_str)
             
         if active_id:
             # Tier 1: Path Continuation
@@ -52,8 +52,8 @@ class NBAManager:
             
             # Reorder backlog_items based on active strategic goals
             prioritized_ids = []
-            from kernel import mgr_strategic
-            yaml_path = mgr_strategic.get_ledger_path()
+            from kernel import daemon_strategic
+            yaml_path = daemon_strategic.get_ledger_path()
             if os.path.exists(yaml_path):
                 import yaml
                 try:

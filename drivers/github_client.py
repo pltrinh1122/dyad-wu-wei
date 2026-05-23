@@ -1,7 +1,7 @@
 import subprocess
 import tempfile
 import json
-from kernel.mgr_telemetry import record_execution
+from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="skill")
 def create_issue(title: str, body: str) -> str:
