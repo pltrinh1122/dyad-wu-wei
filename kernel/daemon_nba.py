@@ -5,7 +5,7 @@ from drivers import github_client
 from kernel import agent_frontier
 from drivers import gh_graph_skill
 
-class NBAManager:
+class NBADaemon:
     """Manages the Next-Best-Action (NBA) orchestration logic."""
     
     def __init__(self, repository: str = None):

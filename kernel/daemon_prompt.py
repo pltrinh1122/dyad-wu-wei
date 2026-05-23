@@ -118,7 +118,7 @@ from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="act")
 def main():
-    parser = argparse.ArgumentParser(description="Prompt Queue Manager")
+    parser = argparse.ArgumentParser(description="Prompt Queue Daemon")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     # Add command

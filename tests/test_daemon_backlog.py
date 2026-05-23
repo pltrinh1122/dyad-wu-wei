@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from kernel.daemon_backlog import BacklogManager
+from kernel.daemon_backlog import BacklogDaemon
 
 @pytest.fixture(autouse=True)
 def mock_register_backlog_node():
@@ -10,8 +10,8 @@ def mock_register_backlog_node():
 
 def test_backlog_list(mock_backlog_gh):
     mock_backlog_gh.list_issues_by_label.return_value = [{"number": 31, "title": "Backlog Item", "url": "https://..."}]
-    manager = BacklogManager()
-    items = manager.list("backlog")
+    daemon = BacklogDaemon()
+    items = daemon.list("backlog")
     assert len(items) == 1
     assert items[0]["number"] == 31
     mock_backlog_gh.list_issues_by_label.assert_called_once_with("backlog")
@@ -26,8 +26,8 @@ def test_backlog_add(mock_render, mock_backlog_gh):
     }
     mock_render.return_value = "Rendered Template Body"
 
-    manager = BacklogManager()
-    url = manager.add("probe", "Future Work Item", "Description of work", path_id="10")
+    daemon = BacklogDaemon()
+    url = daemon.add("probe", "Future Work Item", "Description of work", path_id="10")
 
     assert url == "https://github.com/pltrinh1122/agent-antigravity/issues/31"
     mock_backlog_gh.create_issue.assert_called_once()
@@ -46,17 +46,17 @@ def test_backlog_add(mock_render, mock_backlog_gh):
     })
 
 def test_backlog_add_missing_path():
-    manager = BacklogManager()
+    daemon = BacklogDaemon()
     with pytest.raises(ValueError, match="Terminal nodes \\(Activities and Probes\\) must belong to a parent Path"):
-        manager.add("probe", "Title", "Goal")
+        daemon.add("probe", "Title", "Goal")
 
 def test_backlog_add_invalid_path_cases(mock_backlog_gh):
-    manager = BacklogManager()
+    daemon = BacklogDaemon()
     
     # Case 1: Parent Path doesn't exist
     mock_backlog_gh.get_issue_details.return_value = None
     with pytest.raises(ValueError, match="Parent Path issue 10 does not exist"):
-        manager.add("probe", "Title", "Goal", path_id="10")
+        daemon.add("probe", "Title", "Goal", path_id="10")
         
     # Case 2: Parent Path is closed
     mock_backlog_gh.get_issue_details.return_value = {
@@ -64,7 +64,7 @@ def test_backlog_add_invalid_path_cases(mock_backlog_gh):
         "state": "CLOSED"
     }
     with pytest.raises(ValueError, match="Parent Path issue 10 is already closed"):
-        manager.add("probe", "Title", "Goal", path_id="10")
+        daemon.add("probe", "Title", "Goal", path_id="10")
         
     # Case 3: Parent issue is not a Path
     mock_backlog_gh.get_issue_details.return_value = {
@@ -72,7 +72,7 @@ def test_backlog_add_invalid_path_cases(mock_backlog_gh):
         "state": "OPEN"
     }
     with pytest.raises(ValueError, match="Parent issue 10 is not classified as a Path"):
-        manager.add("probe", "Title", "Goal", path_id="10")
+        daemon.add("probe", "Title", "Goal", path_id="10")
 
 def test_backlog_add_duplicate(mock_backlog_gh):
     mock_backlog_gh.get_open_issues.return_value = [
@@ -84,8 +84,8 @@ def test_backlog_add_duplicate(mock_backlog_gh):
         "body": "## Meta-Index"
     }
     
-    manager = BacklogManager()
-    url = manager.add("probe", "Existing Title", "Goal", path_id="10")
+    daemon = BacklogDaemon()
+    url = daemon.add("probe", "Existing Title", "Goal", path_id="10")
     
     assert "200" in url
     mock_backlog_gh.create_issue.assert_not_called()
@@ -101,16 +101,16 @@ def test_backlog_add_frontier_registration(mock_render, mock_register, mock_back
     }
     mock_render.return_value = "Rendered Template Body"
 
-    manager = BacklogManager()
-    manager.add("probe", "New Title", "Goal", path_id="10")
+    daemon = BacklogDaemon()
+    daemon.add("probe", "New Title", "Goal", path_id="10")
     
     mock_register.assert_called_once()
 
 def test_check_off_meta_index(mock_backlog_gh):
     mock_backlog_gh.get_issue_details.return_value = {"body": "## Meta-Index\n- [ ] Node 229: Title [Depends: 228]\n- [ ] Node 230: Title"}
     
-    manager = BacklogManager()
-    manager.check_off_meta_index("213", "229")
+    daemon = BacklogDaemon()
+    daemon.check_off_meta_index("213", "229")
 
     mock_backlog_gh.get_issue_details.assert_called_once_with("213")
     mock_backlog_gh.update_issue_body.assert_called_once_with("213", "## Meta-Index\n- [x] Node 229: Title [Depends: 228]\n- [ ] Node 230: Title")
@@ -130,8 +130,8 @@ def test_backlog_add_path(mock_render, mock_backlog_gh):
     }
     mock_render.return_value = "Rendered Template Body"
 
-    manager = BacklogManager()
-    url = manager.add("path", "New Path Title", "Macro goal")
+    daemon = BacklogDaemon()
+    url = daemon.add("path", "New Path Title", "Macro goal")
 
     assert url == "https://github.com/pltrinh1122/agent-antigravity/issues/100"
     assert mock_backlog_gh.create_issue.call_count == 4

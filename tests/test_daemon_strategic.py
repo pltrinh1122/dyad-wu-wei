@@ -4,7 +4,7 @@ from unittest.mock import patch, MagicMock
 import tempfile
 import yaml
 from kernel import daemon_strategic
-from kernel.daemon_nba import NBAManager
+from kernel.daemon_nba import NBADaemon
 
 class TestMgrStrategic(unittest.TestCase):
 
@@ -145,7 +145,7 @@ class TestMgrStrategic(unittest.TestCase):
             {"number": 355, "title": "Path 355"}
         ]
         
-        nba = NBAManager()
+        nba = NBADaemon()
         # Mock active path as None to test global switching logic reordering
         with patch("kernel.agent_frontier.read_active_path", return_value=None):
             result = nba.evaluate("dummy_frontier.md")

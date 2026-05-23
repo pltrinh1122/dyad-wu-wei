@@ -125,7 +125,7 @@ def inject_contextual_rules(repo_root: str) -> None:
 
 @record_execution(stage="act")
 def main():
-    parser = argparse.ArgumentParser(description="Autonomous Knowledge Accrual Manager")
+    parser = argparse.ArgumentParser(description="Autonomous Knowledge Accrual Daemon")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     # check-kb subcommand

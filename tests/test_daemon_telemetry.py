@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, mock_open, MagicMock
-from kernel.daemon_telemetry import TelemetryManager, SynthesisEngine
+from kernel.daemon_telemetry import TelemetryDaemon, SynthesisEngine
 import json
 import os
 from datetime import datetime, timezone, timedelta
@@ -10,7 +10,7 @@ def test_log_event():
         with patch("drivers.file_locker.lock_file"):
             with patch("builtins.open", mock_open()) as mocked_file:
                 with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
-                    tm = TelemetryManager(ledger_path="/tmp/test.jsonl")
+                    tm = TelemetryDaemon(ledger_path="/tmp/test.jsonl")
                     tm.log_event(stage="plan", event="start", node_id="264", metadata={"test": "data"})
                 
                 # Check if write was called
@@ -24,7 +24,7 @@ def test_log_event():
 
 def test_generate_report_empty():
     with patch("os.path.exists", return_value=False):
-        tm = TelemetryManager(ledger_path="/tmp/test.jsonl")
+        tm = TelemetryDaemon(ledger_path="/tmp/test.jsonl")
         assert "No telemetry data available" in tm.generate_report()
 
 def test_synthesis_engine():
@@ -56,7 +56,7 @@ def test_generate_report_with_bottleneck():
     
     with patch("os.path.exists", return_value=True):
         with patch("builtins.open", mock_open(read_data=fake_data)):
-            tm = TelemetryManager(ledger_path="/tmp/test.jsonl")
+            tm = TelemetryDaemon(ledger_path="/tmp/test.jsonl")
             report = tm.generate_report()
             assert "⚠️ BOTTLENECK" in report
             assert "🚨 Bottleneck Alerts" in report
@@ -66,6 +66,6 @@ def test_ledger_anchoring():
     with patch("drivers.path_resolver.resolve_workspace_path") as mock_resolve:
         mock_resolve.return_value = "/repo/root/artifacts/telemetry.jsonl"
         with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
-            tm = TelemetryManager()
+            tm = TelemetryDaemon()
             assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
         mock_resolve.assert_called_with("artifacts", "telemetry.jsonl")

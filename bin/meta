@@ -147,12 +147,12 @@ import subprocess
 from drivers import github_client
 from drivers.file_locker import lock_file
 from kernel import agent_frontier
-from kernel.daemon_backlog import BacklogManager
+from kernel.daemon_backlog import BacklogDaemon
 
 filepath = sys.argv[1]
 
 # Load taxonomy to find non-terminal types
-taxonomy = BacklogManager().load_node_taxonomy()
+taxonomy = BacklogDaemon().load_node_taxonomy()
 non_terminals = taxonomy.get("non_terminal", ["path"])
 
 # Load frontier state

@@ -1,0 +1,13 @@
+{
+    "timestamp": "2026-05-23T02:45:11.837687+00:00",
+    "failures": [
+        {
+            "test_name": "ERROR collecting tests/test_telemetry_decorator.py",
+            "file_path": "tests/test_telemetry_decorator.py",
+            "line_number": 6,
+            "error_type": "ImportError",
+            "error_message": "in <module>",
+            "traceback": "ImportError while importing test module '/mnt/shared_data/git_repos/agent-antigravity/.worktrees/node/787-activity-refactor-kernel-terminology/tests/test_telemetry_decorator.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_telemetry_decorator.py:6: in <module>\n    from kernel.daemon_telemetry import TelemetryManager, record_execution\nE   ImportError: cannot import name 'TelemetryManager' from 'kernel.daemon_telemetry' (/mnt/shared_data/git_repos/agent-antigravity/.worktrees/node/787-activity-refactor-kernel-terminology/kernel/daemon_telemetry.py)"
+        }
+    ]
+}

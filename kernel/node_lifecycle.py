@@ -5,7 +5,7 @@ import subprocess
 import yaml
 from drivers import github_client, git_client
 from kernel import agent_frontier, daemon_prompt, daemon_backlog, daemon_nba
-from kernel.daemon_telemetry import TelemetryManager, record_execution
+from kernel.daemon_telemetry import TelemetryDaemon, record_execution
 from kernel.daemon_transaction import FlowTransaction
 
 def is_verbose() -> bool:
@@ -352,7 +352,7 @@ class TerminalNode(BaseNode):
             from kernel import daemon_knowledge_accrual
             daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo)
             
-            self.close("Node completed via Flow-State Manager. Moving to PR.")
+            self.close("Node completed via Node Lifecycle Daemon. Moving to PR.")
             tx.register_rollback(self.reopen)
             
             # Automate Meta-Index Checkbox Synchronization
@@ -360,14 +360,14 @@ class TerminalNode(BaseNode):
             if active_path_str:
                 path_issue_id = agent_frontier.extract_path_id(active_path_str)
                 if path_issue_id:
-                    backlog = daemon_backlog.BacklogManager()
+                    backlog = daemon_backlog.BacklogDaemon()
                     backlog.check_off_meta_index(path_issue_id, self.issue_id)
                     tx.register_rollback(backlog.uncheck_meta_index, path_issue_id, self.issue_id)
                 else:
                     print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
             
             # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
-            nba = daemon_nba.NBAManager()
+            nba = daemon_nba.NBADaemon()
             nba_result = nba.evaluate(frontier_file=frontier_file)
             
             clear_path = False

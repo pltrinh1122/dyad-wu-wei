@@ -56,7 +56,7 @@ class SynthesisEngine:
         
         return results
 
-class TelemetryManager:
+class TelemetryDaemon:
     """Manages the lifecycle and orchestration of the Telemetry primitive."""
     
     def __init__(self, ledger_path=None):
@@ -151,7 +151,7 @@ def record_execution(stage=None):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            manager = TelemetryManager()
+            daemon = TelemetryDaemon()
             execution_id = str(uuid.uuid4())
             
             # Infer domain and component from module name
@@ -164,7 +164,7 @@ def record_execution(stage=None):
             if args and hasattr(args[0], 'issue_id'):
                 node_id = getattr(args[0], 'issue_id')
             
-            manager.log_event(
+            daemon.log_event(
                 stage=stage or "ACT",
                 event="START",
                 node_id=node_id,
@@ -186,7 +186,7 @@ def record_execution(stage=None):
                 }
                 if "insights" in kwargs and kwargs["insights"]:
                     metadata["insights"] = kwargs["insights"]
-                manager.log_event(
+                daemon.log_event(
                     stage=stage or "ACT",
                     event="FINISH",
                     node_id=node_id,
@@ -198,7 +198,7 @@ def record_execution(stage=None):
                 return result
             except Exception as e:
                 duration = (datetime.now(timezone.utc) - start_time).total_seconds()
-                manager.log_event(
+                daemon.log_event(
                     stage=stage or "ACT",
                     event="FINISH",
                     node_id=node_id,
@@ -220,7 +220,7 @@ def record_execution(stage=None):
 @record_execution(stage="system")
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="Telemetry Manager CLI")
+    parser = argparse.ArgumentParser(description="Telemetry Daemon CLI")
     subparsers = parser.add_subparsers(dest="subcommand", required=True)
     
     subparsers.add_parser("report", help="Generate a health report")
@@ -234,13 +234,13 @@ def main():
     parser_log.add_argument("--metadata", help="JSON metadata string")
     
     args = parser.parse_args()
-    manager = TelemetryManager()
+    daemon = TelemetryDaemon()
     
     if args.subcommand == "report":
-        print(manager.generate_report())
+        print(daemon.generate_report())
     elif args.subcommand == "log":
         metadata = json.loads(args.metadata) if args.metadata else {}
-        manager.log_event(
+        daemon.log_event(
             stage=args.stage,
             event=args.event,
             node_id=args.node,

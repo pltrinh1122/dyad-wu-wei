@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from kernel.daemon_nba import NBAManager
+from kernel.daemon_nba import NBADaemon
 
-class TestNBAManager(unittest.TestCase):
+class TestNBADaemon(unittest.TestCase):
     
     @patch("kernel.daemon_nba.agent_frontier.read_active_path")
     @patch("kernel.daemon_nba.agent_frontier.extract_path_id")
@@ -14,7 +14,7 @@ class TestNBAManager(unittest.TestCase):
         mock_get_details.return_value = {"title": "Path 242", "body": "some body"}
         mock_get_next.return_value = [{"id": "245", "title": "Implement daemon_nba"}]
         
-        nba = NBAManager()
+        nba = NBADaemon()
         result = nba.evaluate("dummy_frontier.md")
         
         self.assertEqual(result["type"], "path_continuation")
@@ -28,7 +28,7 @@ class TestNBAManager(unittest.TestCase):
         mock_read.return_value = None # No active path
         mock_list.return_value = [{"number": "100", "title": "Global Task"}]
         
-        nba = NBAManager()
+        nba = NBADaemon()
         result = nba.evaluate("dummy_frontier.md")
         
         self.assertEqual(result["type"], "path_switching")

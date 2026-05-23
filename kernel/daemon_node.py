@@ -5,10 +5,10 @@ from drivers import github_client, git_client
 from kernel import agent_frontier
 from kernel import daemon_testing
 from kernel import daemon_prompt
-from kernel.sense_hooks import HookManager
+from kernel.sense_hooks import HookDaemon
 
 from kernel.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement
-from kernel.daemon_telemetry import TelemetryManager, record_execution
+from kernel.daemon_telemetry import TelemetryDaemon, record_execution
 
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
@@ -78,8 +78,8 @@ def sync_and_clean_node() -> None:
     subprocess.run([sys.executable, audit_script], check=False)
  
     # Surface pending backlog items at Sense phase
-    manager = HookManager()
-    manager.execute_all()
+    daemon = HookDaemon()
+    daemon.execute_all()
 
 def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
     """Closes the GH issue, creates a PR, and updates the frontier."""
@@ -217,8 +217,8 @@ def cmd_set_classification(args):
 
 def cmd_test(args):
     log_stage_advancement("act", "Executing TDD Test Harness Validation", f"Running pytest on target: {args.target}")
-    manager = daemon_testing.TestManager()
-    exit_code = manager.run([args.target] if args.target else [])
+    daemon = daemon_testing.TestDaemon()
+    exit_code = daemon.run([args.target] if args.target else [])
     sys.exit(exit_code)
 
 def main():

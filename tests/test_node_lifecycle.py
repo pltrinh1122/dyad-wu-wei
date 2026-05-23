@@ -138,7 +138,7 @@ def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_lab
 def test_reflect_success(mock_get_worktree_path, mock_nba, mock_frontier, mock_gh, mock_git):
     mock_get_worktree_path.return_value = ".worktrees/node/390-test"
     mock_frontier.read_active_path.return_value = None
-    mock_nba.NBAManager.return_value.evaluate.return_value = {"type": "continue"}
+    mock_nba.NBADaemon.return_value.evaluate.return_value = {"type": "continue"}
     mock_gh.get_issue_labels.return_value = []
     mock_git.get_git_common_dir.return_value = ".git"
     
