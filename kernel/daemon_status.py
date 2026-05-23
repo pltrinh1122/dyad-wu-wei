@@ -6,9 +6,9 @@ repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if repo_root not in sys.path:
     sys.path.insert(0, repo_root)
 
-from skills.frontier_editor import read_active_path, read_active_node
-from skills.git_client import get_current_branch
-from skills.github_client import get_open_prs
+from drivers.frontier_editor import read_active_path, read_active_node
+from drivers.git_client import get_current_branch
+from drivers.github_client import get_open_prs
 
 def get_prompt_backlog_size(repo_root: str) -> int:
     path = os.path.join(repo_root, "artifacts", "prompt_backlog.yml")

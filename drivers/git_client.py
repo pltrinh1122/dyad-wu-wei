@@ -145,6 +145,11 @@ def pull(remote: str, branch: str, prune: bool = False) -> None:
     subprocess.run(cmd, check=True)
 
 @record_execution(stage="skill")
+def fetch(remote: str = "origin") -> None:
+    """Fetches updates from the remote repository."""
+    subprocess.run(["git", "fetch", remote], check=True)
+
+@record_execution(stage="skill")
 def list_merged_branches() -> list[str]:
     """Returns a list of local branches that have been merged into HEAD."""
     res = subprocess.run(["git", "branch", "--merged"], capture_output=True, text=True, check=True)
