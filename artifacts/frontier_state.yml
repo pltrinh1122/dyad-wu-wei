@@ -2290,3 +2290,29 @@ nodes:
   invariants:
   - '[x] implementation_plan.md is updated and detailed for the chosen Option 4 changes'
   - '[x] Local tests pass 100% green'
+- name: 'Node 894: Path 894: Decouple Prompt Backlog from Git Tracking'
+  status: Backlog
+  learnings: Untrack artifacts/prompt_backlog.yml and ignore it in Git to prevent
+    data loss of operator queued instructions during git operations.
+  invariants: []
+- name: 'Node 895: Discovery 895: Harmonize - Decouple Prompt Backlog from Git Tracking'
+  status: Completed
+  learnings: Harmonized on decoupling prompt backlog from Git tracking by proposing
+    to untrack prompt_backlog.yml and ignore it in .gitignore, documented in WHY-0093.
+  invariants:
+  - '[x] kb/WHY-0093-decouple-prompt-backlog.md exists'
+- name: 'Node 896: Discovery 896: Plan - Decouple Prompt Backlog from Git Tracking'
+  status: Backlog
+  learnings: Technical design and proposed changes for Decouple Prompt Backlog from
+    Git Tracking.
+  invariants: []
+- name: 'Node 897: Activity 897: Reflect - Decouple Prompt Backlog from Git Tracking'
+  status: Backlog
+  learnings: Final reflection and path closure for Decouple Prompt Backlog from Git
+    Tracking.
+  invariants: []
+- name: 'Node 898: Activity 898: Reflect - Synthesize Epistemic Retrospective retro-895.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-895.md into the system's operational guidelines (the Dao).
+  invariants: []
