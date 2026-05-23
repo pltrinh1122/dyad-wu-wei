@@ -2158,10 +2158,10 @@
   - `[x] .gitignore ignores prompt_backlog.yml and lock file`
 
 ## Node 905: Path 905: Group and align backlog list output with Strategic Goals
-- **Status**: Backlog
-- **Learnings & Context**: Enhance backlog list command to natively group and display paths under their active Strategic Goal alignment to reduce operator cognitive pivoting load.
+- **Status**: Completed
+- **Learnings & Context**: Enhance backlog list command to natively group and display paths under their active Strategic Goal alignment to reduce operator cognitive pivoting load. Completed all child activities (Discovery 906, Discovery 907, Synthesize 909, Activity 908) and compiled the Path 905 retrospective.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `Backlog list command groups by active Strategic Goals and displays DAG dependencies inline.`
 
 ## Node 906: Discovery 906: Harmonize - Group and align backlog list output with Strategic Goals
 - **Status**: Completed
