@@ -1,5 +1,6 @@
 import os
 import re
+import hashlib
 import subprocess
 from drivers import github_client, git_client
 from kernel import agent_frontier
@@ -34,8 +35,26 @@ def sync_and_clean_node() -> None:
     """Syncs main, prunes merged local branches, and surfaces pending backlog items."""
     log_stage_advancement("sense", "Initiating Sense Phase", "Syncing main, cleaning up local branches, and refreshing backlog state.")
     
+    def _get_file_hash(filepath: str) -> str:
+        if not os.path.exists(filepath):
+            return ""
+        with open(filepath, 'rb') as f:
+            return hashlib.sha256(f.read()).hexdigest()
+            
+    gemini_path = "GEMINI.md"
+    pre_hash = _get_file_hash(gemini_path)
+    
     git_client.fetch("origin", prune=True)
     git_client.switch("origin/main", detach=True)
+    
+    post_hash = _get_file_hash(gemini_path)
+    if pre_hash and post_hash and pre_hash != post_hash:
+        print("\n" + "="*80)
+        print("⚠️  CRITICAL ROM DRIFT DETECTED ⚠️")
+        print("GEMINI.md has been updated from the remote repository.")
+        print("Your current Agent session is operating on stale instructions.")
+        print("Please RESTART the Agent (agy) immediately to load the new invariants.")
+        print("="*80 + "\n")
 
     open_prs = github_client.get_open_prs()
     if open_prs:

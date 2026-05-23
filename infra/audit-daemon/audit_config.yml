@@ -28,3 +28,9 @@ rules:
   alert_level: FAILURE
   prompt_message: 'Synthesized Lexical Guard: Forbidden term ''prune'' detected (from
     failed test ''test_git_fetch_custom'')'
+- id: synthesized-guard-b8bc700d
+  type: lexical_guard
+  pattern: \bmock_open\b
+  alert_level: FAILURE
+  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''mock_open'' detected
+    (from failed test ''test_sync_and_clean_node_rom_drift'')'

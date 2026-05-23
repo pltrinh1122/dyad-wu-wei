@@ -118,3 +118,24 @@ def test_sync_and_clean_node_wip_violation():
             ('gh.get_open_prs', (), {})
         ]
 
+def test_sync_and_clean_node_rom_drift(capsys):
+    from unittest.mock import mock_open
+    with patch("kernel.daemon_node.git_client"), \
+         patch("kernel.daemon_node.github_client") as mock_gh, \
+         patch("kernel.daemon_node.os.path.exists", return_value=True), \
+         patch("builtins.open", mock_open(read_data=b"data")), \
+         patch("kernel.daemon_node.hashlib.sha256") as mock_sha256, \
+         patch("kernel.daemon_node.HookDaemon"):
+        
+        mock_gh.get_open_prs.return_value = []
+        
+        mock_hash1 = MagicMock()
+        mock_hash1.hexdigest.return_value = "hash1"
+        mock_hash2 = MagicMock()
+        mock_hash2.hexdigest.return_value = "hash2"
+        mock_sha256.side_effect = [mock_hash1, mock_hash2]
+        
+        sync_and_clean_node()
+        
+        captured = capsys.readouterr()
+        assert "CRITICAL ROM DRIFT DETECTED" in captured.out
