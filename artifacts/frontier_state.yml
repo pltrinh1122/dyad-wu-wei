@@ -2351,10 +2351,12 @@ nodes:
   - '[x] kb/WHY-0095-backlog-alignment.md exists'
 - name: 'Node 907: Discovery 907: Plan - Group and align backlog list output with
     Strategic Goals'
-  status: Backlog
-  learnings: Technical design and proposed changes for Group and align backlog list
-    output with Strategic Goals.
-  invariants: []
+  status: Completed
+  learnings: Created WHAT-0095 technical specification, registered it in manifest,
+    and compiled implementation plan.
+  invariants:
+  - '[x] kb/WHAT-0095-backlog-alignment.md exists'
+  - '[x] implementation_plan.md is updated'
 - name: 'Node 908: Activity 908: Reflect - Group and align backlog list output with
     Strategic Goals'
   status: Backlog
