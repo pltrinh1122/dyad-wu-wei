@@ -44,6 +44,11 @@ def restore(files: list[str], staged: bool = False, cwd: str | None = None) -> N
     subprocess.run(cmd + files, check=True, cwd=cwd)
 
 @record_execution(stage="skill")
+def rebase(target: str = "origin/main", cwd: str | None = None) -> None:
+    """Rebases the current branch onto target, ensuring conflict-free push."""
+    subprocess.run(["git", "rebase", target], check=True, cwd=cwd)
+
+@record_execution(stage="skill")
 def status_porcelain(cwd: str | None = None) -> str:
     """Returns git status in porcelain format."""
     res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True, cwd=cwd)
