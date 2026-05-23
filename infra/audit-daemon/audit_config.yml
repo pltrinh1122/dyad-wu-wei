@@ -22,3 +22,9 @@ rules:
   alert_level: FAILURE
   prompt_message: 'Synthesized Lexical Guard: Forbidden term ''node/390-test'' detected
     (from failed test ''test_reflect_success'')'
+- id: synthesized-guard-0859ae9f
+  type: lexical_guard
+  pattern: \bprune\b
+  alert_level: FAILURE
+  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''prune'' detected (from
+    failed test ''test_git_fetch_custom'')'
