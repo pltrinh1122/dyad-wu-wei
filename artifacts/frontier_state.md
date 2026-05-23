@@ -1997,8 +1997,15 @@
   - `[x] Path 809 is closed`
   - `[x] All local tests pass`
 
+## Node 828: Activity 828: Implement Epistemic Retro Surfacing in daemon_knowledge_accrual
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented autonomous retrospective surfacing in enforce_reflection_hook, enabling the system to auto-surface un-synthesized post-failure retrospectives into the backlog. Added unit tests to verify both surfaced and un-surfaced branches.
+- **Feedforward Invariants**:
+  - `[x] Retrospectives are autonomously surfaced in backlog`
+  - `[x] All local tests pass`
+
 ## Current Active Path
-**Path 809: Synthesize and Surface Epistemic Retrospectives**
+None
 
 ## Current Active Node
 None

@@ -4,6 +4,7 @@ import sys
 import json
 import yaml
 import argparse
+import subprocess
 from kernel.daemon_telemetry import record_execution
 from drivers import knowledge_accrual_skill
 
@@ -82,6 +83,80 @@ def enforce_reflection_hook(issue_id: str, repo_root: str) -> None:
                 f"is required under artifacts/audit/{retro_filename} before reflection."
             )
         print(f"✅ Post-failure reflection verified: {retro_filename} exists.")
+        
+        # Programmatic Retrospective Surfacing Check (Node 828)
+        try:
+            # Check if this retrospective has already been surfaced in the backlog (open or closed)
+            chk_res = subprocess.run(
+                ["gh", "issue", "list", "--state", "all", "--search", f"retro-{issue_id}", "--json", "number,title"],
+                capture_output=True, text=True, check=True
+            )
+            matching = json.loads(chk_res.stdout.strip() or "[]")
+            
+            if not matching:
+                print(f"🔍 Retrospective {retro_filename} has not been surfaced. Autonomously creating backlog activity...")
+                
+                from kernel import agent_frontier
+                from drivers import github_client
+                
+                # Find parent path ID
+                parent_path_id = None
+                
+                # 1. Sequential frontier lookup
+                frontier_yml_path = os.path.join(repo_root, "artifacts", "frontier_state.yml")
+                if os.path.exists(frontier_yml_path):
+                    with open(frontier_yml_path, "r", encoding="utf-8") as f:
+                        state_data = yaml.safe_load(f) or {}
+                    nodes = state_data.get("nodes", [])
+                    current_path_id = None
+                    for node in nodes:
+                        name = node.get("name", "")
+                        if "path" in name.lower():
+                            match = re.search(r"\bPath\s+(\d+)\b", name, re.IGNORECASE)
+                            if match:
+                                current_path_id = match.group(1)
+                        match_node = re.search(r"\b(?:Node|Activity|Probe|Path)\s+(\d+)\b", name, re.IGNORECASE)
+                        if match_node and str(match_node.group(1)) == str(issue_id):
+                            if current_path_id:
+                                parent_path_id = str(current_path_id)
+                                break
+                                
+                # 2. GitHub checklist lookup
+                if not parent_path_id:
+                    path_issues = github_client.list_issues_by_label("path")
+                    for path_issue in path_issues:
+                        body = path_issue.get("body", "")
+                        if f"#{issue_id}" in body or f"Node {issue_id}:" in body:
+                            parent_path_id = str(path_issue["number"])
+                            break
+                            
+                # 3. Fallback to active path
+                if not parent_path_id:
+                    if os.path.exists(frontier_yml_path):
+                        with open(frontier_yml_path, "r", encoding="utf-8") as f:
+                            state_data = yaml.safe_load(f) or {}
+                        active_path_str = state_data.get("current_active_path")
+                        if active_path_str:
+                            parent_path_id = agent_frontier.extract_path_id(active_path_str)
+                            
+                if not parent_path_id:
+                    print(f"Warning: Could not resolve parent Path ID for Node {issue_id}. Epistemic retro surfacing skipped.")
+                else:
+                    from kernel.daemon_backlog import BacklogDaemon
+                    backlog_daemon = BacklogDaemon()
+                    new_title = f"Reflect - Synthesize Epistemic Retrospective {retro_filename}"
+                    new_goal = f"Synthesize the epistemic learnings from the post-failure retrospective {retro_filename} into the system's operational guidelines (the Dao)."
+                    backlog_daemon.add(
+                        node_type="activity",
+                        title=new_title,
+                        goal=new_goal,
+                        path_id=parent_path_id
+                    )
+                    print(f"✅ Surfaced retrospective in backlog for Path {parent_path_id}")
+            else:
+                print(f"✅ Retrospective {retro_filename} is already surfaced in issue #{matching[0]['number']}.")
+        except Exception as e:
+            print(f"Warning: Failed to surface retrospective: {e}")
     else:
         print("✅ No failure events detected. Skipping mandatory reflection check.")
 

@@ -255,3 +255,55 @@ def test_evaluate_lexical_guard():
         assert triggered is True
         assert "src/code.py" in new_state["triggered_files"]
         mock_inject.assert_called_once_with("[FAILURE] Detected forbidden word")
+
+
+def test_enforce_reflection_hook_surfacing():
+    # Test case 1: Retrospective has not been surfaced yet. It should create a backlog issue.
+    mock_telemetry = '{"node_id": "544", "event": "FAILURE", "metadata": {"error": "some failure"}}\n'
+    
+    with patch("builtins.open", mock_open(read_data=mock_telemetry)), \
+         patch("os.path.exists", return_value=True), \
+         patch("subprocess.run") as mock_run, \
+         patch("kernel.daemon_backlog.BacklogDaemon.add") as mock_backlog_add, \
+         patch("drivers.github_client.list_issues_by_label") as mock_list_issues:
+        
+        # Mock gh issue list --search returning empty (not surfaced yet)
+        mock_gh_res = MagicMock()
+        mock_gh_res.returncode = 0
+        mock_gh_res.stdout = "[]"
+        mock_run.return_value = mock_gh_res
+        
+        # Mock github path issues list
+        mock_list_issues.return_value = [{"number": 809, "title": "Path 809: Test Path", "body": "- [ ] Node 544: Test Node (#544)"}]
+        
+        enforce_reflection_hook("544", "/mock/repo")
+        
+        # Verify that BacklogDaemon.add is called to create the backlog issue
+        mock_backlog_add.assert_called_once_with(
+            node_type="activity",
+            title="Reflect - Synthesize Epistemic Retrospective retro-544.md",
+            goal="Synthesize the epistemic learnings from the post-failure retrospective retro-544.md into the system's operational guidelines (the Dao).",
+            path_id="809"
+        )
+
+
+def test_enforce_reflection_hook_already_surfaced():
+    # Test case 2: Retrospective is already surfaced. It should not create a backlog issue.
+    mock_telemetry = '{"node_id": "544", "event": "FAILURE", "metadata": {"error": "some failure"}}\n'
+    
+    with patch("builtins.open", mock_open(read_data=mock_telemetry)), \
+         patch("os.path.exists", return_value=True), \
+         patch("subprocess.run") as mock_run, \
+         patch("kernel.daemon_backlog.BacklogDaemon.add") as mock_backlog_add:
+        
+        # Mock gh issue list --search returning existing issue
+        mock_gh_res = MagicMock()
+        mock_gh_res.returncode = 0
+        mock_gh_res.stdout = '[{"number": 850, "title": "Reflect - Synthesize Epistemic Retrospective retro-544.md"}]'
+        mock_run.return_value = mock_gh_res
+        
+        enforce_reflection_hook("544", "/mock/repo")
+        
+        # Verify that BacklogDaemon.add is NOT called
+        mock_backlog_add.assert_not_called()
+
