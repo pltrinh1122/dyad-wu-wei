@@ -1890,6 +1890,18 @@
 - **Feedforward Invariants**:
   - `Autonomous Learning Loop must trigger for soft-policy chat corrections. State retrieval must be deterministic.`
 
+## Node 810: Probe 810: Align - Synthesize and Surface Epistemic Retrospectives
+- **Status**: Completed
+- **Learnings & Context**: Aligned on the epistemic retrospective synthesis mechanism (WHY-0084).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 811: Probe 811: Plan - Synthesize and Surface Epistemic Retrospectives
+- **Status**: Completed
+- **Learnings & Context**: Formalized the Epistemic Retrospective Synthesis invariant (WHY-0086).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Node 854: Discovery 854: Harmonize - Transition to Single-PR-Gate Governance
 - **Status**: Completed
 - **Learnings & Context**: Formalized the Single Pull Request Gate principle as the sole integration boundary and deprecated intermediate manual checks to optimize inner-loop velocity under the Anti-Forced Coordination Principle.
@@ -1965,8 +1977,21 @@
   - `[x] kb/WHY-0088-interface-as-playbook.md exists`
   - `[x] kb/HOW-0000-manifest.md references WHY-0088`
 
+## Node 806: Activity 806: Implement bin/node retro command for Epistemic Reflection
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 806: Implement bin/node retro command for Epistemic Reflection
+- **Status**: Completed
+- **Learnings & Context**: Implemented retro subcommand in daemon_node supporting compile, list, and view, with complete unit test coverage.
+- **Feedforward Invariants**:
+  - `[x] bin/node retro subcommand functions correctly`
+  - `[x] All local tests pass`
+
 ## Current Active Path
-None
+**Path 809: Synthesize and Surface Epistemic Retrospectives**
 
 ## Current Active Node
 None
