@@ -1,4 +1,4 @@
-current_active_path: null
+current_active_path: 'Path 809: Synthesize and Surface Epistemic Retrospectives'
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -2080,6 +2080,14 @@ nodes:
   invariants:
   - Autonomous Learning Loop must trigger for soft-policy chat corrections. State
     retrieval must be deterministic.
+- name: 'Node 810: Probe 810: Align - Synthesize and Surface Epistemic Retrospectives'
+  status: Completed
+  learnings: Aligned on the epistemic retrospective synthesis mechanism (WHY-0084).
+  invariants: []
+- name: 'Node 811: Probe 811: Plan - Synthesize and Surface Epistemic Retrospectives'
+  status: Completed
+  learnings: Formalized the Epistemic Retrospective Synthesis invariant (WHY-0086).
+  invariants: []
 - name: 'Node 854: Discovery 854: Harmonize - Transition to Single-PR-Gate Governance'
   status: Completed
   learnings: Formalized the Single Pull Request Gate principle as the sole integration
@@ -2145,3 +2153,14 @@ nodes:
   invariants:
   - '[x] kb/WHY-0088-interface-as-playbook.md exists'
   - '[x] kb/HOW-0000-manifest.md references WHY-0088'
+- name: 'Node 806: Activity 806: Implement bin/node retro command for Epistemic Reflection'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 806: Implement bin/node retro command for Epistemic Reflection'
+  status: Completed
+  learnings: Implemented retro subcommand in daemon_node supporting compile, list,
+    and view, with complete unit test coverage.
+  invariants:
+  - '[x] bin/node retro subcommand functions correctly'
+  - '[x] All local tests pass'
