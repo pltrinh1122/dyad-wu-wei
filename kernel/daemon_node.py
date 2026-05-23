@@ -6,6 +6,8 @@ from drivers import github_client, git_client
 from kernel import agent_frontier
 from kernel import daemon_testing
 from kernel import daemon_prompt
+from kernel.daemon_prompt import process_prompts, get_backlog_file, clean_prompts
+from kernel.daemon_status import get_local_worktrees
 from kernel.sense_hooks import HookDaemon
 
 from kernel.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement
@@ -32,19 +34,49 @@ def checkout_node(issue_id: str, branch_name: str) -> None:
 
 @record_execution(stage="sense")
 def sync_and_clean_node() -> None:
-    """Syncs main, prunes merged local branches, and surfaces pending backlog items."""
-    log_stage_advancement("sense", "Initiating Sense Phase", "Syncing main, cleaning up local branches, and refreshing backlog state.")
-    
-    def _get_file_hash(filepath: str) -> str:
+    """Synchronizes local workspace state, pruning merged nodes and tracking ROM updates."""
+    import os
+    import sys
+    import hashlib
+    import subprocess
+    import yaml
+    from drivers import path_resolver
+    from kernel.node_lifecycle import TerminalNode
+
+    def _get_file_hash(filepath):
         if not os.path.exists(filepath):
             return ""
         with open(filepath, 'rb') as f:
             return hashlib.sha256(f.read()).hexdigest()
-            
-    gemini_path = "GEMINI.md"
-    pre_hash = _get_file_hash(gemini_path)
+
+    repo_root = path_resolver.get_workspace_dir()
+    gemini_path = os.path.join(repo_root, "GEMINI.md")
     
-    git_client.fetch("origin", prune=True)
+    # 1. Read prompt backlog to determine if Remote Mode is triggered
+    backlog_file = get_backlog_file()
+    remote_mode = False
+    pending_sluice_prompts = []
+    
+    if os.path.exists(backlog_file):
+        try:
+            with open(backlog_file, "r", encoding="utf-8") as f:
+                backlog_data = yaml.safe_load(f) or {}
+            for prompt in backlog_data.get("prompts", []):
+                if prompt.get("status") == "pending" and str(prompt.get("text", "")).startswith("[NOTIFICATION] Sluice Gate Opened: PR for Node"):
+                    remote_mode = True
+                    pending_sluice_prompts.append(prompt)
+        except Exception as e:
+            print(f"Warning: Failed to parse prompt backlog: {e}")
+
+    pre_hash = _get_file_hash(gemini_path)
+
+    # 2. Remote Mode: fetch remote updates
+    if remote_mode:
+        print("Sluice Gate event pending. Running remote synchronization...")
+        git_client.fetch("origin", prune=True)
+    else:
+        print("No Sluice Gate events pending. Running offline-by-default local synchronization...")
+
     git_client.switch("origin/main", detach=True)
     
     post_hash = _get_file_hash(gemini_path)
@@ -56,27 +88,35 @@ def sync_and_clean_node() -> None:
         print("Please RESTART the Agent (agy) immediately to load the new invariants.")
         print("="*80 + "\n")
 
-    open_prs = github_client.get_open_prs()
-    if open_prs:
-        pr_list = ", ".join([f"#{pr['number']} ({pr['headRefName']})" for pr in open_prs])
-        raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
+    # 3. Assert WIP-N=1 Invariant
+    if remote_mode:
+        open_prs = github_client.get_open_prs()
+        if open_prs:
+            pr_list = ", ".join([f"#{pr['number']} ({pr['headRefName']})" for pr in open_prs])
+            raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
+    else:
+        open_worktrees = get_local_worktrees(repo_root)
+        if open_worktrees:
+            pr_list = ", ".join([f"#{w['number']} ({w['url']})" for w in open_worktrees])
+            raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
     
     merged_branches = set()
     
-    # 1. Local merged branches
+    # 4. Local merged branches
     for branch in git_client.list_merged_branches():
         b = branch.strip()
         if b and b != 'main':
             merged_branches.add(b)
             
-    # 2. GitHub merged PRs
-    try:
-        merged_prs = github_client.get_merged_prs(limit=50)
-        for pr in merged_prs:
-            if pr.get("headRefName"):
-                merged_branches.add(pr["headRefName"])
-    except Exception as e:
-        print(f"Warning: Failed to fetch merged PRs from GitHub: {e}")
+    # 5. Remote merged PRs (Remote Mode only)
+    if remote_mode:
+        try:
+            merged_prs = github_client.get_merged_prs(limit=50)
+            for pr in merged_prs:
+                if pr.get("headRefName"):
+                    merged_branches.add(pr["headRefName"])
+        except Exception as e:
+            print(f"Warning: Failed to fetch merged PRs from GitHub: {e}")
  
     # Verify which of these actually exist locally and clean them
     local_branches = set(git_client.list_local_branches())
@@ -86,15 +126,22 @@ def sync_and_clean_node() -> None:
             TerminalNode.clean_if_merged(branch)
             
     git_client.worktree_prune()
+
+    # 6. Consume Sluice Gate Opened prompts
+    if remote_mode and pending_sluice_prompts:
+        prompt_ids = ",".join([p["id"] for p in pending_sluice_prompts])
+        process_prompts(prompt_ids, resolution_context="sync")
+        clean_prompts()
  
     log_stage_advancement("sense", "Sense Phase Completed", "Workspace successfully synchronized and pruned.")
  
     # Trigger Metasystem Audit
     print("\n🔍 Executing Metasystem Integrity Audit...")
-    from drivers import path_resolver
-    # Execute Metasystem Integrity Audit
     audit_script = path_resolver.resolve_core_path("drivers", "audit_daemon.py")
-    subprocess.run([sys.executable, audit_script], check=False)
+    audit_cmd = [sys.executable, audit_script]
+    if not remote_mode:
+        audit_cmd.append("--local")
+    subprocess.run(audit_cmd, check=False)
  
     # Surface pending backlog items at Sense phase
     daemon = HookDaemon()

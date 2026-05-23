@@ -67,12 +67,13 @@ def test_sync_and_clean_node_order():
     with patch("kernel.daemon_node.git_client") as mock_git, \
          patch("kernel.daemon_node.github_client") as mock_gh, \
          patch("kernel.daemon_node.subprocess") as mock_sub, \
-         patch("kernel.daemon_node.HookDaemon") as mock_hook:
+         patch("kernel.daemon_node.HookDaemon") as mock_hook, \
+         patch("kernel.daemon_node.get_local_worktrees", return_value=[]), \
+         patch("kernel.daemon_node.os.path.exists", return_value=False):
         
         daemon.attach_mock(mock_git, 'git')
         daemon.attach_mock(mock_gh, 'gh')
         
-        mock_gh.get_open_prs.return_value = []
         mock_git.list_merged_branches.return_value = []
         mock_git.list_local_branches.return_value = []
         
@@ -84,50 +85,99 @@ def test_sync_and_clean_node_order():
             if call[0] in ('git.fetch', 'git.switch', 'gh.get_open_prs')
         ]
         
+        # Local Mode: should switch but NOT fetch or get open prs
         assert filtered_calls == [
-            ('git.fetch', ('origin',), {'prune': True}),
-            ('git.switch', ('origin/main',), {'detach': True}),
-            ('gh.get_open_prs', (), {})
+            ('git.switch', ('origin/main',), {'detach': True})
         ]
 
-
-def test_sync_and_clean_node_wip_violation():
+def test_sync_and_clean_node_remote_mode():
     daemon = MagicMock()
+    backlog_content = """
+prompts:
+  - id: p-123
+    timestamp: '2026-05-23T21:00:00Z'
+    text: '[NOTIFICATION] Sluice Gate Opened: PR for Node 878'
+    status: pending
+"""
+    from unittest.mock import mock_open
     with patch("kernel.daemon_node.git_client") as mock_git, \
          patch("kernel.daemon_node.github_client") as mock_gh, \
          patch("kernel.daemon_node.subprocess") as mock_sub, \
-         patch("kernel.daemon_node.HookDaemon") as mock_hook:
+         patch("kernel.daemon_node.HookDaemon") as mock_hook, \
+         patch("kernel.daemon_node.os.path.exists", return_value=True), \
+         patch("builtins.open", mock_open(read_data=backlog_content.encode('utf-8'))), \
+         patch("kernel.daemon_node.process_prompts") as mock_process, \
+         patch("kernel.daemon_node.clean_prompts") as mock_clean:
         
         daemon.attach_mock(mock_git, 'git')
         daemon.attach_mock(mock_gh, 'gh')
         
-        mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "some-branch"}]
+        mock_gh.get_open_prs.return_value = []
+        mock_gh.get_merged_prs.return_value = []
+        mock_git.list_merged_branches.return_value = []
+        mock_git.list_local_branches.return_value = []
         
-        with pytest.raises(Exception, match="WIP-N=1 Violation"):
-            sync_and_clean_node()
-            
+        sync_and_clean_node()
+        
         calls = daemon.mock_calls
         filtered_calls = [
             (call[0], call[1], call[2]) for call in calls 
             if call[0] in ('git.fetch', 'git.switch', 'gh.get_open_prs')
         ]
         
+        # Remote Mode: should fetch, switch, and query get_open_prs
         assert filtered_calls == [
             ('git.fetch', ('origin',), {'prune': True}),
             ('git.switch', ('origin/main',), {'detach': True}),
             ('gh.get_open_prs', (), {})
         ]
+        mock_process.assert_called_once_with("p-123", resolution_context="sync")
+        mock_clean.assert_called_once()
+
+def test_sync_and_clean_node_wip_violation():
+    with patch("kernel.daemon_node.git_client"), \
+         patch("kernel.daemon_node.github_client"), \
+         patch("kernel.daemon_node.subprocess"), \
+         patch("kernel.daemon_node.HookDaemon"), \
+         patch("kernel.daemon_node.get_local_worktrees") as mock_wt, \
+         patch("kernel.daemon_node.os.path.exists", return_value=False):
+        
+        mock_wt.return_value = [{"number": 123, "url": "local:node/123-some-branch"}]
+        
+        with pytest.raises(Exception, match="WIP-N=1 Violation"):
+            sync_and_clean_node()
+            
+    backlog_content = "prompts:\n  - id: p-123\n    text: '[NOTIFICATION] Sluice Gate Opened: PR for Node 878'\n    status: pending"
+    from unittest.mock import mock_open
+    with patch("kernel.daemon_node.git_client"), \
+         patch("kernel.daemon_node.github_client") as mock_gh, \
+         patch("kernel.daemon_node.subprocess"), \
+         patch("kernel.daemon_node.HookDaemon"), \
+         patch("kernel.daemon_node.os.path.exists", return_value=True), \
+         patch("builtins.open", mock_open(read_data=backlog_content.encode('utf-8'))):
+        
+        mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "some-branch"}]
+        
+        with pytest.raises(Exception, match="WIP-N=1 Violation"):
+            sync_and_clean_node()
 
 def test_sync_and_clean_node_rom_drift(capsys):
     from unittest.mock import mock_open
     with patch("kernel.daemon_node.git_client"), \
          patch("kernel.daemon_node.github_client") as mock_gh, \
-         patch("kernel.daemon_node.os.path.exists", return_value=True), \
-         patch("builtins.open", mock_open(read_data=b"data")), \
+         patch("kernel.daemon_node.os.path.exists") as mock_exists, \
+         patch("builtins.open") as mock_file, \
          patch("kernel.daemon_node.hashlib.sha256") as mock_sha256, \
-         patch("kernel.daemon_node.HookDaemon"):
+         patch("kernel.daemon_node.HookDaemon"), \
+         patch("kernel.daemon_node.get_local_worktrees", return_value=[]):
         
-        mock_gh.get_open_prs.return_value = []
+        def exists_side_effect(path):
+            if "prompt_backlog" in path:
+                return False
+            return True
+        mock_exists.side_effect = exists_side_effect
+        
+        mock_file.return_value = mock_open(read_data=b"data")()
         
         mock_hash1 = MagicMock()
         mock_hash1.hexdigest.return_value = "hash1"
