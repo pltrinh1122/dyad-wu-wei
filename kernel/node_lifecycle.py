@@ -85,6 +85,10 @@ class BaseNode:
         return None
 
     def get_worktree_path(self, branch_name: str) -> str:
+        workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
+        if workspace_dir:
+            return os.path.join(os.path.abspath(workspace_dir), ".worktrees", branch_name)
+        
         loop_val = self.loop
         if loop_val == "spao":
             return os.path.join(".worktrees", "spao", branch_name)
@@ -342,26 +346,17 @@ class TerminalNode(BaseNode):
             self.set_status("in_progress")
             tx.register_rollback(self.set_status, "open")
             
-            workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
-            if workspace_dir:
-                print(f"Executing workspace context checkout inside {workspace_dir}")
-                git_client.fetch("origin")
-                try:
-                    git_client.checkout_b(branch_name)
-                except Exception:
-                    git_client.switch(branch_name)
-            else:
-                worktree_path = self.get_worktree_path(branch_name)
-                log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at {worktree_path}")
-                
-                os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
-                
-                git_client.fetch("origin")
-                git_client.worktree_add(branch_name, worktree_path, "origin/main")
-                tx.register_rollback(git_client.worktree_remove, worktree_path, force=True)
-                tx.register_rollback(git_client.branch_delete, branch_name)
-                
-                print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
+            worktree_path = self.get_worktree_path(branch_name)
+            log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at {worktree_path}")
+            
+            os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
+            
+            git_client.fetch("origin")
+            git_client.worktree_add(branch_name, worktree_path, "origin/main")
+            tx.register_rollback(git_client.worktree_remove, worktree_path, force=True)
+            tx.register_rollback(git_client.branch_delete, branch_name)
+            
+            print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
     def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
@@ -373,7 +368,7 @@ class TerminalNode(BaseNode):
         main_repo = path_resolver.get_core_dir()
         workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
         if workspace_dir:
-            worktree_dir = os.path.abspath(workspace_dir)
+            worktree_dir = os.path.abspath(self.get_worktree_path(branch_name))
         else:
             worktree_dir = os.path.abspath(os.path.join(main_repo, self.get_worktree_path(branch_name)))
 
@@ -480,11 +475,17 @@ class TerminalNode(BaseNode):
     @classmethod
     def clean_if_merged(cls, branch_name: str):
         """Cleans up the local worktree and branch if it has been merged."""
-        possible_paths = [
-            os.path.join(".worktrees", branch_name),
-            os.path.join(".worktrees", "spao", branch_name),
-            os.path.join(".worktrees", "sdlc", branch_name),
-        ]
+        workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
+        if workspace_dir:
+            possible_paths = [
+                os.path.join(os.path.abspath(workspace_dir), ".worktrees", branch_name)
+            ]
+        else:
+            possible_paths = [
+                os.path.join(".worktrees", branch_name),
+                os.path.join(".worktrees", "spao", branch_name),
+                os.path.join(".worktrees", "sdlc", branch_name),
+            ]
         for wt_path in possible_paths:
             if os.path.exists(wt_path):
                 git_client.worktree_remove(wt_path, force=True)
