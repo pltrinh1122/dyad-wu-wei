@@ -83,3 +83,7 @@ To implement the nested metasystem safely, the workspace runtime enforces a stri
 * **At the Parent Level (`.`)**: The Agent operates under a read-only/pull-only remote integration gate. Any changes to the core `dz-cil` framework must be merged via standard human-in-the-loop Pull Requests. The Agent cannot directly push to `origin/main`.
 * **At the Workspace Level (`./.workspace/`)**: The Agent is granted full, autonomous read/write and push/pull Git authority to the target project's remote repository. Inside `./.workspace/`, the nested agent loop can branch, commit, push, and sync changes autonomously to drive the domain project's lifecycle.
 
+### 4.4 Runtime Artifact Isolation
+* **Rule**: All runtime-generated artifacts (such as `kb/`, `artifacts/`, lock files, and logs) created by the nested workspace's SPAO loop must be strictly isolated to the `./.workspace/` subdirectory.
+* **Rationale**: This prevents state-machine cross-contamination and ensures the parent repository's development files are never mutated by the execution of the child domain app.
+
