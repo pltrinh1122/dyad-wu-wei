@@ -318,6 +318,7 @@ def cmd_test(args):
 
 def main():
     parser = argparse.ArgumentParser(description="Antigravity Domain Orchestrator for Node Lifecycle Management")
+    parser.add_argument("--workspace", action="store_true", help="Execute command under the active workspace context")
     subparsers = parser.add_subparsers(dest="subcommand", required=True)
 
     # sync
@@ -386,6 +387,11 @@ def main():
     parser_rv.add_argument("end_path", nargs="?", default=None, help="Optional ending path ID")
 
     args = parser.parse_args()
+
+    if getattr(args, "workspace", False):
+        if not os.environ.get("SPAO_WORKSPACE_DIR"):
+            from drivers import path_resolver
+            os.environ["SPAO_WORKSPACE_DIR"] = os.path.abspath(os.path.join(path_resolver.get_core_dir(), ".workspace"))
 
     if args.subcommand == "sync":
         cmd_sync(args)
