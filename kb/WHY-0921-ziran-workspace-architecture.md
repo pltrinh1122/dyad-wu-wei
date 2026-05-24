@@ -15,7 +15,7 @@ The Operator expressed the need to extend the capabilities of the Dao-Ziran Cont
 
 In [PML-0921](file:///mnt/shared_data/git_repos/agent-antigravity/artifacts/probe_125_evaluation.md), we evaluated and falsified the thesis that the current software-focused DZ-OS could be directly deployed to these tasks. The current engine is heavily coupled to code-centric substrates: Git branches/worktrees, POSIX compilers, and deterministic test runners. Directly forcing these unstructured tasks into the developer loop would redistribute all validation friction to the Operator, violating the Wu-wei Gate and causing severe human decision fatigue.
 
-To resolve this contradiction, we reframed the goal: rather than deploying the agent directly into the Operator's unstructured tasks, the DZ-CIL developer agent will build a local-first **digital companion application (Ziran Workspace)** for the Operator. This companion app will run in the Operator's user space, providing structured planning and writing interfaces with local, automated semantic and logistical validation.
+To resolve this contradiction, we reframed the goal: rather than deploying the parent agent directly into the Operator's unstructured tasks, the DZ-CIL developer agent will build a **standalone runtime package of the DZ-CIL engine (Model 2)**. Under Model 2, the target project is initialized as an isolated workspace with its own local `dz-cil` runtime environment. During development, this standalone instance is nested in the root `./.workspace/` directory for ease of bootstrapping, completely decoupled from the parent codebase.
 
 ---
 
@@ -67,7 +67,7 @@ To enable the Operator to build domain apps inside the workspace using the same 
 * **Objective**: Maintain project-specific memory, constraints, and style guides.
 * **Structure**: Each initialized workspace project maintains its own local `kb/` directory using the standard `WHAT-`, `WHY-`, and `HOW-` linguistic primitives to store project-specific invariants (e.g. character rules for a novel, flight requirements for travel).
 
-## 4. Substrate Decoupling & Git Permission Model (Model 1)
+## 4. Substrate Decoupling & Standalone Runtime Model (Model 2)
 
 To implement the nested metasystem safely, the workspace runtime enforces a strict separation of Git authorities between the parent and child repositories:
 
