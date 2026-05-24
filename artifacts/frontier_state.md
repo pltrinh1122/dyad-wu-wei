@@ -2300,10 +2300,11 @@
   - `[x] Registered in kb/HOW-0000-manifest.md`
 
 ## Node 930: Discovery 930: Plan - Implement DZ-CIL Deployment and Bootstrap Installer
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Implement DZ-CIL Deployment and Bootstrap Installer.
+- **Status**: Completed
+- **Learnings & Context**: Successfully formulated the technical specifications for the new bin/dz-cil-install script and the workspace worktree redirection model (.workspace/.worktrees/node/*) to enable complex child workspace branching strategies.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] kb/WHAT-0930-dz-cil-installer-spec.md exists`
+  - `[x] Registered in kb/HOW-0000-manifest.md`
 
 ## Node 931: Activity 931: Reflect - Implement DZ-CIL Deployment and Bootstrap Installer
 - **Status**: Backlog
