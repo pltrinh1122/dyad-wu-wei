@@ -10,15 +10,23 @@
 
 ---
 
-### 1. Unified Workspace Bootstrap Installer
+### 1. Assumptions & Prerequisites
+Before executing the bootstrap installer, the following conditions must be met:
+1. **Core Retrieval**: The Operator has fetched or cloned the core `dz-cil` engine repository from the remote origin (e.g. `pltrinh1122/agent-antigravity`) into a local directory (`DZ-CIL_ROOT`), which serves as the read-only framework source.
+2. **System Dependencies**: The local environment must have `python3`, `pip`, `virtualenv` (or python standard library `venv`), and `git` installed and available in the system `PATH`.
+3. **Execution CWD**: The installer script `bin/dz-cil-install` is invoked from the parent `DZ-CIL_ROOT` directory.
+
+---
+
+### 2. Unified Workspace Bootstrap Installer
 
 We will implement a new, idempotent shell script `bin/dz-cil-install` (or `bin/dz-cil_install.sh`) to bootstrap a Model 1 child project workspace.
 
-#### 1.1 Command Arguments & Options
+#### 2.1 Command Arguments & Options
 - `bin/dz-cil-install [DIR]`: Initialize a workspace inside the specified directory (defaults to `./.workspace/` relative to parent root).
 - `bin/dz-cil-install --help`: Print usage instructions.
 
-#### 1.2 Setup Operations
+#### 2.2 Setup Operations
 The installer must execute the following operations in order:
 1. **Directory Creation**: Create the target workspace directory and its baseline folders:
    - `[TARGET_DIR]/kb/` (empty workspace knowledge base)
@@ -29,17 +37,17 @@ The installer must execute the following operations in order:
 
 ---
 
-### 2. Workspace Worktree Redirection Spec (Model 1)
+### 3. Workspace Worktree Redirection Spec (Model 1)
 
 To support complex branching strategies (e.g., concurrent release branches like `v1.x` and `v1.1.x`) inside the child project workspace, we establish the **Workspace Worktree Redirection** model.
 
-#### 2.1 Directory Layout
+#### 3.1 Directory Layout
 When the active workspace is checked out for node execution, the checkout command must NOT perform in-place checkouts. Instead, it must checkout the node branch into a git worktree located at:
 ```
 [TARGET_DIR]/.worktrees/node/[id]-[kebab-case]/
 ```
 
-#### 2.2 Redirection Logic
+#### 3.2 Redirection Logic
 The node lifecycle manager (`kernel/node_lifecycle.py`) will redirect active paths when `SPAO_WORKSPACE_DIR` is set:
 - **Plan Phase**: Write the Node Contract to `[TARGET_DIR]/.worktrees/node/[id]-[kebab-case]/`.
 - **Act Phase**: Execute codebase modifications and run tests inside `[TARGET_DIR]/.worktrees/node/[id]-[kebab-case]/`.
