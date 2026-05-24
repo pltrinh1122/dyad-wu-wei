@@ -2349,6 +2349,19 @@
 - **Feedforward Invariants**:
   - `Legacy scripts bin/spao-install and bin/spao-release are deleted; test suite achieves 100% pass rate.`
 
+## Node 941: Activity 941: Update GEMINI.md and templates for Workspace inheritance and Telos capturing
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 941: Update GEMINI.md and templates for Workspace inheritance and Telos capturing
+- **Status**: Completed
+- **Learnings & Context**: Successfully updated parent and child GEMINI.md instructions to codify OOP-style workspace inheritance, domain sovereignty, and the first-step Telos capturing invariant.
+- **Feedforward Invariants**:
+  - `Parent and child GEMINI.md templates updated`
+  - `TDD test suite achieves 100% pass rate`
+
 ## Current Active Path
 None
 
