@@ -18,6 +18,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Interface as the Playbook (Ziran)**: Read [WHY-0088-interface-as-playbook.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0088-interface-as-playbook.md)
 * **Dialectical Falsification**: Read [WHY-0091-dialectical-falsification.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0091-dialectical-falsification.md)
 * **DZ-CIL Workspace Architecture**: Read [WHY-0921-dz-cil-workspace-architecture.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0921-dz-cil-workspace-architecture.md)
+* **DZ-CIL Bootstrap Installer Harmonization**: Read [WHY-0929-dz-cil-installer-harmonization.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0929-dz-cil-installer-harmonization.md)
 
 
 
