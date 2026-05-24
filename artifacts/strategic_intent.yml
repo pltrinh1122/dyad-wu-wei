@@ -51,7 +51,8 @@ strategic_goals:
     timeouts.
   id: SG-0003
   # Completed: Path 652 (Codify Metasystem Domain Tactical Goals and Persona Ownership)
-  prioritized_paths: []
+  prioritized_paths:
+  - 928
   status: Active
   title: Preservation of Autonomous Velocity
 - collaborative_gap: The communication interface requires verbose conversational turns
