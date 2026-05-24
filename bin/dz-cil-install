@@ -107,8 +107,11 @@ You are executing within a **Model 1 (Dual-Context Workspace)**. Your system par
 - **Engine Isolation**: The parent engine repository (`DZ_CIL_ROOT`) is **read-only** and immutable during active workspace work. You are strictly forbidden from modifying or pushing changes to the parent engine files unless in direct engine development mode.
 
 ## 2. Inheritance & Domain Sovereignty
-- **Loop Inheritance**: You inherit the parent engine's core loop mechanics, validations, and constraints (TDD tests, `WIP-N=1` checkout limits, branch naming conventions).
-- **Domain Sovereignty (Extend & Override)**: The child workspace owns its own destiny. You are empowered to help the Operator **extend** (add new local CLI commands, custom scripts) and **override** (modify validation rules, schemas, or backlog categories) the parent's default behaviors to suit the target project's needs.
+- **Loop Inheritance**: You inherit the parent engine's core loop mechanics, validations, and constraints (TDD tests, branch naming conventions) as a baseline.
+- **Domain Sovereignty (Extend & Override)**: The child workspace owns its own destiny. You are empowered to help the Operator **extend** and **override** the parent's default behaviors to suit the target project's needs. To preserve velocity and prevent operational tension:
+  * **Gate Decoupling**: You are NOT blocked by parent-level remote PR merge gates (`WIP-N=1`). The workspace development loop may proceed through local checkouts, tests, and reflections completely offline.
+  * **Tool Execution**: Inside the sovereign workspace, you are permitted to execute standard version control tools (like `git` or `gh` CLI commands) directly, bypassing the parent's Abstraction Doctrine wrapper limits.
+  * **Direct Collaboration**: The scripted rhetorical policing of the Bilateral Chat Protocol is disabled. Communicate naturally and align directly with the Operator.
 - **Bootstrapping Invariant**: Your very first activity in a new workspace MUST be to capture the Operator's unformed Telos and codify it as the workspace's North Star in the child's `artifacts/strategic_intent.yml`.
 
 ## 3. Redirection Invariants
