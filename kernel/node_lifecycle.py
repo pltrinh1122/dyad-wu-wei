@@ -223,6 +223,9 @@ class TerminalNode(BaseNode):
 
     @record_execution(stage="plan")
     def plan_start(self, frontier_file: str = "artifacts/frontier_state.md") -> None:
+        from drivers import path_resolver
+        if not os.path.isabs(frontier_file):
+            frontier_file = path_resolver.resolve_workspace_path(frontier_file)
         with FlowTransaction(frontier_file) as tx:
             self._verify_state_purity(frontier_file)
             
@@ -324,6 +327,10 @@ class TerminalNode(BaseNode):
         from kernel.daemon_strategic import verify_node_transition_allowed
         verify_node_transition_allowed(self.issue_id)
 
+        from drivers import path_resolver
+        if not os.path.isabs(frontier_file):
+            frontier_file = path_resolver.resolve_workspace_path(frontier_file)
+
         with FlowTransaction(frontier_file) as tx:
             self._verify_state_purity(frontier_file, expected_active=self.issue_id)
             
@@ -335,26 +342,40 @@ class TerminalNode(BaseNode):
             self.set_status("in_progress")
             tx.register_rollback(self.set_status, "open")
             
-            worktree_path = self.get_worktree_path(branch_name)
-            log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at {worktree_path}")
-            
-            os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
-            
-            git_client.fetch("origin")
-            git_client.worktree_add(branch_name, worktree_path, "origin/main")
-            tx.register_rollback(git_client.worktree_remove, worktree_path, force=True)
-            tx.register_rollback(git_client.branch_delete, branch_name)
-            
-            print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
-
-    @record_execution(stage="reflect")
+            workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
+            if workspace_dir:
+                print(f"Executing workspace context checkout inside {workspace_dir}")
+                git_client.fetch("origin")
+                try:
+                    git_client.checkout_b(branch_name)
+                except Exception:
+                    git_client.switch(branch_name)
+            else:
+                worktree_path = self.get_worktree_path(branch_name)
+                log_stage_advancement("act", "Initializing Execution Worktree", f"Creating git worktree at {worktree_path}")
+                
+                os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
+                
+                git_client.fetch("origin")
+                git_client.worktree_add(branch_name, worktree_path, "origin/main")
+                tx.register_rollback(git_client.worktree_remove, worktree_path, force=True)
+                tx.register_rollback(git_client.branch_delete, branch_name)
+                
+                print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
     def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
         if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
  
         from drivers import path_resolver
+        if not os.path.isabs(frontier_file):
+            frontier_file = path_resolver.resolve_workspace_path(frontier_file)
+
         main_repo = path_resolver.get_core_dir()
-        worktree_dir = os.path.abspath(os.path.join(main_repo, self.get_worktree_path(branch_name)))
+        workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
+        if workspace_dir:
+            worktree_dir = os.path.abspath(workspace_dir)
+        else:
+            worktree_dir = os.path.abspath(os.path.join(main_repo, self.get_worktree_path(branch_name)))
 
         with FlowTransaction(frontier_file) as tx:
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
@@ -407,7 +428,7 @@ class TerminalNode(BaseNode):
                 for ext in [".yml", ".yml.sha256", ".md"]:
                     src = os.path.join(main_repo, "artifacts", f"frontier_state{ext}")
                     dest = os.path.join(worktree_dir, "artifacts", f"frontier_state{ext}")
-                    if os.path.exists(src):
+                    if os.path.exists(src) and os.path.abspath(src) != os.path.abspath(dest):
                         os.makedirs(os.path.dirname(dest), exist_ok=True)
                         shutil.copy2(src, dest)
             except Exception as e:

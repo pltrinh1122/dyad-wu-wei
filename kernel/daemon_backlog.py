@@ -13,6 +13,12 @@ class BacklogDaemon:
     
     def __init__(self, repository: str = "pltrinh1122/agent-antigravity"):
         self.repository = repository
+        workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
+        if workspace_dir:
+            from drivers.github_client import _resolve_gh_repo
+            resolved = _resolve_gh_repo()
+            if resolved:
+                self.repository = resolved
 
     def load_node_taxonomy(self) -> dict:
         """Loads the domain-specific node taxonomy from antigravity.yml."""

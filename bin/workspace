@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+import sys
+import os
+import subprocess
+
+# Ensure core directory is in PYTHONPATH
+core_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(core_dir)
+
+from kernel import daemon_workspace
+
+def print_help():
+    print("Usage: ./bin/workspace init <repo_url> | <subcommand> [args...]")
+    print("\nSubcommands forwarded to active workspace:")
+    print("  node [args...]       Forward node lifecycle commands")
+    print("  backlog [args...]    Forward backlog commands")
+    print("  status [args...]     Forward status dashboard command")
+    print("  prompt [args...]     Forward prompt backlog commands")
+    print("  test [args...]       Forward test harness command")
+    sys.exit(0)
+
+def main():
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+        print_help()
+        
+    subcmd = sys.argv[1]
+    
+    if subcmd == "init":
+        if len(sys.argv) < 3:
+            print("Error: Missing repository URL. Usage: ./bin/workspace init <repo_url>")
+            sys.exit(1)
+        repo_url = sys.argv[2]
+        daemon_workspace.init_workspace(repo_url)
+        sys.exit(0)
+        
+    # Forwarding mode
+    # 1. Load workspace configuration
+    config = daemon_workspace.load_config()
+    if not config or not config.get("path"):
+        print("Error: Workspace not initialized. Please run: ./bin/workspace init <repo_url>")
+        sys.exit(1)
+        
+    workspace_path = config["path"]
+    if not os.path.exists(workspace_path):
+        print(f"Error: Workspace path {workspace_path} does not exist. Please re-run init.")
+        sys.exit(1)
+        
+    # 2. Map subcommand to target script in parent bin/
+    bin_map = {
+        "node": "node",
+        "backlog": "backlog",
+        "status": "status",
+        "prompt": "prompt",
+        "test": "run-tests"
+    }
+    
+    if subcmd not in bin_map:
+        print(f"Error: Unknown subcommand '{subcmd}'.")
+        print_help()
+        
+    target_bin = os.path.join(core_dir, "bin", bin_map[subcmd])
+    if not os.path.exists(target_bin):
+        print(f"Error: Forwarding script {target_bin} not found.")
+        sys.exit(1)
+        
+    # 3. Build command arguments
+    cmd = [target_bin] + sys.argv[2:]
+    
+    # 4. Inject environment variables
+    env = os.environ.copy()
+    env["SPAO_WORKSPACE_DIR"] = os.path.abspath(workspace_path)
+    if "SPAO_PERSONA_ID" not in env:
+        env["SPAO_PERSONA_ID"] = "frontier"
+        
+    # 5. Execute command and forward exit status
+    res = subprocess.run(cmd, env=env)
+    sys.exit(res.returncode)
+
+if __name__ == "__main__":
+    main()

@@ -1,4 +1,38 @@
+import os
+import re
 import subprocess
+from kernel.daemon_telemetry import record_execution
+
+def _resolve_gh_repo() -> str | None:
+    workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
+    if not workspace_dir:
+        return None
+    try:
+        res = subprocess.run(
+            ["git", "remote", "get-url", "origin"],
+            capture_output=True, text=True, check=True, cwd=workspace_dir
+        )
+        url = res.stdout.strip()
+        match = re.search(r"github\.com[:/]([^/]+/[^/.]+)(?:\.git)?", url)
+        if match:
+            return match.group(1)
+    except Exception:
+        pass
+    return None
+
+def _run_gh(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
+    workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
+    if workspace_dir:
+        if cmd[0] == "git" and kwargs.get("cwd") is None:
+            kwargs["cwd"] = workspace_dir
+        elif cmd[0] == "gh":
+            repo = _resolve_gh_repo()
+            if repo:
+                env = kwargs.get("env") or os.environ.copy()
+                env["GH_REPO"] = repo
+                kwargs["env"] = env
+    return subprocess.run(cmd, **kwargs)
+
 import tempfile
 import json
 from kernel.daemon_telemetry import record_execution
@@ -10,7 +44,7 @@ def create_issue(title: str, body: str) -> str:
         temp_file.write(body)
         temp_file.flush()
         
-        result = subprocess.run(
+        result = _run_gh(
             ["gh", "issue", "create", "--title", title, "-F", temp_file.name],
             capture_output=True, text=True, check=True
         )
@@ -19,7 +53,7 @@ def create_issue(title: str, body: str) -> str:
 @record_execution(stage="skill")
 def close_issue(issue_id: str, comment_body: str) -> None:
     """Closes a GH issue with a final comment."""
-    subprocess.run(
+    _run_gh(
         ["gh", "issue", "close", str(issue_id), "-c", comment_body],
         check=True
     )
@@ -33,7 +67,7 @@ def close_issue(issue_id: str, comment_body: str) -> None:
 
 def reopen_issue(issue_id: str) -> None:
     """Reopens a closed GH issue."""
-    subprocess.run(
+    _run_gh(
         ["gh", "issue", "reopen", str(issue_id)],
         check=True
     )
@@ -45,7 +79,7 @@ def update_issue_body(issue_id: str, new_body: str) -> None:
         temp_file.write(new_body)
         temp_file.flush()
         
-        subprocess.run(
+        _run_gh(
             ["gh", "issue", "edit", str(issue_id), "--body-file", temp_file.name],
             check=True
         )
@@ -58,7 +92,7 @@ def list_issues_by_label(label: str) -> list[dict]:
     Each item is a dict with 'number', 'title', and 'url' keys.
     Returns an empty list if no issues are found.
     """
-    result = subprocess.run(
+    result = _run_gh(
         ["gh", "issue", "list", "--label", label, "--state", "open",
          "--json", "number,title,url,state"],
         capture_output=True, text=True, check=True
@@ -82,7 +116,7 @@ def get_open_issues() -> list[dict]:
     
     Each item is a dict with 'number', 'title', 'body', and 'labels' keys.
     """
-    result = subprocess.run(
+    result = _run_gh(
         ["gh", "issue", "list", "--state", "open", "--limit", "100", "--json", "number,title,body,labels"],
         capture_output=True, text=True, check=True
     )
@@ -92,7 +126,7 @@ def get_open_issues() -> list[dict]:
 @record_execution(stage="skill")
 def get_issue_details(issue_id: str) -> dict:
     """Returns details for a specific issue."""
-    result = subprocess.run(
+    result = _run_gh(
         ["gh", "issue", "view", str(issue_id), "--json", "number,title,body,state"],
         capture_output=True, text=True, check=True
     )
@@ -101,7 +135,7 @@ def get_issue_details(issue_id: str) -> dict:
 
 def rename_issue_title(issue_id: str, new_title: str) -> None:
     """Renames an issue's title."""
-    subprocess.run(
+    _run_gh(
         ["gh", "issue", "edit", str(issue_id), "--title", new_title],
         check=True
     )
@@ -109,7 +143,7 @@ def rename_issue_title(issue_id: str, new_title: str) -> None:
 @record_execution(stage="skill")
 def get_issue_comments(issue_id: str) -> list[dict]:
     """Retrieves comments for an issue."""
-    res = subprocess.run(
+    res = _run_gh(
         ["gh", "issue", "view", str(issue_id), "--json", "comments"],
         capture_output=True,
         text=True,
@@ -123,7 +157,7 @@ def get_issue_comments(issue_id: str) -> list[dict]:
 def create_pull_request(title: str, body: str, head: str = None) -> str:
     """Creates a PR using gh pr create, or returns the existing PR URL if it already exists for the head branch."""
     if not head:
-        res = subprocess.run(
+        res = _run_gh(
             ["git", "symbolic-ref", "--short", "HEAD"],
             capture_output=True, text=True
         )
@@ -131,7 +165,7 @@ def create_pull_request(title: str, body: str, head: str = None) -> str:
             head = res.stdout.strip()
 
     if head:
-        chk_res = subprocess.run(
+        chk_res = _run_gh(
             ["gh", "pr", "list", "--head", head, "--state", "open", "--json", "url"],
             capture_output=True, text=True, check=True
         )
@@ -146,7 +180,7 @@ def create_pull_request(title: str, body: str, head: str = None) -> str:
         cmd = ["gh", "pr", "create", "--title", title, "-F", temp_file.name]
         if head:
             cmd += ["--head", head]
-        result = subprocess.run(
+        result = _run_gh(
             cmd,
             capture_output=True, text=True, check=True
         )
@@ -155,7 +189,7 @@ def create_pull_request(title: str, body: str, head: str = None) -> str:
 
 def get_issue_labels(issue_id: str) -> list[str]:
     """Returns a list of label names for the given issue."""
-    result = subprocess.run(
+    result = _run_gh(
         ["gh", "issue", "view", str(issue_id), "--json", "labels"],
         capture_output=True, text=True, check=True
     )
@@ -167,14 +201,14 @@ def get_issue_labels(issue_id: str) -> list[str]:
 def add_label(issue_id: str, label: str) -> None:
     """Adds a label to the given issue."""
     try:
-        subprocess.run(
+        _run_gh(
             ["gh", "issue", "edit", str(issue_id), "--add-label", label],
             check=True, capture_output=True, text=True
         )
     except subprocess.CalledProcessError as e:
         if "not found" in e.stderr:
-            subprocess.run(["gh", "label", "create", label, "--force"], check=True, capture_output=True)
-            subprocess.run(
+            _run_gh(["gh", "label", "create", label, "--force"], check=True, capture_output=True)
+            _run_gh(
                 ["gh", "issue", "edit", str(issue_id), "--add-label", label],
                 check=True, capture_output=True
             )
@@ -183,14 +217,14 @@ def add_label(issue_id: str, label: str) -> None:
 
 def remove_label(issue_id: str, label: str) -> None:
     """Removes a label from the given issue."""
-    subprocess.run(
+    _run_gh(
         ["gh", "issue", "edit", str(issue_id), "--remove-label", label],
         check=True
     )
 
 def get_open_prs() -> list[dict]:
     """Returns a list of currently open PRs for the repository."""
-    result = subprocess.run(
+    result = _run_gh(
         ["gh", "pr", "list", "--state", "open", "--json", "number,title,headRefName,url"],
         capture_output=True, text=True, check=True
     )
@@ -202,7 +236,7 @@ def get_merged_prs(limit: int = 50) -> list[dict]:
     
     Each item is a dict with 'headRefName'.
     """
-    result = subprocess.run(
+    result = _run_gh(
         ["gh", "pr", "list", "--state", "merged", "--limit", str(limit), "--json", "headRefName"],
         capture_output=True, text=True, check=True
     )
@@ -211,21 +245,21 @@ def get_merged_prs(limit: int = 50) -> list[dict]:
 
 def merge_pull_request(pr_number: int, method: str = "squash") -> None:
     """Merges a pull request using the specified method."""
-    subprocess.run(
+    _run_gh(
         ["gh", "pr", "merge", str(pr_number), f"--{method}", "--delete-branch"],
         check=True
     )
 
 def close_pull_request(pr_number: int) -> None:
     """Closes a pull request without merging."""
-    subprocess.run(
+    _run_gh(
         ["gh", "pr", "close", str(pr_number)],
         check=True
     )
 
 def get_pr_checks(pr_number: int) -> str:
     """Retrieves check runs status for a PR."""
-    res = subprocess.run(
+    res = _run_gh(
         ["gh", "pr", "checks", str(pr_number)],
         capture_output=True, text=True, check=False
     )
@@ -233,7 +267,7 @@ def get_pr_checks(pr_number: int) -> str:
 
 def get_run_view(run_id: str) -> str:
     """Retrieves run details and logs."""
-    res = subprocess.run(
+    res = _run_gh(
         ["gh", "run", "view", run_id],
         capture_output=True, text=True, check=False
     )
@@ -241,7 +275,7 @@ def get_run_view(run_id: str) -> str:
 
 def get_run_failed_log(run_id: str) -> str:
     """Retrieves logs of failed steps in a run."""
-    res = subprocess.run(
+    res = _run_gh(
         ["gh", "run", "view", run_id, "--log-failed"],
         capture_output=True, text=True, check=False
     )
