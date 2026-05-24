@@ -2495,12 +2495,21 @@ nodes:
   - '[x] Registered in kb/HOW-0000-manifest.md'
 - name: 'Node 931: Activity 931: Reflect - Implement DZ-CIL Deployment and Bootstrap
     Installer'
-  status: Backlog
-  learnings: Final reflection and path closure for Implement DZ-CIL Deployment and
-    Bootstrap Installer.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 933: Activity 933: Reflect - Synthesize Epistemic Retrospective retro-929.md'
   status: Backlog
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-929.md into the system's operational guidelines (the Dao).
   invariants: []
+- name: 'Activity 931: Reflect - Implement DZ-CIL Deployment and Bootstrap Installer'
+  status: Completed
+  learnings: Implemented the unified workspace bootstrap installer bin/dz-cil-install
+    (Option A) and integrated workspace worktree redirection inside node_lifecycle.py.
+    The installer script provisions baseline directory structures, GEMINI.md, and
+    virtual environments. Redirection logic ensures child project checkouts route
+    to .worktrees/node/[id]-[kebab-case]/ inside the workspace directory.
+  invariants:
+  - bin/dz-cil-install exists and is executable
+  - Workspace worktrees are redirected
