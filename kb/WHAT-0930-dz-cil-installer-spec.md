@@ -12,7 +12,9 @@
 
 ### 1. Assumptions & Prerequisites
 Before executing the bootstrap installer, the following conditions must be met:
-1. **Core Retrieval**: The Operator has retrieved the core `dz-cil` engine source code from the remote repository (e.g. `pltrinh1122/agent-antigravity`) into a local directory (`DZ-CIL_ROOT`) by performing a `git-fetch` or `git-clone` operation. This directory serves as the read-only framework source.
+1. **Core Retrieval**: The core `dz-cil` engine source code can be retrieved in one of two ways:
+   - **Local Repository (Standard)**: The Operator has retrieved the source code from the remote repository (e.g. `pltrinh1122/agent-antigravity`) into a local directory (`DZ-CIL_ROOT`) by performing a `git-fetch` or `git-clone` operation.
+   - **One-Liner Bootstrapper (Optimized)**: The Operator runs a curl-to-bash one-liner fetching the installer script from a placeholder release endpoint (e.g. using the GitHub release artifact domain: `<ENGINE_INSTALL_URL>`). This automatically downloads the engine into a hidden `.workspace/engine/` subdirectory and initiates the setup.
 2. **System Dependencies**: The local environment must have `python3`, `pip`, `virtualenv` (or python standard library `venv`), and `git` installed and available in the system `PATH`.
 3. **Execution CWD**: The installer script `bin/dz-cil-install` is invoked from the parent `DZ-CIL_ROOT` directory.
 
