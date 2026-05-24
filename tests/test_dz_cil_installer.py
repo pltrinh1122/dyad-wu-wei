@@ -102,6 +102,11 @@ echo "mock-git"
     pip_calls = (tmp_path / "pip_calls.log").read_text()
     assert "install pytest pytest-mock pyyaml" in pip_calls
 
+    # Verify post-installation guidance output
+    assert "Next Steps per Dao:" in res.stdout
+    assert "./bin/workspace init <project_git_url>" in res.stdout
+    assert f"SPAO_WORKSPACE_DIR=\"{target_workspace}\" agy" in res.stdout
+
 
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_labels")
 def test_node_lifecycle_workspace_redirection(mock_get_labels):

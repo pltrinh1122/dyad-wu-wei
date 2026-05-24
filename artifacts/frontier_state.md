@@ -2325,6 +2325,18 @@
   - `bin/dz-cil-install exists and is executable`
   - `Workspace worktrees are redirected`
 
+## Node 937: Activity 937: Activity: Print post-installation guidance in bin/dz-cil-install
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 937: Print post-installation guidance in bin/dz-cil-install
+- **Status**: Completed
+- **Learnings & Context**: Successfully updated bin/dz-cil-install and tests/test_dz_cil_installer.py to print next steps per Dao.
+- **Feedforward Invariants**:
+  - `bin/dz-cil-install prints post-installation next steps; test suite achieves 100% pass rate.`
+
 ## Current Active Path
 None
 
