@@ -2513,3 +2513,14 @@ nodes:
   invariants:
   - bin/dz-cil-install exists and is executable
   - Workspace worktrees are redirected
+- name: 'Node 937: Activity 937: Activity: Print post-installation guidance in bin/dz-cil-install'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 937: Print post-installation guidance in bin/dz-cil-install'
+  status: Completed
+  learnings: Successfully updated bin/dz-cil-install and tests/test_dz_cil_installer.py
+    to print next steps per Dao.
+  invariants:
+  - bin/dz-cil-install prints post-installation next steps; test suite achieves 100%
+    pass rate.
