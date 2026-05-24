@@ -67,8 +67,19 @@ To enable the Operator to build domain apps inside the workspace using the same 
 * **Objective**: Maintain project-specific memory, constraints, and style guides.
 * **Structure**: Each initialized workspace project maintains its own local `kb/` directory using the standard `WHAT-`, `WHY-`, and `HOW-` linguistic primitives to store project-specific invariants (e.g. character rules for a novel, flight requirements for travel).
 
----
+## 4. Substrate Decoupling & Git Permission Model (Model 1)
 
-## 4. Portability & Substrate Decoupling
+To implement the nested metasystem safely, the workspace runtime enforces a strict separation of Git authorities between the parent and child repositories:
 
-The core `dz-cil` framework (including CLI wrapper logic, local state managers, and state machine transitions) will be developed and verified within this repository. Once complete, it can be cloned or installed into any target directory. The target project then operates as its own independent DZ-CIL instance, completely decoupled from the developer repository, allowing the Operator and their local agent to build the domain app organically.
+### 4.1 Git Isolation via parent `.gitignore`
+* **Rule**: The parent repository (`agent-antigravity/`) ignores the root `./.workspace/` folder completely.
+* **Rationale**: This prevents nested Git databases from polluting the parent developer history, keeping the parent codebase clean.
+
+### 4.2 Workspace Folder Simplification
+* **Rule**: There is exactly one active workspace directory at any time, located at the root of this repository: `./.workspace/`.
+* **Rationale**: Simplifies CLI targeting and environment resolution for the nested loops.
+
+### 4.3 Asymmetric Git Permissions
+* **At the Parent Level (`.`)**: The Agent operates under a read-only/pull-only remote integration gate. Any changes to the core `dz-cil` framework must be merged via standard human-in-the-loop Pull Requests. The Agent cannot directly push to `origin/main`.
+* **At the Workspace Level (`./.workspace/`)**: The Agent is granted full, autonomous read/write and push/pull Git authority to the target project's remote repository. Inside `./.workspace/`, the nested agent loop can branch, commit, push, and sync changes autonomously to drive the domain project's lifecycle.
+
