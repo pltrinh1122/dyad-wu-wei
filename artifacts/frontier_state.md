@@ -2225,35 +2225,42 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 920: Path 920: Implement DZ-CIL Workspace for Operator Digital Needs
+## Node 920: Path 920: Implement Ziran Workspace App for Operator Digital Needs
 - **Status**: Backlog
 - **Learnings & Context**: Build a local-first digital companion application enabling the Operator to manage vacations and write serial novels with automated semantic/logistical verification.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 921: Discovery 921: Harmonize - Implement DZ-CIL Workspace for Operator Digital Needs
+## Node 921: Discovery 921: Harmonize - Implement Ziran Workspace App for Operator Digital Needs
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 922: Discovery 922: Plan - Implement DZ-CIL Workspace for Operator Digital Needs
+## Node 922: Discovery 922: Plan - Implement Ziran Workspace App for Operator Digital Needs
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 923: Activity 923: Reflect - Implement DZ-CIL Workspace for Operator Digital Needs
+## Node 923: Activity 923: Reflect - Implement Ziran Workspace App for Operator Digital Needs
 - **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement DZ-CIL Workspace for Operator Digital Needs.
+- **Learnings & Context**: Final reflection and path closure for Implement Ziran Workspace App for Operator Digital Needs.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery 921: Harmonize - Implement DZ-CIL Workspace for Operator Digital Needs
+## Discovery 921: Harmonize - Implement Ziran Workspace App for Operator Digital Needs
 - **Status**: Completed
 - **Learnings & Context**: Harmonized on the local-first Python engine + local Flask-based UI + Markdown storage, documented in WHY-0921.
 - **Feedforward Invariants**:
-  - `[x] kb/WHY-0921-dz-cil-workspace-architecture.md exists and is registered.`
+  - `[x] kb/WHY-0921-ziran-workspace-architecture.md exists and is registered.`
+
+## Discovery 922: Plan - Implement Ziran Workspace App for Operator Digital Needs
+- **Status**: Completed
+- **Learnings & Context**: Formulated the Model 1 Dual-Context Workspace implementation plan, detailing path redirection, git client adjustments, and sub-daemons, documented in the implementation_plan.md artifact.
+- **Feedforward Invariants**:
+  - `[x] implementation_plan.md exists and is updated.`
+  - `[x] task.md exists.`
 
 ## Discovery 922: Plan - Implement DZ-CIL Workspace for Operator Digital Needs
 - **Status**: Completed
