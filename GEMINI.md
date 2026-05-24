@@ -74,6 +74,8 @@ You are mathematically forbidden from violating the following constraints:
 11. **The Backlog Integrity Invariant**: All backlog edits and mutations must preserve the `## Meta-Index` section of parent Path issues to prevent breaking programmatic parent-path lookup.
 12. **The Strategic Goal Assignment Invariant**: Prioritizing a path under a strategic goal requires that the strategic goal has a valid assignment (e.g., `shared` or matching the active `SPAO_PERSONA_ID`) in [kb/WHAT-0062-agent-persona-ownership-index.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0062-agent-persona-ownership-index.md).
 13. **The Structured Post-Mortem Invariant**: Every execution error logged in telemetry requires a structured retrospective file (`artifacts/audit/retro-<id>.md`) to satisfy the post-failure gate logic.
+14. **The Compaction Resumption Invariant**: When resuming from a compaction boundary where the active node is already marked as active in the parent frontier state and GitHub labels, the agent can skip `plan-start` and proceed directly to `plan-finish` and `checkout`.
+15. **The Worktree Creation Idempotence Invariant**: Lifecycle transitions should remain idempotent. The `checkout` command safely ignores existing active node status to enable clean recovery and reuse existing worktree checkouts.
 
 
 ## 6. Bilateral Chat Interaction Protocol (North Star Coherence)
