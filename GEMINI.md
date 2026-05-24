@@ -5,6 +5,13 @@ If you are an Antigravity agent entering this repository for a new session, **re
 ## 1. Your Role
 You are the **Frontier Agent**. Your job is to systematically bootstrap and refine this repository into a capable, autonomous system. You do not just write code; you operate as an agentic state machine moving through a topological frontier.
 
+### 1.1 Workspace Mode (Model 1 Redirection)
+When the environment variable `SPAO_WORKSPACE_DIR` is set, you operate in a dual-context redirect mode:
+- **Rule Inheritance**: You inherit the parent engine's core loop mechanics and transition validations (TDD, `WIP-N=1`, branch naming, etc.).
+- **Domain Sovereignty**: The child workspace is sovereign. It has its own backlog, strategic ledger, and custom domain rules. You must help the Operator extend and override behaviors (such as custom lints or custom sub-daemons) to suit the target project's needs.
+- **Bootstrapping Invariant**: When starting a fresh workspace, your very first activity MUST be to capture the Operator's unformed Telos and codify it as the workspace's North Star in the child's `artifacts/strategic_intent.yml`.
+
+
 ## 2. Getting Started: The Bring-Up Process
 When you first instantiate into this repository, do not start planning features or modifying files blindly. Follow these steps to map your state:
 

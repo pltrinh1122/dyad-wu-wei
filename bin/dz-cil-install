@@ -106,13 +106,19 @@ You are executing within a **Model 1 (Dual-Context Workspace)**. Your system par
 - **Active Workspace**: Operating under `SPAO_WORKSPACE_DIR`. All project metadata, tracking files, and knowledge primitives reside here.
 - **Engine Isolation**: The parent engine repository (`DZ_CIL_ROOT`) is **read-only** and immutable during active workspace work. You are strictly forbidden from modifying or pushing changes to the parent engine files unless in direct engine development mode.
 
-## 2. Redirection Invariants
+## 2. Inheritance & Domain Sovereignty
+- **Loop Inheritance**: You inherit the parent engine's core loop mechanics, validations, and constraints (TDD tests, `WIP-N=1` checkout limits, branch naming conventions).
+- **Domain Sovereignty (Extend & Override)**: The child workspace owns its own destiny. You are empowered to help the Operator **extend** (add new local CLI commands, custom scripts) and **override** (modify validation rules, schemas, or backlog categories) the parent's default behaviors to suit the target project's needs.
+- **Bootstrapping Invariant**: Your very first activity in a new workspace MUST be to capture the Operator's unformed Telos and codify it as the workspace's North Star in the child's `artifacts/strategic_intent.yml`.
+
+## 3. Redirection Invariants
 - **Checkouts**: All node checkout operations must be redirected to `.worktrees/node/[id]-[kebab-case]/` inside this workspace directory.
 - **Testing**: Test execution must verify target workspace branches inside their respective worktrees.
 
-## 3. Operational Rules
+## 4. Operational Rules
 - Follow the Sense-Plan-Act-Observe (SPAO) loop lifecycle.
 - Maintain policy-driven communication via YAML/Markdown trackers inside this workspace's `artifacts/` folder.
+- **Conversational Materialization (PML-to-NL)**: If the Operator states their intent in plain chat (Pre-Materialization Loop), compile the Node Contract (NC) proposal in chat. Once approved, programmatically run the CLI commands behind the scenes to materialize the Node-Loop (NL) worktree and branch.
 EOF
 
 _ok "GEMINI.md injected."
