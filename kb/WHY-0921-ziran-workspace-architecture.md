@@ -15,7 +15,7 @@ The Operator expressed the need to extend the capabilities of the Dao-Ziran Cont
 
 In [PML-0921](file:///mnt/shared_data/git_repos/agent-antigravity/artifacts/probe_125_evaluation.md), we evaluated and falsified the thesis that the current software-focused DZ-OS could be directly deployed to these tasks because it is heavily coupled to Git databases and local code compilers. Directly forcing these unstructured tasks into the parent developer loop would redistribute all validation friction to the Operator, violating the Wu-wei Gate and causing severe human decision fatigue.
 
-To resolve this contradiction, we reframe the architecture around **Model 1 (Dual-Context Workspace)**. Under Model 1, the parent agent runs from the root of `agent-antigravity/` (`.`) but is granted filesystem permissions to access and operate on the nested project repository located at `./.workspace/`. The Agent possesses dual context: it knows the metasystem rules of the parent `dz-cil` engine and actively executes the backlog and node lifecycle transactions directly in the child `project` repository.
+To resolve this contradiction, we reframe the architecture around **Model 1 (Dual-Context Workspace)**. Under Model 1, the parent agent runs from the root of the parent repository (`DZ-CIL_ROOT` or `.`) but is granted filesystem permissions to access and operate on the nested project repository located at `./.workspace/`. The Agent possesses dual context: it knows the metasystem rules of the parent `dz-cil` engine and actively executes the backlog and node lifecycle transactions directly in the child `project` repository.
 
 ---
 
@@ -24,7 +24,7 @@ To resolve this contradiction, we reframe the architecture around **Model 1 (Dua
 We will design and build the Ziran Workspace app as a **Model 1 Dual-Context agentic execution loop**. 
 
 Under this architecture:
-- The workspace engine (the CLI wrappers, kernel daemons, and drivers) remains located solely in `agent-antigravity/` (at `.`). No duplicate `dz-cil` orchestrators or kernel scripts are copied to the child project.
+- The workspace engine (the CLI wrappers, kernel daemons, and drivers) remains located solely in the parent repository (`DZ-CIL_ROOT` or `.`). No duplicate `dz-cil` orchestrators or kernel scripts are copied to the child project.
 - The target project is checked out inside the `./.workspace/` directory and is free to build its own **`docs/`**, **`src/`**, **`tests/`**, and other folders, organizing itself dynamically based on its domain requirements (just as `claude` or `agy` do in their respective workspaces).
 - The Operator uses the parent DZ-CIL engine to systematically build and shape the domain application (e.g. drafting chapters, planning flight legs) in the exact same topological, node-by-node SPAO manner used to build the parent DZ-OS.
 - When the Operator activates a workspace path/node, the parent agent's logic executes the lifecycle transitions (checkout, plan, test, reflect) by targeting the `./.workspace/` directory.
@@ -75,7 +75,7 @@ To enable the parent agent to orchestrate the nested workspace project under Mod
 To implement the nested metasystem safely, the workspace runtime enforces a strict separation of Git authorities and workspace artifacts:
 
 ### 4.1 Git Isolation via parent `.gitignore`
-* **Rule**: The parent repository (`agent-antigravity/`) ignores the root `./.workspace/` folder completely.
+* **Rule**: The parent repository (`DZ-CIL_ROOT`) ignores the root `./.workspace/` folder completely.
 * **Rationale**: This prevents nested Git databases from polluting the parent developer history, keeping the parent codebase clean.
 
 ### 4.2 Workspace Folder Simplification
