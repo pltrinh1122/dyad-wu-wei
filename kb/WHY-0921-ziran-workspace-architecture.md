@@ -19,60 +19,62 @@ To resolve this contradiction, we reframed the goal: rather than deploying the a
 
 ---
 
-## 2. Decision: Architectural Blueprint of the Ziran Workspace App
+## 2. Decision: The Ziran Workspace as a Nested Metasystem
 
-We will design and build the Ziran Workspace app as a modular, local-first application containing three key layers:
+We will not build the Ziran Workspace as a collection of hardcoded, monolithic applications. Instead, the **Ziran Workspace will be designed as a generic, portable, document-centric Metasystem Engine**. 
+
+Under this architecture:
+- The Workspace provides the **Ziran** (the core compute substrate, API hooks, and local file loops) for building specific domain apps.
+- The Operator uses the workspace's nested DZ-CIL engine to systematically build and shape their specific "domain apps" (e.g., the vacation plan, the serial novel) in the same topological, node-by-node SPAO manner used to build the parent DZ-OS.
+- In this model, the *chapters of a novel* or the *logistical steps of a trip* are treated as the "codebase" of the domain app, and writing/planning actions are structured as topological node transactions.
 
 ```
 ┌────────────────────────────────────────────────────────┐
-│                   Web UI Dashboard                     │
-│    (High-Aesthetic Dark Mode / Local Flask Backend)    │
+│                   Unified Web UI                       │
+│      (Interactive SPAO Visualizer & Editor Panel)       │
 └───────────────────────────┬────────────────────────────┘
-                            │ (Local API / JSON)
+                            │ (Local API Loops)
                             ▼
 ┌────────────────────────────────────────────────────────┐
-│                   Workspace Engine                     │
-│    (Python Core: Timeline & Semantic Parsers)          │
+│            Nested Document-SPAO Engine                 │
+│  (Backlog Scheduler, Node Lifecycler, Commit States)   │
+└───────────────────────────┬────────────────────────────┘
+                            │ (Pluggable Rules)
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│              Extensible Verification Hook              │
+│  (Pluggable Compilers: Continuity & Logistical Linters)│
 └───────────────────────────┬────────────────────────────┘
                             │ (Flat Files)
                             ▼
 ┌────────────────────────────────────────────────────────┐
-│                 Document Substrate                     │
-│    (Markdown Files + YAML Frontmatter Metadata)       │
+│                   Document Substrate                   │
+│   (Markdown Outlines + YAML Frontmatter Metadata)      │
 └────────────────────────────────────────────────────────┘
 ```
 
-### 2.1 The Tech Stack & Rationale
-1. **Substrate (Data Storage)**: Flat Markdown files with structured YAML frontmatter (metadata).
-   * *Rationale*: Text-centric workflows (chapter drafting, travel diaries, itineraries) are most naturally and portably represented in plain text. Markdown files are fully portable, human-readable, and easily parsed by Python.
-2. **Logic Engine**: Python-based parsers and compilers.
-   * *Rationale*: Python is highly suited for parsing text patterns, validating structures, and running fast, local validation routines. This logic will reside under a new platform domain subfolder in the repository (e.g., `src/workspace_engine/`).
-3. **User Interface**: A local-first Web UI served via a lightweight local Python backend (e.g. Flask/FastAPI serving static assets).
-   * *Rationale*: Under our web application rules, the companion app must have rich aesthetics (modern dark mode, glassmorphism, clean layouts, smooth transitions) to reduce the Operator's cognitive load and provide motivational rewards. A local web app guarantees offline operation (Ziran Gate) while avoiding complex runtime compilation configurations.
-
 ---
 
-## 3. Verification and Safety Loops (The Semantic Compilers)
+## 3. Core Engine Components
 
-To satisfy the Wu-wei Gate and prevent the Operator from acting as a manual linter, the tool must enforce two automated validation engines:
+To allow the Operator to build domain apps inside the workspace, the engine will implement four modular components:
 
-### 3.1 The Novel Studio Continuity Engine
-* **Objective**: Automatically detect narrative inconsistencies across a set of chapter drafts.
-* **Mechanism**: The engine parses a directory of Markdown chapters and cross-references them against character profiles and timeline schemas stored in a local `characters.yml` file.
-* **Assertions**:
-  * Character presence check (e.g., flag if a character is active in Chapter 3 but marked deceased in Chapter 2).
-  * Timeline chronology verification (e.g., flag if events in the frontmatter metadata violate sequence rules).
+### 3.1 The Document Backlog and Node Lifecycler
+* **Objective**: Replicate the rigor of SPAO for general text files without Git worktree overhead.
+* **Mechanism**: The engine maintains a local `backlog.yml` listing planning goals (Paths) and task checkmarks (Nodes).
+* **Transitions**: When the Operator activates a node (e.g., "Draft Chapter 1" or "Verify Hotel Reservations"), the engine locks the node, opens a transient draft buffer (equivalent to checkout), and runs pluggable validation routines before merging the draft into the main project document.
 
-### 3.2 The Vacation Logistical Engine
-* **Objective**: Automatically validate travel plans and itinerary integrity.
-* **Mechanism**: The engine parses travel plan schemas (JSON/Markdown) to verify timeline constraints.
-* **Assertions**:
-  * Date/Time overlap check (flag overlapping flights or accommodation bookings).
-  * Route routing checker (detect backtracking logistics, e.g., Tokyo -> Kyoto -> Tokyo -> Osaka).
-  * Checklist validation (ensure packing lists and travel visa requirements are checked off).
+### 3.2 The Pluggable Verification Hook (The Semantic Compiler)
+Instead of hardcoding validation rules, the engine exposes a pluggable verification interface where different domain rules can be registered:
+* **The Novel Studio Plugin**: A semantic continuity linter. It parses character profiles and timeline metadata inside the frontmatter of Markdown files, flagging logical discrepancies (e.g., character acting after a registered death event, or physical location overlaps).
+* **The Travel Planner Plugin**: A logistical check linter. It parses date ranges, transit routes, and packing checklist completion states, flagging backtracking logistics or scheduling overlaps.
+
+### 3.3 The Document Substrate
+* **Format**: Flat Markdown files representing the active state of the domain application, using standard YAML frontmatter for structural metadata.
+* **Storage**: Stored locally in a dedicated user-defined directory, keeping personal data detached from the development engine.
 
 ---
 
 ## 4. Portability & Substrate Decoupling
 
-The Ziran Workspace codebase will be developed and tested within this repository by the DZ-CIL agent using our standard TDD frameworks. However, the Operator's personal data (vacation markdown files, novel drafts) will reside entirely outside the repository in the Operator's user space. This maintains a strict boundary between the Metasystem's developmental environment and the Operator's personal productivity environment.
+The Ziran Workspace code (the nested SPAO engine, pluggable validation libraries, and local Flask-based UI) will be developed and tested in this repository by the parent DZ-CIL agent. However, the runtime instances of the workspace and the Operator's actual documents (the novels, vacation assets) will reside in the Operator's user space. This maintains a strict boundary between the Metasystem's developmental environment and the Operator's personal work.
