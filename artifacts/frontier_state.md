@@ -2286,6 +2286,37 @@
   - `[x] write tests/test_daemon_workspace.py`
   - `[x] run verification tests`
 
+## Node 928: Path 928: Implement DZ-CIL Deployment and Bootstrap Installer
+- **Status**: Backlog
+- **Learnings & Context**: Provide a playbook or script to deploy and configure a new DZ-CIL deployment environment including virtual environment setup and audit daemon integration.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 929: Discovery 929: Harmonize - Implement DZ-CIL Deployment and Bootstrap Installer
+- **Status**: Completed
+- **Learnings & Context**: Successfully harmonized on Option A (a dedicated shell script installer bin/dz-cil-install) to handle Model 1 Workspace onboarding, directory creation, virtualenv setup, and GEMINI.md template provisioning before python execution begins.
+- **Feedforward Invariants**:
+  - `[x] kb/WHY-0929-dz-cil-installer-harmonization.md exists`
+  - `[x] Registered in kb/HOW-0000-manifest.md`
+
+## Node 930: Discovery 930: Plan - Implement DZ-CIL Deployment and Bootstrap Installer
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Implement DZ-CIL Deployment and Bootstrap Installer.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 931: Activity 931: Reflect - Implement DZ-CIL Deployment and Bootstrap Installer
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Implement DZ-CIL Deployment and Bootstrap Installer.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 933: Activity 933: Reflect - Synthesize Epistemic Retrospective retro-929.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-929.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 
