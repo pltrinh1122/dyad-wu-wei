@@ -19,62 +19,56 @@ To resolve this contradiction, we reframed the goal: rather than deploying the a
 
 ---
 
-## 2. Decision: The Ziran Workspace as a Nested Metasystem
+## 2. Decision: The Ziran Workspace as a Portable DZ-CIL Framework
 
-We will not build the Ziran Workspace as a collection of hardcoded, monolithic applications. Instead, the **Ziran Workspace will be designed as a generic, portable, document-centric Metasystem Engine**. 
+We will not build the Ziran Workspace as a hardcoded dashboard with fixed document schemas. Instead, the **Ziran Workspace will be designed as a portable, layout-agnostic DZ-CIL Meta-Framework**. 
 
 Under this architecture:
-- The Workspace provides the **Ziran** (the core compute substrate, API hooks, and local file loops) for building specific domain apps.
-- The Operator uses the workspace's nested DZ-CIL engine to systematically build and shape their specific "domain apps" (e.g., the vacation plan, the serial novel) in the same topological, node-by-node SPAO manner used to build the parent DZ-OS.
-- In this model, the *chapters of a novel* or the *logistical steps of a trip* are treated as the "codebase" of the domain app, and writing/planning actions are structured as topological node transactions.
+- The workspace provides the **Ziran** (the core agentic Operating System runtime, CLI hooks, and SPAO execution loop) for the domain app.
+- The domain application is free to build its own **`docs/`**, **`src/`**, **`tests/`**, and other folders, organizing itself dynamically based on its specific requirements (just as `claude` or `agy` operate inside this repository).
+- The Operator uses this nested DZ-CIL engine to systematically build and shape the domain application (e.g., the novel project, the travel planner project) in the exact same topological, node-by-node SPAO manner that we use to build the parent DZ-OS.
+- We are effectively building the core **`dz-cil`** engine—a generic framework that can be initialized in any target directory to establish a local, autonomous, and self-verifying agentic workspace.
 
 ```
 ┌────────────────────────────────────────────────────────┐
-│                   Unified Web UI                       │
-│      (Interactive SPAO Visualizer & Editor Panel)       │
+│                   Target Project CWD                   │
+│      (Any directory: Novel Studio, Travel Planner)     │
 └───────────────────────────┬────────────────────────────┘
-                            │ (Local API Loops)
+                            │ (Initializes)
                             ▼
 ┌────────────────────────────────────────────────────────┐
-│            Nested Document-SPAO Engine                 │
-│  (Backlog Scheduler, Node Lifecycler, Commit States)   │
+│             Portable DZ-CIL Runtime (DZ-OS)            │
+│  (Custom docs/, src/, tests/ layouts & local CLI tools)│
 └───────────────────────────┬────────────────────────────┘
-                            │ (Pluggable Rules)
+                            │ (SPAO Transitions)
                             ▼
 ┌────────────────────────────────────────────────────────┐
-│              Extensible Verification Hook              │
-│  (Pluggable Compilers: Continuity & Logistical Linters)│
-└───────────────────────────┬────────────────────────────┘
-                            │ (Flat Files)
-                            ▼
-┌────────────────────────────────────────────────────────┐
-│                   Document Substrate                   │
-│   (Markdown Outlines + YAML Frontmatter Metadata)      │
+│            Local-First Verification Harness            │
+│  (Domain-specific tests/ executing offline TDD cycles) │
 └────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 3. Core Engine Components
+## 3. Core Framework Components
 
-To allow the Operator to build domain apps inside the workspace, the engine will implement four modular components:
+To enable the Operator to build domain apps inside the workspace using the same agentic rigor, the portable DZ-CIL engine will implement the following modular components:
 
-### 3.1 The Document Backlog and Node Lifecycler
-* **Objective**: Replicate the rigor of SPAO for general text files without Git worktree overhead.
-* **Mechanism**: The engine maintains a local `backlog.yml` listing planning goals (Paths) and task checkmarks (Nodes).
-* **Transitions**: When the Operator activates a node (e.g., "Draft Chapter 1" or "Verify Hotel Reservations"), the engine locks the node, opens a transient draft buffer (equivalent to checkout), and runs pluggable validation routines before merging the draft into the main project document.
+### 3.1 The Directory-Agnostic SPAO Loop
+* **Objective**: Provide the standard Sense-Plan-Act-Observe-Reflect transition mechanics in any project directory.
+* **Mechanism**: The engine maintains a local topological state ledger (`artifacts/frontier_state.yml`) and uses a local CLI adapter layer (e.g. `bin/node`, `bin/backlog`) to manage checkout branches and node transactions.
+* **Flexibility**: The engine does not impose a fixed directory layout. If the project is a novel, `src/` holds chapters and `tests/` holds semantic lints. If it is a vacation planner, `src/` holds travel itineraries and `tests/` checks logistical routing conflicts.
 
-### 3.2 The Pluggable Verification Hook (The Semantic Compiler)
-Instead of hardcoding validation rules, the engine exposes a pluggable verification interface where different domain rules can be registered:
-* **The Novel Studio Plugin**: A semantic continuity linter. It parses character profiles and timeline metadata inside the frontmatter of Markdown files, flagging logical discrepancies (e.g., character acting after a registered death event, or physical location overlaps).
-* **The Travel Planner Plugin**: A logistical check linter. It parses date ranges, transit routes, and packing checklist completion states, flagging backtracking logistics or scheduling overlaps.
+### 3.2 Pluggable Test Runner & Verification Hooks
+* **Mechanism**: The engine exposes a generic verification hook that executes the project's local `./bin/run-tests` script. 
+* **TDD Loop**: During the Act-to-Reflect transition, the local agent must execute the verification harness in the target project's `tests/` directory, ensuring all custom domain rules pass 100% green before commits are finalized.
 
-### 3.3 The Document Substrate
-* **Format**: Flat Markdown files representing the active state of the domain application, using standard YAML frontmatter for structural metadata.
-* **Storage**: Stored locally in a dedicated user-defined directory, keeping personal data detached from the development engine.
+### 3.3 Decoupled Knowledge Base (kb/)
+* **Objective**: Maintain project-specific memory, constraints, and style guides.
+* **Structure**: Each initialized workspace project maintains its own local `kb/` directory using the standard `WHAT-`, `WHY-`, and `HOW-` linguistic primitives to store project-specific invariants (e.g. character rules for a novel, flight requirements for travel).
 
 ---
 
 ## 4. Portability & Substrate Decoupling
 
-The Ziran Workspace code (the nested SPAO engine, pluggable validation libraries, and local Flask-based UI) will be developed and tested in this repository by the parent DZ-CIL agent. However, the runtime instances of the workspace and the Operator's actual documents (the novels, vacation assets) will reside in the Operator's user space. This maintains a strict boundary between the Metasystem's developmental environment and the Operator's personal work.
+The core `dz-cil` framework (including CLI wrapper logic, local state managers, and state machine transitions) will be developed and verified within this repository. Once complete, it can be cloned or installed into any target directory. The target project then operates as its own independent DZ-CIL instance, completely decoupled from the developer repository, allowing the Operator and their local agent to build the domain app organically.
