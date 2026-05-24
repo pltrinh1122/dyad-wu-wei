@@ -2387,3 +2387,53 @@ nodes:
   invariants:
   - '[x] Backlog list command groups by active Strategic Goals and displays DAG dependencies
     inline.'
+- name: 'Node 916: Path 916: Implement status report progress visualization'
+  status: Backlog
+  learnings: Enhance bin/status to display visual progress bars and tactical completion
+    ratios mapped to active Strategic Goals.
+  invariants: []
+- name: 'Node 917: Discovery 917: Harmonize - Implement status report progress visualization'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Implement status
+    report progress visualization.
+  invariants: []
+- name: 'Node 918: Discovery 918: Plan - Implement status report progress visualization'
+  status: Backlog
+  learnings: Technical design and proposed changes for Implement status report progress
+    visualization.
+  invariants: []
+- name: 'Node 919: Activity 919: Reflect - Implement status report progress visualization'
+  status: Backlog
+  learnings: Final reflection and path closure for Implement status report progress
+    visualization.
+  invariants: []
+- name: 'Node 920: Path 920: Implement Ziran Workspace App for Operator Digital Needs'
+  status: Backlog
+  learnings: Build a local-first digital companion application enabling the Operator
+    to manage vacations and write serial novels with automated semantic/logistical
+    verification.
+  invariants: []
+- name: 'Node 921: Discovery 921: Harmonize - Implement Ziran Workspace App for Operator
+    Digital Needs'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 922: Discovery 922: Plan - Implement Ziran Workspace App for Operator
+    Digital Needs'
+  status: Backlog
+  learnings: Technical design and proposed changes for Implement Ziran Workspace App
+    for Operator Digital Needs.
+  invariants: []
+- name: 'Node 923: Activity 923: Reflect - Implement Ziran Workspace App for Operator
+    Digital Needs'
+  status: Backlog
+  learnings: Final reflection and path closure for Implement Ziran Workspace App for
+    Operator Digital Needs.
+  invariants: []
+- name: 'Discovery 921: Harmonize - Implement Ziran Workspace App for Operator Digital
+    Needs'
+  status: Completed
+  learnings: Harmonized on the local-first Python engine + local Flask-based UI +
+    Markdown storage, documented in WHY-0921.
+  invariants:
+  - '[x] kb/WHY-0921-ziran-workspace-architecture.md exists and is registered.'

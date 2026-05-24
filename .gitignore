@@ -12,3 +12,6 @@ artifacts/telemetry.jsonl
 artifacts/prompt_backlog.yml
 artifacts/prompt_backlog.yml.lock
 
+# Workspace
+/.workspace/
+
