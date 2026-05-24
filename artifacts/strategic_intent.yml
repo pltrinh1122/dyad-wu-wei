@@ -27,7 +27,9 @@ strategic_goals:
   title: Backlog Dynamics and Resource Budget Alignment
 - collaborative_gap: The human cannot safely delegate execution authority to the agent,
     creating a trust bottleneck where the human acts as a manual gatekeeper and the
-    agent is blocked from executing autonomously.
+    agent is blocked from executing autonomously. Prioritizing Path 532 and 622 is
+    required as a prerequisite to ensure concurrent safety and identity routing before
+    materializing SubAgents.
   constraints: The sandbox must enforce hard CPU/memory limits, restrict network egress
     to an allowlist, and guarantee idempotent git tree state rollbacks.
   falsification_signal: The operator re-introduces manual human-in-the-loop review
@@ -35,6 +37,8 @@ strategic_goals:
   id: SG-0002
   prioritized_paths:
   - 292
+  - 532
+  - 622
   - 626
   status: Active
   title: Gateless Autonomous Execution within Risk-Managed Sandbox
@@ -53,7 +57,9 @@ strategic_goals:
   title: Preservation of Autonomous Velocity
 - collaborative_gap: The communication interface requires verbose conversational turns
     instead of high-abstraction policy definitions, causing human decision fatigue
-    and agent execution drift.
+    and agent execution drift. Prioritizing Path 615 and 640 is required to establish
+    the static domain boundaries and persona ownership prerequisites for SubAgent
+    scopes.
   constraints: Intent must be communicated exclusively through structured policy definitions
     (strategic_intent.yml) with falsifiable metrics.
   falsification_signal: The operator spends more than 10% of their session time in
