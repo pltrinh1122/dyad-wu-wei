@@ -2337,6 +2337,18 @@
 - **Feedforward Invariants**:
   - `bin/dz-cil-install prints post-installation next steps; test suite achieves 100% pass rate.`
 
+## Node 939: Activity 939: Decommission legacy global SPAO deployment tools
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 939: Decommission legacy global SPAO deployment tools
+- **Status**: Completed
+- **Learnings & Context**: Successfully deleted bin/spao-install and bin/spao-release to reduce friction.
+- **Feedforward Invariants**:
+  - `Legacy scripts bin/spao-install and bin/spao-release are deleted; test suite achieves 100% pass rate.`
+
 ## Current Active Path
 None
 
