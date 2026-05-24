@@ -1,11 +1,11 @@
-# WHY-0921: Architectural Decision Record for the Ziran Workspace Companion App
+# WHY-0921: Architectural Decision Record for the DZ-CIL Workspace
 
 ## Classification
 - **Type**: WHY (Architectural Decision Record)
 - **ID**: WHY-0921
 - **Author**: agent-ziran
 - **Created**: 2026-05-24 (Node 921, Path 920)
-- **Related Path**: Path 920 (Implement Ziran Workspace App for Operator Digital Needs)
+- **Related Path**: Path 920 (Implement DZ-CIL Workspace for Operator Digital Needs)
 
 ---
 
@@ -19,9 +19,9 @@ To resolve this contradiction, we reframe the architecture around **Model 1 (Dua
 
 ---
 
-## 2. Decision: The Ziran Workspace as a Dual-Context Metasystem (Model 1)
+## 2. Decision: The DZ-CIL Workspace as a Dual-Context Metasystem (Model 1)
 
-We will design and build the Ziran Workspace app as a **Model 1 Dual-Context agentic execution loop**. 
+We will design and build the DZ-CIL Workspace as a **Model 1 Dual-Context agentic execution loop**. 
 
 Under this architecture:
 - The workspace engine (the CLI wrappers, kernel daemons, and drivers) remains located solely in the parent repository (`DZ-CIL_ROOT` or `.`). No duplicate `dz-cil` orchestrators or kernel scripts are copied to the child project.

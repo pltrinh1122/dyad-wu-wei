@@ -17,7 +17,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Consolidation under Universal Merge Gate (HTIL) (Ziran)**: Read [WHY-0087-universal-merge-gate.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0087-universal-merge-gate.md)
 * **Interface as the Playbook (Ziran)**: Read [WHY-0088-interface-as-playbook.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0088-interface-as-playbook.md)
 * **Dialectical Falsification**: Read [WHY-0091-dialectical-falsification.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0091-dialectical-falsification.md)
-* **Ziran Workspace Architecture**: Read [WHY-0921-ziran-workspace-architecture.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0921-ziran-workspace-architecture.md)
+* **DZ-CIL Workspace Architecture**: Read [WHY-0921-dz-cil-workspace-architecture.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0921-dz-cil-workspace-architecture.md)
 
 
 

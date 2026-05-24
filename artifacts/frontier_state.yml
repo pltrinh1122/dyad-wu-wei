@@ -2407,33 +2407,48 @@ nodes:
   learnings: Final reflection and path closure for Implement status report progress
     visualization.
   invariants: []
-- name: 'Node 920: Path 920: Implement Ziran Workspace App for Operator Digital Needs'
+- name: 'Node 920: Path 920: Implement DZ-CIL Workspace for Operator Digital Needs'
   status: Backlog
   learnings: Build a local-first digital companion application enabling the Operator
     to manage vacations and write serial novels with automated semantic/logistical
     verification.
   invariants: []
-- name: 'Node 921: Discovery 921: Harmonize - Implement Ziran Workspace App for Operator
+- name: 'Node 921: Discovery 921: Harmonize - Implement DZ-CIL Workspace for Operator
     Digital Needs'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 922: Discovery 922: Plan - Implement Ziran Workspace App for Operator
-    Digital Needs'
-  status: Backlog
-  learnings: Technical design and proposed changes for Implement Ziran Workspace App
-    for Operator Digital Needs.
+- name: 'Node 922: Discovery 922: Plan - Implement DZ-CIL Workspace for Operator Digital
+    Needs'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
-- name: 'Node 923: Activity 923: Reflect - Implement Ziran Workspace App for Operator
+- name: 'Node 923: Activity 923: Reflect - Implement DZ-CIL Workspace for Operator
     Digital Needs'
   status: Backlog
-  learnings: Final reflection and path closure for Implement Ziran Workspace App for
+  learnings: Final reflection and path closure for Implement DZ-CIL Workspace for
     Operator Digital Needs.
   invariants: []
-- name: 'Discovery 921: Harmonize - Implement Ziran Workspace App for Operator Digital
+- name: 'Discovery 921: Harmonize - Implement DZ-CIL Workspace for Operator Digital
     Needs'
   status: Completed
   learnings: Harmonized on the local-first Python engine + local Flask-based UI +
     Markdown storage, documented in WHY-0921.
   invariants:
-  - '[x] kb/WHY-0921-ziran-workspace-architecture.md exists and is registered.'
+  - '[x] kb/WHY-0921-dz-cil-workspace-architecture.md exists and is registered.'
+- name: 'Discovery 922: Plan - Implement DZ-CIL Workspace for Operator Digital Needs'
+  status: Completed
+  learnings: Formulated the Model 1 Dual-Context Workspace implementation plan, detailing
+    path redirection, git client adjustments, and sub-daemons, documented in the implementation_plan.md
+    artifact.
+  invariants:
+  - '[x] implementation_plan.md exists and is updated.'
+  - '[x] task.md exists.'
+- name: 'Discovery 922: Plan - Implement DZ-CIL Workspace for Operator Digital Needs'
+  status: Completed
+  learnings: Formulated the Model 1 Dual-Context Workspace implementation plan, detailing
+    path redirection, git client adjustments, and sub-daemons, documented in the implementation_plan.md
+    artifact.
+  invariants:
+  - '[x] implementation_plan.md exists and is updated.'
+  - '[x] task.md exists.'
