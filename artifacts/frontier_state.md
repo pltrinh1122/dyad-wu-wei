@@ -2800,6 +2800,18 @@
 - **Feedforward Invariants**:
   - `N/A`
 
+## Node 1037: Discovery 1037: Probe 1037: Evaluate chat immediacy responses via Dialectical Falsification
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 1037: Evaluate chat immediacy responses via Dialectical Falsification
+- **Status**: Completed
+- **Learnings & Context**: Codified WHY-1037 Chat Immediacy Protocol to differentiate Operator Intent Acknowledgments from System Event Notifications
+- **Feedforward Invariants**:
+  - `N/A`
+
 ## Current Active Path
 None
 
