@@ -2578,17 +2578,41 @@
 - **Feedforward Invariants**:
   - `Tested successfully.`
 
-## Node 983: Activity 983: Implement Backlog Health Auditor Rule
+## Node 985: Path 985: Investigate and Enforce Workspace Isolation Boundaries
+- **Status**: Backlog
+- **Learnings & Context**: Investigate PR 982 failure where file modifications hit the root directory instead of the active worktree, and enforce boundaries.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 986: Discovery 986: Harmonize - Investigate and Enforce Workspace Isolation Boundaries
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Investigate and Enforce Workspace Isolation Boundaries.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 988: Activity 988: Investigate PR 982 Workspace Boundary Failure
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 983: Implement Backlog Health Auditor Rule
-- **Status**: Completed
-- **Learnings & Context**: Updated drivers/audit_daemon.py and infra/audit-daemon/audit_config.yml to calculate the ratio of Unmapped vs Mapped Path items. Injected prompt if Unmapped exceeds Mapped.
+## Node 987: Discovery 987: Plan - Investigate and Enforce Workspace Isolation Boundaries
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Investigate and Enforce Workspace Isolation Boundaries.
 - **Feedforward Invariants**:
-  - `Tested successfully via audit_daemon.py and pytest.`
+  - `[ ]` None
+
+## Node 989: Activity 989: Reflect - Investigate and Enforce Workspace Isolation Boundaries
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Investigate and Enforce Workspace Isolation Boundaries.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 988: Investigate Workspace Boundary Error
+- **Status**: Completed
+- **Learnings & Context**: Investigated the root cause of the missing knowledge_accrual_skill.py edit in PR 982. Codified Invariant 18 in GEMINI.md enforcing active worktree file targeting. Authored retro-988.md.
+- **Feedforward Invariants**:
+  - `N/A`
 
 ## Current Active Path
 None
