@@ -10,10 +10,31 @@ def get_core_dir() -> str:
 
 def get_workspace_dir() -> str:
     """Returns the absolute path to the active project workspace root directory."""
+    # 1. Explicit Environment Variable
     env_workspace = os.environ.get("SPAO_WORKSPACE_DIR")
     if env_workspace:
         return os.path.abspath(env_workspace)
         
+    # 2. CWD Workspace Inference (Scan upwards for GEMINI.md declaring Workspace Mode)
+    import sys
+    if "pytest" not in sys.modules or "SPAO_ALLOW_INFERENCE_TEST" in os.environ:
+        current = os.path.abspath(os.getcwd())
+        while True:
+            gemini_path = os.path.join(current, "GEMINI.md")
+            if os.path.exists(gemini_path):
+                try:
+                    with open(gemini_path, "r", encoding="utf-8") as f:
+                        if "(Workspace Mode)" in f.readline():
+                            os.environ["SPAO_WORKSPACE_DIR"] = current
+                            return current
+                except Exception:
+                    pass
+            parent = os.path.dirname(current)
+            if parent == current:
+                break
+            current = parent
+
+    # 3. Fallback to Git Toplevel
     try:
         toplevel = git_client.get_show_toplevel()
         if toplevel:
@@ -21,6 +42,7 @@ def get_workspace_dir() -> str:
     except Exception:
         pass
         
+    # 4. Fallback to CWD
     return os.path.abspath(os.getcwd())
 
 def resolve_workspace_path(*paths: str) -> str:

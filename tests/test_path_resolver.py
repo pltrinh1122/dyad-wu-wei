@@ -15,6 +15,24 @@ def test_get_workspace_dir_env():
         ws_dir = path_resolver.get_workspace_dir()
         assert ws_dir == "/tmp/mock-workspace"
 
+def test_get_workspace_dir_cwd_inference(tmp_path):
+    env = {k: v for k, v in os.environ.items() if k != "SPAO_WORKSPACE_DIR"}
+    env["SPAO_ALLOW_INFERENCE_TEST"] = "1"
+    with patch.dict(os.environ, env, clear=True):
+        ws_dir = tmp_path / "inferred_workspace"
+        ws_dir.mkdir()
+        gemini_md = ws_dir / "GEMINI.md"
+        gemini_md.write_text("# GEMINI (Antigravity) Frontier Agent Instructions (Workspace Mode)\nSome other text")
+        
+        # Test finding it from a subdirectory
+        sub_dir = ws_dir / "sub" / "folder"
+        sub_dir.mkdir(parents=True)
+        
+        with patch("os.getcwd", return_value=str(sub_dir)):
+            result = path_resolver.get_workspace_dir()
+            assert result == str(ws_dir)
+            assert os.environ.get("SPAO_WORKSPACE_DIR") == str(ws_dir)
+
 def test_get_workspace_dir_git_fallback():
     # Explicitly remove SPAO_WORKSPACE_DIR so the git-toplevel fallback fires.
     env = {k: v for k, v in os.environ.items() if k != "SPAO_WORKSPACE_DIR"}
