@@ -1692,8 +1692,8 @@
   - `[ ]` None
 
 ## Node 623: Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger alignment
-- **Status**: Backlog
-- **Learnings & Context**: Align on the philosophical and technical intent for Path: Dynamic agent identity resolution and policy ledger alignment.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2452,6 +2452,20 @@
 - **Feedforward Invariants**:
   - `[x] All child nodes of Path 949 completed`
   - `[x] Final walkthrough generated`
+
+## Node 961: Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-623.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger alignment
+- **Status**: Completed
+- **Learnings & Context**: Aligned on a context-aware strategic gate model mapping executing environments to target personas/strategic goals without causing conflict gates to fail-closed.
+- **Feedforward Invariants**:
+  - `[x] WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked`
+  - `[x] Registered in manifest`
+  - `[x] Tests pass`
 
 ## Current Active Path
 None

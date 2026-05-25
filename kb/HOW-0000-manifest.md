@@ -20,6 +20,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Operator Curiosity & Anxiety Safeguards**: Read [WHY-0096-operator-curiosity-and-anxiety-safeguards.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0096-operator-curiosity-and-anxiety-safeguards.md)
 * **DZ-CIL Workspace Architecture**: Read [WHY-0921-dz-cil-workspace-architecture.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0921-dz-cil-workspace-architecture.md)
 * **DZ-CIL Bootstrap Installer Harmonization**: Read [WHY-0929-dz-cil-installer-harmonization.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0929-dz-cil-installer-harmonization.md)
+* **Dynamic Agent Identity Resolution Alignment**: Read [WHY-0623-dynamic-identity-resolution-alignment.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0623-dynamic-identity-resolution-alignment.md)
 
 
 
