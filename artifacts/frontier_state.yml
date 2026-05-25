@@ -1914,9 +1914,8 @@ nodes:
   invariants: []
 - name: 'Node 624: Probe 624: Plan - Path: Dynamic agent identity resolution and policy
     ledger alignment'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for Path: Dynamic agent identity
-    resolution and policy ledger alignment.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 625: Activity 625: Reflect - Path: Dynamic agent identity resolution
     and policy ledger alignment'
@@ -2651,3 +2650,12 @@ nodes:
   invariants:
   - '[x] Rule 16 added to GEMINI.md'
   - '[x] All tests pass'
+- name: 'Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger
+    alignment'
+  status: Completed
+  learnings: Created WHAT-0622-dynamic-identity-resolution-alignment.md specifying
+    dynamic persona defaulting, child workspace gate decoupling, and test validation
+    adaptations.
+  invariants:
+  - '[x] WHAT-0622-dynamic-identity-resolution-alignment.md is created and tracked'
+  - '[x] Registered in kb/HOW-0000-manifest.md'
