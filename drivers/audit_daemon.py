@@ -314,6 +314,30 @@ def evaluate_semantic_immune_system(rule, state):
         
     return False, state
 
+def evaluate_backlog_hygiene(rule, state):
+    from kernel.daemon_backlog import BacklogDaemon
+    try:
+        grouped = BacklogDaemon().list()
+        unmapped_count = len(grouped.get("📋 [Backlog / Unmapped]", []))
+        mapped_count = sum(len(issues) for key, issues in grouped.items() if "Unmapped" not in key)
+        
+        if unmapped_count > mapped_count:
+            msg = f"[NOTIFICATION] Backlog Hygiene Warning: Unmapped Paths ({unmapped_count}) exceed Mapped Paths ({mapped_count}). Repository state is unhealthy."
+            last_ratio = state.get("last_ratio")
+            current_ratio = f"{unmapped_count}:{mapped_count}"
+            if current_ratio != last_ratio:
+                inject_prompt(msg)
+                state["last_ratio"] = current_ratio
+                return True, state
+        else:
+            if "last_ratio" in state:
+                del state["last_ratio"]
+                return True, state
+    except Exception as e:
+        print(f"Error evaluating backlog hygiene: {e}")
+        
+    return False, state
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
@@ -322,7 +346,8 @@ RULE_REGISTRY = {
     "frontier_integrity": evaluate_frontier_integrity,
     "lexical_guard": evaluate_lexical_guard,
     "pr_merged_monitor": evaluate_pr_merged_monitor,
-    "semantic_immune_system": evaluate_semantic_immune_system
+    "semantic_immune_system": evaluate_semantic_immune_system,
+    "backlog_hygiene": evaluate_backlog_hygiene
 }
 
 def main(args=None):
@@ -340,7 +365,7 @@ def main(args=None):
     
     if current_branch not in audit_branches:
         print(f"Audit daemon ignoring branch: {current_branch}. Target branches: {audit_branches}. Evaluating global rules only.")
-        rules_to_evaluate = [r for r in rules if r.get("type") in ("pr_merged_monitor", "semantic_immune_system")]
+        rules_to_evaluate = [r for r in rules if r.get("type") in ("pr_merged_monitor", "semantic_immune_system", "backlog_hygiene")]
         if not rules_to_evaluate:
             return
     else:
