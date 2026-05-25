@@ -81,12 +81,11 @@ def sync_and_clean_node() -> None:
     
     post_hash = _get_file_hash(gemini_path)
     if pre_hash and post_hash and pre_hash != post_hash:
-        print("\n" + "="*80)
-        print("⚠️  CRITICAL ROM DRIFT DETECTED ⚠️")
-        print("GEMINI.md has been updated from the remote repository.")
-        print("Your current Agent session is operating on stale instructions.")
-        print("Please RESTART the Agent (agy) immediately to load the new invariants.")
-        print("="*80 + "\n")
+        raise Exception(
+            "CRITICAL ROM DRIFT DETECTED: GEMINI.md has been updated from the remote repository. "
+            "Your current Agent session is operating on stale instructions. "
+            "Please RESTART the Agent (agy) immediately to load the new invariants."
+        )
 
     # 3. Assert WIP-N=1 Invariant
     if remote_mode:
