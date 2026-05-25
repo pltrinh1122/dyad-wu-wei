@@ -2376,6 +2376,50 @@
   - `Invariants 14 and 15 added to GEMINI.md`
   - `TDD test suite achieves 100% pass rate`
 
+## Node 949: Path 949: Codify Operator Curiosity and Safeguards against Emotional Turbulence
+- **Status**: Backlog
+- **Learnings & Context**: SG-0005
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 950: Discovery 950: Harmonize - Codify Operator Curiosity and Safeguards against Emotional Turbulence
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Codify Operator Curiosity and Safeguards against Emotional Turbulence.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 951: Discovery 951: Plan - Codify Operator Curiosity and Safeguards against Emotional Turbulence
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Codify Operator Curiosity and Safeguards against Emotional Turbulence.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 952: Activity 952: Reflect - Codify Operator Curiosity and Safeguards against Emotional Turbulence
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Codify Operator Curiosity and Safeguards against Emotional Turbulence.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 953: Discovery 953: Probe A: Refine Operator Curiosity and Turbulence Safeguards
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 954: Discovery 954: Probe B: Scoping Operator Safeguards Implementation
+- **Status**: Backlog
+- **Learnings & Context**: Scope the activities for creating the WHY/WHAT/HOW documentation and any system/agent triggers needed to implement the safeguards.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 953: Probe A: Refine Operator Curiosity and Turbulence Safeguards
+- **Status**: Completed
+- **Learnings & Context**: Codified WHY-0096 to establish safeguards for operator curiosity and emotional turbulence, separating clean metrics from on-demand diagnostics.
+- **Feedforward Invariants**:
+  - `[x] WHY-0096 created`
+  - `[x] Registered in manifest`
+  - `[x] Tests pass`
+
 ## Current Active Path
 None
 
