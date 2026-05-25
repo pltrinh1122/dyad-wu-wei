@@ -2824,17 +2824,35 @@
 - **Feedforward Invariants**:
   - `N/A`
 
-## Node 1041: Discovery 1041: Probe 1041: Formulate Options for HITL Verbosity Scaling
+## Node 1043: Path 1043: Codify Wu-wei NBA Handoff Message Structure
+- **Status**: Backlog
+- **Learnings & Context**: Update GEMINI.md to mandate the Wu-wei NBA handoff structure (contextual reasoning + single happy path) to prevent Operator decision fatigue after context breaks.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1044: Discovery 1044: Harmonize - Codify Wu-wei NBA Handoff Message Structure
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery 1041: Formulate Options for HITL Verbosity Scaling
-- **Status**: Completed
-- **Learnings & Context**: Codified WHY-1041 to present 3 architectural options resolving the tension between novice and seasoned Operators.
+## Node 1045: Discovery 1045: Plan - Codify Wu-wei NBA Handoff Message Structure
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Codify Wu-wei NBA Handoff Message Structure.
 - **Feedforward Invariants**:
-  - `N/A`
+  - `[ ]` None
+
+## Node 1046: Activity 1046: Reflect - Codify Wu-wei NBA Handoff Message Structure
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Codify Wu-wei NBA Handoff Message Structure.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1044: Harmonize NBA Handoff
+- **Status**: Completed
+- **Learnings & Context**: Codified the Wu-wei NBA Handoff protocol.
+- **Feedforward Invariants**:
+  - `[x] Rule 12 added to GEMINI.md`
 
 ## Current Active Path
 None
