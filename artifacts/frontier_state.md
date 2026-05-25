@@ -2824,6 +2824,18 @@
 - **Feedforward Invariants**:
   - `N/A`
 
+## Node 1041: Discovery 1041: Probe 1041: Formulate Options for HITL Verbosity Scaling
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1041: Formulate Options for HITL Verbosity Scaling
+- **Status**: Completed
+- **Learnings & Context**: Codified WHY-1041 to present 3 architectural options resolving the tension between novice and seasoned Operators.
+- **Feedforward Invariants**:
+  - `N/A`
+
 ## Current Active Path
 None
 
