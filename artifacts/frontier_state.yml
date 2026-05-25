@@ -2859,3 +2859,9 @@ nodes:
   learnings: Performed proper hard reset rollback protocol to pull down PR 1009 fix.
   invariants:
   - N/A
+- name: Resolve Final Teardown State
+  status: Completed
+  learnings: Root repository was stale causing continuous teardown failures. Root
+    repo hard reset, final reflection closing out node.
+  invariants:
+  - N/A
