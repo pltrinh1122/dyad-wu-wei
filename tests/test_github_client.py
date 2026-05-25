@@ -138,10 +138,22 @@ def test_remove_label(mock_subprocess):
     mock_subprocess.assert_called_once()
 
 def test_get_open_prs(mock_subprocess):
-    mock_subprocess.return_value.stdout = '[{"number": 123, "title": "Test PR", "headRefName": "node/123-test", "url": "https://..."}]'
+    # First call is the list, second is the view
+    mock_subprocess.return_value.stdout = ""
+    def side_effect(*args, **kwargs):
+        class MockProc:
+            returncode = 0
+            stdout = ""
+        mock_proc = MockProc()
+        if "list" in args[0]:
+            mock_proc.stdout = '[{"number": 123, "title": "Test PR", "headRefName": "node/123-test", "url": "https://..."}]'
+        else:
+            mock_proc.stdout = '{"state": "OPEN"}'
+        return mock_proc
+    
+    mock_subprocess.side_effect = side_effect
     prs = get_open_prs()
     assert len(prs) == 1
-
 def test_get_open_issues(mock_subprocess):
     mock_subprocess.return_value.stdout = '[{"number": 1, "title": "A", "body": "B", "labels": [{"name": "backlog"}]}]'
     issues = get_open_issues()

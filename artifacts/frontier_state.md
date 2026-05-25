@@ -2500,17 +2500,17 @@
 - **Feedforward Invariants**:
   - `[x] Rule 17 added\n[x] Python bootstrapper updated\n[x] Bash installer deleted`
 
-## Node 968: Activity 968: Implement Chat Immediacy Clarification Protocol
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+## Node 970: Activity 970: Resolve Semantic Conflation in WIP-N=1 Exception
+- **Status**: Backlog
+- **Learnings & Context**: Update WIP-N=1 exception message in daemon_node.py to distinguish between GitHub PR ID and topological Node ID
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 968: Implement Chat Immediacy Clarification Protocol
+## Activity 970: Resolve Semantic Conflation in WIP-N=1 Exception
 - **Status**: Completed
-- **Learnings & Context**: Resolved friction point regarding Agent misinterpretation of conversational intent by codifying Rule 8 in Bilateral Chat Interaction Protocol. The Agent must now clarify whether requests are synchronous or asynchronous, and defaults to asynchronous queuing if locked by WIP-N=1 HTIL Gate.
+- **Learnings & Context**: Updated get_open_prs in github_client to double-verify PR state against Issue API, bypassing Search API eventual consistency. Refactored WIP-N=1 error messages in daemon_node.py to clearly distinguish between PR ID and Node ID, resolving Operator cognitive friction.
 - **Feedforward Invariants**:
-  - `[x] Rule 8 added to GEMINI.md`
+  - `[x] Fixed get_open_prs Eventual Consistency\n[x] Differentiated PR ID from Node ID in daemon_node.py`
 
 ## Current Active Path
 None
