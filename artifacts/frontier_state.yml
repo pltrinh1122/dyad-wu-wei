@@ -3028,3 +3028,9 @@ nodes:
     Workspace setup.
   invariants:
   - '[x] Created artifacts/audit/user_research_workspace_deployment.md'
+- name: 'Node 1058: Activity 1058: Teardown and Synthesize Findings'
+  status: Completed
+  learnings: Synthesized User Research findings into an Epistemic Retrospective, concluding
+    Path 1054.
+  invariants:
+  - '[x] Created kb/WHY-1058-workspace-isolation-audit.md'
