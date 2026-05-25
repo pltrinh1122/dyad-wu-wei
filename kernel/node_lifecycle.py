@@ -27,8 +27,6 @@ def load_node_classification_config() -> dict:
 
 def log_stage_advancement(stage: str, status: str, details: str = "") -> None:
     """Prints a beautiful H1 banner representing SPAO loop stage advancement when verbose is active."""
-    if not is_verbose():
-        return
     stage_colors = {
         "sense": "🔍 SENSE",
         "plan": "📋 PLAN",
@@ -38,6 +36,13 @@ def log_stage_advancement(stage: str, status: str, details: str = "") -> None:
     }
     stage_label = stage_colors.get(stage.lower(), stage.upper())
     
+    if not is_verbose():
+        msg = f"[{stage_label}] {status}"
+        if details:
+            msg += f" - {details}"
+        print(msg)
+        return
+
     print("\n" + "═"*60)
     print(f" 🔄 SPAO Loop Stage  ►  {stage_label}")
     print(f" 📌 Status           ►  {status}")

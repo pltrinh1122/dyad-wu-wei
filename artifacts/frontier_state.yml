@@ -2908,3 +2908,26 @@ nodes:
     dynamic agent identity resolution rules per Path 622 alignment requirements.
   invariants:
   - N/A
+- name: 'Node 1029: Path 1029: Fix Telemetry Logging Visibility'
+  status: Backlog
+  learnings: Fix log_stage_advancement to explicitly print to stdout.
+  invariants: []
+- name: 'Node 1030: Discovery 1030: Harmonize - Fix Telemetry Logging Visibility'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1031: Discovery 1031: Plan - Fix Telemetry Logging Visibility'
+  status: Backlog
+  learnings: Technical design and proposed changes for Fix Telemetry Logging Visibility.
+  invariants: []
+- name: 'Node 1032: Activity 1032: Reflect - Fix Telemetry Logging Visibility'
+  status: Backlog
+  learnings: Final reflection and path closure for Fix Telemetry Logging Visibility.
+  invariants: []
+- name: 'Activity 1030: Fix Telemetry Logging Visibility'
+  status: Completed
+  learnings: Modified log_stage_advancement in node_lifecycle.py to guarantee standard
+    output visibility for stage transitions, ensuring the Agent is no longer blinded
+    to successful HTIL bypasses during the Observe phase.
+  invariants:
+  - N/A
