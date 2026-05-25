@@ -43,3 +43,6 @@ rules:
   alert_level: FAILURE
   prompt_message: 'Synthesized Lexical Guard: Forbidden term ''kernel.daemon_node''
     detected (from failed test ''test_cmd_retro_compile'')'
+- id: backlog_hygiene_auditor
+  type: backlog_hygiene
+  alert_level: NOTIFICATION
