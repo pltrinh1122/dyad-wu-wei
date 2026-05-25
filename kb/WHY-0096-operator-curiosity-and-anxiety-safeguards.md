@@ -26,7 +26,7 @@ The system's default state monitoring must remain highly concise, focusing on a 
 ### Rule 2.2: Operator Safeguard Protocols
 When the Operator expresses concern over bypassed checks or skipped tests:
 1.  **Check Context First**: The Operator should utilize standard diagnostic flags (e.g., the `-rs` flag on the test-runner) or inquire about the specific skip reasons before concluding that the system is broken.
-2.  **Clear Agent Reporting**: If asked about a skipped test in chat, the Agent must explain the exact environmental pre-conditions required for the test to run, showing that the bypass is expected and safe.
+2.  **Clear Agent Reporting**: If asked about a skipped test in chat, the Agent must explain the exact environmental pre-conditions required for the test to run, showing that the bypass is expected and safe. And the Agent should proxy the command should it infer the Operator's actual intent is curiosity (e.g. running the test suite with `-rs` to fetch and present the exact skip reason inline).
 3.  **Preventive Documentation**: Any conditional bypass or test skip in the codebase must be documented inline with a clear, operator-readable explanation in the test's `pytest.skip()` or skip decorator string (see the example in [TestOwnershipIndex](file:///mnt/shared_data/git_repos/agent-antigravity/tests/test_ownership_index.py#L114-L123)).
 
 ## Rationale
