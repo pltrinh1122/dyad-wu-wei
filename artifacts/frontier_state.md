@@ -2407,8 +2407,8 @@
   - `[ ]` None
 
 ## Node 954: Discovery 954: Probe B: Scoping Operator Safeguards Implementation
-- **Status**: Backlog
-- **Learnings & Context**: Scope the activities for creating the WHY/WHAT/HOW documentation and any system/agent triggers needed to implement the safeguards.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2419,6 +2419,19 @@
   - `[x] WHY-0096 created`
   - `[x] Registered in manifest`
   - `[x] Tests pass`
+
+## Node 956: Activity 956: Activity: Add Operator Curiosity Handling to System Prompt (GEMINI.md)
+- **Status**: Backlog
+- **Learnings & Context**: Add Rule 7 to Section 6 of GEMINI.md to instruct the agent to proxy diagnostic commands when Operator curiosity is inferred.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 954: Probe B: Scoping Operator Safeguards Implementation
+- **Status**: Completed
+- **Learnings & Context**: Completed scoping for Path 949. Created Activity 956 to add Operator curiosity handling directly to the system prompt in GEMINI.md.
+- **Feedforward Invariants**:
+  - `[x] Scoped Activity 956 created in backlog`
+  - `[x] Linked to Path 949`
 
 ## Current Active Path
 None
