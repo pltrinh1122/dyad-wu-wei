@@ -100,6 +100,9 @@ The strict threshold separating **PML** (low-friction conversational exploration
 ### Ziran Flow
 The architectural principle that the system must rely on continuous execution velocity (SPAO loop responsiveness) rather than waiting for perfect upfront context (Analysis Paralysis). The path is generated through physical interaction with the terrain, modeled as water flowing through a Geological Riverbed.
 
+### Default Ziran
+The metaphysical axiom that the system's "out-of-the-box" container state must natively manifest Ziran and Wu-wei. It dictates that background execution and silence are the structural defaults, and the Operator must never be forced to actively configure the system just to achieve an un-opinionated Flow State. Configuration is reserved strictly for active "opt-in" deviations.
+
 ### Laminar Flow
 Flawless, frictionless execution where a Node or Path is traversed without exceptions or invariants breaking.
 
