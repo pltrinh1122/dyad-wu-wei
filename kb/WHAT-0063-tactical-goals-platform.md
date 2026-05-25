@@ -61,3 +61,11 @@ Applying the invariants above, we define four tactical milestones for the Platfo
     *   *Verification Metric*: The ingestion queue must successfully dequeue and transition prompt objects into backlog issues or state mutations without causing concurrent write collisions.
     *   *Inner-Loop Purity*: Background ingestion tasks must consume minimal CPU overhead.
     *   *Enforcement Gradient*: Supports queuing limits and rate-limiting configurations.
+
+### TG-PLAT-05: Agent-Driven Workspace Materialization (o2ai)
+*   **Definition**: Enable Operators (Vibe Coders) to initialize new DZ-CIL workspaces natively through Agent prompts and Template Repositories, eliminating rigid manual `curl` installation scripts.
+*   **Invariance Matching**:
+    *   *Risk Mitigation*: Solves the "installation friction" gap by allowing the conversational agent (or native GitHub features) to perform the scaffolding sequence, honoring the Wu-wei Gate for AI-native operators.
+    *   *Verification Metric*: The Agent must successfully scaffold the `.workspace/` directory and its required invariants purely from an initialization prompt or template, bypassing legacy `curl` installers.
+    *   *Inner-Loop Purity*: Eliminates the need for external network script dependencies (`curl | bash`) from the operator's onboarding loop.
+    *   *Enforcement Gradient*: Supports graceful fallback to the manual CLI wrapper (`bin/workspace init`) if conversational context is unavailable.

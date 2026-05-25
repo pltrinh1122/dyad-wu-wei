@@ -2488,6 +2488,18 @@
   - `[x] All child nodes of Path 622 completed`
   - `[x] Final walkthrough updated`
 
+## Node 966: Activity 966: Refactor Workspace Bootstrapper and Codify Dialectical Rule
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 966: Refactor Workspace Bootstrapper and Codify Dialectical Rule
+- **Status**: Completed
+- **Learnings & Context**: Eliminated curl bootstrapper friction by leveraging unified Python installer. Codified Rule 17 to bypass plan alignment when Dialectical Falsification is formally applied.
+- **Feedforward Invariants**:
+  - `[x] Rule 17 added\n[x] Python bootstrapper updated\n[x] Bash installer deleted`
+
 ## Current Active Path
 None
 
