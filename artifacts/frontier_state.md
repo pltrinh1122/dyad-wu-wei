@@ -2740,6 +2740,18 @@
 - **Feedforward Invariants**:
   - `N/A`
 
+## Node 1027: Activity 1027: Implement Policy Alignment
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1027: Implement Policy Alignment
+- **Status**: Completed
+- **Learnings & Context**: Updated SG-0002 constraints in the policy ledger to explicitly encompass dynamic agent identity resolution rules per Path 622 alignment requirements.
+- **Feedforward Invariants**:
+  - `N/A`
+
 ## Current Active Path
 None
 

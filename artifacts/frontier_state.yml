@@ -2898,3 +2898,13 @@ nodes:
     Understanding rather than generic LLM interpretation.
   invariants:
   - N/A
+- name: 'Node 1027: Activity 1027: Implement Policy Alignment'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1027: Implement Policy Alignment'
+  status: Completed
+  learnings: Updated SG-0002 constraints in the policy ledger to explicitly encompass
+    dynamic agent identity resolution rules per Path 622 alignment requirements.
+  invariants:
+  - N/A
