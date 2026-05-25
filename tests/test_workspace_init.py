@@ -56,6 +56,27 @@ def test_daemon_workspace_init(mock_venv_create, mock_check_output, mock_check_c
     config_file = core_dir / "artifacts" / "active_workspace.json"
     assert config_file.is_file()
 
+@mock.patch("kernel.daemon_workspace.git_client.clone")
+@mock.patch("kernel.daemon_workspace.path_resolver.get_core_dir")
+@mock.patch("kernel.daemon_workspace.subprocess.check_call")
+@mock.patch("kernel.daemon_workspace.subprocess.check_output")
+@mock.patch("venv.create")
+def test_daemon_workspace_init_custom_target(mock_venv_create, mock_check_output, mock_check_call, mock_get_core_dir, mock_clone, tmp_path):
+    core_dir = tmp_path / "core"
+    core_dir.mkdir()
+    mock_get_core_dir.return_value = str(core_dir)
+    mock_check_output.return_value = b"2026-05-25T00:00:00Z\n"
+    
+    custom_target = tmp_path / "custom_workspace"
+    repo_url = "https://github.com/operator/repo"
+    
+    daemon_workspace.init_workspace(repo_url, target_dir=str(custom_target))
+    
+    mock_clone.assert_called_once_with(repo_url, str(custom_target))
+    assert (custom_target / "kb").is_dir()
+    assert (custom_target / "artifacts").is_dir()
+    assert (custom_target / "GEMINI.md").is_file()
+
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_labels")
 def test_node_lifecycle_workspace_redirection(mock_get_labels):
     mock_env = {"SPAO_WORKSPACE_DIR": "/tmp/workspace_dir"}

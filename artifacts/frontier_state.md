@@ -2894,6 +2894,12 @@
 - **Feedforward Invariants**:
   - `[x] Created kb/WHY-1058-workspace-isolation-audit.md`
 
+## Node 1064: Activity: Refactor init_workspace to support arbitrary deployment paths
+- **Status**: Completed
+- **Learnings & Context**: Refactored kernel/daemon_workspace.py to accept target_dir, removing hardcoded path lock.
+- **Feedforward Invariants**:
+  - `[x] Modified kernel/daemon_workspace.py\n[x] Added custom path test to tests/test_workspace_init.py`
+
 ## Current Active Path
 None
 
