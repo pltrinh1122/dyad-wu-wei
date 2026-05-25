@@ -2948,3 +2948,14 @@ nodes:
     retro-635 to clear the post-failure gate.
   invariants:
   - N/A
+- name: 'Node 1037: Discovery 1037: Probe 1037: Evaluate chat immediacy responses
+    via Dialectical Falsification'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Probe 1037: Evaluate chat immediacy responses via Dialectical Falsification'
+  status: Completed
+  learnings: Codified WHY-1037 Chat Immediacy Protocol to differentiate Operator Intent
+    Acknowledgments from System Event Notifications
+  invariants:
+  - N/A
