@@ -2686,9 +2686,9 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Resolve Stale Node Sync
+## Resolve Hard Reset Bug
 - **Status**: Completed
-- **Learnings & Context**: Performed rollback protocol due to stale local branch crashing during HTIL bypass teardown.
+- **Learnings & Context**: Performed proper hard reset rollback protocol to pull down PR 1009 fix.
 - **Feedforward Invariants**:
   - `N/A`
 
