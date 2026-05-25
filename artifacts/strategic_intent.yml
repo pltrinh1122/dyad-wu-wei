@@ -33,8 +33,8 @@ strategic_goals:
     required as a prerequisite to ensure concurrent safety and identity routing before
     materializing SubAgents.
   constraints: The sandbox must enforce hard CPU/memory limits, restrict network egress
-    to an allowlist, guarantee idempotent git tree state rollbacks, and strictly
-    validate dynamic agent identity resolution to ensure concurrent safety.
+    to an allowlist, guarantee idempotent git tree state rollbacks, and strictly validate
+    dynamic agent identity resolution to ensure concurrent safety.
   falsification_signal: The operator re-introduces manual human-in-the-loop review
     gates because the sandbox policies fail to isolate or rollback unsafe mutations.
   id: SG-0002
@@ -46,6 +46,7 @@ strategic_goals:
   - 985
   - 758
   - 634
+  - 1054
   status: Active
   title: Gateless Autonomous Execution within Risk-Managed Sandbox
 - collaborative_gap: Low-fidelity validation feedback (flaky or slow tests) breaks
