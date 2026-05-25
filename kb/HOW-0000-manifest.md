@@ -37,6 +37,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Decoupled Prompt Backlog Spec**: Read [WHAT-0093-decouple-prompt-backlog.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0093-decouple-prompt-backlog.md)
 * **Backlog Strategic Harmonization Spec**: Read [WHAT-0095-backlog-harmonization.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0095-backlog-harmonization.md)
 * **DZ-CIL Workspace Installer & Redirection Spec**: Read [WHAT-0930-dz-cil-installer-spec.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0930-dz-cil-installer-spec.md)
+* **Dynamic Agent Identity Resolution Alignment Spec**: Read [WHAT-0622-dynamic-identity-resolution-alignment.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHAT-0622-dynamic-identity-resolution-alignment.md)
 
 
 

@@ -1698,8 +1698,8 @@
   - `[ ]` None
 
 ## Node 624: Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger alignment
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: Dynamic agent identity resolution and policy ledger alignment.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2473,6 +2473,13 @@
 - **Feedforward Invariants**:
   - `[x] Rule 16 added to GEMINI.md`
   - `[x] All tests pass`
+
+## Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger alignment
+- **Status**: Completed
+- **Learnings & Context**: Created WHAT-0622-dynamic-identity-resolution-alignment.md specifying dynamic persona defaulting, child workspace gate decoupling, and test validation adaptations.
+- **Feedforward Invariants**:
+  - `[x] WHAT-0622-dynamic-identity-resolution-alignment.md is created and tracked`
+  - `[x] Registered in kb/HOW-0000-manifest.md`
 
 ## Current Active Path
 None
