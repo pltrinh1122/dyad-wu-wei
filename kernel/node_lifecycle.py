@@ -470,7 +470,13 @@ class TerminalNode(BaseNode):
             
             pr_url = github_client.create_pull_request(node_name, pr_body, head=branch_name)
             
-            log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
+            # Evaluate Administrative Node HTIL Bypass (WHY-0087-universal-merge-gate-bypass)
+            modified_files = git_client.diff_names("origin/main", cwd=worktree_dir)
+            if modified_files and all(f.startswith("artifacts/") for f in modified_files):
+                github_client.merge_pull_request(pr_url)
+                log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created and AUTONOMOUSLY MERGED. HTIL bypassed for pure administrative node.")
+            else:
+                log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
 
     @classmethod
     def clean_if_merged(cls, branch_name: str):
