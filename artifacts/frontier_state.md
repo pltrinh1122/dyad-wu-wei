@@ -1746,8 +1746,8 @@
   - `[ ]` None
 
 ## Node 635: Probe 635: Align - Path: Refactor frontier_state for concurrent agent awareness
-- **Status**: Backlog
-- **Learnings & Context**: Align on the philosophical and technical intent for Path: Refactor frontier_state for concurrent agent awareness.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2779,6 +2779,24 @@
 ## Activity 1030: Fix Telemetry Logging Visibility
 - **Status**: Completed
 - **Learnings & Context**: Modified log_stage_advancement in node_lifecycle.py to guarantee standard output visibility for stage transitions, ensuring the Agent is no longer blinded to successful HTIL bypasses during the Observe phase.
+- **Feedforward Invariants**:
+  - `N/A`
+
+## Node 1034: Discovery 1034: Probe 635: Align - Path: Refactor frontier_state for concurrent agent awareness
+- **Status**: Backlog
+- **Learnings & Context**: Evaluate concurrent agent awareness structure
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1035: Activity 1035: Reflect - Synthesize Epistemic Retrospective retro-635.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-635.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 635: Align - Path: Refactor frontier_state for concurrent agent awareness
+- **Status**: Completed
+- **Learnings & Context**: Created WHY-0635 to codify the architectural decision to migrate the singleton topological tracking pointers in frontier_state.yml to a multi-tenant matrix keyed by SPAO_PERSONA_ID, ensuring absolute orthogonal parallelism. Authored retro-635 to clear the post-failure gate.
 - **Feedforward Invariants**:
   - `N/A`
 
