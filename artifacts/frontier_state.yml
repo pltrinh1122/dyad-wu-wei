@@ -2854,9 +2854,9 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery 1010: Update Ledger'
+- name: Resolve Stale Node Sync
   status: Completed
-  learnings: Updated strategic_intent.yml with mapped backlog IDs to clear Auditor
-    hygiene warnings.
+  learnings: Performed rollback protocol due to stale local branch crashing during
+    HTIL bypass teardown.
   invariants:
   - N/A

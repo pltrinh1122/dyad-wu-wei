@@ -2686,9 +2686,9 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery 1010: Update Ledger
+## Resolve Stale Node Sync
 - **Status**: Completed
-- **Learnings & Context**: Updated strategic_intent.yml with mapped backlog IDs to clear Auditor hygiene warnings.
+- **Learnings & Context**: Performed rollback protocol due to stale local branch crashing during HTIL bypass teardown.
 - **Feedforward Invariants**:
   - `N/A`
 
