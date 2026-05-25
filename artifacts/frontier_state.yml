@@ -2580,9 +2580,8 @@ nodes:
   invariants: []
 - name: 'Node 952: Activity 952: Reflect - Codify Operator Curiosity and Safeguards
     against Emotional Turbulence'
-  status: Backlog
-  learnings: Final reflection and path closure for Codify Operator Curiosity and Safeguards
-    against Emotional Turbulence.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 953: Discovery 953: Probe A: Refine Operator Curiosity and Turbulence
     Safeguards'
@@ -2620,3 +2619,16 @@ nodes:
   invariants:
   - '[x] Rule 7 added to GEMINI.md'
   - '[x] All tests pass'
+- name: 'Node 959: Activity 959: Reflect - Synthesize Epistemic Retrospective retro-952.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-952.md into the system's operational guidelines (the Dao).
+  invariants: []
+- name: 'Activity 952: Reflect - Codify Operator Curiosity and Safeguards against
+    Emotional Turbulence'
+  status: Completed
+  learnings: Completed the final reflection phase for Path 949. Verified closure of
+    all child nodes and updated the cumulative walkthrough.
+  invariants:
+  - '[x] All child nodes of Path 949 completed'
+  - '[x] Final walkthrough generated'
