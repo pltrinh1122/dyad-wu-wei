@@ -2561,3 +2561,44 @@ nodes:
   invariants:
   - Invariants 14 and 15 added to GEMINI.md
   - TDD test suite achieves 100% pass rate
+- name: 'Node 949: Path 949: Codify Operator Curiosity and Safeguards against Emotional
+    Turbulence'
+  status: Backlog
+  learnings: SG-0005
+  invariants: []
+- name: 'Node 950: Discovery 950: Harmonize - Codify Operator Curiosity and Safeguards
+    against Emotional Turbulence'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Codify Operator
+    Curiosity and Safeguards against Emotional Turbulence.
+  invariants: []
+- name: 'Node 951: Discovery 951: Plan - Codify Operator Curiosity and Safeguards
+    against Emotional Turbulence'
+  status: Backlog
+  learnings: Technical design and proposed changes for Codify Operator Curiosity and
+    Safeguards against Emotional Turbulence.
+  invariants: []
+- name: 'Node 952: Activity 952: Reflect - Codify Operator Curiosity and Safeguards
+    against Emotional Turbulence'
+  status: Backlog
+  learnings: Final reflection and path closure for Codify Operator Curiosity and Safeguards
+    against Emotional Turbulence.
+  invariants: []
+- name: 'Node 953: Discovery 953: Probe A: Refine Operator Curiosity and Turbulence
+    Safeguards'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 954: Discovery 954: Probe B: Scoping Operator Safeguards Implementation'
+  status: Backlog
+  learnings: Scope the activities for creating the WHY/WHAT/HOW documentation and
+    any system/agent triggers needed to implement the safeguards.
+  invariants: []
+- name: 'Discovery 953: Probe A: Refine Operator Curiosity and Turbulence Safeguards'
+  status: Completed
+  learnings: Codified WHY-0096 to establish safeguards for operator curiosity and
+    emotional turbulence, separating clean metrics from on-demand diagnostics.
+  invariants:
+  - '[x] WHY-0096 created'
+  - '[x] Registered in manifest'
+  - '[x] Tests pass'
