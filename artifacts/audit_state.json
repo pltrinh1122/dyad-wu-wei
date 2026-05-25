@@ -98,7 +98,5 @@
             "optimize_WHAT-0090-optimize-node-sync.md"
         ]
     },
-    "backlog_hygiene_auditor": {
-        "last_ratio": "25:4"
-    }
+    "backlog_hygiene_auditor": {}
 }
