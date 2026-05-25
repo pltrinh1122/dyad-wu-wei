@@ -2590,9 +2590,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 954: Discovery 954: Probe B: Scoping Operator Safeguards Implementation'
-  status: Backlog
-  learnings: Scope the activities for creating the WHY/WHAT/HOW documentation and
-    any system/agent triggers needed to implement the safeguards.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Discovery 953: Probe A: Refine Operator Curiosity and Turbulence Safeguards'
   status: Completed
@@ -2602,3 +2601,16 @@ nodes:
   - '[x] WHY-0096 created'
   - '[x] Registered in manifest'
   - '[x] Tests pass'
+- name: 'Node 956: Activity 956: Activity: Add Operator Curiosity Handling to System
+    Prompt (GEMINI.md)'
+  status: Backlog
+  learnings: Add Rule 7 to Section 6 of GEMINI.md to instruct the agent to proxy diagnostic
+    commands when Operator curiosity is inferred.
+  invariants: []
+- name: 'Discovery 954: Probe B: Scoping Operator Safeguards Implementation'
+  status: Completed
+  learnings: Completed scoping for Path 949. Created Activity 956 to add Operator
+    curiosity handling directly to the system prompt in GEMINI.md.
+  invariants:
+  - '[x] Scoped Activity 956 created in backlog'
+  - '[x] Linked to Path 949'
