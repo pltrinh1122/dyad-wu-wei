@@ -2454,8 +2454,8 @@
   - `[x] Final walkthrough generated`
 
 ## Node 961: Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-623.md into the system's operational guidelines (the Dao).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2466,6 +2466,13 @@
   - `[x] WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked`
   - `[x] Registered in manifest`
   - `[x] Tests pass`
+
+## Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md
+- **Status**: Completed
+- **Learnings & Context**: Synthesized retro-623.md by adding Rule 16 to GEMINI.md to codify dynamic persona resolution and gate decoupling invariants.
+- **Feedforward Invariants**:
+  - `[x] Rule 16 added to GEMINI.md`
+  - `[x] All tests pass`
 
 ## Current Active Path
 None

@@ -2632,9 +2632,8 @@ nodes:
   - '[x] All child nodes of Path 949 completed'
   - '[x] Final walkthrough generated'
 - name: 'Node 961: Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-623.md into the system's operational guidelines (the Dao).
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger
     alignment'
@@ -2645,3 +2644,10 @@ nodes:
   - '[x] WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked'
   - '[x] Registered in manifest'
   - '[x] Tests pass'
+- name: 'Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md'
+  status: Completed
+  learnings: Synthesized retro-623.md by adding Rule 16 to GEMINI.md to codify dynamic
+    persona resolution and gate decoupling invariants.
+  invariants:
+  - '[x] Rule 16 added to GEMINI.md'
+  - '[x] All tests pass'
