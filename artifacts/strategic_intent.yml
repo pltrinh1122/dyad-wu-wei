@@ -71,11 +71,12 @@ strategic_goals:
   status: Active
   title: Efficient Intent-to-Goal Policy Communication
 - collaborative_gap: The agent cannot autonomously codify and recall lessons from
-    past failures, forcing the operator to repeatedly correct similar errors.
+    past executions (both failures and positive alignments), forcing the operator to
+    repeatedly correct similar errors or manually reaffirm successful strategies.
   constraints: Knowledge mutations under the kb/ directory must be verified for structural
     validity and must not violate immutable core axioms.
   falsification_signal: The average number of agent repair cycles on repeat error
-    patterns does not decrease over subsequent sessions targeting the same domain.
+    patterns does not decrease, or positively affirmed capabilities degrade over time.
   id: SG-0005
   prioritized_paths:
   - 566

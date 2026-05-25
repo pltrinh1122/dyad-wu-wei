@@ -53,6 +53,7 @@ def enforce_reflection_hook(issue_id: str, repo_root: str) -> None:
     """
     telemetry_file = os.path.join(repo_root, "artifacts", "telemetry.jsonl")
     has_failures = False
+    has_positive_feedback = False
 
     if os.path.exists(telemetry_file):
         try:
@@ -69,6 +70,9 @@ def enforce_reflection_hook(issue_id: str, repo_root: str) -> None:
                         error = obj.get("metadata", {}).get("error", "")
                         if event_type == "FAILURE" or status == "error" or error:
                             has_failures = True
+                        if event_type == "POSITIVE_FEEDBACK" or status == "positive_feedback":
+                            has_positive_feedback = True
+                        if has_failures and has_positive_feedback:
                             break
         except Exception as e:
             print(f"Warning: Failed to read telemetry file for reflection gate: {e}")
@@ -159,6 +163,17 @@ def enforce_reflection_hook(issue_id: str, repo_root: str) -> None:
             print(f"Warning: Failed to surface retrospective: {e}")
     else:
         print("✅ No failure events detected. Skipping mandatory reflection check.")
+
+    if has_positive_feedback:
+        reaffirm_filename = f"reaffirm-{issue_id}.md"
+        reaffirm_path = os.path.join(repo_root, "artifacts", "audit", reaffirm_filename)
+        if not os.path.exists(reaffirm_path):
+            raise Exception(
+                f"REFLECTION BLOCKED: Node {issue_id} received positive Operator feedback. "
+                f"Under SG-0005, a codified insight is required under artifacts/audit/{reaffirm_filename} "
+                f"before reflection to reaffirm the Dao."
+            )
+        print(f"✅ Positive feedback reflection verified: {reaffirm_filename} exists.")
 
 def inject_contextual_rules(repo_root: str) -> None:
     """
