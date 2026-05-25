@@ -3014,3 +3014,16 @@ nodes:
   - '[x] Created WHY-1048-dao-of-default-ziran.md
 
     [x] Updated GLOSSARY.md'
+- name: 'Node 1055: Discovery 1055: Plan Empirical Assessment'
+  status: Completed
+  learnings: Created empirical test plan for Workspace Installation and Setup and
+    populated the Path DAG with sequential Activity Nodes.
+  invariants:
+  - '[x] Created kb/WHY-1055-empirical-assessment-plan.md
+
+    [x] Created artifacts/audit/retro-1055.md'
+- name: 'Node 1059: Activity 1059: Reflect - Synthesize Epistemic Retrospective retro-1055.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-1055.md into the system's operational guidelines (the Dao).
+  invariants: []
