@@ -2500,6 +2500,18 @@
 - **Feedforward Invariants**:
   - `[x] Rule 17 added\n[x] Python bootstrapper updated\n[x] Bash installer deleted`
 
+## Node 968: Activity 968: Implement Chat Immediacy Clarification Protocol
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 968: Implement Chat Immediacy Clarification Protocol
+- **Status**: Completed
+- **Learnings & Context**: Resolved friction point regarding Agent misinterpretation of conversational intent by codifying Rule 8 in Bilateral Chat Interaction Protocol. The Agent must now clarify whether requests are synchronous or asynchronous, and defaults to asynchronous queuing if locked by WIP-N=1 HTIL Gate.
+- **Feedforward Invariants**:
+  - `[x] Rule 8 added to GEMINI.md`
+
 ## Current Active Path
 None
 
