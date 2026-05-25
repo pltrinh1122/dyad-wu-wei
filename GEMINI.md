@@ -79,6 +79,7 @@ You are mathematically forbidden from violating the following constraints:
 13. **The Structured Post-Mortem Invariant**: Every execution error logged in telemetry requires a structured retrospective file (`artifacts/audit/retro-<id>.md`) to satisfy the post-failure gate logic.
 14. **The Compaction Resumption Invariant**: When resuming from a compaction boundary where the active node is already marked as active in the parent frontier state and GitHub labels, the agent can skip `plan-start` and proceed directly to `plan-finish` and `checkout`.
 15. **The Worktree Creation Idempotence Invariant**: Lifecycle transitions should remain idempotent. The `checkout` command safely ignores existing active node status to enable clean recovery and reuse existing worktree checkouts.
+16. **The Dynamic Persona Resolution and Decoupling Invariant**: To support Model 1 Workspace sovereignty and reduce Operator setup friction, the system dynamic persona resolution must fall back to the registered path/node owner in `WHAT-0062` or `WHAT-0065` when `SPAO_PERSONA_ID` is absent. Furthermore, if `SPAO_WORKSPACE_DIR` is active, the strategic transition gates (`_verify_persona`) must load the child workspace's indices, and if they do not exist, gracefully bypass the persona gate checks rather than failing-closed.
 
 
 ## 6. Bilateral Chat Interaction Protocol (North Star Coherence)
