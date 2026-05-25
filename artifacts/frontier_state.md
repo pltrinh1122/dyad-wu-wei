@@ -2421,8 +2421,8 @@
   - `[x] Tests pass`
 
 ## Node 956: Activity 956: Activity: Add Operator Curiosity Handling to System Prompt (GEMINI.md)
-- **Status**: Backlog
-- **Learnings & Context**: Add Rule 7 to Section 6 of GEMINI.md to instruct the agent to proxy diagnostic commands when Operator curiosity is inferred.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2432,6 +2432,13 @@
 - **Feedforward Invariants**:
   - `[x] Scoped Activity 956 created in backlog`
   - `[x] Linked to Path 949`
+
+## Activity 956: Activity: Add Operator Curiosity Handling to System Prompt (GEMINI.md)
+- **Status**: Completed
+- **Learnings & Context**: Added Rule 7 to Section 6 of GEMINI.md to codify curiosity-proxying behavior.
+- **Feedforward Invariants**:
+  - `[x] Rule 7 added to GEMINI.md`
+  - `[x] All tests pass`
 
 ## Current Active Path
 None
