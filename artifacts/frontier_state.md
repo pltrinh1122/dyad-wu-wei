@@ -2698,33 +2698,45 @@
 - **Feedforward Invariants**:
   - `N/A`
 
-## Node 1017: Path 1017: Codify Chat Immediacy Protocol
-- **Status**: Backlog
-- **Learnings & Context**: Codify the 'Hai.' Chat Immediacy Protocol into the system rules.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1018: Discovery 1018: Harmonize - Codify Chat Immediacy Protocol
+## Node 1015: Discovery 1015: Re-apply Ledger Update
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1019: Discovery 1019: Plan - Codify Chat Immediacy Protocol
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Codify Chat Immediacy Protocol.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1020: Activity 1020: Reflect - Codify Chat Immediacy Protocol
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Codify Chat Immediacy Protocol.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Discovery 1018: Codify Chat Immediacy Protocol
+## Discovery 1015: Re-apply Ledger
 - **Status**: Completed
-- **Learnings & Context**: Codified the 'Hai.' protocol as Rule 9 under Bilateral Chat Interaction Protocol to guarantee immediate UI unblocking.
+- **Learnings & Context**: Re-applied the strategic_intent.yml mappings that were accidentally reverted during the soft reset rollback.
+- **Feedforward Invariants**:
+  - `N/A`
+
+## Node 1022: Path 1022: Refine DZ-CIL Intent Understanding
+- **Status**: Backlog
+- **Learnings & Context**: Refine Chat Immediacy Protocol to explicitly require DZ-CIL Intent Understanding (Dao and Ziran context).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1023: Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Refine DZ-CIL Intent Understanding.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Refine DZ-CIL Intent Understanding.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1023: Refine Intent Understanding
+- **Status**: Completed
+- **Learnings & Context**: Refined the Chat Immediacy Protocol to explicitly require DZ-CIL Intent Understanding rather than generic LLM interpretation.
 - **Feedforward Invariants**:
   - `N/A`
 
