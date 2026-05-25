@@ -2703,3 +2703,15 @@ nodes:
     to restart.
   invariants:
   - '[x] Enforced hard execution block on ROM Drift'
+- name: 'Node 974: Activity 974: Implement Positive Feedback Integration in Learning
+    Loop'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 974: Implement Positive Feedback Integration in Learning Loop'
+  status: Completed
+  learnings: Updated SG-0005 and kernel/daemon_knowledge_accrual.py to support checking
+    telemetry for POSITIVE_FEEDBACK and enforcing the creation of artifacts/audit/reaffirm-<id>.md
+    before reflection.
+  invariants:
+  - Tested successfully.

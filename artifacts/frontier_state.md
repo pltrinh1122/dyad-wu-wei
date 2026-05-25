@@ -2524,6 +2524,18 @@
 - **Feedforward Invariants**:
   - `[x] Enforced hard execution block on ROM Drift`
 
+## Node 974: Activity 974: Implement Positive Feedback Integration in Learning Loop
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 974: Implement Positive Feedback Integration in Learning Loop
+- **Status**: Completed
+- **Learnings & Context**: Updated SG-0005 and kernel/daemon_knowledge_accrual.py to support checking telemetry for POSITIVE_FEEDBACK and enforcing the creation of artifacts/audit/reaffirm-<id>.md before reflection.
+- **Feedforward Invariants**:
+  - `Tested successfully.`
+
 ## Current Active Path
 None
 

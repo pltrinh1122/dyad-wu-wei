@@ -204,7 +204,32 @@ def test_enforce_reflection_hook_with_failures_no_retro():
                 enforce_reflection_hook("544", "/mock/repo")
 
 
-def test_inject_contextual_rules():
+def test_enforce_reflection_hook_with_positive_feedback_and_reaffirm():
+    mock_telemetry = '{"node_id": "544", "event": "POSITIVE_FEEDBACK", "metadata": {}}\n'
+    with patch("builtins.open", mock_open(read_data=mock_telemetry)), \
+         patch("os.path.exists", return_value=True):
+        
+        def mock_exists(path):
+            if "reaffirm-544.md" in path or "telemetry.jsonl" in path:
+                return True
+            return False
+            
+        with patch("os.path.exists", mock_exists):
+            enforce_reflection_hook("544", "/mock/repo")
+
+
+def test_enforce_reflection_hook_with_positive_feedback_no_reaffirm():
+    mock_telemetry = '{"node_id": "544", "event": "POSITIVE_FEEDBACK", "metadata": {}}\n'
+    with patch("builtins.open", mock_open(read_data=mock_telemetry)):
+        
+        def mock_exists(path):
+            if "telemetry.jsonl" in path:
+                return True
+            return False
+            
+        with patch("os.path.exists", mock_exists):
+            with pytest.raises(Exception, match="REFLECTION BLOCKED"):
+                enforce_reflection_hook("544", "/mock/repo")
     mock_frontier = "current_active_path: 541\n"
     mock_gemini = "Some instructions\n<!-- CONTEXTUAL_ROM_INJECTION_START -->\n<!-- CONTEXTUAL_ROM_INJECTION_END -->\n"
     
