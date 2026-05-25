@@ -92,13 +92,20 @@ def sync_and_clean_node() -> None:
     if remote_mode:
         open_prs = github_client.get_open_prs()
         if open_prs:
-            pr_list = ", ".join([f"#{pr['number']} ({pr['headRefName']})" for pr in open_prs])
+            def format_pr(pr):
+                import re
+                branch = pr.get('headRefName', '')
+                m = re.match(r'^node/(\d+)', branch)
+                node_part = f" for Node #{m.group(1)}" if m else ""
+                return f"PR #{pr['number']}{node_part} (branch: {branch})"
+            
+            pr_list = ", ".join([format_pr(pr) for pr in open_prs])
             raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
     else:
         open_worktrees = get_local_worktrees(repo_root)
         if open_worktrees:
-            pr_list = ", ".join([f"#{w['number']} ({w['url']})" for w in open_worktrees])
-            raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
+            wt_list = ", ".join([f"Node #{w.get('number', '?')} (branch: {w.get('branch', w.get('url', ''))})" for w in open_worktrees])
+            raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while local Node worktrees are still active: {wt_list}\n(If the corresponding PR was merged on GitHub, you must manually delete this worktree to sync offline.)")
     
     merged_branches = set()
     

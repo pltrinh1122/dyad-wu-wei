@@ -223,13 +223,30 @@ def remove_label(issue_id: str, label: str) -> None:
     )
 
 def get_open_prs() -> list[dict]:
-    """Returns a list of currently open PRs for the repository."""
+    """Returns a list of currently open PRs for the repository.
+    
+    Includes double-verification via the Issue/PR API to bypass Search API eventual consistency.
+    """
     result = _run_gh(
         ["gh", "pr", "list", "--state", "open", "--json", "number,title,headRefName,url"],
         capture_output=True, text=True, check=True
     )
     import json
-    return json.loads(result.stdout.strip() or "[]")
+    search_results = json.loads(result.stdout.strip() or "[]")
+    
+    verified_prs = []
+    for pr in search_results:
+        # Double-verify the state using strongly-consistent PR API
+        verify_result = _run_gh(
+            ["gh", "pr", "view", str(pr["number"]), "--json", "state"],
+            capture_output=True, text=True, check=False
+        )
+        if verify_result.returncode == 0:
+            state_data = json.loads(verify_result.stdout.strip() or "{}")
+            if state_data.get("state") == "OPEN":
+                verified_prs.append(pr)
+    
+    return verified_prs
 
 def get_merged_prs(limit: int = 50) -> list[dict]:
     """Returns a list of recently merged PRs for the repository.
