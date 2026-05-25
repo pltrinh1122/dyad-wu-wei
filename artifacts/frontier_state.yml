@@ -2865,3 +2865,13 @@ nodes:
     repo hard reset, final reflection closing out node.
   invariants:
   - N/A
+- name: 'Node 1015: Discovery 1015: Re-apply Ledger Update'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1015: Re-apply Ledger'
+  status: Completed
+  learnings: Re-applied the strategic_intent.yml mappings that were accidentally reverted
+    during the soft reset rollback.
+  invariants:
+  - N/A
