@@ -2812,6 +2812,18 @@
 - **Feedforward Invariants**:
   - `N/A`
 
+## Node 1018: Node 1018: Discovery 1018: Harmonize - Codify Chat Immediacy Protocol
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1018: Harmonize - Codify Chat Immediacy Protocol
+- **Status**: Completed
+- **Learnings & Context**: Codified the Semantic Inference invariant, the System Event Differentiation rule, and the HARD HITL Precision constraint in GEMINI.md to align with Operator Wu-wei requirements.
+- **Feedforward Invariants**:
+  - `N/A`
+
 ## Current Active Path
 None
 
