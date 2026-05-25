@@ -187,7 +187,7 @@ def create_pull_request(title: str, body: str, head: str = None) -> str:
         return result.stdout.strip()
 
 @record_execution(stage="skill")
-def merge_pull_request(pr_url: str, merge_method: str = "squash") -> None:
+def admin_merge_pull_request(pr_url: str, merge_method: str = "squash") -> None:
     """Merges a pull request autonomously, bypassing HTIL."""
     _run_gh(
         ["gh", "pr", "merge", pr_url, "--admin", f"--{merge_method}"],
