@@ -2753,37 +2753,24 @@ nodes:
     preventing standard test failures from synthesizing global lexical guards.
   invariants:
   - Tested successfully.
-- name: 'Node 985: Path 985: Investigate and Enforce Workspace Isolation Boundaries'
-  status: Backlog
-  learnings: Investigate PR 982 failure where file modifications hit the root directory
-    instead of the active worktree, and enforce boundaries.
-  invariants: []
-- name: 'Node 986: Discovery 986: Harmonize - Investigate and Enforce Workspace Isolation
-    Boundaries'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Investigate and
-    Enforce Workspace Isolation Boundaries.
-  invariants: []
-- name: 'Node 988: Activity 988: Investigate PR 982 Workspace Boundary Failure'
+- name: 'Node 983: Activity 983: Implement Backlog Health Auditor Rule'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 987: Discovery 987: Plan - Investigate and Enforce Workspace Isolation
-    Boundaries'
-  status: Backlog
-  learnings: Technical design and proposed changes for Investigate and Enforce Workspace
-    Isolation Boundaries.
-  invariants: []
-- name: 'Node 989: Activity 989: Reflect - Investigate and Enforce Workspace Isolation
-    Boundaries'
-  status: Backlog
-  learnings: Final reflection and path closure for Investigate and Enforce Workspace
-    Isolation Boundaries.
-  invariants: []
-- name: 'Activity 988: Investigate Workspace Boundary Error'
+- name: 'Activity 983: Implement Backlog Health Auditor Rule'
   status: Completed
-  learnings: Investigated the root cause of the missing knowledge_accrual_skill.py
-    edit in PR 982. Codified Invariant 18 in GEMINI.md enforcing active worktree file
-    targeting. Authored retro-988.md.
+  learnings: Updated drivers/audit_daemon.py and infra/audit-daemon/audit_config.yml
+    to calculate the ratio of Unmapped vs Mapped Path items. Injected prompt if Unmapped
+    exceeds Mapped.
+  invariants:
+  - Tested successfully via audit_daemon.py and pytest.
+- name: 'Node 991: Discovery 991: Harmonize Agent Identity Resolution'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 991: Agent Identity already harmonized'
+  status: Completed
+  learnings: Verified that WHY-0064 and WHY-0623 already cover dynamic identity resolution.
+    Closing duplicate node.
   invariants:
   - N/A
