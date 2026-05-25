@@ -185,10 +185,8 @@ def test_sync_and_clean_node_rom_drift(capsys):
         mock_hash2.hexdigest.return_value = "hash2"
         mock_sha256.side_effect = [mock_hash1, mock_hash2]
         
-        sync_and_clean_node()
-        
-        captured = capsys.readouterr()
-        assert "CRITICAL ROM DRIFT DETECTED" in captured.out
+        with pytest.raises(Exception, match="CRITICAL ROM DRIFT DETECTED"):
+            sync_and_clean_node()
 
 
 def test_cmd_retro_compile():

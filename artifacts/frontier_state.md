@@ -2512,6 +2512,18 @@
 - **Feedforward Invariants**:
   - `[x] Fixed get_open_prs Eventual Consistency\n[x] Differentiated PR ID from Node ID in daemon_node.py`
 
+## Node 972: Activity 972: Enforce Orchestrator RESTART Execution Halt
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 972: Enforce Orchestrator RESTART Execution Halt
+- **Status**: Completed
+- **Learnings & Context**: Modified daemon_node.py to raise an Exception on ROM Drift rather than just printing a warning, ensuring execution strictly halts and forces the Operator to restart.
+- **Feedforward Invariants**:
+  - `[x] Enforced hard execution block on ROM Drift`
+
 ## Current Active Path
 None
 
