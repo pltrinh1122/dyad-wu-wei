@@ -25,10 +25,13 @@ def save_config(config: dict) -> None:
     with open(config_path, "w", encoding="utf-8") as f:
         json.dump(config, f, indent=2)
 
-def init_workspace(repo_url: str) -> None:
+def init_workspace(repo_url: str, target_dir: str = None) -> None:
     # 1. Determine target directory
     parent_root = path_resolver.get_core_dir()
-    workspace_path = os.path.join(parent_root, ".workspace")
+    if target_dir:
+        workspace_path = os.path.abspath(target_dir)
+    else:
+        workspace_path = os.path.join(parent_root, ".workspace")
     
     # 2. Clone repo if not exists
     if not os.path.exists(workspace_path):
@@ -89,20 +92,21 @@ You are executing within a **Model 1 (Dual-Context Workspace)**. Your system par
         subprocess.check_call([pip_exe, "install", "pytest", "pytest-mock", "pyyaml"])
         print("Virtual environment provisioned and dependencies installed.")
 
-    # 6. Add to parent .gitignore if missing
+    # 6. Add to parent .gitignore if missing (only if using default .workspace in parent_root)
     gitignore_path = os.path.join(parent_root, ".gitignore")
-    ignore_entry = "\n.workspace/\n"
-    needs_write = True
-    if os.path.exists(gitignore_path):
-        with open(gitignore_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        if ".workspace" in content:
-            needs_write = False
-            
-    if needs_write:
-        with open(gitignore_path, "a", encoding="utf-8") as f:
-            f.write(ignore_entry)
-        print("Added .workspace/ to parent .gitignore.")
+    if os.path.abspath(workspace_path) == os.path.join(parent_root, ".workspace"):
+        ignore_entry = "\n.workspace/\n"
+        needs_write = True
+        if os.path.exists(gitignore_path):
+            with open(gitignore_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            if ".workspace" in content:
+                needs_write = False
+                
+        if needs_write:
+            with open(gitignore_path, "a", encoding="utf-8") as f:
+                f.write(ignore_entry)
+            print("Added .workspace/ to parent .gitignore.")
         
     # 7. Copy parent .gitignore to child workspace if missing
     child_gitignore = os.path.join(workspace_path, ".gitignore")
