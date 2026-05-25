@@ -2698,15 +2698,33 @@
 - **Feedforward Invariants**:
   - `N/A`
 
-## Node 1015: Discovery 1015: Re-apply Ledger Update
+## Node 1017: Path 1017: Codify Chat Immediacy Protocol
+- **Status**: Backlog
+- **Learnings & Context**: Codify the 'Hai.' Chat Immediacy Protocol into the system rules.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1018: Discovery 1018: Harmonize - Codify Chat Immediacy Protocol
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery 1015: Re-apply Ledger
+## Node 1019: Discovery 1019: Plan - Codify Chat Immediacy Protocol
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Codify Chat Immediacy Protocol.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1020: Activity 1020: Reflect - Codify Chat Immediacy Protocol
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Codify Chat Immediacy Protocol.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1018: Codify Chat Immediacy Protocol
 - **Status**: Completed
-- **Learnings & Context**: Re-applied the strategic_intent.yml mappings that were accidentally reverted during the soft reset rollback.
+- **Learnings & Context**: Codified the 'Hai.' protocol as Rule 9 under Bilateral Chat Interaction Protocol to guarantee immediate UI unblocking.
 - **Feedforward Invariants**:
   - `N/A`
 
