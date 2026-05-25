@@ -45,4 +45,5 @@ rules:
     detected (from failed test ''test_cmd_retro_compile'')'
 - id: backlog_hygiene_auditor
   type: backlog_hygiene
+  threshold_ratio: 1.0
   alert_level: NOTIFICATION

@@ -317,12 +317,13 @@ def evaluate_semantic_immune_system(rule, state):
 def evaluate_backlog_hygiene(rule, state):
     from kernel.daemon_backlog import BacklogDaemon
     try:
+        threshold_ratio = float(rule.get("threshold_ratio", 1.0))
         grouped = BacklogDaemon().list()
         unmapped_count = len(grouped.get("📋 [Backlog / Unmapped]", []))
         mapped_count = sum(len(issues) for key, issues in grouped.items() if "Unmapped" not in key)
         
-        if unmapped_count > mapped_count:
-            msg = f"[NOTIFICATION] Backlog Hygiene Warning: Unmapped Paths ({unmapped_count}) exceed Mapped Paths ({mapped_count}). Repository state is unhealthy."
+        if unmapped_count > mapped_count * threshold_ratio:
+            msg = f"[NOTIFICATION] Backlog Hygiene Warning: Unmapped Paths ({unmapped_count}) exceed threshold ratio ({threshold_ratio}) of Mapped Paths ({mapped_count}). Repository state is unhealthy."
             last_ratio = state.get("last_ratio")
             current_ratio = f"{unmapped_count}:{mapped_count}"
             if current_ratio != last_ratio:
