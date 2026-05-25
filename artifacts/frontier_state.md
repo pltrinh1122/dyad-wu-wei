@@ -2888,6 +2888,12 @@
 - **Feedforward Invariants**:
   - `[x] Created artifacts/audit/user_research_workspace_deployment.md`
 
+## Node 1058: Activity 1058: Teardown and Synthesize Findings
+- **Status**: Completed
+- **Learnings & Context**: Synthesized User Research findings into an Epistemic Retrospective, concluding Path 1054.
+- **Feedforward Invariants**:
+  - `[x] Created kb/WHY-1058-workspace-isolation-audit.md`
+
 ## Current Active Path
 None
 
