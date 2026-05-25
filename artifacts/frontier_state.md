@@ -2752,6 +2752,36 @@
 - **Feedforward Invariants**:
   - `N/A`
 
+## Node 1029: Path 1029: Fix Telemetry Logging Visibility
+- **Status**: Backlog
+- **Learnings & Context**: Fix log_stage_advancement to explicitly print to stdout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1030: Discovery 1030: Harmonize - Fix Telemetry Logging Visibility
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1031: Discovery 1031: Plan - Fix Telemetry Logging Visibility
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Fix Telemetry Logging Visibility.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1032: Activity 1032: Reflect - Fix Telemetry Logging Visibility
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Fix Telemetry Logging Visibility.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1030: Fix Telemetry Logging Visibility
+- **Status**: Completed
+- **Learnings & Context**: Modified log_stage_advancement in node_lifecycle.py to guarantee standard output visibility for stage transitions, ensuring the Agent is no longer blinded to successful HTIL bypasses during the Observe phase.
+- **Feedforward Invariants**:
+  - `N/A`
+
 ## Current Active Path
 None
 
