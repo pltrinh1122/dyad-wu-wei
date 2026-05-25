@@ -2900,6 +2900,12 @@
 - **Feedforward Invariants**:
   - `[x] Modified kernel/daemon_workspace.py\n[x] Added custom path test to tests/test_workspace_init.py`
 
+## Node 1065: Activity: Implement Bootloader CWD Workspace Inference
+- **Status**: Completed
+- **Learnings & Context**: Implemented CWD Workspace inference in drivers/path_resolver.py. The system now dynamically detects if the executing directory (or any parent) contains a valid Workspace GEMINI.md, and if so, dynamically exports SPAO_WORKSPACE_DIR, seamlessly engaging Model 1 Redirection.
+- **Feedforward Invariants**:
+  - `[x] Modified drivers/path_resolver.py\n[x] Modified tests/test_path_resolver.py`
+
 ## Current Active Path
 None
 
