@@ -23,8 +23,6 @@ strategic_goals:
   - 560
   - 588
   - 605
-  - 1003
-  - 664
   status: Active
   title: Backlog Dynamics and Resource Budget Alignment
 - collaborative_gap: The human cannot safely delegate execution authority to the agent,
@@ -42,9 +40,6 @@ strategic_goals:
   - 532
   - 622
   - 626
-  - 985
-  - 758
-  - 634
   status: Active
   title: Gateless Autonomous Execution within Risk-Managed Sandbox
 - collaborative_gap: Low-fidelity validation feedback (flaky or slow tests) breaks
@@ -58,10 +53,6 @@ strategic_goals:
   id: SG-0003
   prioritized_paths:
   - 928
-  - 998
-  - 993
-  - 721
-  - 712
   status: Active
   title: Preservation of Autonomous Velocity
 - collaborative_gap: The communication interface requires verbose conversational turns
@@ -77,14 +68,11 @@ strategic_goals:
   prioritized_paths:
   - 615
   - 640
-  - 916
-  - 652
-  - 587
   status: Active
   title: Efficient Intent-to-Goal Policy Communication
 - collaborative_gap: The agent cannot autonomously codify and recall lessons from
-    past executions (both failures and positive alignments), forcing the operator
-    to repeatedly correct similar errors or manually reaffirm successful strategies.
+    past executions (both failures and positive alignments), forcing the operator to
+    repeatedly correct similar errors or manually reaffirm successful strategies.
   constraints: Knowledge mutations under the kb/ directory must be verified for structural
     validity and must not violate immutable core axioms.
   falsification_signal: The average number of agent repair cycles on repeat error
@@ -94,18 +82,5 @@ strategic_goals:
   - 566
   - 591
   - 727
-  - 977
-  - 769
-  - 668
-  - 672
-  - 676
-  - 680
-  - 684
-  - 688
-  - 692
-  - 696
-  - 700
-  - 704
-  - 708
   status: Active
   title: Autonomous Knowledge Accrual
