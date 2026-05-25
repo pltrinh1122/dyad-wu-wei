@@ -1919,9 +1919,8 @@ nodes:
   invariants: []
 - name: 'Node 625: Activity 625: Reflect - Path: Dynamic agent identity resolution
     and policy ledger alignment'
-  status: Backlog
-  learnings: 'Final reflection and path closure for Path: Dynamic agent identity resolution
-    and policy ledger alignment.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 626: Path 626: Path: Implement Dynamic Agent Identity Resolution'
   status: Backlog
@@ -2659,3 +2658,11 @@ nodes:
   invariants:
   - '[x] WHAT-0622-dynamic-identity-resolution-alignment.md is created and tracked'
   - '[x] Registered in kb/HOW-0000-manifest.md'
+- name: 'Activity 625: Reflect - Path: Dynamic agent identity resolution and policy
+    ledger alignment'
+  status: Completed
+  learnings: Completed Path 622 closure. Verified that all child nodes are resolved,
+    specifications are registered, and tests are green.
+  invariants:
+  - '[x] All child nodes of Path 622 completed'
+  - '[x] Final walkthrough updated'
