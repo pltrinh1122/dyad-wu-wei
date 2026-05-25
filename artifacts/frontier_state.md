@@ -2651,8 +2651,8 @@
   - `[ ]` None
 
 ## Node 1004: Discovery 1004: Harmonize - Hygiene: Map Unmapped Backlog Issues to Strategic Goals
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Hygiene: Map Unmapped Backlog Issues to Strategic Goals.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2824,35 +2824,29 @@
 - **Feedforward Invariants**:
   - `N/A`
 
-## Node 1043: Path 1043: Codify Wu-wei NBA Handoff Message Structure
-- **Status**: Backlog
-- **Learnings & Context**: Update GEMINI.md to mandate the Wu-wei NBA handoff structure (contextual reasoning + single happy path) to prevent Operator decision fatigue after context breaks.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1044: Discovery 1044: Harmonize - Codify Wu-wei NBA Handoff Message Structure
+## Node 1041: Discovery 1041: Probe 1041: Formulate Options for HITL Verbosity Scaling
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1045: Discovery 1045: Plan - Codify Wu-wei NBA Handoff Message Structure
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Codify Wu-wei NBA Handoff Message Structure.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1046: Activity 1046: Reflect - Codify Wu-wei NBA Handoff Message Structure
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Codify Wu-wei NBA Handoff Message Structure.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1044: Harmonize NBA Handoff
+## Discovery 1041: Formulate Options for HITL Verbosity Scaling
 - **Status**: Completed
-- **Learnings & Context**: Codified the Wu-wei NBA Handoff protocol.
+- **Learnings & Context**: Codified WHY-1041 to present 3 architectural options resolving the tension between novice and seasoned Operators.
 - **Feedforward Invariants**:
-  - `[x] Rule 12 added to GEMINI.md`
+  - `N/A`
+
+## Node 1048: Activity 1048: Reflect - Synthesize Epistemic Retrospective retro-1004.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1004.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1004: Harmonize Hygiene Mapping
+- **Status**: Completed
+- **Learnings & Context**: Mapped unmapped paths (1043, 1017, 1022, 1029) to their respective Strategic Goals (SG-0004 and SG-0005) in WHY-1004 to resolve hygiene warnings.
+- **Feedforward Invariants**:
+  - `[x] Created WHY-1004-hygiene-map-unmapped-backlog-issues.md`
 
 ## Current Active Path
 None
