@@ -1,10 +1,10 @@
-# Retrospective 1010: Stale Node Sync Crash
+# Retrospective 1010: Improper Git Reset
 
 ## Context
-During the reflection of Node 1010, the HTIL Bypass script successfully autonomously merged the PR, but the script then crashed on `gh pr merge --delete-branch`.
+During the rollback recovery for Node 1010, the HTIL Bypass script crashed for the third time with the exact same namespace collision error on `--delete-branch`.
 
 ## The Failure
-The local `main` was stale. Despite `node sync` being executed earlier, the sync failed to incorporate PR #1009 (which contained the fix for the HTIL bypass namespace collision) due to an intervening `CRITICAL ROM DRIFT` restart sequence. Consequently, the local orchestrator executed the outdated version of `node_lifecycle.py`, tripping the exact same `--delete-branch` error as Node 1007.
+The previous rollback script executed `git reset --soft origin/main`. A soft reset only moves HEAD but preserves the working tree and index exactly as they were. Therefore, `node_lifecycle.py` in the worktree was never actually updated to the version from `origin/main` that contained the PR 1009 fix.
 
 ## The Codified Insight (WHY)
-The rollback protocol has been applied to cleanly reset the worktree to the remote tip, explicitly pulling down the previously merged PR 1009 fix to permanently resolve the namespace collision.
+When executing a Rollback Protocol to absorb upstream bug fixes, the Agent MUST use `git reset --hard origin/main` to forcefully synchronize the working tree. This ensures the execution environment is identical to the remote tip. The recovery has been executed with a hard reset, permanently resolving the collision.

@@ -2854,9 +2854,8 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Resolve Stale Node Sync
+- name: Resolve Hard Reset Bug
   status: Completed
-  learnings: Performed rollback protocol due to stale local branch crashing during
-    HTIL bypass teardown.
+  learnings: Performed proper hard reset rollback protocol to pull down PR 1009 fix.
   invariants:
   - N/A
