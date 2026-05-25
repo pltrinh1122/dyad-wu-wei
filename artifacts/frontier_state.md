@@ -2698,6 +2698,18 @@
 - **Feedforward Invariants**:
   - `N/A`
 
+## Node 1015: Discovery 1015: Re-apply Ledger Update
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1015: Re-apply Ledger
+- **Status**: Completed
+- **Learnings & Context**: Re-applied the strategic_intent.yml mappings that were accidentally reverted during the soft reset rollback.
+- **Feedforward Invariants**:
+  - `N/A`
+
 ## Current Active Path
 None
 
