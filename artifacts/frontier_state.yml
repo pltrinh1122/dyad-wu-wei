@@ -2715,3 +2715,41 @@ nodes:
     before reflection.
   invariants:
   - Tested successfully.
+- name: 'Node 976: Activity 976: Verify PR State in Node Sync'
+  status: Backlog
+  learnings: Update daemon_node sync command to natively verify that the PR state
+    has been officially merged via GitHub API before attempting local branch deletion
+    and sync.
+  invariants: []
+- name: 'Node 977: Path 977: Maintenance: Refine Knowledge Accrual Mechanisms'
+  status: Backlog
+  learnings: Address synthesized lexical guard false-positives and improve test harness
+    isolation.
+  invariants: []
+- name: 'Node 978: Discovery 978: Harmonize - Maintenance: Refine Knowledge Accrual
+    Mechanisms'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for Maintenance:
+    Refine Knowledge Accrual Mechanisms.'
+  invariants: []
+- name: 'Node 979: Discovery 979: Plan - Maintenance: Refine Knowledge Accrual Mechanisms'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for Maintenance: Refine Knowledge
+    Accrual Mechanisms.'
+  invariants: []
+- name: 'Node 980: Activity 980: Reflect - Maintenance: Refine Knowledge Accrual Mechanisms'
+  status: Backlog
+  learnings: 'Final reflection and path closure for Maintenance: Refine Knowledge
+    Accrual Mechanisms.'
+  invariants: []
+- name: 'Node 981: Activity 981: Remove false-positive lexical guards'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 981: Remove false-positive lexical guards'
+  status: Completed
+  learnings: Removed overly broad 'prune' and 'list' guards from audit_config.yml
+    and fixed knowledge_accrual_skill.py regex to no longer fallback to generic quotes,
+    preventing standard test failures from synthesizing global lexical guards.
+  invariants:
+  - Tested successfully.

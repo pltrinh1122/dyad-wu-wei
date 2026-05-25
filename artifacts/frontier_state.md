@@ -2536,6 +2536,48 @@
 - **Feedforward Invariants**:
   - `Tested successfully.`
 
+## Node 976: Activity 976: Verify PR State in Node Sync
+- **Status**: Backlog
+- **Learnings & Context**: Update daemon_node sync command to natively verify that the PR state has been officially merged via GitHub API before attempting local branch deletion and sync.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 977: Path 977: Maintenance: Refine Knowledge Accrual Mechanisms
+- **Status**: Backlog
+- **Learnings & Context**: Address synthesized lexical guard false-positives and improve test harness isolation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 978: Discovery 978: Harmonize - Maintenance: Refine Knowledge Accrual Mechanisms
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Maintenance: Refine Knowledge Accrual Mechanisms.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 979: Discovery 979: Plan - Maintenance: Refine Knowledge Accrual Mechanisms
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Maintenance: Refine Knowledge Accrual Mechanisms.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 980: Activity 980: Reflect - Maintenance: Refine Knowledge Accrual Mechanisms
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Maintenance: Refine Knowledge Accrual Mechanisms.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 981: Activity 981: Remove false-positive lexical guards
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 981: Remove false-positive lexical guards
+- **Status**: Completed
+- **Learnings & Context**: Removed overly broad 'prune' and 'list' guards from audit_config.yml and fixed knowledge_accrual_skill.py regex to no longer fallback to generic quotes, preventing standard test failures from synthesizing global lexical guards.
+- **Feedforward Invariants**:
+  - `Tested successfully.`
+
 ## Current Active Path
 None
 
