@@ -37,8 +37,9 @@ We must establish:
 
 ### 3. Selection & Architectural Rationale
 
-We select **Option A** (`bin/dz-cil-install` or `bin/dz-cil_install.sh`).
+We select **Option B** (`bin/workspace init`).
 
-* **Reasoning**: To support a clean onboarding flow, the bootstrapper must execute *before* python packages exist in the target directory. A self-contained shell script can verify python availability, provision the virtual environment, install package dependencies via `pip`, and write the default `GEMINI.md` system prompt before any python module is imported.
+* **Reasoning**: The original selection of Option A (`bin/dz-cil-install`) was a systemic failure. The bash script provisioned the target directory with folders and virtual environments *before* the python script attempted to run `git clone`. This created a fatal sequence bug where Git would abort because the directory was not empty. Furthermore, forcing the Operator to run two fragmented scripts (`bin/dz-cil-install` followed by `./bin/workspace init`) introduced unnecessary manual friction that violates the Wu-wei Gate.
+* **Dialectical Falsification**: The assumption that a bash `curl` script was the optimal entry point was falsified. For the current Operator who already possesses the local core engine, invoking the Python wrapper (`./bin/workspace init`) directly is completely frictionless and allows us to guarantee the exact sequence of initialization (Clone -> Provision -> Inject GEMINI.md) in a type-safe manner. The legacy Bash script has been fully deprecated and removed.
 * **Model 1 Workspace Redirection**: The created `./.workspace/GEMINI.md` will explicitly declare the workspace-specific invariants, directing the Agent to run exclusively within the local `./.workspace/` directory and treating the parent engine as read-only.
-* **Directory Layout Invariance**: The script enforces the creation of `./.workspace/kb/` and `./.workspace/artifacts/` folders to isolate state-machine logs and prevent parent-level contamination.
+* **Directory Layout Invariance**: The python bootstrapper enforces the creation of `./.workspace/kb/` and `./.workspace/artifacts/` folders to isolate state-machine logs and prevent parent-level contamination.

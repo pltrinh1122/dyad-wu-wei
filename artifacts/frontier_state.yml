@@ -2666,3 +2666,15 @@ nodes:
   invariants:
   - '[x] All child nodes of Path 622 completed'
   - '[x] Final walkthrough updated'
+- name: 'Node 966: Activity 966: Refactor Workspace Bootstrapper and Codify Dialectical
+    Rule'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 966: Refactor Workspace Bootstrapper and Codify Dialectical Rule'
+  status: Completed
+  learnings: Eliminated curl bootstrapper friction by leveraging unified Python installer.
+    Codified Rule 17 to bypass plan alignment when Dialectical Falsification is formally
+    applied.
+  invariants:
+  - '[x] Rule 17 added\n[x] Python bootstrapper updated\n[x] Bash installer deleted'

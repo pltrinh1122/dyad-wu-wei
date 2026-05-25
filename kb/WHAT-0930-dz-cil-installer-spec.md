@@ -12,30 +12,28 @@
 
 ### 1. Assumptions & Prerequisites
 Before executing the bootstrap installer, the following conditions must be met:
-1. **Core Retrieval**: The core `dz-cil` engine source code can be retrieved in one of two ways:
-   - **Local Repository (Standard)**: The Operator has retrieved the source code from the remote repository (e.g. `pltrinh1122/agent-antigravity`) into a local directory (`DZ-CIL_ROOT`) by performing a `git-fetch` or `git-clone` operation.
-   - **One-Liner Bootstrapper (Optimized)**: The Operator runs a curl-to-bash one-liner fetching the installer script from a release endpoint. If a hardcoded URL is required, it uses the GitHub release artifact URL for the `agent-antigravity` repository (or a placeholder `<ENGINE_INSTALL_URL>`). This automatically downloads the engine into a hidden `.workspace/engine/` subdirectory and initiates the setup.
-2. **System Dependencies**: The local environment must have `python3`, `pip`, `virtualenv` (or python standard library `venv`), and `git` installed and available in the system `PATH`.
-3. **Execution CWD**: The installer script `bin/dz-cil-install` is invoked from the parent `DZ-CIL_ROOT` directory.
+1. **Core Retrieval**: The core `dz-cil` engine source code must be retrieved into a local directory (`DZ-CIL_ROOT`) by performing a `git-fetch` or `git-clone` operation.
+2. **System Dependencies**: The local environment must have `python3`, `git`, and the standard `venv` module available.
+3. **Execution CWD**: The initialization is invoked from the parent `DZ-CIL_ROOT` directory.
 
 ---
 
 ### 2. Unified Workspace Bootstrap Installer
 
-We will implement a new, idempotent shell script `bin/dz-cil-install` (or `bin/dz-cil_install.sh`) to bootstrap a Model 1 child project workspace.
+We use a unified, idempotent Python bootstrapper (`bin/workspace init`) to setup a Model 1 child project workspace, replacing the legacy two-step Bash script to prevent git-clone sequencing bugs.
 
-#### 2.1 Command Arguments & Options
-- `bin/dz-cil-install [DIR]`: Initialize a workspace inside the specified directory (defaults to `./.workspace/` relative to parent root).
-- `bin/dz-cil-install --help`: Print usage instructions.
+#### 2.1 Command Arguments
+- `./bin/workspace init <repo_url>`: Initializes the remote repository inside the `./.workspace/` directory relative to the parent root.
 
 #### 2.2 Setup Operations
-The installer must execute the following operations in order:
-1. **Directory Creation**: Create the target workspace directory and its baseline folders:
+The python daemon (`kernel/daemon_workspace.py`) must execute the following operations in strict order:
+1. **Target Verification & Clone**: Ensure the target directory is empty or does not exist, then `git clone` the repository. This prevents Git fatal errors from non-empty directories.
+2. **Directory Creation**: Create the baseline folders inside the newly cloned workspace:
    - `[TARGET_DIR]/kb/` (empty workspace knowledge base)
    - `[TARGET_DIR]/artifacts/` (workspace-specific state tracking and logs)
-2. **Ignorance Configuration**: Append `[TARGET_DIR]/` (e.g. `.workspace/`) to the parent `.gitignore` file.
 3. **GEMINI Invariant Injection**: Create `[TARGET_DIR]/GEMINI.md` populated with the workspace rules, explicitly indicating that the parent engine at `DZ-CIL_ROOT` is read-only.
 4. **Virtual Environment Provisioning**: Initialize a local python virtual environment inside `[TARGET_DIR]/.venv/` and install `pytest`, `pytest-mock`, and `pyyaml`.
+5. **Ignorance Configuration**: Append `.workspace/` to the parent `.gitignore` file and sync it to the child.
 
 ---
 
