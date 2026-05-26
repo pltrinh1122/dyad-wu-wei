@@ -425,9 +425,10 @@ class TerminalNode(BaseNode):
             # Sync frontier state updates to worktree so they are committed in the branch
             try:
                 import shutil
+                rel_workspace = os.environ.get("SPAO_WORKSPACE_DIR", "")
                 for ext in [".yml", ".yml.sha256", ".md"]:
-                    src = os.path.join(main_repo, "artifacts", f"frontier_state{ext}")
-                    dest = os.path.join(worktree_dir, "artifacts", f"frontier_state{ext}")
+                    src = path_resolver.resolve_workspace_path("artifacts", f"frontier_state{ext}")
+                    dest = os.path.join(worktree_dir, rel_workspace, "artifacts", f"frontier_state{ext}")
                     if os.path.exists(src) and os.path.abspath(src) != os.path.abspath(dest):
                         os.makedirs(os.path.dirname(dest), exist_ok=True)
                         shutil.copy2(src, dest)

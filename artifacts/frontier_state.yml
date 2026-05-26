@@ -3049,3 +3049,16 @@ nodes:
     seamlessly engaging Model 1 Redirection.
   invariants:
   - '[x] Modified drivers/path_resolver.py\n[x] Modified tests/test_path_resolver.py'
+- name: 'Node 1078: Activity 1078: Implement Single-Daemon Multi-Tenant redirection
+    for workspace auditing'
+  status: Backlog
+  learnings: Refactor the parent audit daemon to automatically detect active workspace
+    contexts and redirect verification targets to the child workspace artifacts directory
+    and config ledger.
+  invariants: []
+- name: 'Node 986: Enforce Workspace Isolation Boundaries'
+  status: Completed
+  learnings: Implemented workspace path resolution for frontier_state reflection and
+    single-daemon multi-tenant audit tracking.
+  invariants:
+  - Workspace Boundary Invariant
