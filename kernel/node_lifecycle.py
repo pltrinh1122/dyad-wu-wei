@@ -454,9 +454,10 @@ class TerminalNode(BaseNode):
             # rollback the local commit if remote operations fail
             tx.register_rollback(git_client.reset_hard, cwd=worktree_dir)
 
-            # Rebase onto origin/main to ensure conflict-free push (Node 848)
+            # Rebase onto origin/main with auto-resolution of deterministic conflicts (Node 808)
             git_client.fetch("origin", cwd=worktree_dir)
-            git_client.rebase("origin/main", cwd=worktree_dir)
+            git_client.rebase_with_conflict_resolution("origin/main", cwd=worktree_dir)
+
 
             git_client.push(branch_name, cwd=worktree_dir)
             
