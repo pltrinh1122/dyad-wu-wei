@@ -1886,9 +1886,10 @@
 
 ## Probe 770: Align - Autonomous Learning Loop
 - **Status**: Completed
-- **Learnings & Context**: Defined the architectural necessity and technical intent for the Autonomous Learning Loop. Materialized WHY-0082 and spawned Activity 806 to implement the retro subcommand. Handled status latency correction via WHY-0081 and retro-770.
+- **Learnings & Context**: Learning Loop infrastructure is partially built. Five gaps identified: (1) No sluice gate sensor, (2) No bin/node retro attach, (3) No merge-conflict auto-resolve hook, (4) Incomplete positive feedback integration, (5) Stale GLOSSARY.md. WHY-0770 codifies findings. Node 806 is recommended as next.
 - **Feedforward Invariants**:
-  - `Autonomous Learning Loop must trigger for soft-policy chat corrections. State retrieval must be deterministic.`
+  - `WHY-0082`
+  - `WHY-0770`
 
 ## Node 810: Probe 810: Align - Synthesize and Surface Epistemic Retrospectives
 - **Status**: Completed
@@ -2986,6 +2987,12 @@
   - `[ ]` None
 
 ## Node 1030: Node 1030: Discovery 1030: Harmonize - Fix Telemetry Logging Visibility
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 770: Probe 770: Align - Autonomous Learning Loop
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
