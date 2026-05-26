@@ -3058,6 +3058,42 @@
   - `WHY-0082`
   - `WHY-0770`
 
+## Node 1113: Path 1113: Codify ISBO Epistemic Primitives
+- **Status**: Backlog
+- **Learnings & Context**: Establish the philosophical boundaries of Install, Setup, Bootstrap, and Operate to prevent Creator/Director conflation (SG-0002)
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1114: Discovery 1114: Harmonize - Codify ISBO Epistemic Primitives
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Codify ISBO Epistemic Primitives.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1115: Activity 1115: Materialize ISBO Epistemology
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1116: Discovery 1116: Plan - Codify ISBO Epistemic Primitives
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Codify ISBO Epistemic Primitives.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1117: Activity 1117: Reflect - Codify ISBO Epistemic Primitives
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Codify ISBO Epistemic Primitives.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Materialize ISBO Epistemology
+- **Status**: Completed
+- **Learnings & Context**: Codified ISBO ontology and protocol (Install, Setup, Bootstrap, Operate) as the canonical journey to prevent Creator/Director conflation.
+- **Feedforward Invariants**:
+  - `The Bootstrapping Invariant: The Agent must strictly require a strategic_intent.yml before entering the Operate phase.`
+
 ## Current Active Path
 None
 
