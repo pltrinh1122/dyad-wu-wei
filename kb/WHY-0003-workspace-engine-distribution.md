@@ -68,17 +68,19 @@ cd ..
 ./.dz-cil/bin/node status
 ```
 
-## 4. The Fractal Dao Invariant (Sovereignty vs. Inheritance)
+## 4. The Fractal Dao Invariant (Extend and Override)
 
 A critical consequence of isolating the engine in a submodule is that the parent's `GEMINI.md` and `kb/` primitives (the "Dao Wisdom") are physically shifted into the `.dz-cil/` subdirectory. 
 
-We initially theorized that the child workspace should sever this inheritance to preserve "Domain Sovereignty" and prevent "Persona Bleed", resulting in a standalone local `GEMINI.md`.
+We initially theorized that the child workspace could inherit this wisdom via a direct symlink (`kb -> .dz-cil/kb`).
 
-### Falsification of the Sovereign Lobotomy
-This theory is catastrophically falsified. If the child workspace operates on a purely standalone `GEMINI.md` and ignores `.dz-cil/kb/`, the Agent entering the child workspace is fundamentally lobotomized. It loses the entire SPAO execution loop, all Universal Invariants, and the Meta-Orchestrator logic. The goal of DZ-CIL is not to build a local script executor, but to deploy the **Meta-Orchestrator** as a fractal methodology across any downstream repository. The Dao is universal; it does not bleed into the domain, it governs it.
+### Falsification of the Symlink Projection
+The symlink projection is catastrophically falsified because it destroys the **Extend and Override** inheritance model. A symlink is a strict physical alias. If the child workspace needs to *extend* the Dao with a local primitive (e.g., a custom `WHY-` document for its specific domain architecture) or *override* a universal rule, writing to the symlink will mutate the `.dz-cil/kb/` submodule directly. This pollutes the universal engine state and violates the Submodule Isolation Invariant. The child must be able to hold sovereign knowledge without modifying the parent.
 
-### Synthesis (The Projection Sourcing Strategy)
-To maintain structural decoupling while ensuring the Agent fully inherits the Dao Wisdom, the child workspace MUST dynamically project the universal Dao into its local root context so the IDE Framework can load it.
+### Synthesis (Dual-Context Resolution)
+To maintain both structural decoupling and Dao inheritance, the architecture relies on **Dual-Context Resolution** (The Object-Oriented "Extend and Override" paradigm):
 
-1. **Knowledge Base Projection**: The child workspace must project the universal knowledge base into its root via symlink: `kb -> .dz-cil/kb`. This ensures all `WHAT-` and `WHY-` primitives are natively available to the Agent's context resolution.
-2. **Dynamic GEMINI Sourcing**: The child's root `GEMINI.md` must act as a dynamic assembly interface. It must natively source the core universal logic from `.dz-cil/GEMINI.md` while appending its own local `artifacts/strategic_intent.yml` (Model 1 Sovereign Intent). This guarantees the Agent operates as the strict Meta-Orchestrator, but bounded by the local repository's specific architectural goals.
+1. **Physical Decoupling**: The child workspace maintains its own standard, standalone `kb/` directory and `GEMINI.md` file in its root. There are no symlinks.
+2. **Universal Base Class**: The Agent treats `.dz-cil/kb/` and `.dz-cil/GEMINI.md` as the immutable, inherited Universal Base Class.
+3. **Sovereign Subclass**: The local `kb/` and local `GEMINI.md` act as the Sovereign Subclass. The Agent natively loads the universal primitives first, then applies the local primitives. If a conflict exists, the local workspace explicitly overrides the universal engine. All new domain insights are written exclusively to the local `kb/`.
+4. **Bootstrapping**: The Agent's IDE framework or internal prompt injection seamlessly merges these dual contexts, allowing the Meta-Orchestrator persona to scale fractally into the child domain without logic bleed or state corruption.
