@@ -485,6 +485,86 @@ class TerminalNode(BaseNode):
             else:
                 log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
 
+    @record_execution(stage="act")
+    def retro_attach(self, retro_file: str, branch_name: str) -> str:
+        """Attaches a retrospective file to the active node branch by staging, committing, and pushing it.
+
+        Args:
+            retro_file: Absolute or relative path to the retro-<id>.md file.
+            branch_name: The active node branch (e.g. node/806-implement-...).
+
+        Returns:
+            The path that was committed.
+        """
+        log_stage_advancement("act", "Retro Attach", f"Attaching retrospective to branch '{branch_name}'")
+
+        from drivers import path_resolver
+
+        # Resolve repo root (works from root or inside a worktree)
+        repo_root = path_resolver.get_workspace_dir()
+
+        # Resolve the retro file to an absolute path
+        if not os.path.isabs(retro_file):
+            # Try relative to repo root first
+            candidate = os.path.join(repo_root, retro_file)
+            if os.path.exists(candidate):
+                retro_file = candidate
+            else:
+                # Try CWD
+                retro_file = os.path.abspath(retro_file)
+
+        if not os.path.exists(retro_file):
+            raise FileNotFoundError(
+                f"Retro Attach Failed: retro file '{retro_file}' does not exist. "
+                f"Create it first with the Agentic Retro Trigger."
+            )
+
+        # Validate the branch exists locally or on remote
+        strip_prefix = branch_name.replace("node/", "", 1)
+        worktree_path = self.get_worktree_path(branch_name)
+
+        # Determine the correct cwd for git operations
+        if os.path.isdir(worktree_path):
+            git_cwd = worktree_path
+        else:
+            git_cwd = repo_root
+
+        # Compute relative path of the retro file from the git_cwd
+        try:
+            rel_retro = os.path.relpath(retro_file, git_cwd)
+        except ValueError:
+            # On Windows cross-drive; fallback to absolute
+            rel_retro = retro_file
+
+        # Ensure the retro file is inside the repo tree
+        retro_dest = os.path.join(git_cwd, "artifacts", "audit", os.path.basename(retro_file))
+        if retro_file != retro_dest and not os.path.exists(retro_dest):
+            import shutil
+            os.makedirs(os.path.dirname(retro_dest), exist_ok=True)
+            shutil.copy2(retro_file, retro_dest)
+            retro_file = retro_dest
+
+        rel_retro = os.path.relpath(retro_file, git_cwd)
+
+        # Stage the file
+        git_client.add([rel_retro], cwd=git_cwd)
+
+        # Commit
+        commit_msg = f"docs(retro): attach retrospective {os.path.basename(retro_file)} to node #{self.issue_id}"
+        try:
+            git_client.commit(commit_msg, cwd=git_cwd)
+        except Exception as e:
+            if "nothing to commit" in str(e).lower() or "nothing added" in str(e).lower():
+                print(f"ℹ️  Retro file already committed on branch '{branch_name}'. Nothing to do.")
+                return retro_file
+            raise
+
+        # Push
+        git_client.push(branch_name, cwd=git_cwd)
+
+        log_stage_advancement("act", "Retro Attached", f"Retrospective '{os.path.basename(retro_file)}' committed and pushed to '{branch_name}'.")
+        return retro_file
+
     @classmethod
     def clean_if_merged(cls, branch_name: str):
         """Cleans up the local worktree and branch if it has been merged."""

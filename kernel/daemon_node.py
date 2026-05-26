@@ -307,6 +307,9 @@ def cmd_retro(args):
             sys.exit(1)
         with open(file_path, "r") as f:
             print(f.read())
+    elif args.retro_command == "attach":
+        node = TerminalNode(args.issue_id)
+        node.retro_attach(args.retro_file, args.branch_name)
 
 def cmd_set_status(args):
     node = BaseNode(args.issue_id)
@@ -391,6 +394,12 @@ def main():
     parser_rv = subparsers_retro.add_parser("view", help="View a compiled retrospective")
     parser_rv.add_argument("start_path", help="Starting path ID")
     parser_rv.add_argument("end_path", nargs="?", default=None, help="Optional ending path ID")
+
+    # retro attach
+    parser_ra = subparsers_retro.add_parser("attach", help="Attach a retro file to the active node branch")
+    parser_ra.add_argument("issue_id", help="The node issue ID (e.g. 806)")
+    parser_ra.add_argument("retro_file", help="Path to the retro-<id>.md file to attach")
+    parser_ra.add_argument("branch_name", help="The active node branch (e.g. node/806-implement-...)")
 
     args = parser.parse_args()
 

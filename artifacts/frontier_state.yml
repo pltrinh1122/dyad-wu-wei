@@ -3147,3 +3147,19 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Node 806: Node 806: Activity 806: Implement bin/node retro command for Epistemic
+    Reflection'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 806: Implement bin/node retro attach'
+  status: Completed
+  learnings: "Implemented TerminalNode.retro_attach() in node_lifecycle.py and wired\
+    \ it as 'bin/node retro attach <issue_id> <retro_file> <branch_name>'. The command\
+    \ resolves the retro file, copies it to artifacts/audit/ if needed, stages+commits+pushes\
+    \ to the active branch. Idempotent. 253 tests pass (+2 new). Closes WHY-0770 Gap\
+    \ 2 \u2014 the Autonomous Learning Loop now has a programmatic retro attachment\
+    \ mechanism."
+  invariants:
+  - WHY-0082
+  - WHY-0770

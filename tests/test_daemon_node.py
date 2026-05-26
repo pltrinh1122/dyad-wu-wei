@@ -228,3 +228,33 @@ def test_cmd_retro_view():
         with patch("builtins.print") as mock_print:
             cmd_retro(args)
             mock_print.assert_called_once_with("retro contents")
+
+
+def test_cmd_retro_attach(tmp_path):
+    """Happy path: retro attach stages, commits, and pushes the retro file."""
+    retro_file = tmp_path / "retro-806.md"
+    retro_file.write_text("# Retro 806\nTest retro content.\n")
+
+    args = MagicMock()
+    args.retro_command = "attach"
+    args.issue_id = "806"
+    args.retro_file = str(retro_file)
+    args.branch_name = "node/806-implement-bin-node-retro-attach"
+
+    with patch("kernel.node_lifecycle.TerminalNode.retro_attach", return_value=str(retro_file)) as mock_attach:
+        from kernel.daemon_node import cmd_retro
+        cmd_retro(args)
+        mock_attach.assert_called_once_with(str(retro_file), "node/806-implement-bin-node-retro-attach")
+
+
+def test_retro_attach_file_not_found(tmp_path):
+    """Error case: retro_attach raises FileNotFoundError for a missing retro file."""
+    import pytest
+    from kernel.node_lifecycle import TerminalNode
+
+    with patch("drivers.path_resolver.get_workspace_dir", return_value=str(tmp_path)), \
+         patch("kernel.node_lifecycle.TerminalNode.get_worktree_path", return_value=str(tmp_path)):
+        node = TerminalNode("806")
+        with pytest.raises(FileNotFoundError, match="does not exist"):
+            node.retro_attach("artifacts/audit/retro-806-nonexistent.md", "node/806-test")
+
