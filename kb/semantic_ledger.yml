@@ -66,3 +66,9 @@ terms:
   ziran_workspace_app:
     state: deprecated
     superseded_by: dz-cil_workspace
+  north_star:
+    state: deprecated
+    superseded_by: telos
+  "north-star":
+    state: deprecated
+    superseded_by: telos

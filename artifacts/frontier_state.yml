@@ -3294,3 +3294,11 @@ nodes:
   learnings: Verified and added test coverage for backlog isolation routing under
     child workspace directories.
   invariants: []
+- name: 'Node 1069: Activity 1069: Operate: Implement Child Workspace Inheritance'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1069: Operate: Implement Child Workspace Inheritance'
+  status: Completed
+  learnings: Formulated the workspace inheritance and decoupling policies in WHY-1069.
+  invariants: []

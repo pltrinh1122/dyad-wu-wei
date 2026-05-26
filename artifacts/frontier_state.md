@@ -3166,6 +3166,18 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 1069: Activity 1069: Operate: Implement Child Workspace Inheritance
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1069: Operate: Implement Child Workspace Inheritance
+- **Status**: Completed
+- **Learnings & Context**: Formulated the workspace inheritance and decoupling policies in WHY-1069.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 

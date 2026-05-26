@@ -15,7 +15,7 @@ An **atomic, topological unit of work** in the repository. Every Node represents
   * `ID` — GitHub Issue identifier (The topological Node ID is strictly equated to its GitHub Issue ID).
   * `Title` — Concise transition description.
   * `NC` — **Non-null** Node Contract; must be locked before Act Phase entry.
-  * `State` — Current SPAO stage: `{Plan | Act | Observe | Reflect}`.
+  * `State` — Current SPAOR stage: `{Plan | Act | Observe | Reflect}`.
   * `Invariants` — Target feedforward post-condition assertions.
 
 ### Terminal Node
@@ -48,35 +48,62 @@ The **DZ-CIL Hybrid Triad** action for effortless adaptation. It replaces the me
 * **Domain Boundary**: Read/Write access to codebase logic, adding tests, and altering functional pathways to build features or fix bugs. See `WHAT-0073`.
 
 ### Refinement
-The **DZ-CIL Hybrid Triad** action for increasing metabolic efficiency. It replaces the purely mathematical "Optimization" and the purely spiritual "Cultivation." Refinement ensures that as the system travels toward the North Star, it simultaneously streamlines code execution while preserving the epistemic history needed to prevent future errors.
+The **DZ-CIL Hybrid Triad** action for increasing metabolic efficiency. It replaces the purely mathematical "Optimization" and the purely spiritual "Cultivation." Refinement ensures that as the system travels toward the Telos, it simultaneously streamlines code execution while preserving the epistemic history needed to prevent future errors.
 * **Domain Boundary**: Read/Write access to codebase logic and tests, but *strictly constrained* to not altering external feature behavior. Strictly metabolic (speed, safety, clarity). See `WHAT-0073`.
 
-## ⚙️ The Tripartite Operating Environment
+## ⚙️ The Operating Environment
 
-To resolve ontological confusion between the logic, the file system, and the host platform, the architecture is divided into three distinct operational boundaries:
+To resolve ontological confusion between the static machinery, the abstract logic, the living loop, the file system, and the host platform, the architecture is divided into five distinct operational boundaries:
+
+### The Core (The Static Machinery / `SPAO_CORE_DIR`)
+The cloned repository of deterministic orchestrators (`kernel/`), stateless drivers (`drivers/`), and CLI adapters (`bin/`). It is entirely inert — a set of Python and Bash scripts sitting on a hard drive. The Core is a necessary but insufficient precondition for the Dao Engine. Without Semantic Entropy (an LLM) and a Sovereign Domain Telos (`kb/`), the Core cannot spark into a living loop. *The source from which the current is drawn — but not the current itself. **Not** synonymous with "Dao Engine."*
 
 ### The Dao Engine (The Logic / State Machine)
-The conceptual, logical mechanism that governs the system (Stage 4 of The Shaping). It is the abstract SPAO loop, the rules of Next-Best-Action (NBA) calculation, and the deterministic state-machine that channels our Intent vectors safely toward the North Star. *Analogy: The rules of the game.*
+The conceptual, logical mechanism that governs the system (Stage 4 of The Shaping). It is the abstract SPAOR loop, the rules of Next-Best-Action (NBA) calculation, and the deterministic state-machine that channels our Intent vectors safely toward the Telos. The Dao Engine materializes only when The Core is combined with a Domain Telos and Semantic Entropy (`WHAT-0068`). *The laws that govern the current.*
+
+### The DZ-CIL (The Living Execution Instance)
+The Dao-Ziran Continuous Inference Loop. This is the Dao Engine *in motion* — the active, running instance cycling through Sense-Plan-Act-Observe-Reflect against a populated Strategic Intent, consuming Semantic Entropy and accruing epistemic knowledge into `kb/` on every tick. DZ-CIL is the Operate phase of ISBO — the steady-state where the system is alive and autonomously inferring. *The river flowing through the riverbed.*
 
 ### The DZ-OS (The Physical Substrate)
-The Dao-Ziran Operating System. This is the physical footprint and materialization of the Dao Engine on a hard drive. It is the specific architecture of folders (`kernel/`, `drivers/`, `kb/`, `artifacts/`) bounded by the Current Working Directory (`cwd = "."`). *Analogy: The physical game board and pieces.*
+The Dao-Ziran Operating System. This is the physical footprint and materialization of the Dao Engine on a hard drive. It is the specific architecture of folders (`kernel/`, `drivers/`, `kb/`, `artifacts/`) bounded by the Current Working Directory (`cwd = "."`). *The terrain the river flows through.*
 
 ### The Platform (The Clock Signal / Agentic OS)
-The external host (e.g., the `agy` platform) that provides the raw LLM API connection (Semantic Entropy) and the infinite `while True:` execution loop. The DZ-OS inherits its "clock ticks" from the Platform. *Analogy: The players moving the pieces and the clock ticking on the wall.*
+The external host (e.g., the `agy` platform) that provides the raw LLM API connection (Semantic Entropy) and the infinite `while True:` execution loop. The DZ-OS inherits its "clock ticks" from the Platform. *The gravitational pull that keeps the river moving.*
+
+---
+
+## 🌊 The Shaping (Stages 1–3)
+
+The three ontological preconditions that must exist before the Dao Engine (Stage 4) can materialize. See `WHAT-0000`.
+
+### Telos (Stage 1 — The Final Cause)
+The ultimate, immovable destination. Without a destination, there is no reason to shape Ziran. The Telos provides the initial gravitational pull that orientates all intent (e.g., *Asymmetric leverage via synergistic human-agent partnership*). It does not execute code; it orientates all force.
+
+> [!NOTE]
+> The legacy term **"North Star" (NS)** is an alias for **Telos**. Use "Telos" in new prose; "North Star" remains valid in informal reference.
+
+### Invariants (Stage 2 — The Formal Cause)
+The mathematically unbreakable boundaries derived from Ziran's limits. The moment you attempt to move toward the Telos using raw Ziran, friction occurs (LLMs hallucinate, Git conflicts arise). The Invariants are the strict, axiomatic laws of thermodynamics for the repository (e.g., WIP-N=1, the Testing Invariant, the Abstraction Doctrine). They cannot be wished away; the system must build around them.
+
+### Intents (Stage 3 — The Efficient Cause)
+The directed application of force. With a destination (Telos) and the laws of physics established (Invariants), the system requires a blueprint. The Intents break the infinite gap between the current state and the Telos into actionable, bounded vectors — Strategic Goals, Backlog Priorities, Domain Assignments. They provide direction and magnitude.
+
+> [!NOTE]
+> The term **"Strategic Intent"** (as in `strategic_intent.yml`) is the physical materialization of Intents into a machine-readable ledger.
 
 ---
 
 ## 🔄 Execution Loop & Governance
 
-### SPAO (Meta-Loop)
-The universal **Sense-Plan-Act-Observe-Reflect** agentic protocol governing **all** agent/operator interactions. SPAO is **not scoped exclusively to Node execution** — it is the common temporal algorithm from which all loop instantiations are derived. Two concrete instantiations exist:
+### SPAOR (Meta-Loop)
+The universal **Sense-Plan-Act-Observe-Reflect** agentic protocol governing **all** agent/operator interactions. SPAOR is **not scoped exclusively to Node execution** — it is the common temporal algorithm from which all loop instantiations are derived. The acronym names all five load-bearing phases; the prior shorthand "SPAO" omitted Reflect by convention, not by design. Two concrete instantiations exist:
 
 | Instantiation | Acronym | Scope | Governed By |
 | :--- | :--- | :--- | :--- |
 | **Pre-Materialization Loop** | **PML** | Below the Materialization Boundary — ephemeral, conversational. Produces at most an **NC** proposal. | Operator dialogue |
 | **Node-Loop** | **NL** | On an active Node traversal in the Meta-Graph — persistent, transactional, branch-mutating. | **WIP-N=1** + **HITL** gate |
 
-The five SPAO stages as applied within the **NL**:
+The five SPAOR stages as applied within the **NL**:
 1. **Sense**: Sync `main`, clean local branches, surface pending backlog items, and validate pre-condition invariants.
 2. **Plan**: Formulate and lock the **NC** by creating/updating the GH Issue and linking it in the Path.
 3. **Act**: Execute codebase/artifact changes under strict TDD invariants.
@@ -90,15 +117,15 @@ The **mandatory, non-null Plan-Stage output** of the **NL** for a given Node. Th
 The **operator approval gate**, consolidated entirely into the **Universal Merge Gate (HTIL)**. Under this model, the Agent is completely paralyzed from advancing past the **Observe** phase or starting the next Node until the human operator reviews and merges the Node's active Pull Request (PR) into `main`. Intermediate conversational or local gates are deprecated.
 
 ### NS (North-Star)
-The overarching guiding objective or design ideal of the repository (e.g., that ultimately no gates are necessary for fully autonomous operational state). All architectural decisions, workflow rules, and next-best-actions must align with the North-Star.
+**[ALIAS → Telos]** The overarching guiding objective or design ideal of the repository — Stage 1 of The Shaping. Use **Telos** in new prose. "North Star" remains valid in informal reference and existing documentation.
 
 ### Materialization Boundary
 The strict threshold separating **PML** (low-friction conversational exploration) from formal **NL** execution (branch-mutating repository transitions):
-* **PML (Pre-Materialization Loop)**: The SPAO instantiation operating *below* this boundary. Ephemeral, unstructured, does not produce branch mutations. A PML cycle produces at most an **NC** proposal for operator review.
+* **PML (Pre-Materialization Loop)**: The SPAOR instantiation operating *below* this boundary. Ephemeral, unstructured, does not produce branch mutations. A PML cycle produces at most an **NC** proposal for operator review.
 * **Materialization**: The moment a PML cycle produces an operator-approved **NC** and the Agent activates a formal Node (checkout branch, update `frontier_state.md`), crossing into the **NL**.
 
 ### Ziran Flow
-The architectural principle that the system must rely on continuous execution velocity (SPAO loop responsiveness) rather than waiting for perfect upfront context (Analysis Paralysis). The path is generated through physical interaction with the terrain, modeled as water flowing through a Geological Riverbed.
+The architectural principle that the system must rely on continuous execution velocity (SPAOR loop responsiveness) rather than waiting for perfect upfront context (Analysis Paralysis). The path is generated through physical interaction with the terrain, modeled as water flowing through a Geological Riverbed.
 
 ### Default Ziran
 The metaphysical axiom that the system's "out-of-the-box" container state must natively manifest Ziran and Wu-wei. It dictates that background execution and silence are the structural defaults, and the Operator must never be forced to actively configure the system just to achieve an un-opinionated Flow State. Configuration is reserved strictly for active "opt-in" deviations.
@@ -157,7 +184,7 @@ We reserve the **"Meta-"** prefix strictly for **recursive structures** within t
 * **Meta-Graph**: The entire Directed Acyclic Graph (DAG) of the repository's topological Nodes (vertices) linked by dependency edges. It maps the spatial evolution of the system.
 * **Meta-Tracker**: A cloud container (GitHub Issue, e.g. Issue #10) that tracks *other trackers* (the individual Node issues along a Path subgraph).
 * **Meta-Index**: A catalog (checklist) whose entries *index other indexes* (references to closed transaction issues).
-* **Meta-Loop (SPAO Loop)**: A cyclic temporal protocol (**Sense-Plan-Act-Observe-Reflect**) governing the internal execution sequence of a single active Node.
+* **Meta-Loop (SPAOR Loop)**: A cyclic temporal protocol (**Sense-Plan-Act-Observe-Reflect**) governing the internal execution sequence of a single active Node.
 * **Meta-Repository**: The system repository (`agent-antigravity`) hosting the rules, tools, and engine managing other codebases.
 
 ---
@@ -170,9 +197,9 @@ To prevent terminology drift and ensure absolute precision across models and ope
 | :--- | :--- | :--- | :--- |
 | **Structural** | **Path** | A themed, directed subgraph or track within the **Meta-Graph** grouped to achieve a macro-objective (e.g. Issue #10). | Track-level roadmap progression. |
 | **Spatial** | **Flow (Single-Piece Flow)** | The dynamic serialization of work *along* or *across* Paths. Enforced by the $WIP=1$ constraint, it ensures only a single vertex of the **Meta-Graph** may be active/traversed at any given moment. | Strictly enforced by the $WIP=1$ constraint. |
-| **Temporal** | **Loop (Meta-Loop / SPAO)** | The cyclic 5-stage temporal execution protocol (**Sense → Plan → Act → Observe → Reflect**) executed *within* the boundaries of a single active Node (transitioning the system from one vertex to the next). | Stage-by-stage execution hygiene. |
+| **Temporal** | **Loop (Meta-Loop / SPAOR)** | The cyclic 5-stage temporal execution protocol (**Sense → Plan → Act → Observe → Reflect**) executed *within* the boundaries of a single active Node (transitioning the system from one vertex to the next). | Stage-by-stage execution hygiene. |
 
-* **Linguistic Rule**: You *run* the **Meta-Loop (SPAO Loop)** to complete a Node; this progresses the **Single-Piece Flow** sequentially along a planned **Path** within the **Meta-Graph**.
+* **Linguistic Rule**: You *run* the **Meta-Loop (SPAOR Loop)** to complete a Node; this progresses the **Single-Piece Flow** sequentially along a planned **Path** within the **Meta-Graph**.
 
 ---
 
@@ -185,13 +212,13 @@ A **pure, deterministic background process** containing zero Semantic Entropy (n
 A **non-deterministic reasoning engine** containing Semantic Entropy (an LLM). It interprets context, navigates ambiguity, and possesses intent.
 
 ### Frontier Agent
-The primary synchronous **Agent** directly tethered to the human Operator. It stands at the crest of the system's evolution, serves as the physical operator of the Sluice Gate, and orchestrates the primary SPAO loop.
+The primary synchronous **Agent** directly tethered to the human Operator. It stands at the crest of the system's evolution, serves as the physical operator of the Sluice Gate, and orchestrates the primary SPAOR loop.
 
 ### Sub-Agent
 An **asynchronous, orthogonal Agent** spawned by the Frontier Agent to handle high-friction, non-deterministic tasks in the background (e.g., Backlog Triage, sweeping branches). It possesses the full intelligence of an Agent but operates without blocking the Single-Piece Flow of the Frontier.
 
 ### Skill
-A **pure, atomic, deterministic callable**. It maintains zero state between invocations, has no SPAO/NL stage awareness, and maps to a single external system interaction. Independently testable.
+A **pure, atomic, deterministic callable**. It maintains zero state between invocations, has no SPAOR/NL stage awareness, and maps to a single external system interaction. Independently testable.
 
 ---
 
