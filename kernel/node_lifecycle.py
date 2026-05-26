@@ -331,7 +331,7 @@ class TerminalNode(BaseNode):
 
     @record_execution(stage="act")
     def checkout(self, branch_name: str, frontier_file: str = "artifacts/frontier_state.md") -> None:
-        if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
+        if not os.environ.get("SPAO_WORKSPACE_DIR") and not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
             
         from kernel.daemon_strategic import verify_node_transition_allowed
@@ -364,7 +364,7 @@ class TerminalNode(BaseNode):
             
             print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
     def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
-        if not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
+        if not os.environ.get("SPAO_WORKSPACE_DIR") and not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
  
         from drivers import path_resolver
