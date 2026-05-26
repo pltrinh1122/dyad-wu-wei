@@ -180,3 +180,87 @@ def test_git_fetch_default(mock_subprocess):
 def test_git_fetch_custom(mock_subprocess):
     git_client.fetch(remote="upstream", prune=False, cwd="/some/dir")
     mock_subprocess.assert_called_once_with(["git", "fetch", "upstream"], check=True, cwd="/some/dir")
+
+
+# --- Tests for rebase_with_conflict_resolution ---
+
+def test_rebase_with_conflict_resolution_clean(mock_subprocess):
+    """Clean rebase: no conflicts — function returns without extra calls."""
+    mock_subprocess.return_value = MagicMock(returncode=0, stdout="", stderr="")
+    git_client.rebase_with_conflict_resolution("origin/main", cwd="/repo")
+    # Only one subprocess call: the initial rebase
+    mock_subprocess.assert_called_once_with(
+        ["git", "rebase", "origin/main"], capture_output=True, text=True, cwd="/repo"
+    )
+
+
+def test_rebase_with_conflict_resolution_sha256_autoresolve(tmp_path):
+    """SHA256 conflict: auto-regenerates checksum file and continues rebase successfully."""
+    import hashlib
+    import subprocess
+    from unittest.mock import patch, call, MagicMock
+
+    # Set up filesystem: a source yml and conflicted sha256 file
+    artifacts_dir = tmp_path / "artifacts"
+    artifacts_dir.mkdir()
+    frontier_yml = artifacts_dir / "frontier_state.yml"
+    frontier_yml.write_text("active_node: none\n")
+    frontier_sha = artifacts_dir / "frontier_state.yml.sha256"
+    frontier_sha.write_text("<<<<<<< HEAD\nold_hash\n=======\nnew_hash\n>>>>>>> origin/main\n")
+
+    expected_digest = hashlib.sha256(b"active_node: none\n").hexdigest()
+
+    call_log = []
+
+    def fake_run(cmd, **kwargs):
+        call_log.append(cmd)
+        mock = MagicMock()
+        if cmd == ["git", "rebase", "origin/main"]:
+            mock.returncode = 1
+            mock.stdout = ""
+            mock.stderr = "CONFLICT"
+        elif cmd == ["git", "diff", "--name-only", "--diff-filter=U"]:
+            mock.returncode = 0
+            mock.stdout = "artifacts/frontier_state.yml.sha256\n"
+        elif cmd == ["git", "add", "artifacts/frontier_state.yml.sha256"]:
+            mock.returncode = 0
+        elif cmd == ["git", "rebase", "--continue"]:
+            mock.returncode = 0
+            mock.stdout = "Applied patch."
+            mock.stderr = ""
+        return mock
+
+    with patch("drivers.git_client._run", side_effect=fake_run):
+        git_client.rebase_with_conflict_resolution("origin/main", cwd=str(tmp_path))
+
+    # Verify the checksum was regenerated correctly
+    assert frontier_sha.read_text().strip() == expected_digest
+    assert ["git", "rebase", "--continue"] in call_log
+
+
+def test_rebase_with_conflict_resolution_unresolvable(tmp_path):
+    """Unresolvable conflict: rebase is aborted and a clear error is raised."""
+    from unittest.mock import patch, MagicMock
+
+    call_log = []
+
+    def fake_run(cmd, **kwargs):
+        call_log.append(cmd)
+        mock = MagicMock()
+        if cmd == ["git", "rebase", "origin/main"]:
+            mock.returncode = 1
+            mock.stdout = ""
+            mock.stderr = "CONFLICT"
+        elif cmd == ["git", "diff", "--name-only", "--diff-filter=U"]:
+            mock.returncode = 0
+            mock.stdout = "kernel/some_code.py\n"
+        elif cmd == ["git", "rebase", "--abort"]:
+            mock.returncode = 0
+        return mock
+
+    with patch("drivers.git_client._run", side_effect=fake_run):
+        with pytest.raises(Exception, match="Auto-resolution could not handle"):
+            git_client.rebase_with_conflict_resolution("origin/main", cwd=str(tmp_path))
+
+    assert ["git", "rebase", "--abort"] in call_log
+

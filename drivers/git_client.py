@@ -58,6 +58,86 @@ def rebase(target: str = "origin/main", cwd: str | None = None) -> None:
     """Rebases the current branch onto target, ensuring conflict-free push."""
     _run(["git", "rebase", target], check=True, cwd=cwd)
 
+
+@record_execution(stage="skill")
+def rebase_with_conflict_resolution(target: str = "origin/main", cwd: str | None = None) -> None:
+    """Rebases the current branch onto target with automatic resolution of deterministic conflicts.
+
+    Deterministic auto-resolvable patterns:
+    - ``artifacts/frontier_state.yml.sha256``: regenerated from the merged
+      ``frontier_state.yml`` via SHA-256 so it is always correct post-merge.
+
+    Any remaining conflicts are surfaced as a clear error that aborts the rebase
+    and lists the conflicting files so the operator can act.
+
+    Args:
+        target: The rebase target ref (default: ``origin/main``).
+        cwd:    Working directory for git operations (e.g. a worktree path).
+    """
+    import hashlib
+
+    # Known files whose conflicts can be resolved deterministically.
+    SHA256_CHECKSUM_FILE = "artifacts/frontier_state.yml.sha256"
+    SHA256_SOURCE_FILE   = "artifacts/frontier_state.yml"
+
+    res = _run(["git", "rebase", target], capture_output=True, text=True, cwd=cwd)
+    if res.returncode == 0:
+        # Clean rebase — nothing to do.
+        return
+
+    # Rebase failed — inspect the conflict list.
+    conflict_res = _run(
+        ["git", "diff", "--name-only", "--diff-filter=U"],
+        capture_output=True, text=True, cwd=cwd,
+    )
+    conflicted_files = [f.strip() for f in conflict_res.stdout.splitlines() if f.strip()]
+
+    unresolved = []
+    for conflict_file in conflicted_files:
+        if conflict_file == SHA256_CHECKSUM_FILE:
+            # Auto-resolve: regenerate the SHA-256 from the merged source file.
+            root = cwd or "."
+            source_path = os.path.join(root, SHA256_SOURCE_FILE)
+            dest_path   = os.path.join(root, SHA256_CHECKSUM_FILE)
+            if os.path.exists(source_path):
+                with open(source_path, "rb") as f:
+                    digest = hashlib.sha256(f.read()).hexdigest()
+                with open(dest_path, "w") as f:
+                    f.write(digest + "\n")
+                _run(["git", "add", SHA256_CHECKSUM_FILE], check=True, cwd=cwd)
+                print(
+                    f"[🔧 AUTO-RESOLVE] Regenerated {SHA256_CHECKSUM_FILE} "
+                    f"from {SHA256_SOURCE_FILE} (SHA-256: {digest[:12]}...)"
+                )
+            else:
+                unresolved.append(conflict_file)
+        else:
+            unresolved.append(conflict_file)
+
+    if unresolved:
+        # Abort the rebase so the worktree is not left in a broken state.
+        _run(["git", "rebase", "--abort"], cwd=cwd)
+        raise Exception(
+            f"Reflection Blocked (WHY-0083): Branch has unresolved merge conflicts "
+            f"with '{target}'. Auto-resolution could not handle: {unresolved}. "
+            f"You must resolve these conflicts locally before reflecting."
+        )
+
+    # All conflicts resolved — continue the rebase.
+    continue_env = {**os.environ, "GIT_EDITOR": "true"}
+    cont_res = _run(
+        ["git", "rebase", "--continue"],
+        capture_output=True, text=True, env=continue_env, cwd=cwd,
+    )
+    if cont_res.returncode != 0:
+        _run(["git", "rebase", "--abort"], cwd=cwd)
+        raise Exception(
+            f"Reflection Blocked (WHY-0083): Rebase --continue failed after "
+            f"auto-resolution of deterministic conflicts. "
+            f"stderr: {cont_res.stderr.strip()}"
+        )
+
+
 @record_execution(stage="skill")
 def status_porcelain(cwd: str | None = None) -> str:
     """Returns git status in porcelain format."""
