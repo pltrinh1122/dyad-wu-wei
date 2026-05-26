@@ -2,9 +2,9 @@
 
 There are many Dao. This is the DZ-CIL Dao.
 
-A Way of building autonomous systems through Ziran (naturalness), Wu-wei (effortless action), Dialectical Falsification (stress-testing every claim), and Epistemic Accrual (learning that compounds). It holds that autonomous software is not engineered — it is *shaped*.
+A Way of building autonomous systems through naturalness (Ziran), effortless action (Wu-wei), stress-testing every claim (Dialectical Falsification), and learning that compounds (Epistemic Accrual). It holds that autonomous software is not engineered — it is *shaped*.
 
-Before a single line of code is written, the environment exists as pure Ziran: the probabilistic reasoning of Large Language Models, the deterministic physics of a runtime, the immutable tree structure of Git. Pure potential, no purpose.
+Before a single line of code is written, the environment exists as pure nature: the probabilistic reasoning of Large Language Models, the deterministic physics of a runtime, the immutable tree structure of Git. Pure potential, no purpose.
 
 The Dao shapes this potential through **The Shaping** — a strict ontological cascade: define a Telos (destination), derive the Invariants (laws), declare the Intents (vectors), and the Dao Engine emerges. Only then does the current flow.
 
