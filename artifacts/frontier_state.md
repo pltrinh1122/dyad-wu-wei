@@ -2998,6 +2998,19 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 806: Node 806: Activity 806: Implement bin/node retro command for Epistemic Reflection
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 806: Implement bin/node retro attach
+- **Status**: Completed
+- **Learnings & Context**: Implemented TerminalNode.retro_attach() in node_lifecycle.py and wired it as 'bin/node retro attach <issue_id> <retro_file> <branch_name>'. The command resolves the retro file, copies it to artifacts/audit/ if needed, stages+commits+pushes to the active branch. Idempotent. 253 tests pass (+2 new). Closes WHY-0770 Gap 2 — the Autonomous Learning Loop now has a programmatic retro attachment mechanism.
+- **Feedforward Invariants**:
+  - `WHY-0082`
+  - `WHY-0770`
+
 ## Current Active Path
 None
 
