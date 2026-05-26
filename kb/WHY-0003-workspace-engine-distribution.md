@@ -67,3 +67,16 @@ git pull origin main
 cd ..
 ./.workspace/bin/node status
 ```
+
+## 4. The Domain Sovereignty Invariant (GEMINI.md Decoupling)
+
+A consequence of isolating the engine in a submodule is that the parent's `GEMINI.md` file (which contains the Agentic Core Loop instructions) is physically hidden from the root of the child workspace. 
+
+We explicitly **reject** the proposition that the child workspace's `GEMINI.md` should automatically "source" or concatenate the parent's `GEMINI.md`.
+
+### Falsification of Auto-Sourcing
+If the child workspace blindly inherits the parent's `GEMINI.md`, the child agent will suffer severe cognitive dissonance:
+1. **Persona Bleed**: The parent's `GEMINI.md` establishes the "Meta-Orchestrator" or "Frontier Agent" persona, which is mathematically tasked with *modifying the execution engine itself* (e.g., maintaining `kernel/` and `drivers/`). The child workspace agent is a downstream user of the engine, tasked with building a specific application (`dz-ta`). 
+2. **Path Hallucinations**: Sourcing the parent's rules would command the child agent to obey constraints (like the `drivers/` vs `kernel/` architectural boundary) on folders that don't exist in its local repository, leading to immediate execution paralysis.
+
+**The Solution:** The child workspace MUST define its own sovereign, standalone `GEMINI.md` (The "Model 1" Persona) that sets rules for its specific application domain. The universal system invariants (e.g., TDD, SPAO loop logic) are enforced *natively by the executables* (`./.workspace/bin/node`), not through raw text prompts. The agent trusts the engine's gates, rather than reading the engine's source code rules.
