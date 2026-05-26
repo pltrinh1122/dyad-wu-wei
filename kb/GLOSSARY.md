@@ -55,8 +55,11 @@ The **DZ-CIL Hybrid Triad** action for increasing metabolic efficiency. It repla
 
 To resolve ontological confusion between the logic, the file system, and the host platform, the architecture is divided into three distinct operational boundaries:
 
+### The Core (The Static Machinery / `SPAO_CORE_DIR`)
+The cloned repository of deterministic orchestrators (`kernel/`), stateless drivers (`drivers/`), and CLI adapters (`bin/`). It is entirely inert — a set of Python and Bash scripts sitting on a hard drive. The Core is a necessary but insufficient precondition for the Dao Engine. Without Semantic Entropy (an LLM) and a Sovereign Domain Telos (`kb/`), the Core cannot spark into a living loop. *Analogy: The unassembled loom sitting in the warehouse. **Not** synonymous with "Dao Engine."*
+
 ### The Dao Engine (The Logic / State Machine)
-The conceptual, logical mechanism that governs the system (Stage 4 of The Shaping). It is the abstract SPAO loop, the rules of Next-Best-Action (NBA) calculation, and the deterministic state-machine that channels our Intent vectors safely toward the North Star. *Analogy: The rules of the game.*
+The conceptual, logical mechanism that governs the system (Stage 4 of The Shaping). It is the abstract SPAO loop, the rules of Next-Best-Action (NBA) calculation, and the deterministic state-machine that channels our Intent vectors safely toward the North Star. The Dao Engine materializes only when The Core is combined with a Domain Telos and Semantic Entropy (`WHAT-0068`). *Analogy: The rules of the game.*
 
 ### The DZ-OS (The Physical Substrate)
 The Dao-Ziran Operating System. This is the physical footprint and materialization of the Dao Engine on a hard drive. It is the specific architecture of folders (`kernel/`, `drivers/`, `kb/`, `artifacts/`) bounded by the Current Working Directory (`cwd = "."`). *Analogy: The physical game board and pieces.*
