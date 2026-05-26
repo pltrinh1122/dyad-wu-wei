@@ -146,7 +146,10 @@ To prevent conceptual confusion, we establish a strict boundary between two orga
 2. **Metasystem Tier (The Agentic Governance System - Antigravity)**: Represents the topological, state, and cognitive engine that coordinates repository progress.
 
 ### The Taxonomy of Base Primitives
-**Node**, **Path**, and **Discovery** (see also: **Probe**) are native **Metasystem-tier primitives**. Because they *exclusively* exist within our agentic governance layer (there is no such thing as an "Application-tier Path" or "Application-tier Discovery" in our codebase), prepending "Meta-" to them is redundant. We keep these base terms simple and clean.
+**Node** and **Path** are the two native Metasystem-tier primitives. Because they *exclusively* exist within our agentic governance layer (there is no such thing as an "Application-tier Path"), prepending "Meta-" to them is redundant. We keep these base terms simple and clean.
+
+**Discovery** (see also: **Probe**) is *not* a third primitive — it is a **constrained variant of a Terminal Node** subject to the Probe Invariant: no functional mutations; outcome is exclusively a `WHY-*` Decision Record or an implementation plan.
+
 
 ### The Recursive "Meta-" Prefix Rule
 We reserve the **"Meta-"** prefix strictly for **recursive structures** within the Metasystem tier: when a component governs, contains, or indexes other components of the *same type*:
