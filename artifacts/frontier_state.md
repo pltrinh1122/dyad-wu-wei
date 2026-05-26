@@ -3011,6 +3011,20 @@
   - `WHY-0082`
   - `WHY-0770`
 
+## Node 808: Node 808: Activity 808: Implement merge conflict verification hook
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 808: Implement Merge Conflict Verification Hook
+- **Status**: Completed
+- **Learnings & Context**: Added rebase_with_conflict_resolution() to git_client.py — auto-resolves the recurring frontier_state.yml.sha256 conflict by regenerating the checksum from the merged source file. Wired into reflect(). Aborts cleanly and surfaces a WHY-0083 error for any non-deterministic conflicts. 256 tests pass (+3). Closes WHY-0770 Gap 3.
+- **Feedforward Invariants**:
+  - `WHY-0082`
+  - `WHY-0083`
+  - `WHY-0770`
+
 ## Current Active Path
 None
 
