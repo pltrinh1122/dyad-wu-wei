@@ -3418,9 +3418,8 @@ nodes:
   invariants: []
 - name: 'Node 1154: Discovery 1154: Plan - Codify Falsifications and Extend Lexical
     Guard'
-  status: Backlog
-  learnings: Technical design and proposed changes for Codify Falsifications and Extend
-    Lexical Guard.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1155: Activity 1155: Reflect - Codify Falsifications and Extend Lexical
     Guard'
@@ -3446,6 +3445,11 @@ nodes:
     Thesis into the Dao
   invariants: []
 - name: 1153-harmonize-prompts
+  status: Completed
+  learnings: '-'
+  invariants:
+  - '-'
+- name: 1154-plan-codify-falsifications
   status: Completed
   learnings: '-'
   invariants:

@@ -3303,8 +3303,8 @@
   - `[ ]` None
 
 ## Node 1154: Discovery 1154: Plan - Codify Falsifications and Extend Lexical Guard
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Codify Falsifications and Extend Lexical Guard.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3333,6 +3333,12 @@
   - `[ ]` None
 
 ## 1153-harmonize-prompts
+- **Status**: Completed
+- **Learnings & Context**: -
+- **Feedforward Invariants**:
+  - `-`
+
+## 1154-plan-codify-falsifications
 - **Status**: Completed
 - **Learnings & Context**: -
 - **Feedforward Invariants**:
