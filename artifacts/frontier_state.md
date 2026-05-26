@@ -3045,6 +3045,19 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 781: Activity 781: Update GLOSSARY.md to remove Manager taxonomy
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 781: Update GLOSSARY.md to remove Manager taxonomy
+- **Status**: Completed
+- **Learnings & Context**: Remediated 4 stale GLOSSARY entries: Probe [DEPRECATED] -> [ALIAS->Discovery], prompt_backlog.md -> .yml, Base Primitives Probe -> Discovery, kernel/ Workflows -> Daemons. 284 tests pass. Closes WHY-0770 Gap 5 — all 5 gaps now closed.
+- **Feedforward Invariants**:
+  - `WHY-0082`
+  - `WHY-0770`
+
 ## Current Active Path
 None
 

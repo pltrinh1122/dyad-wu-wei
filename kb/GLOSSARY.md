@@ -25,7 +25,7 @@ A leaf Node in the Meta-Graph that performs functional execution (e.g., an Activ
 A grouping or parent Node in the Meta-Graph that encapsulates a themed subgraph (e.g., a Path). It does not create branch mutations directly but acts as a macro-ledger container for tracking Terminal Nodes.
 
 ### Probe
-**[DEPRECATED]** See **Discovery**. A legacy term for a purely investigatory Node. Replaced by the DZ-CIL Hybrid Triad to reflect the synthesis of mathematical execution and organic intent (see `WHY-0072`).
+**[ALIAS → Discovery]** In DZ-CIL Hybrid Triad vocabulary, a **Probe** is a **Discovery** node — a time-boxed, investigatory Node that produces no functional mutations; its outcome is exclusively a `WHY-*` Decision Record or an implementation plan (see `WHY-0072`). The term `Probe` remains valid in backlog CLI invocations (e.g., `bin/backlog new discovery`) and in invariant documentation (e.g., the Probe Invariant). Use **Discovery** in new DZ-CIL narrative prose and **Probe** when referencing the structural invariant.
 
 ### Discovery
 The **DZ-CIL Hybrid Triad** action for identifying the next step. A time-boxed, investigatory Node that synthesizes the Agent's mathematical execution (localized queries) with the Operator's high-level organic intent (macro-strategy).
@@ -123,7 +123,7 @@ The physical, chronological state ledger located at [frontier_state.md](file:///
 The **flat, dependency-linked queue** of declared future Nodes. Organized entirely as GitHub Issues labeled with `backlog` and containing explicit `depends-on: #XX` relationships to keep execution order mathematically sound.
 
 ### Prompt Backlog (Signal Queue)
-An ephemeral, unstructured local ingestion queue (`artifacts/prompt_backlog.md`) used to safely capture asynchronous operator prompts and system signals during the **Act phase**. Protects the single-piece flow (`WIP-N=1`) from cognitive interruption. This queue is flushed and processed during the **Observe phase**.
+An ephemeral, structured local ingestion queue (`artifacts/prompt_backlog.yml`) used to safely capture asynchronous operator prompts and system signals during the **Act phase**. Protects the single-piece flow (`WIP-N=1`) from cognitive interruption. This queue is flushed and processed during the **Observe phase**.
 
 ### WIP-N (Work-In-Progress at the Node level)
 The **operative, independently-enforced** constraint. At most **1** Node may occupy the Act Phase at any given moment (one active Git branch). Replaces the deprecated flat `WIP=1` term.
@@ -146,7 +146,10 @@ To prevent conceptual confusion, we establish a strict boundary between two orga
 2. **Metasystem Tier (The Agentic Governance System - Antigravity)**: Represents the topological, state, and cognitive engine that coordinates repository progress.
 
 ### The Taxonomy of Base Primitives
-**Node**, **Path**, and **Probe** are native **Metasystem-tier primitives**. Because they *exclusively* exist within our agentic governance layer (there is no such thing as an "Application-tier Path" or "Application-tier Probe" in our codebase), prepending "Meta-" to them is redundant. We keep these base terms simple and clean.
+**Node** and **Path** are the two native Metasystem-tier primitives. Because they *exclusively* exist within our agentic governance layer (there is no such thing as an "Application-tier Path"), prepending "Meta-" to them is redundant. We keep these base terms simple and clean.
+
+**Discovery** (see also: **Probe**) is *not* a third primitive — it is a **constrained variant of a Terminal Node** subject to the Probe Invariant: no functional mutations; outcome is exclusively a `WHY-*` Decision Record or an implementation plan.
+
 
 ### The Recursive "Meta-" Prefix Rule
 We reserve the **"Meta-"** prefix strictly for **recursive structures** within the Metasystem tier: when a component governs, contains, or indexes other components of the *same type*:
@@ -220,9 +223,9 @@ A physical post-condition/assertion of a completed Node that acts as a mandatory
 A top-level directory in the agentic architecture, defining a specific systemic function:
 * **`artifacts/` (RAM)**: Mutable runtime memory and outputs.
 * **`drivers/` (Hands)**: Deterministic, tested tools and interfaces (contains exclusively **Skills**).
-* **`kernel/` (Engine)**: Generative runtime state and execution loop (contains **Workflows**).
+* **`kernel/` (Engine)**: Stateful, multi-step, stage-aware orchestration sequences (contains **Daemons** and lifecycle managers).
 * **`kb/` (ROM)**: Immutable laws and primitives.
-* **`infra/` (Infrastructure)**: Orchestrated daemons and runner environments.
+* **`infra/` (Infrastructure)**: Orchestrated background processes and runner environments.
 
 ### CLI Adapter Layer (`bin/`)
 *Not a core execution Pillar.* Thin interface shell scripts that bridge human operators and agent intent to the underlying `drivers/` or `kernel/` layers.

@@ -3196,3 +3196,15 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Node 781: Activity 781: Update GLOSSARY.md to remove Manager taxonomy'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 781: Update GLOSSARY.md to remove Manager taxonomy'
+  status: Completed
+  learnings: "Remediated 4 stale GLOSSARY entries: Probe [DEPRECATED] -> [ALIAS->Discovery],\
+    \ prompt_backlog.md -> .yml, Base Primitives Probe -> Discovery, kernel/ Workflows\
+    \ -> Daemons. 284 tests pass. Closes WHY-0770 Gap 5 \u2014 all 5 gaps now closed."
+  invariants:
+  - WHY-0082
+  - WHY-0770
