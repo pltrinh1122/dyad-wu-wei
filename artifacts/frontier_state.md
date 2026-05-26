@@ -2587,8 +2587,8 @@
   - `[ ]` None
 
 ## Node 986: Discovery 986: Harmonize - Investigate and Enforce Workspace Isolation Boundaries
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Investigate and Enforce Workspace Isolation Boundaries.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3205,6 +3205,18 @@
 - **Learnings & Context**: Verified that branch naming regex is bypassed in checkout and reflect when SPAO_WORKSPACE_DIR is set, and added comprehensive unit tests validating this behavior.
 - **Feedforward Invariants**:
   - `tests pass`
+
+## Node 1137: Activity 1137: Reflect - Synthesize Epistemic Retrospective retro-986.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-986.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 986: Harmonize - Investigate and Enforce Workspace Isolation Boundaries
+- **Status**: Completed
+- **Learnings & Context**: Formulated the specification for enforcing workspace isolation boundaries and preventing parent repository leakage under WHY-0986.
+- **Feedforward Invariants**:
+  - `WHY-0986 document exists`
 
 ## Current Active Path
 None
