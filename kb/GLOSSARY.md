@@ -51,15 +51,18 @@ The **DZ-CIL Hybrid Triad** action for effortless adaptation. It replaces the me
 The **DZ-CIL Hybrid Triad** action for increasing metabolic efficiency. It replaces the purely mathematical "Optimization" and the purely spiritual "Cultivation." Refinement ensures that as the system travels toward the North Star, it simultaneously streamlines code execution while preserving the epistemic history needed to prevent future errors.
 * **Domain Boundary**: Read/Write access to codebase logic and tests, but *strictly constrained* to not altering external feature behavior. Strictly metabolic (speed, safety, clarity). See `WHAT-0073`.
 
-## ⚙️ The Tripartite Operating Environment
+## ⚙️ The Operating Environment
 
-To resolve ontological confusion between the logic, the file system, and the host platform, the architecture is divided into three distinct operational boundaries:
+To resolve ontological confusion between the static machinery, the abstract logic, the living loop, the file system, and the host platform, the architecture is divided into five distinct operational boundaries:
 
 ### The Core (The Static Machinery / `SPAO_CORE_DIR`)
 The cloned repository of deterministic orchestrators (`kernel/`), stateless drivers (`drivers/`), and CLI adapters (`bin/`). It is entirely inert — a set of Python and Bash scripts sitting on a hard drive. The Core is a necessary but insufficient precondition for the Dao Engine. Without Semantic Entropy (an LLM) and a Sovereign Domain Telos (`kb/`), the Core cannot spark into a living loop. *Analogy: The unassembled loom sitting in the warehouse. **Not** synonymous with "Dao Engine."*
 
 ### The Dao Engine (The Logic / State Machine)
 The conceptual, logical mechanism that governs the system (Stage 4 of The Shaping). It is the abstract SPAO loop, the rules of Next-Best-Action (NBA) calculation, and the deterministic state-machine that channels our Intent vectors safely toward the North Star. The Dao Engine materializes only when The Core is combined with a Domain Telos and Semantic Entropy (`WHAT-0068`). *Analogy: The rules of the game.*
+
+### The DZ-CIL (The Living Execution Instance)
+The Dao-Ziran Continuous Inference Loop. This is the Dao Engine *in motion* — the active, running instance cycling through Sense-Plan-Act-Observe-Reflect against a populated Strategic Intent, consuming Semantic Entropy and accruing epistemic knowledge into `kb/` on every tick. DZ-CIL is the Operate phase of ISBO — the steady-state where the system is alive and autonomously inferring. If the Dao Engine is the rules and the DZ-OS is the board, DZ-CIL is the game being actively played. *Analogy: The game in progress.*
 
 ### The DZ-OS (The Physical Substrate)
 The Dao-Ziran Operating System. This is the physical footprint and materialization of the Dao Engine on a hard drive. It is the specific architecture of folders (`kernel/`, `drivers/`, `kb/`, `artifacts/`) bounded by the Current Working Directory (`cwd = "."`). *Analogy: The physical game board and pieces.*
