@@ -1,6 +1,10 @@
 # WHY-0013: Sense-Phase Operator Gating (DEPRECATED)
 
-> **DEPRECATION NOTICE**: This document has been officially superseded by `WHY-0076-telemetry-over-dialogue.md`. The "Sense-Gate Invariant" was proven to be mathematically incompatible with the Ziran (Wu-Wei) Continuous Inference Loop and was abolished.
+**Date:** 2026-05-22
+**Status:** Deprecated (Superseded by WHY-0076)
+
+> [!WARNING]
+> This document has been officially superseded by `WHY-0076-telemetry-over-dialogue.md`. The "Sense-Gate Invariant" was proven to be mathematically incompatible with the Ziran (Wu-Wei) Continuous Inference Loop and was abolished.
 
 ## 1. Context
 Antigravity agents are designed to execute the SPAO (Sense-Plan-Act-Observe) loop autonomously. As the Frontier Agent, the agent reads the topological state, consults the `nba_evaluator`, and sequentially processes Nodes from the backlog.

@@ -1,8 +1,8 @@
-# WHY-0003: Falsification of Orthogonal Peer Topology (Reaffirmation of Model 1)
+# WHY-1081: Falsification of Orthogonal Peer Topology (Reaffirmation of Model 1)
 
 ## Classification
 - **Type**: WHY (Architectural Decision Record - Falsification)
-- **ID**: WHY-0003
+- **ID**: WHY-1081
 - **Author**: frontier (SG-0002)
 - **Created**: 2026-05-25 (Node 1081, Path 985)
 - **Context**: Resolving state corruption when updating downstream Model 1 sovereign workspaces.
