@@ -3094,6 +3094,48 @@
 - **Feedforward Invariants**:
   - `The Bootstrapping Invariant: The Agent must strictly require a strategic_intent.yml before entering the Operate phase.`
 
+## Node 1119: Path 1119: Achieve ISBO Completeness
+- **Status**: Backlog
+- **Learnings & Context**: End-to-end implementation of the ISBO (Install, Setup, Bootstrap, Operate) architecture to support seamless child workspace generation without Creator/Director role conflation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1120: Discovery 1120: Harmonize - Achieve ISBO Completeness
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1121: Discovery 1121: Plan - Achieve ISBO Completeness
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Achieve ISBO Completeness.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1122: Activity 1122: Reflect - Achieve ISBO Completeness
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Achieve ISBO Completeness.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1123: Activity 1123: Bootstrap: Implement Child Strategic Intent Injection Hook
+- **Status**: Backlog
+- **Learnings & Context**: Force the Agent to request the Telos upon initial boot in a new child workspace.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1124: Activity 1124: Operate: Harden Dual-Backlog Routing
+- **Status**: Backlog
+- **Learnings & Context**: Ensure bin/backlog strictly reads from the child's artifacts/ when SPAO_WORKSPACE_DIR is set.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1120: Harmonize - Achieve ISBO Completeness
+- **Status**: Completed
+- **Learnings & Context**: N/A
+- **Feedforward Invariants**:
+  - `N/A`
+
 ## Current Active Path
 None
 

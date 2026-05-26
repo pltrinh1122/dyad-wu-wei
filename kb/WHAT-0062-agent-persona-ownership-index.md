@@ -39,7 +39,7 @@ cannot be verified, the gate **must fail-closed**.
 |---------|---------------|---------------------------------------------|---------------------------------------------|-------------|
 | NS-0001 | shared        | —                                           | —                                           | shared      |
 | SG-0001 | agent-sg1     | kb/WHAT-0061-agent-persona-sg-0001-ownership.md | kb/WHY-0061-agent-persona-sg-0001-ownership.md | covered |
-| SG-0002 | agent-sg2     | kb/WHAT-0057-agent-persona-sg-0002-ownership.md | kb/WHY-0057-agent-persona-sg-0002-ownership.md | covered |
+| SG-0002 | shared        | kb/WHAT-0057-agent-persona-sg-0002-ownership.md | kb/WHY-0057-agent-persona-sg-0002-ownership.md | covered |
 | SG-0003 | shared        | —                                           | —                                           | shared      |
 | SG-0004 | unassigned    | (pending)                                   | (pending)                                   | gap         |
 | SG-0005 | agent-sg5     | kb/WHAT-0059-agent-persona-sg-0005-ownership.md | kb/WHY-0059-agent-persona-sg-0005-ownership.md | covered |
