@@ -1,4 +1,5 @@
 import os
+import sys
 import re
 import json
 import subprocess
@@ -40,15 +41,15 @@ def log_stage_advancement(stage: str, status: str, details: str = "") -> None:
         msg = f"[{stage_label}] {status}"
         if details:
             msg += f" - {details}"
-        print(msg)
+        print(msg, file=sys.stdout, flush=True)
         return
 
-    print("\n" + "═"*60)
-    print(f" 🔄 SPAO Loop Stage  ►  {stage_label}")
-    print(f" 📌 Status           ►  {status}")
+    print("\n" + "═"*60, file=sys.stdout, flush=True)
+    print(f" 🔄 SPAO Loop Stage  ►  {stage_label}", file=sys.stdout, flush=True)
+    print(f" 📌 Status           ►  {status}", file=sys.stdout, flush=True)
     if details:
-        print(f" 📝 Details          ►  {details}")
-    print("═"*60 + "\n")
+        print(f" 📝 Details          ►  {details}", file=sys.stdout, flush=True)
+    print("═"*60 + "\n", file=sys.stdout, flush=True)
 
 class BaseNode:
     """Abstract base class for all Antigravity Nodes."""
