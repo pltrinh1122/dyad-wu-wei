@@ -3119,8 +3119,8 @@
   - `[ ]` None
 
 ## Node 1123: Activity 1123: Bootstrap: Implement Child Strategic Intent Injection Hook
-- **Status**: Backlog
-- **Learnings & Context**: Force the Agent to request the Telos upon initial boot in a new child workspace.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3153,6 +3153,12 @@
 - **Learnings & Context**: Evolved workspace init command to accept custom target directories.
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## Activity 1123: Bootstrap: Implement Child Strategic Intent Injection Hook
+- **Status**: Completed
+- **Learnings & Context**: Enforced strategic_intent.yml existence checks inside bin/workspace wrapper for child workspaces.
+- **Feedforward Invariants**:
+  - `Bootstrapping Invariant: The Agent must require strategic_intent.yml before entering the Operate phase.`
 
 ## Current Active Path
 None

@@ -17,6 +17,7 @@ def print_help():
     print("  status [args...]     Forward status dashboard command")
     print("  prompt [args...]     Forward prompt backlog commands")
     print("  test [args...]       Forward test harness command")
+    print("  strategic [args...]  Forward strategic intent commands")
     sys.exit(0)
 
 def main():
@@ -46,13 +47,23 @@ def main():
         print(f"Error: Workspace path {workspace_path} does not exist. Please re-run init.")
         sys.exit(1)
         
+    # Enforce Bootstrapping Invariant
+    strategic_intent_path = os.path.join(workspace_path, "artifacts", "strategic_intent.yml")
+    if subcmd != "strategic" and not os.path.exists(strategic_intent_path):
+        print("Error: Workspace Bootstrap Invariant Violation. 'artifacts/strategic_intent.yml' is missing.")
+        print("The Agent cannot enter the Operate phase without a defined strategic intent.")
+        print("Please initialize your intent by running:")
+        print("  ./bin/workspace strategic add")
+        sys.exit(1)
+        
     # 2. Map subcommand to target script in parent bin/
     bin_map = {
         "node": "node",
         "backlog": "backlog",
         "status": "status",
         "prompt": "prompt",
-        "test": "run-tests"
+        "test": "run-tests",
+        "strategic": "strategic"
     }
     
     if subcmd not in bin_map:

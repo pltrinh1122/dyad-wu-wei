@@ -3257,9 +3257,8 @@ nodes:
   invariants: []
 - name: 'Node 1123: Activity 1123: Bootstrap: Implement Child Strategic Intent Injection
     Hook'
-  status: Backlog
-  learnings: Force the Agent to request the Telos upon initial boot in a new child
-    workspace.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1124: Activity 1124: Operate: Harden Dual-Backlog Routing'
   status: Backlog
@@ -3284,3 +3283,10 @@ nodes:
   status: Completed
   learnings: Evolved workspace init command to accept custom target directories.
   invariants: []
+- name: 'Activity 1123: Bootstrap: Implement Child Strategic Intent Injection Hook'
+  status: Completed
+  learnings: Enforced strategic_intent.yml existence checks inside bin/workspace wrapper
+    for child workspaces.
+  invariants:
+  - 'Bootstrapping Invariant: The Agent must require strategic_intent.yml before entering
+    the Operate phase.'
