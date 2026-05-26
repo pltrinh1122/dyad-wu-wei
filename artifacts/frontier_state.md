@@ -2605,8 +2605,8 @@
   - `[ ]` None
 
 ## Node 989: Activity 989: Reflect - Investigate and Enforce Workspace Isolation Boundaries
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Investigate and Enforce Workspace Isolation Boundaries.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3235,6 +3235,12 @@
 - **Learnings & Context**: Formulated the path mutation assertion specification under WHAT-0987.
 - **Feedforward Invariants**:
   - `WHAT-0987 document exists`
+
+## Activity 989: Reflect - Investigate and Enforce Workspace Isolation Boundaries
+- **Status**: Completed
+- **Learnings & Context**: Synthesized path-level reflection on workspace isolation boundaries and closed Path 985 under WHY-0989.
+- **Feedforward Invariants**:
+  - `WHY-0989 document exists`
 
 ## Current Active Path
 None
