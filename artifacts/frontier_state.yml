@@ -3361,3 +3361,12 @@ nodes:
     closed Path 985 under WHY-0989.
   invariants:
   - WHY-0989 document exists
+- name: 'Node 1073: Activity 1073: Fix workspace state leakage during node reflection'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 1073-fix-workspace-state-leakage
+  status: Completed
+  learnings: Enforced WHAT-0987 path validations to prevent copying parent tracking
+    state files into child workspace worktrees.
+  invariants: []

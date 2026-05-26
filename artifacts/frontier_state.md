@@ -3242,6 +3242,18 @@
 - **Feedforward Invariants**:
   - `WHY-0989 document exists`
 
+## Node 1073: Activity 1073: Fix workspace state leakage during node reflection
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## 1073-fix-workspace-state-leakage
+- **Status**: Completed
+- **Learnings & Context**: Enforced WHAT-0987 path validations to prevent copying parent tracking state files into child workspace worktrees.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 
