@@ -3025,6 +3025,19 @@
   - `WHY-0083`
   - `WHY-0770`
 
+## Node 776: Node 776: Activity 776: Implement Sluice Gate Sensor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 776: Implement Sluice Gate Sensor Driver
+- **Status**: Completed
+- **Learnings & Context**: Implemented drivers/sluice_gate_sensor.py as a pure stateless skill. Refactored audit_daemon.evaluate_pr_merged_monitor to delegate to it, removing silent exception suppression. Added 16 unit tests for detect_active_node_id, check_node_pr_merged, and evaluate(). 272 tests pass (+16). Closes WHY-0770 Gap 3.
+- **Feedforward Invariants**:
+  - `WHY-0082`
+  - `WHY-0770`
+
 ## Current Active Path
 None
 
