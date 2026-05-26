@@ -207,3 +207,34 @@ def test_backlog_cli_list(mock_backlog_gh, capsys):
             expected_output = "\n🎯 [SG-0001] Goal 1\n  Path 100: Prioritized Path [Depends: 200]\n\n📋 [Backlog / Unmapped]\n  Path 300: Unmapped Path\n\n"
             assert captured.out == expected_output
 
+def test_backlog_workspace_isolation(tmp_path):
+    import os
+    workspace_dir = tmp_path / "child_workspace"
+    workspace_dir.mkdir()
+    
+    # Create child artifacts/ frontier state path
+    artifacts_dir = workspace_dir / "artifacts"
+    artifacts_dir.mkdir()
+    frontier_file = artifacts_dir / "frontier_state.md"
+    frontier_file.touch()
+    
+    # Set config path in env
+    mock_env = {"SPAO_WORKSPACE_DIR": str(workspace_dir)}
+    
+    with patch.dict(os.environ, mock_env), \
+         patch("kernel.agent_frontier.register_backlog_node") as mock_register, \
+         patch("drivers.github_client.create_issue", return_value="https://github.com/pltrinh1122/agent-antigravity/issues/100"), \
+         patch("drivers.github_client.get_issue_details", return_value={"title": "Path 10: Parent Path Title", "state": "OPEN", "body": "## Meta-Index"}), \
+         patch("drivers.github_client.get_open_issues", return_value=[]), \
+         patch("drivers.github_client.add_label"), \
+         patch("drivers.github_client.rename_issue_title"), \
+         patch("drivers.github_client.update_issue_body"):
+         
+        daemon = BacklogDaemon()
+        daemon.add("discovery", "Workspace Work Item", "Description of work", path_id="10")
+        
+        # Verify that register_backlog_node was called with frontier_file in the workspace
+        mock_register.assert_called_once()
+        args, kwargs = mock_register.call_args
+        assert args[0] == str(frontier_file)
+
