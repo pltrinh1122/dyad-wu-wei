@@ -2549,10 +2549,10 @@
   - `[ ]` None
 
 ## Node 978: Discovery 978: Harmonize - Maintenance: Refine Knowledge Accrual Mechanisms
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Maintenance: Refine Knowledge Accrual Mechanisms.
+- **Status**: Completed
+- **Learnings & Context**: Refined synthesized guard rule extraction in drivers/knowledge_accrual_skill.py to prevent false-positives from generic assertion failures. Cleaned up four existing false-positive synthesized lexical guards from infra/audit-daemon/audit_config.yml. Isolated the lexical compliance check in tests/test_lexical_guard.py from untracked git worktree directories.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Node 979: Discovery 979: Plan - Maintenance: Refine Knowledge Accrual Mechanisms
 - **Status**: Backlog
