@@ -427,12 +427,23 @@ class TerminalNode(BaseNode):
             try:
                 import shutil
                 rel_workspace = os.environ.get("SPAO_WORKSPACE_DIR", "")
+                if rel_workspace and os.path.isabs(rel_workspace):
+                    core_dir = path_resolver.get_core_dir()
+                    if rel_workspace.startswith(core_dir):
+                        rel_workspace = os.path.relpath(rel_workspace, core_dir)
+
                 for ext in [".yml", ".yml.sha256", ".md"]:
                     src = path_resolver.resolve_workspace_path("artifacts", f"frontier_state{ext}")
                     dest = os.path.join(worktree_dir, rel_workspace, "artifacts", f"frontier_state{ext}")
-                    if os.path.exists(src) and os.path.abspath(src) != os.path.abspath(dest):
-                        os.makedirs(os.path.dirname(dest), exist_ok=True)
-                        shutil.copy2(src, dest)
+                    dest_abs = os.path.abspath(dest)
+                    worktree_abs = os.path.abspath(worktree_dir)
+                    
+                    if not dest_abs.startswith(worktree_abs):
+                        raise ValueError(f"Boundary Violation (WHAT-0987): Attempted to sync state outside worktree to {dest_abs}")
+                        
+                    if os.path.exists(src) and os.path.abspath(src) != dest_abs:
+                        os.makedirs(os.path.dirname(dest_abs), exist_ok=True)
+                        shutil.copy2(src, dest_abs)
             except Exception as e:
                 print(f"Warning: Failed to sync frontier state files to worktree: {e}")
             
