@@ -3261,9 +3261,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1124: Activity 1124: Operate: Harden Dual-Backlog Routing'
-  status: Backlog
-  learnings: Ensure bin/backlog strictly reads from the child's artifacts/ when SPAO_WORKSPACE_DIR
-    is set.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Discovery 1120: Harmonize - Achieve ISBO Completeness'
   status: Completed
@@ -3290,3 +3289,8 @@ nodes:
   invariants:
   - 'Bootstrapping Invariant: The Agent must require strategic_intent.yml before entering
     the Operate phase.'
+- name: 'Activity 1124: Operate: Harden Dual-Backlog Routing'
+  status: Completed
+  learnings: Verified and added test coverage for backlog isolation routing under
+    child workspace directories.
+  invariants: []

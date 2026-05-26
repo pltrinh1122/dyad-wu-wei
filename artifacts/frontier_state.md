@@ -3125,8 +3125,8 @@
   - `[ ]` None
 
 ## Node 1124: Activity 1124: Operate: Harden Dual-Backlog Routing
-- **Status**: Backlog
-- **Learnings & Context**: Ensure bin/backlog strictly reads from the child's artifacts/ when SPAO_WORKSPACE_DIR is set.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3159,6 +3159,12 @@
 - **Learnings & Context**: Enforced strategic_intent.yml existence checks inside bin/workspace wrapper for child workspaces.
 - **Feedforward Invariants**:
   - `Bootstrapping Invariant: The Agent must require strategic_intent.yml before entering the Operate phase.`
+
+## Activity 1124: Operate: Harden Dual-Backlog Routing
+- **Status**: Completed
+- **Learnings & Context**: Verified and added test coverage for backlog isolation routing under child workspace directories.
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Current Active Path
 None
