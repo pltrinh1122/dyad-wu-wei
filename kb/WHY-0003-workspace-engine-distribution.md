@@ -68,15 +68,17 @@ cd ..
 ./.dz-cil/bin/node status
 ```
 
-## 4. The Domain Sovereignty Invariant (GEMINI.md Decoupling)
+## 4. The Fractal Dao Invariant (Sovereignty vs. Inheritance)
 
-A consequence of isolating the engine in a submodule is that the parent's `GEMINI.md` file (which contains the Agentic Core Loop instructions) is physically hidden from the root of the child workspace. 
+A critical consequence of isolating the engine in a submodule is that the parent's `GEMINI.md` and `kb/` primitives (the "Dao Wisdom") are physically shifted into the `.dz-cil/` subdirectory. 
 
-We explicitly **reject** the proposition that the child workspace's `GEMINI.md` should automatically "source" or concatenate the parent's `GEMINI.md`.
+We initially theorized that the child workspace should sever this inheritance to preserve "Domain Sovereignty" and prevent "Persona Bleed", resulting in a standalone local `GEMINI.md`.
 
-### Falsification of Auto-Sourcing
-If the child workspace blindly inherits the parent's `GEMINI.md`, the child agent will suffer severe cognitive dissonance:
-1. **Persona Bleed**: The parent's `GEMINI.md` establishes the "Meta-Orchestrator" or "Frontier Agent" persona, which is mathematically tasked with *modifying the execution engine itself* (e.g., maintaining `kernel/` and `drivers/`). The child workspace agent is a downstream user of the engine, tasked with building a specific application (`dz-ta`). 
-2. **Path Hallucinations**: Sourcing the parent's rules would command the child agent to obey constraints (like the `drivers/` vs `kernel/` architectural boundary) on folders that don't exist in its local repository, leading to immediate execution paralysis.
+### Falsification of the Sovereign Lobotomy
+This theory is catastrophically falsified. If the child workspace operates on a purely standalone `GEMINI.md` and ignores `.dz-cil/kb/`, the Agent entering the child workspace is fundamentally lobotomized. It loses the entire SPAO execution loop, all Universal Invariants, and the Meta-Orchestrator logic. The goal of DZ-CIL is not to build a local script executor, but to deploy the **Meta-Orchestrator** as a fractal methodology across any downstream repository. The Dao is universal; it does not bleed into the domain, it governs it.
 
-**The Solution:** The child workspace MUST define its own sovereign, standalone `GEMINI.md` (The "Model 1" Persona) that sets rules for its specific application domain. The universal system invariants (e.g., TDD, SPAO loop logic) are enforced *natively by the executables* (`./.dz-cil/bin/node`), not through raw text prompts. The agent trusts the engine's gates, rather than reading the engine's source code rules.
+### Synthesis (The Projection Sourcing Strategy)
+To maintain structural decoupling while ensuring the Agent fully inherits the Dao Wisdom, the child workspace MUST dynamically project the universal Dao into its local root context so the IDE Framework can load it.
+
+1. **Knowledge Base Projection**: The child workspace must project the universal knowledge base into its root via symlink: `kb -> .dz-cil/kb`. This ensures all `WHAT-` and `WHY-` primitives are natively available to the Agent's context resolution.
+2. **Dynamic GEMINI Sourcing**: The child's root `GEMINI.md` must act as a dynamic assembly interface. It must natively source the core universal logic from `.dz-cil/GEMINI.md` while appending its own local `artifacts/strategic_intent.yml` (Model 1 Sovereign Intent). This guarantees the Agent operates as the strict Meta-Orchestrator, but bounded by the local repository's specific architectural goals.
