@@ -74,8 +74,8 @@ The external host (e.g., the `agy` platform) that provides the raw LLM API conne
 
 ## 🔄 Execution Loop & Governance
 
-### SPAO (Meta-Loop)
-The universal **Sense-Plan-Act-Observe-Reflect** agentic protocol governing **all** agent/operator interactions. SPAO is **not scoped exclusively to Node execution** — it is the common temporal algorithm from which all loop instantiations are derived. Two concrete instantiations exist:
+### SPAOR (Meta-Loop)
+The universal **Sense-Plan-Act-Observe-Reflect** agentic protocol governing **all** agent/operator interactions. SPAOR is **not scoped exclusively to Node execution** — it is the common temporal algorithm from which all loop instantiations are derived. The acronym names all five load-bearing phases; the prior shorthand "SPAO" omitted Reflect by convention, not by design. Two concrete instantiations exist:
 
 | Instantiation | Acronym | Scope | Governed By |
 | :--- | :--- | :--- | :--- |
