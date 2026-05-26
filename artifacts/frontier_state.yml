@@ -2768,9 +2768,8 @@ nodes:
   invariants: []
 - name: 'Node 986: Discovery 986: Harmonize - Investigate and Enforce Workspace Isolation
     Boundaries'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Investigate and
-    Enforce Workspace Isolation Boundaries.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 988: Activity 988: Investigate PR 982 Workspace Boundary Failure'
   status: '[///] Act Phase'
@@ -3331,3 +3330,14 @@ nodes:
     this behavior.
   invariants:
   - tests pass
+- name: 'Node 1137: Activity 1137: Reflect - Synthesize Epistemic Retrospective retro-986.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-986.md into the system's operational guidelines (the Dao).
+  invariants: []
+- name: 'Discovery 986: Harmonize - Investigate and Enforce Workspace Isolation Boundaries'
+  status: Completed
+  learnings: Formulated the specification for enforcing workspace isolation boundaries
+    and preventing parent repository leakage under WHY-0986.
+  invariants:
+  - WHY-0986 document exists
