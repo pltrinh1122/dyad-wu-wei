@@ -6,8 +6,8 @@ When instantiating a child workspace (Setup phase), we must define a clear polic
 ## Decisions
 
 ### 1. What is Inherited (Baseline Physics)
-Child workspaces inherit the parent engine's core mechanics and structural rules to maintain overall architectural coherence (NS-0001):
-- **SPAO Loop Stages & Autonomous Learning**: The transitions (plan-start, plan-finish, checkout, reflect) remain identical. **Falsification Insight**: To ensure the child accumulates its own domain learning, the Autonomous Learning Loop (epistemic knowledge accrual into the local `kb/` directory) is explicitly inherited as an inescapable baseline physical invariant of the Reflect phase.
+Child workspaces inherit the parent engine's core mechanics and structural rules to maintain overall architectural coherence (Telos Coherence):
+- **SPAOR Loop Stages & Autonomous Learning**: The transitions (plan-start, plan-finish, checkout, reflect) remain identical. **Falsification Insight**: To ensure the child accumulates its own domain learning, the Autonomous Learning Loop (epistemic knowledge accrual into the local `kb/` directory) is explicitly inherited as an inescapable baseline physical invariant of the Reflect phase.
 - **Test Integrity**: Executing local test suites must verify code correctness before reflection.
 
 ### 2. What is Decoupled (Local Sovereignty)
