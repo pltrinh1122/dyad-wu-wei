@@ -3290,6 +3290,54 @@
 - **Feedforward Invariants**:
   - `Strategic intent correctly reflects all backlog mapping`
 
+## Node 1152: Path 1152: Codify Falsifications and Extend Lexical Guard
+- **Status**: Backlog
+- **Learnings & Context**: Address prompt queue: Codify kernel/bin coexistence, Core/Dao Engine distinction, Terminology Abstraction Thesis falsification, and extend lexical_guard for GLOSSARY-driven renames.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1153: Discovery 1153: Harmonize - Codify Falsifications and Extend Lexical Guard
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1154: Discovery 1154: Plan - Codify Falsifications and Extend Lexical Guard
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Codify Falsifications and Extend Lexical Guard.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1155: Activity 1155: Reflect - Codify Falsifications and Extend Lexical Guard
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Codify Falsifications and Extend Lexical Guard.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1156: Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine distinction
+- **Status**: Backlog
+- **Learnings & Context**: Codify falsifications for kernel/bin and Core/Dao into the KB
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1157: Activity 1157: Extend semantic_ledger.yml and lexical_guard for GLOSSARY-driven renames
+- **Status**: Backlog
+- **Learnings & Context**: Update lexical guards and semantic ledger to enforce GLOSSARY-driven renames (e.g. SPAO->SPAOR, North Star->Telos)
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1158: Activity 1158: Codify Dialectical Falsification of Terminology Abstraction Thesis
+- **Status**: Backlog
+- **Learnings & Context**: Ratify and codify the Dialectical Falsification of the Terminology Abstraction Thesis into the Dao
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## 1153-harmonize-prompts
+- **Status**: Completed
+- **Learnings & Context**: -
+- **Feedforward Invariants**:
+  - `-`
+
 ## Current Active Path
 None
 
