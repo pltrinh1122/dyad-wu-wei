@@ -232,3 +232,49 @@ def test_log_stage_advancement():
         mock_stdout.flush.assert_called()
 
 
+@mock.patch("kernel.node_lifecycle.git_client")
+@mock.patch("kernel.node_lifecycle.github_client")
+@mock.patch("kernel.node_lifecycle.agent_frontier")
+def test_branch_naming_regex_enforcement_and_exemption(mock_frontier, mock_gh, mock_git):
+    node = TerminalNode("1133")
+    
+    # 1. Normal mode (SPAO_WORKSPACE_DIR NOT set) - invalid branch name should raise ValueError in checkout
+    if "SPAO_WORKSPACE_DIR" in os.environ:
+        del os.environ["SPAO_WORKSPACE_DIR"]
+        
+    with pytest.raises(ValueError, match="Branch name MUST follow the standard: node/.*"):
+        node.checkout("custom-branch-name", "dummy_frontier.md")
+        
+    # 2. Normal mode (SPAO_WORKSPACE_DIR NOT set) - invalid branch name should raise ValueError in reflect
+    with pytest.raises(ValueError, match="Branch name MUST follow the standard: node/.*"):
+        node.reflect("dummy_frontier.md", "node-1133", "learnings", [], "msg", "custom-branch-name")
+
+    # 3. Workspace mode (SPAO_WORKSPACE_DIR set) - custom branch names should be allowed
+    os.environ["SPAO_WORKSPACE_DIR"] = "/tmp/mock-workspace"
+    try:
+        # Mock dependencies inside checkout to verify it bypasses the regex check and proceeds to other checks
+        with mock.patch("kernel.node_lifecycle.FlowTransaction"), \
+             mock.patch("kernel.daemon_strategic.verify_node_transition_allowed"), \
+             mock.patch.object(node, "_verify_state_purity"), \
+             mock.patch.object(node, "set_status"):
+            # This should NOT raise ValueError. It might raise other errors if mock is incomplete,
+            # but ValueError("Branch name MUST follow...") should not be raised.
+            try:
+                node.checkout("custom-branch-name", "dummy_frontier.md")
+            except Exception as e:
+                # We expect git/gh calls or other state/PR checks to fail, but not the ValueError
+                assert not isinstance(e, ValueError) or "Branch name MUST follow" not in str(e)
+                
+        # Similarly for reflect in workspace mode
+        with mock.patch("kernel.node_lifecycle.FlowTransaction"), \
+             mock.patch.object(node, "_verify_state_purity"), \
+             mock.patch.object(node, "get_worktree_path", return_value="/tmp/wt"):
+            try:
+                node.reflect("dummy_frontier.md", "node-1133", "learnings", [], "msg", "custom-branch-name")
+            except Exception as e:
+                assert not isinstance(e, ValueError) or "Branch name MUST follow" not in str(e)
+    finally:
+        del os.environ["SPAO_WORKSPACE_DIR"]
+
+
+

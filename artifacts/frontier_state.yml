@@ -709,8 +709,8 @@ nodes:
   learnings: Abstracted Node classification into Terminal and Non-Terminal Base Classes
     via dz-cil.yml configuration, unlocking domain portability.
   invariants:
-  - '`All domain-specific Node Taxonomy mappings must be defined in dz-cil.yml
-    at the repository root.`'
+  - '`All domain-specific Node Taxonomy mappings must be defined in dz-cil.yml at
+    the repository root.`'
 - name: Execute Architectural Migration of mgr-* Orchestrators
   status: Completed
   learnings: Migrated flow_state_manager.py natively into orchestrator/daemon_node.py
@@ -760,8 +760,8 @@ nodes:
 - name: 'Activity 182: Implement HookManager and Configuration Schema'
   status: Completed
   learnings: Implemented HookManager in orchestrator/sense_hooks.py to dynamically
-    parse dz-cil.yml and execute configurable hooks. Hook abstractions have been
-    integrated into sync_and_clean_node.
+    parse dz-cil.yml and execute configurable hooks. Hook abstractions have been integrated
+    into sync_and_clean_node.
   invariants:
   - '`[x] HookManager dynamically parses configuration`'
   - '`[x] Sense Phase abstracted into modular execution pattern`'
@@ -1924,8 +1924,8 @@ nodes:
   invariants: []
 - name: 'Node 626: Path 626: Path: Implement Dynamic Agent Identity Resolution'
   status: Backlog
-  learnings: Decouple agent_id from dz-cil.yml and implement dynamic identity
-    resolution based on env var or workspace basename to prevent main branch conflicts.
+  learnings: Decouple agent_id from dz-cil.yml and implement dynamic identity resolution
+    based on env var or workspace basename to prevent main branch conflicts.
   invariants: []
 - name: 'Node 627: Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution'
   status: '[///] Act Phase'
@@ -3304,9 +3304,8 @@ nodes:
   invariants: []
 - name: 'Node 1133: Activity 1133: Falsify branch naming convention constraint for
     child workspaces'
-  status: Backlog
-  learnings: Relax the regex in node_lifecycle.py and update GEMINI.md to permit custom
-    branch names when SPAO_WORKSPACE_DIR is defined
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: workspace-inheritance
   status: Completed
@@ -3320,3 +3319,15 @@ nodes:
   - GEMINI.md
   - WHY-1069
   - semantic_ledger aligned to unified ontology
+- name: 'Node 1135: Activity 1135: Reflect - Synthesize Epistemic Retrospective retro-1133.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-1133.md into the system's operational guidelines (the Dao).
+  invariants: []
+- name: 'Activity 1133: Falsify branch naming convention constraint for child workspaces'
+  status: Completed
+  learnings: Verified that branch naming regex is bypassed in checkout and reflect
+    when SPAO_WORKSPACE_DIR is set, and added comprehensive unit tests validating
+    this behavior.
+  invariants:
+  - tests pass

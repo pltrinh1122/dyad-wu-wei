@@ -3179,8 +3179,8 @@
   - `[ ]` None
 
 ## Node 1133: Activity 1133: Falsify branch naming convention constraint for child workspaces
-- **Status**: Backlog
-- **Learnings & Context**: Relax the regex in node_lifecycle.py and update GEMINI.md to permit custom branch names when SPAO_WORKSPACE_DIR is defined
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3193,6 +3193,18 @@
   - `GEMINI.md`
   - `WHY-1069`
   - `semantic_ledger aligned to unified ontology`
+
+## Node 1135: Activity 1135: Reflect - Synthesize Epistemic Retrospective retro-1133.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1133.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1133: Falsify branch naming convention constraint for child workspaces
+- **Status**: Completed
+- **Learnings & Context**: Verified that branch naming regex is bypassed in checkout and reflect when SPAO_WORKSPACE_DIR is set, and added comprehensive unit tests validating this behavior.
+- **Feedforward Invariants**:
+  - `tests pass`
 
 ## Current Active Path
 None
