@@ -33,18 +33,22 @@ We have adopted the **Orthogonal Peer Topology (The Synthesis)** as the canonica
 
 ### 3.1 Structural Blueprint
 
-A compliant child workspace MUST adopt the following physical layout:
+A compliant child workspace MUST adopt the following physical layout to achieve both separation of execution state and Dual-Context resolution of the Dao:
 
 ```text
 child-workspace/
-├── .git/                      # (1) The Project Repository (tracks sovereign artifacts/state)
+├── .git/                      # (1) The Project Repository
 ├── .worktrees/                # (2) Project Worktrees (dynamic node execution branches)
 │   └── node-X/
 ├── artifacts/                 # (3) Sovereign State Memory
-└── .dz-cil/                   # (4) The Engine Submodule
+├── kb/                        # (4) Sovereign Dao Subclass (Local WHY/WHAT Overrides)
+├── GEMINI.md                  # (5) Sovereign Dao Persona (Model 1 Rules)
+└── .dz-cil/                   # (6) The Engine Submodule (Universal Base Class)
     ├── .git                   # (Submodule pointer)
     ├── bin/                   # Engine Entrypoints
-    └── kernel/                # Core Orchestration Logic
+    ├── kernel/                # Core Orchestration Logic
+    ├── kb/                    # Universal Dao Primitives
+    └── GEMINI.md              # Universal Dao Persona
 ```
 
 ### 3.2 Key Invariants
