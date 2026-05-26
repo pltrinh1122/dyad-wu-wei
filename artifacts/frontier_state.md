@@ -3218,6 +3218,18 @@
 - **Feedforward Invariants**:
   - `WHY-0986 document exists`
 
+## Node 1139: Discovery 1139: Investigate PR 982 Workspace Boundary Failure V2
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1139: Investigate PR 982 Workspace Boundary Failure V2
+- **Status**: Completed
+- **Learnings & Context**: Formulated root cause analysis and recommendations for workspace isolation boundary failures under WHY-1139.
+- **Feedforward Invariants**:
+  - `WHY-1139 document exists`
+
 ## Current Active Path
 None
 
