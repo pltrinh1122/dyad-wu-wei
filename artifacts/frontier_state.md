@@ -3142,6 +3142,18 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 1066: Activity 1066: Setup: Refactor Workspace Deployment
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1066: Setup: Refactor Workspace Deployment
+- **Status**: Completed
+- **Learnings & Context**: Evolved workspace init command to accept custom target directories.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 
