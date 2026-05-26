@@ -1,8 +1,68 @@
 import re
 import os
+import json
 import yaml
 import hashlib
-from kernel.daemon_telemetry import record_execution
+from datetime import datetime, timezone
+from kernel.daemon_telemetry import record_execution, TelemetryDaemon
+
+
+def record_positive_feedback(issue_id: str, insight: str, reaffirm_path: str) -> None:
+    """Materialises a positive-feedback learning event into the system.
+
+    This is the **only** authorised code path that:
+    1. Writes a ``POSITIVE_FEEDBACK`` telemetry event to the ledger, so that
+       ``enforce_reflection_hook`` can detect it during the reflect phase.
+    2. Generates the ``reaffirm-<id>.md`` Dao reaffirmation document required
+       by the positive-feedback reflection gate (SG-0005).
+
+    Args:
+        issue_id:      The numeric node ID whose reflect gate will be satisfied
+                       (e.g. ``"974"``).
+        insight:       Free-text description of the positive pattern being
+                       reaffirmed. Becomes the body of the reaffirm document.
+        reaffirm_path: Absolute filesystem path where the ``reaffirm-<id>.md``
+                       file should be written (typically
+                       ``<repo_root>/artifacts/audit/reaffirm-<id>.md``).
+
+    Raises:
+        ValueError: If ``issue_id`` or ``insight`` are empty.
+        OSError:    If the file cannot be written to ``reaffirm_path``.
+    """
+    if not issue_id or not str(issue_id).strip():
+        raise ValueError("issue_id must be a non-empty string.")
+    if not insight or not insight.strip():
+        raise ValueError("insight must be a non-empty string.")
+
+    issue_id = str(issue_id).strip()
+
+    # 1. Emit POSITIVE_FEEDBACK telemetry event
+    daemon = TelemetryDaemon()
+    daemon.log_event(
+        stage="reflect",
+        event="POSITIVE_FEEDBACK",
+        node_id=issue_id,
+        metadata={
+            "status": "positive_feedback",
+            "insight_summary": insight[:200],  # cap for ledger readability
+        },
+    )
+
+    # 2. Materialise the reaffirm document
+    os.makedirs(os.path.dirname(reaffirm_path), exist_ok=True)
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    content = (
+        f"# Dao Reaffirmation — Node {issue_id}\n\n"
+        f"**Generated**: {ts}  \n"
+        f"**Node**: {issue_id}  \n\n"
+        f"## Reaffirmed Pattern\n\n"
+        f"{insight.strip()}\n\n"
+        f"## Epistemic Status\n\n"
+        f"This pattern has been validated by positive Operator feedback and is "
+        f"reaffirmed as part of the system Dao under SG-0005.\n"
+    )
+    with open(reaffirm_path, "w", encoding="utf-8") as f:
+        f.write(content)
 
 @record_execution(stage="skill")
 def parse_test_failure_diagnostics(pytest_output: str) -> list[dict]:

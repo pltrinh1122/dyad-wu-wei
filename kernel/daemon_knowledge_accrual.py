@@ -229,6 +229,17 @@ def main():
     # inject-context subcommand
     parser_inject = subparsers.add_parser("inject-context", help="Inject active path guidelines to GEMINI.md")
 
+    # reaffirm subcommand — records positive Operator feedback and materialises the reaffirm document
+    parser_reaffirm = subparsers.add_parser(
+        "reaffirm",
+        help="Record positive Operator feedback for a node, emitting a POSITIVE_FEEDBACK telemetry event and creating artifacts/audit/reaffirm-<id>.md",
+    )
+    parser_reaffirm.add_argument("issue_id", help="Target node issue ID")
+    parser_reaffirm.add_argument(
+        "insight",
+        help="Description of the positive pattern to reaffirm into the Dao",
+    )
+
     args = parser.parse_args()
     repo_root = get_repo_root()
 
@@ -238,6 +249,17 @@ def main():
         enforce_reflection_hook(args.issue_id, repo_root)
     elif args.command == "inject-context":
         inject_contextual_rules(repo_root)
+    elif args.command == "reaffirm":
+        reaffirm_path = os.path.join(repo_root, "artifacts", "audit", f"reaffirm-{args.issue_id}.md")
+        knowledge_accrual_skill.record_positive_feedback(
+            issue_id=args.issue_id,
+            insight=args.insight,
+            reaffirm_path=reaffirm_path,
+        )
+        print(f"✅ Positive feedback recorded for Node {args.issue_id}.")
+        print(f"   Reaffirmation document: {reaffirm_path}")
+        print(f"   POSITIVE_FEEDBACK telemetry event emitted.")
 
 if __name__ == "__main__":
     main()
+
