@@ -2599,8 +2599,8 @@
   - `[ ]` None
 
 ## Node 987: Discovery 987: Plan - Investigate and Enforce Workspace Isolation Boundaries
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Investigate and Enforce Workspace Isolation Boundaries.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3229,6 +3229,12 @@
 - **Learnings & Context**: Formulated root cause analysis and recommendations for workspace isolation boundary failures under WHY-1139.
 - **Feedforward Invariants**:
   - `WHY-1139 document exists`
+
+## Discovery 987: Plan - Investigate and Enforce Workspace Isolation Boundaries
+- **Status**: Completed
+- **Learnings & Context**: Formulated the path mutation assertion specification under WHAT-0987.
+- **Feedforward Invariants**:
+  - `WHAT-0987 document exists`
 
 ## Current Active Path
 None
