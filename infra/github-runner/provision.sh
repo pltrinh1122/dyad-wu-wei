@@ -17,7 +17,7 @@ fi
 
 echo "Fetching secure registration token via gh api..."
 # We explicitly set the repo name so gh api works even outside the git dir
-TOKEN=$(gh api -X POST repos/pltrinh1122/agent-antigravity/actions/runners/registration-token --jq .token)
+TOKEN=$(gh api -X POST repos/pltrinh1122/dz-cil/actions/runners/registration-token --jq .token)
 
 if [ -z "$TOKEN" ]; then
     echo "Failed to fetch registration token. Ensure gh CLI is authenticated."
@@ -26,7 +26,7 @@ fi
 
 echo "Configuring runner..."
 # Use --unattended to avoid interactive prompts
-./config.sh --url https://github.com/pltrinh1122/agent-antigravity --token "$TOKEN" --unattended --replace || true
+./config.sh --url https://github.com/pltrinh1122/dz-cil --token "$TOKEN" --unattended --replace || true
 
 echo "Generating User-Level Systemd Service..."
 mkdir -p ~/.config/systemd/user

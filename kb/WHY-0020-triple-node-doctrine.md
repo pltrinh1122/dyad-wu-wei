@@ -1,7 +1,7 @@
 # WHY-0020: Triple-Node Path Initialization Doctrine
 
 ## Context
-As the `agent-antigravity` metasystem matures, the structural integrity of the Meta-Graph becomes critical for long-term traceability and automated orchestration. We have evolved from a flat list model to a themed Path model, and recently discovered that inconsistent initialization of Paths (e.g., creating a Path without immediately populating its Meta-Index) leads to "orphaned" nodes and loss of topological clarity.
+As the `dz-cil` metasystem matures, the structural integrity of the Meta-Graph becomes critical for long-term traceability and automated orchestration. We have evolved from a flat list model to a themed Path model, and recently discovered that inconsistent initialization of Paths (e.g., creating a Path without immediately populating its Meta-Index) leads to "orphaned" nodes and loss of topological clarity.
 
 ## Decision
 We formally adopt the **Triple-Node Doctrine** for all Path initializations. Every new Path MUST be instantiated with exactly three specific Terminal Nodes before any functional codebase-mutating activities are added.

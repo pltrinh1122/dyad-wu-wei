@@ -1,7 +1,7 @@
 # WHAT-0064: Dynamic Agent Identity Resolution Specification
 
 ## 1. Definition & Intent
-To prevent conflicts on the `main` branch due to hardcoded, git-tracked `agent_id` values in configuration files (e.g. `antigravity.yml`), the system must dynamically resolve the identity of the executing agent at runtime.
+To prevent conflicts on the `main` branch due to hardcoded, git-tracked `agent_id` values in configuration files (e.g. `dz-cil.yml`), the system must dynamically resolve the identity of the executing agent at runtime.
 
 ## 2. Resolution Mechanism
 The agent identity must be resolved using the following order of precedence:
@@ -10,4 +10,4 @@ The agent identity must be resolved using the following order of precedence:
 3. **Default / None Fallback**: If neither source resolves to a valid agent ID, fall back to `None`.
 
 ## 3. Configuration Invalidation
-The configuration field `agent_id` inside `antigravity.yml` must not be hardcoded or tracked in Git. Instead, the `load_antigravity_yml()` loader function in `drivers/path_resolver.py` must invoke the dynamic identity resolution helper and inject the resolved `agent_id` dynamically into the loaded configuration.
+The configuration field `agent_id` inside `dz-cil.yml` must not be hardcoded or tracked in Git. Instead, the `load_engine_config()` loader function in `drivers/path_resolver.py` must invoke the dynamic identity resolution helper and inject the resolved `agent_id` dynamically into the loaded configuration.

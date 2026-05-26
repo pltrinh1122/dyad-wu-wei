@@ -586,9 +586,9 @@
 
 ## Abstract Nodes into Terminal and Non-Terminal Base Classes
 - **Status**: Completed
-- **Learnings & Context**: Abstracted Node classification into Terminal and Non-Terminal Base Classes via antigravity.yml configuration, unlocking domain portability.
+- **Learnings & Context**: Abstracted Node classification into Terminal and Non-Terminal Base Classes via dz-cil.yml configuration, unlocking domain portability.
 - **Feedforward Invariants**:
-  - `All domain-specific Node Taxonomy mappings must be defined in antigravity.yml at the repository root.`
+  - `All domain-specific Node Taxonomy mappings must be defined in dz-cil.yml at the repository root.`
 
 ## Execute Architectural Migration of mgr-* Orchestrators
 - **Status**: Completed
@@ -630,7 +630,7 @@
 
 ## Activity 182: Implement HookManager and Configuration Schema
 - **Status**: Completed
-- **Learnings & Context**: Implemented HookManager in orchestrator/sense_hooks.py to dynamically parse antigravity.yml and execute configurable hooks. Hook abstractions have been integrated into sync_and_clean_node.
+- **Learnings & Context**: Implemented HookManager in orchestrator/sense_hooks.py to dynamically parse dz-cil.yml and execute configurable hooks. Hook abstractions have been integrated into sync_and_clean_node.
 - **Feedforward Invariants**:
   - `[x] HookManager dynamically parses configuration`
   - `[x] Sense Phase abstracted into modular execution pattern`
@@ -1711,7 +1711,7 @@
 
 ## Node 626: Path 626: Path: Implement Dynamic Agent Identity Resolution
 - **Status**: Backlog
-- **Learnings & Context**: Decouple agent_id from antigravity.yml and implement dynamic identity resolution based on env var or workspace basename to prevent main branch conflicts.
+- **Learnings & Context**: Decouple agent_id from dz-cil.yml and implement dynamic identity resolution based on env var or workspace basename to prevent main branch conflicts.
 - **Feedforward Invariants**:
   - `[ ]` None
 

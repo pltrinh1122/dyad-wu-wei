@@ -11,7 +11,7 @@
 
 ### 1. Context & Design Tension
 
-The Operator requested a deployment playbook/script to install a new DZ-CIL deployment to start working on a project under the Model 1 Workspace architecture (see [WHY-0921](file:///mnt/shared_data/git_repos/agent-antigravity/kb/WHY-0921-dz-cil-workspace-architecture.md)).
+The Operator requested a deployment playbook/script to install a new DZ-CIL deployment to start working on a project under the Model 1 Workspace architecture (see [WHY-0921](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0921-dz-cil-workspace-architecture.md)).
 
 We must establish:
 1. A clear separation from the legacy `spao-install` script, which is left alone as it belongs to the old-Dao Model 2 full-runtime deployment framework.

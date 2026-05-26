@@ -30,7 +30,7 @@ This document details the alignment decisions on these issues.
 - **Decision**: Auto-register new issues in the local state. Upon successful creation of a new backlog node, the `BacklogManager` will append it directly to `artifacts/frontier_state.yml` under a new status of `Backlog` (or `status: Backlog` in the YAML structure). This ensures the local state matches GitHub without needing a manual checkout or sync step to discover them.
 
 ### 5. Path Retrospective Integration
-- **Decision**: Update [kb/templates/path_tracker.md](file:///mnt/shared_data/git_repos/agent-antigravity/kb/templates/path_tracker.md) to automatically include a `## Agent Retrospective` section containing placeholders for:
+- **Decision**: Update [kb/templates/path_tracker.md](file:///mnt/shared_data/git_repos/dz-cil/kb/templates/path_tracker.md) to automatically include a `## Agent Retrospective` section containing placeholders for:
   - **Continue**: Success patterns to persist.
   - **Stop**: Dysfunctions or anti-patterns to halt.
   - **Start**: Optimizations to introduce moving forward.

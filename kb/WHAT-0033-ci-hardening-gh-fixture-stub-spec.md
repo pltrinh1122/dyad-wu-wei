@@ -64,7 +64,7 @@ case "$*" in
 
   # PR create
   "pr create"*)
-    echo "https://github.com/pltrinh1122/agent-antigravity/pull/999"
+    echo "https://github.com/pltrinh1122/dz-cil/pull/999"
     ;;
 
   # PR list (open PRs check in sync)

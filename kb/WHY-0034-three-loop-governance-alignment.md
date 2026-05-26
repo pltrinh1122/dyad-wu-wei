@@ -1,6 +1,6 @@
 # WHY-0034: Three-Loop Governance Framework Alignment
 
-This document outlines the architectural and operational breakdown of the Three-Loop Project Governance Framework within the `agent-antigravity` context. 
+This document outlines the architectural and operational breakdown of the Three-Loop Project Governance Framework within the `dz-cil` context. 
 
 ## Context & Objectives
 
@@ -30,7 +30,7 @@ We break the briefing concepts down into five orthogonal units to seek clarifica
 * **Ontology**: Both SPAO and SDLC loops in this project target the `main` branch.
 * **Operator Decisions**:
   - **C1 (Worktree Separation)**: Option B (partitioned `.worktrees/spao/` vs `.worktrees/sdlc/` directories) was selected.
-  - **C2 (PR Purity Verification)**: Make the PR file-purity check/enforcement configurable for SPAO (e.g. in `antigravity.yml`).
+  - **C2 (PR Purity Verification)**: Make the PR file-purity check/enforcement configurable for SPAO (e.g. in `dz-cil.yml`).
 
 ### Concept D: Universal Merge Gate (HTIL)
 * **Ontology**: Merging to the target branch is the universal Human-Touch-in-Loop (HTIL) gate.

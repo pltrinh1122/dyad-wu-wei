@@ -2,7 +2,7 @@
 
 ## The Problem
 Node 840 (Refine: Remediate Legacy Terminology) demonstrated that terminology changes in DZ-CIL require surgical code-level refactoring when terminology strings are hardcoded directly in executable code. Specifically:
-- `antigravity.yml` contained `terminal: [probe]` as a literal YAML value
+- `dz-cil.yml` contained `terminal: [probe]` as a literal YAML value
 - `kernel/daemon_backlog.py` contained `node_type="probe"` as a Python string literal
 - Test fixtures contained `"Probe 101: Align - New Path Title"` as assertion strings
 

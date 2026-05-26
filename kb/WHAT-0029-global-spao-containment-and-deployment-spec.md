@@ -47,7 +47,7 @@ The global `spao` wrapper script will be placed in `~/.local/bin/spao` (or anoth
 # Global SPAO CLI Entrypoint Wrapper
 
 # 1. Locate Core SPAO Installation
-SPAO_CORE_DIR="/mnt/shared_data/git_repos/agent-antigravity"
+SPAO_CORE_DIR="/mnt/shared_data/git_repos/dz-cil"
 
 # 2. Resolve Active Project Workspace Root
 if [ -n "$SPAO_WORKSPACE_DIR" ]; then

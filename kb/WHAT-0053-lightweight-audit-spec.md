@@ -21,7 +21,7 @@ The `artifacts/audit_state.json` file is expanded to include a new key `meta-ind
 ## 2. Path Filtering Logic (`bin/meta audit`)
 To optimize network queries:
 1. **Load Frontier State**: Load `artifacts/frontier_state.yml` (after performing the standard signature/checksum validation).
-2. **Retrieve Path Nodes**: Identify all path nodes defined in the frontier state. A node is classified as a Path if its title matches a heading containing a Path ID followed by "Path" or if it is classified as a path under the `node_taxonomy` (loaded from `antigravity.yml`).
+2. **Retrieve Path Nodes**: Identify all path nodes defined in the frontier state. A node is classified as a Path if its title matches a heading containing a Path ID followed by "Path" or if it is classified as a path under the `node_taxonomy` (loaded from `dz-cil.yml`).
 3. **Filter Active Paths**: Exclude any path node that has `status: Completed` in the local frontier state.
 4. **Active Path Fallback**: Include the `current_active_path` ID from the frontier state if defined and not already excluded.
 

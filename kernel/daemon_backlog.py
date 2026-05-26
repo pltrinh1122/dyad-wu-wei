@@ -11,7 +11,7 @@ from drivers.issue_factory import render_template
 class BacklogDaemon:
     """Kernel daemon for GitHub Backlog operations."""
     
-    def __init__(self, repository: str = "pltrinh1122/agent-antigravity"):
+    def __init__(self, repository: str = "pltrinh1122/dz-cil"):
         self.repository = repository
         workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
         if workspace_dir:
@@ -21,13 +21,13 @@ class BacklogDaemon:
                 self.repository = resolved
 
     def load_node_taxonomy(self) -> dict:
-        """Loads the domain-specific node taxonomy from antigravity.yml."""
+        """Loads the domain-specific node taxonomy from dz-cil.yml."""
         from drivers import path_resolver
-        workspace_path = path_resolver.resolve_workspace_path("antigravity.yml")
+        workspace_path = path_resolver.resolve_workspace_path("dz-cil.yml")
         if os.path.exists(workspace_path):
             config_path = workspace_path
         else:
-            config_path = path_resolver.resolve_core_path("antigravity.yml")
+            config_path = path_resolver.resolve_core_path("dz-cil.yml")
             
         if not os.path.exists(config_path):
             return {

@@ -14,10 +14,10 @@
 The **ISBO** framework defines the four mutually exclusive, sequential phases required for a Disciple (or the Creator) to stand up a new autonomous application using the DZ-CIL engine. It is a strict discipline designed to isolate the Engine from the Domain.
 
 #### Phase 1: [I]nstall (Procurement of the Engine)
-- **Definition**: The physical acquisition of the Dao Engine (`agent-antigravity`). This is the procurement of the loom, not the weaving of the fabric.
+- **Definition**: The physical acquisition of the Dao Engine (`dz-cil`). This is the procurement of the loom, not the weaving of the fabric.
 - **State Condition**: The Operator's machine possesses a local clone of the DZ-CIL engine repository. 
 - **Actor**: The Operator acting as a Systems Administrator.
-- **Artifact**: A local directory containing the Dao-Ziran laws and execution engine (e.g., `/mnt/shared_data/git_repos/agent-antigravity`).
+- **Artifact**: A local directory containing the Dao-Ziran laws and execution engine (e.g., `/mnt/shared_data/git_repos/dz-cil`).
 
 #### Phase 2: [S]etup (Provisioning the Sovereign Domain)
 - **Definition**: The generation of a mathematically isolated child workspace. This establishes the physical boundary protecting *Wu-wei*.

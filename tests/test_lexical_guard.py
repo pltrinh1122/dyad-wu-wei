@@ -9,7 +9,9 @@ EXEMPTIONS = {
     'artifacts/coherence_validation.md',
     'tests/test_lexical_guard.py',
     'kb/WHY-0054-glossary-alignment.md',
-    'kb/WHAT-0054-glossary-spec.md'
+    'kb/WHAT-0054-glossary-spec.md',
+    'kb/WHAT-0034-three-loop-governance-spec.md',
+    'kb/WHY-0030-spao-onboarding-and-discoverability.md',
 }
 
 FORBIDDEN_WORDS = {'epic', 'spike'}

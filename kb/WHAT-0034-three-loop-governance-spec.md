@@ -1,6 +1,6 @@
 # WHAT-0034: Three-Loop Governance Framework Specification
 
-This specification codifies the operational mechanics, tracking, and guardrails for the Three-Loop Project Governance Framework within the `agent-antigravity` system.
+This specification codifies the operational mechanics, tracking, and guardrails for the Three-Loop Project Governance Framework within the `dz-cil` system.
 
 ---
 
@@ -66,7 +66,7 @@ For any active branch classified as `loop:spao`, the branch MUST NOT introduce m
 - **Enforcement Action**: If a violation is found, `spao node reflect` will raise a validation exception and block push/PR creation.
 
 ### 3.2 Configuration Parameter
-This check is toggled via `antigravity.yml` at the root of the repository:
+This check is toggled via `dz-cil.yml` at the root of the repository:
 ```yaml
 governance:
   spao_purity_enforcement: true

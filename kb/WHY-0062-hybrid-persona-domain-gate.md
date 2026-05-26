@@ -77,7 +77,7 @@ table, and compare against `SPAO_PERSONA_ID`.
 | **Dynamic lock** | `status: in-progress` GitHub label | agent-sg2 (SG-0002) | *Whether* a node is already being worked |
 
 At plan-start:
-1. Read `agent_id` from `antigravity.yml` (ROM identity — set once per deployment)
+1. Read `agent_id` from `dz-cil.yml` (ROM identity — set once per deployment)
 2. Resolve target node → Path → SG ID
 3. Look up SG ID in `WHAT-0062` → get `owner_persona`
 4. If `owner_persona == "unassigned"` → **block** (fail-closed)
@@ -113,7 +113,7 @@ crossing the architectural boundary.
 
 The gate MUST block (not skip, not warn) in all of the following cases:
 - `SPAO_PERSONA_ID` environment variable is absent
-- `agent_id` field is absent from `antigravity.yml`
+- `agent_id` field is absent from `dz-cil.yml`
 - Target node's SG ID is not present in `WHAT-0062`
 - `owner_persona` in `WHAT-0062` is `unassigned`
 - `agent_id ≠ owner_persona`

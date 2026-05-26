@@ -1,7 +1,7 @@
 # WHY-0009: Skill vs. Workflow Boundary & Interface Classification
 
 ## 1. Context
-As the `agent-antigravity` execution loops (`SPAO`, `NL`, `PML`) matured, ambiguity arose between what constitutes a **Skill** (`drivers/`), a **Workflow** (`kernel/`), and the wrapper shell scripts (`bin/`). 
+As the `dz-cil` execution loops (`SPAO`, `NL`, `PML`) matured, ambiguity arose between what constitutes a **Skill** (`drivers/`), a **Workflow** (`kernel/`), and the wrapper shell scripts (`bin/`). 
 
 Specifically, during a PML architectural evaluation (Probe 41), it was identified that `drivers/flow_state_manager.py` manages stateful, multi-step Node-Loop phase transitions (e.g., closing issues, checking out branches, and enforcing SPAO rules). Concurrently, the `bin/` directory had become a critical operator interface without a formal classification in the Core Paradigm.
 

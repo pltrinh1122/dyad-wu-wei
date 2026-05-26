@@ -35,7 +35,7 @@ We chose the Cybernetic lineage—**Telos, Invariants, Intents, Dao Engine**—b
 - **The Dao Engine** clearly establishes the continuous, looping nature of the Dao.
 
 ### 2.2 Decoupling the Dao Engine from the Instance
-Before The Shaping was formalized, our SPAO engine was tightly coupled to the specific goals of the `agent-antigravity` repository. It was a singular, hardcoded instance. 
+Before The Shaping was formalized, our SPAO engine was tightly coupled to the specific goals of the `dz-cil` repository. It was a singular, hardcoded instance. 
 
 By defining The Shaping as a distinct ontological sequence, we effectively lifted the Dao Engine out of the repository. If an operator wishes to deploy a new agent cluster for a completely different software project, they do not just copy the codebase. They execute The Shaping: they define a new Telos, derive the local Invariants, construct the specific Intents, and ignite the Dao Engine. 
 

@@ -13,7 +13,7 @@ class DAGValidationError(Exception):
     """Raised when dependency graph validation fails."""
     pass
 
-def fetch_path_data(path_id: str, repository: str = "pltrinh1122/agent-antigravity") -> str:
+def fetch_path_data(path_id: str, repository: str = "pltrinh1122/dz-cil") -> str:
     """Fetches the issue body for a given Path ID."""
     result = subprocess.run(
         ["gh", "issue", "view", str(path_id), "--repo", repository, "--json", "body"],

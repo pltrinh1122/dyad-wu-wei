@@ -9,7 +9,7 @@ As the Antigravity architecture scales to encompass multiple orchestrator domain
 Probe 179 evaluated the best architectural pattern to standardize and enforce these gates across the `mgr_*` ecosystem.
 
 ## Decision
-1. **Configuration Schema:** Instead of centralizing all configurations in a monolithic `antigravity.yml`, we will implement domain-specific gate configurations (e.g., `{domain}-gates.yml` such as `prompt-gates.yml`, `node-gates.yml`). This ensures modularity and preserves domain portability.
+1. **Configuration Schema:** Instead of centralizing all configurations in a monolithic `dz-cil.yml`, we will implement domain-specific gate configurations (e.g., `{domain}-gates.yml` such as `prompt-gates.yml`, `node-gates.yml`). This ensures modularity and preserves domain portability.
 2. **Implementation Pattern:** We have selected **Option C (Manager Base Class / OOP Approach)** as the systemic invariant over Option A (CLI bash wrappers) and Option B (Python Decorators). The system will introduce a `BaseManager` that formally encapsulates the execution flow, automatically enforcing the gates defined in the `{domain}-gates.yml` configuration prior to dispatching commands.
 
 ## Rationale

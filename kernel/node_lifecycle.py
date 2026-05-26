@@ -175,7 +175,7 @@ class TerminalNode(BaseNode):
     def _validate_spao_purity(self, worktree_path: str | None = None):
         """Validates that a loop:spao branch only modifies policy/documentation paths."""
         from drivers import path_resolver
-        config = path_resolver.load_antigravity_yml()
+        config = path_resolver.load_engine_config()
         enforce = config.get("governance", {}).get("spao_purity_enforcement", True)
         
         try:
@@ -325,7 +325,7 @@ class TerminalNode(BaseNode):
             
         self.update_body(body)
         
-        issue_url = f"https://github.com/pltrinh1122/agent-antigravity/issues/{self.issue_id}"
+        issue_url = f"https://github.com/pltrinh1122/dz-cil/issues/{self.issue_id}"
         log_stage_advancement("plan", "Plan Phase Completed", f"Node issue #{self.issue_id} successfully planned. Transitioning to Act phase.")
         return issue_url
 

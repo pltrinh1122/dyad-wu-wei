@@ -12,13 +12,13 @@
 ### 1. Context & Operational Tension
 
 The Metasystem uses two distinct concepts to govern node transitions and ensure containment:
-1. **`SPAO_AGENT_ID` (Physical Identity)**: The physical model or system instance running the execution loop (e.g. `agent-antigravity`, `agent-claude`).
+1. **`SPAO_AGENT_ID` (Physical Identity)**: The physical model or system instance running the execution loop (e.g. `dz-cil`, `agent-claude`).
 2. **`SPAO_PERSONA_ID` (Logical Persona)**: The logical role/authorization level under which commands are executed (e.g. `agent-ziran`, `agent-sg1`, `agent-sg2`, `agent-sg5`, `frontier`).
 
 Previously, the strategic gates (`verify_node_transition_allowed`) and unit tests (`test_agent_id_matches_ownership_index`) assumed a tight, static coupling between physical identity and logical persona. If `SPAO_PERSONA_ID` was absent or mismatched against the ownership indices (`WHAT-0062` and `WHAT-0065`), the system failed-closed, blocking the transition.
 
 As the Metasystem transitions to **Model 1 (Dual-Context Workspace)**, this static model introduces significant friction:
-- **Child Workspace Sovereignty**: A child workspace (e.g. `./.workspace/`) might use different agents (like `agent-claude` instead of `agent-antigravity`) and might not enforce multi-agent persona partitioning.
+- **Child Workspace Sovereignty**: A child workspace (e.g. `./.workspace/`) might use different agents (like `agent-claude` instead of `dz-cil`) and might not enforce multi-agent persona partitioning.
 - **Operator Friction**: Requiring the Operator to manually export `SPAO_PERSONA_ID` across different terminals and workspaces violates *Wu-wei* (effortless action) and *Ziran* (naturalness), causing cognitive load and execution blocks.
 - **Fail-Closed Rigidity**: If a newly bootstrapped child workspace lacks the ownership index documents (`WHAT-0062`/`WHAT-0065`), parent-level strategic checks fail-closed, blocking all child workspace operations.
 
@@ -64,7 +64,7 @@ To reduce Operator cognitive load, the system will dynamically default the activ
 #### 2.3 Decoupling Agent Identity in Testing
 The structural ownership tests (e.g. `test_agent_id_matches_ownership_index`) will be updated to:
 - Detect if the current environment is a child workspace or CI run, and automatically adapt validation rules.
-- If the resolved `agent_id` is not registered in the active `WHAT-0062` ownership index, but the index is empty, unconfigured, or generic (like `agent-antigravity`), the test will gracefully skip or pass instead of blocking the build.
+- If the resolved `agent_id` is not registered in the active `WHAT-0062` ownership index, but the index is empty, unconfigured, or generic (like `dz-cil`), the test will gracefully skip or pass instead of blocking the build.
 
 ---
 

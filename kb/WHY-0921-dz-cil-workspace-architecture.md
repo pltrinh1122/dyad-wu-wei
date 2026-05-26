@@ -13,7 +13,7 @@
 
 The Operator expressed the need to extend the capabilities of the Dao-Ziran Continuous Inference Loop (DZ-CIL) to wider, non-software domains (e.g., vacation planning, creative novel writing). 
 
-In [PML-0921](file:///mnt/shared_data/git_repos/agent-antigravity/artifacts/probe_125_evaluation.md), we evaluated and falsified the thesis that the current software-focused DZ-OS could be directly deployed to these tasks because it is heavily coupled to Git databases and local code compilers. Directly forcing these unstructured tasks into the parent developer loop would redistribute all validation friction to the Operator, violating the Wu-wei Gate and causing severe human decision fatigue.
+In [PML-0921](file:///mnt/shared_data/git_repos/dz-cil/artifacts/probe_125_evaluation.md), we evaluated and falsified the thesis that the current software-focused DZ-OS could be directly deployed to these tasks because it is heavily coupled to Git databases and local code compilers. Directly forcing these unstructured tasks into the parent developer loop would redistribute all validation friction to the Operator, violating the Wu-wei Gate and causing severe human decision fatigue.
 
 To resolve this contradiction, we reframe the architecture around **Model 1 (Dual-Context Workspace)**. Under Model 1, the parent agent runs from the root of the parent repository (`DZ-CIL_ROOT` or `.`) but is granted filesystem permissions to access and operate on the nested project repository located at `./.workspace/`. The Agent possesses dual context: it knows the metasystem rules of the parent `dz-cil` engine and actively executes the backlog and node lifecycle transactions directly in the child `project` repository.
 

@@ -1,7 +1,7 @@
 # WHY-0028: Global SPAO System Containment, Deployment, and CLI Integration
 
 ## Context & Rationale
-Our SPAO (Sense-Plan-Act-Observe) loop orchestrator is currently confined to the `agent-antigravity` repository itself. However, to operate as a general-purpose agent across other projects that use the `antigravity` (`agy`) CLI, we need a mechanism to contain, deploy, and execute the SPAO orchestrator globally. 
+Our SPAO (Sense-Plan-Act-Observe) loop orchestrator is currently confined to the `dz-cil` repository itself. However, to operate as a general-purpose agent across other projects that use the `antigravity` (`agy`) CLI, we need a mechanism to contain, deploy, and execute the SPAO orchestrator globally. 
 
 We need a design that allows:
 1. **Global availability**: Invoking SPAO tools (like `node`, `backlog`, `prompt`) from any arbitrary project repository.

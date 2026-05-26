@@ -707,9 +707,9 @@ nodes:
 - name: Abstract Nodes into Terminal and Non-Terminal Base Classes
   status: Completed
   learnings: Abstracted Node classification into Terminal and Non-Terminal Base Classes
-    via antigravity.yml configuration, unlocking domain portability.
+    via dz-cil.yml configuration, unlocking domain portability.
   invariants:
-  - '`All domain-specific Node Taxonomy mappings must be defined in antigravity.yml
+  - '`All domain-specific Node Taxonomy mappings must be defined in dz-cil.yml
     at the repository root.`'
 - name: Execute Architectural Migration of mgr-* Orchestrators
   status: Completed
@@ -760,7 +760,7 @@ nodes:
 - name: 'Activity 182: Implement HookManager and Configuration Schema'
   status: Completed
   learnings: Implemented HookManager in orchestrator/sense_hooks.py to dynamically
-    parse antigravity.yml and execute configurable hooks. Hook abstractions have been
+    parse dz-cil.yml and execute configurable hooks. Hook abstractions have been
     integrated into sync_and_clean_node.
   invariants:
   - '`[x] HookManager dynamically parses configuration`'
@@ -1924,7 +1924,7 @@ nodes:
   invariants: []
 - name: 'Node 626: Path 626: Path: Implement Dynamic Agent Identity Resolution'
   status: Backlog
-  learnings: Decouple agent_id from antigravity.yml and implement dynamic identity
+  learnings: Decouple agent_id from dz-cil.yml and implement dynamic identity
     resolution based on env var or workspace basename to prevent main branch conflicts.
   invariants: []
 - name: 'Node 627: Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution'

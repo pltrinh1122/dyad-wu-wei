@@ -17,14 +17,14 @@ To establish a new, autonomous application built upon the DZ-CIL Engine, the Ope
 1. Open a terminal.
 2. Clone the core Dao Engine repository to a designated engine path:
    ```bash
-   git clone <repo_url> /mnt/shared_data/git_repos/agent-antigravity
+   git clone <repo_url> /mnt/shared_data/git_repos/dz-cil
    ```
 3. Install base OS-level dependencies (Python3, Git).
 
 #### Step 2: [S]etup (Provision the Temple)
 1. Ensure you are in the Engine directory:
    ```bash
-   cd /mnt/shared_data/git_repos/agent-antigravity
+   cd /mnt/shared_data/git_repos/dz-cil
    ```
 2. Provision the new child workspace using the engine's bootstrapper:
    ```bash

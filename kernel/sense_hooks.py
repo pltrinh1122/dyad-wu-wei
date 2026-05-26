@@ -5,7 +5,7 @@ from kernel import agent_frontier
 class HookDaemon:
     """Manages the execution of configurable Sense hooks."""
     
-    def __init__(self, config_path="antigravity.yml"):
+    def __init__(self, config_path="dz-cil.yml"):
         self.config_path = config_path
         self.hooks = self._load_config()
 
@@ -38,7 +38,7 @@ class HookDaemon:
         """Dynamically evaluates and surfaces the next best action using NBADaemon kernel."""
         from kernel.daemon_nba import NBADaemon
         from drivers import issue_factory
-        repository = config.get("repository", "pltrinh1122/agent-antigravity")
+        repository = config.get("repository", "pltrinh1122/dz-cil")
         frontier_file = config.get("frontier_file", "artifacts/frontier_state.md")
 
         nba = NBADaemon(repository=repository)
