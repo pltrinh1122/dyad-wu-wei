@@ -115,6 +115,25 @@ def test_synthesize_rule_constraints():
     assert synthesize_rule({"error_message": "forbidden term '/absolute/path/file.py'"}) is None
 
 
+def test_synthesize_rule_false_positives():
+    # A generic assertion failure should not synthesize a rule
+    failure = {
+        "test_name": "test_generic",
+        "error_message": "AssertionError: assert 'mock_open' == 'something_else'"
+    }
+    assert synthesize_rule(failure) is None
+
+    # An error message containing 'lexical guard failure' should still allow extraction
+    lexical_failure = {
+        "test_name": "test_modified_files_lexical_compliance",
+        "error_message": "LEXICAL GUARD FAILURE: Stale terms detected!\nViolation: /some/file.py contains forbidden terms: ['mock_open']"
+    }
+    rule = synthesize_rule(lexical_failure)
+    assert rule is not None
+    assert "mock_open" in rule["pattern"]
+
+
+
 
 def test_build_contextual_prompt_injection():
     mock_yaml = """

@@ -2549,22 +2549,22 @@
   - `[ ]` None
 
 ## Node 978: Discovery 978: Harmonize - Maintenance: Refine Knowledge Accrual Mechanisms
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Maintenance: Refine Knowledge Accrual Mechanisms.
+- **Status**: Completed
+- **Learnings & Context**: Refined synthesized guard rule extraction in drivers/knowledge_accrual_skill.py to prevent false-positives from generic assertion failures. Cleaned up four existing false-positive synthesized lexical guards from infra/audit-daemon/audit_config.yml. Isolated the lexical compliance check in tests/test_lexical_guard.py from untracked git worktree directories.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Node 979: Discovery 979: Plan - Maintenance: Refine Knowledge Accrual Mechanisms
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Maintenance: Refine Knowledge Accrual Mechanisms.
+- **Status**: Completed
+- **Learnings & Context**: Formulated the plan for knowledge accrual refinements. Added test case test_synthesize_rule_false_positives to tests/test_knowledge_accrual.py verifying that synthesize_rule ignores generic assertion error messages while successfully parsing lexical guard tracebacks.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Node 980: Activity 980: Reflect - Maintenance: Refine Knowledge Accrual Mechanisms
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Maintenance: Refine Knowledge Accrual Mechanisms.
+- **Status**: Completed
+- **Learnings & Context**: Completed final reflection phase for Path 977. Verified all test suites pass cleanly and closed Path 977.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Node 981: Activity 981: Remove false-positive lexical guards
 - **Status**: [///] Act Phase
@@ -2765,16 +2765,16 @@
   - `None`
 
 ## Node 1031: Discovery 1031: Plan - Fix Telemetry Logging Visibility
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Fix Telemetry Logging Visibility.
+- **Status**: Completed
+- **Learnings & Context**: Designed the logging fix and added unit tests in tests/test_node_lifecycle.py to verify log_stage_advancement forces sys.stdout write and flush actions.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Node 1032: Activity 1032: Reflect - Fix Telemetry Logging Visibility
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Fix Telemetry Logging Visibility.
+- **Status**: Completed
+- **Learnings & Context**: Completed the final reflection phase for Path 1029. Verified that the output flushing modifications are fully operational and verified by unit tests.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Activity 1030: Fix Telemetry Logging Visibility
 - **Status**: Completed

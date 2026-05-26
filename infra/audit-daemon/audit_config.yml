@@ -16,33 +16,9 @@ rules:
 - id: frontier-integrity
   type: frontier_integrity
   alert_level: FAILURE
-- id: synthesized-guard-5667bebb
-  type: lexical_guard
-  pattern: \bnode/390\-test\b
-  alert_level: FAILURE
-  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''node/390-test'' detected
-    (from failed test ''test_reflect_success'')'
-
-- id: synthesized-guard-b8bc700d
-  type: lexical_guard
-  pattern: \bmock_open\b
-  alert_level: FAILURE
-  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''mock_open'' detected
-    (from failed test ''test_sync_and_clean_node_rom_drift'')'
 - id: semantic_immune_system_scanner
   type: semantic_immune_system
-- id: synthesized-guard-8da843ff
-  type: lexical_guard
-  pattern: \bprobe\b
-  alert_level: FAILURE
-  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''probe'' detected (from
-    failed test ''test_backlog_add_path'')'
-- id: synthesized-guard-aec877d5
-  type: lexical_guard
-  pattern: \bkernel\.daemon_node\b
-  alert_level: FAILURE
-  prompt_message: 'Synthesized Lexical Guard: Forbidden term ''kernel.daemon_node''
-    detected (from failed test ''test_cmd_retro_compile'')'
 - id: backlog_hygiene_auditor
   type: backlog_hygiene
   alert_level: NOTIFICATION
+

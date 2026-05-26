@@ -170,7 +170,10 @@ def synthesize_rule(error_details: dict) -> dict | None:
     # Search for specific quoted strings in error message representing the regression keyword
     term_match = re.search(r"forbidden (?:term|word|vocabulary|command)\s+'([^']+)'", error_message, re.IGNORECASE)
     if not term_match:
-        term_match = re.search(r"'([^']+)'", error_message)
+        if any(kw in error_message.lower() for kw in ["lexical guard failure", "forbidden term", "forbidden command", "stale terms"]):
+            term_match = re.search(r"'([^']+)'", error_message)
+        else:
+            return None
 
     target_term = term_match.group(1) if term_match else None
     if not target_term:

@@ -2727,20 +2727,28 @@ nodes:
   invariants: []
 - name: 'Node 978: Discovery 978: Harmonize - Maintenance: Refine Knowledge Accrual
     Mechanisms'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for Maintenance:
-    Refine Knowledge Accrual Mechanisms.'
-  invariants: []
+  status: Completed
+  learnings: Refined synthesized guard rule extraction in drivers/knowledge_accrual_skill.py
+    to prevent false-positives from generic assertion failures. Cleaned up four existing
+    false-positive synthesized lexical guards from infra/audit-daemon/audit_config.yml.
+    Isolated the lexical compliance check in tests/test_lexical_guard.py from untracked
+    git worktree directories.
+  invariants:
+  - None
 - name: 'Node 979: Discovery 979: Plan - Maintenance: Refine Knowledge Accrual Mechanisms'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for Maintenance: Refine Knowledge
-    Accrual Mechanisms.'
-  invariants: []
+  status: Completed
+  learnings: Formulated the plan for knowledge accrual refinements. Added test case
+    test_synthesize_rule_false_positives to tests/test_knowledge_accrual.py verifying
+    that synthesize_rule ignores generic assertion error messages while successfully
+    parsing lexical guard tracebacks.
+  invariants:
+  - None
 - name: 'Node 980: Activity 980: Reflect - Maintenance: Refine Knowledge Accrual Mechanisms'
-  status: Backlog
-  learnings: 'Final reflection and path closure for Maintenance: Refine Knowledge
-    Accrual Mechanisms.'
-  invariants: []
+  status: Completed
+  learnings: Completed final reflection phase for Path 977. Verified all test suites
+    pass cleanly and closed Path 977.
+  invariants:
+  - None
 - name: 'Node 981: Activity 981: Remove false-positive lexical guards'
   status: '[///] Act Phase'
   learnings: Planning Phase
@@ -2918,13 +2926,17 @@ nodes:
   invariants:
   - None
 - name: 'Node 1031: Discovery 1031: Plan - Fix Telemetry Logging Visibility'
-  status: Backlog
-  learnings: Technical design and proposed changes for Fix Telemetry Logging Visibility.
-  invariants: []
+  status: Completed
+  learnings: Designed the logging fix and added unit tests in tests/test_node_lifecycle.py
+    to verify log_stage_advancement forces sys.stdout write and flush actions.
+  invariants:
+  - None
 - name: 'Node 1032: Activity 1032: Reflect - Fix Telemetry Logging Visibility'
-  status: Backlog
-  learnings: Final reflection and path closure for Fix Telemetry Logging Visibility.
-  invariants: []
+  status: Completed
+  learnings: Completed the final reflection phase for Path 1029. Verified that the
+    output flushing modifications are fully operational and verified by unit tests.
+  invariants:
+  - None
 - name: 'Activity 1030: Fix Telemetry Logging Visibility'
   status: Completed
   learnings: Modified log_stage_advancement in node_lifecycle.py to guarantee standard
