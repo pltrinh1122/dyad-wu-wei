@@ -3086,29 +3086,20 @@ nodes:
     the main branch.
   invariants:
   - Orthogonal Peer Topology (WHY-0003)
-- name: 'Node 1084: Path 1084: Investigate KB Deprecation Mechanics'
-  status: Backlog
-  learnings: SG-0005
+- name: 'Node 1089: Discovery 1089: Align: Define KB Deprecation Semantics'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
-- name: 'Node 1085: Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics'
+- name: 'Node 1090: Activity 1090: Reflect - Synthesize Epistemic Retrospective retro-1089.md'
   status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Investigate KB
-    Deprecation Mechanics.
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-1089.md into the system's operational guidelines (the Dao).
   invariants: []
-- name: 'Node 1086: Discovery 1086: Plan - Investigate KB Deprecation Mechanics'
-  status: Backlog
-  learnings: Technical design and proposed changes for Investigate KB Deprecation
-    Mechanics.
-  invariants: []
-- name: 'Node 1087: Activity 1087: Reflect - Investigate KB Deprecation Mechanics'
-  status: Backlog
-  learnings: Final reflection and path closure for Investigate KB Deprecation Mechanics.
-  invariants: []
-- name: 1081-discovery-workspace-engine-distribution
+- name: 1089-align-kb-deprecation-semantics
   status: Completed
-  learnings: Dialectical falsification of Orthogonal Peer Topology proved that Model
-    1 architecture defined in WHY-0921 is correct and MUST NOT be inverted. The state
-    corruption defect was caused by Operator misuse (direct cloning) instead of using
-    the workspace bootstrapper.
+  learnings: Codified the Soft-Mutation rule for KB Deprecation in WHY-1089. Established
+    that the body of a kb primitive is immutable ROM, while the header is mutable
+    metadata, allowing seamless Dao evolution without breaking historical traceability.
   invariants:
-  - '[x] Reaffirmed WHY-0921 Model 1 Architecture [x] Created WHY-1081 Falsification'
+  - '[x] Created WHY-1089'
+  - '[x] Updated WHAT-0001'
