@@ -3237,37 +3237,14 @@ nodes:
   invariants:
   - 'The Bootstrapping Invariant: The Agent must strictly require a strategic_intent.yml
     before entering the Operate phase.'
-- name: 'Node 1119: Path 1119: Achieve ISBO Completeness'
-  status: Backlog
-  learnings: End-to-end implementation of the ISBO (Install, Setup, Bootstrap, Operate)
-    architecture to support seamless child workspace generation without Creator/Director
-    role conflation.
-  invariants: []
-- name: 'Node 1120: Discovery 1120: Harmonize - Achieve ISBO Completeness'
+- name: 'Node 1121: Discovery 1121: Plan - Achieve ISBO Completeness'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1121: Discovery 1121: Plan - Achieve ISBO Completeness'
-  status: Backlog
-  learnings: Technical design and proposed changes for Achieve ISBO Completeness.
-  invariants: []
-- name: 'Node 1122: Activity 1122: Reflect - Achieve ISBO Completeness'
-  status: Backlog
-  learnings: Final reflection and path closure for Achieve ISBO Completeness.
-  invariants: []
-- name: 'Node 1123: Activity 1123: Bootstrap: Implement Child Strategic Intent Injection
-    Hook'
-  status: Backlog
-  learnings: Force the Agent to request the Telos upon initial boot in a new child
-    workspace.
-  invariants: []
-- name: 'Node 1124: Activity 1124: Operate: Harden Dual-Backlog Routing'
-  status: Backlog
-  learnings: Ensure bin/backlog strictly reads from the child's artifacts/ when SPAO_WORKSPACE_DIR
-    is set.
-  invariants: []
-- name: 'Discovery 1120: Harmonize - Achieve ISBO Completeness'
+- name: 'Discovery 1121: Plan - Achieve ISBO Completeness'
   status: Completed
-  learnings: N/A
+  learnings: Layed out the design for Setup refactoring, Bootstrap blocking invariants,
+    and Operate dual-backlog routing under Path 1119.
   invariants:
-  - N/A
+  - 'Bootstrapping Invariant: The agent strictly requires a strategic_intent.yml before
+    entering the Operate phase.'
