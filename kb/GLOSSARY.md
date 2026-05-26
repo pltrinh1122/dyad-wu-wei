@@ -72,6 +72,27 @@ The external host (e.g., the `agy` platform) that provides the raw LLM API conne
 
 ---
 
+## 🌊 The Shaping (Stages 1–3)
+
+The three ontological preconditions that must exist before the Dao Engine (Stage 4) can materialize. See `WHAT-0000`.
+
+### Telos (Stage 1 — The Final Cause)
+The ultimate, immovable destination. Without a destination, there is no reason to shape Ziran. The Telos provides the initial gravitational pull that orientates all intent (e.g., *Asymmetric leverage via synergistic human-agent partnership*). It does not execute code; it orientates all force.
+
+> [!NOTE]
+> The legacy term **"North Star" (NS)** is an alias for **Telos**. Use "Telos" in new prose; "North Star" remains valid in informal reference.
+
+### Invariants (Stage 2 — The Formal Cause)
+The mathematically unbreakable boundaries derived from Ziran's limits. The moment you attempt to move toward the Telos using raw Ziran, friction occurs (LLMs hallucinate, Git conflicts arise). The Invariants are the strict, axiomatic laws of thermodynamics for the repository (e.g., WIP-N=1, the Testing Invariant, the Abstraction Doctrine). They cannot be wished away; the system must build around them.
+
+### Intents (Stage 3 — The Efficient Cause)
+The directed application of force. With a destination (Telos) and the laws of physics established (Invariants), the system requires a blueprint. The Intents break the infinite gap between the current state and the Telos into actionable, bounded vectors — Strategic Goals, Backlog Priorities, Domain Assignments. They provide direction and magnitude.
+
+> [!NOTE]
+> The term **"Strategic Intent"** (as in `strategic_intent.yml`) is the physical materialization of Intents into a machine-readable ledger.
+
+---
+
 ## 🔄 Execution Loop & Governance
 
 ### SPAOR (Meta-Loop)
@@ -96,7 +117,7 @@ The **mandatory, non-null Plan-Stage output** of the **NL** for a given Node. Th
 The **operator approval gate**, consolidated entirely into the **Universal Merge Gate (HTIL)**. Under this model, the Agent is completely paralyzed from advancing past the **Observe** phase or starting the next Node until the human operator reviews and merges the Node's active Pull Request (PR) into `main`. Intermediate conversational or local gates are deprecated.
 
 ### NS (North-Star)
-The overarching guiding objective or design ideal of the repository (e.g., that ultimately no gates are necessary for fully autonomous operational state). All architectural decisions, workflow rules, and next-best-actions must align with the North-Star.
+**[ALIAS → Telos]** The overarching guiding objective or design ideal of the repository — Stage 1 of The Shaping. Use **Telos** in new prose. "North Star" remains valid in informal reference and existing documentation.
 
 ### Materialization Boundary
 The strict threshold separating **PML** (low-friction conversational exploration) from formal **NL** execution (branch-mutating repository transitions):
