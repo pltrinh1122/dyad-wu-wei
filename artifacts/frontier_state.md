@@ -2918,6 +2918,30 @@
 - **Feedforward Invariants**:
   - `Workspace Boundary Invariant`
 
+## Node 1080: Activity 1080: Fix root frontier_state mutation leakage during node reflect
+- **Status**: Backlog
+- **Learnings & Context**: Refactor node_lifecycle.py to mutate frontier_state directly inside the active worktree checkout instead of mutating the root repository files. This prevents the root main branch from being left in a dirty state that blocks git pulls.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1081: Discovery 1081: Investigate workspace state corruption during upstream engine fetch
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1082: Activity 1082: Reflect - Synthesize Epistemic Retrospective retro-1081.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1081.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery: Workspace Engine Distribution Architecture
+- **Status**: Completed
+- **Learnings & Context**: Child workspace corruption was caused by downstream project git clones pulling upstream Engine logic while sharing the artifacts/ state directory on the main branch.
+- **Feedforward Invariants**:
+  - `Orthogonal Peer Topology (WHY-0003)`
+
 ## Current Active Path
 None
 

@@ -3062,3 +3062,27 @@ nodes:
     single-daemon multi-tenant audit tracking.
   invariants:
   - Workspace Boundary Invariant
+- name: 'Node 1080: Activity 1080: Fix root frontier_state mutation leakage during
+    node reflect'
+  status: Backlog
+  learnings: Refactor node_lifecycle.py to mutate frontier_state directly inside the
+    active worktree checkout instead of mutating the root repository files. This prevents
+    the root main branch from being left in a dirty state that blocks git pulls.
+  invariants: []
+- name: 'Node 1081: Discovery 1081: Investigate workspace state corruption during
+    upstream engine fetch'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1082: Activity 1082: Reflect - Synthesize Epistemic Retrospective retro-1081.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-1081.md into the system's operational guidelines (the Dao).
+  invariants: []
+- name: 'Discovery: Workspace Engine Distribution Architecture'
+  status: Completed
+  learnings: Child workspace corruption was caused by downstream project git clones
+    pulling upstream Engine logic while sharing the artifacts/ state directory on
+    the main branch.
+  invariants:
+  - Orthogonal Peer Topology (WHY-0003)
