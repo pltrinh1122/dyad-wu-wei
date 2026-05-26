@@ -1,7 +1,7 @@
-# WHY-0003: Orthogonal Peer Topology for Workspace Engine Distribution
+# WHY-0003: Falsification of Orthogonal Peer Topology (Reaffirmation of Model 1)
 
 ## Classification
-- **Type**: WHY (Architectural Decision Record)
+- **Type**: WHY (Architectural Decision Record - Falsification)
 - **ID**: WHY-0003
 - **Author**: frontier (SG-0002)
 - **Created**: 2026-05-25 (Node 1081, Path 985)
@@ -11,89 +11,30 @@
 
 ## 1. The Context (The Defect)
 
-The parent `agent-antigravity` repository currently tracks both the universal execution engine logic (`kernel/`, `drivers/`, `bin/`) and highly volatile, environment-specific operational state (`artifacts/frontier_state.md`, `artifacts/strategic_intent.yml`) in the exact same Git tree (`main` branch).
-
-When a child workspace (Model 1 Redirection) attempts to pull updates to the engine logic by directly fetching from the upstream `agent-antigravity` remote, it inherently pulls down the upstream's `artifacts/` state memory. This causes a catastrophic topological collision, permanently corrupting the child's own sovereign memory space and triggering "unrelated histories" defects during merge operations.
+A defect was observed where a child workspace suffered state corruption because pulling upstream Engine updates caused merge conflicts in the `artifacts/` directory. We incorrectly assumed this was a structural flaw in the Model 1 architecture (`WHY-0921`) and attempted to invent a new "Orthogonal Peer Topology" where the project is the root and the engine is mounted as a `.dz-cil/` submodule.
 
 ---
 
-## 2. The Dialectical Evaluation
+## 2. The Dialectical Evaluation (The Failed Experiment)
 
-We evaluated three potential paradigms to resolve this distribution flaw:
+We evaluated the Orthogonal Peer Topology through a series of dialectical stress tests. It systematically failed every foundational invariant of the DZ-CIL Dao:
 
-1. **Thesis (Git Attributes Merge-Ours)**: Continue direct git pulling, but employ `.gitattributes` to shield the child's `artifacts/` folder from upstream overwrites. *Falsified* due to brittleness and failure to solve the underlying state coupling.
-2. **Antithesis (Nested Submodule Worktrees)**: Isolate the engine as a Submodule at `.workspace/`, and create the project's working trees *inside* the submodule directory at `.workspace/.worktrees/`. *Falsified* because nesting project worktrees inside a pure downstream dependency violates Git boundaries (inversion of control) and structurally breaks the engine's internal path resolution (`path_resolver.py`).
-3. **Synthesis (Orthogonal Peer Topology)**: Isolate the engine as a pure Submodule, but structurally decouple the Project Worktrees by mounting them at the project root, keeping them physically unentangled from the engine directory.
+1. **Loss of Dao Inheritance (The Lobotomy)**: By moving the engine to a submodule, the parent's `GEMINI.md` and `kb/` are hidden from the IDE's root context. The Agent entering the workspace is lobotomized, losing the Meta-Orchestrator persona and the SPAO execution loop.
+2. **Failure of Extend and Override**: Attempts to restore the Dao via symlinks (`kb -> .dz-cil/kb`) catastrophically failed because a symlink prevents the child from *extending* the knowledge base without polluting the universal engine state.
+3. **Loss of Engine Immutability**: If the child is the root, the architecture implies the child can extend or override the execution wrappers (`bin/`) and logic (`kernel/`). This destroys the universality of the SPAO Engine and reverts the environment to chaotic scripting.
+4. **Specification Collapse**: The Orthogonal Peer Topology inherently contradicts the explicitly defined and proven architecture in `WHY-0921` and `WHAT-0930`, requiring a massive rewriting of the system's foundational specifications.
 
 ---
 
-## 3. The Decision: Orthogonal Peer Topology
+## 3. The Synthesis (Reaffirming WHY-0921)
 
-We have adopted the **Orthogonal Peer Topology (The Synthesis)** as the canonical architecture for all Model 1 Sovereign Workspaces.
+The "Orthogonal Peer Topology" is entirely falsified. 
 
-### 3.1 Structural Blueprint
+The original defect (state corruption during `git pull`) was not caused by a flaw in Model 1. It was caused by the Operator deploying the child workspace (`dz-ta`) as a direct clone/fork of the engine, rather than using the correct `bin/workspace init` installer defined in `WHAT-0930`. By cloning the engine directly, the child inherited the engine's physical `artifacts/` Git tracking, causing collisions.
 
-A compliant child workspace MUST adopt the following physical layout to achieve both separation of execution state and Dual-Context resolution of the Dao:
+### The True Resolution
+1. **Strict Adherence to Model 1**: The Engine MUST remain the Root Parent repository (`DZ-CIL_ROOT`). The Child Workspace MUST be nested inside the parent at `./.workspace/` as defined in `WHY-0921`.
+2. **Native Dao Inheritance**: Because the IDE opens at the Engine Root, the Agent natively inherits the Universal Dao (`kb/` and `GEMINI.md`). The Agent then natively applies the "Extend and Override" paradigm by merging the child's `SPAO_WORKSPACE_DIR/GEMINI.md` and operating on the nested `SPAO_WORKSPACE_DIR`.
+3. **Immutable Engine**: The Engine (`bin/`, `kernel/`) remains securely at the root, immutable to the child, enforcing the Laws of Physics across any domain application placed in `.workspace/`.
 
-```text
-child-workspace/
-├── .git/                      # (1) The Project Repository
-├── .worktrees/                # (2) Project Worktrees (dynamic node execution branches)
-│   └── node-X/
-├── artifacts/                 # (3) Sovereign State Memory
-├── kb/                        # (4) Sovereign Dao Subclass (Local WHY/WHAT Overrides)
-├── GEMINI.md                  # (5) Sovereign Dao Persona (Model 1 Rules)
-└── .dz-cil/                   # (6) The Engine Submodule (Universal Base Class)
-    ├── .git                   # (Submodule pointer)
-    ├── bin/                   # Engine Entrypoints
-    ├── kernel/                # Core Orchestration Logic
-    ├── kb/                    # Universal Dao Primitives
-    └── GEMINI.md              # Universal Dao Persona
-```
-
-### 3.2 Key Invariants
-
-1. **Submodule Isolation**: The `agent-antigravity` engine MUST be mounted exclusively as a Git Submodule (typically at `.dz-cil/`). The child project must never directly clone or merge the parent's history into its own root git tree.
-2. **Root Worktree Projection**: The Engine's SPAO checkout routines (`bin/node checkout`) MUST project the dynamically created worktrees into the *Project Root* (`.worktrees/`), not inside the engine submodule's directory. 
-3. **Zero Engine Refactoring**: This topology requires zero modifications to the universal engine. The engine natively infers the `SPAO_WORKSPACE_DIR` from the execution context and provisions `.worktrees/` exactly where required.
-
-### 3.3 Operator Execution Flow
-
-To update the engine, the Operator simply navigates into the isolated submodule and pulls the latest upstream logic without any risk of polluting the parent project's state:
-
-```bash
-# Safely pull the latest engine logic
-cd .dz-cil/
-git checkout main
-git pull origin main
-
-# Execute orchestrator commands normally from the project root
-cd ..
-./.dz-cil/bin/node status
-```
-
-## 4. The Fractal Dao Invariant (Extend and Override)
-
-A critical consequence of isolating the engine in a submodule is that the parent's `GEMINI.md` and `kb/` primitives (the "Dao Wisdom") are physically shifted into the `.dz-cil/` subdirectory. 
-
-We initially theorized that the child workspace could inherit this wisdom via a direct symlink (`kb -> .dz-cil/kb`).
-
-### Falsification of the Symlink Projection
-The symlink projection is catastrophically falsified because it destroys the **Extend and Override** inheritance model. A symlink is a strict physical alias. If the child workspace needs to *extend* the Dao with a local primitive (e.g., a custom `WHY-` document for its specific domain architecture) or *override* a universal rule, writing to the symlink will mutate the `.dz-cil/kb/` submodule directly. This pollutes the universal engine state and violates the Submodule Isolation Invariant. The child must be able to hold sovereign knowledge without modifying the parent.
-
-### Synthesis (Dual-Context Resolution)
-To maintain both structural decoupling and Dao inheritance, the architecture relies on **Dual-Context Resolution** (The Object-Oriented "Extend and Override" paradigm):
-
-1. **Physical Decoupling**: The child workspace maintains its own standard, standalone `kb/` directory and `GEMINI.md` file in its root. There are no symlinks.
-2. **Universal Base Class**: The Agent treats `.dz-cil/kb/` and `.dz-cil/GEMINI.md` as the immutable, inherited Universal Base Class.
-3. **Sovereign Subclass**: The local `kb/` and local `GEMINI.md` act as the Sovereign Subclass. The Agent natively loads the universal primitives first, then applies the local primitives. If a conflict exists, the local workspace explicitly overrides the universal engine. All new domain insights are written exclusively to the local `kb/`.
-4. **Bootstrapping**: The Agent's IDE framework or internal prompt injection seamlessly merges these dual contexts, allowing the Meta-Orchestrator persona to scale fractally into the child domain without logic bleed or state corruption.
-
-## 5. The Engine Immutability Invariant
-
-While the Dao Wisdom (`kb/`, `GEMINI.md`) fully supports the "Extend and Override" paradigm to enable Domain Sovereignty, we explicitly **reject** the proposition that `bin/` and `kernel/` can be extended or overridden locally by the child workspace.
-
-### Falsification of Engine Extension
-If a child workspace is permitted to locally override `bin/` (the entrypoint wrappers) or `kernel/` (the core SPAO orchestrator logic), it effectively forks the Laws of Physics of the Meta-Orchestrator. It could bypass the TDD execution gate, disable the Universal Merge Gate (WIP-N=1), or bypass the Operator's required constraints. 
-
-The Universal Engine is the physical enforcement layer of the Dao. While the Dao's *knowledge* (`kb/`) can be extended for domain-specific business rules, the Dao's *enforcement mechanisms* (`kernel/`) must remain mathematically immutable and strictly inherited purely from `.dz-cil/`. Any necessary modifications to the execution engine must be contributed upstream to `agent-antigravity` so that all fractal child workspaces benefit simultaneously. Allowing local overrides of `kernel/` destroys the universality of the SPAO engine and reverts the workspace to chaotic, unmanaged scripts.
+**Conclusion**: Node 1081 serves as the definitive dialectical proof that the Model 1 Nested Workspace architecture (`WHY-0921`) is structurally perfect and must not be inverted. All attempts to invert the Engine-Workspace relationship lead to catastrophic systemic collapse.
