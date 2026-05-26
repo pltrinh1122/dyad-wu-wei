@@ -3260,6 +3260,36 @@
 - **Feedforward Invariants**:
   - `daemon_backlog view dynamically parses the issue state`
 
+## Node 1147: Path 1147: Map Remaining Unmapped Backlog Issues to Strategic Goals
+- **Status**: Backlog
+- **Learnings & Context**: Review the remaining unmapped issues (1094, 1074, 985) and map them to our Strategic Goals to resolve hygiene warnings.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1149: Discovery 1149: Plan - Map Remaining Unmapped Backlog Issues to Strategic Goals
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Map Remaining Unmapped Backlog Issues to Strategic Goals.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1150: Activity 1150: Reflect - Map Remaining Unmapped Backlog Issues to Strategic Goals
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Map Remaining Unmapped Backlog Issues to Strategic Goals.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1148: Discovery 1148: Harmonize - Map Remaining Unmapped Backlog Issues to Strategic Goals
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1148: Harmonize - Map Remaining Unmapped Backlog Issues
+- **Status**: Completed
+- **Learnings & Context**: Mapped remaining unmapped issues to Strategic Goals
+- **Feedforward Invariants**:
+  - `Strategic intent correctly reflects all backlog mapping`
+
 ## Current Active Path
 None
 

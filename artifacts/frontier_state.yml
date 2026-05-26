@@ -3377,3 +3377,31 @@ nodes:
     open.
   invariants:
   - daemon_backlog view dynamically parses the issue state
+- name: 'Node 1147: Path 1147: Map Remaining Unmapped Backlog Issues to Strategic
+    Goals'
+  status: Backlog
+  learnings: Review the remaining unmapped issues (1094, 1074, 985) and map them to
+    our Strategic Goals to resolve hygiene warnings.
+  invariants: []
+- name: 'Node 1149: Discovery 1149: Plan - Map Remaining Unmapped Backlog Issues to
+    Strategic Goals'
+  status: Backlog
+  learnings: Technical design and proposed changes for Map Remaining Unmapped Backlog
+    Issues to Strategic Goals.
+  invariants: []
+- name: 'Node 1150: Activity 1150: Reflect - Map Remaining Unmapped Backlog Issues
+    to Strategic Goals'
+  status: Backlog
+  learnings: Final reflection and path closure for Map Remaining Unmapped Backlog
+    Issues to Strategic Goals.
+  invariants: []
+- name: 'Node 1148: Discovery 1148: Harmonize - Map Remaining Unmapped Backlog Issues
+    to Strategic Goals'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1148: Harmonize - Map Remaining Unmapped Backlog Issues'
+  status: Completed
+  learnings: Mapped remaining unmapped issues to Strategic Goals
+  invariants:
+  - Strategic intent correctly reflects all backlog mapping
