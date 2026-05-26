@@ -3341,3 +3341,14 @@ nodes:
     and preventing parent repository leakage under WHY-0986.
   invariants:
   - WHY-0986 document exists
+- name: 'Node 1139: Discovery 1139: Investigate PR 982 Workspace Boundary Failure
+    V2'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1139: Investigate PR 982 Workspace Boundary Failure V2'
+  status: Completed
+  learnings: Formulated root cause analysis and recommendations for workspace isolation
+    boundary failures under WHY-1139.
+  invariants:
+  - WHY-1139 document exists
