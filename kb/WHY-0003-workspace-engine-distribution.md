@@ -88,3 +88,12 @@ To maintain both structural decoupling and Dao inheritance, the architecture rel
 2. **Universal Base Class**: The Agent treats `.dz-cil/kb/` and `.dz-cil/GEMINI.md` as the immutable, inherited Universal Base Class.
 3. **Sovereign Subclass**: The local `kb/` and local `GEMINI.md` act as the Sovereign Subclass. The Agent natively loads the universal primitives first, then applies the local primitives. If a conflict exists, the local workspace explicitly overrides the universal engine. All new domain insights are written exclusively to the local `kb/`.
 4. **Bootstrapping**: The Agent's IDE framework or internal prompt injection seamlessly merges these dual contexts, allowing the Meta-Orchestrator persona to scale fractally into the child domain without logic bleed or state corruption.
+
+## 5. The Engine Immutability Invariant
+
+While the Dao Wisdom (`kb/`, `GEMINI.md`) fully supports the "Extend and Override" paradigm to enable Domain Sovereignty, we explicitly **reject** the proposition that `bin/` and `kernel/` can be extended or overridden locally by the child workspace.
+
+### Falsification of Engine Extension
+If a child workspace is permitted to locally override `bin/` (the entrypoint wrappers) or `kernel/` (the core SPAO orchestrator logic), it effectively forks the Laws of Physics of the Meta-Orchestrator. It could bypass the TDD execution gate, disable the Universal Merge Gate (WIP-N=1), or bypass the Operator's required constraints. 
+
+The Universal Engine is the physical enforcement layer of the Dao. While the Dao's *knowledge* (`kb/`) can be extended for domain-specific business rules, the Dao's *enforcement mechanisms* (`kernel/`) must remain mathematically immutable and strictly inherited purely from `.dz-cil/`. Any necessary modifications to the execution engine must be contributed upstream to `agent-antigravity` so that all fractal child workspaces benefit simultaneously. Allowing local overrides of `kernel/` destroys the universality of the SPAO engine and reverts the workspace to chaotic, unmanaged scripts.
