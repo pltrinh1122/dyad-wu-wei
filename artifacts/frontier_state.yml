@@ -2070,12 +2070,13 @@ nodes:
   - but reaffirmed Dao fa Ziran (The Dao follows Ziran).
 - name: 'Probe 770: Align - Autonomous Learning Loop'
   status: Completed
-  learnings: Defined the architectural necessity and technical intent for the Autonomous
-    Learning Loop. Materialized WHY-0082 and spawned Activity 806 to implement the
-    retro subcommand. Handled status latency correction via WHY-0081 and retro-770.
+  learnings: 'Learning Loop infrastructure is partially built. Five gaps identified:
+    (1) No sluice gate sensor, (2) No bin/node retro attach, (3) No merge-conflict
+    auto-resolve hook, (4) Incomplete positive feedback integration, (5) Stale GLOSSARY.md.
+    WHY-0770 codifies findings. Node 806 is recommended as next.'
   invariants:
-  - Autonomous Learning Loop must trigger for soft-policy chat corrections. State
-    retrieval must be deterministic.
+  - WHY-0082
+  - WHY-0770
 - name: 'Node 810: Probe 810: Align - Synthesize and Surface Epistemic Retrospectives'
   status: Completed
   learnings: Aligned on the epistemic retrospective synthesis mechanism (WHY-0084).
@@ -3139,6 +3140,10 @@ nodes:
     KB Files.
   invariants: []
 - name: 'Node 1030: Node 1030: Discovery 1030: Harmonize - Fix Telemetry Logging Visibility'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 770: Probe 770: Align - Autonomous Learning Loop'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
