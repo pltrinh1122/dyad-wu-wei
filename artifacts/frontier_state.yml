@@ -3086,3 +3086,29 @@ nodes:
     the main branch.
   invariants:
   - Orthogonal Peer Topology (WHY-0003)
+- name: 'Node 1084: Path 1084: Investigate KB Deprecation Mechanics'
+  status: Backlog
+  learnings: SG-0005
+  invariants: []
+- name: 'Node 1085: Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Investigate KB
+    Deprecation Mechanics.
+  invariants: []
+- name: 'Node 1086: Discovery 1086: Plan - Investigate KB Deprecation Mechanics'
+  status: Backlog
+  learnings: Technical design and proposed changes for Investigate KB Deprecation
+    Mechanics.
+  invariants: []
+- name: 'Node 1087: Activity 1087: Reflect - Investigate KB Deprecation Mechanics'
+  status: Backlog
+  learnings: Final reflection and path closure for Investigate KB Deprecation Mechanics.
+  invariants: []
+- name: 1081-discovery-workspace-engine-distribution
+  status: Completed
+  learnings: Dialectical falsification of Orthogonal Peer Topology proved that Model
+    1 architecture defined in WHY-0921 is correct and MUST NOT be inverted. The state
+    corruption defect was caused by Operator misuse (direct cloning) instead of using
+    the workspace bootstrapper.
+  invariants:
+  - '[x] Reaffirmed WHY-0921 Model 1 Architecture [x] Created WHY-1081 Falsification'
