@@ -2942,24 +2942,47 @@
 - **Feedforward Invariants**:
   - `Orthogonal Peer Topology (WHY-0003)`
 
-## Node 1089: Discovery 1089: Align: Define KB Deprecation Semantics
+## Node 1084: Path 1084: Investigate KB Deprecation Mechanics
+- **Status**: Backlog
+- **Learnings & Context**: SG-0005
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1085: Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Investigate KB Deprecation Mechanics.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1086: Discovery 1086: Plan - Investigate KB Deprecation Mechanics
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Investigate KB Deprecation Mechanics.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1087: Activity 1087: Reflect - Investigate KB Deprecation Mechanics
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Investigate KB Deprecation Mechanics.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## 1081-discovery-workspace-engine-distribution
+- **Status**: Completed
+- **Learnings & Context**: Dialectical falsification of Orthogonal Peer Topology proved that Model 1 architecture defined in WHY-0921 is correct and MUST NOT be inverted. The state corruption defect was caused by Operator misuse (direct cloning) instead of using the workspace bootstrapper.
+- **Feedforward Invariants**:
+  - `[x] Reaffirmed WHY-0921 Model 1 Architecture [x] Created WHY-1081 Falsification`
+
+## Node 1092: Activity 1092: Map New Unmapped Backlog Issues
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1090: Activity 1090: Reflect - Synthesize Epistemic Retrospective retro-1089.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1089.md into the system's operational guidelines (the Dao).
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## 1089-align-kb-deprecation-semantics
+## 1092-map-unmapped-backlog-issues
 - **Status**: Completed
-- **Learnings & Context**: Codified the Soft-Mutation rule for KB Deprecation in WHY-1089. Established that the body of a kb primitive is immutable ROM, while the header is mutable metadata, allowing seamless Dao evolution without breaking historical traceability.
+- **Learnings & Context**: Successfully mapped paths 1074, 1069, 1066, and 1053 to strategic goals.
 - **Feedforward Invariants**:
-  - `[x] Created WHY-1089`
-  - `[x] Updated WHAT-0001`
+  - `[x] Ensure all 4 unmapped paths are linked to an SG.`
 
 ## Current Active Path
 None
