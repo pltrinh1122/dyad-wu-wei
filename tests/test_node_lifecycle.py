@@ -222,3 +222,13 @@ def test_plan_start_dependency_satisfied(mock_append, mock_set_status, mock_vali
     node.plan_start("dummy_frontier.md")
     mock_set_status.assert_called_with("in_progress")
 
+
+def test_log_stage_advancement():
+    from kernel.node_lifecycle import log_stage_advancement
+    import sys
+    with mock.patch("sys.stdout") as mock_stdout, mock.patch("kernel.node_lifecycle.is_verbose", return_value=True):
+        log_stage_advancement("sense", "Status Detail", "Extra details")
+        assert mock_stdout.write.called
+        mock_stdout.flush.assert_called()
+
+

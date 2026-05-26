@@ -2765,10 +2765,10 @@
   - `None`
 
 ## Node 1031: Discovery 1031: Plan - Fix Telemetry Logging Visibility
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Fix Telemetry Logging Visibility.
+- **Status**: Completed
+- **Learnings & Context**: Designed the logging fix and added unit tests in tests/test_node_lifecycle.py to verify log_stage_advancement forces sys.stdout write and flush actions.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Node 1032: Activity 1032: Reflect - Fix Telemetry Logging Visibility
 - **Status**: Backlog
