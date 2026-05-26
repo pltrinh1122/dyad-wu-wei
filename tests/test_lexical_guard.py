@@ -71,6 +71,10 @@ def test_modified_files_lexical_compliance():
         # Ignore files in the strict exemptions list
         if filepath in EXEMPTIONS:
             continue
+
+        # Ignore files inside git worktrees to maintain test harness isolation
+        if filepath.startswith('.worktrees/') or '/.worktrees/' in filepath:
+            continue
             
         # Read the file's current workspace content
         if os.path.exists(filepath):
