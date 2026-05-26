@@ -27,10 +27,11 @@ def main():
     
     if subcmd == "init":
         if len(sys.argv) < 3:
-            print("Error: Missing repository URL. Usage: ./bin/workspace init <repo_url>")
+            print("Error: Missing repository URL. Usage: ./bin/workspace init <repo_url> [target_dir]")
             sys.exit(1)
         repo_url = sys.argv[2]
-        daemon_workspace.init_workspace(repo_url)
+        target_dir = sys.argv[3] if len(sys.argv) > 3 else None
+        daemon_workspace.init_workspace(repo_url, target_dir)
         sys.exit(0)
         
     # Forwarding mode
