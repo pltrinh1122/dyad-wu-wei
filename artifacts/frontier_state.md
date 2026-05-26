@@ -3178,6 +3178,22 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 1133: Activity 1133: Falsify branch naming convention constraint for child workspaces
+- **Status**: Backlog
+- **Learnings & Context**: Relax the regex in node_lifecycle.py and update GEMINI.md to permit custom branch names when SPAO_WORKSPACE_DIR is defined
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## workspace-inheritance
+- **Status**: Completed
+- **Learnings & Context**: SPAOR is the canonical 5-phase loop; Telos replaces North Star; Intents and Invariants are first-class Shaping stages; intent-first naming for newcomers; single water metaphor; boot loader must be fixed at source not deferred to lexical guard; GLOSSARY and semantic_ledger require manual sync until automated
+- **Feedforward Invariants**:
+  - `README`
+  - `GLOSSARY`
+  - `GEMINI.md`
+  - `WHY-1069`
+  - `semantic_ledger aligned to unified ontology`
+
 ## Current Active Path
 None
 
