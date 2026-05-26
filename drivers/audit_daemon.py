@@ -199,47 +199,46 @@ def evaluate_lexical_guard(rule, state):
     return triggered, new_state
 
 def evaluate_pr_merged_monitor(rule, state):
+    """Evaluates the Sluice Gate Sensor: detects when the active node PR is merged.
+
+    Delegates all logic to the pure ``drivers.sluice_gate_sensor`` skill and
+    surfaces errors explicitly rather than swallowing them.
+    """
+    from drivers import sluice_gate_sensor
+
     if not FRONTIER_FILE.exists():
         return False, state
-        
+
     with open(FRONTIER_FILE, "r") as f:
-        content = f.read()
-        
-    active_node = ""
-    match = re.search(r"## Current Active Node\n(.*?)(?=\n## |\Z)", content, re.DOTALL)
-    if match:
-        active_node = match.group(1).strip().strip('*')
-        
-    if not active_node or active_node == "None":
-        return False, state
-        
-    id_match = re.search(r"(\d+)", active_node)
-    if not id_match:
-        return False, state
-        
-    node_id = id_match.group(1)
-    
-    if state.get("last_alerted_node") == node_id:
-        return False, state
-        
+        frontier_content = f.read()
+
     sys.path.append(str(REPO_ROOT))
     from drivers.github_client import get_merged_prs
-    
+
     try:
         merged_prs = get_merged_prs()
-        for pr in merged_prs:
-            head_ref = pr.get("headRefName", "")
-            if head_ref.startswith(f"node/{node_id}-"):
-                alert_level = rule.get("alert_level", "NOTIFICATION").upper()
-                msg = f"[{alert_level}] Sluice Gate Opened: PR for Node {node_id} merged. Run `./bin/node sync` to continue."
-                inject_prompt(msg)
-                
-                state["last_alerted_node"] = node_id
-                return True, state
-    except Exception:
-        pass
-        
-    return False, state
+    except Exception as e:
+        print(f"[Sluice Gate Sensor] Error fetching merged PRs: {e}")
+        return False, state
+
+    last_alerted = state.get("last_alerted_node")
+    result = sluice_gate_sensor.evaluate(frontier_content, merged_prs, last_alerted_node=last_alerted)
+
+    if result["error"]:
+        print(f"[Sluice Gate Sensor] Evaluation error: {result['error']}")
+        return False, state
+
+    if not result["triggered"]:
+        return False, state
+
+    alert_level = rule.get("alert_level", "NOTIFICATION").upper()
+    msg = f"[{alert_level}] {result['message']}"
+    inject_prompt(msg)
+
+    state["last_alerted_node"] = result["node_id"]
+    return True, state
+
+
 
 
 def evaluate_semantic_immune_system(rule, state):
