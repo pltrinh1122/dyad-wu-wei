@@ -102,3 +102,53 @@ def test_backlog_daemon_repository_override():
          
         backlog = daemon_backlog.BacklogDaemon()
         assert backlog.repository == "test-owner/test-repo"
+
+def test_workspace_bootstrap_invariant_enforcement(tmp_path):
+    import importlib.util
+    import sys
+    
+    workspace_dir = tmp_path / "child_workspace"
+    workspace_dir.mkdir()
+    
+    core_dir = tmp_path / "core"
+    core_dir.mkdir()
+    
+    active_workspace_json = core_dir / "artifacts" / "active_workspace.json"
+    active_workspace_json.parent.mkdir(parents=True, exist_ok=True)
+    import json
+    with open(active_workspace_json, "w") as f:
+        json.dump({"repo_url": "https://github.com/foo/bar.git", "path": str(workspace_dir)}, f)
+        
+    bin_workspace_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../bin/workspace'))
+    import types
+    bin_workspace = types.ModuleType("bin_workspace")
+    bin_workspace.__file__ = bin_workspace_path
+    
+    with open(bin_workspace_path, "r", encoding="utf-8") as f:
+        code_content = f.read()
+    exec(code_content, bin_workspace.__dict__)
+    sys.modules["bin_workspace"] = bin_workspace
+    
+    mock_config_path = str(active_workspace_json)
+    
+    with patch("kernel.daemon_workspace.get_workspace_config_path", return_value=mock_config_path), \
+         patch("sys.argv", ["bin/workspace", "node", "list"]), \
+         patch("subprocess.run") as mock_run, \
+         pytest.raises(SystemExit) as excinfo:
+         
+        bin_workspace.main()
+        
+    assert excinfo.value.code == 1
+    
+    strategic_intent_path = workspace_dir / "artifacts" / "strategic_intent.yml"
+    strategic_intent_path.parent.mkdir(parents=True, exist_ok=True)
+    strategic_intent_path.touch()
+    
+    with patch("kernel.daemon_workspace.get_workspace_config_path", return_value=mock_config_path), \
+         patch("sys.argv", ["bin/workspace", "node", "list"]), \
+         patch("subprocess.run") as mock_run, \
+         pytest.raises(SystemExit) as excinfo:
+         
+        bin_workspace.main()
+        
+    mock_run.assert_called_once()
