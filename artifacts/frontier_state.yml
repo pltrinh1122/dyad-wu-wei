@@ -3361,12 +3361,19 @@ nodes:
     closed Path 985 under WHY-0989.
   invariants:
   - WHY-0989 document exists
-- name: 'Node 1073: Activity 1073: Fix workspace state leakage during node reflection'
+- name: 'Node 1144: Activity 1144: Fix hardcoded OPEN status in daemon_backlog view'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 1073-fix-workspace-state-leakage
-  status: Completed
-  learnings: Enforced WHAT-0987 path validations to prevent copying parent tracking
-    state files into child workspace worktrees.
+- name: 'Node 1145: Activity 1145: Reflect - Synthesize Epistemic Retrospective retro-1144.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-1144.md into the system's operational guidelines (the Dao).
   invariants: []
+- name: 'Activity 1144: Fix hardcoded OPEN status in daemon_backlog view'
+  status: Completed
+  learnings: Fixed a bug in daemon_backlog.py where the view command hardcoded [OPEN]
+    regardless of actual GitHub state, causing the Agent to assume closed issues were
+    open.
+  invariants:
+  - daemon_backlog view dynamically parses the issue state

@@ -3242,17 +3242,23 @@
 - **Feedforward Invariants**:
   - `WHY-0989 document exists`
 
-## Node 1073: Activity 1073: Fix workspace state leakage during node reflection
+## Node 1144: Activity 1144: Fix hardcoded OPEN status in daemon_backlog view
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## 1073-fix-workspace-state-leakage
-- **Status**: Completed
-- **Learnings & Context**: Enforced WHAT-0987 path validations to prevent copying parent tracking state files into child workspace worktrees.
+## Node 1145: Activity 1145: Reflect - Synthesize Epistemic Retrospective retro-1144.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1144.md into the system's operational guidelines (the Dao).
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## Activity 1144: Fix hardcoded OPEN status in daemon_backlog view
+- **Status**: Completed
+- **Learnings & Context**: Fixed a bug in daemon_backlog.py where the view command hardcoded [OPEN] regardless of actual GitHub state, causing the Agent to assume closed issues were open.
+- **Feedforward Invariants**:
+  - `daemon_backlog view dynamically parses the issue state`
 
 ## Current Active Path
 None

@@ -341,7 +341,8 @@ def main():
     elif args.subcommand == "view":
         data = daemon.view(args.issue_id)
         print('='*40)
-        print(f"Issue #{args.issue_id}: {data['title']} [OPEN]")
+        state = data.get('state', 'UNKNOWN')
+        print(f"Issue #{args.issue_id}: {data['title']} [{state}]")
         print('='*40)
         print(data['body'])
         print('='*40)
