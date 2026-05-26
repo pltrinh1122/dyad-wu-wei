@@ -6,13 +6,17 @@ import subprocess
 import re
 from pathlib import Path
 from drivers.git_client import get_current_branch
+from drivers import path_resolver
 
 # Paths
-REPO_ROOT = Path(__file__).parent.parent.resolve()
-CONFIG_FILE = REPO_ROOT / "infra" / "audit-daemon" / "audit_config.yml"
-STATE_FILE = REPO_ROOT / "artifacts" / "audit_state.json"
-FRONTIER_FILE = REPO_ROOT / "artifacts" / "frontier_state.md"
-PROMPT_CLI = REPO_ROOT / "bin" / "prompt"
+REPO_ROOT = Path(path_resolver.resolve_core_path())
+WORKSPACE_DIR = Path(path_resolver.get_workspace_dir())
+
+_workspace_config = Path(path_resolver.resolve_workspace_path("infra", "audit-daemon", "audit_config.yml"))
+CONFIG_FILE = _workspace_config if _workspace_config.exists() else Path(path_resolver.resolve_core_path("infra", "audit-daemon", "audit_config.yml"))
+STATE_FILE = Path(path_resolver.resolve_workspace_path("artifacts", "audit_state.json"))
+FRONTIER_FILE = Path(path_resolver.resolve_workspace_path("artifacts", "frontier_state.md"))
+PROMPT_CLI = Path(path_resolver.resolve_core_path("bin", "prompt"))
 
 def load_config():
     if not CONFIG_FILE.exists():
@@ -37,7 +41,7 @@ def save_state(state):
 
 def inject_prompt(message):
     print(f"Injecting prompt: {message}")
-    subprocess.run([str(PROMPT_CLI), "add", message], check=True, cwd=REPO_ROOT)
+    subprocess.run([str(PROMPT_CLI), "add", message], check=True, cwd=WORKSPACE_DIR)
 
 def evaluate_node_completion_threshold(rule, state):
     if not FRONTIER_FILE.exists():
@@ -64,7 +68,7 @@ def evaluate_file_modified(rule, state):
     if not file_path:
         return False, state
         
-    res = subprocess.run(["git", "log", "-1", "--format=%H", "--", file_path], capture_output=True, text=True, cwd=REPO_ROOT)
+    res = subprocess.run(["git", "log", "-1", "--format=%H", "--", file_path], capture_output=True, text=True, cwd=WORKSPACE_DIR)
     current_hash = res.stdout.strip()
     
     if not current_hash:

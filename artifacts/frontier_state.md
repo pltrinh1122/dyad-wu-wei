@@ -2906,6 +2906,18 @@
 - **Feedforward Invariants**:
   - `[x] Modified drivers/path_resolver.py\n[x] Modified tests/test_path_resolver.py`
 
+## Node 1078: Activity 1078: Implement Single-Daemon Multi-Tenant redirection for workspace auditing
+- **Status**: Backlog
+- **Learnings & Context**: Refactor the parent audit daemon to automatically detect active workspace contexts and redirect verification targets to the child workspace artifacts directory and config ledger.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 986: Enforce Workspace Isolation Boundaries
+- **Status**: Completed
+- **Learnings & Context**: Implemented workspace path resolution for frontier_state reflection and single-daemon multi-tenant audit tracking.
+- **Feedforward Invariants**:
+  - `Workspace Boundary Invariant`
+
 ## Current Active Path
 None
 
