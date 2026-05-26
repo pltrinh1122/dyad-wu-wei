@@ -41,7 +41,7 @@ child-workspace/
 ├── .worktrees/                # (2) Project Worktrees (dynamic node execution branches)
 │   └── node-X/
 ├── artifacts/                 # (3) Sovereign State Memory
-└── .workspace/                # (4) The Engine Submodule
+└── .dz-cil/                   # (4) The Engine Submodule
     ├── .git                   # (Submodule pointer)
     ├── bin/                   # Engine Entrypoints
     └── kernel/                # Core Orchestration Logic
@@ -49,7 +49,7 @@ child-workspace/
 
 ### 3.2 Key Invariants
 
-1. **Submodule Isolation**: The `agent-antigravity` engine MUST be mounted exclusively as a Git Submodule (typically at `.workspace/` or `.engine/`). The child project must never directly clone or merge the parent's history into its own root git tree.
+1. **Submodule Isolation**: The `agent-antigravity` engine MUST be mounted exclusively as a Git Submodule (typically at `.dz-cil/`). The child project must never directly clone or merge the parent's history into its own root git tree.
 2. **Root Worktree Projection**: The Engine's SPAO checkout routines (`bin/node checkout`) MUST project the dynamically created worktrees into the *Project Root* (`.worktrees/`), not inside the engine submodule's directory. 
 3. **Zero Engine Refactoring**: This topology requires zero modifications to the universal engine. The engine natively infers the `SPAO_WORKSPACE_DIR` from the execution context and provisions `.worktrees/` exactly where required.
 
@@ -59,13 +59,13 @@ To update the engine, the Operator simply navigates into the isolated submodule 
 
 ```bash
 # Safely pull the latest engine logic
-cd .workspace/
+cd .dz-cil/
 git checkout main
 git pull origin main
 
 # Execute orchestrator commands normally from the project root
 cd ..
-./.workspace/bin/node status
+./.dz-cil/bin/node status
 ```
 
 ## 4. The Domain Sovereignty Invariant (GEMINI.md Decoupling)
@@ -79,4 +79,4 @@ If the child workspace blindly inherits the parent's `GEMINI.md`, the child agen
 1. **Persona Bleed**: The parent's `GEMINI.md` establishes the "Meta-Orchestrator" or "Frontier Agent" persona, which is mathematically tasked with *modifying the execution engine itself* (e.g., maintaining `kernel/` and `drivers/`). The child workspace agent is a downstream user of the engine, tasked with building a specific application (`dz-ta`). 
 2. **Path Hallucinations**: Sourcing the parent's rules would command the child agent to obey constraints (like the `drivers/` vs `kernel/` architectural boundary) on folders that don't exist in its local repository, leading to immediate execution paralysis.
 
-**The Solution:** The child workspace MUST define its own sovereign, standalone `GEMINI.md` (The "Model 1" Persona) that sets rules for its specific application domain. The universal system invariants (e.g., TDD, SPAO loop logic) are enforced *natively by the executables* (`./.workspace/bin/node`), not through raw text prompts. The agent trusts the engine's gates, rather than reading the engine's source code rules.
+**The Solution:** The child workspace MUST define its own sovereign, standalone `GEMINI.md` (The "Model 1" Persona) that sets rules for its specific application domain. The universal system invariants (e.g., TDD, SPAO loop logic) are enforced *natively by the executables* (`./.dz-cil/bin/node`), not through raw text prompts. The agent trusts the engine's gates, rather than reading the engine's source code rules.
