@@ -2710,11 +2710,11 @@ nodes:
   invariants: []
 - name: 'Activity 974: Implement Positive Feedback Integration in Learning Loop'
   status: Completed
-  learnings: Updated SG-0005 and kernel/daemon_knowledge_accrual.py to support checking
-    telemetry for POSITIVE_FEEDBACK and enforcing the creation of artifacts/audit/reaffirm-<id>.md
-    before reflection.
+  learnings: Implemented record_positive_feedback() skill and reaffirm CLI subcommand.
+    Closes WHY-0770 Gap 4. 284 tests pass (+12).
   invariants:
-  - Tested successfully.
+  - WHY-0082
+  - WHY-0770
 - name: 'Node 976: Activity 976: Verify PR State in Node Sync'
   status: Backlog
   learnings: Update daemon_node sync command to natively verify that the PR state
@@ -3191,3 +3191,8 @@ nodes:
   invariants:
   - WHY-0082
   - WHY-0770
+- name: 'Node 974: Node 974: Activity 974: Implement Positive Feedback Integration
+    in Learning Loop'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
