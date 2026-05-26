@@ -39,11 +39,11 @@ strategic_goals:
     gates because the sandbox policies fail to isolate or rollback unsafe mutations.
   id: SG-0002
   prioritized_paths:
+  - 1119
   - 292
   - 532
   - 622
   - 626
-  - 985
   - 758
   - 634
   - 1054
