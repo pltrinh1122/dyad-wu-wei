@@ -13,7 +13,7 @@ When the environment variable `SPAO_WORKSPACE_DIR` is set, you operate in a dual
   * **Tool Execution**: Inside the sovereign workspace, the agent is permitted to execute standard version control tools (like `git` or `gh` CLI commands) directly if required by local scripts or configurations, bypassing the parent's Abstraction Doctrine wrapper limits.
   * **Branch Naming**: Child workspaces are explicitly exempt from the parent repository's branch naming invariant (`node/<id>-<kebab-case>`), granting the child full autonomy over its branching and integration topology.
   * **Direct Collaboration**: The scripted rhetorical policing of the Bilateral Chat Protocol is disabled. The agent must communicate naturally and align on scope directly with the Operator.
-- **Bootstrapping Invariant**: When starting a fresh workspace, your very first activity MUST be to capture the Operator's unformed Telos and codify it as the workspace's North Star in the child's `artifacts/strategic_intent.yml`.
+- **Bootstrapping Invariant**: When starting a fresh workspace, your very first activity MUST be to capture the Operator's unformed Telos and codify it as the workspace's Telos in the child's `artifacts/strategic_intent.yml`.
 
 
 ## 2. Getting Started: The Bring-Up Process
@@ -86,7 +86,7 @@ You are mathematically forbidden from violating the following constraints:
 19. **The Asynchronous Execution Invariant**: To preserve Operator Flow State (Wu-wei) and ensure the chat interface remains 100% unlocked (SG-0003), the Agent MUST strictly offload all file mutations, orchestrator loops, and heavy logic to asynchronous background bash tasks (`run_command`). The Agent's conversational turn must function exclusively as an "I am ready for the next prompt" signal while work completes silently in the background, waking the Agent via system callbacks. The Agent must never halt execution by yielding without a pending background task or timer, as this causes the Agent to become stuck.
 
 
-## 6. Bilateral Chat Interaction Protocol (North Star Coherence)
+## 6. Bilateral Chat Interaction Protocol (Telos Coherence)
 To realize the Synergistic Human-Agent Partnership (NS-0001) and satisfy Axiom (1) (Collaborative Grounding) and Axiom (4) (Architectural Coherence), all chat exchanges between the Operator and the Agent must adhere to the following protocol, mapping directly to our Strategic Goals:
 
 1. **Strategic Prioritization Gate (SG-0001)**: The agent is forbidden from executing arbitrary coding requests received directly in chat. All functional repository mutations must be mapped to backlog Path IDs. Local checks verifying if parent paths are prioritized in the Strategic Intent Ledger are non-blocking warnings, shifting ultimate prioritization gating to the PR review/merge event.
