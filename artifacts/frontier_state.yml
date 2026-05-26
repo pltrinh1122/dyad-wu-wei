@@ -3405,3 +3405,48 @@ nodes:
   learnings: Mapped remaining unmapped issues to Strategic Goals
   invariants:
   - Strategic intent correctly reflects all backlog mapping
+- name: 'Node 1152: Path 1152: Codify Falsifications and Extend Lexical Guard'
+  status: Backlog
+  learnings: 'Address prompt queue: Codify kernel/bin coexistence, Core/Dao Engine
+    distinction, Terminology Abstraction Thesis falsification, and extend lexical_guard
+    for GLOSSARY-driven renames.'
+  invariants: []
+- name: 'Node 1153: Discovery 1153: Harmonize - Codify Falsifications and Extend Lexical
+    Guard'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1154: Discovery 1154: Plan - Codify Falsifications and Extend Lexical
+    Guard'
+  status: Backlog
+  learnings: Technical design and proposed changes for Codify Falsifications and Extend
+    Lexical Guard.
+  invariants: []
+- name: 'Node 1155: Activity 1155: Reflect - Codify Falsifications and Extend Lexical
+    Guard'
+  status: Backlog
+  learnings: Final reflection and path closure for Codify Falsifications and Extend
+    Lexical Guard.
+  invariants: []
+- name: 'Node 1156: Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine
+    distinction'
+  status: Backlog
+  learnings: Codify falsifications for kernel/bin and Core/Dao into the KB
+  invariants: []
+- name: 'Node 1157: Activity 1157: Extend semantic_ledger.yml and lexical_guard for
+    GLOSSARY-driven renames'
+  status: Backlog
+  learnings: Update lexical guards and semantic ledger to enforce GLOSSARY-driven
+    renames (e.g. SPAO->SPAOR, North Star->Telos)
+  invariants: []
+- name: 'Node 1158: Activity 1158: Codify Dialectical Falsification of Terminology
+    Abstraction Thesis'
+  status: Backlog
+  learnings: Ratify and codify the Dialectical Falsification of the Terminology Abstraction
+    Thesis into the Dao
+  invariants: []
+- name: 1153-harmonize-prompts
+  status: Completed
+  learnings: '-'
+  invariants:
+  - '-'
