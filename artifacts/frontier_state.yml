@@ -2777,9 +2777,8 @@ nodes:
   invariants: []
 - name: 'Node 987: Discovery 987: Plan - Investigate and Enforce Workspace Isolation
     Boundaries'
-  status: Backlog
-  learnings: Technical design and proposed changes for Investigate and Enforce Workspace
-    Isolation Boundaries.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 989: Activity 989: Reflect - Investigate and Enforce Workspace Isolation
     Boundaries'
@@ -3352,3 +3351,8 @@ nodes:
     boundary failures under WHY-1139.
   invariants:
   - WHY-1139 document exists
+- name: 'Discovery 987: Plan - Investigate and Enforce Workspace Isolation Boundaries'
+  status: Completed
+  learnings: Formulated the path mutation assertion specification under WHAT-0987.
+  invariants:
+  - WHAT-0987 document exists
