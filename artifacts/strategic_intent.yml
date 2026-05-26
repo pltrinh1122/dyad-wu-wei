@@ -25,6 +25,7 @@ strategic_goals:
   - 605
   - 1003
   - 664
+  - 1147
   status: Active
   title: Backlog Dynamics and Resource Budget Alignment
 - collaborative_gap: The human cannot safely delegate execution authority to the agent,
@@ -47,6 +48,7 @@ strategic_goals:
   - 758
   - 634
   - 1054
+  - 985
   status: Active
   title: Gateless Autonomous Execution within Risk-Managed Sandbox
 - collaborative_gap: Low-fidelity validation feedback (flaky or slow tests) breaks
@@ -113,5 +115,7 @@ strategic_goals:
   - 700
   - 704
   - 708
+  - 1094
+  - 1074
   status: Active
   title: Autonomous Knowledge Accrual
