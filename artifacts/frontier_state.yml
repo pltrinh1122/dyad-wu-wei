@@ -3302,3 +3302,21 @@ nodes:
   status: Completed
   learnings: Formulated the workspace inheritance and decoupling policies in WHY-1069.
   invariants: []
+- name: 'Node 1133: Activity 1133: Falsify branch naming convention constraint for
+    child workspaces'
+  status: Backlog
+  learnings: Relax the regex in node_lifecycle.py and update GEMINI.md to permit custom
+    branch names when SPAO_WORKSPACE_DIR is defined
+  invariants: []
+- name: workspace-inheritance
+  status: Completed
+  learnings: SPAOR is the canonical 5-phase loop; Telos replaces North Star; Intents
+    and Invariants are first-class Shaping stages; intent-first naming for newcomers;
+    single water metaphor; boot loader must be fixed at source not deferred to lexical
+    guard; GLOSSARY and semantic_ledger require manual sync until automated
+  invariants:
+  - README
+  - GLOSSARY
+  - GEMINI.md
+  - WHY-1069
+  - semantic_ledger aligned to unified ontology
