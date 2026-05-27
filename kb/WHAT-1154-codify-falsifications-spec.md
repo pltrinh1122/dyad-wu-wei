@@ -13,7 +13,7 @@
 To implement the decisions from Discovery 1153, the subsequent execution nodes in Path 1152 must satisfy these specifications:
 
 ### 1. Codify kernel/bin coexistence and Core/Dao Engine distinction (Activity 1156)
-- **File target**: Create or update KB files clarifying CLI Adapter boundaries vs Domain Orchestrator layers.
+- **File target**: Create or update KB files clarifying CLI Adapter boundaries vs Domain Kernel Daemon layers.
 - **Rules**:
   - `bin/` must contain only thin argument parsing/proxying code.
   - Core logic and states must stay in `kernel/`.
@@ -22,7 +22,7 @@ To implement the decisions from Discovery 1153, the subsequent execution nodes i
 ### 2. Extend semantic_ledger.yml and lexical_guard for GLOSSARY-driven renames (Activity 1157)
 - **Lexical Guard Extension**:
   - `tests/test_lexical_guard.py` must load `kb/semantic_ledger.yml`.
-  - Stale keys (e.g. `align`, `optimize`, `north_star`) must fail the test suite if found in non-immune modified files.
+  - Stale keys (e.g. those for alignment, optimization, or telos) must fail the test suite if found in non-immune modified files.
 - **Semantic Ledger**:
   - Define `immune_zones` for files containing historical context (like `kb/GLOSSARY.md` and `WHY-*`).
 

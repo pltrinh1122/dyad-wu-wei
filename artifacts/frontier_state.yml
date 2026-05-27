@@ -3417,9 +3417,8 @@ nodes:
   invariants: []
 - name: 'Node 1155: Activity 1155: Reflect - Codify Falsifications and Extend Lexical
     Guard'
-  status: Backlog
-  learnings: Final reflection and path closure for Codify Falsifications and Extend
-    Lexical Guard.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1156: Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine
     distinction'
@@ -3564,5 +3563,11 @@ nodes:
   status: Completed
   learnings: Formulated the technical specifications in WHAT-1154-codify-falsifications-spec.md
     to guide subsequent activity nodes.
+  invariants:
+  - none
+- name: 'Activity 1155: Reflect - Codify Falsifications and Extend Lexical Guard'
+  status: Completed
+  learnings: Remediated semantic pollution in WHAT-1154-codify-falsifications-spec.md
+    and cleared the prompt queue.
   invariants:
   - none
