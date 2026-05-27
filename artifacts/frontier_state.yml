@@ -3641,3 +3641,15 @@ nodes:
     string literals and verified all tests pass.
   invariants:
   - none
+- name: 'Node 1165: Node 1165: Activity 1165: Durably fix PR-zero #948 via overlay-only
+    inheritance'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1167: Activity 1167: Codify a post-healing Healing Protocol Evaluation
+    process'
+  status: Completed
+  learnings: Codified the post-healing evaluation specification under WHAT-1170 and
+    implemented matching TDD unit tests verifying the seizure detection evaluation
+    resetting and threshold logic.
+  invariants: []

@@ -3557,6 +3557,18 @@
 - **Feedforward Invariants**:
   - `none`
 
+## Node 1165: Node 1165: Activity 1165: Durably fix PR-zero #948 via overlay-only inheritance
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1167: Activity 1167: Codify a post-healing Healing Protocol Evaluation process
+- **Status**: Completed
+- **Learnings & Context**: Codified the post-healing evaluation specification under WHAT-1170 and implemented matching TDD unit tests verifying the seizure detection evaluation resetting and threshold logic.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 
