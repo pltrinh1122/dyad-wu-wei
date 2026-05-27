@@ -3461,6 +3461,18 @@
 - **Feedforward Invariants**:
   - `none`
 
+## Node 1153: Node 1153: Discovery 1153: Harmonize - Codify Falsifications and Extend Lexical Guard
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1153: Harmonize - Codify Falsifications and Extend Lexical Guard
+- **Status**: Completed
+- **Learnings & Context**: Codified key architectural falsifications and ontological boundary definitions in WHY-1153, WHY-1154, WHY-1158, and WHY-1157.
+- **Feedforward Invariants**:
+  - `none`
+
 ## Current Active Path
 None
 
