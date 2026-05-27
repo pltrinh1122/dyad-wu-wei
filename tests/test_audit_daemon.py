@@ -167,3 +167,31 @@ def test_get_current_branch_detached():
         mock_run.assert_any_call(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True, cwd=None)
         mock_run.assert_any_call(["git", "rev-parse", "origin/main"], capture_output=True, text=True, check=True, cwd=None)
         mock_run.assert_any_call(["git", "rev-parse", "main"], capture_output=True, text=True, check=True, cwd=None)
+
+def test_evaluate_seizure_detection():
+    from pathlib import Path
+    rule = {
+        "id": "seizure_detector",
+        "type": "seizure_detection",
+        "threshold": 2,
+        "alert_level": "FAILURE"
+    }
+    state = {"last_fail_count": 0}
+    
+    with patch("pathlib.Path.glob") as mock_glob, \
+         patch("pathlib.Path.exists", return_value=True), \
+         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         
+        mock_glob.return_value = [
+            Path("test-fail-1.json"),
+            Path("test-fail-2.json"),
+            Path("test-fail-3.json")
+        ]
+        
+        from drivers.audit_daemon import evaluate_seizure_detection
+        triggered, new_state = evaluate_seizure_detection(rule, state.copy())
+        
+        assert triggered is True
+        assert new_state["last_fail_count"] == 3
+        mock_inject.assert_called_once()
+        assert "SEIZURE_DETECTED" in mock_inject.call_args[0][0]

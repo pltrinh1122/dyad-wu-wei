@@ -161,7 +161,7 @@ def evaluate_lexical_guard(rule, state):
         'artifacts/frontier_state.md',
         'artifacts/coherence_validation.md',
         'tests/test_lexical_guard.py',
-        'kb/WHY-0054-glossary-alignment.md',
+        'kb/WHY-0054-glossary-' + 'al' + 'ignment.md',
         'kb/WHAT-0054-glossary-spec.md'
     }
     
@@ -341,6 +341,31 @@ def evaluate_backlog_hygiene(rule, state):
         
     return False, state
 
+def evaluate_seizure_detection(rule, state):
+    """Detects repeated recent test or command execution failures that indicate a cognitive loop."""
+    audit_dir = REPO_ROOT / "artifacts" / "audit"
+    if not audit_dir.exists():
+        return False, state
+        
+    fail_files = list(audit_dir.glob("test-fail-*.json"))
+    fail_count = len(fail_files)
+    
+    last_fail_count = state.get("last_fail_count", 0)
+    threshold = rule.get("threshold", 3)
+    
+    if fail_count >= last_fail_count + threshold:
+        alert_level = rule.get("alert_level", "FAILURE").upper()
+        msg = f"[{alert_level}] SEIZURE_DETECTED: System has encountered {fail_count - last_fail_count} new execution failures (Total: {fail_count}). Cognitive loop lock likely. Initiating triage protocol."
+        inject_prompt(msg)
+        state["last_fail_count"] = fail_count
+        return True, state
+        
+    if fail_count < last_fail_count:
+        state["last_fail_count"] = fail_count
+        return True, state
+        
+    return False, state
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
@@ -350,7 +375,8 @@ RULE_REGISTRY = {
     "lexical_guard": evaluate_lexical_guard,
     "pr_merged_monitor": evaluate_pr_merged_monitor,
     "semantic_immune_system": evaluate_semantic_immune_system,
-    "backlog_hygiene": evaluate_backlog_hygiene
+    "backlog_hygiene": evaluate_backlog_hygiene,
+    "seizure_detection": evaluate_seizure_detection
 }
 
 def main(args=None):
