@@ -2921,8 +2921,8 @@
   - `Workspace Boundary Invariant`
 
 ## Node 1080: Activity 1080: Fix root frontier_state mutation leakage during node reflect
-- **Status**: Backlog
-- **Learnings & Context**: Refactor node_lifecycle.py to mutate frontier_state directly inside the active worktree checkout instead of mutating the root repository files. This prevents the root main branch from being left in a dirty state that blocks git pulls.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3452,6 +3452,12 @@
 ## Activity 1137: Reflect - Synthesize Epistemic Retrospective retro-986.md
 - **Status**: Completed
 - **Learnings & Context**: Codified the Ontological Consistency rule for Path nodes in GLOSSARY.md based on retro-986.md.
+- **Feedforward Invariants**:
+  - `none`
+
+## Activity 1080: Fix root frontier_state mutation leakage during node reflect
+- **Status**: Completed
+- **Learnings & Context**: Refactored node_lifecycle.py to mutate frontier_state directly inside the active worktree checkout and clean up root files during checkout.
 - **Feedforward Invariants**:
   - `none`
 
