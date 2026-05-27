@@ -157,7 +157,13 @@ def reset_hard(cwd: str | None = None) -> None:
 
 @record_execution(stage="skill")
 def worktree_add(branch: str, path: str, base: str = "main") -> None:
-    """Adds a new git worktree."""
+    """Adds a new git worktree, cleaning up pre-existing branches safely if needed."""
+    try:
+        res = _run(["git", "show-ref", "--verify", f"refs/heads/{branch}"], check=False)
+        if res.returncode == 0:
+            _run(["git", "branch", "-D", branch], check=True)
+    except Exception:
+        pass
     _run(["git", "worktree", "add", "-b", branch, path, base], check=True)
 
 @record_execution(stage="skill")
