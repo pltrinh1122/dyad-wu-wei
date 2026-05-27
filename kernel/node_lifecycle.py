@@ -509,7 +509,13 @@ class TerminalNode(BaseNode):
             
             # Evaluate Administrative Node HTIL Bypass (WHY-0087-universal-merge-gate-bypass)
             modified_files = git_client.diff_names("origin/main", cwd=worktree_dir)
-            if modified_files and all(f.startswith("artifacts/") for f in modified_files):
+            is_admin_bypass = False
+            if not modified_files:
+                is_admin_bypass = True
+            elif all(f.startswith("artifacts/") or f.startswith("kb/") for f in modified_files):
+                is_admin_bypass = True
+
+            if is_admin_bypass:
                 github_client.admin_merge_pull_request(pr_url)
                 log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created and AUTONOMOUSLY MERGED. HTIL bypassed for pure administrative node.")
             else:

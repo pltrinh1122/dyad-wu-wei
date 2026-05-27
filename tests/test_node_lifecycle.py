@@ -148,7 +148,8 @@ def test_reflect_success(mock_get_worktree_path, mock_nba, mock_frontier, mock_g
     with mock.patch("kernel.node_lifecycle.FlowTransaction") as mock_tx:
         node.reflect("frontier.md", "node-390", "learnings", ["invariants"], "commit-msg", "node/390-test", stage="all")
         
-    expected_worktree = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(".git")), ".worktrees/node/390-test"))
+    from drivers import path_resolver
+    expected_worktree = os.path.abspath(os.path.join(path_resolver.get_core_dir(), ".worktrees/node/390-test"))
     mock_git.add.assert_called_once_with(["."], cwd=expected_worktree)
     mock_git.commit.assert_called_once_with("commit-msg", cwd=expected_worktree)
     mock_git.push.assert_called_once_with("node/390-test", cwd=expected_worktree)
@@ -275,6 +276,37 @@ def test_branch_naming_regex_enforcement_and_exemption(mock_frontier, mock_gh, m
                 assert not isinstance(e, ValueError) or "Branch name MUST follow" not in str(e)
     finally:
         del os.environ["SPAO_WORKSPACE_DIR"]
+
+
+@mock.patch("kernel.node_lifecycle.daemon_nba")
+@mock.patch("kernel.node_lifecycle.agent_frontier")
+@mock.patch("kernel.node_lifecycle.FlowTransaction")
+@mock.patch("kernel.node_lifecycle.github_client")
+@mock.patch("kernel.node_lifecycle.git_client")
+def test_reflect_admin_bypass_conditions(mock_git, mock_gh, mock_tx, mock_frontier, mock_nba):
+    mock_frontier.read_active_path.return_value = None
+    mock_nba.NBADaemon.return_value.evaluate.return_value = {"type": "continue"}
+    mock_git.get_git_common_dir.return_value = ".git"
+    mock_git.check_merge_conflicts.return_value = False
+    
+    node = TerminalNode("390")
+    
+    # Case 1: Zero modifications (not modified_files) -> should bypass
+    mock_git.diff_names.return_value = []
+    node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
+    mock_gh.admin_merge_pull_request.assert_called_once()
+    mock_gh.admin_merge_pull_request.reset_mock()
+    
+    # Case 2: Only artifacts/ and kb/ modifications -> should bypass
+    mock_git.diff_names.return_value = ["artifacts/frontier_state.md", "kb/WHY-0001.md"]
+    node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
+    mock_gh.admin_merge_pull_request.assert_called_once()
+    mock_gh.admin_merge_pull_request.reset_mock()
+    
+    # Case 3: Code changes -> should NOT bypass
+    mock_git.diff_names.return_value = ["kernel/node_lifecycle.py", "artifacts/frontier_state.md"]
+    node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
+    mock_gh.admin_merge_pull_request.assert_not_called()
 
 
 
