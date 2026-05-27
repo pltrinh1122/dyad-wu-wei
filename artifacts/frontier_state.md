@@ -3207,8 +3207,8 @@
   - `tests pass`
 
 ## Node 1137: Activity 1137: Reflect - Synthesize Epistemic Retrospective retro-986.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-986.md into the system's operational guidelines (the Dao).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3446,6 +3446,12 @@
 ## Activity 1145: Reflect - Synthesize Epistemic Retrospective retro-1144.md
 - **Status**: Completed
 - **Learnings & Context**: Codified Rule 13 (Sensory Interrogation Protocol) in GEMINI.md and created retro-1144.md.
+- **Feedforward Invariants**:
+  - `none`
+
+## Activity 1137: Reflect - Synthesize Epistemic Retrospective retro-986.md
+- **Status**: Completed
+- **Learnings & Context**: Codified the Ontological Consistency rule for Path nodes in GLOSSARY.md based on retro-986.md.
 - **Feedforward Invariants**:
   - `none`
 
