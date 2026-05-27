@@ -3077,10 +3077,8 @@ nodes:
   - Workspace Boundary Invariant
 - name: 'Node 1080: Activity 1080: Fix root frontier_state mutation leakage during
     node reflect'
-  status: Backlog
-  learnings: Refactor node_lifecycle.py to mutate frontier_state directly inside the
-    active worktree checkout instead of mutating the root repository files. This prevents
-    the root main branch from being left in a dirty state that blocks git pulls.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1081: Discovery 1081: Investigate workspace state corruption during
     upstream engine fetch'
@@ -3543,5 +3541,11 @@ nodes:
   status: Completed
   learnings: Codified the Ontological Consistency rule for Path nodes in GLOSSARY.md
     based on retro-986.md.
+  invariants:
+  - none
+- name: 'Activity 1080: Fix root frontier_state mutation leakage during node reflect'
+  status: Completed
+  learnings: Refactored node_lifecycle.py to mutate frontier_state directly inside
+    the active worktree checkout and clean up root files during checkout.
   invariants:
   - none

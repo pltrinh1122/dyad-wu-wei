@@ -361,6 +361,30 @@ class TerminalNode(BaseNode):
             git_client.worktree_add(branch_name, worktree_path, "origin/main")
             tx.register_rollback(git_client.worktree_remove, worktree_path, force=True)
             tx.register_rollback(git_client.branch_delete, branch_name)
+
+            # Sync frontier state updates to worktree so the worktree has the active planning state (Node 1080)
+            try:
+                import shutil
+                rel_workspace = os.environ.get("SPAO_WORKSPACE_DIR", "")
+                if rel_workspace and os.path.isabs(rel_workspace):
+                    core_dir = path_resolver.get_core_dir()
+                    if rel_workspace.startswith(core_dir):
+                        rel_workspace = os.path.relpath(rel_workspace, core_dir)
+
+                for ext in [".yml", ".yml.sha256", ".md"]:
+                    src = path_resolver.resolve_workspace_path("artifacts", f"frontier_state{ext}")
+                    dest = os.path.join(worktree_path, rel_workspace, "artifacts", f"frontier_state{ext}")
+                    dest_abs = os.path.abspath(dest)
+                    if os.path.exists(src):
+                        os.makedirs(os.path.dirname(dest_abs), exist_ok=True)
+                        shutil.copy2(src, dest_abs)
+                        # Revert uncommitted frontier updates in the root repository to keep main clean (Node 1080)
+                        try:
+                            git_client.restore([src])
+                        except Exception as restore_err:
+                            print(f"Warning: Failed to restore root frontier file {src}: {restore_err}")
+            except Exception as e:
+                print(f"Warning: Failed to sync frontier state to worktree during checkout: {e}")
             
             print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
     def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
@@ -377,6 +401,21 @@ class TerminalNode(BaseNode):
             worktree_dir = os.path.abspath(self.get_worktree_path(branch_name))
         else:
             worktree_dir = os.path.abspath(os.path.join(main_repo, self.get_worktree_path(branch_name)))
+
+        # Redirect frontier_file to mutate directly inside the worktree checkout (Node 1080)
+        try:
+            workspace_root = path_resolver.resolve_workspace_path("")
+            if os.path.abspath(frontier_file).startswith(os.path.abspath(workspace_root)):
+                rel_workspace = os.environ.get("SPAO_WORKSPACE_DIR", "")
+                if rel_workspace and os.path.isabs(rel_workspace):
+                    core_dir = path_resolver.get_core_dir()
+                    if rel_workspace.startswith(core_dir):
+                        rel_workspace = os.path.relpath(rel_workspace, core_dir)
+
+                rel_frontier = os.path.relpath(frontier_file, workspace_root)
+                frontier_file = os.path.abspath(os.path.join(worktree_dir, rel_workspace, rel_frontier))
+        except Exception as e:
+            print(f"Warning: Failed to redirect frontier_file to worktree: {e}")
 
         with FlowTransaction(frontier_file) as tx:
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
@@ -423,29 +462,8 @@ class TerminalNode(BaseNode):
             if clear_path:
                 agent_frontier.set_active_path(frontier_file, "None")
             
-            # Sync frontier state updates to worktree so they are committed in the branch
-            try:
-                import shutil
-                rel_workspace = os.environ.get("SPAO_WORKSPACE_DIR", "")
-                if rel_workspace and os.path.isabs(rel_workspace):
-                    core_dir = path_resolver.get_core_dir()
-                    if rel_workspace.startswith(core_dir):
-                        rel_workspace = os.path.relpath(rel_workspace, core_dir)
-
-                for ext in [".yml", ".yml.sha256", ".md"]:
-                    src = path_resolver.resolve_workspace_path("artifacts", f"frontier_state{ext}")
-                    dest = os.path.join(worktree_dir, rel_workspace, "artifacts", f"frontier_state{ext}")
-                    dest_abs = os.path.abspath(dest)
-                    worktree_abs = os.path.abspath(worktree_dir)
-                    
-                    if not dest_abs.startswith(worktree_abs):
-                        raise ValueError(f"Boundary Violation (WHAT-0987): Attempted to sync state outside worktree to {dest_abs}")
-                        
-                    if os.path.exists(src) and os.path.abspath(src) != dest_abs:
-                        os.makedirs(os.path.dirname(dest_abs), exist_ok=True)
-                        shutil.copy2(src, dest_abs)
-            except Exception as e:
-                print(f"Warning: Failed to sync frontier state files to worktree: {e}")
+            # The frontier state files were updated directly inside the worktree (Node 1080), so copying from root is unnecessary.
+            pass
             
             # Run SPAO purity validation check before git commit/push
             if self.loop == "spao":
