@@ -3273,8 +3273,8 @@
   - `[ ]` None
 
 ## Node 1150: Activity 1150: Reflect - Map Remaining Unmapped Backlog Issues to Strategic Goals
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Map Remaining Unmapped Backlog Issues to Strategic Goals.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3430,6 +3430,12 @@
 - **Feedforward Invariants**:
   - `[x] README.md is restored`
   - `[x] kb/GLOSSARY.md is restored`
+
+## Activity 1150: Reflect - Map Remaining Unmapped Backlog Issues to Strategic Goals
+- **Status**: Completed
+- **Learnings & Context**: Verified that remaining unmapped issues are mapped in strategic_intent.yml
+- **Feedforward Invariants**:
+  - `none`
 
 ## Current Active Path
 None
