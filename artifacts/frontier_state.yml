@@ -3571,3 +3571,14 @@ nodes:
     and cleared the prompt queue.
   invariants:
   - none
+- name: 'Node 1156: Node 1156: Activity 1156: Codify kernel/bin coexistence and Core/Dao
+    Engine distinction'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine distinction'
+  status: Completed
+  learnings: Codified the kernel/bin coexistence and Core/Dao Engine distinction in
+    WHAT-0001-agentic-architecture.md.
+  invariants:
+  - none
