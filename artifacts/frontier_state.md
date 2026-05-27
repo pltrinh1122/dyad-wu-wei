@@ -3382,17 +3382,17 @@
 - **Feedforward Invariants**:
   - `kb/WHY-1173-seizure-blindspot.md exists and GEMINI.md updated`
 
-## Node 1175: Activity 1175: Remediate Semantic Pollution in HOW-1170
+## Node 1168: Activity 1168: Reflect - Synthesize Epistemic Retrospective retro-1165.md
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1175: Remediate Semantic Pollution in HOW-1170
+## Activity 1168: Synthesize Epistemic Retrospective retro-1165.md
 - **Status**: Completed
-- **Learnings & Context**: Remediated semantic pollution by replacing the deprecated term 'align' with 'cohere'.
+- **Learnings & Context**: Synthesized the learnings from retro-1165.md into a formal WHY primitive ensuring environment inheritance for python subprocesses.
 - **Feedforward Invariants**:
-  - `HOW-1170-frontier-recovery-protocol.md is updated.`
+  - `kb/WHY-1168-subprocess-environment-inheritance.md exists.`
 
 ## Current Active Path
 None
