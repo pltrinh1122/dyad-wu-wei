@@ -3496,13 +3496,12 @@ nodes:
   invariants:
   - kb/WHY-1168-subprocess-environment-inheritance.md exists.
 - name: 'Node 1178: Activity 1178: Reflect - Synthesize Epistemic Retrospective retro-1149.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-1149.md into the system's operational guidelines (the Dao).
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
-- name: 'Activity 1149: Map Remaining Unmapped Backlog Issues to Strategic Goals'
+- name: 'Activity 1178: Reflect - Synthesize Epistemic Retrospective retro-1149.md'
   status: Completed
-  learnings: Mapped issues 1094, 1074, 985 to their respective Strategic Goals in
-    their bodies to resolve hygiene warnings.
+  learnings: Codified the Root Execution Invariant to formally document the architectural
+    physics preventing double-nesting orchestrator path resolutions.
   invariants:
-  - Issues updated remotely.
+  - Walkthrough validated.
