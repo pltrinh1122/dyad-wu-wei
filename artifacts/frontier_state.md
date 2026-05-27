@@ -3394,6 +3394,18 @@
 - **Feedforward Invariants**:
   - `kb/WHY-1168-subprocess-environment-inheritance.md exists.`
 
+## Node 1178: Activity 1178: Reflect - Synthesize Epistemic Retrospective retro-1149.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1149.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1149: Map Remaining Unmapped Backlog Issues to Strategic Goals
+- **Status**: Completed
+- **Learnings & Context**: Mapped issues 1094, 1074, 985 to their respective Strategic Goals in their bodies to resolve hygiene warnings.
+- **Feedforward Invariants**:
+  - `Issues updated remotely.`
+
 ## Current Active Path
 None
 
