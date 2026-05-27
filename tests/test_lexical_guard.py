@@ -7,6 +7,8 @@ import yaml
 EXEMPTIONS = {
     'kb/GLOSSARY.md',
     'artifacts/frontier_state.md',
+    'artifacts/frontier_state.yml',
+    'artifacts/frontier_state.yml.sha256',
     'artifacts/coherence_validation.md',
     'tests/test_lexical_guard.py',
     'kb/WHY-0054-glossary-alignment.md',

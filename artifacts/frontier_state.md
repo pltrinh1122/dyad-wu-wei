@@ -3327,8 +3327,8 @@
   - `[ ]` None
 
 ## Node 1158: Activity 1158: Codify Dialectical Falsification of Terminology Abstraction Thesis
-- **Status**: Backlog
-- **Learnings & Context**: Ratify and codify the Dialectical Falsification of the Terminology Abstraction Thesis into the Dao
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3500,6 +3500,12 @@
 ## Activity 1157: Extend semantic_ledger.yml and lexical_guard for GLOSSARY-driven renames
 - **Status**: Completed
 - **Learnings & Context**: Extended the lexical guard to dynamically load and parse semantic_ledger.yml and enforce immune zones.
+- **Feedforward Invariants**:
+  - `none`
+
+## Activity 1158: Codify Dialectical Falsification of Terminology Abstraction Thesis
+- **Status**: Completed
+- **Learnings & Context**: Codified the Dialectical Falsification of the Terminology Abstraction Thesis in WHAT-0001 Section 5.3.
 - **Feedforward Invariants**:
   - `none`
 
