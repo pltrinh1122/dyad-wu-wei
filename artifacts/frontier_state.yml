@@ -3618,3 +3618,14 @@ nodes:
     and implications.
   invariants:
   - none
+- name: 'Node 1163: Discovery 1163: Plan - Implement Agentic Healing and Seizure Recovery
+    Protocols'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1163: Plan - Implement Agentic Healing and Seizure Recovery Protocols'
+  status: Completed
+  learnings: Finalized the technical specification for implementing Agentic Healing
+    and Seizure Recovery Protocols under kb/WHAT-1163-agentic-healing-spec.md.
+  invariants:
+  - none
