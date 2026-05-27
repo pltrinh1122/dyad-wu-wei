@@ -3471,3 +3471,8 @@ nodes:
   - '[x] WHY-1166'
   - HOW-1166
   - and templates/healer_instantiation.md are created. [x] Node 1167 is created.
+- name: 'Activity 1170: Codify Frontier Recovery Protocol'
+  status: Completed
+  learnings: Codified the post-seizure self-invariant assertion sequence into HOW-1170
+  invariants:
+  - kb/HOW-1170-frontier-recovery-protocol.md exists
