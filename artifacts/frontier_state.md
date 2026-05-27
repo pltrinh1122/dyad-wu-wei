@@ -3195,8 +3195,8 @@
   - `semantic_ledger aligned to unified ontology`
 
 ## Node 1135: Activity 1135: Reflect - Synthesize Epistemic Retrospective retro-1133.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1133.md into the system's operational guidelines (the Dao).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3434,6 +3434,12 @@
 ## Activity 1150: Reflect - Map Remaining Unmapped Backlog Issues to Strategic Goals
 - **Status**: Completed
 - **Learnings & Context**: Verified that remaining unmapped issues are mapped in strategic_intent.yml
+- **Feedforward Invariants**:
+  - `none`
+
+## Activity 1135: Reflect - Synthesize Epistemic Retrospective retro-1133.md
+- **Status**: Completed
+- **Learnings & Context**: Codified the Worktree Test Context learning from retro-1133.md into HOW-0001-spao-execution-loop.md
 - **Feedforward Invariants**:
   - `none`
 

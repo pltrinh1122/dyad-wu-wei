@@ -25,6 +25,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
 3. **Act (Execution):** 
    - Execute codebase generation, tool invocations, and artifact mutations required by the Scope.
    - **TDD Invariant:** You MUST use `./bin/run-tests` for all local testing. Raw bash `pytest` is strictly forbidden.
+   - **Worktree Test Context:** To verify worktree logic mutations, execute tests from within the checked-out worktree directory itself rather than running them targeting the worktree files from the repository root directory.
    - **Asynchronous Prompt Interception:** If the Operator submits an asynchronous prompt or system signal during the Act phase, you must strictly preserve the `WIP-N=1` invariant. Queue the prompt into `artifacts/prompt_backlog.md` (via `./bin/prompt "..."` or local write) and immediately return to the active task without altering cognitive context.
 
 4. **Observe (HITL Pause):** 

@@ -3317,9 +3317,8 @@ nodes:
   - WHY-1069
   - semantic_ledger aligned to unified ontology
 - name: 'Node 1135: Activity 1135: Reflect - Synthesize Epistemic Retrospective retro-1133.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-1133.md into the system's operational guidelines (the Dao).
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Activity 1133: Falsify branch naming convention constraint for child workspaces'
   status: Completed
@@ -3529,5 +3528,10 @@ nodes:
     Goals'
   status: Completed
   learnings: Verified that remaining unmapped issues are mapped in strategic_intent.yml
+  invariants:
+  - none
+- name: 'Activity 1135: Reflect - Synthesize Epistemic Retrospective retro-1133.md'
+  status: Completed
+  learnings: Codified the Worktree Test Context learning from retro-1133.md into HOW-0001-spao-execution-loop.md
   invariants:
   - none
