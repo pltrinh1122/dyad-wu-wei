@@ -3514,3 +3514,15 @@ nodes:
   learnings: Wrote and staged the restoration spec file WHAT-1181 under kb/ to guide
     the restoration of README and GLOSSARY in the next Activity node.
   invariants: []
+- name: 'Node 1184: Activity 1184: Reflect - Restore README and GLOSSARY from 420102e'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1184: Reflect - Restore README and GLOSSARY from 420102e'
+  status: Completed
+  learnings: Restored the original high-density README.md and the full definitions
+    in kb/GLOSSARY.md from commit 420102e, adapting them to the current dz-cil layout
+    and conventions.
+  invariants:
+  - '[x] README.md is restored'
+  - '[x] kb/GLOSSARY.md is restored'

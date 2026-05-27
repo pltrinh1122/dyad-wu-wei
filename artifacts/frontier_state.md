@@ -3418,6 +3418,19 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 1184: Activity 1184: Reflect - Restore README and GLOSSARY from 420102e
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1184: Reflect - Restore README and GLOSSARY from 420102e
+- **Status**: Completed
+- **Learnings & Context**: Restored the original high-density README.md and the full definitions in kb/GLOSSARY.md from commit 420102e, adapting them to the current dz-cil layout and conventions.
+- **Feedforward Invariants**:
+  - `[x] README.md is restored`
+  - `[x] kb/GLOSSARY.md is restored`
+
 ## Current Active Path
 None
 
