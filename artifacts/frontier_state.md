@@ -2629,8 +2629,8 @@
   - `[ ]` None
 
 ## Node 995: Discovery 995: Plan - Preserve Flow State: Autonomous HTIL Bypass for Administrative Nodes
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Preserve Flow State: Autonomous HTIL Bypass for Administrative Nodes.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3578,6 +3578,12 @@
 ## Activity 761: Reflect - Passive Ziran Auditor
 - **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Passive Ziran Auditor.
+- **Feedforward Invariants**:
+  - `none`
+
+## Discovery 995: Plan - Preserve Flow State: Autonomous HTIL Bypass for Administrative Nodes
+- **Status**: Completed
+- **Learnings & Context**: Refined the administrative HTIL bypass logic to support zero-mutation and kb/ documentation modifications, and verified via comprehensive unit tests.
 - **Feedforward Invariants**:
   - `none`
 
