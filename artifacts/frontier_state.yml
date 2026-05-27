@@ -3365,9 +3365,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1145: Activity 1145: Reflect - Synthesize Epistemic Retrospective retro-1144.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-1144.md into the system's operational guidelines (the Dao).
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Activity 1144: Fix hardcoded OPEN status in daemon_backlog view'
   status: Completed
@@ -3533,5 +3532,11 @@ nodes:
 - name: 'Activity 1135: Reflect - Synthesize Epistemic Retrospective retro-1133.md'
   status: Completed
   learnings: Codified the Worktree Test Context learning from retro-1133.md into HOW-0001-spao-execution-loop.md
+  invariants:
+  - none
+- name: 'Activity 1145: Reflect - Synthesize Epistemic Retrospective retro-1144.md'
+  status: Completed
+  learnings: Codified Rule 13 (Sensory Interrogation Protocol) in GEMINI.md and created
+    retro-1144.md.
   invariants:
   - none
