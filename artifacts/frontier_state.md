@@ -3370,6 +3370,18 @@
 - **Feedforward Invariants**:
   - `kb/HOW-1170-frontier-recovery-protocol.md exists`
 
+## Node 1173: Activity 1173: Codify Seizure Lessons
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1173: Codify Seizure Lessons
+- **Status**: Completed
+- **Learnings & Context**: Codified the seizure blind spot and the consistency/hygiene invariants.
+- **Feedforward Invariants**:
+  - `kb/WHY-1173-seizure-blindspot.md exists and GEMINI.md updated`
+
 ## Current Active Path
 None
 

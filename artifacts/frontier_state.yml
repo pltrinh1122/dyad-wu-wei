@@ -3476,3 +3476,12 @@ nodes:
   learnings: Codified the post-seizure self-invariant assertion sequence into HOW-1170
   invariants:
   - kb/HOW-1170-frontier-recovery-protocol.md exists
+- name: 'Node 1173: Activity 1173: Codify Seizure Lessons'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1173: Codify Seizure Lessons'
+  status: Completed
+  learnings: Codified the seizure blind spot and the consistency/hygiene invariants.
+  invariants:
+  - kb/WHY-1173-seizure-blindspot.md exists and GEMINI.md updated
