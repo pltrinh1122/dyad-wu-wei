@@ -3594,3 +3594,14 @@ nodes:
     Thesis in WHAT-0001 Section 5.3.
   invariants:
   - none
+- name: 'Node 1194: Activity 1194: Reflect - Synthesize Epistemic Retrospective retro-1154.md'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1194: Reflect - Synthesize Epistemic Retrospective retro-1154.md'
+  status: Completed
+  learnings: Synthesized retrospective retro-1154.md by implementing check-and-delete
+    local branch logic in git_client.py worktree_add to prevent checkout exit-error
+    255. Documented checkout resilience in HOW-0001.
+  invariants:
+  - none

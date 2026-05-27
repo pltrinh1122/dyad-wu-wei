@@ -35,8 +35,19 @@ def test_git_restore_empty(mock_subprocess):
     mock_subprocess.assert_not_called()
 
 def test_git_worktree_add(mock_subprocess):
+    mock_subprocess.return_value.returncode = 1
     git_client.worktree_add("node-branch", ".worktrees/node-branch", "main")
-    mock_subprocess.assert_called_once_with(["git", "worktree", "add", "-b", "node-branch", ".worktrees/node-branch", "main"], check=True)
+    assert mock_subprocess.call_count == 2
+    mock_subprocess.assert_any_call(["git", "show-ref", "--verify", "refs/heads/node-branch"], check=False)
+    mock_subprocess.assert_any_call(["git", "worktree", "add", "-b", "node-branch", ".worktrees/node-branch", "main"], check=True)
+
+def test_git_worktree_add_existing_branch(mock_subprocess):
+    mock_subprocess.return_value.returncode = 0
+    git_client.worktree_add("node-branch", ".worktrees/node-branch", "main")
+    assert mock_subprocess.call_count == 3
+    mock_subprocess.assert_any_call(["git", "show-ref", "--verify", "refs/heads/node-branch"], check=False)
+    mock_subprocess.assert_any_call(["git", "branch", "-D", "node-branch"], check=True)
+    mock_subprocess.assert_any_call(["git", "worktree", "add", "-b", "node-branch", ".worktrees/node-branch", "main"], check=True)
 
 def test_git_worktree_remove_default(mock_subprocess):
     git_client.worktree_remove(".worktrees/node-branch")

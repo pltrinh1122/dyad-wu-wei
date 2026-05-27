@@ -3509,6 +3509,18 @@
 - **Feedforward Invariants**:
   - `none`
 
+## Node 1194: Activity 1194: Reflect - Synthesize Epistemic Retrospective retro-1154.md
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1194: Reflect - Synthesize Epistemic Retrospective retro-1154.md
+- **Status**: Completed
+- **Learnings & Context**: Synthesized retrospective retro-1154.md by implementing check-and-delete local branch logic in git_client.py worktree_add to prevent checkout exit-error 255. Documented checkout resilience in HOW-0001.
+- **Feedforward Invariants**:
+  - `none`
+
 ## Current Active Path
 None
 
