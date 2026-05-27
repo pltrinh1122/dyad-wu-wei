@@ -3064,10 +3064,10 @@ nodes:
   - '[x] Modified drivers/path_resolver.py\n[x] Modified tests/test_path_resolver.py'
 - name: 'Node 1078: Activity 1078: Implement Single-Daemon Multi-Tenant redirection
     for workspace auditing'
-  status: Backlog
-  learnings: Refactor the parent audit daemon to automatically detect active workspace
-    contexts and redirect verification targets to the child workspace artifacts directory
-    and config ledger.
+  status: Completed
+  learnings: Refactored audit_daemon.py to resolve paths dynamically at runtime, ensuring
+    complete environment redirection (config ledger, state file, and frontier trackers)
+    when executed in an active child workspace context.
   invariants: []
 - name: 'Node 986: Enforce Workspace Isolation Boundaries'
   status: Completed
@@ -3641,15 +3641,3 @@ nodes:
     string literals and verified all tests pass.
   invariants:
   - none
-- name: 'Node 1165: Node 1165: Activity 1165: Durably fix PR-zero #948 via overlay-only
-    inheritance'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Node 1167: Activity 1167: Codify a post-healing Healing Protocol Evaluation
-    process'
-  status: Completed
-  learnings: Codified the post-healing evaluation specification under WHAT-1170 and
-    implemented matching TDD unit tests verifying the seizure detection evaluation
-    resetting and threshold logic.
-  invariants: []

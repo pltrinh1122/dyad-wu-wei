@@ -8,46 +8,61 @@ from pathlib import Path
 from drivers.git_client import get_current_branch
 from drivers import path_resolver
 
-# Paths
-REPO_ROOT = Path(path_resolver.resolve_core_path())
-WORKSPACE_DIR = Path(path_resolver.get_workspace_dir())
+# Paths that resolve dynamically at runtime to respect SPAO_WORKSPACE_DIR mutations
+def get_repo_root() -> Path:
+    return Path(path_resolver.resolve_core_path())
 
-_workspace_config = Path(path_resolver.resolve_workspace_path("infra", "audit-daemon", "audit_config.yml"))
-CONFIG_FILE = _workspace_config if _workspace_config.exists() else Path(path_resolver.resolve_core_path("infra", "audit-daemon", "audit_config.yml"))
-STATE_FILE = Path(path_resolver.resolve_workspace_path("artifacts", "audit_state.json"))
-FRONTIER_FILE = Path(path_resolver.resolve_workspace_path("artifacts", "frontier_state.md"))
-PROMPT_CLI = Path(path_resolver.resolve_core_path("bin", "prompt"))
+def get_workspace_dir() -> Path:
+    return Path(path_resolver.get_workspace_dir())
+
+def get_config_file() -> Path:
+    _workspace_config = Path(path_resolver.resolve_workspace_path("infra", "audit-daemon", "audit_config.yml"))
+    return _workspace_config if _workspace_config.exists() else Path(path_resolver.resolve_core_path("infra", "audit-daemon", "audit_config.yml"))
+
+def get_state_file() -> Path:
+    return Path(path_resolver.resolve_workspace_path("artifacts", "audit_state.json"))
+
+def get_frontier_file() -> Path:
+    return Path(path_resolver.resolve_workspace_path("artifacts", "frontier_state.md"))
+
+def get_prompt_cli() -> Path:
+    return Path(path_resolver.resolve_core_path("bin", "prompt"))
 
 def load_config():
-    if not CONFIG_FILE.exists():
-        print(f"Config file {CONFIG_FILE} not found. Exiting.")
+    config_file = get_config_file()
+    if not config_file.exists():
+        print(f"Config file {config_file} not found. Exiting.")
         sys.exit(0)
-    with open(CONFIG_FILE, "r") as f:
+    with open(config_file, "r") as f:
         return yaml.safe_load(f)
 
 def load_state():
-    if not STATE_FILE.exists():
+    state_file = get_state_file()
+    if not state_file.exists():
         return {}
-    with open(STATE_FILE, "r") as f:
+    with open(state_file, "r") as f:
         try:
             return json.load(f)
         except json.JSONDecodeError:
             return {}
 
 def save_state(state):
-    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(STATE_FILE, "w") as f:
+    state_file = get_state_file()
+    state_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(state_file, "w") as f:
         json.dump(state, f, indent=4)
 
 def inject_prompt(message):
     print(f"Injecting prompt: {message}")
-    subprocess.run([str(PROMPT_CLI), "add", message], check=True, cwd=WORKSPACE_DIR)
+    subprocess.run([str(get_prompt_cli()), "add", message], check=True, cwd=get_workspace_dir())
+
 
 def evaluate_node_completion_threshold(rule, state):
-    if not FRONTIER_FILE.exists():
+    frontier_file = get_frontier_file()
+    if not frontier_file.exists():
         return False, state
         
-    with open(FRONTIER_FILE, "r") as f:
+    with open(frontier_file, "r") as f:
         content = f.read()
     
     current_count = content.count("**Status**: Completed")
@@ -68,7 +83,7 @@ def evaluate_file_modified(rule, state):
     if not file_path:
         return False, state
         
-    res = subprocess.run(["git", "log", "-1", "--format=%H", "--", file_path], capture_output=True, text=True, cwd=WORKSPACE_DIR)
+    res = subprocess.run(["git", "log", "-1", "--format=%H", "--", file_path], capture_output=True, text=True, cwd=get_workspace_dir())
     current_hash = res.stdout.strip()
     
     if not current_hash:
@@ -91,10 +106,11 @@ def evaluate_file_modified(rule, state):
     return False, state
 
 def evaluate_stale_active_node(rule, state):
-    if not FRONTIER_FILE.exists():
+    frontier_file = get_frontier_file()
+    if not frontier_file.exists():
         return False, state
         
-    with open(FRONTIER_FILE, "r") as f:
+    with open(frontier_file, "r") as f:
         content = f.read()
         
     # Extract Active Node using simple regex to avoid complex imports
@@ -117,9 +133,9 @@ def evaluate_stale_active_node(rule, state):
     return False, state
 
 def evaluate_frontier_integrity(rule, state):
-    sys.path.append(str(REPO_ROOT))
+    sys.path.append(str(get_repo_root()))
     from kernel import agent_frontier
-    filepath = str(REPO_ROOT / "artifacts" / "frontier_state.yml")
+    filepath = str(get_repo_root() / "artifacts" / "frontier_state.yml")
     try:
         agent_frontier.verify_checksum(filepath)
         agent_frontier.load_state(filepath)
@@ -139,7 +155,7 @@ def evaluate_lexical_guard(rule, state):
         ["git", "status", "--porcelain"],
         capture_output=True,
         text=True,
-        cwd=REPO_ROOT
+        cwd=get_repo_root()
     )
     if res.returncode != 0:
         return False, state
@@ -176,7 +192,7 @@ def evaluate_lexical_guard(rule, state):
         if not (f_rel.endswith('.py') or f_rel.endswith('.md') or f_rel.endswith('.txt')):
             continue
             
-        full_path = REPO_ROOT / f_rel
+        full_path = get_repo_root() / f_rel
         if not full_path.exists():
             continue
             
@@ -206,13 +222,14 @@ def evaluate_pr_merged_monitor(rule, state):
     """
     from drivers import sluice_gate_sensor
 
-    if not FRONTIER_FILE.exists():
+    frontier_file = get_frontier_file()
+    if not frontier_file.exists():
         return False, state
 
-    with open(FRONTIER_FILE, "r") as f:
+    with open(frontier_file, "r") as f:
         frontier_content = f.read()
 
-    sys.path.append(str(REPO_ROOT))
+    sys.path.append(str(get_repo_root()))
     from drivers.github_client import get_merged_prs
 
     try:
@@ -242,12 +259,12 @@ def evaluate_pr_merged_monitor(rule, state):
 
 
 def evaluate_semantic_immune_system(rule, state):
-    sys.path.append(str(REPO_ROOT))
+    sys.path.append(str(get_repo_root()))
     import yaml
     import re
     from pathlib import Path
     
-    ledger_path = REPO_ROOT / "kb" / "semantic_ledger.yml"
+    ledger_path = get_repo_root() / "kb" / "semantic_ledger.yml"
     if not ledger_path.exists():
         return False, state
         
@@ -264,7 +281,7 @@ def evaluate_semantic_immune_system(rule, state):
         if not deprecated_terms:
             return False, state
             
-        kb_dir = REPO_ROOT / "kb"
+        kb_dir = get_repo_root() / "kb"
         pollution_found = []
         
         term_patterns = {term: re.compile(rf"\b{re.escape(term)}\b", re.IGNORECASE) for term in deprecated_terms}
@@ -343,7 +360,7 @@ def evaluate_backlog_hygiene(rule, state):
 
 def evaluate_seizure_detection(rule, state):
     """Detects repeated recent test or command execution failures that indicate a cognitive loop."""
-    audit_dir = REPO_ROOT / "artifacts" / "audit"
+    audit_dir = get_repo_root() / "artifacts" / "audit"
     if not audit_dir.exists():
         return False, state
         
