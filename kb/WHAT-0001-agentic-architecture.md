@@ -11,15 +11,20 @@ Modern agentic repositories abandon traditional SDLC in favor of an Agentic Arch
 - **`infra/`**: The **Infrastructure** of the system. Contains Infrastructure as Code (IaC) provisioning scripts for daemons (e.g., Local CI Runners). The Agent strictly provisions infrastructure here, but does not execute the daemons directly in its cognitive loop. User-Level Systemd (`systemctl --user`) is the standard for Agent-controllable daemons.
 
 ### The CLI Adapter Layer
-Bridging the operator and the architecture is the **`bin/`** directory. It is NOT a core Pillar, but rather the **CLI Adapter Layer**. It contains ultra-thin shell wrappers that delegate immediately to Python **Orchestrators** (e.g., `kernel/daemon_node.py`). These Python `mgr_*` orchestrators inherently own their Workflows and route execution to the underlying stateless `drivers/`.
+Bridging the operator and the architecture is the **`bin/`** directory. It is NOT a core Pillar, but rather the **CLI Adapter Layer**. It contains ultra-thin shell wrappers that delegate immediately to Python **Kernel Daemons** (e.g., `kernel/daemon_node.py`). These Python `daemon_*` modules inherently own their Workflows and route execution to the underlying stateless `drivers/`.
 
 The Agent operates as a **Frontier Agent**, driving a logical, topological frontier node-by-node.
+
+### The Core vs Dao Engine Distinction
+To prevent runtime state leakage and preserve architectural clean boundaries, we establish the following distinction:
+- **The Core (Static ROM)**: The static codebase, configuration files, templates, and specifications defined in the repository (e.g., `kb/` primitives). It represents the immutable laws, memory templates, and behavioral constraints.
+- **The Dao Engine (Dynamic Runtime)**: The active execution state, runtime daemon context, worktrees, locks, and temporal files materialized during execution. It represents the flow of action, sensing, decision-making, and execution (Ziran and Wu-wei).
 
 ### 1.1 Managers, Workflows, and Agents
 To achieve true autonomy, the environment must be mathematically decoupled from the actor:
 - **Workflow**: A deterministic state machine (e.g., the SPAO Loop, Node Contracts, Path Tracking). It defines the rules, transitions, and constraints of the environment.
 - **Agent**: A non-deterministic reasoning engine (e.g., an LLM). It navigates and executes the workflow.
-- **Manager (Orchestrator)**: The systemic synthesis of `Workflow + Agent`. A Manager binds an Agent to a specific Workflow.
+- **Manager (Kernel Daemon)**: The systemic synthesis of `Workflow + Agent`. A Manager binds an Agent to a specific Workflow.
 
 ### 1.2 The Dual-Agent Paradigm
 A production-grade Manager cannot rely on a single thread of execution to self-police. True autonomy requires independent, concurrent verification. Therefore, a Manager consists of at least two autonomous agents:
@@ -56,7 +61,7 @@ A PML cycle produces at most a **Node Contract (NC)** proposal for operator revi
 
 **NL (Node-Loop)** — operates *above* the boundary (mandatory materialization):
 1. **Repository Mutation:** Creating, deleting, or modifying files that affect logic, architecture, or persistent state.
-2. **Ambiguity in Implementation:** Complex architecture requiring Operator alignment before execution.
+2. **Ambiguity in Implementation:** Complex architecture requiring Operator harmonization before execution.
 3. **State Transitions:** Advancing the topological frontier.
 
 Activation of the NL requires: (1) a Backlog GH Issue (created via `bin/backlog new`), (2) a complete operator-approved **NC**, (3) a checked-out `node/XX-*` branch, and (4) an updated `frontier_state.md`.
@@ -65,7 +70,7 @@ Activation of the NL requires: (1) a Backlog GH Issue (created via `bin/backlog 
 
 ## 5. Ontological Taxonomy: Spatial (Graph) and Temporal (SPAO)
 
-To maintain high cognitive alignment and guarantee repeatable repository transitions, the Agentic Architecture strictly segregates the following terms:
+To maintain high cognitive coherence and guarantee repeatable repository transitions, the Agentic Architecture strictly segregates the following terms:
 
 ### 5.1 The Spatial Dimension (The Meta-Graph)
 * **Meta-Graph**: The entire Directed Acyclic Graph (DAG) of the repository's topological Nodes (vertices) linked by dependency edges. It maps the spatial territory of the system's evolution.

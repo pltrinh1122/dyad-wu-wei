@@ -3485,6 +3485,18 @@
 - **Feedforward Invariants**:
   - `none`
 
+## Node 1156: Node 1156: Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine distinction
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine distinction
+- **Status**: Completed
+- **Learnings & Context**: Codified the kernel/bin coexistence and Core/Dao Engine distinction in WHAT-0001-agentic-architecture.md.
+- **Feedforward Invariants**:
+  - `none`
+
 ## Current Active Path
 None
 
