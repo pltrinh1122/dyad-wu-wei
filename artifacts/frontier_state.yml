@@ -3549,3 +3549,14 @@ nodes:
     the active worktree checkout and clean up root files during checkout.
   invariants:
   - none
+- name: 'Node 1153: Node 1153: Discovery 1153: Harmonize - Codify Falsifications and
+    Extend Lexical Guard'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1153: Harmonize - Codify Falsifications and Extend Lexical Guard'
+  status: Completed
+  learnings: Codified key architectural falsifications and ontological boundary definitions
+    in WHY-1153, WHY-1154, WHY-1158, and WHY-1157.
+  invariants:
+  - none
