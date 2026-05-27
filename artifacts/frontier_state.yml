@@ -3268,7 +3268,8 @@ nodes:
   status: Completed
   learnings: Successfully resolved the semantic pollution in ISBO protocol and architecture
     documents within the worktree and completed Node 1122.
-  invariants: []
+  invariants:
+  - none
 - name: 'Node 1066: Activity 1066: Setup: Refactor Workspace Deployment'
   status: '[///] Act Phase'
   learnings: Planning Phase

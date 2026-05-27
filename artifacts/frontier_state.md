@@ -3140,7 +3140,7 @@
 - **Status**: Completed
 - **Learnings & Context**: Successfully resolved the semantic pollution in ISBO protocol and architecture documents within the worktree and completed Node 1122.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `none`
 
 ## Node 1066: Activity 1066: Setup: Refactor Workspace Deployment
 - **Status**: [///] Act Phase
