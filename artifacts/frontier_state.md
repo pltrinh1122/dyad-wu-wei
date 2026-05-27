@@ -3473,6 +3473,12 @@
 - **Feedforward Invariants**:
   - `none`
 
+## Discovery 1154: Plan - Codify Falsifications and Extend Lexical Guard
+- **Status**: Completed
+- **Learnings & Context**: Formulated the technical specifications in WHAT-1154-codify-falsifications-spec.md to guide subsequent activity nodes.
+- **Feedforward Invariants**:
+  - `none`
+
 ## Current Active Path
 None
 
