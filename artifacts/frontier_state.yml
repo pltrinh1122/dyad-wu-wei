@@ -3560,3 +3560,9 @@ nodes:
     in WHY-1153, WHY-1154, WHY-1158, and WHY-1157.
   invariants:
   - none
+- name: 'Discovery 1154: Plan - Codify Falsifications and Extend Lexical Guard'
+  status: Completed
+  learnings: Formulated the technical specifications in WHAT-1154-codify-falsifications-spec.md
+    to guide subsequent activity nodes.
+  invariants:
+  - none
