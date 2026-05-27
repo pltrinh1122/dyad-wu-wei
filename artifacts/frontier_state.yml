@@ -3418,9 +3418,8 @@ nodes:
   invariants: []
 - name: 'Node 1154: Discovery 1154: Plan - Codify Falsifications and Extend Lexical
     Guard'
-  status: Backlog
-  learnings: Technical design and proposed changes for Codify Falsifications and Extend
-    Lexical Guard.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1155: Activity 1155: Reflect - Codify Falsifications and Extend Lexical
     Guard'
@@ -3430,8 +3429,8 @@ nodes:
   invariants: []
 - name: 'Node 1156: Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine
     distinction'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: Codify falsifications for kernel/bin and Core/Dao into the KB
   invariants: []
 - name: 'Node 1157: Activity 1157: Extend semantic_ledger.yml and lexical_guard for
     GLOSSARY-driven renames'
@@ -3450,54 +3449,25 @@ nodes:
   learnings: '-'
   invariants:
   - '-'
-- name: 'Node 1161: Path 1161: Implement Agentic Healing and Seizure Recovery Protocols'
-  status: Backlog
-  learnings: Establish robust mechanisms to recover from cognitive loops and codify
-    healing protocols
-  invariants: []
-- name: 'Node 1162: Discovery 1162: Harmonize - Implement Agentic Healing and Seizure
-    Recovery Protocols'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Implement Agentic
-    Healing and Seizure Recovery Protocols.
-  invariants: []
-- name: 'Node 1163: Discovery 1163: Plan - Implement Agentic Healing and Seizure Recovery
-    Protocols'
-  status: Backlog
-  learnings: Technical design and proposed changes for Implement Agentic Healing and
-    Seizure Recovery Protocols.
-  invariants: []
-- name: 'Node 1164: Activity 1164: Reflect - Implement Agentic Healing and Seizure
-    Recovery Protocols'
-  status: Backlog
-  learnings: Final reflection and path closure for Implement Agentic Healing and Seizure
-    Recovery Protocols.
-  invariants: []
-- name: 'Node 1165: Activity 1165: Durably fix PR-zero #948 via overlay-only inheritance'
+- name: 1154-plan-codify-falsifications
+  status: Completed
+  learnings: '-'
+  invariants:
+  - '-'
+- name: 'Node 1166: Activity 1166: Ratify the Healing Protocol into the Dao'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1166: Activity 1166: Ratify the Healing Protocol into the Dao'
+- name: 'Node 1170: Activity 1170: Implement Healing-Protocol Evaluation'
   status: Backlog
-  learnings: Codify WHY and HOW primitives for agentic revival/healing along with
-    a template prompt.
+  learnings: Design and implement a post-healing controlled durable-layer fault injection
+    process
   invariants: []
-- name: 'Node 1167: Activity 1167: Codify a post-healing Healing Protocol Evaluation
-    process'
-  status: Backlog
-  learnings: Implement controlled durable-layer fault injection to test and verify
-    the self-healing capability.
-  invariants: []
-- name: 'Node 1168: Activity 1168: Reflect - Synthesize Epistemic Retrospective retro-1165.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-1165.md into the system's operational guidelines (the Dao).
-  invariants: []
-- name: 'Activity 1165: Durably fix PR-zero #948 via overlay-only inheritance'
+- name: Ratify the Healing Protocol into the Dao
   status: Completed
-  learnings: 'Durably resolved the recursive workspace reload loop trap (PR-zero #948)
-    by updating GEMINI.md section 1.1 to mandate overlay-only inheritance and prohibit
-    recursion.'
+  learnings: Codified the Healing Protocol doctrine, procedure, and instantiation
+    template from the ward case file.
   invariants:
-  - '[x] GEMINI.md contains non-recursive overlay inheritance directives'
-  - '[x] Local TDD test suite passes cleanly'
+  - '[x] WHY-1166'
+  - HOW-1166
+  - and templates/healer_instantiation.md are created. [x] Node 1167 is created.

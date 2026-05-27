@@ -3303,8 +3303,8 @@
   - `[ ]` None
 
 ## Node 1154: Discovery 1154: Plan - Codify Falsifications and Extend Lexical Guard
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Codify Falsifications and Extend Lexical Guard.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3315,8 +3315,8 @@
   - `[ ]` None
 
 ## Node 1156: Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine distinction
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Codify falsifications for kernel/bin and Core/Dao into the KB
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3338,60 +3338,31 @@
 - **Feedforward Invariants**:
   - `-`
 
-## Node 1161: Path 1161: Implement Agentic Healing and Seizure Recovery Protocols
-- **Status**: Backlog
-- **Learnings & Context**: Establish robust mechanisms to recover from cognitive loops and codify healing protocols
+## 1154-plan-codify-falsifications
+- **Status**: Completed
+- **Learnings & Context**: -
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `-`
 
-## Node 1162: Discovery 1162: Harmonize - Implement Agentic Healing and Seizure Recovery Protocols
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Implement Agentic Healing and Seizure Recovery Protocols.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1163: Discovery 1163: Plan - Implement Agentic Healing and Seizure Recovery Protocols
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Implement Agentic Healing and Seizure Recovery Protocols.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1164: Activity 1164: Reflect - Implement Agentic Healing and Seizure Recovery Protocols
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement Agentic Healing and Seizure Recovery Protocols.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1165: Activity 1165: Durably fix PR-zero #948 via overlay-only inheritance
+## Node 1166: Activity 1166: Ratify the Healing Protocol into the Dao
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1166: Activity 1166: Ratify the Healing Protocol into the Dao
+## Node 1170: Activity 1170: Implement Healing-Protocol Evaluation
 - **Status**: Backlog
-- **Learnings & Context**: Codify WHY and HOW primitives for agentic revival/healing along with a template prompt.
+- **Learnings & Context**: Design and implement a post-healing controlled durable-layer fault injection process
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1167: Activity 1167: Codify a post-healing Healing Protocol Evaluation process
-- **Status**: Backlog
-- **Learnings & Context**: Implement controlled durable-layer fault injection to test and verify the self-healing capability.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1168: Activity 1168: Reflect - Synthesize Epistemic Retrospective retro-1165.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1165.md into the system's operational guidelines (the Dao).
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Activity 1165: Durably fix PR-zero #948 via overlay-only inheritance
+## Ratify the Healing Protocol into the Dao
 - **Status**: Completed
-- **Learnings & Context**: Durably resolved the recursive workspace reload loop trap (PR-zero #948) by updating GEMINI.md section 1.1 to mandate overlay-only inheritance and prohibit recursion.
+- **Learnings & Context**: Codified the Healing Protocol doctrine, procedure, and instantiation template from the ward case file.
 - **Feedforward Invariants**:
-  - `[x] GEMINI.md contains non-recursive overlay inheritance directives`
-  - `[x] Local TDD test suite passes cleanly`
+  - `[x] WHY-1166`
+  - `HOW-1166`
+  - `and templates/healer_instantiation.md are created. [x] Node 1167 is created.`
 
 ## Current Active Path
 None
