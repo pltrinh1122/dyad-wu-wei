@@ -3321,8 +3321,8 @@
   - `[ ]` None
 
 ## Node 1157: Activity 1157: Extend semantic_ledger.yml and lexical_guard for GLOSSARY-driven renames
-- **Status**: Backlog
-- **Learnings & Context**: Update lexical guards and semantic ledger to enforce GLOSSARY-driven renames (e.g. SPAO->SPAOR, North Star->Telos)
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3494,6 +3494,12 @@
 ## Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine distinction
 - **Status**: Completed
 - **Learnings & Context**: Codified the kernel/bin coexistence and Core/Dao Engine distinction in WHAT-0001-agentic-architecture.md.
+- **Feedforward Invariants**:
+  - `none`
+
+## Activity 1157: Extend semantic_ledger.yml and lexical_guard for GLOSSARY-driven renames
+- **Status**: Completed
+- **Learnings & Context**: Extended the lexical guard to dynamically load and parse semantic_ledger.yml and enforce immune zones.
 - **Feedforward Invariants**:
   - `none`
 
