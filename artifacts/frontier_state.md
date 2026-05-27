@@ -2605,8 +2605,8 @@
   - `[ ]` None
 
 ## Node 989: Activity 989: Reflect - Investigate and Enforce Workspace Isolation Boundaries
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Completed
+- **Learnings & Context**: Created WHY-0989 primitive documenting the constraints, context, and implications regarding workspace isolation boundaries and path redirection sandboxing.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2909,8 +2909,8 @@
   - `[x] Modified drivers/path_resolver.py\n[x] Modified tests/test_path_resolver.py`
 
 ## Node 1078: Activity 1078: Implement Single-Daemon Multi-Tenant redirection for workspace auditing
-- **Status**: Completed
-- **Learnings & Context**: Refactored audit_daemon.py to resolve paths dynamically at runtime, ensuring complete environment redirection (config ledger, state file, and frontier trackers) when executed in an active child workspace context.
+- **Status**: Backlog
+- **Learnings & Context**: Refactor the parent audit daemon to automatically detect active workspace contexts and redirect verification targets to the child workspace artifacts directory and config ledger.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3556,6 +3556,24 @@
 - **Learnings & Context**: Implemented seizure detection logic in drivers/audit_daemon.py and registered rule configuration in infra/audit-daemon/audit_config.yml. Cleaned up alignment string literals and verified all tests pass.
 - **Feedforward Invariants**:
   - `none`
+
+## Node 1165: Node 1165: Activity 1165: Durably fix PR-zero #948 via overlay-only inheritance
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1167: Activity 1167: Codify a post-healing Healing Protocol Evaluation process
+- **Status**: Completed
+- **Learnings & Context**: Codified the post-healing evaluation specification under WHAT-1170 and implemented matching TDD unit tests verifying the seizure detection evaluation resetting and threshold logic.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 989: Node 989: Activity 989: Reflect - Investigate and Enforce Workspace Isolation Boundaries
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Current Active Path
 None
