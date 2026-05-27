@@ -3485,13 +3485,13 @@ nodes:
   learnings: Codified the seizure blind spot and the consistency/hygiene invariants.
   invariants:
   - kb/WHY-1173-seizure-blindspot.md exists and GEMINI.md updated
-- name: 'Node 1175: Activity 1175: Remediate Semantic Pollution in HOW-1170'
+- name: 'Node 1168: Activity 1168: Reflect - Synthesize Epistemic Retrospective retro-1165.md'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 1175: Remediate Semantic Pollution in HOW-1170'
+- name: 'Activity 1168: Synthesize Epistemic Retrospective retro-1165.md'
   status: Completed
-  learnings: Remediated semantic pollution by replacing the deprecated term 'align'
-    with 'cohere'.
+  learnings: Synthesized the learnings from retro-1165.md into a formal WHY primitive
+    ensuring environment inheritance for python subprocesses.
   invariants:
-  - HOW-1170-frontier-recovery-protocol.md is updated.
+  - kb/WHY-1168-subprocess-environment-inheritance.md exists.
