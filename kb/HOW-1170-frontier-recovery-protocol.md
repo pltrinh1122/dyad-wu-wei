@@ -26,7 +26,7 @@ The local knowledge base and configuration (ROM) must not be divergent from the 
 - **Assertion**: There must be no stale-ROM drift versus `main`.
 
 ### 2.4 WIP-N=1 + Active-Node Coherence
-The active node must perfectly align with the working branch.
+The active node must perfectly cohere with the working branch.
 - **Action**: Cross-reference the Active Node ID against the WIP Branch in `./bin/status`.
 - **Assertion**: The Active Node must match the checked-out WIP branch, enforcing the WIP-N=1 invariant.
 
@@ -37,7 +37,7 @@ The codebase must mathematically function before the Agent attempts to mutate it
 
 ### 2.6 Secondary Recovery (Ontology Drift)
 - **Action**: If any documented ontology drift or specific document reversions occurred due to the seizure (e.g., failed renames or silent regressions), recover them via the governed loop (e.g., `git checkout <safe-commit> -- <files>`).
-- **Assertion**: The ontology is accurate and aligned with the `kb/GLOSSARY.md`.
+- **Assertion**: The ontology is accurate and coherent with the `kb/GLOSSARY.md`.
 
 ## 3. Post-Condition
 Only when all self-invariant assertions pass is the Frontier Agent considered "stable and ready" to resume the interrupted Node. Readiness is gated by this verified check, never self-declared.

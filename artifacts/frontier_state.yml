@@ -3485,3 +3485,13 @@ nodes:
   learnings: Codified the seizure blind spot and the consistency/hygiene invariants.
   invariants:
   - kb/WHY-1173-seizure-blindspot.md exists and GEMINI.md updated
+- name: 'Node 1175: Activity 1175: Remediate Semantic Pollution in HOW-1170'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1175: Remediate Semantic Pollution in HOW-1170'
+  status: Completed
+  learnings: Remediated semantic pollution by replacing the deprecated term 'align'
+    with 'cohere'.
+  invariants:
+  - HOW-1170-frontier-recovery-protocol.md is updated.

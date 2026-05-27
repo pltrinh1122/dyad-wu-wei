@@ -3382,6 +3382,18 @@
 - **Feedforward Invariants**:
   - `kb/WHY-1173-seizure-blindspot.md exists and GEMINI.md updated`
 
+## Node 1175: Activity 1175: Remediate Semantic Pollution in HOW-1170
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1175: Remediate Semantic Pollution in HOW-1170
+- **Status**: Completed
+- **Learnings & Context**: Remediated semantic pollution by replacing the deprecated term 'align' with 'cohere'.
+- **Feedforward Invariants**:
+  - `HOW-1170-frontier-recovery-protocol.md is updated.`
+
 ## Current Active Path
 None
 
