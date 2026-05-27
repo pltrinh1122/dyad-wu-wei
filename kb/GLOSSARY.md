@@ -34,6 +34,7 @@ The **DZ-CIL Hybrid Triad** action for identifying the next step. A time-boxed, 
 ### Path
 A **themed sequence of Nodes** grouped together to achieve a macro-objective.
 * **Tracking**: Represented by a long-lived **Path Issue** (formerly "Epic Issue", e.g., #10) whose body contains a Meta-Index tracking the completion status of all individual topological Nodes along that path.
+* **Ontological Consistency**: Any Node that contains or coordinates multiple children or composite sub-tasks (e.g., tracking check-lists) must be explicitly classified and labeled as a **Path** (Non-Terminal) rather than a Terminal Node (like an Activity or Discovery), ensuring the parent-path resolution query resolves correctly.
 
 ### Meta-Tracker
 The **physical cloud container** (the specific long-lived GitHub Issue, e.g. Issue #10) representing a themed **Path**. It acts as the cloud anchor for macro-level progress tracking.
