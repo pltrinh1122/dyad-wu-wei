@@ -3432,9 +3432,8 @@ nodes:
   invariants: []
 - name: 'Node 1158: Activity 1158: Codify Dialectical Falsification of Terminology
     Abstraction Thesis'
-  status: Backlog
-  learnings: Ratify and codify the Dialectical Falsification of the Terminology Abstraction
-    Thesis into the Dao
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 1153-harmonize-prompts
   status: Completed
@@ -3586,5 +3585,12 @@ nodes:
   status: Completed
   learnings: Extended the lexical guard to dynamically load and parse semantic_ledger.yml
     and enforce immune zones.
+  invariants:
+  - none
+- name: 'Activity 1158: Codify Dialectical Falsification of Terminology Abstraction
+    Thesis'
+  status: Completed
+  learnings: Codified the Dialectical Falsification of the Terminology Abstraction
+    Thesis in WHAT-0001 Section 5.3.
   invariants:
   - none

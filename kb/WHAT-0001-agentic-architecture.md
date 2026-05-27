@@ -78,8 +78,8 @@ To maintain high cognitive coherence and guarantee repeatable repository transit
 * **Meta-Tracker (Container/Vehicle)**: The long-lived GitHub Issue (e.g., Issue #10) representing a themed Path.
 * **Meta-Index (Payload/Adjacency Ledger)**: The checklist data structure (`- [x] Node ...`) contained inside the Meta-Tracker, indexing the status of the Path's vertices.
 * **NBA (Next-Best-Action)**: The navigational primitive that evaluates the current frontier state and Path Meta-Index (DAG) to recommend the most logical next node for execution. Ensures the Agent remains on the topological roadmap.
-* **Orphaned Node Fallacy**: The architectural breakdown caused when a topological node (Activity/Probe) exists in the backlog without being mathematically bound to a parent Path. **Invariant:** All terminal nodes MUST belong to a Path.
-* **Dual-Probe Initialization Rule**: The invariant that every new Path must be initialized with at least two Probes before functional execution: (1) A Refinement Probe to clarify intent, goal, and the problem to be solved, and (2) A Scoping Probe to map out the exact functional Activities required.
+* **Orphaned Node Fallacy**: The architectural breakdown caused when a topological node (Activity/Discovery) exists in the backlog without being mathematically bound to a parent Path. **Invariant:** All terminal nodes MUST belong to a Path.
+* **Dual-Discovery Initialization Rule**: The invariant that every new Path must be initialized with at least two Discoveries before functional execution: (1) A Refinement Discovery to clarify intent, goal, and the problem to be solved, and (2) A Scoping Discovery to map out the exact functional Activities required.
 
 ### 5.2 The Temporal Dimension (SPAO — Universal Meta-Loop)
 * **SPAO (Meta-Loop)**: The **universal** 5-stage agentic protocol (**Sense-Plan-Act-Observe-Reflect**) governing **all** agent/operator interactions. SPAO is not scoped to Nodes — it is the common temporal algorithm from which all loop instantiations derive.
@@ -87,4 +87,9 @@ To maintain high cognitive coherence and guarantee repeatable repository transit
 * **NL (Node-Loop)**: SPAO instantiated *on* an active Node traversal in the Meta-Graph. Persistent, transactional, branch-mutating. Governed by **WIP-N=1** + **HITL**.
 * **NC (Node Contract)**: The mandatory, non-null Plan-Stage output of the NL. Pre-conditions every Node's Act-Phase entry.
 * **Flow (Single-Piece Flow)**: The strictly serialized traversal of vertices in the **Meta-Graph**, enforced by `WIP-N=1` (operative) and `WIP-P=1` (derived).
+
+### 5.3 The Separation of Abstraction Layers
+To prevent conceptual conflation, we formally falsify the **Terminology Abstraction Thesis** (which attempts to treat strategic graph structures and version control branch states as isomorphic). We establish a strict separation between:
+- **The Strategic Layer (Paths/Nodes)**: The persistent, logical graph of system evolution, intent, and completed contracts. It is long-lived, tracked via GitHub Issues, and recorded in `frontier_state.md`.
+- **The Operational Layer (Git Branches/Worktrees)**: The ephemeral filesystem checkouts created for individual Act-phase TDD cycles. They are short-lived, transient, and subject to local rebases, conflicts, and rollbacks.
 
