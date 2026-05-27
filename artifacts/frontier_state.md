@@ -3309,8 +3309,8 @@
   - `[ ]` None
 
 ## Node 1155: Activity 1155: Reflect - Codify Falsifications and Extend Lexical Guard
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Codify Falsifications and Extend Lexical Guard.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3476,6 +3476,12 @@
 ## Discovery 1154: Plan - Codify Falsifications and Extend Lexical Guard
 - **Status**: Completed
 - **Learnings & Context**: Formulated the technical specifications in WHAT-1154-codify-falsifications-spec.md to guide subsequent activity nodes.
+- **Feedforward Invariants**:
+  - `none`
+
+## Activity 1155: Reflect - Codify Falsifications and Extend Lexical Guard
+- **Status**: Completed
+- **Learnings & Context**: Remediated semantic pollution in WHAT-1154-codify-falsifications-spec.md and cleared the prompt queue.
 - **Feedforward Invariants**:
   - `none`
 
