@@ -3395,44 +3395,26 @@
   - `kb/WHY-1168-subprocess-environment-inheritance.md exists.`
 
 ## Node 1178: Activity 1178: Reflect - Synthesize Epistemic Retrospective retro-1149.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1149.md into the system's operational guidelines (the Dao).
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Activity 1149: Map Remaining Unmapped Backlog Issues to Strategic Goals
-- **Status**: Completed
-- **Learnings & Context**: Mapped issues 1094, 1074, 985 to their respective Strategic Goals in their bodies to resolve hygiene warnings.
-- **Feedforward Invariants**:
-  - `Issues updated remotely.`
-
-## Node 1181: Path 1181: Restore README and GLOSSARY from 420102e
-- **Status**: Backlog
-- **Learnings & Context**: Restore the README.md and GLOSSARY.md files that were dropped during a previous seizure rollback.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1182: Discovery 1182: Harmonize - Restore README and GLOSSARY from 420102e
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1183: Discovery 1183: Plan - Restore README and GLOSSARY from 420102e
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Restore README and GLOSSARY from 420102e.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1184: Activity 1184: Reflect - Restore README and GLOSSARY from 420102e
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Restore README and GLOSSARY from 420102e.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Discovery 1182: Harmonize - Restore README and GLOSSARY from 420102e
+## Activity 1178: Reflect - Synthesize Epistemic Retrospective retro-1149.md
 - **Status**: Completed
-- **Learnings & Context**: Identified differences between current HEAD and commit 420102e. README.md is empty and kb/GLOSSARY.md is missing key definitions. We will restore these in Node 1184.
+- **Learnings & Context**: Codified the Root Execution Invariant to formally document the architectural physics preventing double-nesting orchestrator path resolutions.
+- **Feedforward Invariants**:
+  - `Walkthrough validated.`
+
+## Node 1183: Discovery 1183: Plan - Restore README and GLOSSARY from 420102e
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1183: Plan - Restore README and GLOSSARY from 420102e
+- **Status**: Completed
+- **Learnings & Context**: Wrote and staged the restoration spec file WHAT-1181 under kb/ to guide the restoration of README and GLOSSARY in the next Activity node.
 - **Feedforward Invariants**:
   - `[ ]` None
 

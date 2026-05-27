@@ -3496,38 +3496,21 @@ nodes:
   invariants:
   - kb/WHY-1168-subprocess-environment-inheritance.md exists.
 - name: 'Node 1178: Activity 1178: Reflect - Synthesize Epistemic Retrospective retro-1149.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-1149.md into the system's operational guidelines (the Dao).
-  invariants: []
-- name: 'Activity 1149: Map Remaining Unmapped Backlog Issues to Strategic Goals'
-  status: Completed
-  learnings: Mapped issues 1094, 1074, 985 to their respective Strategic Goals in
-    their bodies to resolve hygiene warnings.
-  invariants:
-  - Issues updated remotely.
-- name: 'Node 1181: Path 1181: Restore README and GLOSSARY from 420102e'
-  status: Backlog
-  learnings: Restore the README.md and GLOSSARY.md files that were dropped during
-    a previous seizure rollback.
-  invariants: []
-- name: 'Node 1182: Discovery 1182: Harmonize - Restore README and GLOSSARY from 420102e'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1183: Discovery 1183: Plan - Restore README and GLOSSARY from 420102e'
-  status: Backlog
-  learnings: Technical design and proposed changes for Restore README and GLOSSARY
-    from 420102e.
-  invariants: []
-- name: 'Node 1184: Activity 1184: Reflect - Restore README and GLOSSARY from 420102e'
-  status: Backlog
-  learnings: Final reflection and path closure for Restore README and GLOSSARY from
-    420102e.
-  invariants: []
-- name: 'Discovery 1182: Harmonize - Restore README and GLOSSARY from 420102e'
+- name: 'Activity 1178: Reflect - Synthesize Epistemic Retrospective retro-1149.md'
   status: Completed
-  learnings: Identified differences between current HEAD and commit 420102e. README.md
-    is empty and kb/GLOSSARY.md is missing key definitions. We will restore these
-    in Node 1184.
+  learnings: Codified the Root Execution Invariant to formally document the architectural
+    physics preventing double-nesting orchestrator path resolutions.
+  invariants:
+  - Walkthrough validated.
+- name: 'Node 1183: Discovery 1183: Plan - Restore README and GLOSSARY from 420102e'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1183: Plan - Restore README and GLOSSARY from 420102e'
+  status: Completed
+  learnings: Wrote and staged the restoration spec file WHAT-1181 under kb/ to guide
+    the restoration of README and GLOSSARY in the next Activity node.
   invariants: []
