@@ -37,6 +37,25 @@ import tempfile
 import json
 from kernel.daemon_telemetry import record_execution
 
+def _clean_json_output(stdout: str) -> str:
+    """Strips GraphQL deprecation warnings and other non-JSON text from stdout."""
+    cleaned = stdout.strip()
+    if not cleaned:
+        return cleaned
+    start_curly = cleaned.find('{')
+    start_bracket = cleaned.find('[')
+    
+    if start_curly == -1 and start_bracket == -1:
+        return cleaned
+        
+    if start_curly != -1 and start_bracket != -1:
+        start_idx = min(start_curly, start_bracket)
+    else:
+        start_idx = start_curly if start_curly != -1 else start_bracket
+        
+    return cleaned[start_idx:]
+
+
 @record_execution(stage="skill")
 def create_issue(title: str, body: str) -> str:
     """Creates a GH issue safely using a temp file for the body."""
@@ -98,7 +117,7 @@ def list_issues_by_label(label: str) -> list[dict]:
         capture_output=True, text=True, check=True
     )
     import json
-    issues = json.loads(result.stdout.strip() or "[]")
+    issues = json.loads(_clean_json_output(result.stdout) or "[]")
     
     valid_issues = []
     for issue in issues:
@@ -121,7 +140,7 @@ def get_open_issues() -> list[dict]:
         capture_output=True, text=True, check=True
     )
     import json
-    return json.loads(result.stdout.strip() or "[]")
+    return json.loads(_clean_json_output(result.stdout) or "[]")
 
 @record_execution(stage="skill")
 def get_issue_details(issue_id: str) -> dict:
@@ -131,7 +150,7 @@ def get_issue_details(issue_id: str) -> dict:
         capture_output=True, text=True, check=True
     )
     import json
-    return json.loads(result.stdout.strip() or "{}")
+    return json.loads(_clean_json_output(result.stdout) or "{}")
 
 def rename_issue_title(issue_id: str, new_title: str) -> None:
     """Renames an issue's title."""
@@ -149,7 +168,7 @@ def get_issue_comments(issue_id: str) -> list[dict]:
         text=True,
         check=True
     )
-    data = json.loads(res.stdout)
+    data = json.loads(_clean_json_output(res.stdout) or "{}")
     return data.get("comments", [])
 
 
@@ -169,7 +188,7 @@ def create_pull_request(title: str, body: str, head: str = None) -> str:
             ["gh", "pr", "list", "--head", head, "--state", "open", "--json", "url"],
             capture_output=True, text=True, check=True
         )
-        prs = json.loads(chk_res.stdout.strip() or "[]")
+        prs = json.loads(_clean_json_output(chk_res.stdout) or "[]")
         if prs and isinstance(prs, list) and len(prs) > 0:
             return prs[0]["url"]
 
@@ -202,7 +221,7 @@ def get_issue_labels(issue_id: str) -> list[str]:
         capture_output=True, text=True, check=True
     )
     import json
-    data = json.loads(result.stdout.strip() or "{}")
+    data = json.loads(_clean_json_output(result.stdout) or "{}")
     labels = data.get("labels", [])
     return [label.get("name") for label in labels]
 
@@ -240,7 +259,7 @@ def get_open_prs() -> list[dict]:
         capture_output=True, text=True, check=True
     )
     import json
-    search_results = json.loads(result.stdout.strip() or "[]")
+    search_results = json.loads(_clean_json_output(result.stdout) or "[]")
     
     verified_prs = []
     for pr in search_results:
@@ -250,7 +269,7 @@ def get_open_prs() -> list[dict]:
             capture_output=True, text=True, check=False
         )
         if verify_result.returncode == 0:
-            state_data = json.loads(verify_result.stdout.strip() or "{}")
+            state_data = json.loads(_clean_json_output(verify_result.stdout) or "{}")
             if state_data.get("state") == "OPEN":
                 verified_prs.append(pr)
     
@@ -266,7 +285,7 @@ def get_merged_prs(limit: int = 50) -> list[dict]:
         capture_output=True, text=True, check=True
     )
     import json
-    return json.loads(result.stdout.strip() or "[]")
+    return json.loads(_clean_json_output(result.stdout) or "[]")
 
 def merge_pull_request(pr_number: int, method: str = "squash") -> None:
     """Merges a pull request using the specified method."""
