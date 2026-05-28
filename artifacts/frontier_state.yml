@@ -4009,3 +4009,9 @@ nodes:
   learnings: 'Final reflection on Path 1022: Refined DZ-CIL Intent Understanding'
   invariants:
   - N/A
+- name: 'Discovery 917: Harmonize - Implement status report progress visualization'
+  status: Completed
+  learnings: Designed status report progress visualization and documented WHY-0916
+    in the Meta-System Runtime Manifest.
+  invariants:
+  - WHY-0916 is present and correct; manifest is updated.
