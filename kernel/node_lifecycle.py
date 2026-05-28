@@ -612,6 +612,14 @@ class TerminalNode(BaseNode):
     @classmethod
     def clean_if_merged(cls, branch_name: str):
         """Cleans up the local worktree and branch if it has been merged."""
+        try:
+            if not github_client.is_branch_merged_on_github(branch_name):
+                print(f"Skipping clean for branch {branch_name} because its PR is not merged on GitHub.")
+                return
+        except Exception as e:
+            print(f"Warning: Failed to verify merge state on GitHub for branch {branch_name}: {e}")
+            return
+
         workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
         if workspace_dir:
             possible_paths = [

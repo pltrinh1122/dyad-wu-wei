@@ -320,5 +320,28 @@ def test_plan_start_quarantine_protocol_violation():
             node.plan_start("dummy_frontier.md")
 
 
+@mock.patch("kernel.node_lifecycle.git_client")
+@mock.patch("kernel.node_lifecycle.github_client")
+def test_clean_if_merged_on_github(mock_gh, mock_git):
+    from kernel.node_lifecycle import TerminalNode
+    
+    # 1. If not merged on GitHub, should skip clean
+    mock_gh.is_branch_merged_on_github.return_value = False
+    TerminalNode.clean_if_merged("node/1234-test")
+    mock_git.worktree_remove.assert_not_called()
+    mock_git.branch_delete.assert_not_called()
+    
+    # 2. If merged on GitHub, should perform clean
+    mock_gh.is_branch_merged_on_github.return_value = True
+    mock_git.worktree_remove.reset_mock()
+    mock_git.branch_delete.reset_mock()
+    
+    # Let's mock os.path.exists to return False to avoid actually trying to remove non-existent worktrees
+    with mock.patch("os.path.exists", return_value=False):
+        TerminalNode.clean_if_merged("node/1234-test")
+        
+    mock_git.branch_delete.assert_called_once_with("node/1234-test")
+
+
 
 
