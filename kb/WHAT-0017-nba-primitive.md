@@ -1,6 +1,6 @@
 # Next-Best-Action (NBA) Primitive
 
-The **Next-Best-Action (NBA)** is a first-class primitive in the Antigravity architecture. It serves as the primary navigation mechanism for agentic execution, ensuring that the system remains aligned with the topological roadmap defined in the **Path Meta-Index**.
+The **Next-Best-Action (NBA)** is a first-class primitive in the Antigravity architecture. It serves as the primary navigation mechanism for agentic execution, ensuring that the system remains harmonized with the topological roadmap defined in the **Path Meta-Index**.
 
 ## 1. Role in the Sense Phase
 During the **Sense** phase of the SPAO loop, the NBA kernel_daemon (`NBAManager`) evaluates the current environment (the `frontier_state.md`) and the repository's backlog to surface the most logical next step. This prevents the agent from deviating from the approved Path or stalling when a node is completed.

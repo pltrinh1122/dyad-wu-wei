@@ -22,7 +22,7 @@ To implement the decisions from Discovery 1153, the subsequent execution nodes i
 ### 2. Extend semantic_ledger.yml and lexical_guard for GLOSSARY-driven renames (Activity 1157)
 - **Lexical Guard Extension**:
   - `tests/test_lexical_guard.py` must load `kb/semantic_ledger.yml`.
-  - Stale keys (e.g. those for alignment, optimization, or telos) must fail the test suite if found in non-immune modified files.
+  - Stale keys (e.g. those for harmonization, refinement, or telos) must fail the test suite if found in non-immune modified files.
 - **Semantic Ledger**:
   - Define `immune_zones` for files containing historical context (like `kb/GLOSSARY.md` and `WHY-*`).
 

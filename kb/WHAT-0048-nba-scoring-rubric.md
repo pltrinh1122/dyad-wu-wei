@@ -11,7 +11,7 @@ $$S_{\text{NBA}}(V) = C_{\text{Dependency}}(V) \times \left( 0.40 \times C_{\tex
 Where:
 * $C_{\text{Dependency}}(V) \in \{0.0, 1.0\}$ represents the node's readiness constraint.
 * $C_{\text{Axiom}}(V) \in [0.0, 1.0]$ represents compliance with system axioms.
-* $C_{\text{Strategic}}(V) \in [0.0, 1.0]$ represents strategic alignment.
+* $C_{\text{Strategic}}(V) \in [0.0, 1.0]$ represents strategic harmonization.
 * $C_{\text{Risk}}(V) \in [0.0, 1.0]$ represents risk and concurrency mitigation.
 
 ---
@@ -24,12 +24,12 @@ Assesses whether the node is logically unblocked.
 * **`0.0` (Blocked)**: At least one pre-requisite or parent issue remains open.
 
 ### 2.2. Axiomatic Compliance ($C_{\text{Axiom}}$)
-Assesses alignment with the system's structural laws.
+Assesses harmonization with the system's structural laws.
 * **`1.0` (Perfect)**: Strictly complies with standard execution models (e.g. Discovery Harmonize -> Discovery Plan -> Activity Reflect) and operates in isolated worktrees.
 * **`0.5` (Minor Drift)**: Touches global infrastructure or changes shared tooling configuration files, requiring minor validation checks.
 * **`0.0` (Violation)**: Directly violates core guardrails (e.g. violates WIP-N=1, bypasses PR reviews, or attempts raw/un-wrappered git/gh operations).
 
-### 2.3. Strategic Alignment ($C_{\text{Strategic}}$)
+### 2.3. Strategic Harmonization ($C_{\text{Strategic}}$)
 Assesses relevance to the active strategic goals.
 * **`1.0` (Highest)**: Directly traces to a prioritized strategic goal inside `strategic_intent.yml`.
 * **`0.5` (Indirect)**: Non-prioritized backlog task that resolves technical debt or improves local workflows.

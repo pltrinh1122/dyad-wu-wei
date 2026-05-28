@@ -33,10 +33,10 @@ When `node_type` is matching the non-terminal category (`'path'`):
      - `title`: `f"Plan - {title}"`
      - `goal`: `f"Technical design and proposed changes for {title}."`
      - `path_id`: `{parent_issue_id}`
-     - `depends_on`: `{align_probe_issue_id}`
+     - `depends_on`: `{harmonize_discovery_issue_id}`
    - **Reflect Activity**:
      - `node_type`: `'activity'`
      - `title`: `f"Reflect - {title}"`
      - `goal`: `f"Final reflection and path closure for {title}."`
      - `path_id`: `{parent_issue_id}`
-     - `depends_on`: `{plan_probe_issue_id}`
+     - `depends_on`: `{plan_discovery_issue_id}`

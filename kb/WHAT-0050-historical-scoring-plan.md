@@ -27,5 +27,5 @@ The output will be formatted as a structured report:
 2. **Scored Entries**: A table displaying:
    * Path ID & Title
    * Overall Score
-   * Individual component addends: Dependency ($C_{\text{Dependency}}$), Axiomatic compliance ($C_{\text{Axiom}}$), Strategic Alignment ($C_{\text{Strategic}}$), Operational Risk ($C_{\text{Risk}}$).
+   * Individual component addends: Dependency ($C_{\text{Dependency}}$), Axiomatic compliance ($C_{\text{Axiom}}$), Strategic Harmonization ($C_{\text{Strategic}}$), Operational Risk ($C_{\text{Risk}}$).
 3. **Summary**: The total sum of scores of all evaluated paths.

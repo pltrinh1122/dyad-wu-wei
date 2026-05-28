@@ -21,7 +21,7 @@
 
 This index establishes the **decoupled registration method for horizontal software domains**. While `WHAT-0062` maps vertical Strategic Goals (SGs) to Personas, `WHAT-0065` allows a Persona to own a generic "Domain" and then explicitly claim specific Path IDs under that Domain, regardless of which vertical SG the Path happens to be categorized under in `strategic_intent.yml`.
 
-When the CLI alignment gate evaluates a node transition, it MUST:
+When the CLI harmonization gate evaluates a node transition, it MUST:
 1. Check if the target node's parent Path ID is present in the **Path-to-Domain Index** below.
 2. If present, resolve the Domain ID to the Owner Persona via the **Domain-to-Persona Index**.
 3. If the executing `SPAO_PERSONA_ID` matches the Owner Persona, **ALLOW** the transition.
@@ -43,10 +43,10 @@ When the CLI alignment gate evaluates a node transition, it MUST:
 |---------|-------------------|---------|----------------------------------------------------------|
 | 634     | domain:platform   | claimed | Refactor frontier_state for concurrent agent awareness   |
 | 626     | domain:platform   | claimed | Implement Dynamic Agent Identity Resolution              |
-| 622     | domain:platform   | claimed | Dynamic agent identity resolution and policy ledger alignment |
+| 622     | domain:platform   | claimed | Dynamic agent identity resolution and policy ledger harmonization |
 | 605     | domain:platform   | claimed | Exclude Locked Nodes from NBA Path Continuation          |
 | 588     | domain:platform   | claimed | 578-C: Integrate Persona-Aware Filtering into NBA Scorer |
-| 587     | domain:platform   | claimed | Path 578-B: Implement Persona and Path Alignment Gates in CLI Runtime |
+| 587     | domain:platform   | claimed | Path 578-B: Implement Persona and Path Harmonization Gates in CLI Runtime |
 | 640     | domain:platform   | claimed | Codify Platform Domain Path Ownership Index |
 | 716     | domain:platform   | claimed | Remediate Synthesized Lexical Guards in Audit Config |
 | 727     | domain:platform   | claimed | Prevent Overly Broad Synthesized Lexical Guards |

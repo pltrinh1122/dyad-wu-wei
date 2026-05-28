@@ -1,6 +1,6 @@
-# WHAT-0038: Strategic Goal Path Alignment Verification Specification
+# WHAT-0038: Strategic Goal Path Harmonization Verification Specification
 
-This document defines the specification and verification rules for programmatically enforcing the alignment of prioritized strategic path references with the live GitHub backlog state.
+This document defines the specification and verification rules for programmatically enforcing the harmonization of prioritized strategic path references with the live GitHub backlog state.
 
 ---
 
