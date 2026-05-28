@@ -34,11 +34,15 @@ def test_init_workspace(tmp_path):
     
     with patch("drivers.path_resolver.get_core_dir", return_value=core_dir), \
          patch("kernel.daemon_workspace.get_workspace_config_path", return_value=mock_config_path), \
-         patch("drivers.git_client.clone") as mock_clone:
+         patch("drivers.git_client.clone") as mock_clone, \
+         patch("venv.create") as mock_venv_create, \
+         patch("subprocess.check_call") as mock_check_call:
          
         daemon_workspace.init_workspace("https://github.com/foo/bar.git")
         
         mock_clone.assert_called_once_with("https://github.com/foo/bar.git", workspace_dir)
+        mock_venv_create.assert_called_once_with(os.path.join(workspace_dir, ".venv"), with_pip=True)
+        assert mock_check_call.call_count == 2
         
         with open(parent_gitignore, "r") as f:
             content = f.read()
