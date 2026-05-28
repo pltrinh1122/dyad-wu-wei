@@ -3593,6 +3593,18 @@
 - **Feedforward Invariants**:
   - `none`
 
+## Node 1000: Discovery 1000: Plan - Optimize Agent-UI Flow State: Background Tool Executions
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1000: Plan - Optimize Agent-UI Flow State: Background Tool Executions
+- **Status**: Completed
+- **Learnings & Context**: Updated GEMINI.md Section 5 Rule 19 to strictly forbid stringing multiple synchronous/modifying tools in a single turn.
+- **Feedforward Invariants**:
+  - `[x] Rule 19 updated in GEMINI.md`
+
 ## Current Active Path
 None
 
