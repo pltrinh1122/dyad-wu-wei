@@ -3723,6 +3723,19 @@
   - `[x] README and specs updated`
   - `[x] Unit tests updated and pass`
 
+## Node 1237: Activity 1237: Automate standalone backlog mapping and quarantine state cleanup
+- **Status**: Backlog
+- **Learnings & Context**: Allow the system to automatically handle unmapped backlog terminal nodes and clean up quarantine status labels during sync.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1237: Reflect - Automate standalone backlog mapping and quarantine state cleanup
+- **Status**: Completed
+- **Learnings & Context**: Implemented automatic cleanup of quarantine status labels and auto-mapping of standalone backlog terminal nodes to parent Paths during sync.
+- **Feedforward Invariants**:
+  - `[x] sync_and_clean_node automatically removes triage/intake labels when backlog label is present`
+  - `[x] standalone backlog terminal nodes are auto-mapped to best matching parent Paths during sync`
+
 ## Current Active Path
 None
 
