@@ -3703,6 +3703,12 @@
 - **Feedforward Invariants**:
   - `[x] WHY-1207-frontier-cache-optimization.md created`
 
+## Discovery 1208: Plan - Optimize local frontier cache to leverage lazy github sync
+- **Status**: Completed
+- **Learnings & Context**: Created specification WHAT-1208 detailing cache schema, cache file location, and github_client caching interfaces.
+- **Feedforward Invariants**:
+  - `[x] WHAT-1208-frontier-cache-spec.md created`
+
 ## Current Active Path
 None
 
