@@ -1,7 +1,7 @@
 # WHY-1158: Dialectical Falsification of Terminology Abstraction Thesis
 
 ## Context
-When mapping the project lifecycle, there was an initial attempt to fully abstract terminology by treating the operational git branch layer and the strategic issue/node layer as completely isomorphic or identical.
+When mapping the project lifecycle, there was an initial attempt to fully abstract terminology by treating the operational git-branch layer and the strategic issue/node layer as completely isomorphic or identical.
 
 ## The Terminology Abstraction Thesis (Falsified)
 *Thesis:* Strategic tracking entities (Paths, Nodes, Discoveries, Activities) should map 1-to-1 directly to operational Git branches under the exact same names, treating them as the same layer of abstraction.

@@ -9,7 +9,7 @@
 
 ### Node
 An **atomic, topological unit of work** in the repository. Every Node represents a single state transition in the repository's evolution.
-* **1:1:1 Mapping**: A Node maps exactly to a **GitHub Issue** (NC/plan), a **Git Branch** (active execution), and a **Pull Request** (review/merge).
+* **1:1:1 Mapping**: A Node maps exactly to a **GitHub Issue** (NC/plan), a **Git-Branch** (active execution), and a **Pull Request** (review/merge).
 * **Isolation**: No two Nodes may be worked on concurrently (enforced by the `WIP-N=1` invariant).
 * **Mandatory Structural Attributes**: Every Node $V$ in the Meta-Graph carries the following non-nullable attributes:
   * `ID` — GitHub Issue identifier (The topological Node ID is strictly equated to its GitHub Issue ID).
@@ -106,7 +106,7 @@ The universal **Sense-Plan-Act-Observe-Reflect** agentic protocol governing **al
 
 The five SPAOR stages as applied within the **NL**:
 1. **Sense**: Sync `main`, clean local branches, surface pending backlog items, and validate pre-condition invariants.
-2. **Plan**: Formulate and lock the **NC** by creating/updating the GH Issue and linking it in the Path.
+2. **Plan**: Formulate and lock the **NC** by creating/updating the gh-issue and linking it in the Path.
 3. **Act**: Execute codebase/artifact changes under strict TDD invariants.
 4. **Observe**: Halt and await **HITL** feedback and sign-off.
 5. **Reflect**: Close the transaction ledger, push the branch, and open the PR for squash-merging.
@@ -154,7 +154,7 @@ The **flat, dependency-linked queue** of declared future Nodes. Organized entire
 An ephemeral, structured local ingestion queue (`artifacts/prompt_backlog.yml`) used to safely capture asynchronous operator prompts and system signals during the **Act phase**. Protects the single-piece flow (`WIP-N=1`) from cognitive interruption. This queue is flushed and processed during the **Observe phase**.
 
 ### WIP-N (Work-In-Progress at the Node level)
-The **operative, independently-enforced** constraint. At most **1** Node may occupy the Act Phase at any given moment (one active Git branch). Replaces the deprecated flat `WIP=1` term.
+The **operative, independently-enforced** constraint. At most **1** Node may occupy the Act Phase at any given moment (one active git-branch). Replaces the deprecated flat `WIP=1` term.
 
 ### WIP-P (Work-In-Progress at the Path level)
 The **derived** constraint. At most **1** Path may be actively traversed at any moment. Automatically satisfied when `WIP-N=1` in the current single-Path model. Named explicitly for future multi-Path governance scalability.

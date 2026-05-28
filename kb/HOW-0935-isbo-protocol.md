@@ -17,7 +17,7 @@ To establish a new, autonomous application built upon the DZ-CIL Engine, the Ope
 1. Open a terminal.
 2. Clone the core Dao Engine repository to a designated engine path:
    ```bash
-   git clone <repo_url> /mnt/shared_data/git_repos/dz-cil
+   git-clone <repo_url> /mnt/shared_data/git_repos/dz-cil
    ```
 3. Install base OS-level dependencies (Python3, Git).
 

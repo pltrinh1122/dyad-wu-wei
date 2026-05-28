@@ -3,7 +3,7 @@
 ## 1. Backlog Creation Hooks (`kernel/daemon_backlog.py`)
 When a new issue is created via `BacklogManager.add`:
 - If the node type is a Path, the `path` and `backlog` labels must be automatically added to the GitHub issue.
-- If the node type is an Activity or Probe, the `backlog` and `status: todo` labels must be automatically added.
+- If the node type is an Activity or Discovery, the `backlog` and `status: todo` labels must be automatically added.
 
 ## 2. Node Plan-Start Hooks (`kernel/daemon_node.py`)
 When a node transitions to `Plan Start`:
@@ -17,4 +17,4 @@ When a Node or Path issue is closed:
 
 ## Verification & Status
 - **Status**: Approved
-- **Verified by**: Node 303 Probe
+- **Verified by**: Node 303 Discovery

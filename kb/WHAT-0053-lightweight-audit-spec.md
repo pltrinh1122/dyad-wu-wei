@@ -19,7 +19,7 @@ The `artifacts/audit_state.json` file is expanded to include a new key `meta-ind
 ```
 
 ## 2. Path Filtering Logic (`bin/meta audit`)
-To optimize network queries:
+To refine network queries:
 1. **Load Frontier State**: Load `artifacts/frontier_state.yml` (after performing the standard signature/checksum validation).
 2. **Retrieve Path Nodes**: Identify all path nodes defined in the frontier state. A node is classified as a Path if its title matches a heading containing a Path ID followed by "Path" or if it is classified as a path under the `node_taxonomy` (loaded from `dz-cil.yml`).
 3. **Filter Active Paths**: Exclude any path node that has `status: Completed` in the local frontier state.
@@ -32,7 +32,7 @@ For each filtered active path ID:
 3. **Audit Execution**:
    - If `unverified` is empty: Bypass the network request for this path entirely.
    - If `unverified` is not empty:
-     1. Fetch the path issue body via `gh issue view`.
+     1. Fetch the path issue body via `gh-issue view`.
      2. Update the body by marking the completed nodes in the checklist.
      3. If updates were made, write the new body via `drivers/github_client.update_issue_body`.
      4. Update `path_states[path_id]` to include all currently completed nodes.
@@ -40,4 +40,4 @@ For each filtered active path ID:
 
 ## Verification & Status
 - **Status**: Pending
-- **Verified by**: Node 505 Probe
+- **Verified by**: Node 505 Discovery

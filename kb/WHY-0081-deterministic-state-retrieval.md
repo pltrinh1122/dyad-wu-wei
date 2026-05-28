@@ -16,4 +16,4 @@ Therefore, we mandate the creation of a deterministic CLI adapter: `bin/status`.
 
 ## Architectural Invariant
 1. **The State Dashboard Rule**: The Agent must never manually evaluate flat-files to construct a status dashboard. Any request for "status" must be met by invoking the deterministic `bin/status` wrapper, completely bypassing probabilistic LLM construction of the state. 
-2. **Implementation Requirement**: `bin/status` must aggregate the topological Frontier tracker, the Prompt Backlog queue, the Active Git Worktree status, and the `systemd` daemon infrastructure status into a single stdout payload executing in `<100ms`.
+2. **Implementation Requirement**: `bin/status` must aggregate the topological Frontier tracker, the Prompt Backlog queue, the Active Git-Worktree status, and the `systemd` daemon infrastructure status into a single stdout payload executing in `<100ms`.

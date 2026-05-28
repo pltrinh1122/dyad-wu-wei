@@ -1,7 +1,7 @@
 # WHAT-0031: SPAO One-Step Onboarding & CLI Discoverability — Technical Specification
 
 ## Overview
-**Path**: #362 — Probe Path: SPAO Release Packaging, One-Step Onboarding & CLI Discoverability
+**Path**: #362 — Discovery Path: SPAO Release Packaging, One-Step Onboarding & CLI Discoverability
 **Plan Node**: #364
 **Implements decisions from**: WHY-0030
 

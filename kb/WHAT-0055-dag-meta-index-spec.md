@@ -10,7 +10,7 @@ This specification defines the parsing syntax, referential constraints, self-dep
 A Meta-Index is defined as a Markdown checklist within a Path's GitHub Issue body. Each node in the graph is represented by a single checklist line that conforms to the following regular expression (case-insensitive):
 
 ```regex
-^\s*-\s+\[([xX /])\]\s+(?:Node|Activity|Probe|Path)?\s*(\d+):?\s*(.*?)(?:\s*\[Depends:\s*(.*?)\s*\])?\s*$
+^\s*-\s+\[([xX /])\]\s+(?:Node|Activity|Discovery|Path)?\s*(\d+):?\s*(.*?)(?:\s*\[Depends:\s*(.*?)\s*\])?\s*$
 ```
 
 Where:
@@ -82,8 +82,8 @@ When running `node view <path_id>` or checking the active path status, the CLI M
 ### 4.2 Topological Tree Formatting
 The CLI view MUST render the hierarchy showing dependency relationships using ASCII branch indicators:
 ```text
-[x] Node 300: Probe 300: Probe: Evaluation of DAG Visualization Requirements
-└──► [Ready] Node 523: Probe 523: Design and Scoping for DAG Meta-Index Support [Depends: 300]
+[x] Node 300: Discovery 300: Discovery: Evaluation of DAG Visualization Requirements
+└──► [Ready] Node 523: Discovery 523: Design and Scoping for DAG Meta-Index Support [Depends: 300]
       ├──► [Blocked] Node 524: Activity 524: Implement DAG Parsing [Depends: 523]
       └──► [Blocked] Node 525: Activity 525: Implement CLI Rendering [Depends: 523]
 ```

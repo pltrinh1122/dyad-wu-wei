@@ -27,7 +27,7 @@ This document specifies the verification and test suite invariants for the Knowl
 
 ### 2.3 Forbidden Items
 - **Deprecated Terms**: Any term matching keys under `terms` (whose state is `deprecated`) in `kb/semantic_ledger.yml`.
-- **Forbidden Commands**: Command strings matching direct CLI invocations of version control tools (e.g., `git checkout`, `gh issue`).
+- **Forbidden Commands**: Command strings matching direct CLI invocations of version control tools (e.g., `git-checkout`, `gh-issue`).
 
 ### 2.4 Immune Zones
 - Immune zones (e.g. `GLOSSARY.md` and any file with a `WHY-` prefix) are exempt from **Deprecated Terms** checking.

@@ -30,45 +30,45 @@ proposed:
       Same interim heuristic applies. Same Harmonization node will resolve both.
     
 terms:
-  epic:
+  path:
     state: deprecated
     superseded_by: path
-  epics:
+  paths:
     state: deprecated
     superseded_by: paths
-  spike:
-    state: deprecated
-    superseded_by: probe
-  spikes:
-    state: deprecated
-    superseded_by: probes
-  meta-orchestrator:
-    state: deprecated
-    superseded_by: dao_engine
-  orchestrator:
-    state: deprecated
-    superseded_by: kernel_daemon
-  probe:
+  discovery:
     state: deprecated
     superseded_by: discovery
-  probes:
+  discoveries:
     state: deprecated
     superseded_by: discoveries
-  align:
+  dao_engine:
+    state: deprecated
+    superseded_by: dao_engine
+  kernel_daemon:
+    state: deprecated
+    superseded_by: kernel_daemon
+  discovery:
+    state: deprecated
+    superseded_by: discovery
+  discoveries:
+    state: deprecated
+    superseded_by: discoveries
+  harmonize:
     state: deprecated
     superseded_by: harmonize
-  optimize:
+  refine:
     state: deprecated
     superseded_by: refine
-  ziran_workspace:
+  dz-cil_workspace:
     state: deprecated
     superseded_by: dz-cil_workspace
-  ziran_workspace_app:
+  dz-cil_workspace:
     state: deprecated
     superseded_by: dz-cil_workspace
-  north_star:
+  telos:
     state: deprecated
     superseded_by: telos
-  "north-star":
+  "telos":
     state: deprecated
     superseded_by: telos

@@ -8,7 +8,7 @@ The Operator has enabled the Agent to make autonomous decisions during artifact 
 ### ❌ Rejected: "Decisions should help to Discover, Harmonize, or Refine DZ-CIL"
 The Triad describes **action types** (taxonomy), not decision criteria. Any decision can be justified as "Refinement" or "Discovery" by relabeling it. The invariant is tautological — it approves itself by construction and provides no guidance on *whether* an action is worth taking, only how to label it after the fact.
 
-### ❌ Rejected: "Decisions should align with Wu-wei and Ziran"
+### ❌ Rejected: "Decisions should harmonize with Wu-wei and Ziran"
 Wu-wei and Ziran are **dispositions** (how to act), not decision criteria (what to decide). "Effortlessness" is subjective without a unit of measurement — an action effortless for the Agent may be turbulent for the Operator. The invariant is non-falsifiable in practice and reduces to post-hoc rationalization.
 
 ## The Ratified Invariant

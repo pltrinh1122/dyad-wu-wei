@@ -9,7 +9,7 @@ This document defines the technical specification and interface requirements for
 The flow state manager and frontier editor will enforce the following invariants during lifecycle transitions:
 
 1.  **`INVARIANT_NBA_TRANSITION_PRIORITIZED`**:
-    *   Any terminal node (Activity or Probe) transitioning to an active state (i.e. status `in_progress` during `plan-start` or `checkout`) must have its parent Path ID listed in the `prioritized_paths` of an `Active` goal in the strategic intent ledger ([strategic_intent.yml](file:///mnt/shared_data/git_repos/dz-cil/artifacts/strategic_intent.yml)).
+    *   Any terminal node (Activity or Discovery) transitioning to an active state (i.e. status `in_progress` during `plan-start` or `checkout`) must have its parent Path ID listed in the `prioritized_paths` of an `Active` goal in the strategic intent ledger ([strategic_intent.yml](file:///mnt/shared_data/git_repos/dz-cil/artifacts/strategic_intent.yml)).
     *   Any path set active (via `meta path` CLI command or `set_active_path` API) must have its Path ID listed in the `prioritized_paths` of an `Active` goal.
 2.  **`INVARIANT_OFFLINE_BYPASS`**:
     *   When local tests are executed (`ANTIGRAVITY_RUNNING_TESTS=1`) or offline mode is declared (`SPAO_OFFLINE=1`), live GitHub queries for parent path resolution are bypassed or mocked, allowing local execution to complete without network dependencies.

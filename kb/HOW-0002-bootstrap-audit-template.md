@@ -10,7 +10,7 @@ If the Agent discovers an unchecked requirement during the audit:
 - **Mandatory Spin-Outs:** If the fix requires architectural design, logic generation, or crosses the Materialization Boundary, the Agent must treat this ledger as "Report Only." The Agent must leave the box unchecked, halt the audit, and spawn a dedicated GH-Issue Node to execute the complex remediation.
 
 ## 1. Persona & Memory Invariants
-- [ ] **`GEMINI.md`**: Present at the repository root and correctly defines the Meta-Orchestrator persona.
+- [ ] **`GEMINI.md`**: Present at the repository root and correctly defines the Dao_Engine persona.
 - [ ] **`artifacts/frontier_state.md`**: Present, initialized, and tracking the active Topological Node.
 
 ## 2. Agentic Architecture Scaffolding

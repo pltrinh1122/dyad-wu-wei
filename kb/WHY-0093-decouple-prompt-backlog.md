@@ -2,7 +2,7 @@
 
 ## Problem Statement
 The operator's asynchronous instructions are queued locally inside `artifacts/prompt_backlog.yml` while executing. However, because this file is currently tracked in the Git repository:
-1. Running destructive git operations (such as `git restore .` or `git checkout`) to clear local working tree conflicts resets `artifacts/prompt_backlog.yml` to the remote branch state (`prompts: []`), permanently erasing the operator's queued prompts.
+1. Running destructive git operations (such as `git-restore .` or `git-checkout`) to clear local working tree conflicts resets `artifacts/prompt_backlog.yml` to the remote branch state (`prompts: []`), permanently erasing the operator's queued prompts.
 2. Concurrent agent execution sessions on separate branches will inevitably lead to merge conflicts in `artifacts/prompt_backlog.yml`.
 3. Routine prompt queue changes pollute the git history.
 

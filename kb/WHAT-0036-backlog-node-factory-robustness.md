@@ -7,7 +7,7 @@ This specification formalizes the robustness invariants, API changes, and verifi
 1. `INVARIANT_ID_BACKLOG_IDEMPOTENCY`:
    - Creating backlog issues must be idempotent. If a request is made to create a node/path that matches the title of an existing open issue, the system must log a warning and reuse the existing issue instead of creating a duplicate.
 2. `INVARIANT_ID_ORPHAN_PREVENTION`:
-   - Terminal nodes (Activities/Probes) must always belong to an open parent Path.
+   - Terminal nodes (Activities/Discoveries) must always belong to an open parent Path.
 3. `INVARIANT_ID_DEPENDENCY_ENFORCEMENT`:
    - Transitioning a node via `plan-start` must fail if any dependency issue (declared in the issue's `## Depends On` section) is still `OPEN` on GitHub.
 4. `INVARIANT_ID_FRONTIER_AUTO_REGISTRATION`:

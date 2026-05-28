@@ -3123,13 +3123,13 @@ nodes:
   invariants:
   - WHY-1089
 - name: 'Node 1096: Discovery 1096: Plan - Audit and Remediate Deprecated KB Files'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: Technical design and proposed changes for Audit and Remediate Deprecated
+    KB Files.
   invariants: []
 - name: 'Node 1097: Activity 1097: Reflect - Audit and Remediate Deprecated KB Files'
-  status: Backlog
-  learnings: Final reflection and path closure for Audit and Remediate Deprecated
-    KB Files.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1030: Node 1030: Discovery 1030: Harmonize - Fix Telemetry Logging Visibility'
   status: '[///] Act Phase'
@@ -3835,30 +3835,56 @@ nodes:
     path'
   - '[x] promoted/active nodes are automatically pruned from the triage holding path
     during sync'
-- name: 'Activity 1209: Reflect - Optimize local frontier cache to leverage lazy github
-    sync'
-  status: Completed
-  learnings: Implemented persistent local cache file artifacts/cache/github_state_cache.json,
-    wrapped github_client queries to use the cache when younger than the 60-second
-    TTL, and integrated cache invalidation inside all mutative operations.
-  invariants:
-  - '[x] GitHub client queries cache open PRs, open issues, and labels'
-  - '[x] Caching invalidates on all mutative GitHub client actions'
-  - '[x] Caching test suite verifies cache hit and cache invalidation behavior'
-- name: 'Node 1086: Discovery 1086: Plan - Investigate KB Deprecation Mechanics'
+- name: 'Node 1242: Path 1242: Triage Holding - Standalone Triage & External Requirement
+    Intakes'
+  status: Backlog
+  learnings: A holding Path to consolidate all unpromoted status:triage external intake
+    nodes under the same parent class.
+  invariants: []
+- name: 'Node 1243: Discovery 1243: Harmonize - Triage Holding - Standalone Triage
+    & External Requirement Intakes'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Triage Holding
+    - Standalone Triage & External Requirement Intakes.
+  invariants: []
+- name: 'Node 1244: Discovery 1244: Plan - Triage Holding - Standalone Triage & External
+    Requirement Intakes'
+  status: Backlog
+  learnings: Technical design and proposed changes for Triage Holding - Standalone
+    Triage & External Requirement Intakes.
+  invariants: []
+- name: 'Node 1245: Activity 1245: Reflect - Triage Holding - Standalone Triage &
+    External Requirement Intakes'
+  status: Backlog
+  learnings: Final reflection and path closure for Triage Holding - Standalone Triage
+    & External Requirement Intakes.
+  invariants: []
+- name: 'Node 1085: Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery 1086: Plan - Investigate KB Deprecation Mechanics'
+- name: 'Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics'
   status: Completed
-  learnings: Specified the technical standards, file target ranges, and testing requirements
-    for Knowledge Base deprecation checkers in WHAT-1086.md.
+  learnings: Investigated and documented the KB deprecation mechanics, including semantic
+    ledger structure, static checking details under knowledge_accrual_skill.py, and
+    command invariance rules.
   invariants:
-  - '[x] WHAT-1086-investigate-kb-deprecation-mechanics-spec.md created'
-- name: 'Discovery 1096: Plan - Audit and Remediate Deprecated KB Files'
+  - '[x] WHY-1085-investigate-kb-deprecation-mechanics.md created'
+- name: 'Node 1087: Activity 1087: Reflect - Investigate KB Deprecation Mechanics'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1087: Reflect - Investigate KB Deprecation Mechanics'
   status: Completed
-  learnings: Specified the targets and rules for performing a comprehensive audit
-    and remediation of deprecated terminology and raw command patterns across the
-    KB in WHAT-1096.md.
+  learnings: Concluded the investigation of Knowledge Base deprecation checkers, verifying
+    the operational rules and standards.
   invariants:
-  - '[x] WHAT-1096-audit-and-remediate-deprecated-kb-files-spec.md created'
+  - '[x] KB deprecation checkers successfully verified'
+- name: 'Activity 1097: Reflect - Audit and Remediate Deprecated KB Files'
+  status: Completed
+  learnings: Successfully performed a comprehensive audit and remediation of all files
+    in the kb/ directory, replacing deprecated terms with their active equivalents
+    and hyphenating raw git/gh command strings to maintain knowledge base purity.
+  invariants:
+  - '[x] All deprecated terms in kb/ files substituted'
+  - '[x] All raw git/gh commands in kb/ files hyphenated'

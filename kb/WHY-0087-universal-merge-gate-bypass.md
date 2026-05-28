@@ -19,4 +19,4 @@ A node reflection is mathematically defined as "Administrative" if the physical 
 - **`kb/`**: Represents the system's "ROM". Mutating knowledge primitives alters future Agent decision-making. These must be subjected to HTIL to prevent hallucinatory policy drift.
 - **`kernel/`, `drivers/`, `tests/`**: Represents executable code logic. These must be subjected to HTIL to prevent functional degradation.
 
-If a PR is determined to be strictly Administrative, the orchestrator will invoke `gh pr merge --admin --squash` to autonomously integrate the changes into `main`, clearing the WIP lock and allowing execution to proceed continuously.
+If a PR is determined to be strictly Administrative, the orchestrator will invoke `gh-pr merge --admin --squash` to autonomously integrate the changes into `main`, clearing the WIP lock and allowing execution to proceed continuously.

@@ -1,6 +1,6 @@
 # WHAT-0060: Tactical Goals for SG-0001 Backlog Dynamics and Resource Budget Alignment
 
-This document defines the Tactical Goals (TGs) that realize **SG-0001** (Backlog Dynamics and Resource Budget Alignment). These goals provide concrete engineering milestones to dynamically align backlog selection with the operator's strategic intent ledger.
+This document defines the Tactical Goals (TGs) that realize **SG-0001** (Backlog Dynamics and Resource Budget Alignment). These goals provide concrete engineering milestones to dynamically harmonize backlog selection with the operator's strategic intent ledger.
 
 ---
 

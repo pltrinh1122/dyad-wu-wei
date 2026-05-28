@@ -2,7 +2,7 @@
 
 ## 1. Context & Problem
 Previously, the agent's identity was statically hardcoded inside `dz-cil.yml` as `agent_id: agent-sg5` or similar. This resulted in:
-1. Git merge conflicts on the `main` branch when different agents merged their PRs, since they would overwrite each other's configured `agent_id`.
+1. git-merge conflicts on the `main` branch when different agents merged their PRs, since they would overwrite each other's configured `agent_id`.
 2. Brittle execution in multi-agent environments where different directories/workspaces are mapped to different agent identities (e.g. `agent-SG2-auto` running in `.worktrees` vs `agent-sg5`).
 
 ## 2. Decision

@@ -11,7 +11,7 @@ When a Frontier Agent resumes from a seizure, the following sequence MUST be exe
 
 ### 2.1 Governance Integrity (Inv 3)
 If the Agent was mid-execution when halted, there may be uncommitted working-tree edits.
-- **Action**: Check `git status`.
+- **Action**: Check `git-status`.
 - **Assertion**: If uncommitted edits exist related to the active node, they must be committed onto a node branch (e.g., `node/<id>-<name>`) to govern them.
 - **Why**: Running a subsequent node sync or checkout sweeps the working tree. Failing to govern edits beforehand results in silent data loss.
 
@@ -36,7 +36,7 @@ The codebase must mathematically function before the Agent attempts to mutate it
 - **Assertion**: The entire test suite must pass (`100% green`). If tests fail, the environment is fundamentally compromised.
 
 ### 2.6 Secondary Recovery (Ontology Drift)
-- **Action**: If any documented ontology drift or specific document reversions occurred due to the seizure (e.g., failed renames or silent regressions), recover them via the governed loop (e.g., `git checkout <safe-commit> -- <files>`).
+- **Action**: If any documented ontology drift or specific document reversions occurred due to the seizure (e.g., failed renames or silent regressions), recover them via the governed loop (e.g., `git-checkout <safe-commit> -- <files>`).
 - **Assertion**: The ontology is accurate and coherent with the `kb/GLOSSARY.md`.
 
 ## 3. Post-Condition

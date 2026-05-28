@@ -2,7 +2,7 @@
 
 ## 1. The Phenomenon
 The GitHub CLI (`gh`) periodically outputs GraphQL API deprecation warnings or operational diagnostic alerts to `stderr` or, depending on shell configuration and versioning, prepends them to the captured output streams. 
-When these warnings occur, standard calls like `gh issue view` or `gh pr list` returning JSON payloads fail to parse cleanly under strict JSON parsers (`json.loads`), causing the Next-Best-Action (NBA) evaluator or flow lifecycle orchestrators to crash or fail-closed.
+When these warnings occur, standard calls like `gh-issue view` or `gh-pr list` returning JSON payloads fail to parse cleanly under strict JSON parsers (`json.loads`), causing the Next-Best-Action (NBA) evaluator or flow lifecycle orchestrators to crash or fail-closed.
 
 ## 2. Root Cause Analysis
 Antigravity CLI wrapper commands execute the `gh` tool via `subprocess.run` (proxied by `_run_gh` inside `drivers/github_client.py`). Many of these commands capture stdout using `capture_output=True` and attempt to decode the raw output directly:

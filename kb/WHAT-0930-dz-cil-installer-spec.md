@@ -27,7 +27,7 @@ We use a unified, idempotent Python bootstrapper (`bin/workspace init`) to setup
 
 #### 2.2 Setup Operations
 The python daemon (`kernel/daemon_workspace.py`) must execute the following operations in strict order:
-1. **Target Verification & Clone**: Ensure the target directory is empty or does not exist, then `git clone` the repository. This prevents Git fatal errors from non-empty directories.
+1. **Target Verification & Clone**: Ensure the target directory is empty or does not exist, then `git-clone` the repository. This prevents Git fatal errors from non-empty directories.
 2. **Directory Creation**: Create the baseline folders inside the newly cloned workspace:
    - `[TARGET_DIR]/kb/` (empty workspace knowledge base)
    - `[TARGET_DIR]/artifacts/` (workspace-specific state tracking and logs)
@@ -42,7 +42,7 @@ The python daemon (`kernel/daemon_workspace.py`) must execute the following oper
 To support complex branching strategies (e.g., concurrent release branches like `v1.x` and `v1.1.x`) inside the child project workspace, we establish the **Workspace Worktree Redirection** model.
 
 #### 3.1 Directory Layout
-When the active workspace is checked out for node execution, the checkout command must NOT perform in-place checkouts. Instead, it must checkout the node branch into a git worktree located at:
+When the active workspace is checked out for node execution, the checkout command must NOT perform in-place checkouts. Instead, it must checkout the node branch into a git-worktree located at:
 ```
 [TARGET_DIR]/.worktrees/node/[id]-[kebab-case]/
 ```
