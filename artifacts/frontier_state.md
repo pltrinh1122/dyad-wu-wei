@@ -3617,6 +3617,18 @@
 - **Feedforward Invariants**:
   - `[x] WHY-0722 created`
 
+## Node 723: Probe 723: Plan - Resilient GraphQL parsing in GitHub Client
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 723: Plan - Resilient GraphQL parsing in GitHub Client
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHAT-0723 specifying the resilient GraphQL parsing design and verification plan.
+- **Feedforward Invariants**:
+  - `[x] WHAT-0723 created`
+
 ## Current Active Path
 None
 
