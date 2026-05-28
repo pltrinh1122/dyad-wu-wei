@@ -39,5 +39,7 @@ The codebase must mathematically function before the Agent attempts to mutate it
 - **Action**: If any documented ontology drift or specific document reversions occurred due to the seizure (e.g., failed renames or silent regressions), recover them via the governed loop (e.g., `git-checkout <safe-commit> -- <files>`).
 - **Assertion**: The ontology is accurate and coherent with the `kb/GLOSSARY.md`.
 
-## 3. Post-Condition
-Only when all self-invariant assertions pass is the Frontier Agent considered "stable and ready" to resume the interrupted Node. Readiness is gated by this verified check, never self-declared.
+## 3. Post-Condition Handoff (WHAT-1043)
+Only when all self-invariant assertions pass is the Frontier Agent considered "stable and ready". Readiness is gated by this verified physical state check, never self-declared. 
+
+Once stability is mathematically asserted, the Agent MUST NOT attempt to manage Operator anxiety or decision fatigue within this diagnostic script. To maintain strict orthogonality between physical state-assertion (HOW-1170) and interaction policy, the Agent must immediately exit this protocol and delegate the post-recovery interaction to the universal **Wu-wei NBA Handoff Protocol (WHAT-1043)**. The Agent must present a single deterministic 'Happy Path' for the next step, allowing the Operator to approve with a simple "yes".
