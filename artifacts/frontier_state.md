@@ -2462,9 +2462,11 @@
 
 ## Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: Completed
-- **Learnings & Context**: Evaluated the dynamic agent identity resolution rules, cgroup limits, and environment variable resolutions to align with SG-0002. Produced the architectural decision record kb/WHY-0623-dynamic-identity-resolution-alignment.md and registered backlog activity nodes.
+- **Learnings & Context**: Aligned on a context-aware strategic gate model mapping executing environments to target personas/strategic goals without causing conflict gates to fail-closed.
 - **Feedforward Invariants**:
-  - `- [x] kb/WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked.`
+  - `[x] WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked`
+  - `[x] Registered in manifest`
+  - `[x] Tests pass`
 
 ## Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md
 - **Status**: Completed
@@ -3821,8 +3823,20 @@
 - **Feedforward Invariants**:
   - `All tests pass cleanly. Node sync verifies PR state on GitHub.`
 
+## Node 1256: Activity 1256: Fix list_issues_by_label truncation limit bug
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1257: Activity 1257: Implement Dynamic Agent Identity Resolution and Decoupled Gates
+- **Status**: Backlog
+- **Learnings & Context**: Implement dynamic mapping of environment states to logical personas and adaptively relax strategic gates in child workspaces as specified in WHAT-0622
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 
 ## Current Active Node
-None
+**Node 1256: Activity 1256: Fix list_issues_by_label truncation limit bug**

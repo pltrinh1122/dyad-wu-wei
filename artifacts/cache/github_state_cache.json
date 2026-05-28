@@ -1,7 +1,8 @@
 {
-  "timestamp": 1779937546,
-  "open_prs": [],
+  "timestamp": 1779938122,
   "issue_labels": {
-    "189": []
+    "1256": [
+      "backlog"
+    ]
   }
 }

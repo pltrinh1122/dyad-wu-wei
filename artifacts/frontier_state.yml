@@ -1,5 +1,6 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 1256: Activity 1256: Fix list_issues_by_label truncation
+  limit bug'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -2636,12 +2637,12 @@ nodes:
 - name: 'Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger
     alignment'
   status: Completed
-  learnings: Evaluated the dynamic agent identity resolution rules, cgroup limits,
-    and environment variable resolutions to align with SG-0002. Produced the architectural
-    decision record kb/WHY-0623-dynamic-identity-resolution-alignment.md and registered
-    backlog activity nodes.
+  learnings: Aligned on a context-aware strategic gate model mapping executing environments
+    to target personas/strategic goals without causing conflict gates to fail-closed.
   invariants:
-  - '- [x] kb/WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked.'
+  - '[x] WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked'
+  - '[x] Registered in manifest'
+  - '[x] Tests pass'
 - name: 'Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md'
   status: Completed
   learnings: Synthesized retro-623.md by adding Rule 16 to GEMINI.md to codify dynamic
@@ -3905,3 +3906,13 @@ nodes:
     unmerged workspace cleanup.
   invariants:
   - All tests pass cleanly. Node sync verifies PR state on GitHub.
+- name: 'Node 1256: Activity 1256: Fix list_issues_by_label truncation limit bug'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1257: Activity 1257: Implement Dynamic Agent Identity Resolution and
+    Decoupled Gates'
+  status: Backlog
+  learnings: Implement dynamic mapping of environment states to logical personas and
+    adaptively relax strategic gates in child workspaces as specified in WHAT-0622
+  invariants: []

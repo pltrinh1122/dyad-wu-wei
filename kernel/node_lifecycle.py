@@ -435,7 +435,7 @@ class TerminalNode(BaseNode):
             
             # Enforce post-failure reflection gate (SG-0005)
             from kernel import daemon_knowledge_accrual
-            daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo)
+            daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo, worktree_root=worktree_dir)
             
             self.close("Node completed via Node Lifecycle Daemon. Moving to PR.")
             tx.register_rollback(self.reopen)

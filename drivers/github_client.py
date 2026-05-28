@@ -161,7 +161,7 @@ def list_issues_by_label(label: str) -> list[dict]:
     """
     result = _run_gh(
         ["gh", "issue", "list", "--label", label, "--state", "open",
-         "--json", "number,title,url,state"],
+         "--limit", "300", "--json", "number,title,url,state"],
         capture_output=True, text=True, check=True
     )
     import json
