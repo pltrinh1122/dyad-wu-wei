@@ -21,6 +21,26 @@ def _resolve_gh_repo() -> str | None:
     return None
 
 def _run_gh(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
+    env = kwargs.get("env") or os.environ.copy()
+    
+    # Headless GH_TOKEN Fallback
+    if "GH_TOKEN" not in env and "GITHUB_TOKEN" not in env:
+        try:
+            core_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            env_file = os.path.join(core_dir, ".env")
+            if os.path.exists(env_file):
+                with open(env_file, "r") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith("#"):
+                            parts = line.split("=", 1)
+                            if len(parts) == 2:
+                                k, v = parts[0].strip(), parts[1].strip()
+                                if k in ("GH_TOKEN", "GITHUB_TOKEN"):
+                                    env[k] = v.strip('"').strip("'")
+        except Exception:
+            pass
+
     workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
     if workspace_dir:
         if cmd[0] == "git" and kwargs.get("cwd") is None:
@@ -28,9 +48,9 @@ def _run_gh(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
         elif cmd[0] == "gh":
             repo = _resolve_gh_repo()
             if repo:
-                env = kwargs.get("env") or os.environ.copy()
                 env["GH_REPO"] = repo
-                kwargs["env"] = env
+                
+    kwargs["env"] = env
     return subprocess.run(cmd, **kwargs)
 
 import tempfile

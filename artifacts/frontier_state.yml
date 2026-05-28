@@ -4071,68 +4071,69 @@ nodes:
     gates are enforced during parent-level PR review.
   invariants:
   - Sovereign child workspaces can bypass strategic gates locally
-- name: 'Node 1296: Path 1296: Remediate sync_and_clean_node WIP-N=1 offline block'
-  status: Backlog
-  learnings: Auto-fetch closed/merged PR status from GitHub before raising offline
-    WIP-N=1 violation for local worktrees to prevent manual block.
-  invariants: []
-- name: 'Node 1297: Discovery 1297: Harmonize - Remediate sync_and_clean_node WIP-N=1
-    offline block'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Remediate sync_and_clean_node
-    WIP-N=1 offline block.
-  invariants: []
-- name: 'Node 1298: Discovery 1298: Plan - Remediate sync_and_clean_node WIP-N=1 offline
-    block'
-  status: Backlog
-  learnings: Technical design and proposed changes for Remediate sync_and_clean_node
-    WIP-N=1 offline block.
-  invariants: []
-- name: 'Node 1299: Activity 1299: Reflect - Remediate sync_and_clean_node WIP-N=1
-    offline block'
-  status: Backlog
-  learnings: Final reflection and path closure for Remediate sync_and_clean_node WIP-N=1
-    offline block.
-  invariants: []
-- name: 'Node 1300: Activity 1300: Remediate sync_and_clean_node WIP-N=1 offline block'
-  status: Backlog
-  learnings: Auto-fetch closed/merged PR status from GitHub before raising offline
-    WIP-N=1 violation for local worktrees to prevent manual block.
-  invariants: []
-- name: 'Node 1300: Activity 1300: Implement auto-fetch in sync_and_clean_node'
+- name: 'Node 1294: Activity 1294: Fix mock daemon_knowledge_accrual in node lifecycle
+    tests'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 1300: Implement auto-fetch in sync_and_clean_node'
+- name: 'Activity 1294: Fix mock daemon_knowledge_accrual in node lifecycle tests'
   status: Completed
-  learnings: Offline WIP-N=1 locking mechanics successfully modernized to query remote
-    PR states before raising blockades, minimizing manual friction. bin/status terminology
-    accurately reflects local presence.
-  invariants: []
-- name: 'Node 1308: Path 1308: Enforce Local CI Verification Before Reflection'
+  learnings: Mocked enforce_reflection_hook in test_reflect_success, test_branch_naming_regex_enforcement_and_exemption,
+    and test_reflect_admin_bypass_conditions to isolate unit tests from real telemetry
+    logs.
+  invariants:
+  - Unit tests must remain completely isolated from dynamic repository files like
+    telemetry.jsonl.
+- name: 'Node 1302: Path 1302: Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol'
   status: Backlog
-  learnings: "Prevent remote CI failures by enforcing local test\n  suite verification\
-    \ (run-tests) prior to executing node reflection or pushing PRs."
+  learnings: Update HOW-1170 to explicitly delegate the post-recovery recommendation
+    phase to the universal Wu-wei NBA Handoff Protocol (WHAT-1043), maintaining strict
+    orthogonality between physical state-assertion and interaction policy.
   invariants: []
-- name: 'Node 1309: Discovery 1309: Harmonize - Enforce Local CI Verification Before
-    Reflection'
+- name: 'Node 1303: Discovery 1303: Harmonize - Harmonize HOW-1170 with Wu-wei NBA
+    Handoff Protocol'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1310: Discovery 1310: Plan - Enforce Local CI Verification Before Reflection'
+- name: 'Node 1304: Discovery 1304: Plan - Harmonize HOW-1170 with Wu-wei NBA Handoff
+    Protocol'
   status: Backlog
-  learnings: Technical design and proposed changes for Enforce Local CI Verification
-    Before Reflection.
+  learnings: Technical design and proposed changes for Harmonize HOW-1170 with Wu-wei
+    NBA Handoff Protocol.
   invariants: []
-- name: 'Node 1311: Activity 1311: Reflect - Enforce Local CI Verification Before
-    Reflection'
+- name: 'Node 1305: Activity 1305: Reflect - Harmonize HOW-1170 with Wu-wei NBA Handoff
+    Protocol'
   status: Backlog
-  learnings: Final reflection and path closure for Enforce Local CI Verification Before
-    Reflection.
+  learnings: Final reflection and path closure for Harmonize HOW-1170 with Wu-wei
+    NBA Handoff Protocol.
   invariants: []
-- name: 1309-local-ci-verification
+- name: 1303-harmonize-how-1170
   status: Completed
-  learnings: Implemented local CI verification step inside kernel/node_lifecycle.py
-    reflect hook, triggering bin/run-tests before allowing a successful PR creation.
+  learnings: Delegated recovery interactions to NBA protocol to maintain orthogonal
+    physical state-assertion
+  invariants:
+  - WIP-N=1
+- name: 'Node 1313: Path 1313: Implement headless GH_TOKEN fallback'
+  status: Backlog
+  learnings: Implement headless GH_TOKEN fallback in github_client.py to permanently
+    remediate headless DBus keyring 401 failures.
+  invariants: []
+- name: 'Node 1314: Discovery 1314: Harmonize - Implement headless GH_TOKEN fallback'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1315: Discovery 1315: Plan - Implement headless GH_TOKEN fallback'
+  status: Backlog
+  learnings: Technical design and proposed changes for Implement headless GH_TOKEN
+    fallback.
+  invariants: []
+- name: 'Node 1316: Activity 1316: Reflect - Implement headless GH_TOKEN fallback'
+  status: Backlog
+  learnings: Final reflection and path closure for Implement headless GH_TOKEN fallback.
+  invariants: []
+- name: 1314-headless-gh-token
+  status: Completed
+  learnings: Implemented headless GH_TOKEN fallback in github_client._run_gh to parse
+    .env file when the OS DBus keyring is unavailable.
   invariants:
   - WIP-N=1
