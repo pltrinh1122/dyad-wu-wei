@@ -2462,11 +2462,9 @@
 
 ## Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: Completed
-- **Learnings & Context**: Aligned on a context-aware strategic gate model mapping executing environments to target personas/strategic goals without causing conflict gates to fail-closed.
+- **Learnings & Context**: Evaluated the dynamic agent identity resolution rules, cgroup limits, and environment variable resolutions to align with SG-0002. Produced the architectural decision record kb/WHY-0623-dynamic-identity-resolution-alignment.md and registered backlog activity nodes.
 - **Feedforward Invariants**:
-  - `[x] WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked`
-  - `[x] Registered in manifest`
-  - `[x] Tests pass`
+  - `- [x] kb/WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked.`
 
 ## Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md
 - **Status**: Completed
