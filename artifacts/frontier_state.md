@@ -4007,6 +4007,18 @@
 - **Feedforward Invariants**:
   - `Sovereign child workspaces can bypass strategic gates locally`
 
+## Node 1294: Activity 1294: Fix mock daemon_knowledge_accrual in node lifecycle tests
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1294: Fix mock daemon_knowledge_accrual in node lifecycle tests
+- **Status**: Completed
+- **Learnings & Context**: Mocked enforce_reflection_hook in test_reflect_success, test_branch_naming_regex_enforcement_and_exemption, and test_reflect_admin_bypass_conditions to isolate unit tests from real telemetry logs.
+- **Feedforward Invariants**:
+  - `Unit tests must remain completely isolated from dynamic repository files like telemetry.jsonl.`
+
 ## Current Active Path
 None
 
