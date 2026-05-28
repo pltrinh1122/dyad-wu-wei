@@ -2636,12 +2636,10 @@ nodes:
 - name: 'Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger
     alignment'
   status: Completed
-  learnings: Aligned on a context-aware strategic gate model mapping executing environments
-    to target personas/strategic goals without causing conflict gates to fail-closed.
+  learnings: Successfully investigated dynamic agent identity resolution against collaborative
+    goals. The findings are codified in WHY-0623 and WHAT-0622.
   invariants:
-  - '[x] WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked'
-  - '[x] Registered in manifest'
-  - '[x] Tests pass'
+  - WHY-0623
 - name: 'Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md'
   status: Completed
   learnings: Synthesized retro-623.md by adding Rule 16 to GEMINI.md to codify dynamic
@@ -3969,13 +3967,8 @@ nodes:
   invariants:
   - WHY-1030
   - WHY-1031
-- name: 'Node 1268: Activity 1268: Triage SEIZURE_DETECTED test failures'
+- name: 'Node 623: Node 623: Probe 623: Align - Path: Dynamic agent identity resolution
+    and policy ledger alignment'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 1268: Triage SEIZURE_DETECTED test failures'
-  status: Completed
-  learnings: Resolved lexical guard violations in retro-1029.md by replacing deprecated
-    terms probe and align with discovery and harmonize.
-  invariants:
-  - '[x] Lexical guard passes'
