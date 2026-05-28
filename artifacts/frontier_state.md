@@ -4062,10 +4062,11 @@
   - `[ ]` None
 
 ## Node 1315: Discovery 1315: Plan - Implement headless GH_TOKEN fallback
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Implement headless GH_TOKEN fallback.
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHAT-1315 and WHY-1314 to specify credentials lookup order (env, local .env) to address headless authentication failures and registered them in HOW-0000.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHAT-1315 is registered in HOW-0000`
+  - `[x] WHY-1314 is registered in HOW-0000`
 
 ## Node 1316: Activity 1316: Reflect - Implement headless GH_TOKEN fallback
 - **Status**: Backlog
