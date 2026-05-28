@@ -2728,8 +2728,8 @@
   - `[ ]` None
 
 ## Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Refine DZ-CIL Intent Understanding.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3938,6 +3938,12 @@
 ## Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
 - **Status**: Completed
 - **Learnings & Context**: Codified WHAT-1022 specification and registered in meta manifest
+- **Feedforward Invariants**:
+  - `N/A`
+
+## Activity 1025: Reflect - Refine DZ-CIL Intent Understanding
+- **Status**: Completed
+- **Learnings & Context**: Final reflection on Path 1022: Refined DZ-CIL Intent Understanding
 - **Feedforward Invariants**:
   - `N/A`
 
