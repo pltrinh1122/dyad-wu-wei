@@ -3674,15 +3674,24 @@ nodes:
     nodes autonomously bypass human-in-the-loop review gates.
   invariants:
   - none
-- name: 'Node 1001: Activity 1001: Reflect - Optimize Agent-UI Flow State: Background
+- name: 'Node 1000: Discovery 1000: Plan - Optimize Agent-UI Flow State: Background
     Tool Executions'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 1001: Reflect - Optimize Agent-UI Flow State: Background Tool Executions'
+- name: 'Discovery 1000: Plan - Optimize Agent-UI Flow State: Background Tool Executions'
   status: Completed
-  learnings: 'Reflected on Optimize Agent-UI Flow State: Background Tool Executions.
-    Verified Rule 19 formatting and checked all tests pass.'
+  learnings: Updated GEMINI.md Section 5 Rule 19 to strictly forbid stringing multiple
+    synchronous/modifying tools in a single turn.
   invariants:
-  - '[x] Rule 19 verified'
-  - '[x] Backlog checklist updated'
+  - '[x] Rule 19 updated in GEMINI.md'
+- name: 'Node 722: Probe 722: Align - Resilient GraphQL parsing in GitHub Client'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Probe 722: Align - Resilient GraphQL parsing in GitHub Client'
+  status: Completed
+  learnings: Drafted WHY-0722 documenting the phenomenon, root cause, and mitigation
+    plan.
+  invariants:
+  - '[x] WHY-0722 created'
