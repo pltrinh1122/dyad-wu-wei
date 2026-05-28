@@ -3871,6 +3871,18 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 1031: Node 1031: Discovery 1031: Plan - Fix Telemetry Logging Visibility
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1031: Plan - Fix Telemetry Logging Visibility
+- **Status**: Completed
+- **Learnings & Context**: Designed the remediation plan for telemetry logging visibility. Created WHY-1031 and registered in HOW-0000-manifest.md.
+- **Feedforward Invariants**:
+  - `WHY-1031`
+
 ## Current Active Path
 None
 

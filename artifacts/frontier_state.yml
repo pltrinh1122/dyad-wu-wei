@@ -3948,3 +3948,13 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Node 1031: Node 1031: Discovery 1031: Plan - Fix Telemetry Logging Visibility'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1031: Plan - Fix Telemetry Logging Visibility'
+  status: Completed
+  learnings: Designed the remediation plan for telemetry logging visibility. Created
+    WHY-1031 and registered in HOW-0000-manifest.md.
+  invariants:
+  - WHY-1031
