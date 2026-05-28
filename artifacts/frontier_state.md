@@ -3841,6 +3841,18 @@
 - **Feedforward Invariants**:
   - `WHY-1030`
 
+## Node 1095: Node 1095: Discovery 1095: Harmonize - Audit and Remediate Deprecated KB Files
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1095: Harmonize - Audit and Remediate Deprecated KB Files
+- **Status**: Completed
+- **Learnings & Context**: Audited non-immune KB files for deprecated terms. Documented findings in WHY-1095 and registered in HOW-0000-manifest.md.
+- **Feedforward Invariants**:
+  - `WHY-1095`
+
 ## Current Active Path
 None
 

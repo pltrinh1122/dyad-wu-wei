@@ -3922,3 +3922,14 @@ nodes:
     the new record in HOW-0000-manifest.md.
   invariants:
   - WHY-1030
+- name: 'Node 1095: Node 1095: Discovery 1095: Harmonize - Audit and Remediate Deprecated
+    KB Files'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1095: Harmonize - Audit and Remediate Deprecated KB Files'
+  status: Completed
+  learnings: Audited non-immune KB files for deprecated terms. Documented findings
+    in WHY-1095 and registered in HOW-0000-manifest.md.
+  invariants:
+  - WHY-1095
