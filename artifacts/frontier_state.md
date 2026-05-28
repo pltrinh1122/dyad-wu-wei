@@ -3655,8 +3655,8 @@
   - `[ ]` None
 
 ## Node 1225: Discovery 1225: Plan - Implement Quarantine Protocol for External Requirement Intakes
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Implement Quarantine Protocol for External Requirement Intakes.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3671,6 +3671,12 @@
 - **Learnings & Context**: Drafted WHY-1224 documenting the quarantine protocol alignment, triage state, and promotion gates.
 - **Feedforward Invariants**:
   - `[x] WHY-1224 created`
+
+## Discovery 1225: Plan - Implement Quarantine Protocol for External Requirement Intakes
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHAT-1225 specifying the quarantine template configuration and CLI transition gate check.
+- **Feedforward Invariants**:
+  - `[x] WHAT-1225 created`
 
 ## Current Active Path
 None
