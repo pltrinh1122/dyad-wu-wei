@@ -3762,3 +3762,14 @@ nodes:
   invariants:
   - '[x] Issue template created with triage label'
   - '[x] Backlog transition gate check added and passes tests'
+- name: 'Node 1230: Activity 1230: Document Requirement Intake Protocol in README'
+  status: Backlog
+  learnings: Add guidance in root README.md on using the Requirement Intake template
+    with triage labeling
+  invariants: []
+- name: 'Activity 1230: Reflect - Document Requirement Intake Protocol in README'
+  status: Completed
+  learnings: Added guidance to root README.md on using the Requirement Intake issue
+    template and gh CLI.
+  invariants:
+  - '[x] README.md updated with intake instructions'
