@@ -3839,4 +3839,4 @@
 None
 
 ## Current Active Node
-**Node 1256: Activity 1256: Fix list_issues_by_label truncation limit bug**
+None

@@ -1,6 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 1256: Activity 1256: Fix list_issues_by_label truncation
-  limit bug'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
