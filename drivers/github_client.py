@@ -270,9 +270,9 @@ def admin_merge_pull_request(pr_url: str, merge_method: str = "squash") -> None:
         text=True,
         check=True
     )
-def get_issue_labels(issue_id: str) -> list[str]:
-    """Returns a list of label names for the given issue."""
-    cached_map = _get_cached_value("issue_labels") or {}
+def get_cached_issue_labels(issue_id: str, ttl_seconds: int = 60) -> list[str]:
+    """Checks the cache for the issue labels. If not found or cache is stale, performs a remote query via gh-issue-view and updates the cache."""
+    cached_map = _get_cached_value("issue_labels", ttl_seconds=ttl_seconds) or {}
     if str(issue_id) in cached_map:
         return cached_map[str(issue_id)]
     result = _run_gh(
@@ -284,10 +284,14 @@ def get_issue_labels(issue_id: str) -> list[str]:
     labels = data.get("labels", [])
     val = [label.get("name") for label in labels]
     
-    cached_map = _get_cached_value("issue_labels") or {}
+    cached_map = _get_cached_value("issue_labels", ttl_seconds=ttl_seconds) or {}
     cached_map[str(issue_id)] = val
     _set_cached_value("issue_labels", cached_map)
     return val
+
+def get_issue_labels(issue_id: str) -> list[str]:
+    """Returns a list of label names for the given issue."""
+    return get_cached_issue_labels(issue_id)
 
 def add_label(issue_id: str, label: str) -> None:
     """Adds a label to the given issue."""
@@ -315,12 +319,12 @@ def remove_label(issue_id: str, label: str) -> None:
         check=True
     )
 
-def get_open_prs() -> list[dict]:
-    """Returns a list of currently open PRs for the repository.
+def get_cached_open_prs(ttl_seconds: int = 60) -> list[dict]:
+    """Returns the cached open PRs list if valid; otherwise performs a remote query via gh-pr-list and updates the cache.
     
-    Includes double-verification via the Issue/PR API to bypass Search API eventual consistency.
+    Includes double-verification via the strongly-consistent gh-pr-view API to bypass eventual consistency.
     """
-    cached = _get_cached_value("open_prs")
+    cached = _get_cached_value("open_prs", ttl_seconds=ttl_seconds)
     if cached is not None:
         return cached
     result = _run_gh(
@@ -344,6 +348,10 @@ def get_open_prs() -> list[dict]:
     
     _set_cached_value("open_prs", verified_prs)
     return verified_prs
+
+def get_open_prs() -> list[dict]:
+    """Returns a list of currently open PRs for the repository."""
+    return get_cached_open_prs()
 
 def get_merged_prs(limit: int = 50) -> list[dict]:
     """Returns a list of recently merged PRs for the repository.
