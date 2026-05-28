@@ -5,7 +5,7 @@ from kernel.daemon_node import plan_start_node, plan_finish_node, checkout_node,
 
 def test_plan_start_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subprocess):
     # Setup
-    mock_gh.get_issue_labels.return_value = []
+    mock_gh.get_issue_labels.return_value = ["backlog"]
     mock_gh.get_issue_details.return_value = {"title": "Test Title"}
     mock_fe.read_active_node.return_value = "None"
     mock_gh.get_open_prs.return_value = []
@@ -19,7 +19,7 @@ def test_plan_start_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_su
 
 def test_plan_start_node_locked(mock_gh, mock_fe):
     # Setup
-    mock_gh.get_issue_labels.return_value = ["status: in-progress"]
+    mock_gh.get_issue_labels.return_value = ["backlog", "status: in-progress"]
     mock_fe.read_active_node.return_value = "None"
     mock_gh.get_open_prs.return_value = []
     

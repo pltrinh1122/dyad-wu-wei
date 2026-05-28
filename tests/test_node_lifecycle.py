@@ -164,7 +164,7 @@ def test_reflect_success(mock_get_worktree_path, mock_nba, mock_frontier, mock_g
 @mock.patch("kernel.node_lifecycle.agent_frontier.append_active_node")
 def test_plan_start_dependency_violation(mock_append, mock_set_status, mock_validate_scope, mock_verify_purity, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
     mock_load_config.return_value = {"in_progress": "status: in-progress"}
-    mock_get_labels.return_value = []
+    mock_get_labels.return_value = ["backlog"]
     
     def side_effect(issue_id):
         if str(issue_id) == "390":
@@ -199,7 +199,7 @@ def test_plan_start_dependency_violation(mock_append, mock_set_status, mock_vali
 @mock.patch("kernel.node_lifecycle.agent_frontier.append_active_node")
 def test_plan_start_dependency_satisfied(mock_append, mock_set_status, mock_validate_scope, mock_verify_purity, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
     mock_load_config.return_value = {"in_progress": "status: in-progress"}
-    mock_get_labels.return_value = []
+    mock_get_labels.return_value = ["backlog"]
     
     def side_effect(issue_id):
         if str(issue_id) == "390":
@@ -307,6 +307,18 @@ def test_reflect_admin_bypass_conditions(mock_git, mock_gh, mock_tx, mock_fronti
     mock_git.diff_names.return_value = ["kernel/node_lifecycle.py", "artifacts/frontier_state.md"]
     node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
     mock_gh.admin_merge_pull_request.assert_not_called()
+
+def test_plan_start_quarantine_protocol_violation():
+    # Setup mocks to return an issue labeled with "triage" (lacking "backlog")
+    with mock.patch("kernel.node_lifecycle.github_client.get_issue_labels", return_value=["triage"]), \
+         mock.patch("kernel.node_lifecycle.FlowTransaction"), \
+         mock.patch("kernel.node_lifecycle.github_client.get_open_prs", return_value=[]), \
+         mock.patch("kernel.node_lifecycle.TerminalNode._verify_state_purity"):
+        
+        node = TerminalNode("9999")
+        with pytest.raises(Exception, match="Quarantine Protocol Violation: Node #9999 does not possess the 'backlog' label"):
+            node.plan_start("dummy_frontier.md")
+
 
 
 

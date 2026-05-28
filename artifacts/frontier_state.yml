@@ -3736,9 +3736,8 @@ nodes:
   invariants: []
 - name: 'Node 1226: Activity 1226: Reflect - Implement Quarantine Protocol for External
     Requirement Intakes'
-  status: Backlog
-  learnings: Final reflection and path closure for Implement Quarantine Protocol for
-    External Requirement Intakes.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Discovery 1224: Harmonize - Implement Quarantine Protocol for External Requirement
     Intakes'
@@ -3754,3 +3753,12 @@ nodes:
     CLI transition gate check.
   invariants:
   - '[x] WHAT-1225 created'
+- name: 'Activity 1226: Reflect - Implement Quarantine Protocol for External Requirement
+    Intakes'
+  status: Completed
+  learnings: Created GitHub Issue template for requirement intake with triage label
+    auto-assignment. Added the backlog label transition check to plan_start and verified
+    all tests pass.
+  invariants:
+  - '[x] Issue template created with triage label'
+  - '[x] Backlog transition gate check added and passes tests'

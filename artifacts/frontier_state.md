@@ -3661,8 +3661,8 @@
   - `[ ]` None
 
 ## Node 1226: Activity 1226: Reflect - Implement Quarantine Protocol for External Requirement Intakes
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement Quarantine Protocol for External Requirement Intakes.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3677,6 +3677,13 @@
 - **Learnings & Context**: Drafted WHAT-1225 specifying the quarantine template configuration and CLI transition gate check.
 - **Feedforward Invariants**:
   - `[x] WHAT-1225 created`
+
+## Activity 1226: Reflect - Implement Quarantine Protocol for External Requirement Intakes
+- **Status**: Completed
+- **Learnings & Context**: Created GitHub Issue template for requirement intake with triage label auto-assignment. Added the backlog label transition check to plan_start and verified all tests pass.
+- **Feedforward Invariants**:
+  - `[x] Issue template created with triage label`
+  - `[x] Backlog transition gate check added and passes tests`
 
 ## Current Active Path
 None
