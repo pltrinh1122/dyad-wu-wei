@@ -2462,11 +2462,9 @@
 
 ## Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: Completed
-- **Learnings & Context**: Aligned on a context-aware strategic gate model mapping executing environments to target personas/strategic goals without causing conflict gates to fail-closed.
+- **Learnings & Context**: Successfully investigated dynamic agent identity resolution against collaborative goals. The findings are codified in WHY-0623 and WHAT-0622.
 - **Feedforward Invariants**:
-  - `[x] WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked`
-  - `[x] Registered in manifest`
-  - `[x] Tests pass`
+  - `WHY-0623`
 
 ## Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md
 - **Status**: Completed
@@ -2477,16 +2475,16 @@
 
 ## Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: Completed
-- **Learnings & Context**: Successfully designed the plan for dynamic agent identity resolution. The specification is codified in WHAT-0622.
+- **Learnings & Context**: Created WHAT-0622-dynamic-identity-resolution-alignment.md specifying dynamic persona defaulting, child workspace gate decoupling, and test validation adaptations.
 - **Feedforward Invariants**:
-  - `WHAT-0622`
+  - `[x] WHAT-0622-dynamic-identity-resolution-alignment.md is created and tracked`
+  - `[x] Registered in kb/HOW-0000-manifest.md`
 
 ## Activity 625: Reflect - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: Completed
-- **Learnings & Context**: Completed Path 622 closure. Verified that all child nodes are resolved, specifications are registered, and tests are green.
+- **Learnings & Context**: Completed final reflection on dynamic agent identity resolution. Verified the decision record and specifications are fully merged, enabling decoupled workspace gates.
 - **Feedforward Invariants**:
-  - `[x] All child nodes of Path 622 completed`
-  - `[x] Final walkthrough updated`
+  - `WHAT-0622`
 
 ## Node 966: Activity 966: Refactor Workspace Bootstrapper and Codify Dialectical Rule
 - **Status**: [///] Act Phase
@@ -3895,19 +3893,13 @@
   - `WHY-1030`
   - `WHY-1031`
 
-## Node 1268: Activity 1268: Triage SEIZURE_DETECTED test failures
+## Node 623: Node 623: Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1268: Triage SEIZURE_DETECTED test failures
-- **Status**: Completed
-- **Learnings & Context**: Resolved lexical guard violations in retro-1029.md by replacing deprecated terms probe and align with discovery and harmonize.
-- **Feedforward Invariants**:
-  - `[x] Lexical guard passes`
-
-## Node 624: Node 624: Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger alignment
+## Node 625: Node 625: Activity 625: Reflect - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
