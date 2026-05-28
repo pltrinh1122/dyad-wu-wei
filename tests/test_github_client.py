@@ -163,3 +163,22 @@ def test_get_issue_details(mock_subprocess):
     mock_subprocess.return_value.stdout = '{"number": 1, "title": "A", "body": "B"}'
     details = get_issue_details("1")
     assert details["title"] == "A"
+
+def test_get_issue_details_with_warnings(mock_subprocess):
+    mock_subprocess.return_value.stdout = (
+        "warning: GraphQL deprecation warning: state is deprecated\n"
+        "another warning line\n"
+        '{"number": 1, "title": "A", "body": "B"}'
+    )
+    details = get_issue_details("1")
+    assert details["title"] == "A"
+
+def test_list_issues_by_label_with_warnings(mock_subprocess):
+    mock_subprocess.return_value.stdout = (
+        "warning: some stderr mixed warning\n"
+        '[{"number": 31, "title": "Backlog Item", "url": "https://...", "state": "OPEN"}]'
+    )
+    items = list_issues_by_label("backlog")
+    assert len(items) == 1
+    assert items[0]["number"] == 31
+

@@ -3705,3 +3705,15 @@ nodes:
     verification plan.
   invariants:
   - '[x] WHAT-0723 created'
+- name: 'Node 724: Activity 724: Reflect - Resilient GraphQL parsing in GitHub Client'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 724: Reflect - Resilient GraphQL parsing in GitHub Client'
+  status: Completed
+  learnings: Implemented GraphQL warning cleaning helper _clean_json_output and wrapped
+    all json.loads operations on gh CLI outputs. Added unit tests and verified all
+    tests pass.
+  invariants:
+  - '[x] GraphQL warning cleaning helper implemented'
+  - '[x] Unit tests added and pass'

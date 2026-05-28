@@ -3629,6 +3629,19 @@
 - **Feedforward Invariants**:
   - `[x] WHAT-0723 created`
 
+## Node 724: Activity 724: Reflect - Resilient GraphQL parsing in GitHub Client
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 724: Reflect - Resilient GraphQL parsing in GitHub Client
+- **Status**: Completed
+- **Learnings & Context**: Implemented GraphQL warning cleaning helper _clean_json_output and wrapped all json.loads operations on gh CLI outputs. Added unit tests and verified all tests pass.
+- **Feedforward Invariants**:
+  - `[x] GraphQL warning cleaning helper implemented`
+  - `[x] Unit tests added and pass`
+
 ## Current Active Path
 None
 
