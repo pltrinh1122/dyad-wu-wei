@@ -137,13 +137,15 @@ def test_main_processes_rules(mock_registry, mock_save, mock_load, mock_get_bran
     mock_save.assert_called_once_with({"rule1": {"last_val": "b"}})
 
 def test_get_current_branch_normal():
+    from unittest.mock import ANY
     with patch("drivers.git_client.subprocess.run") as mock_run:
         from drivers.audit_daemon import get_current_branch
         mock_run.return_value.stdout = "main\n"
         assert get_current_branch() == "main"
-        mock_run.assert_called_once_with(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=None)
+        mock_run.assert_called_once_with(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=ANY)
 
 def test_get_current_branch_detached():
+    from unittest.mock import ANY
     with patch("drivers.git_client.subprocess.run") as mock_run:
         from drivers.audit_daemon import get_current_branch
         
@@ -163,10 +165,10 @@ def test_get_current_branch_detached():
         
         assert get_current_branch() == "main"
         
-        mock_run.assert_any_call(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=None)
-        mock_run.assert_any_call(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True, cwd=None)
-        mock_run.assert_any_call(["git", "rev-parse", "origin/main"], capture_output=True, text=True, check=True, cwd=None)
-        mock_run.assert_any_call(["git", "rev-parse", "main"], capture_output=True, text=True, check=True, cwd=None)
+        mock_run.assert_any_call(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=ANY)
+        mock_run.assert_any_call(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True, cwd=ANY)
+        mock_run.assert_any_call(["git", "rev-parse", "origin/main"], capture_output=True, text=True, check=True, cwd=ANY)
+        mock_run.assert_any_call(["git", "rev-parse", "main"], capture_output=True, text=True, check=True, cwd=ANY)
 
 def test_evaluate_seizure_detection():
     from pathlib import Path
