@@ -82,3 +82,40 @@ def test_main(mock_node, mock_path, mock_worktrees, mock_branch, capsys):
     assert "WIP Branch  : node/805-status-dashboard" in captured.out
     assert "Open PRs    : 1" in captured.out
     assert "- #1: Test PR" in captured.out
+
+@patch("drivers.github_client.get_open_issues")
+@patch("kernel.daemon_strategic.load_ledger")
+@patch("drivers.github_client.get_issue_details")
+def test_print_goal_progress_report(mock_details, mock_ledger, mock_open_issues, capsys):
+    from kernel.daemon_status import print_goal_progress_report
+    
+    mock_ledger.return_value = {
+        "strategic_goals": [
+            {
+                "id": "SG-0004",
+                "title": "Test Goal",
+                "status": "Active",
+                "prioritized_paths": [916, 999]
+            }
+        ]
+    }
+    
+    mock_open_issues.return_value = [
+        {
+            "number": 999,
+            "title": "Path 999: Open Path",
+            "labels": [{"name": "path"}]
+        }
+    ]
+    
+    mock_details.return_value = {
+        "title": "Path 916: Completed Path"
+    }
+    
+    print_goal_progress_report()
+    
+    captured = capsys.readouterr()
+    assert "🎯 [SG-0004] Test Goal" in captured.out
+    assert "[█████░░░░░] 50.0% (1/2)" in captured.out
+    assert "[x] Path 916: Completed Path" in captured.out
+    assert "[ ] Path 999: Open Path" in captured.out
