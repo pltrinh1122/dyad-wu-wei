@@ -9,6 +9,10 @@ on:
 jobs:
   test:
     runs-on: self-hosted
+    env:
+      GIT_CONFIG_COUNT: 1
+      GIT_CONFIG_KEY_0: url.https://github.com/.insteadOf
+      GIT_CONFIG_VALUE_0: https://github.com/
 
     steps:
     - uses: actions/checkout@v4
