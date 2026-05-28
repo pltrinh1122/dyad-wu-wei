@@ -75,3 +75,9 @@ hotfixes:
   timestamp: '2026-05-22T00:46:21Z'
   file: artifacts/audit/retro-607.md
   message: 'doc: add retrospective for Node 607'
+- hash: dbdd5a6a55ff4639b329b23c8149f48b0c07e577
+  timestamp: '2026-05-28T02:46:10Z'
+  file: kb/WHAT-1096-audit-and-remediate-deprecated-kb-files-spec.md
+  message: 'Hotfix: Remove deprecated term examples from WHAT-1096 spec'
+  pr: https://github.com/pltrinh1122/dz-cil/pull/1251
+  dao_compliant: true
