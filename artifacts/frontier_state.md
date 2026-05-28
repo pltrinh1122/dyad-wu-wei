@@ -3805,6 +3805,18 @@
   - `[x] All deprecated terms in kb/ files substituted`
   - `[x] All raw git/gh commands in kb/ files hyphenated`
 
+## Node 1209: Node 1209: Activity 1209: Reflect - Optimize local frontier cache to leverage lazy github sync
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1209: Reflect - Optimize local frontier cache to leverage lazy github sync
+- **Status**: Completed
+- **Learnings & Context**: Successfully implemented get_cached_open_prs and get_cached_issue_labels in github_client to reduce remote sync latency.
+- **Feedforward Invariants**:
+  - `All tests pass cleanly. Cache interfaces match WHAT-1208.`
+
 ## Current Active Path
 None
 

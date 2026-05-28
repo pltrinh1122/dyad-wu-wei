@@ -218,3 +218,53 @@ def test_github_client_cache_and_invalidation(mock_subprocess):
     github_client.invalidate_cache()
 
 
+def test_github_client_new_cached_interfaces(mock_subprocess):
+    from drivers.github_client import get_cached_open_prs, get_cached_issue_labels, invalidate_cache
+    invalidate_cache()
+    
+    # Mocking behavior for get_cached_open_prs
+    def side_effect(*args, **kwargs):
+        class MockProc:
+            returncode = 0
+            stdout = ""
+        mock_proc = MockProc()
+        if "list" in args[0]:
+            mock_proc.stdout = '[{"number": 1234, "title": "Cached PR", "headRefName": "node/1234-test", "url": "https://..."}]'
+        else:
+            mock_proc.stdout = '{"state": "OPEN"}'
+        return mock_proc
+        
+    mock_subprocess.side_effect = side_effect
+    mock_subprocess.reset_mock()
+    
+    # 1. Cache miss -> queries remote
+    prs = get_cached_open_prs()
+    assert len(prs) == 1
+    assert prs[0]["number"] == 1234
+    assert mock_subprocess.call_count >= 1
+    
+    # 2. Cache hit -> does not query remote
+    mock_subprocess.reset_mock()
+    prs2 = get_cached_open_prs()
+    assert len(prs2) == 1
+    assert mock_subprocess.call_count == 0
+    
+    # Mocking behavior for get_cached_issue_labels
+    mock_subprocess.side_effect = None
+    mock_subprocess.return_value = MagicMock(stdout='{"labels": [{"name": "status:active"}, {"name": "backlog"}]}', returncode=0)
+    mock_subprocess.reset_mock()
+    
+    # 3. Cache miss -> queries remote
+    labels = get_cached_issue_labels("1234")
+    assert "status:active" in labels
+    assert mock_subprocess.call_count == 1
+    
+    # 4. Cache hit -> does not query remote
+    mock_subprocess.reset_mock()
+    labels2 = get_cached_issue_labels("1234")
+    assert "status:active" in labels2
+    assert mock_subprocess.call_count == 0
+    
+    invalidate_cache()
+
+
