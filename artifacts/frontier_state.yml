@@ -3773,3 +3773,10 @@ nodes:
     template and gh CLI.
   invariants:
   - '[x] README.md updated with intake instructions'
+- name: 'Discovery 1207: Harmonize - Optimize local frontier cache to leverage lazy
+    github sync'
+  status: Completed
+  learnings: Formulated decision record WHY-1207 detailing cache optimization design
+    criteria and lazy sync strategy.
+  invariants:
+  - '[x] WHY-1207-frontier-cache-optimization.md created'
