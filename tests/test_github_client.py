@@ -182,3 +182,39 @@ def test_list_issues_by_label_with_warnings(mock_subprocess):
     assert len(items) == 1
     assert items[0]["number"] == 31
 
+
+def test_github_client_cache_and_invalidation(mock_subprocess):
+    from drivers import github_client
+    github_client.invalidate_cache()
+    
+    # 1. First get_open_issues call -> populates cache
+    mock_subprocess.reset_mock()
+    mock_subprocess.return_value.stdout = '[{"number": 100, "title": "Issue A", "body": "B", "labels": []}]'
+    issues = get_open_issues()
+    assert len(issues) == 1
+    assert issues[0]["number"] == 100
+    assert mock_subprocess.call_count == 1
+    
+    # 2. Second get_open_issues call -> cache hit (no subprocess run)
+    mock_subprocess.reset_mock()
+    issues_cached = get_open_issues()
+    assert len(issues_cached) == 1
+    assert issues_cached[0]["number"] == 100
+    assert mock_subprocess.call_count == 0
+    
+    # 3. Mutative call (add_label) -> invalidates cache
+    mock_subprocess.reset_mock()
+    add_label("100", "status:active")
+    assert mock_subprocess.call_count >= 1
+    
+    # 4. Third get_open_issues call -> cache miss (hits remote again)
+    mock_subprocess.reset_mock()
+    mock_subprocess.return_value.stdout = '[{"number": 100, "title": "Issue A", "body": "B", "labels": ["status:active"]}]'
+    issues_fresh = get_open_issues()
+    assert len(issues_fresh) == 1
+    assert mock_subprocess.call_count == 1
+    
+    # Cleanup
+    github_client.invalidate_cache()
+
+
