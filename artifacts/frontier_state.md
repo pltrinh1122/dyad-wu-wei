@@ -3995,6 +3995,18 @@
 - **Feedforward Invariants**:
   - `Offline tests must not perform real network I/O`
 
+## Node 1070: Discovery 1070: Harmonize - Evaluate child workspace inheritance of parent gates
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Evaluate child workspace inheritance of parent gates
+- **Status**: Completed
+- **Learnings & Context**: Child workspaces bypass strategic persona checks if ownership index files do not exist locally, balancing velocity with security since final integration gates are enforced during parent-level PR review.
+- **Feedforward Invariants**:
+  - `Sovereign child workspaces can bypass strategic gates locally`
+
 ## Current Active Path
 None
 
