@@ -110,6 +110,71 @@ def get_local_worktrees(repo_root: str) -> list[dict]:
     prs.sort(key=sort_key)
     return prs
 
+def print_goal_progress_report():
+    """Calculates and prints progress bars for active strategic goals."""
+    from kernel.daemon_strategic import load_ledger
+    from drivers import github_client
+    
+    ledger = load_ledger()
+    goals = ledger.get("strategic_goals", [])
+    active_goals = [g for g in goals if g.get("status") == "Active"]
+    if not active_goals:
+        return
+        
+    print("\n--- Strategic Goal Progress ---")
+    
+    try:
+        open_issues = github_client.get_open_issues()
+    except Exception:
+        open_issues = []
+        
+    open_paths_map = {}
+    for issue in open_issues:
+        labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
+        labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
+        if "path" in labels:
+            open_paths_map[str(issue["number"])] = issue.get("title", f"Path {issue['number']}")
+            
+    for goal in active_goals:
+        goal_id = goal.get("id")
+        goal_title = goal.get("title")
+        prioritized = goal.get("prioritized_paths", [])
+        
+        completed_count = 0
+        total_count = len(prioritized)
+        
+        path_details = []
+        for p_id in prioritized:
+            p_id_str = str(p_id)
+            if p_id_str not in open_paths_map:
+                completed_count += 1
+                try:
+                    details = github_client.get_issue_details(p_id_str)
+                    title = details.get("title", f"Path {p_id_str}")
+                except Exception:
+                    title = f"Path {p_id_str}"
+                path_details.append((True, p_id_str, title))
+            else:
+                title = open_paths_map[p_id_str]
+                path_details.append((False, p_id_str, title))
+                
+        if total_count == 0:
+            percentage = 100.0
+            filled = 10
+        else:
+            percentage = (completed_count / total_count) * 100.0
+            filled = int(round(completed_count / total_count * 10))
+            
+        bar = "█" * filled + "░" * (10 - filled)
+        
+        print(f"🎯 [{goal_id}] {goal_title}")
+        print(f"   [{bar}] {percentage:.1f}% ({completed_count}/{total_count})")
+        for is_completed, p_id, title in path_details:
+            mark = "x" if is_completed else " "
+            clean_title = re.sub(r"^Path\s*\d+:\s*", "", title, flags=re.IGNORECASE)
+            print(f"     [{mark}] Path {p_id}: {clean_title}")
+        print()
+
 def main():
     frontier_path = os.path.join(repo_root, "artifacts", "frontier_state.md")
     
@@ -144,6 +209,11 @@ def main():
         for pr in open_prs:
             print(f"  - #{pr.get('number', '?')}: {pr.get('title', 'Unknown')} ({pr.get('url', '')})")
     print(f"Prompt Queue: {backlog_size} item(s)")
+    
+    try:
+        print_goal_progress_report()
+    except Exception:
+        pass
 
 if __name__ == "__main__":
     main()
