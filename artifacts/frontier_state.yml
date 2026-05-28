@@ -3933,3 +3933,14 @@ nodes:
     in WHY-1095 and registered in HOW-0000-manifest.md.
   invariants:
   - WHY-1095
+- name: 'Node 1096: Node 1096: Discovery 1096: Plan - Audit and Remediate Deprecated
+    KB Files'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1096: Plan - Audit and Remediate Deprecated KB Files'
+  status: Completed
+  learnings: Designed the remediation plan for non-immune KB files containing deprecated
+    terms. Created WHY-1096 and registered in HOW-0000-manifest.md.
+  invariants:
+  - WHY-1096
