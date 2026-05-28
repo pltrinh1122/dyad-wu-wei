@@ -2810,9 +2810,8 @@ nodes:
   invariants: []
 - name: 'Node 996: Activity 996: Reflect - Preserve Flow State: Autonomous HTIL Bypass
     for Administrative Nodes'
-  status: Backlog
-  learnings: 'Final reflection and path closure for Preserve Flow State: Autonomous
-    HTIL Bypass for Administrative Nodes.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Discovery 994: HTIL Bypass for Zero-Mutation Nodes'
   status: Completed
@@ -3666,5 +3665,12 @@ nodes:
   status: Completed
   learnings: Refined the administrative HTIL bypass logic to support zero-mutation
     and kb/ documentation modifications, and verified via comprehensive unit tests.
+  invariants:
+  - none
+- name: 'Activity 996: Reflect - Preserve Flow State: Autonomous HTIL Bypass for Administrative
+    Nodes'
+  status: Completed
+  learnings: Finalized Path 993 by closing Node 996, confirming that administrative
+    nodes autonomously bypass human-in-the-loop review gates.
   invariants:
   - none
