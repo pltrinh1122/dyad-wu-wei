@@ -13,7 +13,7 @@ To maintain the architectural rigor of the metasystem, any Tactical Goal (TG) se
     *   *Requirement*: The definition must include a concrete, automated check that can fail.
 
 2.  **`INVARIANT_TG_DIRECT_RISK_MITIGATION` (TG-Axiom 2)**:
-    *   *Ontology*: A TG must directly mitigate a specific execution or alignment risk (e.g., race conditions, schema drift, human decision fatigue).
+    *   *Ontology*: A TG must directly mitigate a specific execution or harmonization risk (e.g., race conditions, schema drift, human decision fatigue).
     *   *Requirement*: The goal must map directly to a cross-cutting collaborative gap.
 
 3.  **`INVARIANT_TG_INNER_LOOP_PURITY` (TG-Axiom 3)**:

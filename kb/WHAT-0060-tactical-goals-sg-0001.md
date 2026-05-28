@@ -1,6 +1,6 @@
-# WHAT-0060: Tactical Goals for SG-0001 Backlog Dynamics and Resource Budget Alignment
+# WHAT-0060: Tactical Goals for SG-0001 Backlog Dynamics and Resource Budget Harmonization
 
-This document defines the Tactical Goals (TGs) that realize **SG-0001** (Backlog Dynamics and Resource Budget Alignment). These goals provide concrete engineering milestones to dynamically harmonize backlog selection with the operator's strategic intent ledger.
+This document defines the Tactical Goals (TGs) that realize **SG-0001** (Backlog Dynamics and Resource Budget Harmonization). These goals provide concrete engineering milestones to dynamically harmonize backlog selection with the operator's strategic intent ledger.
 
 ---
 
@@ -13,7 +13,7 @@ To maintain the architectural rigor of the metasystem, any Tactical Goal (TG) se
     *   *Requirement*: The definition must include a concrete, automated check that can fail.
 
 2.  **`INVARIANT_TG_DIRECT_RISK_MITIGATION` (TG-Axiom 2)**:
-    *   *Ontology*: A TG must directly mitigate a specific execution or alignment risk that prevents the operator from delegating backlog prioritization authority (e.g., resource budget waste, attention drift, orphaned nodes, or incorrect path ranking).
+    *   *Ontology*: A TG must directly mitigate a specific execution or harmonization risk that prevents the operator from delegating backlog prioritization authority (e.g., resource budget waste, attention drift, orphaned nodes, or incorrect path ranking).
     *   *Requirement*: The goal must map directly to a component of the parent Strategic Goal's collaborative gap.
 
 3.  **`INVARIANT_TG_INNER_LOOP_PURITY` (TG-Axiom 3)**:
@@ -34,7 +34,7 @@ Applying the invariants above, we define four tactical milestones:
 *   **Definition**: Restrict active execution nodes to paths that are explicitly mapped in the `prioritized_paths` section of active goals in `strategic_intent.yml`.
 *   **Invariance Matching**:
     *   *Risk Mitigation*: Directly mitigates the risk of executing off-goal paths and wasting resource/token budget on tasks that the operator has not prioritized.
-    *   *Verification Metric*: A validation check must query `strategic_intent.yml` and verify that the target path ID is explicitly prioritized under an active Strategic Goal. If not, the system must log an alignment violation.
+    *   *Verification Metric*: A validation check must query `strategic_intent.yml` and verify that the target path ID is explicitly prioritized under an active Strategic Goal. If not, the system must log a harmonization violation.
     *   *Inner-Loop Purity*: Negligible overhead via local YAML lookup (<5ms).
     *   *Enforcement Gradient*: Configuration parameter to toggle between logging a warning and hard-blocking node start.
 *   **Backlog Mapping**: Path 560 (Activity 563 - Reflect - Codify SG-0001 Tactical Goals and Persona Domain Ownership)
@@ -57,7 +57,7 @@ Applying the invariants above, we define four tactical milestones:
     *   *Enforcement Gradient*: Configurable budget thresholds per path; support warnings vs hard halts.
 *   **Backlog Mapping**: Path 560 (Activity 563)
 
-### TG-0001-04: Path Alignment Validator
+### TG-0001-04: Path Harmonization Validator
 *   **Definition**: Statically validate that any newly registered backlog path has a corresponding mapping to a Strategic Goal ID (`strategic_intent.yml`).
 *   **Invariance Matching**:
     *   *Risk Mitigation*: Prevents orphaned nodes or untracked paths from entering the backlog, maintaining strict traceability.

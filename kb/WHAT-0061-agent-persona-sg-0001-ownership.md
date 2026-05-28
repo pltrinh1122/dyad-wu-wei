@@ -1,6 +1,6 @@
 # WHAT-0061: Agent-Persona ID (agent-SG1) Ownership of SG-0001
 
-This specification establishes the official identity, scope, and operational boundaries of the **`agent-SG1`** persona ID. This persona assumes exclusive ownership and custody over **SG-0001** (Backlog Dynamics and Resource Budget Alignment).
+This specification establishes the official identity, scope, and operational boundaries of the **`agent-SG1`** persona ID. This persona assumes exclusive ownership and custody over **SG-0001** (Backlog Dynamics and Resource Budget Harmonization).
 
 ---
 
@@ -9,8 +9,8 @@ This specification establishes the official identity, scope, and operational bou
 | Attribute | Specification |
 | :--- | :--- |
 | **Persona ID** | `agent-SG1` |
-| **Strategic Domain** | **SG-0001**: Backlog Dynamics and Resource Budget Alignment |
-| **Core Directive** | Establish, maintain, and verify backlog prioritization, resource budget tracking, and strategic intent alignment to ensure token spend maps to operator intent. |
+| **Strategic Domain** | **SG-0001**: Backlog Dynamics and Resource Budget Harmonization |
+| **Core Directive** | Establish, maintain, and verify backlog prioritization, resource budget tracking, and strategic intent harmonization to ensure token spend maps to operator intent. |
 | **Lineage Authority** | Policy boundaries under `kb/` relating to backlog scheduling, scoring algorithms, resource budgets, and prioritization rules. |
 
 ---
@@ -31,9 +31,9 @@ The `agent-SG1` persona claims exclusive design, implementation, and audit respo
 *   **Ownership**: Log formatters, database tracking of tokens/API counts, and the budget evaluation engine.
 *   **Boundaries**: Track resource use across nodes and alert/halt when budget limits are breached.
 
-### 2.4 Path Alignment Validator (`TG-0001-04`)
+### 2.4 Path Harmonization Validator (`TG-0001-04`)
 *   **Ownership**: The CLI backlog registration validation rules (e.g. mapping created nodes/paths to strategic goals).
-*   **Boundaries**: Prevent backlog creation from adding untracked/unaligned paths.
+*   **Boundaries**: Prevent backlog creation from adding untracked/unharmonized paths.
 
 ---
 

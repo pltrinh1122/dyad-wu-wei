@@ -22,7 +22,7 @@ All test files are mapped in the table below:
 | `tests/test_daemon_backlog.py` | Type A | Unit stubs backlog commands and GitHub interactions. | Hermetic |
 | `tests/test_daemon_nba.py` | Type A | Unit stubs Next-Best-Action recommendation outputs. | Hermetic |
 | `tests/test_daemon_node.py` | Type A | Unit stubs node planning and transition checks. | Hermetic |
-| `tests/test_daemon_strategic.py` | Type A | Unit stubs strategic alignment checks. | Hermetic |
+| `tests/test_daemon_strategic.py` | Type A | Unit stubs strategic harmonization checks. | Hermetic |
 | `tests/test_daemon_telemetry.py` | Type A | Stubs telemetry collection and tracking files. | Hermetic |
 | `tests/test_node_lifecycle.py` | Type A | Unit stubs node plan, checkout, and reflection methods. | Hermetic |
 | `tests/test_path_resolver.py` | Type A | Local filesystem path resolution checks. | Hermetic |

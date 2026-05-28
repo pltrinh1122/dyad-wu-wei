@@ -1,11 +1,11 @@
-# WHAT-0622: Dynamic Agent Identity Resolution and Policy Ledger Alignment Specification
+# WHAT-0622: Dynamic Agent Identity Resolution and Policy Ledger Harmonization Specification
 
 ## Classification
 - **Type**: WHAT (Technical Specification)
 - **ID**: WHAT-0622
 - **Author**: agent-ziran
 - **Created**: 2026-05-25 (Node 624, Path 622)
-- **Related Path**: Path 622 (Dynamic agent identity resolution and policy ledger alignment)
+- **Related Path**: Path 622 (Dynamic agent identity resolution and policy ledger harmonization)
 - **Implements decisions from**: WHY-0623
 
 ---

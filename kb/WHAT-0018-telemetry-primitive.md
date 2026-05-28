@@ -13,7 +13,7 @@ An append-only, structured ledger that persists every significant state transiti
 
 ### 2.2 The Kernel_Daemon (`kernel/daemon_telemetry.py`)
 The stateful manager that owns the Telemetry logic. It is responsible for:
-- **Ingestion**: Recording events from other orchestrators (e.g., `daemon_node`).
+- **Ingestion**: Recording events from other kernel_daemons (e.g., `daemon_node`).
 - **Synthesis**: Aggregating raw observations into high-level **Health Metrics**.
 - **Alerting**: Identifying "Loop Stalls" or "Ambiguity Bottlenecks".
 

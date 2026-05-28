@@ -3880,12 +3880,11 @@ nodes:
   - '[x] KB deprecation checkers successfully verified'
 - name: 'Activity 1097: Reflect - Audit and Remediate Deprecated KB Files'
   status: Completed
-  learnings: Successfully performed a comprehensive audit and remediation of all files
-    in the kb/ directory, replacing deprecated terms with their active equivalents
-    and hyphenating raw git/gh command strings to maintain knowledge base purity.
+  learnings: Remediated all 13 non-immune KB files containing deprecated terms by
+    performing replacements. Verified all unit tests and lexical guards pass cleanly.
   invariants:
-  - '[x] All deprecated terms in kb/ files substituted'
-  - '[x] All raw git/gh commands in kb/ files hyphenated'
+  - WHY-1095
+  - WHY-1096
 - name: 'Node 1209: Node 1209: Activity 1209: Reflect - Optimize local frontier cache
     to leverage lazy github sync'
   status: '[///] Act Phase'
@@ -3944,3 +3943,8 @@ nodes:
     terms. Created WHY-1096 and registered in HOW-0000-manifest.md.
   invariants:
   - WHY-1096
+- name: 'Node 1097: Node 1097: Activity 1097: Reflect - Audit and Remediate Deprecated
+    KB Files'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
