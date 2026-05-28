@@ -3896,6 +3896,18 @@
   - `WHY-1030`
   - `WHY-1031`
 
+## Node 1268: Activity 1268: Triage SEIZURE_DETECTED test failures
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1268: Triage SEIZURE_DETECTED test failures
+- **Status**: Completed
+- **Learnings & Context**: Resolved lexical guard violations in retro-1029.md by replacing deprecated terms probe and align with discovery and harmonize.
+- **Feedforward Invariants**:
+  - `[x] Lexical guard passes`
+
 ## Current Active Path
 None
 
