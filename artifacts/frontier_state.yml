@@ -2883,8 +2883,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding'
-  status: Backlog
-  learnings: Technical design and proposed changes for Refine DZ-CIL Intent Understanding.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding'
   status: Backlog
@@ -3997,5 +3997,10 @@ nodes:
 - name: 'Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding'
   status: Completed
   learnings: Codified WHY-1022 and registered in meta manifest
+  invariants:
+  - N/A
+- name: 'Discovery 1024: Plan - Refine DZ-CIL Intent Understanding'
+  status: Completed
+  learnings: Codified WHAT-1022 specification and registered in meta manifest
   invariants:
   - N/A

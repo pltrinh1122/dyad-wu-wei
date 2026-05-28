@@ -2722,8 +2722,8 @@
   - `[ ]` None
 
 ## Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Refine DZ-CIL Intent Understanding.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3932,6 +3932,12 @@
 ## Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding
 - **Status**: Completed
 - **Learnings & Context**: Codified WHY-1022 and registered in meta manifest
+- **Feedforward Invariants**:
+  - `N/A`
+
+## Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
+- **Status**: Completed
+- **Learnings & Context**: Codified WHAT-1022 specification and registered in meta manifest
 - **Feedforward Invariants**:
   - `N/A`
 
