@@ -3717,3 +3717,34 @@ nodes:
   invariants:
   - '[x] GraphQL warning cleaning helper implemented'
   - '[x] Unit tests added and pass'
+- name: 'Node 1223: Path 1223: Implement Quarantine Protocol for External Requirement
+    Intakes'
+  status: Backlog
+  learnings: Define and enforce the Quarantine Protocol for requirements submitted
+    by external entities, ensuring they are triaged before entering the execution
+    backlog.
+  invariants: []
+- name: 'Node 1224: Discovery 1224: Harmonize - Implement Quarantine Protocol for
+    External Requirement Intakes'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1225: Discovery 1225: Plan - Implement Quarantine Protocol for External
+    Requirement Intakes'
+  status: Backlog
+  learnings: Technical design and proposed changes for Implement Quarantine Protocol
+    for External Requirement Intakes.
+  invariants: []
+- name: 'Node 1226: Activity 1226: Reflect - Implement Quarantine Protocol for External
+    Requirement Intakes'
+  status: Backlog
+  learnings: Final reflection and path closure for Implement Quarantine Protocol for
+    External Requirement Intakes.
+  invariants: []
+- name: 'Discovery 1224: Harmonize - Implement Quarantine Protocol for External Requirement
+    Intakes'
+  status: Completed
+  learnings: Drafted WHY-1224 documenting the quarantine protocol alignment, triage
+    state, and promotion gates.
+  invariants:
+  - '[x] WHY-1224 created'
