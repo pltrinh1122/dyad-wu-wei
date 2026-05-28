@@ -35,7 +35,51 @@ def _run_gh(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
 
 import tempfile
 import json
+import time
 from kernel.daemon_telemetry import record_execution
+
+_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CACHE_FILE_PATH = os.path.join(_DIR, "artifacts", "cache", "github_state_cache.json")
+
+def _load_cache() -> dict:
+    if not os.path.exists(CACHE_FILE_PATH):
+        return {}
+    try:
+        with open(CACHE_FILE_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+def _write_cache(data: dict) -> None:
+    os.makedirs(os.path.dirname(CACHE_FILE_PATH), exist_ok=True)
+    try:
+        with open(CACHE_FILE_PATH, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+    except Exception:
+        pass
+
+def invalidate_cache() -> None:
+    """Forces cache invalidation by removing the cache file."""
+    if os.path.exists(CACHE_FILE_PATH):
+        try:
+            os.remove(CACHE_FILE_PATH)
+        except Exception:
+            pass
+
+def _get_cached_value(key: str, ttl_seconds: int = 60):
+    cache = _load_cache()
+    if not cache:
+        return None
+    timestamp = cache.get("timestamp", 0)
+    if time.time() - timestamp > ttl_seconds:
+        return None
+    return cache.get(key)
+
+def _set_cached_value(key: str, value) -> None:
+    cache = _load_cache()
+    cache["timestamp"] = int(time.time())
+    cache[key] = value
+    _write_cache(cache)
 
 def _clean_json_output(stdout: str) -> str:
     """Strips GraphQL deprecation warnings and other non-JSON text from stdout."""
@@ -59,6 +103,7 @@ def _clean_json_output(stdout: str) -> str:
 @record_execution(stage="skill")
 def create_issue(title: str, body: str) -> str:
     """Creates a GH issue safely using a temp file for the body."""
+    invalidate_cache()
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
         temp_file.write(body)
         temp_file.flush()
@@ -72,6 +117,7 @@ def create_issue(title: str, body: str) -> str:
 @record_execution(stage="skill")
 def close_issue(issue_id: str, comment_body: str) -> None:
     """Closes a GH issue with a final comment."""
+    invalidate_cache()
     _run_gh(
         ["gh", "issue", "close", str(issue_id), "-c", comment_body],
         check=True
@@ -86,6 +132,7 @@ def close_issue(issue_id: str, comment_body: str) -> None:
 
 def reopen_issue(issue_id: str) -> None:
     """Reopens a closed GH issue."""
+    invalidate_cache()
     _run_gh(
         ["gh", "issue", "reopen", str(issue_id)],
         check=True
@@ -94,6 +141,7 @@ def reopen_issue(issue_id: str) -> None:
 @record_execution(stage="skill")
 def update_issue_body(issue_id: str, new_body: str) -> None:
     """Updates an existing issue body using a temp file."""
+    invalidate_cache()
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
         temp_file.write(new_body)
         temp_file.flush()
@@ -135,12 +183,17 @@ def get_open_issues() -> list[dict]:
     
     Each item is a dict with 'number', 'title', 'body', and 'labels' keys.
     """
+    cached = _get_cached_value("open_issues")
+    if cached is not None:
+        return cached
     result = _run_gh(
         ["gh", "issue", "list", "--state", "open", "--limit", "100", "--json", "number,title,body,labels"],
         capture_output=True, text=True, check=True
     )
     import json
-    return json.loads(_clean_json_output(result.stdout) or "[]")
+    val = json.loads(_clean_json_output(result.stdout) or "[]")
+    _set_cached_value("open_issues", val)
+    return val
 
 @record_execution(stage="skill")
 def get_issue_details(issue_id: str) -> dict:
@@ -154,6 +207,7 @@ def get_issue_details(issue_id: str) -> dict:
 
 def rename_issue_title(issue_id: str, new_title: str) -> None:
     """Renames an issue's title."""
+    invalidate_cache()
     _run_gh(
         ["gh", "issue", "edit", str(issue_id), "--title", new_title],
         check=True
@@ -175,6 +229,7 @@ def get_issue_comments(issue_id: str) -> list[dict]:
 @record_execution(stage="skill")
 def create_pull_request(title: str, body: str, head: str = None) -> str:
     """Creates a PR using gh pr create, or returns the existing PR URL if it already exists for the head branch."""
+    invalidate_cache()
     if not head:
         res = _run_gh(
             ["git", "symbolic-ref", "--short", "HEAD"],
@@ -208,6 +263,7 @@ def create_pull_request(title: str, body: str, head: str = None) -> str:
 @record_execution(stage="skill")
 def admin_merge_pull_request(pr_url: str, merge_method: str = "squash") -> None:
     """Merges a pull request autonomously, bypassing HTIL."""
+    invalidate_cache()
     _run_gh(
         ["gh", "pr", "merge", pr_url, "--admin", f"--{merge_method}"],
         capture_output=True,
@@ -216,6 +272,9 @@ def admin_merge_pull_request(pr_url: str, merge_method: str = "squash") -> None:
     )
 def get_issue_labels(issue_id: str) -> list[str]:
     """Returns a list of label names for the given issue."""
+    cached_map = _get_cached_value("issue_labels") or {}
+    if str(issue_id) in cached_map:
+        return cached_map[str(issue_id)]
     result = _run_gh(
         ["gh", "issue", "view", str(issue_id), "--json", "labels"],
         capture_output=True, text=True, check=True
@@ -223,10 +282,16 @@ def get_issue_labels(issue_id: str) -> list[str]:
     import json
     data = json.loads(_clean_json_output(result.stdout) or "{}")
     labels = data.get("labels", [])
-    return [label.get("name") for label in labels]
+    val = [label.get("name") for label in labels]
+    
+    cached_map = _get_cached_value("issue_labels") or {}
+    cached_map[str(issue_id)] = val
+    _set_cached_value("issue_labels", cached_map)
+    return val
 
 def add_label(issue_id: str, label: str) -> None:
     """Adds a label to the given issue."""
+    invalidate_cache()
     try:
         _run_gh(
             ["gh", "issue", "edit", str(issue_id), "--add-label", label],
@@ -244,6 +309,7 @@ def add_label(issue_id: str, label: str) -> None:
 
 def remove_label(issue_id: str, label: str) -> None:
     """Removes a label from the given issue."""
+    invalidate_cache()
     _run_gh(
         ["gh", "issue", "edit", str(issue_id), "--remove-label", label],
         check=True
@@ -254,6 +320,9 @@ def get_open_prs() -> list[dict]:
     
     Includes double-verification via the Issue/PR API to bypass Search API eventual consistency.
     """
+    cached = _get_cached_value("open_prs")
+    if cached is not None:
+        return cached
     result = _run_gh(
         ["gh", "pr", "list", "--state", "open", "--json", "number,title,headRefName,url"],
         capture_output=True, text=True, check=True
@@ -273,6 +342,7 @@ def get_open_prs() -> list[dict]:
             if state_data.get("state") == "OPEN":
                 verified_prs.append(pr)
     
+    _set_cached_value("open_prs", verified_prs)
     return verified_prs
 
 def get_merged_prs(limit: int = 50) -> list[dict]:
@@ -289,6 +359,7 @@ def get_merged_prs(limit: int = 50) -> list[dict]:
 
 def merge_pull_request(pr_number: int, method: str = "squash") -> None:
     """Merges a pull request using the specified method."""
+    invalidate_cache()
     _run_gh(
         ["gh", "pr", "merge", str(pr_number), f"--{method}", "--delete-branch"],
         check=True
@@ -296,6 +367,7 @@ def merge_pull_request(pr_number: int, method: str = "squash") -> None:
 
 def close_pull_request(pr_number: int) -> None:
     """Closes a pull request without merging."""
+    invalidate_cache()
     _run_gh(
         ["gh", "pr", "close", str(pr_number)],
         check=True
