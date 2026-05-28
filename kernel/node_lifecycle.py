@@ -239,6 +239,14 @@ class TerminalNode(BaseNode):
         with FlowTransaction(frontier_file) as tx:
             self._verify_state_purity(frontier_file)
             
+            # Enforce Quarantine Gate: Only allow nodes that possess the 'backlog' label.
+            labels = self.gh_labels
+            if "backlog" not in labels:
+                raise Exception(
+                    f"Quarantine Protocol Violation: Node #{self.issue_id} does not possess the 'backlog' label. "
+                    f"Current labels: {labels}. Quarantined intake requirements must be promoted by the Operator first."
+                )
+            
             open_prs = github_client.get_open_prs()
             if open_prs:
                 pr_list = [pr.get('number', 'Unknown') for pr in open_prs]
