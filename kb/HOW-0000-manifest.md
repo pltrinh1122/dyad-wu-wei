@@ -19,6 +19,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Dialectical Falsification**: Read [WHY-0091-dialectical-falsification.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0091-dialectical-falsification.md)
 * **Operator Curiosity & Anxiety Safeguards**: Read [WHY-0096-operator-curiosity-and-anxiety-safeguards.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0096-operator-curiosity-and-anxiety-safeguards.md)
 * **DZ-CIL Workspace Architecture**: Read [WHY-0921-dz-cil-workspace-architecture.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0921-dz-cil-workspace-architecture.md)
+* **Child Workspace Gate Inheritance**: Read [WHY-1070-workspace-gate-inheritance.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1070-workspace-gate-inheritance.md)
 * **DZ-CIL Bootstrap Installer Harmonization**: Read [WHY-0929-dz-cil-installer-harmonization.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0929-dz-cil-installer-harmonization.md)
 * **Dynamic Agent Identity Resolution Harmonization**: Read [WHY-0623-dynamic-identity-resolution-al&#105;gnment.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0623-dynamic-identity-resolution-al&#105;gnment.md)
 

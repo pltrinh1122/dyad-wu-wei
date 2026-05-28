@@ -4059,3 +4059,15 @@ nodes:
     SG-0003 inner-loop offline velocity.
   invariants:
   - Offline tests must not perform real network I/O
+- name: 'Node 1070: Discovery 1070: Harmonize - Evaluate child workspace inheritance
+    of parent gates'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Evaluate child workspace inheritance of parent gates
+  status: Completed
+  learnings: Child workspaces bypass strategic persona checks if ownership index files
+    do not exist locally, balancing velocity with security since final integration
+    gates are enforced during parent-level PR review.
+  invariants:
+  - Sovereign child workspaces can bypass strategic gates locally
