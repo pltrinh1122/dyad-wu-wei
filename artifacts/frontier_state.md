@@ -4007,76 +4007,75 @@
 - **Feedforward Invariants**:
   - `Sovereign child workspaces can bypass strategic gates locally`
 
-## Node 1296: Path 1296: Remediate sync_and_clean_node WIP-N=1 offline block
-- **Status**: Backlog
-- **Learnings & Context**: Auto-fetch closed/merged PR status from GitHub before raising offline WIP-N=1 violation for local worktrees to prevent manual block.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1297: Discovery 1297: Harmonize - Remediate sync_and_clean_node WIP-N=1 offline block
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Remediate sync_and_clean_node WIP-N=1 offline block.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1298: Discovery 1298: Plan - Remediate sync_and_clean_node WIP-N=1 offline block
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Remediate sync_and_clean_node WIP-N=1 offline block.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1299: Activity 1299: Reflect - Remediate sync_and_clean_node WIP-N=1 offline block
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Remediate sync_and_clean_node WIP-N=1 offline block.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1300: Activity 1300: Remediate sync_and_clean_node WIP-N=1 offline block
-- **Status**: Backlog
-- **Learnings & Context**: Auto-fetch closed/merged PR status from GitHub before raising offline WIP-N=1 violation for local worktrees to prevent manual block.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1300: Activity 1300: Implement auto-fetch in sync_and_clean_node
+## Node 1294: Activity 1294: Fix mock daemon_knowledge_accrual in node lifecycle tests
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1300: Implement auto-fetch in sync_and_clean_node
+## Activity 1294: Fix mock daemon_knowledge_accrual in node lifecycle tests
 - **Status**: Completed
-- **Learnings & Context**: Offline WIP-N=1 locking mechanics successfully modernized to query remote PR states before raising blockades, minimizing manual friction. bin/status terminology accurately reflects local presence.
+- **Learnings & Context**: Mocked enforce_reflection_hook in test_reflect_success, test_branch_naming_regex_enforcement_and_exemption, and test_reflect_admin_bypass_conditions to isolate unit tests from real telemetry logs.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `Unit tests must remain completely isolated from dynamic repository files like telemetry.jsonl.`
 
-## Node 1308: Path 1308: Enforce Local CI Verification Before Reflection
+## Node 1302: Path 1302: Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol
 - **Status**: Backlog
-- **Learnings & Context**: Prevent remote CI failures by enforcing local test
-  suite verification (run-tests) prior to executing node reflection or pushing PRs.
+- **Learnings & Context**: Update HOW-1170 to explicitly delegate the post-recovery recommendation phase to the universal Wu-wei NBA Handoff Protocol (WHAT-1043), maintaining strict orthogonality between physical state-assertion and interaction policy.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1309: Discovery 1309: Harmonize - Enforce Local CI Verification Before Reflection
+## Node 1303: Discovery 1303: Harmonize - Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1310: Discovery 1310: Plan - Enforce Local CI Verification Before Reflection
+## Node 1304: Discovery 1304: Plan - Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol
 - **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Enforce Local CI Verification Before Reflection.
+- **Learnings & Context**: Technical design and proposed changes for Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1311: Activity 1311: Reflect - Enforce Local CI Verification Before Reflection
+## Node 1305: Activity 1305: Reflect - Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol
 - **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Enforce Local CI Verification Before Reflection.
+- **Learnings & Context**: Final reflection and path closure for Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## 1309-local-ci-verification
+## 1303-harmonize-how-1170
 - **Status**: Completed
-- **Learnings & Context**: Implemented local CI verification step inside kernel/node_lifecycle.py reflect hook, triggering bin/run-tests before allowing a successful PR creation.
+- **Learnings & Context**: Delegated recovery interactions to NBA protocol to maintain orthogonal physical state-assertion
+- **Feedforward Invariants**:
+  - `WIP-N=1`
+
+## Node 1313: Path 1313: Implement headless GH_TOKEN fallback
+- **Status**: Backlog
+- **Learnings & Context**: Implement headless GH_TOKEN fallback in github_client.py to permanently remediate headless DBus keyring 401 failures.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1314: Discovery 1314: Harmonize - Implement headless GH_TOKEN fallback
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1315: Discovery 1315: Plan - Implement headless GH_TOKEN fallback
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Implement headless GH_TOKEN fallback.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1316: Activity 1316: Reflect - Implement headless GH_TOKEN fallback
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Implement headless GH_TOKEN fallback.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## 1314-headless-gh-token
+- **Status**: Completed
+- **Learnings & Context**: Implemented headless GH_TOKEN fallback in github_client._run_gh to parse .env file when the OS DBus keyring is unavailable.
 - **Feedforward Invariants**:
   - `WIP-N=1`
 
