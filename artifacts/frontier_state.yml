@@ -3977,3 +3977,13 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Node 1019: Discovery 1019: Plan - Codify Chat Immediacy Protocol'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1019: Plan - Codify Chat Immediacy Protocol'
+  status: Completed
+  learnings: Codified Chat Immediacy Protocol spec WHAT-1037 in worktree and registered
+    in HOW-0000 manifest
+  invariants:
+  - '- [x] WHAT-1037 exists'

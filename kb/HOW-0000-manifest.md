@@ -42,6 +42,8 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Telemetry Logging Visibility Plan**: Read [WHY-1031-telemetry-logging-visibility-plan.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1031-telemetry-logging-visibility-plan.md)
 * **Audit and Remediate Deprecated KB Files**: Read [WHY-1095-audit-remediate-deprecated-kb-files.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1095-audit-remediate-deprecated-kb-files.md)
 * **Audit and Remediate Deprecated KB Files Plan**: Read [WHY-1096-audit-remediate-deprecated-kb-files-plan.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1096-audit-remediate-deprecated-kb-files-plan.md)
+* **Chat Immediacy Protocol**: Read [WHY-1037-chat-immediacy-protocol.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1037-chat-immediacy-protocol.md)
+* **Chat Immediacy Protocol Spec**: Read [WHAT-1037-chat-immediacy-protocol.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1037-chat-immediacy-protocol.md)
 
 
 
