@@ -3697,6 +3697,12 @@
 - **Feedforward Invariants**:
   - `[x] README.md updated with intake instructions`
 
+## Discovery 1207: Harmonize - Optimize local frontier cache to leverage lazy github sync
+- **Status**: Completed
+- **Learnings & Context**: Formulated decision record WHY-1207 detailing cache optimization design criteria and lazy sync strategy.
+- **Feedforward Invariants**:
+  - `[x] WHY-1207-frontier-cache-optimization.md created`
+
 ## Current Active Path
 None
 
