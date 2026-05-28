@@ -2539,8 +2539,8 @@
   - `WHY-0770`
 
 ## Node 976: Activity 976: Verify PR State in Node Sync
-- **Status**: Backlog
-- **Learnings & Context**: Update daemon_node sync command to natively verify that the PR state has been officially merged via GitHub API before attempting local branch deletion and sync.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3816,6 +3816,12 @@
 - **Learnings & Context**: Successfully implemented get_cached_open_prs and get_cached_issue_labels in github_client to reduce remote sync latency.
 - **Feedforward Invariants**:
   - `All tests pass cleanly. Cache interfaces match WHAT-1208.`
+
+## Activity 976: Verify PR State in Node Sync
+- **Status**: Completed
+- **Learnings & Context**: Successfully updated clean_if_merged to query is_branch_merged_on_github before local branch or worktree deletion, ensuring safe synchronization and preventing unmerged workspace cleanup.
+- **Feedforward Invariants**:
+  - `All tests pass cleanly. Node sync verifies PR state on GitHub.`
 
 ## Current Active Path
 None

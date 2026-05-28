@@ -268,3 +268,25 @@ def test_github_client_new_cached_interfaces(mock_subprocess):
     invalidate_cache()
 
 
+def test_is_branch_merged_on_github(mock_subprocess):
+    from drivers.github_client import is_branch_merged_on_github
+    
+    # 1. Test when the branch is merged on GitHub
+    mock_subprocess.return_value = MagicMock(stdout='[{"number": 12, "state": "MERGED"}]', returncode=0)
+    mock_subprocess.reset_mock()
+    assert is_branch_merged_on_github("node/1234-test") is True
+    assert mock_subprocess.call_count == 1
+    args = mock_subprocess.call_args[0][0]
+    assert "pr" in args
+    assert "list" in args
+    assert "node/1234-test" in args
+    
+    # 2. Test when the branch is not merged (e.g. OPEN or CLOSED)
+    mock_subprocess.return_value = MagicMock(stdout='[{"number": 12, "state": "OPEN"}]', returncode=0)
+    assert is_branch_merged_on_github("node/1234-test") is False
+    
+    # 3. Test when there is no PR
+    mock_subprocess.return_value = MagicMock(stdout='[]', returncode=0)
+    assert is_branch_merged_on_github("node/1234-test") is False
+
+
