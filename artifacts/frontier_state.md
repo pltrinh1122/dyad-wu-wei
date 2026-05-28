@@ -2644,25 +2644,25 @@
   - `N/A`
 
 ## Node 1003: Path 1003: Hygiene: Map Unmapped Backlog Issues to Strategic Goals
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Review the 25 unmapped issues and map them to our Strategic Goals to resolve the hygiene warnings.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1004: Discovery 1004: Harmonize - Hygiene: Map Unmapped Backlog Issues to Strategic Goals
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Harmonize on the philosophical and technical intent for Hygiene: Map Unmapped Backlog Issues to Strategic Goals.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1005: Discovery 1005: Plan - Hygiene: Map Unmapped Backlog Issues to Strategic Goals
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1006: Activity 1006: Reflect - Hygiene: Map Unmapped Backlog Issues to Strategic Goals
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Hygiene: Map Unmapped Backlog Issues to Strategic Goals.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2862,7 +2862,7 @@
   - `1022 to SG-0004 [x] Mapped 1029 to SG-0005`
 
 ## Node 1048: Activity 1048: Reflect - Synthesize Epistemic Retrospective retro-1004.md
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3258,25 +3258,25 @@
   - `daemon_backlog view dynamically parses the issue state`
 
 ## Node 1147: Path 1147: Map Remaining Unmapped Backlog Issues to Strategic Goals
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Review the remaining unmapped issues (1094, 1074, 985) and map them to our Strategic Goals to resolve hygiene warnings.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1149: Discovery 1149: Plan - Map Remaining Unmapped Backlog Issues to Strategic Goals
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Map Remaining Unmapped Backlog Issues to Strategic Goals.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1150: Activity 1150: Reflect - Map Remaining Unmapped Backlog Issues to Strategic Goals
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1148: Discovery 1148: Harmonize - Map Remaining Unmapped Backlog Issues to Strategic Goals
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3392,7 +3392,7 @@
   - `kb/WHY-1168-subprocess-environment-inheritance.md exists.`
 
 ## Node 1178: Activity 1178: Reflect - Synthesize Epistemic Retrospective retro-1149.md
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4038,10 +4038,10 @@
   - `[x] WHAT-1304 design spec successfully formulated and staged`
 
 ## Node 1305: Activity 1305: Reflect - Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol.
+- **Status**: Completed
+- **Learnings & Context**: Successfully updated HOW-1170 to delegate interactions to the universal Wu-wei NBA Handoff Protocol, ensuring orthogonality. Cleaned up stale backlog entries for closed Paths 1003 and 1147 in the frontier state.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] Recovery protocol contains no custom interactive logic`
 
 ## 1303-harmonize-how-1170
 - **Status**: Completed
