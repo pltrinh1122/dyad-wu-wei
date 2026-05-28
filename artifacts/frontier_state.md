@@ -3750,13 +3750,41 @@
   - `[x] status:triage terminal nodes are automatically mapped to the triage holding path`
   - `[x] promoted/active nodes are automatically pruned from the triage holding path during sync`
 
-## Activity 1209: Reflect - Optimize local frontier cache to leverage lazy github sync
-- **Status**: Completed
-- **Learnings & Context**: Implemented persistent local cache file artifacts/cache/github_state_cache.json, wrapped github_client queries to use the cache when younger than the 60-second TTL, and integrated cache invalidation inside all mutative operations.
+## Node 1242: Path 1242: Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: A holding Path to consolidate all unpromoted status:triage external intake nodes under the same parent class.
 - **Feedforward Invariants**:
-  - `[x] GitHub client queries cache open PRs, open issues, and labels`
-  - `[x] Caching invalidates on all mutative GitHub client actions`
-  - `[x] Caching test suite verifies cache hit and cache invalidation behavior`
+  - `[ ]` None
+
+## Node 1243: Discovery 1243: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1244: Discovery 1244: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1245: Activity 1245: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1085: Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics
+- **Status**: Completed
+- **Learnings & Context**: Investigated and documented the KB deprecation mechanics, including semantic ledger structure, static checking details under knowledge_accrual_skill.py, and command invariance rules.
+- **Feedforward Invariants**:
+  - `[x] WHY-1085-investigate-kb-deprecation-mechanics.md created`
 
 ## Current Active Path
 None
