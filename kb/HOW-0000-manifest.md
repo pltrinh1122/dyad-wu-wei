@@ -39,6 +39,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **DZ-CIL Workspace Installer & Redirection Spec**: Read [WHAT-0930-dz-cil-installer-spec.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0930-dz-cil-installer-spec.md)
 * **Dynamic Agent Identity Resolution Harmonization Spec**: Read [WHAT-0622-dynamic-identity-resolution-al&#105;gnment.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0622-dynamic-identity-resolution-al&#105;gnment.md)
 * **Telemetry Logging Visibility**: Read [WHY-1030-telemetry-logging-visibility.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1030-telemetry-logging-visibility.md)
+* **Telemetry Logging Visibility Plan**: Read [WHY-1031-telemetry-logging-visibility-plan.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1031-telemetry-logging-visibility-plan.md)
 * **Audit and Remediate Deprecated KB Files**: Read [WHY-1095-audit-remediate-deprecated-kb-files.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1095-audit-remediate-deprecated-kb-files.md)
 * **Audit and Remediate Deprecated KB Files Plan**: Read [WHY-1096-audit-remediate-deprecated-kb-files-plan.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1096-audit-remediate-deprecated-kb-files-plan.md)
 
