@@ -2836,8 +2836,8 @@
   - `[ ]` None
 
 ## Node 1045: Discovery 1045: Plan - Codify Wu-wei NBA Handoff Message Structure
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Codify Wu-wei NBA Handoff Message Structure.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3914,6 +3914,12 @@
 ## Activity 1020: Reflect - Codify Chat Immediacy Protocol
 - **Status**: Completed
 - **Learnings & Context**: Final reflection on Path 1017: Codified Chat Immediacy Protocol
+- **Feedforward Invariants**:
+  - `N/A`
+
+## Discovery 1045: Plan - Codify Wu-wei NBA Handoff Message Structure
+- **Status**: Completed
+- **Learnings & Context**: Codified WHY-1043 and WHAT-1043 and indexed in manifest
 - **Feedforward Invariants**:
   - `N/A`
 
