@@ -22,6 +22,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Child Workspace Gate Inheritance**: Read [WHY-1070-workspace-gate-inheritance.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1070-workspace-gate-inheritance.md)
 * **DZ-CIL Bootstrap Installer Harmonization**: Read [WHY-0929-dz-cil-installer-harmonization.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0929-dz-cil-installer-harmonization.md)
 * **Dynamic Agent Identity Resolution Harmonization**: Read [WHY-0623-dynamic-identity-resolution-al&#105;gnment.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0623-dynamic-identity-resolution-al&#105;gnment.md)
+* **Headless GH_TOKEN Fallback Harmonization**: Read [WHY-1314-headless-gh-token-rationale.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1314-headless-gh-token-rationale.md)
 
 
 
@@ -51,6 +52,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Refine DZ-CIL Intent Understanding Spec**: Read [WHAT-1022-refine-intent.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1022-refine-intent.md)
 * **Status Report Progress Bars & Goal Ratios**: Read [WHY-0916-status-progress-bars.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0916-status-progress-bars.md)
 * **Status Report Progress Bars & Goal Ratios Spec**: Read [WHAT-0916-status-progress-bars.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0916-status-progress-bars.md)
+* **Headless GH_TOKEN Fallback Spec**: Read [WHAT-1315-headless-gh-token-spec.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1315-headless-gh-token-spec.md)
 
 
 
