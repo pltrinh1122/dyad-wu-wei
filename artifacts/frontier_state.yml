@@ -4123,17 +4123,16 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1315: Discovery 1315: Plan - Implement headless GH_TOKEN fallback'
-  status: Completed
-  learnings: Drafted WHAT-1315 and WHY-1314 to specify credentials lookup order (env,
-    local .env) to address headless authentication failures and registered them in
-    HOW-0000.
-  invariants:
-  - '[x] WHAT-1315 is registered in HOW-0000'
-  - '[x] WHY-1314 is registered in HOW-0000'
-- name: 'Node 1316: Activity 1316: Reflect - Implement headless GH_TOKEN fallback'
   status: Backlog
-  learnings: Final reflection and path closure for Implement headless GH_TOKEN fallback.
+  learnings: Technical design and proposed changes for Implement headless GH_TOKEN
+    fallback.
   invariants: []
+- name: 'Node 1316: Activity 1316: Reflect - Implement headless GH_TOKEN fallback'
+  status: Completed
+  learnings: Permanently resolved credentials retrieval issue in headless environments
+    by introducing a robust fallback to environment variables and root .env file parsing.
+  invariants:
+  - '[x] Headless credentials fallback logic successfully implemented and verified'
 - name: 1314-headless-gh-token
   status: Completed
   learnings: Implemented headless GH_TOKEN fallback in github_client._run_gh to parse

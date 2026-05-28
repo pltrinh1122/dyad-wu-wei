@@ -4062,17 +4062,16 @@
   - `[ ]` None
 
 ## Node 1315: Discovery 1315: Plan - Implement headless GH_TOKEN fallback
-- **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-1315 and WHY-1314 to specify credentials lookup order (env, local .env) to address headless authentication failures and registered them in HOW-0000.
-- **Feedforward Invariants**:
-  - `[x] WHAT-1315 is registered in HOW-0000`
-  - `[x] WHY-1314 is registered in HOW-0000`
-
-## Node 1316: Activity 1316: Reflect - Implement headless GH_TOKEN fallback
 - **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement headless GH_TOKEN fallback.
+- **Learnings & Context**: Technical design and proposed changes for Implement headless GH_TOKEN fallback.
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## Node 1316: Activity 1316: Reflect - Implement headless GH_TOKEN fallback
+- **Status**: Completed
+- **Learnings & Context**: Permanently resolved credentials retrieval issue in headless environments by introducing a robust fallback to environment variables and root .env file parsing.
+- **Feedforward Invariants**:
+  - `[x] Headless credentials fallback logic successfully implemented and verified`
 
 ## 1314-headless-gh-token
 - **Status**: Completed
