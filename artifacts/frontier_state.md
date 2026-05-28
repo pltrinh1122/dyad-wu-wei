@@ -2976,14 +2976,14 @@
   - `WHY-1089`
 
 ## Node 1096: Discovery 1096: Plan - Audit and Remediate Deprecated KB Files
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Audit and Remediate Deprecated KB Files.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1097: Activity 1097: Reflect - Audit and Remediate Deprecated KB Files
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Audit and Remediate Deprecated KB Files.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3750,31 +3750,60 @@
   - `[x] status:triage terminal nodes are automatically mapped to the triage holding path`
   - `[x] promoted/active nodes are automatically pruned from the triage holding path during sync`
 
-## Activity 1209: Reflect - Optimize local frontier cache to leverage lazy github sync
-- **Status**: Completed
-- **Learnings & Context**: Implemented persistent local cache file artifacts/cache/github_state_cache.json, wrapped github_client queries to use the cache when younger than the 60-second TTL, and integrated cache invalidation inside all mutative operations.
+## Node 1242: Path 1242: Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: A holding Path to consolidate all unpromoted status:triage external intake nodes under the same parent class.
 - **Feedforward Invariants**:
-  - `[x] GitHub client queries cache open PRs, open issues, and labels`
-  - `[x] Caching invalidates on all mutative GitHub client actions`
-  - `[x] Caching test suite verifies cache hit and cache invalidation behavior`
+  - `[ ]` None
 
-## Node 1086: Discovery 1086: Plan - Investigate KB Deprecation Mechanics
+## Node 1243: Discovery 1243: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1244: Discovery 1244: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1245: Activity 1245: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1085: Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery 1086: Plan - Investigate KB Deprecation Mechanics
+## Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics
 - **Status**: Completed
-- **Learnings & Context**: Specified the technical standards, file target ranges, and testing requirements for Knowledge Base deprecation checkers in WHAT-1086.md.
+- **Learnings & Context**: Investigated and documented the KB deprecation mechanics, including semantic ledger structure, static checking details under knowledge_accrual_skill.py, and command invariance rules.
 - **Feedforward Invariants**:
-  - `[x] WHAT-1086-investigate-kb-deprecation-mechanics-spec.md created`
+  - `[x] WHY-1085-investigate-kb-deprecation-mechanics.md created`
 
-## Discovery 1096: Plan - Audit and Remediate Deprecated KB Files
-- **Status**: Completed
-- **Learnings & Context**: Specified the targets and rules for performing a comprehensive audit and remediation of deprecated terminology and raw command patterns across the KB in WHAT-1096.md.
+## Node 1087: Activity 1087: Reflect - Investigate KB Deprecation Mechanics
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `[x] WHAT-1096-audit-and-remediate-deprecated-kb-files-spec.md created`
+  - `[ ]` None
+
+## Activity 1087: Reflect - Investigate KB Deprecation Mechanics
+- **Status**: Completed
+- **Learnings & Context**: Concluded the investigation of Knowledge Base deprecation checkers, verifying the operational rules and standards.
+- **Feedforward Invariants**:
+  - `[x] KB deprecation checkers successfully verified`
+
+## Activity 1097: Reflect - Audit and Remediate Deprecated KB Files
+- **Status**: Completed
+- **Learnings & Context**: Successfully performed a comprehensive audit and remediation of all files in the kb/ directory, replacing deprecated terms with their active equivalents and hyphenating raw git/gh command strings to maintain knowledge base purity.
+- **Feedforward Invariants**:
+  - `[x] All deprecated terms in kb/ files substituted`
+  - `[x] All raw git/gh commands in kb/ files hyphenated`
 
 ## Current Active Path
 None

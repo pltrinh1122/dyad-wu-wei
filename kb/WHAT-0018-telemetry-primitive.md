@@ -11,7 +11,7 @@ As a first-class primitive, Telemetry is composed of three layers:
 ### 2.1 The Ledger (`artifacts/telemetry.jsonl`)
 An append-only, structured ledger that persists every significant state transition and event. Each entry is a discrete **Observation Point**.
 
-### 2.2 The Orchestrator (`kernel/daemon_telemetry.py`)
+### 2.2 The Kernel_Daemon (`kernel/daemon_telemetry.py`)
 The stateful manager that owns the Telemetry logic. It is responsible for:
 - **Ingestion**: Recording events from other orchestrators (e.g., `daemon_node`).
 - **Synthesis**: Aggregating raw observations into high-level **Health Metrics**.

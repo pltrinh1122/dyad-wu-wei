@@ -20,4 +20,4 @@ To decide between bootstrapping the Autonomous Knowledge Accrual Pipeline and pr
 
 ## Verification & Status
 - **Status**: Locked and Verified
-- **Verified by**: Node 426 Plan Probe & Node 427 Reflect Activity
+- **Verified by**: Node 426 Plan Discovery & Node 427 Reflect Activity

@@ -18,7 +18,7 @@ The following metadata label namespaces are supported:
 The `artifacts/frontier_state.yml` schema is updated. Each entry under `nodes` will contain optional attributes `loop`, `area`, and `kind` (defaulting to `null` if unspecified or not labeled):
 ```yaml
 nodes:
-  - name: 'Node 386: Probe 386: Plan - Spike Path: Three-Loop Governance Framework'
+  - name: 'Node 386: Discovery 386: Plan - Discovery Path: Three-Loop Governance Framework'
     status: '[///] Act Phase'
     learnings: Planning Phase
     invariants: []
@@ -30,7 +30,7 @@ nodes:
 ### 1.3 State Rendering
 The generated `artifacts/frontier_state.md` markdown derived log will print these properties beneath the Status line if they are present:
 ```markdown
-## Node 386: Probe 386: Plan - Spike Path: Three-Loop Governance Framework
+## Node 386: Discovery 386: Plan - Discovery Path: Three-Loop Governance Framework
 - **Status**: [///] Act Phase
 - **Loop**: spao
 - **Area**: metasystem

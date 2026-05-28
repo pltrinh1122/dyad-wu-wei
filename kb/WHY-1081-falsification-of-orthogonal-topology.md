@@ -30,7 +30,7 @@ We evaluated the Orthogonal Peer Topology through a series of dialectical stress
 
 The "Orthogonal Peer Topology" is entirely falsified. 
 
-The original defect (state corruption during `git pull`) was not caused by a flaw in Model 1. It was caused by the Operator deploying the child workspace (`dz-ta`) as a direct clone/fork of the engine, rather than using the correct `bin/workspace init` installer defined in `WHAT-0930`. By cloning the engine directly, the child inherited the engine's physical `artifacts/` Git tracking, causing collisions.
+The original defect (state corruption during `git-pull`) was not caused by a flaw in Model 1. It was caused by the Operator deploying the child workspace (`dz-ta`) as a direct clone/fork of the engine, rather than using the correct `bin/workspace init` installer defined in `WHAT-0930`. By cloning the engine directly, the child inherited the engine's physical `artifacts/` Git tracking, causing collisions.
 
 ### The True Resolution
 1. **Strict Adherence to Model 1**: The Engine MUST remain the Root Parent repository (`DZ-CIL_ROOT`). The Child Workspace MUST be nested inside the parent at `./.workspace/` as defined in `WHY-0921`.

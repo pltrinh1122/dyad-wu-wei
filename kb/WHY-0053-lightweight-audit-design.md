@@ -3,12 +3,12 @@
 ## Context
 During the execution of the MetaSystem integrity checks, the `bin/meta audit` script is run to verify that all completed nodes recorded in the local frontier file (`artifacts/frontier_state.md`) are successfully checked off in their corresponding parent path issues on GitHub.
 
-Historically, this script parsed the local frontier to identify all paths, and sequentially invoked `gh issue view` for every single path ever created. As the project scaled and the number of paths increased, this sequential CLI execution pattern introduced significant network latency, resulting in an O(N) scaling bottleneck where N is the total number of historical paths.
+Historically, this script parsed the local frontier to identify all paths, and sequentially invoked `gh-issue view` for every single path ever created. As the project scaled and the number of paths increased, this sequential CLI execution pattern introduced significant network latency, resulting in an O(N) scaling bottleneck where N is the total number of historical paths.
 
 ## Problem Statement
 The O(N) scaling pattern is unsustainable and violates our strategic goal of high inner-loop velocity (SG-0003). There are two primary redundancies in the legacy audit design:
 1. **Historical Path Invariance**: Once a path is completed and closed, its child node checklists are topologically closed and immutable. Auditing fully completed paths in every run is redundant.
-2. **Redundant Active Path Auditing**: Even for active, non-completed paths, calling `gh issue view` on every sync is redundant if no new nodes have been completed under that path since the last successful audit.
+2. **Redundant Active Path Auditing**: Even for active, non-completed paths, calling `gh-issue view` on every sync is redundant if no new nodes have been completed under that path since the last successful audit.
 
 ## Proposed Solutions
 

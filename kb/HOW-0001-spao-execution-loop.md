@@ -7,7 +7,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
 
 1. **Sense (Pre-Condition):** 
    - Execute the shell script: `./bin/node sync` to fetch `main`, safely delete old merged branches, and **surface any pending backlog items**.
-   - Read `artifacts/frontier_state.md` and the cloud-hosted Path Meta-Index (GH Issue).
+   - Read `artifacts/frontier_state.md` and the cloud-hosted Path Meta-Index (gh-issue).
    - Validate that the feedforward invariants from the previous node are met.
    - **The WIP Invariant:** The system operates strictly on a single node execution thread (`WIP-N=1` and `WIP-P=1`). Node branches MUST strictly conform to the format `node/<id>-<kebab-case>` (e.g. `node/906-harmonize-backlog-cli`).
    - **Path Initialization Invariant:** When embarking on a new Path, the Agent MUST execute the **Dual-Discovery Initialization** pattern before advancing to any codebase-mutating Activities.
@@ -17,7 +17,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - Execute the shell script: `SPAO_PERSONA_ID=frontier ./bin/node plan-start "ISSUE_ID"` from the repository root to lock the backlog issue. Follow up with `SPAO_PERSONA_ID=frontier ./bin/node plan-finish "ISSUE_ID" "Body content..."` to upload the finalized Node Contract. This automatically prepends the Node ID to the GitHub Issue title.
    - **Meta-Rule Invariant:** Node Issues MUST be pulled from the backlog. It is mathematically forbidden to generate a new issue out of thin air during the Plan phase. The Node ID is mathematically isomorphic to the GitHub Issue ID.
    - **Template Invariant:** The Agent must NEVER generate inline markdown strings for GitHub Issues. All issue bodies (Backlog and Node Contracts) MUST be rendered using strict, Operator-editable templates located in `kb/templates/`.
-   - **Semantic and Command Purity Invariant:** Any specifications added under `kb/` (e.g. `WHAT-` files) during planning must not introduce deprecated terms defined in `kb/semantic_ledger.yml` or raw shell command strings (such as `git fetch`), which trigger static KB conflict validation failures.
+   - **Semantic and Command Purity Invariant:** Any specifications added under `kb/` (e.g. `WHAT-` files) during planning must not introduce deprecated terms defined in `kb/semantic_ledger.yml` or raw shell command strings (such as `git-fetch`), which trigger static KB conflict validation failures.
    - Mutate the body of the **Path Issue** to link to the newly active Node Issue via `./bin/meta link "Node X: Title" "ISSUE_ID"`.
    - Execute the checkout command to establish the worktree: `SPAO_PERSONA_ID=frontier ./bin/node checkout "ISSUE_ID" "branch_name"` from the repository root, ensuring "branch_name" conforms to the `node/<id>-<kebab-case>` format to pass validation. To ensure checkout resilience against pre-existing branch indexes, the git client automatically detects and cleans up stale local branches during worktree creation.
    - *Do not execute codebase mutations until the Node Issue is explicitly locked and the worktree is checked out. Under the Universal Merge Gate (HTIL) model, the Agent may autonomously transition from Plan to Act once the NC is locked, without waiting for chat approval.*

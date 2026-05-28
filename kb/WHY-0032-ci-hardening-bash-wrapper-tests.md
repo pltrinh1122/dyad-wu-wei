@@ -17,13 +17,13 @@ bin/backlog list
   → daemon_backlog.py list
     → github_client.get_open_issues()
       → subprocess.run(['gh', 'issue', 'list', '--state', 'open', ...])
-        → per-issue: gh issue view 298 --json state  ← EXIT CODE 1
+        → per-issue: gh-issue view 298 --json state  ← EXIT CODE 1
 ```
 
 **Why it fails in CI**:
 - Issue #298 may have been closed or no longer exists in the repo
 - The GitHub Actions runner authenticates via `GITHUB_TOKEN` with repo-scoped
-  permissions, but `gh issue view` on a deleted/missing issue returns exit 1
+  permissions, but `gh-issue view` on a deleted/missing issue returns exit 1
 - Even with valid auth, stale issue numbers make the test non-deterministic
 
 **This is a pre-existing fragility**: our PR #367 adds only a docs file with zero
@@ -69,11 +69,11 @@ Patch `subprocess.run` at the Python layer in tests that indirectly trigger `gh`
 A `tests/fixtures/gh` stub shell script is the correct solution. It tests the
 actual bash wrapper end-to-end while keeping the test suite hermetic and fast.
 The stub must handle:
-- `gh issue list --state open --limit N --json number,title,body`
-- `gh issue view N --json state`
-- `gh issue view N --json number,title,body`
-- `gh pr create ...`
-- `gh pr list ...`
+- `gh-issue list --state open --limit N --json number,title,body`
+- `gh-issue view N --json state`
+- `gh-issue view N --json number,title,body`
+- `gh-pr create ...`
+- `gh-pr list ...`
 
 ---
 

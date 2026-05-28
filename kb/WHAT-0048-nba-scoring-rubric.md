@@ -25,7 +25,7 @@ Assesses whether the node is logically unblocked.
 
 ### 2.2. Axiomatic Compliance ($C_{\text{Axiom}}$)
 Assesses alignment with the system's structural laws.
-* **`1.0` (Perfect)**: Strictly complies with standard execution models (e.g. Probe Align -> Probe Plan -> Activity Reflect) and operates in isolated worktrees.
+* **`1.0` (Perfect)**: Strictly complies with standard execution models (e.g. Discovery Harmonize -> Discovery Plan -> Activity Reflect) and operates in isolated worktrees.
 * **`0.5` (Minor Drift)**: Touches global infrastructure or changes shared tooling configuration files, requiring minor validation checks.
 * **`0.0` (Violation)**: Directly violates core guardrails (e.g. violates WIP-N=1, bypasses PR reviews, or attempts raw/un-wrappered git/gh operations).
 

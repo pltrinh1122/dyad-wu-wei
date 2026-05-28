@@ -64,7 +64,7 @@ A PML cycle produces at most a **Node Contract (NC)** proposal for operator revi
 2. **Ambiguity in Implementation:** Complex architecture requiring Operator harmonization before execution.
 3. **State Transitions:** Advancing the topological frontier.
 
-Activation of the NL requires: (1) a Backlog GH Issue (created via `bin/backlog new`), (2) a complete operator-approved **NC**, (3) a checked-out `node/XX-*` branch, and (4) an updated `frontier_state.md`.
+Activation of the NL requires: (1) a Backlog gh-issue (created via `bin/backlog new`), (2) a complete operator-approved **NC**, (3) a checked-out `node/XX-*` branch, and (4) an updated `frontier_state.md`.
 
 **The WHY Handoff:** *If a PML cycle results in a major architectural decision, the Agent must draft a `WHY-*` document (a Decision Record) to permanently preserve the rationale before materializing the formal GH-Issue.*
 

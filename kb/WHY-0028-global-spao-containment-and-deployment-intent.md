@@ -15,7 +15,7 @@ We need a design that allows:
 ### Option 1: Symbolic Linkage (`~/spao/` linking to main codebase)
 - **Concept**: Maintain the core SPAO codebase in a central repository (e.g. `~/src/spao`). Provide a global wrapper script or symlink the binaries (e.g. `bin/node` -> `~/spao/bin/node`) into the user's path, configured to dynamically evaluate dependencies and resolve target paths relative to the current project's root.
 - **Pros**:
-  - Extremely easy to update (single `git pull` in the central repository).
+  - Extremely easy to update (single `git-pull` in the central repository).
   - Minimal footprint and zero overhead.
 - **Cons**:
   - Requires dynamic resolution of paths (e.g. the CLI scripts must locate python modules and configuration relative to the central repo, but target artifacts relative to the active target project).
@@ -35,7 +35,7 @@ We need a design that allows:
   - Complete dependency isolation.
 - **Cons**:
   - Substantial execution overhead.
-  - Complicates credentials/SSH key forwarding and git worktree access on the host system.
+  - Complicates credentials/SSH key forwarding and git-worktree access on the host system.
 
 ---
 
@@ -43,7 +43,7 @@ We need a design that allows:
 
 | Vector | Option 1 (Symlink) | Option 2 (Python Package) | Option 3 (Container) |
 | :--- | :--- | :--- | :--- |
-| **Ease of Propagation** | ⭐️⭐️⭐️ (Instant via git pull) | ⭐️⭐️ (Requires rebuild/reinstall) | ⭐️ (Requires image rebuild) |
+| **Ease of Propagation** | ⭐️⭐️⭐️ (Instant via git-pull) | ⭐️⭐️ (Requires rebuild/reinstall) | ⭐️ (Requires image rebuild) |
 | **Path Isolation** | ⭐️⭐️ (Requires careful path management) | ⭐️⭐️⭐️ (Standard packaging) | ⭐️⭐️⭐️ (Complete isolation) |
 | **Invocation CWD Awareness**| ⭐️⭐️ (Shell script resolves target CWD) | ⭐️⭐️⭐️ (System resolves automatically) | ⭐️ (Requires volume mounts) |
 | **Implementation Complexity**| ⭐️⭐️⭐️ (Very simple shell wrappers) | ⭐️⭐️ (Requires setup.py/pyproject.toml) | ⭐️ (Complex mounting/credentials) |
