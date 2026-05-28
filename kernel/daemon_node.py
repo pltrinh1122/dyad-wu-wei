@@ -142,9 +142,41 @@ def sync_and_clean_node() -> None:
     # 7. Automate standalone backlog mapping and quarantine status label cleanup
     try:
         import re
+        from kernel.daemon_backlog import BacklogDaemon
+        backlog_daemon = BacklogDaemon()
         open_issues = github_client.get_open_issues()
         
-        # A. Clean up quarantine status labels for any issue with the backlog label
+        # A. Find or create the Triage Holding Path
+        triage_path_id = None
+        triage_path = None
+        for issue in open_issues:
+            title_lower = issue.get("title", "").lower()
+            labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
+            labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
+            if "path" in labels and "triage holding" in title_lower:
+                triage_path_id = str(issue["number"])
+                triage_path = issue
+                break
+                
+        if not triage_path_id:
+            try:
+                print("Triage Holding Path not found. Autonomously creating it...")
+                url = backlog_daemon.add(
+                    node_type="path",
+                    title="Triage Holding - Standalone Triage & External Requirement Intakes",
+                    goal="A holding Path to consolidate all unpromoted status:triage external intake nodes under the same parent class."
+                )
+                triage_path_id = url.split("/")[-1]
+                # Refetch open issues to include the new path
+                open_issues = github_client.get_open_issues()
+                for issue in open_issues:
+                    if str(issue["number"]) == triage_path_id:
+                        triage_path = issue
+                        break
+            except Exception as ex:
+                print(f"Warning: Failed to create Triage Holding Path: {ex}")
+
+        # B. Clean up quarantine status labels for any issue with the backlog label
         for issue in open_issues:
             issue_id = str(issue["number"])
             labels = [l.get("name") for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
@@ -160,7 +192,61 @@ def sync_and_clean_node() -> None:
                         except Exception as ex:
                             print(f"Warning: Failed to clean label '{l}' on Node #{issue_id}: {ex}")
 
-        # B. Automate parent path mapping for standalone backlog terminal nodes
+        # C. Re-fetch open issues to have consistent labels, then process triage and mapping
+        open_issues = github_client.get_open_issues()
+        if triage_path_id:
+            # Update triage_path to the latest fetched state
+            for issue in open_issues:
+                if str(issue["number"]) == triage_path_id:
+                    triage_path = issue
+                    break
+
+        # D. Map unpromoted status:triage terminal nodes to Triage Holding Path
+        triage_path_body = triage_path.get("body") or "" if triage_path else ""
+        triage_body_changed = False
+        
+        for issue in open_issues:
+            issue_id = str(issue["number"])
+            if issue_id == triage_path_id:
+                continue
+            labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
+            labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
+            
+            # Quarantined node: has status:triage (or triage) and NOT backlog
+            is_quarantined = ("status:triage" in labels or "triage" in labels) and "backlog" not in labels
+            title = issue.get("title", "")
+            is_terminal = any(t in title.lower() for t in ["activity", "discovery", "intake"])
+            
+            if is_terminal:
+                checkbox_pattern = re.compile(r"-\s+\[[\s*xX]\]\s+Node\s+" + issue_id + r":", re.IGNORECASE)
+                has_checkbox = checkbox_pattern.search(triage_path_body)
+                
+                if is_quarantined:
+                    # Ensure it is in the Triage Holding Path's Meta-Index
+                    if not has_checkbox:
+                        checkbox_line = f"- [ ] Node {issue_id}: {title}"
+                        if "## Meta-Index" in triage_path_body:
+                            triage_path_body += f"\n{checkbox_line}"
+                        else:
+                            triage_path_body += f"\n\n## Meta-Index\n{checkbox_line}"
+                        triage_body_changed = True
+                        print(f"Automatically grouped quarantined Node #{issue_id} under Triage Holding Path.")
+                else:
+                    # Promoted or non-triage node: remove from Triage Holding Path if present
+                    if has_checkbox:
+                        # Strip the checkbox line completely
+                        line_pattern = re.compile(r"-\s+\[[\s*xX]\]\s+Node\s+" + issue_id + r":[^\n]*\n?", re.IGNORECASE)
+                        triage_path_body = line_pattern.sub("", triage_path_body)
+                        triage_body_changed = True
+                        print(f"Pruned promoted/active Node #{issue_id} from Triage Holding Path.")
+                        
+        if triage_body_changed and triage_path_id:
+            try:
+                github_client.update_issue_body(triage_path_id, triage_path_body)
+            except Exception as ex:
+                print(f"Warning: Failed to update Triage Holding Path body: {ex}")
+
+        # E. Automate parent path mapping for standalone backlog terminal nodes
         paths = []
         mapped_nodes = set()
         for issue in open_issues:
@@ -176,6 +262,8 @@ def sync_and_clean_node() -> None:
         terminal_backlog_nodes = []
         for issue in open_issues:
             issue_id = str(issue["number"])
+            if issue_id == triage_path_id:
+                continue
             labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
             labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
             if "backlog" in labels and "path" not in labels:
@@ -209,6 +297,8 @@ def sync_and_clean_node() -> None:
                     node_words = node_words - stop_words
                     best_score = 0
                     for path in paths:
+                        if str(path["number"]) == triage_path_id:
+                            continue
                         path_title = path["title"]
                         path_words = set(re.findall(r"\w+", path_title.lower())) - stop_words
                         overlap = len(node_words.intersection(path_words))
@@ -216,9 +306,12 @@ def sync_and_clean_node() -> None:
                             best_score = overlap
                             best_path = path
                             
-                # Method C: Fall back to first open Path
+                # Method C: Fall back to first open Path (excluding triage holding path)
                 if not best_path and paths:
-                    best_path = paths[0]
+                    for path in paths:
+                        if str(path["number"]) != triage_path_id:
+                            best_path = path
+                            break
                     
                 if best_path:
                     path_id = str(best_path["number"])

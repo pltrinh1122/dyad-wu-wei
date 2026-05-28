@@ -3736,6 +3736,20 @@
   - `[x] sync_and_clean_node automatically removes triage/intake labels when backlog label is present`
   - `[x] standalone backlog terminal nodes are auto-mapped to best matching parent Paths during sync`
 
+## Node 1239: Activity 1239: Implement Holding Path auto-reconciliation for triage nodes
+- **Status**: Backlog
+- **Learnings & Context**: Implement auto-grouping and cleanup of status:triage nodes under a dedicated holding parent Path during sync.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1239: Reflect - Implement Holding Path auto-reconciliation for triage nodes
+- **Status**: Completed
+- **Learnings & Context**: Implemented triage holding path creation/detection, automatic grouping of unpromoted status:triage nodes under the holding path, and automatic pruning of promoted/active nodes from it during sync.
+- **Feedforward Invariants**:
+  - `[x] sync_and_clean_node automatically creates/resolves a dedicated triage holding path`
+  - `[x] status:triage terminal nodes are automatically mapped to the triage holding path`
+  - `[x] promoted/active nodes are automatically pruned from the triage holding path during sync`
+
 ## Current Active Path
 None
 
