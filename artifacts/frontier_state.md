@@ -3709,6 +3709,20 @@
 - **Feedforward Invariants**:
   - `[x] WHAT-1208-frontier-cache-spec.md created`
 
+## Node 1235: Activity 1235: Use status:triage label for Requirement Intake template
+- **Status**: Backlog
+- **Learnings & Context**: Update requirement intake template labels and plan_start checks to use status:triage instead of triage
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1235: Reflect - Use status:triage label for Requirement Intake template
+- **Status**: Completed
+- **Learnings & Context**: Replaced triage label with status:triage in requirement intake template, README, specification, and unit tests.
+- **Feedforward Invariants**:
+  - `[x] Template updated to use status:triage`
+  - `[x] README and specs updated`
+  - `[x] Unit tests updated and pass`
+
 ## Current Active Path
 None
 

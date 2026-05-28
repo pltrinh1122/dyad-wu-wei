@@ -3787,3 +3787,17 @@ nodes:
     and github_client caching interfaces.
   invariants:
   - '[x] WHAT-1208-frontier-cache-spec.md created'
+- name: 'Node 1235: Activity 1235: Use status:triage label for Requirement Intake
+    template'
+  status: Backlog
+  learnings: Update requirement intake template labels and plan_start checks to use
+    status:triage instead of triage
+  invariants: []
+- name: 'Activity 1235: Reflect - Use status:triage label for Requirement Intake template'
+  status: Completed
+  learnings: Replaced triage label with status:triage in requirement intake template,
+    README, specification, and unit tests.
+  invariants:
+  - '[x] Template updated to use status:triage'
+  - '[x] README and specs updated'
+  - '[x] Unit tests updated and pass'
