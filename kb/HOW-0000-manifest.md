@@ -46,6 +46,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Chat Immediacy Protocol Spec**: Read [WHAT-1037-chat-immediacy-protocol.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1037-chat-immediacy-protocol.md)
 * **Wu-wei NBA Handoff Message Structure**: Read [WHY-1043-wu-wei-nba-handoff.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1043-wu-wei-nba-handoff.md)
 * **Wu-wei NBA Handoff Message Structure Spec**: Read [WHAT-1043-wu-wei-nba-handoff.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1043-wu-wei-nba-handoff.md)
+* **Refine DZ-CIL Intent Understanding**: Read [WHY-1022-refine-intent.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1022-refine-intent.md)
 
 
 
