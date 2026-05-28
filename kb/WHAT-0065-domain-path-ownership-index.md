@@ -50,3 +50,4 @@ When the CLI harmonization gate evaluates a node transition, it MUST:
 | 640     | domain:platform   | claimed | Codify Platform Domain Path Ownership Index |
 | 716     | domain:platform   | claimed | Remediate Synthesized Lexical Guards in Audit Config |
 | 727     | domain:platform   | claimed | Prevent Overly Broad Synthesized Lexical Guards |
+| 1017    | domain:platform   | claimed | Codify Chat Immediacy Protocol                           |
