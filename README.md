@@ -23,3 +23,20 @@ All mutations flow through **Sense-Plan-Act-Observe-Reflect**. The Agent propose
 There is one Founder of the DZ-CIL Dao. There is one Creator of DZ-CIL. These identities intersect in the same person but do not conflate — one is a relationship to the Way, the other to the artifact. There can be many Practitioners of the Dao and many Operators of the system. The Way scales; its origin does not.
 
 *What you find here is the riverbed. The river is in the practice.*
+
+---
+
+## Contributing & Requirement Intake
+
+External entities (e.g., the Healer) submitting requirement intakes to the DZ-CIL Dao must use the **Requirement Intake** issue template. 
+
+When submitting via:
+- **GitHub Web Interface**: Select the **Requirement Intake** template when creating a new issue.
+- **GitHub CLI (`gh` CLI)**: Run `gh issue create` and select **Requirement Intake** from the interactive list. Alternatively, specify the template or labels directly:
+  ```bash
+  gh issue create --template "requirement_intake.md"
+  # or
+  gh issue create --label "triage" --title "[INTAKE] <title>" --body "<description>"
+  ```
+
+All incoming intakes are automatically quarantined under the `triage` label for evaluation before they can be promoted to the `backlog` by the Operator.

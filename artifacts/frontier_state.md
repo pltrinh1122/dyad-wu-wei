@@ -3685,6 +3685,18 @@
   - `[x] Issue template created with triage label`
   - `[x] Backlog transition gate check added and passes tests`
 
+## Node 1230: Activity 1230: Document Requirement Intake Protocol in README
+- **Status**: Backlog
+- **Learnings & Context**: Add guidance in root README.md on using the Requirement Intake template with triage labeling
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1230: Reflect - Document Requirement Intake Protocol in README
+- **Status**: Completed
+- **Learnings & Context**: Added guidance to root README.md on using the Requirement Intake issue template and gh CLI.
+- **Feedforward Invariants**:
+  - `[x] README.md updated with intake instructions`
+
 ## Current Active Path
 None
 
