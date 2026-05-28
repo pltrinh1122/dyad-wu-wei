@@ -2215,8 +2215,8 @@
   - `[ ]` None
 
 ## Node 918: Discovery 918: Plan - Implement status report progress visualization
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Implement status report progress visualization.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3952,6 +3952,12 @@
 - **Learnings & Context**: Designed status report progress visualization and documented WHY-0916 in the Meta-System Runtime Manifest.
 - **Feedforward Invariants**:
   - `WHY-0916 is present and correct; manifest is updated.`
+
+## Discovery 918: Plan - Implement status report progress visualization
+- **Status**: Completed
+- **Learnings & Context**: Documented WHAT-0916 status progress bars and goal ratios specification in the Meta-System Runtime Manifest.
+- **Feedforward Invariants**:
+  - `WHAT-0916 exists and is correct; HOW-0000-manifest is updated.`
 
 ## Current Active Path
 None

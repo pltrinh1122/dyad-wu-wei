@@ -2395,9 +2395,8 @@ nodes:
     report progress visualization.
   invariants: []
 - name: 'Node 918: Discovery 918: Plan - Implement status report progress visualization'
-  status: Backlog
-  learnings: Technical design and proposed changes for Implement status report progress
-    visualization.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 919: Activity 919: Reflect - Implement status report progress visualization'
   status: Backlog
@@ -4015,3 +4014,9 @@ nodes:
     in the Meta-System Runtime Manifest.
   invariants:
   - WHY-0916 is present and correct; manifest is updated.
+- name: 'Discovery 918: Plan - Implement status report progress visualization'
+  status: Completed
+  learnings: Documented WHAT-0916 status progress bars and goal ratios specification
+    in the Meta-System Runtime Manifest.
+  invariants:
+  - WHAT-0916 exists and is correct; HOW-0000-manifest is updated.
