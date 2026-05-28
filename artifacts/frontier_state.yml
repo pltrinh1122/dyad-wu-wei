@@ -3969,3 +3969,13 @@ nodes:
   invariants:
   - WHY-1030
   - WHY-1031
+- name: 'Node 1268: Activity 1268: Triage SEIZURE_DETECTED test failures'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1268: Triage SEIZURE_DETECTED test failures'
+  status: Completed
+  learnings: Resolved lexical guard violations in retro-1029.md by replacing deprecated
+    terms probe and align with discovery and harmonize.
+  invariants:
+  - '[x] Lexical guard passes'
