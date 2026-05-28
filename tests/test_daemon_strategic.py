@@ -252,7 +252,7 @@ class TestMgrStrategic(unittest.TestCase):
         try:
             with self.assertRaises(ValueError) as ctx:
                 daemon_strategic.verify_node_transition_allowed("419")
-            self.assertIn("Alignment Failure", str(ctx.exception))
+            self.assertIn("Harmonization Failure", str(ctx.exception))
         finally:
             daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
 
@@ -347,6 +347,94 @@ class TestMgrStrategic(unittest.TestCase):
             github_client.list_issues_by_label = orig_list
             github_client.get_issue_details = orig_details
             os.environ.get = orig_environ
+
+    @patch("kernel.daemon_strategic.parse_md_table")
+    @patch("os.path.exists")
+    def test_verify_persona_auto_resolution(self, mock_exists, mock_parse):
+        if "SPAO_PERSONA_ID" in os.environ:
+            del os.environ["SPAO_PERSONA_ID"]
+        data = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0005",
+                    "status": "Active",
+                    "prioritized_paths": [416]
+                }
+            ]
+        }
+        daemon_strategic.save_ledger(data)
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        
+        def side_effect_exists(path):
+            if "WHAT-0062" in path or "WHAT-0065" in path or "strategic_intent.yml" in path:
+                return True
+            return False
+        mock_exists.side_effect = side_effect_exists
+        
+        mock_parse.return_value = [{"sg_id": "SG-0005", "owner_persona": "agent-sg5", "status": "covered"}]
+        
+        daemon_strategic.verify_path_activation_allowed("416")
+        self.assertEqual(os.environ.get("SPAO_PERSONA_ID"), "agent-sg5")
+            
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
+
+    @patch("os.path.exists")
+    def test_verify_persona_workspace_fallback(self, mock_exists):
+        if "SPAO_PERSONA_ID" in os.environ:
+            del os.environ["SPAO_PERSONA_ID"]
+        os.environ["SPAO_WORKSPACE_DIR"] = "/dummy/workspace"
+        data = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0005",
+                    "status": "Active",
+                    "prioritized_paths": [416]
+                }
+            ]
+        }
+        daemon_strategic.save_ledger(data)
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        
+        # mock dz-cil.yml and mock missing index files
+        mock_exists.side_effect = lambda path: "dz-cil.yml" in path
+        mock_yaml_content = "agent_id: child-agent\n"
+        
+        with patch("builtins.open", unittest.mock.mock_open(read_data=mock_yaml_content)):
+            daemon_strategic.verify_path_activation_allowed("416")
+            # Should fallback to agent_id in dz-cil.yml
+            self.assertEqual(os.environ.get("SPAO_PERSONA_ID"), "child-agent")
+            
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
+        if "SPAO_WORKSPACE_DIR" in os.environ:
+            del os.environ["SPAO_WORKSPACE_DIR"]
+
+    @patch("os.path.exists")
+    def test_verify_persona_sovereign_bypass(self, mock_exists):
+        if "SPAO_PERSONA_ID" in os.environ:
+            del os.environ["SPAO_PERSONA_ID"]
+        os.environ["SPAO_WORKSPACE_DIR"] = "/dummy/workspace"
+        data = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0005",
+                    "status": "Active",
+                    "prioritized_paths": [416]
+                }
+            ]
+        }
+        daemon_strategic.save_ledger(data)
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        
+        # Mock index files missing in child workspace
+        mock_exists.return_value = False
+        
+        # verify path activation should proceed (return None) due to missing index files bypass
+        res = daemon_strategic.verify_path_activation_allowed("416")
+        self.assertIsNone(res)
+        
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
+        if "SPAO_WORKSPACE_DIR" in os.environ:
+            del os.environ["SPAO_WORKSPACE_DIR"]
 
 if __name__ == "__main__":
     unittest.main()

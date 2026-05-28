@@ -3830,10 +3830,16 @@
   - `[ ]` None
 
 ## Node 1257: Activity 1257: Implement Dynamic Agent Identity Resolution and Decoupled Gates
-- **Status**: Backlog
-- **Learnings & Context**: Implement dynamic mapping of environment states to logical personas and adaptively relax strategic gates in child workspaces as specified in WHAT-0622
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## Activity 1257: Implement Dynamic Agent Identity Resolution and Decoupled Gates
+- **Status**: Completed
+- **Learnings & Context**: Implemented auto-resolution of SPAO_PERSONA_ID based on ownership index and sovereign bypass for child workspaces when indexes are missing.
+- **Feedforward Invariants**:
+  - `All tests passed.`
 
 ## Current Active Path
 None

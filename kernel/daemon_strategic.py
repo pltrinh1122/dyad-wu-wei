@@ -187,7 +187,7 @@ def verify_prioritized_paths(goals: list) -> bool:
         print("ℹ️  Offline environment detected. Bypassing live GitHub path verification.")
         return True
 
-    print("🔍 Verifying active prioritized path alignments on GitHub...")
+    print("🔍 Verifying active prioritized path harmonizations on GitHub...")
     all_paths_ok = True
     for g in goals:
         if g.get("status") == "Active":
@@ -361,17 +361,75 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
         return
         
     spao_persona = os.environ.get("SPAO_PERSONA_ID")
+    what_0065_path = path_resolver.resolve_workspace_path("kb", "WHAT-0065-domain-path-ownership-index.md")
+    what_0062_path = path_resolver.resolve_workspace_path("kb", "WHAT-0062-agent-persona-ownership-index.md")
+
+    if not spao_persona:
+        resolved_owner = None
+        # 1. Check WHAT-0065 (Horizontal Domain Override)
+        if os.path.exists(what_0065_path):
+            try:
+                rows = parse_md_table(what_0065_path)
+                path_to_domain = {}
+                domain_to_owner = {}
+                for r in rows:
+                    if "path_id" in r and "domain_id" in r:
+                        path_to_domain[r["path_id"]] = r["domain_id"]
+                    elif "domain_id" in r and "owner_persona" in r:
+                        domain_to_owner[r["domain_id"]] = r["owner_persona"]
+                
+                domain_id = path_to_domain.get(str(path_id))
+                if domain_id:
+                    owner = domain_to_owner.get(domain_id)
+                    if owner and owner not in ("unassigned", "shared"):
+                        resolved_owner = owner
+            except Exception:
+                pass
+
+        # 2. Fall back to WHAT-0062 (Vertical SG mapping)
+        if not resolved_owner:
+            sg_id = None
+            for goal in ledger.get("strategic_goals", []):
+                if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
+                    sg_id = goal.get("id")
+                    break
+            if sg_id and os.path.exists(what_0062_path):
+                try:
+                    rows = parse_md_table(what_0062_path)
+                    sg_to_owner = {r.get("sg_id"): r.get("owner_persona") for r in rows if "sg_id" in r}
+                    owner = sg_to_owner.get(sg_id)
+                    if owner and owner not in ("unassigned", "shared"):
+                        resolved_owner = owner
+                except Exception:
+                    pass
+
+        # 3. Fallback inside child workspace
+        if not resolved_owner and os.environ.get("SPAO_WORKSPACE_DIR"):
+            resolved_owner = "frontier"
+            try:
+                yaml_path = path_resolver.resolve_workspace_path("dz-cil.yml")
+                if os.path.exists(yaml_path):
+                    with open(yaml_path, "r") as f:
+                        data = yaml.safe_load(f)
+                        resolved_owner = data.get("agent_id") or "frontier"
+            except Exception:
+                pass
+
+        if resolved_owner:
+            os.environ["SPAO_PERSONA_ID"] = resolved_owner
+            spao_persona = resolved_owner
+            print(f"ℹ️  Auto-resolved SPAO_PERSONA_ID to '{spao_persona}' for Path #{path_id}")
+
+    if os.environ.get("SPAO_WORKSPACE_DIR"):
+        if not os.path.exists(what_0062_path) or not os.path.exists(what_0065_path):
+            print("⚠️  WARNING: Child workspace is missing ownership index files in kb/. Strategic gate sovereign bypass allowed.")
+            return
+
     if not spao_persona:
         raise Exception("Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify identity.")
 
     if _is_pure_ziran(path_id, ledger):
         return # Pure Ziran paths have no structured domain or SG owner; they bypass the gate.
-
-    # Locate the kb files
-    # Since daemon_strategic is deep, we use get_ledger_path trick or path_resolver
-    # Wait, we imported path_resolver at the top!
-    what_0065_path = path_resolver.resolve_workspace_path("kb", "WHAT-0065-domain-path-ownership-index.md")
-    what_0062_path = path_resolver.resolve_workspace_path("kb", "WHAT-0062-agent-persona-ownership-index.md")
 
     # 1. Check WHAT-0065 (Horizontal Domain Override)
     if os.path.exists(what_0065_path):
@@ -428,7 +486,7 @@ def verify_node_transition_allowed(node_id: str) -> None:
         return
         
     if not parent_path_id:
-        raise ValueError(f"Alignment Failure: Terminal Node #{node_id_str} has no parent Path.")
+        raise ValueError(f"Harmonization Failure: Terminal Node #{node_id_str} has no parent Path.")
         
     ledger = load_ledger()
     active_prioritized_paths = set()
