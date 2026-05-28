@@ -3905,17 +3905,17 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1019: Discovery 1019: Plan - Codify Chat Immediacy Protocol
+## Node 1020: Activity 1020: Reflect - Codify Chat Immediacy Protocol
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery 1019: Plan - Codify Chat Immediacy Protocol
+## Activity 1020: Reflect - Codify Chat Immediacy Protocol
 - **Status**: Completed
-- **Learnings & Context**: Codified Chat Immediacy Protocol spec WHAT-1037 in worktree and registered in HOW-0000 manifest
+- **Learnings & Context**: Final reflection on Path 1017: Codified Chat Immediacy Protocol
 - **Feedforward Invariants**:
-  - `- [x] WHAT-1037 exists`
+  - `N/A`
 
 ## Current Active Path
 None
