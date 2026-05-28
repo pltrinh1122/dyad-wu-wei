@@ -3674,3 +3674,14 @@ nodes:
     nodes autonomously bypass human-in-the-loop review gates.
   invariants:
   - none
+- name: 'Node 1000: Discovery 1000: Plan - Optimize Agent-UI Flow State: Background
+    Tool Executions'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1000: Plan - Optimize Agent-UI Flow State: Background Tool Executions'
+  status: Completed
+  learnings: Updated GEMINI.md Section 5 Rule 19 to strictly forbid stringing multiple
+    synchronous/modifying tools in a single turn.
+  invariants:
+  - '[x] Rule 19 updated in GEMINI.md'
