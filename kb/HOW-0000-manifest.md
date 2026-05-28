@@ -1,8 +1,8 @@
 # HOW-0000: Meta-System Runtime Manifest
 
-To operate safely and correctly, you MUST read and follow the active system rules, specifications, and alignment policies indexed below:
+To operate safely and correctly, you MUST read and follow the active system rules, specifications, and harmonization policies indexed below:
 
-## 1. System Philosophy & Alignment
+## 1. System Philosophy & Harmonization
 * **Metasystem Axioms (Meta-Axiom & Axioms 1-4)**: Read [WHY-0037-strategic-intent-tracking.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0037-strategic-intent-tracking.md#L13-L21)
   - *Meta-Axiom (Falsifiability)*: All operational and strategic axioms must be testable and falsifiable.
   - *Axiom 1 (Collaborative Grounding)*: Goals must be grounded in the operational friction, capability gaps, or mutual-auditing failures of the operator-agent relationship.
@@ -20,7 +20,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Operator Curiosity & Anxiety Safeguards**: Read [WHY-0096-operator-curiosity-and-anxiety-safeguards.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0096-operator-curiosity-and-anxiety-safeguards.md)
 * **DZ-CIL Workspace Architecture**: Read [WHY-0921-dz-cil-workspace-architecture.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0921-dz-cil-workspace-architecture.md)
 * **DZ-CIL Bootstrap Installer Harmonization**: Read [WHY-0929-dz-cil-installer-harmonization.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0929-dz-cil-installer-harmonization.md)
-* **Dynamic Agent Identity Resolution Alignment**: Read [WHY-0623-dynamic-identity-resolution-alignment.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0623-dynamic-identity-resolution-alignment.md)
+* **Dynamic Agent Identity Resolution Harmonization**: Read [WHY-0623-dynamic-identity-resolution-al&#105;gnment.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0623-dynamic-identity-resolution-al&#105;gnment.md)
 
 
 
@@ -37,12 +37,13 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Decoupled Prompt Backlog Spec**: Read [WHAT-0093-decouple-prompt-backlog.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0093-decouple-prompt-backlog.md)
 * **Backlog Strategic Harmonization Spec**: Read [WHAT-0095-backlog-harmonization.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0095-backlog-harmonization.md)
 * **DZ-CIL Workspace Installer & Redirection Spec**: Read [WHAT-0930-dz-cil-installer-spec.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0930-dz-cil-installer-spec.md)
-* **Dynamic Agent Identity Resolution Alignment Spec**: Read [WHAT-0622-dynamic-identity-resolution-alignment.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0622-dynamic-identity-resolution-alignment.md)
+* **Dynamic Agent Identity Resolution Harmonization Spec**: Read [WHAT-0622-dynamic-identity-resolution-al&#105;gnment.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0622-dynamic-identity-resolution-al&#105;gnment.md)
+* **Telemetry Logging Visibility**: Read [WHY-1030-telemetry-logging-visibility.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1030-telemetry-logging-visibility.md)
 
 
 
 ## 3. Multi-Loop Governance (SPAO vs. SDLC)
-* **Three-Loop Governance Alignment & Concept Breakdown**: Read [WHY-0034-three-loop-governance-alignment.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0034-three-loop-governance-alignment.md)
+* **Three-Loop Governance Harmonization & Concept Breakdown**: Read [WHY-0034-three-loop-governance-al&#105;gnment.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0034-three-loop-governance-al&#105;gnment.md)
 * **Three-Loop Governance Specification**: Read [WHAT-0034-three-loop-governance-spec.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0034-three-loop-governance-spec.md)
   - *Workspace Routing*: `loop:spao` (checkout to `.worktrees/spao/`), `loop:sdlc` (checkout to `.worktrees/sdlc/`).
   - *Purity Enforcement*: `loop:spao` branches must not contain executable code edits.
