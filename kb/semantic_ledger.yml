@@ -1,8 +1,11 @@
 immune_zones:
   - type: exact
     value: "GLOSSARY.md"
+  - type: exact
+    value: "semantic_ledger.yml"
   - type: prefix
     value: "WHY-"
+
 
 # Proposed terms: declared semantic intent, not yet active.
 # These represent known debt to be resolved via Harmonization when gravitational pull demands it.
@@ -30,45 +33,45 @@ proposed:
       Same interim heuristic applies. Same Harmonization node will resolve both.
     
 terms:
-  path:
+  epic:
     state: deprecated
     superseded_by: path
-  paths:
+  epics:
     state: deprecated
     superseded_by: paths
-  discovery:
+  spike:
     state: deprecated
-    superseded_by: discovery
-  discoveries:
+    superseded_by: probe
+  spikes:
     state: deprecated
-    superseded_by: discoveries
-  dao_engine:
+    superseded_by: probes
+  meta-orchestrator:
     state: deprecated
     superseded_by: dao_engine
-  kernel_daemon:
+  orchestrator:
     state: deprecated
     superseded_by: kernel_daemon
-  discovery:
+  probe:
     state: deprecated
     superseded_by: discovery
-  discoveries:
+  probes:
     state: deprecated
     superseded_by: discoveries
-  harmonize:
+  align:
     state: deprecated
     superseded_by: harmonize
-  refine:
+  optimize:
     state: deprecated
     superseded_by: refine
-  dz-cil_workspace:
+  ziran_workspace:
     state: deprecated
     superseded_by: dz-cil_workspace
-  dz-cil_workspace:
+  ziran_workspace_app:
     state: deprecated
     superseded_by: dz-cil_workspace
-  telos:
+  north_star:
     state: deprecated
     superseded_by: telos
-  "telos":
+  "north-star":
     state: deprecated
     superseded_by: telos
