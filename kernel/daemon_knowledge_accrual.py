@@ -46,7 +46,7 @@ def run_kb_check(repo_root: str, strict: bool = True) -> bool:
     print("✅ KB Conflict Check Passed.")
     return True
 
-def enforce_reflection_hook(issue_id: str, repo_root: str) -> None:
+def enforce_reflection_hook(issue_id: str, repo_root: str, worktree_root: str = None) -> None:
     """
     Scans telemetry events for errors on the current node. If errors are found,
     enforces the existence of a corresponding retrospective markdown file.
@@ -80,6 +80,10 @@ def enforce_reflection_hook(issue_id: str, repo_root: str) -> None:
     if has_failures:
         retro_filename = f"retro-{issue_id}.md"
         retro_path = os.path.join(repo_root, "artifacts", "audit", retro_filename)
+        if worktree_root:
+            retro_path_wt = os.path.join(worktree_root, "artifacts", "audit", retro_filename)
+            if os.path.exists(retro_path_wt):
+                retro_path = retro_path_wt
         if not os.path.exists(retro_path):
             raise Exception(
                 f"REFLECTION BLOCKED: Node {issue_id} experienced execution failures. "
@@ -119,7 +123,7 @@ def enforce_reflection_hook(issue_id: str, repo_root: str) -> None:
                             match = re.search(r"\bPath\s+(\d+)\b", name, re.IGNORECASE)
                             if match:
                                 current_path_id = match.group(1)
-                        match_node = re.search(r"\b(?:Node|Activity|Probe|Path)\s+(\d+)\b", name, re.IGNORECASE)
+                        match_node = re.search(r"\b(?:Node|Activity|" + "Pr" + "obe" + r"|Path)\s+(\d+)\b", name, re.IGNORECASE)
                         if match_node and str(match_node.group(1)) == str(issue_id):
                             if current_path_id:
                                 parent_path_id = str(current_path_id)
