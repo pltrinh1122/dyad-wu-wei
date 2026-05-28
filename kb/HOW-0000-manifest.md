@@ -44,6 +44,8 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Audit and Remediate Deprecated KB Files Plan**: Read [WHY-1096-audit-remediate-deprecated-kb-files-plan.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1096-audit-remediate-deprecated-kb-files-plan.md)
 * **Chat Immediacy Protocol**: Read [WHY-1037-chat-immediacy-protocol.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1037-chat-immediacy-protocol.md)
 * **Chat Immediacy Protocol Spec**: Read [WHAT-1037-chat-immediacy-protocol.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1037-chat-immediacy-protocol.md)
+* **Wu-wei NBA Handoff Message Structure**: Read [WHY-1043-wu-wei-nba-handoff.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1043-wu-wei-nba-handoff.md)
+* **Wu-wei NBA Handoff Message Structure Spec**: Read [WHAT-1043-wu-wei-nba-handoff.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1043-wu-wei-nba-handoff.md)
 
 
 

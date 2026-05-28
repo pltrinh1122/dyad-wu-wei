@@ -2988,9 +2988,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1045: Discovery 1045: Plan - Codify Wu-wei NBA Handoff Message Structure'
-  status: Backlog
-  learnings: Technical design and proposed changes for Codify Wu-wei NBA Handoff Message
-    Structure.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1046: Activity 1046: Reflect - Codify Wu-wei NBA Handoff Message Structure'
   status: Backlog
@@ -3984,5 +3983,10 @@ nodes:
 - name: 'Activity 1020: Reflect - Codify Chat Immediacy Protocol'
   status: Completed
   learnings: 'Final reflection on Path 1017: Codified Chat Immediacy Protocol'
+  invariants:
+  - N/A
+- name: 'Discovery 1045: Plan - Codify Wu-wei NBA Handoff Message Structure'
+  status: Completed
+  learnings: Codified WHY-1043 and WHAT-1043 and indexed in manifest
   invariants:
   - N/A
