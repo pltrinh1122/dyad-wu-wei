@@ -4007,17 +4007,47 @@
 - **Feedforward Invariants**:
   - `Sovereign child workspaces can bypass strategic gates locally`
 
-## Node 1294: Activity 1294: Fix mock daemon_knowledge_accrual in node lifecycle tests
+## Node 1296: Path 1296: Remediate sync_and_clean_node WIP-N=1 offline block
+- **Status**: Backlog
+- **Learnings & Context**: Auto-fetch closed/merged PR status from GitHub before raising offline WIP-N=1 violation for local worktrees to prevent manual block.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1297: Discovery 1297: Harmonize - Remediate sync_and_clean_node WIP-N=1 offline block
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Remediate sync_and_clean_node WIP-N=1 offline block.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1298: Discovery 1298: Plan - Remediate sync_and_clean_node WIP-N=1 offline block
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Remediate sync_and_clean_node WIP-N=1 offline block.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1299: Activity 1299: Reflect - Remediate sync_and_clean_node WIP-N=1 offline block
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Remediate sync_and_clean_node WIP-N=1 offline block.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1300: Activity 1300: Remediate sync_and_clean_node WIP-N=1 offline block
+- **Status**: Backlog
+- **Learnings & Context**: Auto-fetch closed/merged PR status from GitHub before raising offline WIP-N=1 violation for local worktrees to prevent manual block.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1300: Activity 1300: Implement auto-fetch in sync_and_clean_node
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1294: Fix mock daemon_knowledge_accrual in node lifecycle tests
+## Activity 1300: Implement auto-fetch in sync_and_clean_node
 - **Status**: Completed
-- **Learnings & Context**: Mocked enforce_reflection_hook in test_reflect_success, test_branch_naming_regex_enforcement_and_exemption, and test_reflect_admin_bypass_conditions to isolate unit tests from real telemetry logs.
+- **Learnings & Context**: Offline WIP-N=1 locking mechanics successfully modernized to query remote PR states before raising blockades, minimizing manual friction. bin/status terminology accurately reflects local presence.
 - **Feedforward Invariants**:
-  - `Unit tests must remain completely isolated from dynamic repository files like telemetry.jsonl.`
+  - `[ ]` None
 
 ## Current Active Path
 None

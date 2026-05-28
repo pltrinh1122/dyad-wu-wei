@@ -88,14 +88,14 @@ def test_node_lifecycle_workspace_redirection(mock_get_labels):
         assert worktree_path == os.path.join("/tmp/workspace_dir", ".worktrees", "node/390-test")
 
 
-@mock.patch("kernel.node_lifecycle.github_client.is_branch_merged_on_github")
+@mock.patch("kernel.node_lifecycle.github_client.get_pr_state_by_branch")
 @mock.patch("kernel.node_lifecycle.git_client.worktree_remove")
 @mock.patch("kernel.node_lifecycle.git_client.branch_delete")
 @mock.patch("os.path.exists")
 def test_node_lifecycle_clean_if_merged_workspace(mock_exists, mock_branch_delete, mock_worktree_remove, mock_is_merged):
     mock_env = {"SPAO_WORKSPACE_DIR": "/tmp/workspace_dir"}
     mock_exists.return_value = True
-    mock_is_merged.return_value = True
+    mock_is_merged.return_value = "MERGED"
     
     with mock.patch.dict(os.environ, mock_env):
         TerminalNode.clean_if_merged("node/390-test")

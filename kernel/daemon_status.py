@@ -204,7 +204,7 @@ def main():
     print(f"Active Path : {active_path}")
     print(f"Active Node : {active_node}")
     print(f"WIP Branch  : {branch}")
-    print(f"Open PRs    : {pr_count}")
+    print(f"Local Worktrees: {pr_count}")
     if pr_count > 0:
         for pr in open_prs:
             print(f"  - #{pr.get('number', '?')}: {pr.get('title', 'Unknown')} ({pr.get('url', '')})")

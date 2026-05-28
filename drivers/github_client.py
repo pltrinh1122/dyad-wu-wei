@@ -405,10 +405,11 @@ def get_run_failed_log(run_id: str) -> str:
     )
     return res.stdout + res.stderr
 
-def is_branch_merged_on_github(branch_name: str) -> bool:
-    """Queries GitHub API to verify if the given branch has a merged PR.
+def get_pr_state_by_branch(branch_name: str) -> str:
+    """Queries GitHub API to get the PR state for the given branch.
     
     Uses gh-pr-list to query all states for the head branch.
+    Returns 'MERGED', 'CLOSED', 'OPEN', or 'UNKNOWN'.
     """
     result = _run_gh(
         ["gh", "pr", "list", "--head", branch_name, "--state", "all", "--json", "state"],
@@ -416,10 +417,9 @@ def is_branch_merged_on_github(branch_name: str) -> bool:
     )
     import json
     prs = json.loads(_clean_json_output(result.stdout) or "[]")
-    for pr in prs:
-        if pr.get("state") == "MERGED":
-            return True
-    return False
+    if prs:
+        return prs[0].get("state", "UNKNOWN")
+    return "UNKNOWN"
 
 
 

@@ -329,13 +329,13 @@ def test_clean_if_merged_on_github(mock_gh, mock_git):
     from kernel.node_lifecycle import TerminalNode
     
     # 1. If not merged on GitHub, should skip clean
-    mock_gh.is_branch_merged_on_github.return_value = False
+    mock_gh.get_pr_state_by_branch.return_value = "OPEN"
     TerminalNode.clean_if_merged("node/1234-test")
     mock_git.worktree_remove.assert_not_called()
     mock_git.branch_delete.assert_not_called()
     
     # 2. If merged on GitHub, should perform clean
-    mock_gh.is_branch_merged_on_github.return_value = True
+    mock_gh.get_pr_state_by_branch.return_value = "MERGED"
     mock_git.worktree_remove.reset_mock()
     mock_git.branch_delete.reset_mock()
     
@@ -344,7 +344,3 @@ def test_clean_if_merged_on_github(mock_gh, mock_git):
         TerminalNode.clean_if_merged("node/1234-test")
         
     mock_git.branch_delete.assert_called_once_with("node/1234-test")
-
-
-
-
