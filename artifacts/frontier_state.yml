@@ -3695,3 +3695,13 @@ nodes:
     plan.
   invariants:
   - '[x] WHY-0722 created'
+- name: 'Node 723: Probe 723: Plan - Resilient GraphQL parsing in GitHub Client'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Probe 723: Plan - Resilient GraphQL parsing in GitHub Client'
+  status: Completed
+  learnings: Drafted WHAT-0723 specifying the resilient GraphQL parsing design and
+    verification plan.
+  invariants:
+  - '[x] WHAT-0723 created'
