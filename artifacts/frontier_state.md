@@ -3929,6 +3929,12 @@
 - **Feedforward Invariants**:
   - `N/A`
 
+## Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding
+- **Status**: Completed
+- **Learnings & Context**: Codified WHY-1022 and registered in meta manifest
+- **Feedforward Invariants**:
+  - `N/A`
+
 ## Current Active Path
 None
 
