@@ -15,9 +15,9 @@ Lifting this restriction requires strict worktree management and state synchroni
 ## 2. Decision: Full Multi-Activity/Probe Parallelism
 We will transition to a model supporting full multi-Activity and multi-Probe parallelism, provided the execution happens in orthogonal directories.
 
-### 2.1 Git Worktree Isolation
-To prevent branch collisions and active workspace corruption, parallel executions must NOT operate in the same physical directory. We will manage this through **`git worktree`** directories.
-- Each parallel execution (Node-Loop) will operate in its own isolated `git worktree` tied to its respective Git branch.
+### 2.1 Git-Worktree Isolation
+To prevent branch collisions and active workspace corruption, parallel executions must NOT operate in the same physical directory. We will manage this through **`git-worktree`** directories.
+- Each parallel execution (Node-Loop) will operate in its own isolated `git-worktree` tied to its respective git-branch.
 - Simplifying Assumption: `git_repos` workspaces reside as sibling directories at the root of the environment, meaning new worktrees should be checked out within this shared environment safely.
 
 ### 2.2 Shared Artifact State Synchronization
@@ -36,6 +36,6 @@ This architectural shift does NOT change the definition of a Probe.
 
 ## 3. Implementation Pathway
 The actual implementation of these decisions will be executed through standard **Activity** nodes pulled from the backlog:
-1. Implement `git worktree` orchestration.
+1. Implement `git-worktree` orchestration.
 2. Implement file-level locking for shared artifacts.
 3. Explicitly codify invariants (Probe boundaries, Prompt processing) in `GEMINI.md` to ensure all sessions are bound by the same meta-rules.

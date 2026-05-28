@@ -12,7 +12,7 @@ To decide between Speculative Gap Analysis and Immediate Velocity Remediation, t
 
 ## Technical Rules & Prioritization Logic
 
-1. **The Velocity Threshold**: If the local test execution speed exceeds `2.0` seconds or if the suite relies on external network connections, any pending "Velocity Remediation" path must be prioritized before starting new feature/gap probes.
+1. **The Velocity Threshold**: If the local test execution speed exceeds `2.0` seconds or if the suite relies on external network connections, any pending "Velocity Remediation" path must be prioritized before starting new feature/gap discoveries.
 2. **Deterministic Backlog Sorter**:
    - Classify all backlog paths as either `Velocity` or `Speculative`.
    - The strategic manager automatically ranks `Velocity` paths higher than `Speculative` paths in the Next-Best-Action recommendation queue if the test suite fails the hermetic audit.

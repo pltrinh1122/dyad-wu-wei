@@ -9,7 +9,7 @@ This document specifies the technical design and API constraints for programmati
 The `BacklogManager.create` function in `kernel/daemon_backlog.py` is the entry point for declaring nodes.
 
 #### Parameters:
-- `node_type`: `str` (e.g. `'path'`, `'probe'`, `'activity'`)
+- `node_type`: `str` (e.g. `'path'`, `'discovery'`, `'activity'`)
 - `title`: `str`
 - `goal`: `str`
 - `path_id`: `str` (optional)
@@ -23,13 +23,13 @@ When `node_type` is matching the non-terminal category (`'path'`):
    - The Path issue is renamed to format: `Path {issue_id}: {title}`.
 2. **Sequential Child Creation**:
    - Immediately following parent registration, the manager invokes recursive calls to `create(...)` to establish the three mandatory child nodes.
-   - **Align Probe**:
-     - `node_type`: `'probe'`
-     - `title`: `f"Align - {title}"`
-     - `goal`: `f"Align on the philosophical and technical intent for {title}."`
+   - **Harmonize Discovery**:
+     - `node_type`: `'discovery'`
+     - `title`: `f"Harmonize - {title}"`
+     - `goal`: `f"Harmonize on the philosophical and technical intent for {title}."`
      - `path_id`: `{parent_issue_id}`
-   - **Plan Probe**:
-     - `node_type`: `'probe'`
+   - **Plan Discovery**:
+     - `node_type`: `'discovery'`
      - `title`: `f"Plan - {title}"`
      - `goal`: `f"Technical design and proposed changes for {title}."`
      - `path_id`: `{parent_issue_id}`

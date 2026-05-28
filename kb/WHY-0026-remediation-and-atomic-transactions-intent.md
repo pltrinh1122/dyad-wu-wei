@@ -17,7 +17,7 @@ We need a formal design to:
 We will expand the wrappers under `drivers/` to encapsulate all required operations, fully removing direct subprocess invocations of `git` and `gh` from the orchestrator layer.
 
 #### Target Extensions for `drivers/git_client.py`:
-- `switch(branch: str)`: Encapsulates `git switch`.
+- `switch(branch: str)`: Encapsulates `git-switch`.
 - `pull(remote: str, branch: str, prune: bool = False)`: Encapsulates pulling with optional pruning.
 - `list_merged_branches() -> list[str]`: Encapsulates querying merged local branches.
 - `list_local_branches() -> list[str]`: Encapsulates listing short names of all local branches.

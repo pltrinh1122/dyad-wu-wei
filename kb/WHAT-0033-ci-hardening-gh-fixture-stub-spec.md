@@ -1,7 +1,7 @@
 # WHAT-0033: CI Hardening — Technical Specification for Hermetic gh Fixture Stub
 
 ## Overview
-**Path**: #368 — Probe Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
+**Path**: #368 — Discovery Path: CI Hardening — Remediate and Prevent Live GitHub API Calls in Test Suite
 **Plan Node**: #370
 **Implements decisions from**: WHY-0032
 
@@ -42,7 +42,7 @@ case "$*" in
     echo "{\"number\":$NUM,\"title\":\"Test Issue $NUM\",\"body\":\"## Goal\\nTest.\"}"
     ;;
 
-  # State checks: gh issue view N --json state
+  # State checks: gh-issue view N --json state
   issue\ view\ *\ --json\ state)
     echo '{"state":"OPEN"}'
     ;;

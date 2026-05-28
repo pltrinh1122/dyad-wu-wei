@@ -37,7 +37,7 @@ Static checking is executed via `check_kb_conflicts(diff_text)` which operates o
 2. **Line Filter**: Only newly added lines (beginning with `+`) in the git diff are checked.
 3. **Immune Zone Exemption**: Files declared in `immune_zones` (such as `GLOSSARY.md` and any file with a `WHY-` prefix) bypass the deprecated term search.
 4. **Command Invariance**:
-   - Direct shell invocation signatures of `git` or `gh` commands (e.g. `git checkout` or `gh issue`) are strictly forbidden in *all* KB files, including immune zones.
+   - Direct shell invocation signatures of `git` or `gh` commands (e.g. `git-checkout` or `gh-issue`) are strictly forbidden in *all* KB files, including immune zones.
    - Documentation must refer to these actions descriptively or using hyphenated forms (e.g. `git-checkout`, `remote fetch`).
 
 ---

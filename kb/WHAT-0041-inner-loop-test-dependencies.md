@@ -26,7 +26,7 @@ All test files are mapped in the table below:
 | `tests/test_daemon_telemetry.py` | Type A | Stubs telemetry collection and tracking files. | Hermetic |
 | `tests/test_node_lifecycle.py` | Type A | Unit stubs node plan, checkout, and reflection methods. | Hermetic |
 | `tests/test_path_resolver.py` | Type A | Local filesystem path resolution checks. | Hermetic |
-| `tests/test_sense_hooks.py` | Type A | Unit stubs sync commands and git fetch calls. | Hermetic |
+| `tests/test_sense_hooks.py` | Type A | Unit stubs sync commands and git-fetch calls. | Hermetic |
 | `tests/test_telemetry_decorator.py` | Type A | Local decorator unit testing. | Hermetic |
 | `tests/test_transaction.py` | Type A | Local unit tests for transactional flow states. | Hermetic |
 

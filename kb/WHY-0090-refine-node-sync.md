@@ -5,9 +5,9 @@ The synchronization phase (`bin/node sync`, backed by `kernel/daemon_node.py:syn
 
 ## The Problem
 Currently, executing `./bin/node sync` takes ~13 seconds. Profiling shows that the CPU time is under 2 seconds, while the remaining 11+ seconds are spent blocked on serial network requests:
-1. `git fetch origin --prune`: Network-bound git command (takes 1.5s - 3s).
-2. `gh pr list --state open`: GitHub API query for open PRs (takes 1s - 2s).
-3. `gh pr list --state merged`: GitHub API query for merged PRs (takes 1s - 2s).
+1. `git-fetch origin --prune`: Network-bound git command (takes 1.5s - 3s).
+2. `gh-pr list --state open`: GitHub API query for open PRs (takes 1s - 2s).
+3. `gh-pr list --state merged`: GitHub API query for merged PRs (takes 1s - 2s).
 4. `audit_daemon.py`: The metasystem integrity audit is run inline, which performs another remote `get_merged_prs` API call to monitor merged branches (takes 1s - 2s).
 
 This blocking latency violates **Inner-Loop Velocity (SG-0003)** and prevents offline usage.
@@ -19,14 +19,14 @@ We analyze the following candidate technical solutions:
 ### Option A: Throttling & Caching of Network Fetches
 Instead of executing network fetches on every single invocation, `node sync` should cache its remote state.
 - **Mechanism**: Store the last sync timestamp in a local lock/temp file (e.g., `.locks/last_sync_time`).
-- **Policy**: If the last successful sync occurred less than **60 seconds** ago, skip `git fetch` and the GitHub API checks, assuming the state is unchanged.
+- **Policy**: If the last successful sync occurred less than **60 seconds** ago, skip `git-fetch` and the GitHub API checks, assuming the state is unchanged.
 - **Bypass**: Add a `--force` / `-f` flag to bypass the throttle and force a remote fetch.
 
 ### Option B: Local/Offline Mode Flag
 Introduce a explicit `--local` / `-l` flag to `./bin/node sync` to completely skip all remote network requests.
 - **Behavior**:
-  - Skip `git fetch`.
-  - Skip `gh pr list --state open` and use local worktrees as the open PR proxy (aligned with `WHY-0089`).
+  - Skip `git-fetch`.
+  - Skip `gh-pr list --state open` and use local worktrees as the open PR proxy (aligned with `WHY-0089`).
   - Skip remote merged PR queries (only prune local branches that are already merged in the local git repository state).
   - Instruct the audit daemon to run in local-only mode, disabling the remote `pr_merged_monitor`.
 
@@ -70,6 +70,6 @@ We select **Option D** (Reactive Event-Driven Synchronization) as it eliminates 
 
 We will:
 1. Modify `sync_and_clean_node` in `kernel/daemon_node.py` to check `prompt_backlog.yml` for pending `Sluice Gate Opened` merge events.
-2. If no merge events are pending, skip `git fetch` and the GitHub API open PR queries, running the cleanup locally.
+2. If no merge events are pending, skip `git-fetch` and the GitHub API open PR queries, running the cleanup locally.
 3. If a merge event is pending, execute the remote fetch and PR query to prune the worktree, and then mark the prompt as processed.
 4. Refine the audit daemon to disable the remote `pr_merged_monitor` rule when invoked during a local sync.

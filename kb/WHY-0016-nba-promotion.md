@@ -13,7 +13,7 @@ During Probe 243, it was identified that this misclassification creates tight co
 ## Rationale
 -   **Separation of Concerns**: The orchestrator should decide *what* to do; the skill should know *how* to get the data.
 -   **Systemic Invariant Enforcement**: Centralizing NBA logic in a Manager ensures that the **Sense-Gate Invariant** is enforced consistently across all domains via the `HookManager`.
--   **Portability**: By removing hardcoded repository strings and specific GH Issue body assumptions from the orchestrator, we allow the navigation engine to be reused across different project structures.
+-   **Portability**: By removing hardcoded repository strings and specific gh-issue body assumptions from the orchestrator, we allow the navigation engine to be reused across different project structures.
 
 ## Consequences
 -   The legacy `drivers/nba_evaluator.py` will be decommissioned.

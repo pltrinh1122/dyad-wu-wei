@@ -25,7 +25,7 @@
 - **Resume Mode:** Do not use `-c` on a seized/poisoned context. Use `-c` only on a healthy mid-task session.
 
 ## 5. Pre-Sew-Up and Recovery-State Hazards
-- **Sponge Count:** Reconcile the patient's `git status` against the intended delta. Remove Healer residue. Never touch the patient's pre-existing state.
+- **Sponge Count:** Reconcile the patient's `git-status` against the intended delta. Remove Healer residue. Never touch the patient's pre-existing state.
 - **Known Hazards:**
   - **Stale active-node lock:** Resolve via `complete_active_node` before planning new nodes.
   - **Stale root after sync:** Anticipate a correct ROM-drift restart on the next sync if the root is behind `origin/main`.

@@ -6,7 +6,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Metasystem Axioms (Meta-Axiom & Axioms 1-4)**: Read [WHY-0037-strategic-intent-tracking.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0037-strategic-intent-tracking.md#L13-L21)
   - *Meta-Axiom (Falsifiability)*: All operational and strategic axioms must be testable and falsifiable.
   - *Axiom 1 (Collaborative Grounding)*: Goals must be grounded in the operational friction, capability gaps, or mutual-auditing failures of the operator-agent relationship.
-  - *Axiom 2 (Constraint Separation)*: Optimize system adaptability *within* environmental constraints.
+  - *Axiom 2 (Constraint Separation)*: Refine system adaptability *within* environmental constraints.
   - *Axiom 3 (Materializability)*: Strategic goals must be executable using physically available tools and models today.
   - *Axiom 4 (Architectural Coherence)*: The North Star must encompass all mutually orthogonal Strategic Goals.
 * **Axiom Validation Rules**: Read [WHAT-0037-strategic-intent-tracking.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0037-strategic-intent-tracking.md#L28-L37)

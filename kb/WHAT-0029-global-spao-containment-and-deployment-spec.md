@@ -5,7 +5,7 @@
 To run the SPAO system globally, we must separate the **SPAO Core (source code and modules)** from the **Active Workspace (target project repository)**. 
 
 ### 1.1 Core Environments
-- **`SPAO_CORE_DIR`**: The absolute path to the directory containing the SPAO orchestrator clone. This is where Python modules (`kernel/`, `drivers/`) are located.
+- **`SPAO_CORE_DIR`**: The absolute path to the directory containing the SPAO kernel_daemon clone. This is where Python modules (`kernel/`, `drivers/`) are located.
 - **`SPAO_WORKSPACE_DIR`**: The active target repository root where files, ledgers, and backlog items are managed. Defaults to the closest parent directory containing a `.git` folder relative to the current working directory of invocation.
 
 ### 1.2 Path Resolution Mapping
@@ -20,7 +20,7 @@ All ledgers and configurations will be resolved dynamically relative to `SPAO_WO
 | `audit_state.json` | `os.path.join(SPAO_WORKSPACE_DIR, "artifacts", "audit_state.json")` | Metasystem audit record |
 | `node.yml` | `os.path.join(SPAO_WORKSPACE_DIR, "node.yml")` | Project-specific status and classification mappings |
 
-If a project does not contain a custom `node.yml`, the orchestrator will fall back to using the default `node.yml` template located in `SPAO_CORE_DIR`.
+If a project does not contain a custom `node.yml`, the kernel_daemon will fall back to using the default `node.yml` template located in `SPAO_CORE_DIR`.
 
 ---
 
@@ -30,7 +30,7 @@ We will implement a unified `spao` script that acts as the single entry point fo
 
 ### 2.1 Command Mapping
 
-The unified CLI maps subcommands directly to their respective orchestrator entry points:
+The unified CLI maps subcommands directly to their respective kernel_daemon entry points:
 
 - `spao node [args]` ➔ `kernel.daemon_node`
 - `spao backlog [args]` ➔ `kernel.daemon_backlog`
@@ -116,5 +116,5 @@ We will create a simple, idempotent install utility `bin/spao-install` within th
 ### 4.2 Manual Verification
 - Run `bin/spao-install` to globally register the CLI.
 - Navigate to a completely separate git repository (e.g., `/tmp/test-project/`).
-- Initialize a mock workspace (`git init`, create `artifacts/` folder, bootstrap a mock `frontier_state.yml`).
-- Execute `spao node sync` and verify it runs successfully, modifying the local mock project and ignoring the core orchestrator's ledgers.
+- Initialize a mock workspace (`git-init`, create `artifacts/` folder, bootstrap a mock `frontier_state.yml`).
+- Execute `spao node sync` and verify it runs successfully, modifying the local mock project and ignoring the core kernel_daemon's ledgers.

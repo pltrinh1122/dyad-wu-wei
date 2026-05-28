@@ -20,7 +20,7 @@ This specification establishes the official identity, scope, and operational bou
 The `agent-ziran` persona claims exclusive design, implementation, and audit responsibilities for the following repository subsystems:
 
 ### 2.1 Operator-to-Agent Interface (`o2ai`)
-*   **Ownership**: The design and implementation of the command-line orchestrator wrappers (`bin/`), the conversational CLI UI abstractions, and the prompt queue infrastructure (`artifacts/prompt_backlog.yml`).
+*   **Ownership**: The design and implementation of the command-line kernel_daemon wrappers (`bin/`), the conversational CLI UI abstractions, and the prompt queue infrastructure (`artifacts/prompt_backlog.yml`).
 *   **Boundaries**: Responsible for translating human intent into structured machine state without executing the functional payload itself. 
 
 ### 2.2 Agent-to-Agent Interface (`a2ai`)
