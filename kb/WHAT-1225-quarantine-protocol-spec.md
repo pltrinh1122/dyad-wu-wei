@@ -7,7 +7,7 @@ We will create a GitHub Issue Template at `.github/ISSUE_TEMPLATE/requirement_in
 * **name**: Requirement Intake
 * **about**: Submit requirement intakes from external dyads/entities (e.g., the Healer).
 * **title**: "Intake: [Short Description]"
-* **labels**: `triage`
+* **labels**: `status:triage`
 * **body**: Standard requirement template prompting the submitter for:
   - Context & Goal
   - Proposed Mechanisms
@@ -29,5 +29,5 @@ if "backlog" not in labels:
 
 ## 3. Verification Plan
 * **Unit Tests**:
-  - We will add a test `test_plan_start_quarantine_violation` in `tests/test_node_lifecycle.py` that mocks `github_client.get_issue_labels` returning `["triage"]` (and lacking `backlog`), and asserts that calling `plan_start` raises the expected exception.
+  - We will add a test `test_plan_start_quarantine_violation` in `tests/test_node_lifecycle.py` that mocks `github_client.get_issue_labels` returning `["status:triage"]` (and lacking `backlog`), and asserts that calling `plan_start` raises the expected exception.
   - We will verify that a normal node with the `backlog` label passes the transition gate successfully.

@@ -2,7 +2,7 @@
 name: Requirement Intake
 about: Submit requirement intakes from external dyads/entities (e.g., the Healer).
 title: "Intake: [Short Description]"
-labels: triage
+labels: "status:triage"
 assignees: ''
 
 ---

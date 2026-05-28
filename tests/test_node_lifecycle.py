@@ -309,8 +309,8 @@ def test_reflect_admin_bypass_conditions(mock_git, mock_gh, mock_tx, mock_fronti
     mock_gh.admin_merge_pull_request.assert_not_called()
 
 def test_plan_start_quarantine_protocol_violation():
-    # Setup mocks to return an issue labeled with "triage" (lacking "backlog")
-    with mock.patch("kernel.node_lifecycle.github_client.get_issue_labels", return_value=["triage"]), \
+    # Setup mocks to return an issue labeled with "status:triage" (lacking "backlog")
+    with mock.patch("kernel.node_lifecycle.github_client.get_issue_labels", return_value=["status:triage"]), \
          mock.patch("kernel.node_lifecycle.FlowTransaction"), \
          mock.patch("kernel.node_lifecycle.github_client.get_open_prs", return_value=[]), \
          mock.patch("kernel.node_lifecycle.TerminalNode._verify_state_purity"):

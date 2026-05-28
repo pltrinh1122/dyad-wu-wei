@@ -36,7 +36,7 @@ When submitting via:
   ```bash
   gh issue create --template "requirement_intake.md"
   # or
-  gh issue create --label "triage" --title "[INTAKE] <title>" --body "<description>"
+  gh issue create --label "status:triage" --title "[INTAKE] <title>" --body "<description>"
   ```
 
-All incoming intakes are automatically quarantined under the `triage` label for evaluation before they can be promoted to the `backlog` by the Operator.
+All incoming intakes are automatically quarantined under the `status:triage` label for evaluation before they can be promoted to the `backlog` by the Operator.
