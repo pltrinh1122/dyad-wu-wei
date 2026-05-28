@@ -103,8 +103,22 @@ def sync_and_clean_node() -> None:
     else:
         open_worktrees = get_local_worktrees(repo_root)
         if open_worktrees:
-            wt_list = ", ".join([f"Node #{w.get('number', '?')} (branch: {w.get('branch', w.get('url', ''))})" for w in open_worktrees])
-            raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while local Node worktrees are still active: {wt_list}\n(If the corresponding PR was merged on GitHub, you must manually delete this worktree to sync offline.)")
+            still_open = []
+            for w in open_worktrees:
+                branch = w.get('branch', w.get('url', '').replace('local:', ''))
+                try:
+                    state = github_client.get_pr_state_by_branch(branch)
+                    if state in ["MERGED", "CLOSED"]:
+                        print(f"Auto-pruning worktree for Node {w.get('number', '?')} as its remote PR is {state}.")
+                        TerminalNode.clean_if_merged(branch)
+                        continue
+                except Exception as e:
+                    print(f"Warning: Failed to fetch state for branch {branch}: {e}")
+                still_open.append(w)
+            
+            if still_open:
+                wt_list = ", ".join([f"Node #{w.get('number', '?')} (branch: {w.get('branch', w.get('url', ''))})" for w in still_open])
+                raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while local Node worktrees are still active: {wt_list}\n(If the corresponding PR was merged on GitHub, you must manually delete this worktree to sync offline.)")
     
     merged_branches = set()
     
@@ -516,7 +530,7 @@ def cmd_test(args):
     sys.exit(exit_code)
 
 def main():
-    parser = argparse.ArgumentParser(description="Antigravity Domain Orchestrator for Node Lifecycle Management")
+    parser = argparse.ArgumentParser(description="Antigravity Domain Kernel for Node Lifecycle Management")
     parser.add_argument("--workspace", action="store_true", help="Execute command under the active workspace context")
     subparsers = parser.add_subparsers(dest="subcommand", required=True)
 

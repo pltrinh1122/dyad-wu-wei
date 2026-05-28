@@ -268,13 +268,13 @@ def test_github_client_new_cached_interfaces(mock_subprocess):
     invalidate_cache()
 
 
-def test_is_branch_merged_on_github(mock_subprocess):
-    from drivers.github_client import is_branch_merged_on_github
+def test_get_pr_state_by_branch(mock_subprocess):
+    from drivers.github_client import get_pr_state_by_branch
     
     # 1. Test when the branch is merged on GitHub
     mock_subprocess.return_value = MagicMock(stdout='[{"number": 12, "state": "MERGED"}]', returncode=0)
     mock_subprocess.reset_mock()
-    assert is_branch_merged_on_github("node/1234-test") is True
+    assert get_pr_state_by_branch("node/1234-test") == "MERGED"
     assert mock_subprocess.call_count == 1
     args = mock_subprocess.call_args[0][0]
     assert "pr" in args
@@ -283,10 +283,12 @@ def test_is_branch_merged_on_github(mock_subprocess):
     
     # 2. Test when the branch is not merged (e.g. OPEN or CLOSED)
     mock_subprocess.return_value = MagicMock(stdout='[{"number": 12, "state": "OPEN"}]', returncode=0)
-    assert is_branch_merged_on_github("node/1234-test") is False
-    
-    # 3. Test when there is no PR
+    assert get_pr_state_by_branch("node/1234-test") == "OPEN"
+
+    # 3. Test when the branch is CLOSED
+    mock_subprocess.return_value = MagicMock(stdout='[{"number": 12, "state": "CLOSED"}]', returncode=0)
+    assert get_pr_state_by_branch("node/1234-test") == "CLOSED"
+
+    # 4. Test when no PR exists
     mock_subprocess.return_value = MagicMock(stdout='[]', returncode=0)
-    assert is_branch_merged_on_github("node/1234-test") is False
-
-
+    assert get_pr_state_by_branch("node/1234-test") == "UNKNOWN"

@@ -80,7 +80,7 @@ def test_main(mock_node, mock_path, mock_worktrees, mock_branch, capsys):
     assert "Active Path : 802" in captured.out
     assert "Active Node : 805" in captured.out
     assert "WIP Branch  : node/805-status-dashboard" in captured.out
-    assert "Open PRs    : 1" in captured.out
+    assert "Local Worktrees: 1" in captured.out
     assert "- #1: Test PR" in captured.out
 
 @patch("drivers.github_client.get_open_issues")
