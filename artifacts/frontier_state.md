@@ -2462,9 +2462,11 @@
 
 ## Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: Completed
-- **Learnings & Context**: Successfully investigated dynamic agent identity resolution against collaborative goals. The findings are codified in WHY-0623 and WHAT-0622.
+- **Learnings & Context**: Aligned on a context-aware strategic gate model mapping executing environments to target personas/strategic goals without causing conflict gates to fail-closed.
 - **Feedforward Invariants**:
-  - `WHY-0623`
+  - `[x] WHY-0623-dynamic-identity-resolution-alignment.md is created and tracked`
+  - `[x] Registered in manifest`
+  - `[x] Tests pass`
 
 ## Activity 961: Reflect - Synthesize Epistemic Retrospective retro-623.md
 - **Status**: Completed
@@ -2475,10 +2477,9 @@
 
 ## Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: Completed
-- **Learnings & Context**: Created WHAT-0622-dynamic-identity-resolution-alignment.md specifying dynamic persona defaulting, child workspace gate decoupling, and test validation adaptations.
+- **Learnings & Context**: Successfully designed the plan for dynamic agent identity resolution. The specification is codified in WHAT-0622.
 - **Feedforward Invariants**:
-  - `[x] WHAT-0622-dynamic-identity-resolution-alignment.md is created and tracked`
-  - `[x] Registered in kb/HOW-0000-manifest.md`
+  - `WHAT-0622`
 
 ## Activity 625: Reflect - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: Completed
@@ -3894,7 +3895,19 @@
   - `WHY-1030`
   - `WHY-1031`
 
-## Node 623: Node 623: Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger alignment
+## Node 1268: Activity 1268: Triage SEIZURE_DETECTED test failures
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1268: Triage SEIZURE_DETECTED test failures
+- **Status**: Completed
+- **Learnings & Context**: Resolved lexical guard violations in retro-1029.md by replacing deprecated terms probe and align with discovery and harmonize.
+- **Feedforward Invariants**:
+  - `[x] Lexical guard passes`
+
+## Node 624: Node 624: Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger alignment
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
