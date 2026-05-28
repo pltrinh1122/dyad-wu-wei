@@ -3830,16 +3830,16 @@
   - `[ ]` None
 
 ## Node 1257: Activity 1257: Implement Dynamic Agent Identity Resolution and Decoupled Gates
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Implement dynamic mapping of environment states to logical personas and adaptively relax strategic gates in child workspaces as specified in WHAT-0622
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1257: Implement Dynamic Agent Identity Resolution and Decoupled Gates
+## Discovery 1030: Harmonize - Fix Telemetry Logging Visibility
 - **Status**: Completed
-- **Learnings & Context**: Implemented auto-resolution of SPAO_PERSONA_ID based on ownership index and sovereign bypass for child workspaces when indexes are missing.
+- **Learnings & Context**: Investigated stdout buffering in telemetry stage transitions. Documented unbuffered output via sys.stdout.flush() in WHY-1030 decision record. Registered the new record in HOW-0000-manifest.md.
 - **Feedforward Invariants**:
-  - `All tests passed.`
+  - `WHY-1030`
 
 ## Current Active Path
 None
