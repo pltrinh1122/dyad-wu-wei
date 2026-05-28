@@ -49,6 +49,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Refine DZ-CIL Intent Understanding**: Read [WHY-1022-refine-intent.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-1022-refine-intent.md)
 * **Refine DZ-CIL Intent Understanding Spec**: Read [WHAT-1022-refine-intent.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1022-refine-intent.md)
 * **Status Report Progress Bars & Goal Ratios**: Read [WHY-0916-status-progress-bars.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0916-status-progress-bars.md)
+* **Status Report Progress Bars & Goal Ratios Spec**: Read [WHAT-0916-status-progress-bars.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0916-status-progress-bars.md)
 
 
 
