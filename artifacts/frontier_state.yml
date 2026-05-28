@@ -3836,38 +3836,23 @@ nodes:
     path'
   - '[x] promoted/active nodes are automatically pruned from the triage holding path
     during sync'
-- name: 'Node 1242: Path 1242: Triage Holding - Standalone Triage & External Requirement
-    Intakes'
-  status: Backlog
-  learnings: A holding Path to consolidate all unpromoted status:triage external intake
-    nodes under the same parent class.
-  invariants: []
-- name: 'Node 1243: Discovery 1243: Harmonize - Triage Holding - Standalone Triage
-    & External Requirement Intakes'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Triage Holding
-    - Standalone Triage & External Requirement Intakes.
-  invariants: []
-- name: 'Node 1244: Discovery 1244: Plan - Triage Holding - Standalone Triage & External
-    Requirement Intakes'
-  status: Backlog
-  learnings: Technical design and proposed changes for Triage Holding - Standalone
-    Triage & External Requirement Intakes.
-  invariants: []
-- name: 'Node 1245: Activity 1245: Reflect - Triage Holding - Standalone Triage &
-    External Requirement Intakes'
-  status: Backlog
-  learnings: Final reflection and path closure for Triage Holding - Standalone Triage
-    & External Requirement Intakes.
-  invariants: []
-- name: 'Node 1085: Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics'
+- name: 'Activity 1209: Reflect - Optimize local frontier cache to leverage lazy github
+    sync'
+  status: Completed
+  learnings: Implemented persistent local cache file artifacts/cache/github_state_cache.json,
+    wrapped github_client queries to use the cache when younger than the 60-second
+    TTL, and integrated cache invalidation inside all mutative operations.
+  invariants:
+  - '[x] GitHub client queries cache open PRs, open issues, and labels'
+  - '[x] Caching invalidates on all mutative GitHub client actions'
+  - '[x] Caching test suite verifies cache hit and cache invalidation behavior'
+- name: 'Node 1086: Discovery 1086: Plan - Investigate KB Deprecation Mechanics'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery 1085: Harmonize - Investigate KB Deprecation Mechanics'
+- name: 'Discovery 1086: Plan - Investigate KB Deprecation Mechanics'
   status: Completed
-  learnings: Investigated and documented the KB deprecation mechanics, including semantic
-    ledger structure, static checking details under knowledge_accrual_skill.py, and
-    command invariance rules.
+  learnings: Specified the technical standards, file target ranges, and testing requirements
+    for Knowledge Base deprecation checkers in WHAT-1086.md.
   invariants:
-  - '[x] WHY-1085-investigate-kb-deprecation-mechanics.md created'
+  - '[x] WHAT-1086-investigate-kb-deprecation-mechanics-spec.md created'
