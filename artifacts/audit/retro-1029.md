@@ -3,19 +3,26 @@
 ## 1. The Thesis
 - **Thesis**: Path 1029 was completed with no Execute nodes, violating the Dao (specifically the Triple-Node Doctrine and Probe Invariant).
 - **Secondary Thesis**: "We have the safeguards in place to prevent this moving forward and this was just a one-off aberrant due to 'legacy' non-compliant Path creation."
+- **Tertiary Thesis**: "Submitting a retro is sufficient because there is a daemon or mechanism that will convert learnings and insights from our retros into actionable change."
 
 ## 2. Dialectical Falsification (The Anti-Thesis)
+- **Falsifying Evidence (Tertiary Thesis Falsified)**:
+  1. **No Automated Codification**: The knowledge accrual daemon (`daemon_knowledge_accrual.py`) only automates metadata creation by surfacing a backlog activity (`Reflect - Synthesize Epistemic Retrospective...`). It has no mechanism to parse, extract, or programmatically apply the insights to system rules.
+  2. **Active Agent Execution Required**: The actual codification of guardrails (e.g., updating `GEMINI.md`, modifying codebase invariants, or writing regression tests) must be manually designed and implemented by the Agent when checked out on the surfaced reflection node.
+  3. **Inert Documentation Risk**: Without subsequent manual codification by the Agent, retro files remain static markdown text. Simply submitting a retro is a gate-clearing requirement but is entirely insufficient to realize actionable change.
+  Therefore, the tertiary thesis is formally falsified.
+
 - **Falsifying Evidence (Secondary Thesis Falsified)**:
   1. **No Namespace Collision Safeguards**: The backlog manager and node lifecycle engine have no validations to detect or reject shared node IDs (e.g. `Discovery 1030` and `Activity 1030` sharing ID `1030`), leading to silent index overwrites.
   2. **No Path Completeness Safeguards**: The audit daemon (`audit_daemon.py`) has no rule to verify that a closed Path containing code mutations had a dedicated execution node.
   3. **No Automatic Execute Creation**: Path initialization (`BacklogDaemon.add`) only instantiates Align, Plan, and Reflect nodes. It does not create Execute nodes by default, meaning any path is prone to this structure unless manually extended.
-  Therefore, the claim that sufficient safeguards are in place to prevent this recurrence is formally falsified.
+  Therefore, the secondary thesis is formally falsified.
 
 - **Falsifying Evidence (Primary Thesis Falsified)**:
   1. The git commit history shows that Path 1029 was initialized and partially executed in commit `7303950` (`Fix Telemetry Logging (#1033)`).
   2. This commit explicitly introduced a dedicated execution node: `Activity 1030: Fix Telemetry Logging Visibility` (Status: Completed).
   3. The actual functional mutation (flushing/unbuffering stdout writes in `kernel/node_lifecycle.py`) was committed and verified under `Activity 1030`.
-  4. Therefore, Path 1029 **did** have a dedicated execution node, and the functional mutation did not occur in a Probe/Discovery node. The thesis is formally falsified.
+  4. Therefore, Path 1029 **did** have a dedicated execution node, and the functional mutation did not occur in a Probe/Discovery node. The primary thesis is formally falsified.
 
 ## 3. Root Cause of the Sensory Illusion
 - **ID Namespace Collision**: The execute node was named `Activity 1030`, sharing the ID `1030` with `Node 1030: Discovery 1030: Harmonize`.
