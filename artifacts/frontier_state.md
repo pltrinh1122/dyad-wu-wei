@@ -2842,8 +2842,8 @@
   - `[ ]` None
 
 ## Node 1046: Activity 1046: Reflect - Codify Wu-wei NBA Handoff Message Structure
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Codify Wu-wei NBA Handoff Message Structure.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -3920,6 +3920,12 @@
 ## Discovery 1045: Plan - Codify Wu-wei NBA Handoff Message Structure
 - **Status**: Completed
 - **Learnings & Context**: Codified WHY-1043 and WHAT-1043 and indexed in manifest
+- **Feedforward Invariants**:
+  - `N/A`
+
+## Activity 1046: Reflect - Codify Wu-wei NBA Handoff Message Structure
+- **Status**: Completed
+- **Learnings & Context**: Final reflection on Path 1043: Codified Wu-wei NBA Handoff Message Structure
 - **Feedforward Invariants**:
   - `N/A`
 
