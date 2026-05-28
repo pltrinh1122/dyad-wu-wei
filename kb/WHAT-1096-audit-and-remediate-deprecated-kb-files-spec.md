@@ -21,7 +21,7 @@ This document specifies the procedure for performing a comprehensive audit and r
 - The audit must cover **all** files under the `kb/` directory, regardless of whether they are modified in the current diff.
 
 ### 2.2 Terminology Evaluation
-- Scan all files (excluding immune zones: `GLOSSARY.md` and `WHY-` prefix files) for deprecated terms defined in `kb/semantic_ledger.yml` (e.g. `epic`, `spike`, `meta-orchestrator`, `optimize`, etc.).
+- Scan all files (excluding immune zones: `GLOSSARY.md` and `WHY-` prefix files) for deprecated terms defined in `kb/semantic_ledger.yml`.
 - Any file containing a deprecated term must be flagged for remediation.
 
 ### 2.3 Command Evaluation
@@ -36,7 +36,7 @@ This document specifies the procedure for performing a comprehensive audit and r
 - Flagged deprecated terms must be replaced with their modern equivalents specified in the `superseded_by` mappings of `kb/semantic_ledger.yml`.
 
 ### 3.2 Command Hyphenation/Description
-- Forbidden raw CLI commands must be converted to hyphenated or descriptive equivalents (e.g. `git checkout` -> `git-checkout`, `gh issue` -> `gh-issue`).
+- Forbidden raw CLI commands must be converted to hyphenated or descriptive equivalents (e.g. by using hyphenated command forms like `git-checkout` or `gh-issue`).
 
 ---
 
