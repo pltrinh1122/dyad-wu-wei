@@ -4032,10 +4032,10 @@
   - `[ ]` None
 
 ## Node 1304: Discovery 1304: Plan - Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol.
+- **Status**: Completed
+- **Learnings & Context**: Formulated design specification WHAT-1304 and staging it inside the active node worktree. Verified integration with the Wu-wei NBA handoff protocol.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHAT-1304 design spec successfully formulated and staged`
 
 ## Node 1305: Activity 1305: Reflect - Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol
 - **Status**: Backlog
