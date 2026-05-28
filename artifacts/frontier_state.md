@@ -3853,6 +3853,18 @@
 - **Feedforward Invariants**:
   - `WHY-1095`
 
+## Node 1096: Node 1096: Discovery 1096: Plan - Audit and Remediate Deprecated KB Files
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1096: Plan - Audit and Remediate Deprecated KB Files
+- **Status**: Completed
+- **Learnings & Context**: Designed the remediation plan for non-immune KB files containing deprecated terms. Created WHY-1096 and registered in HOW-0000-manifest.md.
+- **Feedforward Invariants**:
+  - `WHY-1096`
+
 ## Current Active Path
 None
 
