@@ -3958,3 +3958,14 @@ nodes:
     WHY-1031 and registered in HOW-0000-manifest.md.
   invariants:
   - WHY-1031
+- name: 'Node 1032: Node 1032: Activity 1032: Reflect - Fix Telemetry Logging Visibility'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1032: Reflect - Fix Telemetry Logging Visibility'
+  status: Completed
+  learnings: Confirmed unbuffered print logging visibility fix. Verified all tests
+    pass cleanly.
+  invariants:
+  - WHY-1030
+  - WHY-1031
