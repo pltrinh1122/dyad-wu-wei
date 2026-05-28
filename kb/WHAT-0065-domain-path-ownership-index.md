@@ -53,3 +53,4 @@ When the CLI harmonization gate evaluates a node transition, it MUST:
 | 1017    | domain:platform   | claimed | Codify Chat Immediacy Protocol                           |
 | 1043    | domain:platform   | claimed | Codify Wu-wei NBA Handoff Message Structure              |
 | 1022    | domain:platform   | claimed | Refine DZ-CIL Intent Understanding                      |
+| 916     | domain:platform   | claimed | Implement status report progress visualization           |
