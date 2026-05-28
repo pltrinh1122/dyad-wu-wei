@@ -433,6 +433,18 @@ class TerminalNode(BaseNode):
             if git_client.check_merge_conflicts("origin/main", cwd=worktree_dir):
                 raise Exception(f"Reflection Blocked (WHY-0083): Branch '{branch_name}' has unresolved merge conflicts with 'origin/main'. You must resolve these conflicts locally before reflecting.")
             
+            # Enforce Local CI Verification Invariant
+            try:
+                import subprocess
+                print("Running local test suite verification before reflection...")
+                run_tests_script = os.path.join(worktree_dir, "bin", "run-tests")
+                if not os.path.exists(run_tests_script):
+                    run_tests_script = os.path.join(main_repo, "bin", "run-tests")
+                subprocess.run([run_tests_script], cwd=worktree_dir, check=True)
+                print("Local test suite passed.")
+            except subprocess.CalledProcessError:
+                raise Exception("Reflection Blocked: Local test suite verification failed. You must remediate CI failures before reflecting.")
+
             # Enforce post-failure reflection gate (SG-0005)
             from kernel import daemon_knowledge_accrual
             daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo, worktree_root=worktree_dir)
