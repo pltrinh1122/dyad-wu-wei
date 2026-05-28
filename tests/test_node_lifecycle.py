@@ -135,7 +135,8 @@ def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_lab
 @mock.patch("kernel.node_lifecycle.agent_frontier")
 @mock.patch("kernel.node_lifecycle.daemon_nba")
 @mock.patch("kernel.node_lifecycle.TerminalNode.get_worktree_path")
-def test_reflect_success(mock_get_worktree_path, mock_nba, mock_frontier, mock_gh, mock_git):
+@mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
+def test_reflect_success(mock_enforce, mock_get_worktree_path, mock_nba, mock_frontier, mock_gh, mock_git):
     mock_get_worktree_path.return_value = ".worktrees/node/390-test"
     mock_frontier.read_active_path.return_value = None
     mock_nba.NBADaemon.return_value.evaluate.return_value = {"type": "continue"}
@@ -236,7 +237,8 @@ def test_log_stage_advancement():
 @mock.patch("kernel.node_lifecycle.git_client")
 @mock.patch("kernel.node_lifecycle.github_client")
 @mock.patch("kernel.node_lifecycle.agent_frontier")
-def test_branch_naming_regex_enforcement_and_exemption(mock_frontier, mock_gh, mock_git):
+@mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
+def test_branch_naming_regex_enforcement_and_exemption(mock_enforce, mock_frontier, mock_gh, mock_git):
     node = TerminalNode("1133")
     
     # 1. Normal mode (SPAO_WORKSPACE_DIR NOT set) - invalid branch name should raise ValueError in checkout
@@ -283,7 +285,8 @@ def test_branch_naming_regex_enforcement_and_exemption(mock_frontier, mock_gh, m
 @mock.patch("kernel.node_lifecycle.FlowTransaction")
 @mock.patch("kernel.node_lifecycle.github_client")
 @mock.patch("kernel.node_lifecycle.git_client")
-def test_reflect_admin_bypass_conditions(mock_git, mock_gh, mock_tx, mock_frontier, mock_nba):
+@mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
+def test_reflect_admin_bypass_conditions(mock_enforce, mock_git, mock_gh, mock_tx, mock_frontier, mock_nba):
     mock_frontier.read_active_path.return_value = None
     mock_nba.NBADaemon.return_value.evaluate.return_value = {"type": "continue"}
     mock_git.get_git_common_dir.return_value = ".git"
