@@ -3731,9 +3731,8 @@ nodes:
   invariants: []
 - name: 'Node 1225: Discovery 1225: Plan - Implement Quarantine Protocol for External
     Requirement Intakes'
-  status: Backlog
-  learnings: Technical design and proposed changes for Implement Quarantine Protocol
-    for External Requirement Intakes.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1226: Activity 1226: Reflect - Implement Quarantine Protocol for External
     Requirement Intakes'
@@ -3748,3 +3747,10 @@ nodes:
     state, and promotion gates.
   invariants:
   - '[x] WHY-1224 created'
+- name: 'Discovery 1225: Plan - Implement Quarantine Protocol for External Requirement
+    Intakes'
+  status: Completed
+  learnings: Drafted WHAT-1225 specifying the quarantine template configuration and
+    CLI transition gate check.
+  invariants:
+  - '[x] WHAT-1225 created'
