@@ -275,7 +275,11 @@ def complete_active_node(filepath: str, node_name: str, learnings: str, invarian
         
     state["nodes"] = nodes
     if clear_pointers:
-        state["current_active_node"] = None
+        persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
+        if "active_agents" in state and persona in state["active_agents"]:
+            state["active_agents"][persona]["current_active_node"] = None
+        else:
+            state["current_active_node"] = None
         
     save_state(yml_path, state)
 
