@@ -4079,20 +4079,14 @@
 - **Feedforward Invariants**:
   - `WIP-N=1`
 
-## Node 1332: Activity 1332: Codify Support Line Discoverability and CLI
+## Node 1335: Activity 1335: Extract AGENT.md from GEMINI.md for Cross-Platform Agent Support
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Codify Support Line Discoverability and CLI
-- **Status**: Completed
-- **Learnings & Context**: Discoverability requires explicit wiring into GEMINI.md Sense phase, protocol doc, and CLI tooling — all three layers needed.
-- **Feedforward Invariants**:
-  - `Support infrastructure must be wired at the GEMINI.md level for automatic Agent discovery.`
-
 ## Current Active Path
 None
 
 ## Current Active Node
-None
+**Node 1335: Activity 1335: Extract AGENT.md from GEMINI.md for Cross-Platform Agent Support**
