@@ -4142,8 +4142,13 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Current Active Path
-**Path 634: Path: Refactor frontier_state for concurrent agent awareness**
+## Activity 1409: Act - Implement WHAT-0636 concurrent agent ledger
+- **Status**: Completed
+- **Learnings & Context**: Implemented the active_agents matrix for concurrent SPAO execution.
+- **Feedforward Invariants**:
+  - `[] None`
 
-## Current Active Node
-**Node 1409: Activity 1409: Act - Implement WHAT-0636 concurrent agent ledger**
+## Active Agents Matrix
+* **agent-default**:
+  - Current Active Path: `Path 634: Path: Refactor frontier_state for concurrent agent awareness`
+  - Current Active Node: `None`

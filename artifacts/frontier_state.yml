@@ -1,7 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1409: Activity 1409: Act - Implement WHAT-0636 concurrent
-  agent ledger'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4211,3 +4210,8 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Activity 1409: Act - Implement WHAT-0636 concurrent agent ledger'
+  status: Completed
+  learnings: Implemented the active_agents matrix for concurrent SPAO execution.
+  invariants:
+  - '[] None'
