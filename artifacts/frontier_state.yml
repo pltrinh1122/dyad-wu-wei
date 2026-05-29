@@ -1,5 +1,6 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 1329: Activity 1329: Implement DZ-CIL External Project
+  Support Protocol'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4142,3 +4143,7 @@ nodes:
     .env file when the OS DBus keyring is unavailable.
   invariants:
   - WIP-N=1
+- name: 'Node 1329: Activity 1329: Implement DZ-CIL External Project Support Protocol'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []

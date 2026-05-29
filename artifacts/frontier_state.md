@@ -4079,8 +4079,14 @@
 - **Feedforward Invariants**:
   - `WIP-N=1`
 
+## Node 1329: Activity 1329: Implement DZ-CIL External Project Support Protocol
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 
 ## Current Active Node
-None
+**Node 1329: Activity 1329: Implement DZ-CIL External Project Support Protocol**
