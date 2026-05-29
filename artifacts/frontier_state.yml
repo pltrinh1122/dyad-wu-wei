@@ -1,6 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 1375: Activity 1375: Reflect - Full-Cycle External Support
-  Ticket Status Tracking'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4145,6 +4144,9 @@ nodes:
   - WIP-N=1
 - name: 'Node 1375: Activity 1375: Reflect - Full-Cycle External Support Ticket Status
     Tracking'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
+  status: Completed
+  learnings: Successfully closed Path 1372 by verifying all design specs (WHY-1372),
+    implementation functions (get_ticket_status, list_support_tickets), label-to-phase
+    mapping logic, and test suites are complete and passing.
+  invariants:
+  - '[x] All deliverables for Path 1372 verified and closed'
