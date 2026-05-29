@@ -2949,14 +2949,15 @@ nodes:
   - N/A
 - name: 'Node 1034: Discovery 1034: Probe 635: Align - Path: Refactor frontier_state
     for concurrent agent awareness'
-  status: Backlog
-  learnings: Evaluate concurrent agent awareness structure
-  invariants: []
+  status: Completed
+  learnings: Closed as duplicate of 635.
+  invariants:
+  - none
 - name: 'Node 1035: Activity 1035: Reflect - Synthesize Epistemic Retrospective retro-635.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-635.md into the system's operational guidelines (the Dao).
-  invariants: []
+  status: Completed
+  learnings: Synthesized retro-635 into HOW-0001-spao-execution-loop.md and cleared execution failure with retro-1035.md.
+  invariants:
+  - none
 - name: 'Node 1037: Discovery 1037: Probe 1037: Evaluate chat immediacy responses
     via Dialectical Falsification'
   status: '[///] Act Phase'
@@ -4198,9 +4199,4 @@ nodes:
     to use word boundaries and ignore .venv.
   invariants:
   - N/A
-- name: 'Activity 1035: Reflect - Synthesize Epistemic Retrospective retro-635.md'
-  status: Completed
-  learnings: Updated HOW-0001-spao-execution-loop.md with Orthogonal Scope Verification
-    Invariant. Also wrote retro-1035.md to clear execution failure gate.
-  invariants:
-  - none
+
