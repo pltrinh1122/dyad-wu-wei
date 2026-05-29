@@ -4085,8 +4085,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Add SG-0006 and Expand System Identity
+- **Status**: Completed
+- **Learnings & Context**: DZ-CIL's Telos expanded from self-referential meta-engine to dual-purpose: self-improving + cross-project Dao engine. SG-0006 governs external service with IP isolation and 2-cycle SLA.
+- **Feedforward Invariants**:
+  - `Every new Strategic Goal requires a corresponding ownership entry in WHAT-0062 before tests pass.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1344: Activity 1344: Add SG-0006 External Project Service and Expand System Identity**
+None

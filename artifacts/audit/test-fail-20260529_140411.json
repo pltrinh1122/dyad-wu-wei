@@ -1,0 +1,13 @@
+{
+    "timestamp": "2026-05-29T14:04:11.212950+00:00",
+    "failures": [
+        {
+            "test_name": "TestOwnershipIndexCompleteness.test_every_active_sg_has_owner_entry",
+            "file_path": "tests/test_ownership_index.py",
+            "line_number": 91,
+            "error_type": "UnknownError",
+            "error_message": "AssertionError",
+            "traceback": "self = <tests.test_ownership_index.TestOwnershipIndexCompleteness object at 0x7f788a379070>\n\n    def test_every_active_sg_has_owner_entry(self):\n        \"\"\"\n        Every Strategic Goal ID in strategic_intent.yml must have a\n        corresponding row in WHAT-0062. Missing rows indicate unregistered goals.\n        \"\"\"\n        rows = parse_ownership_index(WHAT_0062_PATH)\n        indexed_ids = {r[\"sg_id\"] for r in rows}\n        all_sg_ids = set(load_strategic_goal_ids())\n    \n        missing = all_sg_ids - indexed_ids\n>       assert not missing, (\n            f\"The following SG IDs are in strategic_intent.yml but missing from \"\n            f\"WHAT-0062: {sorted(missing)}. Add rows before merging.\"\n        )\nE       AssertionError: The following SG IDs are in strategic_intent.yml but missing from WHAT-0062: ['SG-0006']. Add rows before merging.\nE       assert not {'SG-0006'}\n\ntests/test_ownership_index.py:91: AssertionError"
+        }
+    ]
+}
