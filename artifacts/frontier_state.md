@@ -1759,8 +1759,8 @@
   - `[x] kb/HOW-0000-manifest.md is updated`
 
 ## Node 637: Activity 637: Reflect - Path: Refactor frontier_state for concurrent agent awareness
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Path: Refactor frontier_state for concurrent agent awareness.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -4148,15 +4148,9 @@
 - **Feedforward Invariants**:
   - `[] None`
 
-## Node 1399: Activity 1399: Reflect - Synthesize Epistemic Retrospective retro-1398.md
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Activity 1399: Reflect - Synthesize Epistemic Retrospective retro-1398.md
+## Activity 637: Reflect - Path: Refactor frontier_state for concurrent agent awareness
 - **Status**: Completed
-- **Learnings & Context**: Synthesized epistemic learning into HOW-0005 to mandate cross-checking semantic_ledger.yml before generative content creation to prevent lexical guard failures.
+- **Learnings & Context**: Path 634 (Refactor frontier_state for concurrent agent awareness) is fully implemented. The active_agents matrix is functional. Additionally patched daemon_strategic.py to handle missing issues gracefully during parent path resolution.
 - **Feedforward Invariants**:
   - `[] None`
 
