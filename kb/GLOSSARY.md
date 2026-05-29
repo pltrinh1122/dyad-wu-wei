@@ -155,6 +155,7 @@ An ephemeral, structured local ingestion queue (`artifacts/prompt_backlog.yml`) 
 
 ### WIP-N (Work-In-Progress at the Node level)
 The **operative, independently-enforced** constraint. At most **1** Node may occupy the Act Phase at any given moment (one active git-branch). Replaces the deprecated flat `WIP=1` term.
+* **Exemption**: Tier-2 Hotfixes (`bin/rt hotfix`) explicitly bypass the SPAO Node-Loop and are therefore exempt from `WIP-N=1`. They may be authored and merged concurrently without violating system invariants.
 
 ### WIP-P (Work-In-Progress at the Path level)
 The **derived** constraint. At most **1** Path may be actively traversed at any moment. Automatically satisfied when `WIP-N=1` in the current single-Path model. Named explicitly for future multi-Path governance scalability.
