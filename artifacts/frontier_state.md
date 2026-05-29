@@ -4085,8 +4085,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Add Onboarding-to-Project Checklist to HOW-0099
+- **Status**: Completed
+- **Learnings & Context**: Onboarding requires 6 explicit phases: Survey, Digest Creation, Gap Assessment, Support Tickets, DZ-CIL Build, Pull. Skipping Digest Creation (Phase 2) leaves the Agent without structured addressable rules.
+- **Feedforward Invariants**:
+  - `The Onboarding-to-Project Checklist must be general with illustrative examples only — no proprietary domain rules in DZ-CIL.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1341: Activity 1341: Add Onboarding-to-Project Checklist to HOW-0099**
+None
