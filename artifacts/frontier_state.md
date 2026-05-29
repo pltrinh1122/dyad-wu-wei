@@ -2203,28 +2203,28 @@
   - `[x] Backlog list command groups by active Strategic Goals and displays DAG dependencies inline.`
 
 ## Node 916: Path 916: Implement status report progress visualization
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Enhance bin/status to display visual progress bars and tactical completion ratios mapped to active Strategic Goals.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 917: Discovery 917: Harmonize - Implement status report progress visualization
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Implement status report progress visualization.
+- **Status**: Completed
+- **Learnings & Context**: Designed status report progress visualization and documented WHY-0916 in the Meta-System Runtime Manifest.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `WHY-0916 is present and correct; manifest is updated.`
 
 ## Node 918: Discovery 918: Plan - Implement status report progress visualization
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Completed
+- **Learnings & Context**: Documented WHAT-0916 status progress bars and goal ratios specification in the Meta-System Runtime Manifest.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `WHAT-0916 exists and is correct; HOW-0000-manifest is updated.`
 
 ## Node 919: Activity 919: Reflect - Implement status report progress visualization
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement status report progress visualization.
+- **Status**: Completed
+- **Learnings & Context**: Successfully closed Path 916 by verifying all design specs (WHY-0916), implementation functions (print_goal_progress_report), and test suites are complete and passing.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] All deliverables for Path 916 verified and closed`
 
 ## Node 920: Path 920: Implement DZ-CIL Workspace for Operator Digital Needs
 - **Status**: Backlog
@@ -3947,18 +3947,6 @@
 - **Feedforward Invariants**:
   - `N/A`
 
-## Discovery 917: Harmonize - Implement status report progress visualization
-- **Status**: Completed
-- **Learnings & Context**: Designed status report progress visualization and documented WHY-0916 in the Meta-System Runtime Manifest.
-- **Feedforward Invariants**:
-  - `WHY-0916 is present and correct; manifest is updated.`
-
-## Discovery 918: Plan - Implement status report progress visualization
-- **Status**: Completed
-- **Learnings & Context**: Documented WHAT-0916 status progress bars and goal ratios specification in the Meta-System Runtime Manifest.
-- **Feedforward Invariants**:
-  - `WHAT-0916 exists and is correct; HOW-0000-manifest is updated.`
-
 ## Node 1287: Path 1287: Mock venv provisioning in test_init_workspace to restore offline CI speed
 - **Status**: Backlog
 - **Learnings & Context**: The test_init_workspace test in tests/test_daemon_workspace.py creates a real virtual environment and uses pip to download packages from PyPI. This introduces network I/O and violates the offline inner-loop testing invariant (SG-0003), causing the PR CI check to slow down significantly. We need to mock venv.create and subprocess.check_call in this test.
@@ -4100,7 +4088,7 @@
   - `[x] Parent gate inheritance boundaries are secure`
 
 ## Current Active Path
-**Path 985: Operate: Enforce Workspace Isolation Boundaries**
+None
 
 ## Current Active Node
 None
