@@ -4103,8 +4103,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Harmonize - Silent Seizure Detection Architecture
+- **Status**: Completed
+- **Learnings & Context**: Silent seizures are undetectable by existing rules (seizure_detection counts test-fail files, stale_active_node checks pointer consistency). The fix is a new liveness_stall rule using frontier_state.yml mtime as the monotonic progress signal, firing only when an active node exists and stall exceeds 15 minutes.
+- **Feedforward Invariants**:
+  - `Liveness is a fundamentally different concern from state consistency — separate rule types prevent conflation.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1351: Discovery 1351: Harmonize - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures**
+None
