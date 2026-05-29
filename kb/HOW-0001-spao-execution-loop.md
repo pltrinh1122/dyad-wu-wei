@@ -12,6 +12,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - **The WIP Invariant:** The system operates strictly on a single node execution thread (`WIP-N=1` and `WIP-P=1`). Node branches MUST strictly conform to the format `node/<id>-<kebab-case>` (e.g. `node/906-harmonize-backlog-cli`).
    - **Path Initialization Invariant:** When embarking on a new Path, the Agent MUST execute the **Dual-Discovery Initialization** pattern before advancing to any codebase-mutating Activities.
    - **Backlog Generation Invariant:** When the Agent generates new items for the backlog (e.g., scoping activities), it MUST utilize the `--path` argument in `bin/backlog new` to bind it to a parent Path, preventing Orphaned Nodes.
+   - **DAG Integrity Invariant:** To preserve DAG integrity, any script or process creating structural Path objects MUST apply the `path` and `backlog` labels identically to `bin/backlog new`, because the metasystem engine relies on strict label queries to resolve the topological DAG.
    - **Orthogonal Scope Verification Invariant:** Before provisioning new nodes via `bin/backlog new`, the Agent MUST run `bin/backlog list` or `bin/backlog view` on the parent Path to explicitly verify that identical or highly overlapping nodes do not already exist, preventing Orthogonal Scope Violations.
 
 1. **Plan (Contract Formulation):** 
@@ -29,11 +30,9 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - **Worktree Test Context:** To verify worktree logic mutations, execute tests from within the checked-out worktree directory itself rather than running them targeting the worktree files from the repository root directory.
    - **Asynchronous Prompt Interception:** If the Operator submits an asynchronous prompt or system signal during the Act phase, you must strictly preserve the `WIP-N=1` invariant. Queue the prompt into `artifacts/prompt_backlog.md` (via `./bin/prompt "..."` or local write) and immediately return to the active task without altering cognitive context.
 
-4. **Observe (HITL Pause):** 
-   - The Agent halts execution.
-   - **Prompt Backlog Flush:** Before halting, the Agent must read and flush `artifacts/prompt_backlog.md`. Collate and deduplicate the queued prompts. If they are executable system commands (e.g., `backlog new`), execute them. If ambiguous, address them conversationally in the chat. Finally, wipe the file contents clean.
-   - The Operator executes the local environment, evaluates the state, and provides Human-In-The-Loop feedback.
-   - The Agent must formally log any constraints or feedback provided by the Operator as a comment on the Node Issue.
+4. **Observe (Automated Phase):** 
+   - **Prompt Backlog Flush:** The Agent must read and flush `artifacts/prompt_backlog.md`. Collate and deduplicate the queued prompts. If they are executable system commands (e.g., `backlog new`), execute them. If ambiguous, address them conversationally in the chat. Finally, wipe the file contents clean.
+   - The Agent automatically proceeds to the Reflect phase if all local tests (`./bin/run-tests`) pass and there are no unhandled prompt directives. The Observe phase is no longer a manual HITL pause, as structural validation is deferred to the Universal Merge Gate (HTIL) after reflection.
 
 5. **Reflect & Advance (Post-Condition):** 
    - Execute the shell script: `SPAO_PERSONA_ID=frontier ./bin/node reflect "ISSUE_ID" "Node X: Title" "Learnings..." "['[x] Invariant']" "commit message" "node/XX-kebab-case" --insights WHY-XXXX` exclusively from the repository root directory. Execution from within active worktrees is strictly prohibited to prevent path double-nesting.

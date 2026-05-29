@@ -108,14 +108,14 @@ The five SPAOR stages as applied within the **NL**:
 1. **Sense**: Sync `main`, clean local branches, surface pending backlog items, and validate pre-condition invariants.
 2. **Plan**: Formulate and lock the **NC** by creating/updating the gh-issue and linking it in the Path.
 3. **Act**: Execute codebase/artifact changes under strict TDD invariants.
-4. **Observe**: Halt and await **HITL** feedback and sign-off.
+4. **Observe**: Automated phase to flush asynchronous prompts and verify test telemetry before reflection.
 5. **Reflect**: Close the transaction ledger, push the branch, and open the PR for squash-merging.
 
 ### NC (Node Contract)
 The **mandatory, non-null Plan-Stage output** of the **NL** for a given Node. The NC is the formal pre-condition for the Node's Act-Phase edge traversal in the Meta-Graph. No Node may advance from Plan to Act without a complete NC locked into the micro-ledger. Under the Universal Merge Gate (HTIL) model, the Agent may autonomously transition from Plan to Act once the NC is locked, without requiring conversational operator approval in chat.
 
 ### HITL (Human-In-The-Loop)
-The **operator approval gate**, consolidated entirely into the **Universal Merge Gate (HTIL)**. Under this model, the Agent is completely paralyzed from advancing past the **Observe** phase or starting the next Node until the human operator reviews and merges the Node's active Pull Request (PR) into `main`. Intermediate conversational or local gates are deprecated.
+The **operator approval gate**, consolidated entirely into the **Universal Merge Gate (HTIL)**. Under this model, the Agent is completely paralyzed from starting the next Node's **Sense** phase until the human operator reviews and merges the prior Node's active Pull Request (PR) into `main`. Intermediate conversational or local gates are deprecated.
 
 ### NS (North-Star)
 **[ALIAS → Telos]** The overarching guiding objective or design ideal of the repository — Stage 1 of The Shaping. Use **Telos** in new prose. "North Star" remains valid in informal reference and existing documentation.
