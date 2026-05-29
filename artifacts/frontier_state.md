@@ -4079,44 +4079,14 @@
 - **Feedforward Invariants**:
   - `WIP-N=1`
 
-## Node 1355: Path 1355: Suppress Iatrogenic-Injection Loops in Agy Harness
-- **Status**: Backlog
-- **Learnings & Context**: Prevent schedule/kill/re-schedule cycling seizures caused by harness re-injection of EPHEMERAL_MESSAGE meta-imperatives. The patient obeys the meta-imperative, re-evaluates tool selection, cancels prior action, reschedules, and loops (~5s per iteration, zero durable change). Root cause: harness bash_command_reminder injects a meta-imperative that contradicts the Dao's execution flow. Source: Intake #1307 (Healer, case-03).
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1356: Discovery 1356: Harmonize - Suppress Iatrogenic-Injection Loops in Agy Harness
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Suppress Iatrogenic-Injection Loops in Agy Harness.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1357: Discovery 1357: Plan - Suppress Iatrogenic-Injection Loops in Agy Harness
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Suppress Iatrogenic-Injection Loops in Agy Harness.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1358: Activity 1358: Reflect - Suppress Iatrogenic-Injection Loops in Agy Harness
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Suppress Iatrogenic-Injection Loops in Agy Harness.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1352: Discovery 1352: Plan - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
+## Node 1353: Activity 1353: Reflect - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Implement Liveness Stall Rule for Silent Seizure Detection
-- **Status**: Completed
-- **Learnings & Context**: evaluate_liveness_stall uses frontier_state.yml mtime + active node existence as a two-factor liveness check. Re-alert suppression via last_alerted_at prevents flooding. 3 tests cover all Healer falsification criteria.
-- **Feedforward Invariants**:
-  - `Two-factor liveness (signal freshness + expected-progress indicator) eliminates both false positives and false negatives.`
-
 ## Current Active Path
 None
 
 ## Current Active Node
-None
+**Node 1353: Activity 1353: Reflect - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures**
