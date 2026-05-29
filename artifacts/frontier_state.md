@@ -4085,8 +4085,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Plan/Impl - Support Ticket Tracking Implementation
+- **Status**: Completed
+- **Learnings & Context**: Implemented the full-cycle ticket tracking API. Provided get_ticket_status and list_support_tickets, adding support status tracking subcommand mapped to phase logic. CLI now properly helps.
+- **Feedforward Invariants**:
+  - `Closing comments from agents contain remediation steps that support status fetches.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1374: Discovery 1374: Plan - Full-Cycle External Support Ticket Status Tracking**
+None
