@@ -4085,8 +4085,15 @@
 - **Feedforward Invariants**:
   - `[x] All deliverables for Path 1372 verified and closed`
 
+## Node 1071: Discovery 1071: Plan - Evaluate child workspace inheritance of parent gates
+- **Status**: Completed
+- **Learnings & Context**: Formulated design specification WHAT-1071 and registered it in Meta-System manifest. Verified that sovereign child workspaces bypass parent gates safely during local execution.
+- **Feedforward Invariants**:
+  - `[x] WHAT-1071 child workspace gate inheritance spec formulated`
+  - `[x] All local unit tests pass green`
+
 ## Current Active Path
-None
+**Path 985: Operate: Enforce Workspace Isolation Boundaries**
 
 ## Current Active Node
 None
