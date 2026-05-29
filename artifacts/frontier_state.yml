@@ -1,5 +1,6 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 1335: Activity 1335: Extract AGENT.md from GEMINI.md for
+  Cross-Platform Agent Support'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4142,14 +4143,8 @@ nodes:
     .env file when the OS DBus keyring is unavailable.
   invariants:
   - WIP-N=1
-- name: 'Node 1332: Activity 1332: Codify Support Line Discoverability and CLI'
+- name: 'Node 1335: Activity 1335: Extract AGENT.md from GEMINI.md for Cross-Platform
+    Agent Support'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Codify Support Line Discoverability and CLI
-  status: Completed
-  learnings: "Discoverability requires explicit wiring into GEMINI.md Sense phase,\
-    \ protocol doc, and CLI tooling \u2014 all three layers needed."
-  invariants:
-  - Support infrastructure must be wired at the GEMINI.md level for automatic Agent
-    discovery.
