@@ -4198,3 +4198,8 @@ nodes:
     to use word boundaries and ignore .venv.
   invariants:
   - N/A
+- name: 'Node 1034: Discovery 1034: Probe 635: Align'
+  status: Completed
+  learnings: Closed as duplicate of 635.
+  invariants:
+  - none

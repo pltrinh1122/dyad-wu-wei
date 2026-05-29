@@ -4130,6 +4130,12 @@
 - **Feedforward Invariants**:
   - `N/A`
 
+## Node 1034: Discovery 1034: Probe 635: Align
+- **Status**: Completed
+- **Learnings & Context**: Closed as duplicate of 635.
+- **Feedforward Invariants**:
+  - `none`
+
 ## Current Active Path
 **Path 634: Path: Refactor frontier_state for concurrent agent awareness**
 
