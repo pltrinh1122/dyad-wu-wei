@@ -4079,8 +4079,32 @@
 - **Feedforward Invariants**:
   - `WIP-N=1`
 
+## Node 1323: Path 1323: Domain Dao Onboarding Protocol for External Projects
+- **Status**: Backlog
+- **Learnings & Context**: Enable the DZ-CIL engine to govern development of external software products by establishing the Domain Dao Digest infrastructure: digest format, registry, support line, and workstation provisioning
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1324: Discovery 1324: Harmonize - Domain Dao Onboarding Protocol for External Projects
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1325: Discovery 1325: Plan - Domain Dao Onboarding Protocol for External Projects
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Domain Dao Onboarding Protocol for External Projects.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1326: Activity 1326: Reflect - Domain Dao Onboarding Protocol for External Projects
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Domain Dao Onboarding Protocol for External Projects.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 None
 
 ## Current Active Node
-None
+**Node 1324: Discovery 1324: Harmonize - Domain Dao Onboarding Protocol for External Projects**

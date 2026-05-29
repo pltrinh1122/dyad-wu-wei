@@ -1,5 +1,6 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 1324: Discovery 1324: Harmonize - Domain Dao Onboarding
+  Protocol for External Projects'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4142,3 +4143,26 @@ nodes:
     .env file when the OS DBus keyring is unavailable.
   invariants:
   - WIP-N=1
+- name: 'Node 1323: Path 1323: Domain Dao Onboarding Protocol for External Projects'
+  status: Backlog
+  learnings: 'Enable the DZ-CIL engine to govern development of external software
+    products by establishing the Domain Dao Digest infrastructure: digest format,
+    registry, support line, and workstation provisioning'
+  invariants: []
+- name: 'Node 1324: Discovery 1324: Harmonize - Domain Dao Onboarding Protocol for
+    External Projects'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1325: Discovery 1325: Plan - Domain Dao Onboarding Protocol for External
+    Projects'
+  status: Backlog
+  learnings: Technical design and proposed changes for Domain Dao Onboarding Protocol
+    for External Projects.
+  invariants: []
+- name: 'Node 1326: Activity 1326: Reflect - Domain Dao Onboarding Protocol for External
+    Projects'
+  status: Backlog
+  learnings: Final reflection and path closure for Domain Dao Onboarding Protocol
+    for External Projects.
+  invariants: []
