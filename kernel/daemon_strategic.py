@@ -324,16 +324,23 @@ def find_parent_path_id(node_id: str) -> str | None:
         
     try:
         path_items = github_client.list_issues_by_label("path")
-        for item in path_items:
-            num = str(item.get("number"))
+    except Exception as e:
+        print(f"Warning: Failed to fetch path issues: {e}")
+        return None
+
+    for item in path_items:
+        num = str(item.get("number"))
+        try:
             details = github_client.get_issue_details(num)
             body = details.get("body", "")
             
             pattern = re.compile(r"-\s+\[\s*x?\s*\]\s+Node\s+" + re.escape(str(node_id)) + r"\b", re.IGNORECASE)
             if pattern.search(body):
                 return num
-    except Exception as e:
-        print(f"Warning: Failed to find parent path for node {node_id} on GitHub: {e}")
+        except Exception as e:
+            print(f"Warning: Failed to fetch issue details for path node {num}: {e}")
+            continue
+            
     return None
 
 from drivers.markdown_parser import parse_md_table

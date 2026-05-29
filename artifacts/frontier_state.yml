@@ -1970,9 +1970,8 @@ nodes:
   - '[x] kb/HOW-0000-manifest.md is updated'
 - name: 'Node 637: Activity 637: Reflect - Path: Refactor frontier_state for concurrent
     agent awareness'
-  status: Backlog
-  learnings: 'Final reflection and path closure for Path: Refactor frontier_state
-    for concurrent agent awareness.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Probe 628: Plan - Path: Implement Dynamic Agent Identity Resolution'
   status: Completed
@@ -4215,14 +4214,11 @@ nodes:
   learnings: Implemented the active_agents matrix for concurrent SPAO execution.
   invariants:
   - '[] None'
-- name: 'Node 1399: Activity 1399: Reflect - Synthesize Epistemic Retrospective retro-1398.md'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity 1399: Reflect - Synthesize Epistemic Retrospective retro-1398.md'
+- name: 'Activity 637: Reflect - Path: Refactor frontier_state for concurrent agent
+    awareness'
   status: Completed
-  learnings: Synthesized epistemic learning into HOW-0005 to mandate cross-checking
-    semantic_ledger.yml before generative content creation to prevent lexical guard
-    failures.
+  learnings: Path 634 (Refactor frontier_state for concurrent agent awareness) is
+    fully implemented. The active_agents matrix is functional. Additionally patched
+    daemon_strategic.py to handle missing issues gracefully during parent path resolution.
   invariants:
   - '[] None'
