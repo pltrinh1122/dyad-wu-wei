@@ -1,6 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 1352: Discovery 1352: Plan - Implement Audit-Daemon Liveness
-  and Heartbeat Detection for Silent Seizures'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4175,3 +4174,11 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: Implement Liveness Stall Rule for Silent Seizure Detection
+  status: Completed
+  learnings: evaluate_liveness_stall uses frontier_state.yml mtime + active node existence
+    as a two-factor liveness check. Re-alert suppression via last_alerted_at prevents
+    flooding. 3 tests cover all Healer falsification criteria.
+  invariants:
+  - Two-factor liveness (signal freshness + expected-progress indicator) eliminates
+    both false positives and false negatives.

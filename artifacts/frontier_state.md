@@ -4109,8 +4109,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Implement Liveness Stall Rule for Silent Seizure Detection
+- **Status**: Completed
+- **Learnings & Context**: evaluate_liveness_stall uses frontier_state.yml mtime + active node existence as a two-factor liveness check. Re-alert suppression via last_alerted_at prevents flooding. 3 tests cover all Healer falsification criteria.
+- **Feedforward Invariants**:
+  - `Two-factor liveness (signal freshness + expected-progress indicator) eliminates both false positives and false negatives.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1352: Discovery 1352: Plan - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures**
+None
