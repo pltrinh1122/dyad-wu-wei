@@ -4079,20 +4079,32 @@
 - **Feedforward Invariants**:
   - `WIP-N=1`
 
-## Node 1347: Activity 1347: Fix NBA Scorer Recommending Completed Paths
+## Node 1350: Path 1350: Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
+- **Status**: Backlog
+- **Learnings & Context**: Implement heartbeat/liveness detection in the audit daemon to detect silent seizures — cognitive-loop freezes where telemetry stops advancing and no failing tests are produced. Currently the only seizure detector (evaluate_seizure_detection) fires only on a rising edge; silent freezes go undetected. Source: Intake #1233 (Healer).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1351: Discovery 1351: Harmonize - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Fix NBA Scorer Recommending Completed Paths
-- **Status**: Completed
-- **Learnings & Context**: The frontier_state.yml never updates path-level status from Backlog to Completed. GitHub issue state is the only reliable source of truth for path completion. The NBA scorer must cross-reference open issues to filter stale recommendations.
+## Node 1352: Discovery 1352: Plan - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures.
 - **Feedforward Invariants**:
-  - `NBA recommendations must only include genuinely open paths by filtering against GitHub issue state.`
+  - `[ ]` None
+
+## Node 1353: Activity 1353: Reflect - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures.
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Current Active Path
 None
 
 ## Current Active Node
-None
+**Node 1351: Discovery 1351: Harmonize - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures**
