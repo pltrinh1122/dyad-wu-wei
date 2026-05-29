@@ -4079,23 +4079,14 @@
 - **Feedforward Invariants**:
   - `WIP-N=1`
 
-## Node 1329: Activity 1329: Implement DZ-CIL External Project Support Protocol
+## Node 1332: Activity 1332: Codify Support Line Discoverability and CLI
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Implement DZ-CIL External Project Support Protocol
-- **Status**: Completed
-- **Learnings & Context**: IP isolation is a first-class architectural constraint — domain content must never leak into the meta-engine. The engine must remain project-agnostic.
-- **Feedforward Invariants**:
-  - `DZ-CIL MUST NOT contain any project-specific rules`
-  - `identifiers`
-  - `architecture decisions`
-  - `or business constraints.`
-
 ## Current Active Path
 None
 
 ## Current Active Node
-None
+**Node 1332: Activity 1332: Codify Support Line Discoverability and CLI**
