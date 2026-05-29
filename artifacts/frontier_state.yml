@@ -1,4 +1,4 @@
-current_active_path: 'Path 985: Operate: Enforce Workspace Isolation Boundaries'
+current_active_path: null
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -2385,24 +2385,29 @@ nodes:
   - '[x] Backlog list command groups by active Strategic Goals and displays DAG dependencies
     inline.'
 - name: 'Node 916: Path 916: Implement status report progress visualization'
-  status: Backlog
+  status: Completed
   learnings: Enhance bin/status to display visual progress bars and tactical completion
     ratios mapped to active Strategic Goals.
   invariants: []
 - name: 'Node 917: Discovery 917: Harmonize - Implement status report progress visualization'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Implement status
-    report progress visualization.
-  invariants: []
+  status: Completed
+  learnings: Designed status report progress visualization and documented WHY-0916
+    in the Meta-System Runtime Manifest.
+  invariants:
+  - WHY-0916 is present and correct; manifest is updated.
 - name: 'Node 918: Discovery 918: Plan - Implement status report progress visualization'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
+  status: Completed
+  learnings: Documented WHAT-0916 status progress bars and goal ratios specification
+    in the Meta-System Runtime Manifest.
+  invariants:
+  - WHAT-0916 exists and is correct; HOW-0000-manifest is updated.
 - name: 'Node 919: Activity 919: Reflect - Implement status report progress visualization'
-  status: Backlog
-  learnings: Final reflection and path closure for Implement status report progress
-    visualization.
-  invariants: []
+  status: Completed
+  learnings: Successfully closed Path 916 by verifying all design specs (WHY-0916),
+    implementation functions (print_goal_progress_report), and test suites are complete
+    and passing.
+  invariants:
+  - '[x] All deliverables for Path 916 verified and closed'
 - name: 'Node 920: Path 920: Implement DZ-CIL Workspace for Operator Digital Needs'
   status: Backlog
   learnings: Build a local-first digital companion application enabling the Operator
@@ -4008,18 +4013,6 @@ nodes:
   learnings: 'Final reflection on Path 1022: Refined DZ-CIL Intent Understanding'
   invariants:
   - N/A
-- name: 'Discovery 917: Harmonize - Implement status report progress visualization'
-  status: Completed
-  learnings: Designed status report progress visualization and documented WHY-0916
-    in the Meta-System Runtime Manifest.
-  invariants:
-  - WHY-0916 is present and correct; manifest is updated.
-- name: 'Discovery 918: Plan - Implement status report progress visualization'
-  status: Completed
-  learnings: Documented WHAT-0916 status progress bars and goal ratios specification
-    in the Meta-System Runtime Manifest.
-  invariants:
-  - WHAT-0916 exists and is correct; HOW-0000-manifest is updated.
 - name: 'Node 1287: Path 1287: Mock venv provisioning in test_init_workspace to restore
     offline CI speed'
   status: Backlog
