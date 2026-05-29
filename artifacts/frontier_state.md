@@ -4085,8 +4085,17 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Implement DZ-CIL External Project Support Protocol
+- **Status**: Completed
+- **Learnings & Context**: IP isolation is a first-class architectural constraint — domain content must never leak into the meta-engine. The engine must remain project-agnostic.
+- **Feedforward Invariants**:
+  - `DZ-CIL MUST NOT contain any project-specific rules`
+  - `identifiers`
+  - `architecture decisions`
+  - `or business constraints.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1329: Activity 1329: Implement DZ-CIL External Project Support Protocol**
+None
