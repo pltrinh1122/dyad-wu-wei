@@ -4215,3 +4215,14 @@ nodes:
   learnings: Implemented the active_agents matrix for concurrent SPAO execution.
   invariants:
   - '[] None'
+- name: 'Node 1399: Activity 1399: Reflect - Synthesize Epistemic Retrospective retro-1398.md'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1399: Reflect - Synthesize Epistemic Retrospective retro-1398.md'
+  status: Completed
+  learnings: Synthesized epistemic learning into HOW-0005 to mandate cross-checking
+    semantic_ledger.yml before generative content creation to prevent lexical guard
+    failures.
+  invariants:
+  - '[] None'

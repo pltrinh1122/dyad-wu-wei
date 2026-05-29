@@ -4148,6 +4148,18 @@
 - **Feedforward Invariants**:
   - `[] None`
 
+## Node 1399: Activity 1399: Reflect - Synthesize Epistemic Retrospective retro-1398.md
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1399: Reflect - Synthesize Epistemic Retrospective retro-1398.md
+- **Status**: Completed
+- **Learnings & Context**: Synthesized epistemic learning into HOW-0005 to mandate cross-checking semantic_ledger.yml before generative content creation to prevent lexical guard failures.
+- **Feedforward Invariants**:
+  - `[] None`
+
 ## Active Agents Matrix
 * **agent-default**:
   - Current Active Path: `Path 634: Path: Refactor frontier_state for concurrent agent awareness`

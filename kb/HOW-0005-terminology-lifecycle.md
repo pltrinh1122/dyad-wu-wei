@@ -24,6 +24,10 @@ The formal lifecycle execution is:
    - The Operator and Agent must continue to use the `deprecated` term `Y` when executing system commands to ensure the system flows without crashing. We ride the transition effortlessly, without fighting the engine.
    - Meanwhile, the `audit_daemon.py` passively flags the deprecated term, quietly accruing gravitational mass in the `prompt_backlog.yml`.
 
+2.5. **The Generative Invariant**:
+   - During *any* content generation or restructuring (e.g., updating a `WHAT-` or `HOW-` spec), the Agent must proactively cross-check `kb/semantic_ledger.yml` to ensure that previously deprecated terms are not inadvertently reintroduced. Lexical Guard failures during testing indicate a failure to map generated text to the superseded ontology.
+
+
 3. **The Gravitational Pull (Refinement)**: 
    - When the telemetry mass naturally elevates a Refinement Node to the top of the NBA queue, the Agent pulls it.
    - The Agent performs the deep structural purge, officially bridging the engine to the new terminology.
