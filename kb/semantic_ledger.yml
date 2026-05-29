@@ -31,6 +31,21 @@ proposed:
     notes: >
       Currently conflated with discovery_exploration under the single term 'discovery'.
       Same interim heuristic applies. Same Harmonization node will resolve both.
+  align:
+    intent: >
+      A harmonization action. Currently conflated with general 'align'.
+    status: known_debt
+    debt_node: 1400
+  dao:
+    intent: >
+      To be replaced with wu-wei across the corpus.
+    status: known_debt
+    debt_node: 1400
+  ziran:
+    intent: >
+      To be replaced with friction_triage across the corpus.
+    status: known_debt
+    debt_node: 1400
     
 terms:
   epic:
@@ -57,9 +72,7 @@ terms:
   probes:
     state: deprecated
     superseded_by: discoveries
-  align:
-    state: deprecated
-    superseded_by: harmonize
+
   optimize:
     state: deprecated
     superseded_by: refine
@@ -75,9 +88,4 @@ terms:
   "north-star":
     state: deprecated
     superseded_by: telos
-  dao:
-    state: deprecated
-    superseded_by: wu-wei
-  ziran:
-    state: deprecated
-    superseded_by: friction_triage
+
