@@ -25,6 +25,10 @@ rules:
   type: seizure_detection
   threshold: 3
   alert_level: FAILURE
+- id: liveness_stall_detector
+  type: liveness_stall
+  stall_threshold_minutes: 15
+  alert_level: FAILURE
 - id: agent-md-changed
   type: file_modified
   file: AGENT.md

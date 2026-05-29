@@ -197,3 +197,83 @@ def test_evaluate_seizure_detection():
         assert new_state["last_fail_count"] == 3
         mock_inject.assert_called_once()
         assert "SEIZURE_DETECTED" in mock_inject.call_args[0][0]
+
+def test_liveness_stall_fires_when_active_and_stale():
+    """Positive case: active node exists AND frontier_state.yml is stale -> fires."""
+    import time
+    from drivers.audit_daemon import evaluate_liveness_stall
+    
+    rule = {
+        "id": "liveness_stall_detector",
+        "type": "liveness_stall",
+        "stall_threshold_minutes": 15,
+        "alert_level": "FAILURE"
+    }
+    state = {}
+    
+    frontier_md_content = "## Current Active Node\n*Node 42: Some Active Work*\n## Next"
+    # mtime 20 minutes ago
+    stale_mtime = time.time() - (20 * 60)
+    
+    with patch("pathlib.Path.exists", return_value=True), \
+         patch("builtins.open", mock_open(read_data=frontier_md_content)), \
+         patch("os.path.getmtime", return_value=stale_mtime), \
+         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+        
+        triggered, new_state = evaluate_liveness_stall(rule, state.copy())
+        
+        assert triggered is True
+        assert "last_alerted_at" in new_state
+        mock_inject.assert_called_once()
+        assert "LIVENESS_STALL" in mock_inject.call_args[0][0]
+        assert "Node 42" in mock_inject.call_args[0][0]
+
+def test_liveness_stall_silent_when_no_active_node():
+    """Negative control: no active node = legitimately idle -> does NOT fire."""
+    from drivers.audit_daemon import evaluate_liveness_stall
+    
+    rule = {
+        "id": "liveness_stall_detector",
+        "type": "liveness_stall",
+        "stall_threshold_minutes": 15,
+        "alert_level": "FAILURE"
+    }
+    state = {}
+    
+    frontier_md_content = "## Current Active Node\nNone\n## Next"
+    
+    with patch("pathlib.Path.exists", return_value=True), \
+         patch("builtins.open", mock_open(read_data=frontier_md_content)), \
+         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+        
+        triggered, new_state = evaluate_liveness_stall(rule, state.copy())
+        
+        assert triggered is False
+        mock_inject.assert_not_called()
+
+def test_liveness_stall_silent_when_recent_progress():
+    """Negative control: active node exists but frontier was recently modified -> no stall."""
+    import time
+    from drivers.audit_daemon import evaluate_liveness_stall
+    
+    rule = {
+        "id": "liveness_stall_detector",
+        "type": "liveness_stall",
+        "stall_threshold_minutes": 15,
+        "alert_level": "FAILURE"
+    }
+    state = {}
+    
+    frontier_md_content = "## Current Active Node\n*Node 42: Some Active Work*\n## Next"
+    # mtime 2 minutes ago (well within threshold)
+    recent_mtime = time.time() - (2 * 60)
+    
+    with patch("pathlib.Path.exists", return_value=True), \
+         patch("builtins.open", mock_open(read_data=frontier_md_content)), \
+         patch("os.path.getmtime", return_value=recent_mtime), \
+         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+        
+        triggered, new_state = evaluate_liveness_stall(rule, state.copy())
+        
+        assert triggered is False
+        mock_inject.assert_not_called()

@@ -4079,38 +4079,38 @@
 - **Feedforward Invariants**:
   - `WIP-N=1`
 
-## Node 1350: Path 1350: Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
+## Node 1355: Path 1355: Suppress Iatrogenic-Injection Loops in Agy Harness
 - **Status**: Backlog
-- **Learnings & Context**: Implement heartbeat/liveness detection in the audit daemon to detect silent seizures — cognitive-loop freezes where telemetry stops advancing and no failing tests are produced. Currently the only seizure detector (evaluate_seizure_detection) fires only on a rising edge; silent freezes go undetected. Source: Intake #1233 (Healer).
+- **Learnings & Context**: Prevent schedule/kill/re-schedule cycling seizures caused by harness re-injection of EPHEMERAL_MESSAGE meta-imperatives. The patient obeys the meta-imperative, re-evaluates tool selection, cancels prior action, reschedules, and loops (~5s per iteration, zero durable change). Root cause: harness bash_command_reminder injects a meta-imperative that contradicts the Dao's execution flow. Source: Intake #1307 (Healer, case-03).
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1351: Discovery 1351: Harmonize - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
+## Node 1356: Discovery 1356: Harmonize - Suppress Iatrogenic-Injection Loops in Agy Harness
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Suppress Iatrogenic-Injection Loops in Agy Harness.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1357: Discovery 1357: Plan - Suppress Iatrogenic-Injection Loops in Agy Harness
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Suppress Iatrogenic-Injection Loops in Agy Harness.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1358: Activity 1358: Reflect - Suppress Iatrogenic-Injection Loops in Agy Harness
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Suppress Iatrogenic-Injection Loops in Agy Harness.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1352: Discovery 1352: Plan - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1352: Discovery 1352: Plan - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1353: Activity 1353: Reflect - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Harmonize - Silent Seizure Detection Architecture
-- **Status**: Completed
-- **Learnings & Context**: Silent seizures are undetectable by existing rules (seizure_detection counts test-fail files, stale_active_node checks pointer consistency). The fix is a new liveness_stall rule using frontier_state.yml mtime as the monotonic progress signal, firing only when an active node exists and stall exceeds 15 minutes.
-- **Feedforward Invariants**:
-  - `Liveness is a fundamentally different concern from state consistency — separate rule types prevent conflation.`
-
 ## Current Active Path
 None
 
 ## Current Active Node
-None
+**Node 1352: Discovery 1352: Plan - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures**
