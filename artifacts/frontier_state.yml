@@ -1,5 +1,6 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 1351: Discovery 1351: Harmonize - Implement Audit-Daemon
+  Liveness and Heartbeat Detection for Silent Seizures'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4142,15 +4143,29 @@ nodes:
     .env file when the OS DBus keyring is unavailable.
   invariants:
   - WIP-N=1
-- name: 'Node 1347: Activity 1347: Fix NBA Scorer Recommending Completed Paths'
+- name: 'Node 1350: Path 1350: Implement Audit-Daemon Liveness and Heartbeat Detection
+    for Silent Seizures'
+  status: Backlog
+  learnings: "Implement heartbeat/liveness detection in the audit daemon to detect\
+    \ silent seizures \u2014 cognitive-loop freezes where telemetry stops advancing\
+    \ and no failing tests are produced. Currently the only seizure detector (evaluate_seizure_detection)\
+    \ fires only on a rising edge; silent freezes go undetected. Source: Intake #1233\
+    \ (Healer)."
+  invariants: []
+- name: 'Node 1351: Discovery 1351: Harmonize - Implement Audit-Daemon Liveness and
+    Heartbeat Detection for Silent Seizures'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Fix NBA Scorer Recommending Completed Paths
-  status: Completed
-  learnings: The frontier_state.yml never updates path-level status from Backlog to
-    Completed. GitHub issue state is the only reliable source of truth for path completion.
-    The NBA scorer must cross-reference open issues to filter stale recommendations.
-  invariants:
-  - NBA recommendations must only include genuinely open paths by filtering against
-    GitHub issue state.
+- name: 'Node 1352: Discovery 1352: Plan - Implement Audit-Daemon Liveness and Heartbeat
+    Detection for Silent Seizures'
+  status: Backlog
+  learnings: Technical design and proposed changes for Implement Audit-Daemon Liveness
+    and Heartbeat Detection for Silent Seizures.
+  invariants: []
+- name: 'Node 1353: Activity 1353: Reflect - Implement Audit-Daemon Liveness and Heartbeat
+    Detection for Silent Seizures'
+  status: Backlog
+  learnings: Final reflection and path closure for Implement Audit-Daemon Liveness
+    and Heartbeat Detection for Silent Seizures.
+  invariants: []
