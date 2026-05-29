@@ -4103,8 +4103,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Harmonize - Full-Cycle Support Ticket Tracking Design
+- **Status**: Completed
+- **Learnings & Context**: Support client is fire-and-forget. WHY-1372 defines status subcommand with label-to-phase mapping, list fix, help improvements, and structured remediation response format.
+- **Feedforward Invariants**:
+  - `GitHub labels already encode lifecycle state — map them rather than adding new infrastructure.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1373: Discovery 1373: Harmonize - Full-Cycle External Support Ticket Status Tracking**
+None
