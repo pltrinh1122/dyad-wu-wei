@@ -1,9 +1,12 @@
 """
-Support Client — Stateless skill for filing external project support tickets.
+Support Client — Stateless skill for filing and tracking external project support tickets.
 
 Files GitHub issues on the DZ-CIL repository using the support-external template.
 This skill is invoked by bin/support and is designed for use from external project
 workstations with read-only DZ-CIL clones.
+
+Full lifecycle: file → status → list → remediation tracking.
+Per WHY-1372: Full-Cycle External Support Ticket Status Tracking.
 """
 import argparse
 import subprocess
@@ -22,6 +25,29 @@ VALID_TYPES = {
 # The DZ-CIL repo where support tickets are filed.
 # This is intentionally hardcoded — support tickets always target the engine repo.
 DZ_CIL_REPO = "pltrinh1122/dz-cil"
+
+
+def _labels_to_phase(labels, state):
+    """Map GitHub issue labels + state to a human-readable lifecycle phase.
+
+    Per WHY-1372 §2.1:
+    - support, no backlog       → 📥 Received
+    - status:triage             → 🔍 Under Review
+    - backlog                   → 📋 Accepted / Queued
+    - status: in-progress       → 🔧 In Progress
+    - Closed                    → ✅ Resolved
+    """
+    label_names = {l.lower() for l in labels}
+
+    if state == "CLOSED":
+        return "✅ Resolved"
+    if "status: in-progress" in label_names or "status:in-progress" in label_names:
+        return "🔧 In Progress"
+    if "backlog" in label_names:
+        return "📋 Accepted / Queued"
+    if "status:triage" in label_names or "triage" in label_names:
+        return "🔍 Under Review"
+    return "📥 Received"
 
 
 def file_support_ticket(
@@ -87,18 +113,103 @@ def file_support_ticket(
     return url
 
 
+def get_ticket_status(ticket_number: int) -> dict:
+    """
+    Query the full lifecycle status of a support ticket.
+
+    Args:
+        ticket_number: The GitHub issue number.
+
+    Returns:
+        Dict with keys: number, title, state, phase, created_at, updated_at,
+        labels, comments, url.
+    """
+    cmd = [
+        "gh", "issue", "view", str(ticket_number),
+        "--repo", DZ_CIL_REPO,
+        "--json", "number,title,state,labels,createdAt,updatedAt,comments,url",
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    data = json.loads(result.stdout)
+
+    labels = [l["name"] for l in data.get("labels", []) if isinstance(l, dict)]
+    state = data.get("state", "UNKNOWN")
+
+    return {
+        "number": data.get("number"),
+        "title": data.get("title", ""),
+        "state": state,
+        "phase": _labels_to_phase(labels, state),
+        "labels": labels,
+        "created_at": data.get("createdAt", ""),
+        "updated_at": data.get("updatedAt", ""),
+        "comments": data.get("comments", []),
+        "url": data.get("url", ""),
+    }
+
+
+def list_support_tickets(project_filter: str = "", state: str = "open") -> list:
+    """
+    List support tickets, optionally filtered by project.
+
+    Args:
+        project_filter: Filter by project identifier (e.g., 'fl').
+        state: Issue state filter ('open', 'closed', 'all').
+
+    Returns:
+        List of ticket dicts with number, title, phase, created_at.
+    """
+    cmd = [
+        "gh", "issue", "list",
+        "--repo", DZ_CIL_REPO,
+        "--label", "support",
+        "--state", state,
+        "--json", "number,title,labels,createdAt,state",
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    issues = json.loads(result.stdout or "[]")
+
+    if project_filter:
+        issues = [i for i in issues if f"[{project_filter}]" in i.get("title", "")]
+
+    tickets = []
+    for issue in issues:
+        labels = [l["name"] for l in issue.get("labels", []) if isinstance(l, dict)]
+        issue_state = issue.get("state", "UNKNOWN")
+        tickets.append({
+            "number": issue["number"],
+            "title": issue["title"],
+            "phase": _labels_to_phase(labels, issue_state),
+            "created_at": issue.get("createdAt", ""),
+        })
+    return tickets
+
+
 def main():
     parser = argparse.ArgumentParser(
-        description="DZ-CIL External Project Support Line",
+        description="DZ-CIL External Project Support Line — File, track, and query support tickets.",
         prog="bin/support",
+        epilog="""Examples:
+  %(prog)s file --type bug --project fl "NBA scorer recommends completed paths"
+  %(prog)s file --type amendment --project fl --blocking --rules INV-024 "Rule INV-024 conflicts with Flutter conventions"
+  %(prog)s status 1233
+  %(prog)s list
+  %(prog)s list --project fl --state all
+  %(prog)s --help
+""",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    subparsers = parser.add_subparsers(dest="command", required=True)
+    subparsers = parser.add_subparsers(dest="command", required=True, help="Available commands")
 
     # file subcommand
-    file_parser = subparsers.add_parser("file", help="File a support ticket")
+    file_parser = subparsers.add_parser(
+        "file",
+        help="File a new support ticket on DZ-CIL",
+        description="Create a support ticket on the DZ-CIL repository. The ticket will be labeled 'support' and 'external-project' for tracking.",
+    )
     file_parser.add_argument(
         "--type", required=True, choices=VALID_TYPES.keys(),
-        help="Ticket type",
+        help="Ticket type: amendment (rule fix), escalation (blocking question), tooling (new skill), retro (session learnings), bug (toolchain issue)",
     )
     file_parser.add_argument(
         "--project", required=True,
@@ -106,7 +217,7 @@ def main():
     )
     file_parser.add_argument(
         "--blocking", action="store_true", default=False,
-        help="Flag this as blocking current work",
+        help="Flag this as blocking current work (escalates priority)",
     )
     file_parser.add_argument(
         "--rules", default="",
@@ -120,11 +231,30 @@ def main():
         "description", help="Support request description",
     )
 
+    # status subcommand
+    status_parser = subparsers.add_parser(
+        "status",
+        help="Check the status of a support ticket",
+        description="Query the full lifecycle status of a specific support ticket by issue number.",
+    )
+    status_parser.add_argument(
+        "ticket_number", type=int,
+        help="GitHub issue number of the support ticket",
+    )
+
     # list subcommand
-    list_parser = subparsers.add_parser("list", help="List open support tickets")
+    list_parser = subparsers.add_parser(
+        "list",
+        help="List support tickets",
+        description="List all support tickets, optionally filtered by project and state.",
+    )
     list_parser.add_argument(
         "--project", default="",
-        help="Filter by project identifier",
+        help="Filter by project identifier (e.g., 'fl')",
+    )
+    list_parser.add_argument(
+        "--state", default="open", choices=["open", "closed", "all"],
+        help="Filter by ticket state (default: open)",
     )
 
     args = parser.parse_args()
@@ -140,28 +270,54 @@ def main():
         )
         print(f"✅ Support ticket filed: {url}")
 
-    elif args.command == "list":
-        label_filter = "support"
-        cmd = [
-            "gh", "issue", "list",
-            "--repo", DZ_CIL_REPO,
-            "--label", label_filter,
-            "--state", "open",
-            "--json", "number,title,labels,createdAt",
-        ]
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        issues = json.loads(result.stdout or "[]")
+    elif args.command == "status":
+        ticket = get_ticket_status(args.ticket_number)
+        print(f"🎫 Support Ticket #{ticket['number']}")
+        print(f"   Title:   {ticket['title']}")
+        print(f"   Phase:   {ticket['phase']}")
+        print(f"   State:   {ticket['state']}")
+        print(f"   Created: {ticket['created_at']}")
+        print(f"   Updated: {ticket['updated_at']}")
+        print(f"   Labels:  {', '.join(ticket['labels'])}")
+        print(f"   URL:     {ticket['url']}")
 
-        if args.project:
-            issues = [i for i in issues if f"[{args.project}]" in i.get("title", "")]
+        comments = ticket.get("comments", [])
+        if comments:
+            print(f"\n📝 Comments ({len(comments)}):")
+            for c in comments:
+                author = c.get("author", {}).get("login", "unknown")
+                body = c.get("body", "").strip()
+                created = c.get("createdAt", "")
+                # Show first 200 chars of each comment
+                preview = body[:200] + ("..." if len(body) > 200 else "")
+                print(f"   [{created}] @{author}: {preview}")
 
-        if not issues:
-            print("📋 No open support tickets.")
+            # Check for remediation in closing comment
+            if ticket["state"] == "CLOSED" and comments:
+                last_comment = comments[-1].get("body", "")
+                if "## Remediation" in last_comment or "Pull Instructions" in last_comment:
+                    print("\n🔧 Remediation Instructions Found:")
+                    # Extract the remediation section
+                    for line in last_comment.split("\n"):
+                        line = line.strip()
+                        if line.startswith("- **") or line.startswith("**"):
+                            print(f"   {line}")
         else:
-            print(f"📋 Open Support Tickets ({len(issues)}):\n")
-            for issue in issues:
-                print(f"  #{issue['number']}: {issue['title']}")
-                print(f"    Created: {issue['createdAt']}")
+            print("\n📝 No comments yet.")
+
+    elif args.command == "list":
+        tickets = list_support_tickets(
+            project_filter=args.project,
+            state=args.state,
+        )
+
+        if not tickets:
+            print("📋 No support tickets found.")
+        else:
+            print(f"📋 Support Tickets ({len(tickets)}):\n")
+            for t in tickets:
+                print(f"  #{t['number']}: {t['title']}")
+                print(f"    Phase: {t['phase']} | Created: {t['created_at']}")
                 print()
 
 
