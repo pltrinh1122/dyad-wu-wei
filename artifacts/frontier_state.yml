@@ -1,6 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 1332: Activity 1332: Codify Support Line Discoverability
-  and CLI'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4147,3 +4146,10 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: Codify Support Line Discoverability and CLI
+  status: Completed
+  learnings: "Discoverability requires explicit wiring into GEMINI.md Sense phase,\
+    \ protocol doc, and CLI tooling \u2014 all three layers needed."
+  invariants:
+  - Support infrastructure must be wired at the GEMINI.md level for automatic Agent
+    discovery.

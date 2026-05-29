@@ -4085,8 +4085,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Codify Support Line Discoverability and CLI
+- **Status**: Completed
+- **Learnings & Context**: Discoverability requires explicit wiring into GEMINI.md Sense phase, protocol doc, and CLI tooling — all three layers needed.
+- **Feedforward Invariants**:
+  - `Support infrastructure must be wired at the GEMINI.md level for automatic Agent discovery.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1332: Activity 1332: Codify Support Line Discoverability and CLI**
+None
