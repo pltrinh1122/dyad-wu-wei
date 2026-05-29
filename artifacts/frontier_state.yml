@@ -1,6 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 1347: Activity 1347: Fix NBA Scorer Recommending Completed
-  Paths'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4147,3 +4146,11 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: Fix NBA Scorer Recommending Completed Paths
+  status: Completed
+  learnings: The frontier_state.yml never updates path-level status from Backlog to
+    Completed. GitHub issue state is the only reliable source of truth for path completion.
+    The NBA scorer must cross-reference open issues to filter stale recommendations.
+  invariants:
+  - NBA recommendations must only include genuinely open paths by filtering against
+    GitHub issue state.

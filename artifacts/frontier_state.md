@@ -4085,8 +4085,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Fix NBA Scorer Recommending Completed Paths
+- **Status**: Completed
+- **Learnings & Context**: The frontier_state.yml never updates path-level status from Backlog to Completed. GitHub issue state is the only reliable source of truth for path completion. The NBA scorer must cross-reference open issues to filter stale recommendations.
+- **Feedforward Invariants**:
+  - `NBA recommendations must only include genuinely open paths by filtering against GitHub issue state.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1347: Activity 1347: Fix NBA Scorer Recommending Completed Paths**
+None
