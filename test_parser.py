@@ -1,6 +1,6 @@
 import os
 import json
-from kernel.ziran_telemetry_parser import TelemetryParser
+from kernel.friction_triage_telemetry_parser import TelemetryParser
 
 # Create a mock telemetry file
 mock_file = "/tmp/mock_telemetry.jsonl"

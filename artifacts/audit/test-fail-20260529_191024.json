@@ -1,0 +1,13 @@
+{
+    "timestamp": "2026-05-29T19:10:24.434012+00:00",
+    "failures": [
+        {
+            "test_name": "ERROR collecting tests/test_friction_triage_auditor.py",
+            "file_path": "tests/test_friction_triage_auditor.py",
+            "line_number": 6,
+            "error_type": "ImportError",
+            "error_message": "in <module>",
+            "traceback": "ImportError while importing test module '/mnt/shared_data/git_repos/dz-cil/.worktrees/node/1403-reconcile-deprecated-terms/tests/test_friction_triage_auditor.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_friction_triage_auditor.py:6: in <module>\n    from kernel import ziran_auditor\nE   ImportError: cannot import name 'ziran_auditor' from 'kernel' (/mnt/shared_data/git_repos/dz-cil/.worktrees/node/1403-reconcile-deprecated-terms/kernel/__init__.py)"
+        }
+    ]
+}

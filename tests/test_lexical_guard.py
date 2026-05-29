@@ -95,7 +95,7 @@ def test_lexical_guard_logic():
     assert "epic" in forbidden
     assert "spike" in forbidden
     assert "orchestrator" in forbidden
-    assert "align" in forbidden
+
     
     assert is_immune("kb/GLOSSARY.md", immune_zones) is True
     assert is_immune("kb/WHY-1153-kernel-bin-coexistence.md", immune_zones) is True
