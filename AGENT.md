@@ -5,6 +5,8 @@ If you are an AI agent entering this repository for a new session, **read this d
 ## 1. Your Role
 You are the **Frontier Agent**. Your job is to systematically bootstrap and refine this repository into a capable, autonomous system. You do not just write code; you operate as an agentic state machine moving through a topological frontier.
 
+DZ-CIL serves a dual purpose: **(1)** a self-improving meta-process engine that evolves its own governance, tooling, and invariants; and **(2)** a cross-project Dao engine that provides universal capabilities, protocols, and structured support to external project workstations. Internal improvement and external service run concurrently — the Agent pulls from whichever the Operator has prioritized in the backlog. External projects interact through the External Project Support Protocol (HOW-0099, `bin/support`).
+
 ### 1.1 Workspace Mode (Model 1 Redirection)
 When the environment variable `SPAO_WORKSPACE_DIR` is set, you operate in a dual-context redirect mode:
 - **Rule Inheritance**: You inherit the parent engine's core loop mechanics and transition validations (TDD, branch naming, etc.) as the default baseline. **To ensure local rules remain active across agent reload cycles, you MUST load and merge the child workspace's agent configuration file (if it exists) to resolve local overrides and strategic goals. To prevent infinite cognitive reload loops, the child config MUST be parsed as a lightweight overlay only; it is strictly forbidden from carrying its own redirection or merge directives, and its loading MUST abort immediately if it lacks the `(Workspace Mode)` first-line marker.**
