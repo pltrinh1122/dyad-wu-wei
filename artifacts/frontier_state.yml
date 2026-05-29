@@ -1,5 +1,6 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 1347: Activity 1347: Fix NBA Scorer Recommending Completed
+  Paths'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4142,16 +4143,7 @@ nodes:
     .env file when the OS DBus keyring is unavailable.
   invariants:
   - WIP-N=1
-- name: 'Node 1344: Activity 1344: Add SG-0006 External Project Service and Expand
-    System Identity'
+- name: 'Node 1347: Activity 1347: Fix NBA Scorer Recommending Completed Paths'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Add SG-0006 and Expand System Identity
-  status: Completed
-  learnings: 'DZ-CIL''s Telos expanded from self-referential meta-engine to dual-purpose:
-    self-improving + cross-project Dao engine. SG-0006 governs external service with
-    IP isolation and 2-cycle SLA.'
-  invariants:
-  - Every new Strategic Goal requires a corresponding ownership entry in WHAT-0062
-    before tests pass.
