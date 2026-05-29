@@ -95,7 +95,8 @@
             "probe_WHAT-0055-dag-meta-index-spec.md",
             "align_WHAT-0060-tactical-goals-sg-0001.md",
             "align_HOW-0006-decision-making-invariant.md",
-            "optimize_WHAT-0090-optimize-node-sync.md"
+            "optimize_WHAT-0090-optimize-node-sync.md",
+            "probe_WHAT-0636-concurrent-agent-awareness.md"
         ]
     },
     "backlog_hygiene_auditor": {}

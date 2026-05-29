@@ -1752,10 +1752,11 @@
   - `WHY-0635 exists and is correct.`
 
 ## Node 636: Probe 636: Plan - Path: Refactor frontier_state for concurrent agent awareness
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: Refactor frontier_state for concurrent agent awareness.
+- **Status**: Completed
+- **Learnings & Context**: Formulated specification WHAT-0636 for concurrent multi-tenant agent state tracking.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] WHAT-0636 specification exists and is correct`
+  - `[x] kb/HOW-0000-manifest.md is updated`
 
 ## Node 637: Activity 637: Reflect - Path: Refactor frontier_state for concurrent agent awareness
 - **Status**: Backlog
@@ -4080,6 +4081,12 @@
 - **Feedforward Invariants**:
   - `[x] WHAT-1071 specifications are complete and verified`
   - `[x] Parent gate inheritance boundaries are secure`
+
+## Node 636: Node 636: Probe 636: Plan - Path: Refactor frontier_state for concurrent agent awareness
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Current Active Path
 **Path 634: Path: Refactor frontier_state for concurrent agent awareness**
