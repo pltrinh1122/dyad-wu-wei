@@ -158,7 +158,7 @@ non_terminals = taxonomy.get("non_terminal", ["path"])
 # Load frontier state
 state_data = agent_frontier.load_state(filepath)
 nodes = state_data.get("nodes", [])
-current_active_path_id = state_data.get("current_active_path")
+current_active_path_id = agent_frontier.extract_active_path_from_state(state_data)
 
 # Helper to clean titles for matching child nodes to their paths
 def clean_title(title: str) -> str:

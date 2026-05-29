@@ -1,0 +1,29 @@
+{
+    "timestamp": "2026-05-29T20:22:18.071682+00:00",
+    "failures": [
+        {
+            "test_name": "test_complete_active_node",
+            "file_path": "tests/test_frontier_editor.py",
+            "line_number": 66,
+            "error_type": "AssertionError",
+            "error_message": "assert '## Current Active Node' in '# Agentic Frontier State\\n\\n## Node 1: Initialization\\n- **Status**: Completed\\n- **Learnings & Context**: Did things...* **agent-default**:\\n  - Current Active Path: `Path 181: Configurable Sense Hooks`\\n  - Current Active Node: `None`\\n'",
+            "traceback": "dummy_frontier = '/tmp/pytest-of-pt/pytest-823/test_complete_active_node0/frontier_state.md'\n\n    def test_complete_active_node(dummy_frontier):\n        complete_active_node(\n            dummy_frontier,\n            node_name=\"Node 2: Do the next thing\",\n            learnings=\"I learned a lot.\",\n            invariants=[\"[x] Tested well.\"]\n        )\n    \n        content = open(dummy_frontier).read()\n        assert \"## Node 2: Do the next thing\" in content\n        assert \"- **Status**: Completed\" in content\n        assert \"- **Learnings & Context**: I learned a lot.\" in content\n        assert \"- `[x] Tested well.`\" in content\n>       assert \"## Current Active Node\" in content\nE       AssertionError: assert '## Current Active Node' in '# Agentic Frontier State\\n\\n## Node 1: Initialization\\n- **Status**: Completed\\n- **Learnings & Context**: Did things...* **agent-default**:\\n  - Current Active Path: `Path 181: Configurable Sense Hooks`\\n  - Current Active Node: `None`\\n'\n\ntests/test_frontier_editor.py:66: AssertionError"
+        },
+        {
+            "test_name": "test_set_active_node",
+            "file_path": "tests/test_frontier_editor.py",
+            "line_number": 72,
+            "error_type": "AssertionError",
+            "error_message": "assert '## Current Active Node' in '# Agentic Frontier State\\n\\n## Node 1: Initialization\\n- **Status**: Completed\\n- **Learnings & Context**: Did things...d-agent**:\\n  - Current Active Path: `Path 181: Configurable Sense Hooks`\\n  - Current Active Node: `Node 3: Profit`\\n'",
+            "traceback": "dummy_frontier = '/tmp/pytest-of-pt/pytest-823/test_set_active_node0/frontier_state.md'\n\n    def test_set_active_node(dummy_frontier):\n        set_active_node(dummy_frontier, \"Node 3: Profit\")\n        content = open(dummy_frontier).read()\n    \n>       assert \"## Current Active Node\" in content\nE       AssertionError: assert '## Current Active Node' in '# Agentic Frontier State\\n\\n## Node 1: Initialization\\n- **Status**: Completed\\n- **Learnings & Context**: Did things...d-agent**:\\n  - Current Active Path: `Path 181: Configurable Sense Hooks`\\n  - Current Active Node: `Node 3: Profit`\\n'\n\ntests/test_frontier_editor.py:72: AssertionError"
+        },
+        {
+            "test_name": "test_append_active_node",
+            "file_path": "tests/test_frontier_editor.py",
+            "line_number": 90,
+            "error_type": "AssertionError",
+            "error_message": "assert '## Current Active Node' in '# Agentic Frontier State\\n\\n## Node 1: Initialization\\n- **Status**: Completed\\n- **Learnings & Context**: Did things...*:\\n  - Current Active Path: `Path 181: Configurable Sense Hooks`\\n  - Current Active Node: `Node 40: Great Success`\\n'",
+            "traceback": "dummy_frontier = '/tmp/pytest-of-pt/pytest-823/test_append_active_node0/frontier_state.md'\n\n    def test_append_active_node(dummy_frontier):\n        append_active_node(\n            dummy_frontier,\n            node_id=40,\n            node_title=\"Great Success\",\n            description=\"Completed the mission.\",\n            invariants=[\"[ ] Verified system is stable.\"]\n        )\n        content = open(dummy_frontier).read()\n    \n        assert \"## Node 40: Great Success\" in content\n        assert \"- **Status**: [///] Act Phase\" in content\n        assert \"- **Learnings & Context**: Completed the mission.\" in content\n        assert \"- `[ ] Verified system is stable.`\" in content\n>       assert \"## Current Active Node\" in content\nE       AssertionError: assert '## Current Active Node' in '# Agentic Frontier State\\n\\n## Node 1: Initialization\\n- **Status**: Completed\\n- **Learnings & Context**: Did things...*:\\n  - Current Active Path: `Path 181: Configurable Sense Hooks`\\n  - Current Active Node: `Node 40: Great Success`\\n'\n\ntests/test_frontier_editor.py:90: AssertionError"
+        }
+    ]
+}

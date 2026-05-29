@@ -63,15 +63,15 @@ def test_complete_active_node(dummy_frontier):
     assert "- **Status**: Completed" in content
     assert "- **Learnings & Context**: I learned a lot." in content
     assert "- `[x] Tested well.`" in content
-    assert "## Current Active Node" in content
+    assert "## Active Agents Matrix" in content
 
 def test_set_active_node(dummy_frontier):
     set_active_node(dummy_frontier, "Node 3: Profit")
     content = open(dummy_frontier).read()
     
-    assert "## Current Active Node" in content
-    assert "**Node 3: Profit**" in content
-    assert "**Node 2: Do the next thing**" not in content
+    assert "## Active Agents Matrix" in content
+    assert "`Node 3: Profit`" in content
+    assert "`Node 2: Do the next thing`" not in content
 
 def test_append_active_node(dummy_frontier):
     append_active_node(
@@ -87,8 +87,8 @@ def test_append_active_node(dummy_frontier):
     assert "- **Status**: [///] Act Phase" in content
     assert "- **Learnings & Context**: Completed the mission." in content
     assert "- `[ ] Verified system is stable.`" in content
-    assert "## Current Active Node" in content
-    assert "**Node 40: Great Success**" in content
+    assert "## Active Agents Matrix" in content
+    assert "`Node 40: Great Success`" in content
 
 def test_checksum_mismatch(dummy_frontier):
     yml_path = dummy_frontier[:-3] + ".yml"
