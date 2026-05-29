@@ -39,8 +39,8 @@ class NBADaemon:
                     core_title = active_path_str.strip("*")
                     while True:
                         prev = core_title
-                        core_title = re.sub(r"^(Node|Path|Discovery|Activity|Act|Align|Harmonize|Plan|Reflect)\s*\d*:\s*", "", core_title, flags=re.IGNORECASE)
-                        core_title = re.sub(r"^(Node|Path|Discovery|Activity|Act|Align|Harmonize|Plan|Reflect)\s*\d*\s*-\s*", "", core_title, flags=re.IGNORECASE)
+                        core_title = re.sub(r"^(Node|Path|Discovery|Activity|Act|Harmonize|Plan|Reflect)\s*\d*:\s*", "", core_title, flags=re.IGNORECASE)
+                        core_title = re.sub(r"^(Node|Path|Discovery|Activity|Act|Harmonize|Plan|Reflect)\s*\d*\s*-\s*", "", core_title, flags=re.IGNORECASE)
                         core_title = core_title.strip()
                         if core_title == prev:
                             break
@@ -63,7 +63,7 @@ class NBADaemon:
                                 })
                     
                     # Group by subtype and status
-                    harmonize_nodes = [n for n in child_candidates if "Harmonize" in n["title"] or "Align" in n["title"]]
+                    harmonize_nodes = [n for n in child_candidates if "Harmonize" in n["title"]]
                     plan_nodes = [n for n in child_candidates if "Plan" in n["title"]]
                     reflect_nodes = [n for n in child_candidates if "Reflect" in n["title"]]
                     other_nodes = [n for n in child_candidates if n not in harmonize_nodes + plan_nodes + reflect_nodes]
@@ -117,8 +117,9 @@ class NBADaemon:
         try:
             if local_mode:
                 state = agent_frontier.load_state(frontier_file)
+                all_nodes = state.get("nodes", [])
                 backlog_items = []
-                for n in state.get("nodes", []):
+                for n in all_nodes:
                     if n.get("status") == "Backlog":
                         n_name = n.get("name", "")
                         match = re.search(r"Node (\d+)", n_name)
@@ -150,6 +151,15 @@ class NBADaemon:
                     print(f"Warning: Failed to load/parse strategic intent ledger: {e}")
             
             if prioritized_ids:
+                # Filter prioritized paths to only include those with open
+                # GitHub issues. Closed path issues = completed paths.
+                try:
+                    open_path_issues = github_client.list_issues_by_label("path")
+                    open_path_ids = {str(i.get("number", "")) for i in open_path_issues}
+                    prioritized_ids = [pid for pid in prioritized_ids if pid in open_path_ids]
+                except Exception:
+                    pass  # If API fails, proceed with unfiltered list
+                
                 prioritized_set = set(prioritized_ids)
                 matched_items = []
                 unmatched_items = []
