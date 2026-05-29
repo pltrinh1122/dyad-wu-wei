@@ -1,5 +1,6 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 1341: Activity 1341: Add Onboarding-to-Project Checklist
+  to HOW-0099'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4142,16 +4143,7 @@ nodes:
     .env file when the OS DBus keyring is unavailable.
   invariants:
   - WIP-N=1
-- name: 'Node 1338: Activity 1338: Add AGENT.md and GEMINI.md Change Detection to
-    Audit Daemon'
+- name: 'Node 1341: Activity 1341: Add Onboarding-to-Project Checklist to HOW-0099'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Add AGENT.md and GEMINI.md Change Detection to Audit Daemon
-  status: Completed
-  learnings: "The existing file_modified audit mechanism is generic enough to watch\
-    \ any file \u2014 config-only changes suffice for new watch targets."
-  invariants:
-  - All agent instruction files (AGENT.md
-  - GEMINI.md
-  - and future platform shims) must be monitored for mid-session changes.
