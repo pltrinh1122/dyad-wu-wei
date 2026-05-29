@@ -116,20 +116,22 @@ def write_markdown_derived(yml_path: str, md_path: str) -> None:
         lines.append("")  # Empty line after node
         
     # Add pointers at the bottom
-    lines.append("## Current Active Path")
-    active_path = data.get("current_active_path")
-    if active_path:
-        lines.append(f"**{active_path}**")
+    lines.append("## Active Agents Matrix")
+    active_agents = data.get("active_agents")
+    if active_agents:
+        for persona, state in active_agents.items():
+            lines.append(f"* **{persona}**:")
+            path = state.get("current_active_path") or "None"
+            node = state.get("current_active_node") or "None"
+            lines.append(f"  - Current Active Path: `{path}`")
+            lines.append(f"  - Current Active Node: `{node}`")
     else:
-        lines.append("None")
-    lines.append("")  # Empty line
-    
-    lines.append("## Current Active Node")
-    active_node = data.get("current_active_node")
-    if active_node:
-        lines.append(f"**{active_node}**")
-    else:
-        lines.append("None")
+        # Legacy fallback
+        lines.append("* **agent-default**:")
+        path = data.get("current_active_path") or "None"
+        node = data.get("current_active_node") or "None"
+        lines.append(f"  - Current Active Path: `{path}`")
+        lines.append(f"  - Current Active Node: `{node}`")
     lines.append("")  # Empty line
     
     # Write derived markdown file under lock
@@ -137,11 +139,18 @@ def write_markdown_derived(yml_path: str, md_path: str) -> None:
         with open(md_path, 'w') as f:
             f.write("\n".join(lines))
 
+def extract_active_node_from_state(state: dict) -> str:
+    persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
+    active_agents = state.get("active_agents")
+    if active_agents is not None:
+        return active_agents.get(persona, {}).get("current_active_node") or ""
+    return state.get("current_active_node") or ""
+
 def read_active_node(filepath: str) -> str:
     """Reads the current active node from frontier_state."""
     yml_path = resolve_yml_path(filepath)
     state = load_state(yml_path)
-    return state.get("current_active_node") or ""
+    return extract_active_node_from_state(state)
 
 def read_last_completed_node(filepath: str) -> str:
     """Reads the most recently completed node."""
@@ -153,11 +162,18 @@ def read_last_completed_node(filepath: str) -> str:
             return node.get("name") or ""
     return ""
 
+def extract_active_path_from_state(state: dict) -> str | None:
+    persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
+    active_agents = state.get("active_agents")
+    if active_agents is not None:
+        return active_agents.get(persona, {}).get("current_active_path")
+    return state.get("current_active_path")
+
 def read_active_path(filepath: str) -> str | None:
     """Reads the current active path."""
     yml_path = resolve_yml_path(filepath)
     state = load_state(yml_path)
-    return state.get("current_active_path")
+    return extract_active_path_from_state(state)
 
 def extract_path_id(path_str: str) -> str | None:
     """Extracts the numeric ID from a Path string."""
@@ -169,24 +185,44 @@ def set_active_path(filepath: str, path_name: str) -> None:
     """Updates the text below Current Active Path."""
     yml_path = resolve_yml_path(filepath)
     state = load_state(yml_path)
-    if path_name == "None" or path_name is None:
-        state["current_active_path"] = None
-    else:
+    persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
+    
+    val = None
+    if path_name != "None" and path_name is not None:
         path_id = extract_path_id(path_name)
         if path_id:
             from kernel.daemon_strategic import verify_path_activation_allowed
             verify_path_activation_allowed(path_id)
-        state["current_active_path"] = path_name
+        val = path_name
+        
+    if "active_agents" not in state:
+        state["active_agents"] = {}
+    if persona not in state["active_agents"]:
+        state["active_agents"][persona] = {
+            "current_active_path": state.get("current_active_path"),
+            "current_active_node": state.get("current_active_node")
+        }
+    state["active_agents"][persona]["current_active_path"] = val
     save_state(yml_path, state)
 
 def set_active_node(filepath: str, node_name: str) -> None:
     """Updates the text below Current Active Node."""
     yml_path = resolve_yml_path(filepath)
     state = load_state(yml_path)
-    if node_name == "None" or node_name is None:
-        state["current_active_node"] = None
-    else:
-        state["current_active_node"] = node_name
+    persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
+    
+    val = None
+    if node_name != "None" and node_name is not None:
+        val = node_name
+        
+    if "active_agents" not in state:
+        state["active_agents"] = {}
+    if persona not in state["active_agents"]:
+        state["active_agents"][persona] = {
+            "current_active_path": state.get("current_active_path"),
+            "current_active_node": state.get("current_active_node")
+        }
+    state["active_agents"][persona]["current_active_node"] = val
     save_state(yml_path, state)
 
 def get_node_metadata(node_id: int | str) -> dict:

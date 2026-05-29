@@ -136,5 +136,15 @@
             "dao_healer_instantiation.md"
         ]
     },
-    "backlog_hygiene_auditor": {}
+    "backlog_hygiene_auditor": {},
+    "seizure_detector": {
+        "last_fail_count": 70
+    },
+    "agent-md-changed": {
+        "last_hash": "f185453bef07ee63f2a4f107f513684d8628908a"
+    },
+    "gemini-md-changed": {
+        "last_hash": "bf05434678da8b760c3260ced7e4c1486a2b9a48"
+    },
+    "frontier-integrity": {}
 }

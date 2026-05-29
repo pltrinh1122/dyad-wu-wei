@@ -1,6 +1,7 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: null
+current_active_node: 'Node 1409: Activity 1409: Act - Implement WHAT-0636 concurrent
+  agent ledger'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -2955,7 +2956,8 @@ nodes:
   - none
 - name: 'Node 1035: Activity 1035: Reflect - Synthesize Epistemic Retrospective retro-635.md'
   status: Completed
-  learnings: Synthesized retro-635 into HOW-0001-spao-execution-loop.md and cleared execution failure with retro-1035.md.
+  learnings: Synthesized retro-635 into HOW-0001-spao-execution-loop.md and cleared
+    execution failure with retro-1035.md.
   invariants:
   - none
 - name: 'Node 1037: Discovery 1037: Probe 1037: Evaluate chat immediacy responses
@@ -4199,4 +4201,13 @@ nodes:
     to use word boundaries and ignore .venv.
   invariants:
   - N/A
-
+- name: 'Node 1408: Activity 1408: Activity: Act - Implement WHAT-0636 concurrent
+    agent ledger'
+  status: Backlog
+  learnings: Implement WHAT-0636 concurrent agent ledger by updating node_lifecycle.py,
+    daemon_node.py, and agent_frontier.py
+  invariants: []
+- name: 'Node 1409: Activity 1409: Act - Implement WHAT-0636 concurrent agent ledger'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []

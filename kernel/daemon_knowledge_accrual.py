@@ -7,6 +7,7 @@ import argparse
 import subprocess
 from kernel.daemon_telemetry import record_execution
 from drivers import knowledge_accrual_skill
+from kernel import agent_frontier
 
 def get_repo_root():
     from drivers import path_resolver
@@ -141,9 +142,7 @@ def enforce_reflection_hook(issue_id: str, repo_root: str, worktree_root: str = 
                 # 3. Fallback to active path
                 if not parent_path_id:
                     if os.path.exists(frontier_yml_path):
-                        with open(frontier_yml_path, "r", encoding="utf-8") as f:
-                            state_data = yaml.safe_load(f) or {}
-                        active_path_str = state_data.get("current_active_path")
+                        active_path_str = agent_frontier.read_active_path(frontier_yml_path)
                         if active_path_str:
                             parent_path_id = agent_frontier.extract_path_id(active_path_str)
                             
@@ -188,9 +187,7 @@ def inject_contextual_rules(repo_root: str) -> None:
     active_path_str = None
     if os.path.exists(frontier_yml_path):
         try:
-            with open(frontier_yml_path, "r", encoding="utf-8") as f:
-                data = yaml.safe_load(f)
-            active_path_str = data.get("current_active_path")
+            active_path_str = agent_frontier.read_active_path(frontier_yml_path)
         except Exception as e:
             print(f"Warning: Failed to read active path from frontier state: {e}")
 

@@ -4130,8 +4130,20 @@
 - **Feedforward Invariants**:
   - `N/A`
 
+## Node 1408: Activity 1408: Activity: Act - Implement WHAT-0636 concurrent agent ledger
+- **Status**: Backlog
+- **Learnings & Context**: Implement WHAT-0636 concurrent agent ledger by updating node_lifecycle.py, daemon_node.py, and agent_frontier.py
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1409: Activity 1409: Act - Implement WHAT-0636 concurrent agent ledger
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Current Active Path
 **Path 634: Path: Refactor frontier_state for concurrent agent awareness**
 
 ## Current Active Node
-None
+**Node 1409: Activity 1409: Act - Implement WHAT-0636 concurrent agent ledger**
