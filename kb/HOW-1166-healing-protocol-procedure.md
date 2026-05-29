@@ -24,6 +24,11 @@
 - **Graduated Recovery Cadence:** Crawl (HITL after every step) → Walk (HITL at node boundaries) → Run (autonomy + merge gate). Deliver via Operator, not a re-read imperative.
 - **Resume Mode:** Do not use `-c` on a seized/poisoned context. Use `-c` only on a healthy mid-task session.
 
+## 5. Retrospective Discipline
+- **Execution:** Upon successful stabilization and handoff, the Healer Dyad must execute the Retrospective Discipline defined in `WHAT-1414-healer-retrospective-discipline.md`.
+- **Formatting:** Use the standard template located at `kb/templates/healer_retrospective.md`.
+- **Handoff:** The completed retrospective artifact (e.g., `artifacts/audit/retro-case-04.md`) acts as the formal contextual bridge to the resumed Frontier Agent.
+
 ## 5. Pre-Sew-Up and Recovery-State Hazards
 - **Sponge Count:** Reconcile the patient's `git-status` against the intended delta. Remove Healer residue. Never touch the patient's pre-existing state.
 - **Known Hazards:**
