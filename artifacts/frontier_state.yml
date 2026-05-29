@@ -4198,8 +4198,9 @@ nodes:
     to use word boundaries and ignore .venv.
   invariants:
   - N/A
-- name: 'Node 1034: Discovery 1034: Probe 635: Align'
+- name: 'Activity 1035: Reflect - Synthesize Epistemic Retrospective retro-635.md'
   status: Completed
-  learnings: Closed as duplicate of 635.
+  learnings: Updated HOW-0001-spao-execution-loop.md with Orthogonal Scope Verification
+    Invariant. Also wrote retro-1035.md to clear execution failure gate.
   invariants:
   - none

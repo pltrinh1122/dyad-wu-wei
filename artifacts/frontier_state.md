@@ -4130,9 +4130,9 @@
 - **Feedforward Invariants**:
   - `N/A`
 
-## Node 1034: Discovery 1034: Probe 635: Align
+## Activity 1035: Reflect - Synthesize Epistemic Retrospective retro-635.md
 - **Status**: Completed
-- **Learnings & Context**: Closed as duplicate of 635.
+- **Learnings & Context**: Updated HOW-0001-spao-execution-loop.md with Orthogonal Scope Verification Invariant. Also wrote retro-1035.md to clear execution failure gate.
 - **Feedforward Invariants**:
   - `none`
 

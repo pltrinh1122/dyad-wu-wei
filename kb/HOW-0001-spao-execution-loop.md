@@ -12,6 +12,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - **The WIP Invariant:** The system operates strictly on a single node execution thread (`WIP-N=1` and `WIP-P=1`). Node branches MUST strictly conform to the format `node/<id>-<kebab-case>` (e.g. `node/906-harmonize-backlog-cli`).
    - **Path Initialization Invariant:** When embarking on a new Path, the Agent MUST execute the **Dual-Discovery Initialization** pattern before advancing to any codebase-mutating Activities.
    - **Backlog Generation Invariant:** When the Agent generates new items for the backlog (e.g., scoping activities), it MUST utilize the `--path` argument in `bin/backlog new` to bind it to a parent Path, preventing Orphaned Nodes.
+   - **Orthogonal Scope Verification Invariant:** Before provisioning new nodes via `bin/backlog new`, the Agent MUST run `bin/backlog list` or `bin/backlog view` on the parent Path to explicitly verify that identical or highly overlapping nodes do not already exist, preventing Orthogonal Scope Violations.
 
 1. **Plan (Contract Formulation):** 
    - Execute the shell script: `SPAO_PERSONA_ID=frontier ./bin/node plan-start "ISSUE_ID"` from the repository root to lock the backlog issue. Follow up with `SPAO_PERSONA_ID=frontier ./bin/node plan-finish "ISSUE_ID" "Body content..."` to upload the finalized Node Contract. This automatically prepends the Node ID to the GitHub Issue title.
