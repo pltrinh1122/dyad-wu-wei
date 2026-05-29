@@ -1,6 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 1353: Activity 1353: Reflect - Implement Audit-Daemon Liveness
-  and Heartbeat Detection for Silent Seizures'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4148,3 +4147,12 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: Close Path 1350 - Silent Seizure Detection Complete
+  status: Completed
+  learnings: 'Path 1350 delivered all Healer intake #1233 requirements: WHY-1350 architecture,
+    evaluate_liveness_stall implementation with 3 tests, and audit_config.yml entry.
+    The system can now self-detect silent seizures that previously required human
+    detection.'
+  invariants:
+  - "Healer intakes that produce falsifiable criteria are the highest-quality backlog\
+    \ source \u2014 they arrive pre-validated with positive and negative test specifications."
