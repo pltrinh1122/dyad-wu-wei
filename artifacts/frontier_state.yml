@@ -1,6 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 1351: Discovery 1351: Harmonize - Implement Audit-Daemon
-  Liveness and Heartbeat Detection for Silent Seizures'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4169,3 +4168,12 @@ nodes:
   learnings: Final reflection and path closure for Implement Audit-Daemon Liveness
     and Heartbeat Detection for Silent Seizures.
   invariants: []
+- name: Harmonize - Silent Seizure Detection Architecture
+  status: Completed
+  learnings: Silent seizures are undetectable by existing rules (seizure_detection
+    counts test-fail files, stale_active_node checks pointer consistency). The fix
+    is a new liveness_stall rule using frontier_state.yml mtime as the monotonic progress
+    signal, firing only when an active node exists and stall exceeds 15 minutes.
+  invariants:
+  - "Liveness is a fundamentally different concern from state consistency \u2014 separate\
+    \ rule types prevent conflation."
