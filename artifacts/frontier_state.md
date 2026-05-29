@@ -4085,8 +4085,14 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Extract AGENT.md for Cross-Platform Agent Support
+- **Status**: Completed
+- **Learnings & Context**: Agent instructions should be split into universal (AGENT.md) and platform-specific (GEMINI.md/CLAUDE.md) layers. This eliminates rename-on-pull friction and ensures updates propagate automatically to all agent platforms.
+- **Feedforward Invariants**:
+  - `Agent instructions MUST be agent-platform agnostic in the universal layer. Platform-specific tool references belong in thin shims only.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1335: Activity 1335: Extract AGENT.md from GEMINI.md for Cross-Platform Agent Support**
+None
