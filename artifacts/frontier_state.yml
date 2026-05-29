@@ -1,6 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 1329: Activity 1329: Implement DZ-CIL External Project
-  Support Protocol'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4147,3 +4146,12 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: Implement DZ-CIL External Project Support Protocol
+  status: Completed
+  learnings: "IP isolation is a first-class architectural constraint \u2014 domain\
+    \ content must never leak into the meta-engine. The engine must remain project-agnostic."
+  invariants:
+  - DZ-CIL MUST NOT contain any project-specific rules
+  - identifiers
+  - architecture decisions
+  - or business constraints.
