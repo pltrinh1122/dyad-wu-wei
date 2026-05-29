@@ -9,17 +9,27 @@ If the Agent discovers an unchecked requirement during the audit:
 - **Trivial Remediations:** If the fix is deterministic and trivial (e.g., creating a missing directory or updating a link), the Agent may execute the fix immediately within this ledger, check the box, and log the action in the comments.
 - **Mandatory Spin-Outs:** If the fix requires architectural design, logic generation, or crosses the Materialization Boundary, the Agent must treat this ledger as "Report Only." The Agent must leave the box unchecked, halt the audit, and spawn a dedicated GH-Issue Node to execute the complex remediation.
 
-## 1. Persona & Memory Invariants
-- [ ] **`GEMINI.md`**: Present at the repository root and correctly defines the Dao_Engine persona.
+## 1. The 7-Dimension Bootstrapping Sequence
+Before structural auditing begins, the Agent and Operator must harmonize on the 7 core dimensions of the new Dyad instantiation:
+- [ ] **Identity**: Who is the Agent and what is their Telos?
+- [ ] **Externality**: What is the interface with the outside world?
+- [ ] **Form-grounding**: What is the explicit shape of the generated outputs?
+- [ ] **Channel discipline**: How does communication flow securely and deterministically?
+- [ ] **NON-NEGOTIABLE**: What is the absolute, unfalsifiable invariant of this workspace?
+- [ ] **Ontology starter**: What are the 3-5 core primitives?
+- [ ] **Vocabulary stub**: What words are strictly forbidden or mandated?
+
+## 2. Persona & Memory Invariants
+- [ ] **`GEMINI.md`**: Present at the repository root and correctly defines the Wu-wei_Engine persona.
 - [ ] **`artifacts/frontier_state.md`**: Present, initialized, and tracking the active Topological Node.
 
-## 2. Agentic Architecture Scaffolding
+## 3. Agentic Architecture Scaffolding
 - [ ] **`artifacts/`**: Directory exists to hold state and output memory.
 - [ ] **`drivers/`**: Directory exists to hold deterministic tool interfaces.
 - **`kernel/`**: Directory exists to hold the generative runtime and SPAO loop mechanics.
 - [ ] **`kb/`**: Knowledge Base directory exists to hold WHAT/WHY/HOW linguistic primitives.
 
-## 3. Flow-State Governance
+## 4. Flow-State Governance
 - [ ] **Path Meta-Index**: The overarching Path GH-Issue has been created to track macro-goals.
 - [ ] **Task Independence**: The repository relies on GH-Issues for micro-state, avoiding hard reliance on ephemeral, local `task.md` files.
 

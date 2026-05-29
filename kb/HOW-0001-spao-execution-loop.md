@@ -1,4 +1,4 @@
-# HOW-0001: The SPAO + HITL Execution Loop
+# HOW-0001: The SPAOR + HITL Execution Loop
 
 This document contains the strict, deterministic instructions (The "How") for operating the Frontier Agent loop.
 

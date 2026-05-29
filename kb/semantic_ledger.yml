@@ -75,3 +75,9 @@ terms:
   "north-star":
     state: deprecated
     superseded_by: telos
+  dao:
+    state: deprecated
+    superseded_by: wu-wei
+  ziran:
+    state: deprecated
+    superseded_by: friction_triage

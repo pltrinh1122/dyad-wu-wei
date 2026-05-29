@@ -4159,8 +4159,31 @@ nodes:
   invariants:
   - '[x] WHAT-1071 specifications are complete and verified'
   - '[x] Parent gate inheritance boundaries are secure'
-- name: 'Node 636: Node 636: Probe 636: Plan - Path: Refactor frontier_state for concurrent
-    agent awareness'
+- name: 'Node 1394: Path 1394: Dyad Practice Lineage Integration'
+  status: Backlog
+  learnings: Ensure DZ-CIL core invariants and practices act as a superset of the
+    Dyad Practice framework.
+  invariants: []
+- name: 'Node 1395: Discovery 1395: Harmonize - Dyad Practice Lineage Integration'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Dyad Practice
+    Lineage Integration.
+  invariants: []
+- name: 'Node 1396: Discovery 1396: Plan - Dyad Practice Lineage Integration'
+  status: Backlog
+  learnings: Technical design and proposed changes for Dyad Practice Lineage Integration.
+  invariants: []
+- name: 'Node 1397: Activity 1397: Reflect - Dyad Practice Lineage Integration'
+  status: Backlog
+  learnings: Final reflection and path closure for Dyad Practice Lineage Integration.
+  invariants: []
+- name: 'Node 1398: Discovery 1398: harmonization-to-dyad-practice-superset'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Node 1398: Harmonization to Dyad Practice Superset'
+  status: Completed
+  learnings: 'Learnings: Replaced Dao/Ziran with wu-wei/friction_triage, codified
+    Generate and Validate families, and added 7-Dimension bootstrapping sequence.'
+  invariants:
+  - '[x] Lexical Guard Invariant'
