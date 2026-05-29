@@ -383,6 +383,59 @@ def evaluate_seizure_detection(rule, state):
         
     return False, state
 
+def evaluate_liveness_stall(rule, state):
+    """Detects silent seizures by checking if frontier_state.yml has not been modified
+    while an active node exists (indicating expected progress).
+    
+    Per WHY-1350: Uses frontier_state.yml mtime as a zero-instrumentation liveness
+    signal. Only fires when an active node exists (false-positive guard).
+    """
+    import time
+    
+    frontier_yml = get_repo_root() / "artifacts" / "frontier_state.yml"
+    frontier_md = get_frontier_file()
+    
+    if not frontier_yml.exists() or not frontier_md.exists():
+        return False, state
+    
+    # Check if there's an active node (false-positive guard)
+    with open(frontier_md, "r") as f:
+        content = f.read()
+    
+    active_node = ""
+    match = re.search(r"## Current Active Node\n(.*?)(?=\n## |\Z)", content, re.DOTALL)
+    if match:
+        active_node = match.group(1).strip().strip('*')
+    
+    if not active_node or active_node == "None":
+        # No active node = legitimately idle, no stall possible
+        if "last_alerted_at" in state:
+            del state["last_alerted_at"]
+        return False, state
+    
+    # Check frontier_state.yml modification time
+    stall_threshold = rule.get("stall_threshold_minutes", 15)
+    mtime = os.path.getmtime(frontier_yml)
+    elapsed_minutes = (time.time() - mtime) / 60.0
+    
+    if elapsed_minutes > stall_threshold:
+        # Prevent re-alerting: only fire once per stall event
+        last_alerted = state.get("last_alerted_at", 0)
+        if last_alerted >= mtime:
+            return False, state
+        
+        alert_level = rule.get("alert_level", "FAILURE").upper()
+        msg = (
+            f"[{alert_level}] LIVENESS_STALL: frontier_state.yml has not been "
+            f"modified for {elapsed_minutes:.0f} minutes while node "
+            f"'{active_node}' is active. Possible silent seizure."
+        )
+        inject_prompt(msg)
+        state["last_alerted_at"] = time.time()
+        return True, state
+    
+    return False, state
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
@@ -393,7 +446,8 @@ RULE_REGISTRY = {
     "pr_merged_monitor": evaluate_pr_merged_monitor,
     "semantic_immune_system": evaluate_semantic_immune_system,
     "backlog_hygiene": evaluate_backlog_hygiene,
-    "seizure_detection": evaluate_seizure_detection
+    "seizure_detection": evaluate_seizure_detection,
+    "liveness_stall": evaluate_liveness_stall
 }
 
 def main(args=None):
