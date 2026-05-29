@@ -4079,20 +4079,32 @@
 - **Feedforward Invariants**:
   - `WIP-N=1`
 
-## Node 1353: Activity 1353: Reflect - Implement Audit-Daemon Liveness and Heartbeat Detection for Silent Seizures
+## Node 1372: Path 1372: Full-Cycle External Support Ticket Status Tracking
+- **Status**: Backlog
+- **Learnings & Context**: Add status query, listing, and remediation outcome capabilities to the support client. Currently fire-and-forget — filer has no programmatic way to track ticket lifecycle. Deliverables: bin/support status, bin/support list, bin/support --help, and remediation response protocol.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1373: Discovery 1373: Harmonize - Full-Cycle External Support Ticket Status Tracking
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Close Path 1350 - Silent Seizure Detection Complete
-- **Status**: Completed
-- **Learnings & Context**: Path 1350 delivered all Healer intake #1233 requirements: WHY-1350 architecture, evaluate_liveness_stall implementation with 3 tests, and audit_config.yml entry. The system can now self-detect silent seizures that previously required human detection.
+## Node 1374: Discovery 1374: Plan - Full-Cycle External Support Ticket Status Tracking
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Full-Cycle External Support Ticket Status Tracking.
 - **Feedforward Invariants**:
-  - `Healer intakes that produce falsifiable criteria are the highest-quality backlog source — they arrive pre-validated with positive and negative test specifications.`
+  - `[ ]` None
+
+## Node 1375: Activity 1375: Reflect - Full-Cycle External Support Ticket Status Tracking
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Full-Cycle External Support Ticket Status Tracking.
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Current Active Path
 None
 
 ## Current Active Node
-None
+**Node 1373: Discovery 1373: Harmonize - Full-Cycle External Support Ticket Status Tracking**

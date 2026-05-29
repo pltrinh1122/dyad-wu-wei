@@ -1,5 +1,6 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 1373: Discovery 1373: Harmonize - Full-Cycle External Support
+  Ticket Status Tracking'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4142,17 +4143,27 @@ nodes:
     .env file when the OS DBus keyring is unavailable.
   invariants:
   - WIP-N=1
-- name: 'Node 1353: Activity 1353: Reflect - Implement Audit-Daemon Liveness and Heartbeat
-    Detection for Silent Seizures'
+- name: 'Node 1372: Path 1372: Full-Cycle External Support Ticket Status Tracking'
+  status: Backlog
+  learnings: "Add status query, listing, and remediation outcome capabilities to the\
+    \ support client. Currently fire-and-forget \u2014 filer has no programmatic way\
+    \ to track ticket lifecycle. Deliverables: bin/support status, bin/support list,\
+    \ bin/support --help, and remediation response protocol."
+  invariants: []
+- name: 'Node 1373: Discovery 1373: Harmonize - Full-Cycle External Support Ticket
+    Status Tracking'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Close Path 1350 - Silent Seizure Detection Complete
-  status: Completed
-  learnings: 'Path 1350 delivered all Healer intake #1233 requirements: WHY-1350 architecture,
-    evaluate_liveness_stall implementation with 3 tests, and audit_config.yml entry.
-    The system can now self-detect silent seizures that previously required human
-    detection.'
-  invariants:
-  - "Healer intakes that produce falsifiable criteria are the highest-quality backlog\
-    \ source \u2014 they arrive pre-validated with positive and negative test specifications."
+- name: 'Node 1374: Discovery 1374: Plan - Full-Cycle External Support Ticket Status
+    Tracking'
+  status: Backlog
+  learnings: Technical design and proposed changes for Full-Cycle External Support
+    Ticket Status Tracking.
+  invariants: []
+- name: 'Node 1375: Activity 1375: Reflect - Full-Cycle External Support Ticket Status
+    Tracking'
+  status: Backlog
+  learnings: Final reflection and path closure for Full-Cycle External Support Ticket
+    Status Tracking.
+  invariants: []
