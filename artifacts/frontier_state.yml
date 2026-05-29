@@ -1,4 +1,4 @@
-current_active_path: null
+current_active_path: 'Path 985: Operate: Enforce Workspace Isolation Boundaries'
 current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
@@ -4150,3 +4150,12 @@ nodes:
     mapping logic, and test suites are complete and passing.
   invariants:
   - '[x] All deliverables for Path 1372 verified and closed'
+- name: 'Node 1071: Discovery 1071: Plan - Evaluate child workspace inheritance of
+    parent gates'
+  status: Completed
+  learnings: Formulated design specification WHAT-1071 and registered it in Meta-System
+    manifest. Verified that sovereign child workspaces bypass parent gates safely
+    during local execution.
+  invariants:
+  - '[x] WHAT-1071 child workspace gate inheritance spec formulated'
+  - '[x] All local unit tests pass green'

@@ -53,6 +53,8 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Status Report Progress Bars & Goal Ratios**: Read [WHY-0916-status-progress-bars.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHY-0916-status-progress-bars.md)
 * **Status Report Progress Bars & Goal Ratios Spec**: Read [WHAT-0916-status-progress-bars.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0916-status-progress-bars.md)
 * **Headless GH_TOKEN Fallback Spec**: Read [WHAT-1315-headless-gh-token-spec.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1315-headless-gh-token-spec.md)
+* **Child Workspace Gate Inheritance Spec**: Read [WHAT-1071-child-workspace-gate-inheritance.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-1071-child-workspace-gate-inheritance.md)
+
 
 
 
