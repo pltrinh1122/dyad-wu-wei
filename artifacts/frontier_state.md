@@ -4085,8 +4085,16 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Add AGENT.md and GEMINI.md Change Detection to Audit Daemon
+- **Status**: Completed
+- **Learnings & Context**: The existing file_modified audit mechanism is generic enough to watch any file — config-only changes suffice for new watch targets.
+- **Feedforward Invariants**:
+  - `All agent instruction files (AGENT.md`
+  - `GEMINI.md`
+  - `and future platform shims) must be monitored for mid-session changes.`
+
 ## Current Active Path
 None
 
 ## Current Active Node
-**Node 1338: Activity 1338: Add AGENT.md and GEMINI.md Change Detection to Audit Daemon**
+None
