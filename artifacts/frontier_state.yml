@@ -1,5 +1,6 @@
 current_active_path: null
-current_active_node: null
+current_active_node: 'Node 1344: Activity 1344: Add SG-0006 External Project Service
+  and Expand System Identity'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4142,15 +4143,8 @@ nodes:
     .env file when the OS DBus keyring is unavailable.
   invariants:
   - WIP-N=1
-- name: 'Node 1341: Activity 1341: Add Onboarding-to-Project Checklist to HOW-0099'
+- name: 'Node 1344: Activity 1344: Add SG-0006 External Project Service and Expand
+    System Identity'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Add Onboarding-to-Project Checklist to HOW-0099
-  status: Completed
-  learnings: 'Onboarding requires 6 explicit phases: Survey, Digest Creation, Gap
-    Assessment, Support Tickets, DZ-CIL Build, Pull. Skipping Digest Creation (Phase
-    2) leaves the Agent without structured addressable rules.'
-  invariants:
-  - "The Onboarding-to-Project Checklist must be general with illustrative examples\
-    \ only \u2014 no proprietary domain rules in DZ-CIL."

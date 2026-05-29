@@ -27,7 +27,7 @@ strategic_goals:
   - 664
   - 1147
   status: Active
-  title: Backlog Dynamics and Resource Budget Alignment
+  title: Backlog Dynamics and Resource Budget Harmonization
 - collaborative_gap: The human cannot safely delegate execution authority to the agent,
     creating a trust bottleneck where the human acts as a manual gatekeeper and the
     agent is blocked from executing autonomously. Prioritizing Path 532 and 622 is
@@ -90,7 +90,7 @@ strategic_goals:
   status: Active
   title: Efficient Intent-to-Goal Policy Communication
 - collaborative_gap: The agent cannot autonomously codify and recall lessons from
-    past executions (both failures and positive alignments), forcing the operator
+    past executions (both failures and positive harmonizations), forcing the operator
     to repeatedly correct similar errors or manually reaffirm successful strategies.
   constraints: Knowledge mutations under the kb/ directory must be verified for structural
     validity and must not violate immutable core axioms.
@@ -120,3 +120,19 @@ strategic_goals:
   - 1152
   status: Active
   title: Autonomous Knowledge Accrual
+- collaborative_gap: External projects onboarding onto DZ-CIL lack a governed
+    feedback channel for requesting universal capabilities, causing the engine
+    to stagnate as a self-referential system while external Agents build
+    redundant project-local tooling.
+  constraints: All external project interactions must flow through the External
+    Project Support Protocol (HOW-0099). DZ-CIL must maintain strict IP isolation
+    — no project-specific rules, identifiers, or business constraints may enter
+    the engine. The Operator gates all triage decisions.
+  falsification_signal: External support tickets remain unserviced for more than
+    two SPAOR cycles after Operator prioritization, or project-specific content
+    contaminates the DZ-CIL codebase.
+  id: SG-0006
+  prioritized_paths:
+  - 1323
+  status: Active
+  title: External Project Service Excellence
