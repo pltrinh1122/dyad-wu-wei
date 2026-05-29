@@ -2783,16 +2783,16 @@
   - `N/A`
 
 ## Node 1034: Discovery 1034: Probe 635: Align - Path: Refactor frontier_state for concurrent agent awareness
-- **Status**: Backlog
-- **Learnings & Context**: Evaluate concurrent agent awareness structure
+- **Status**: Completed
+- **Learnings & Context**: Closed as duplicate of 635.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `none`
 
 ## Node 1035: Activity 1035: Reflect - Synthesize Epistemic Retrospective retro-635.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-635.md into the system's operational guidelines (the Dao).
+- **Status**: Completed
+- **Learnings & Context**: Synthesized retro-635 into HOW-0001-spao-execution-loop.md and cleared execution failure with retro-1035.md.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `none`
 
 ## Node 1037: Discovery 1037: Probe 1037: Evaluate chat immediacy responses via Dialectical Falsification
 - **Status**: [///] Act Phase
@@ -4129,12 +4129,6 @@
 - **Learnings & Context**: The lexical guard was failing because dao, ziran, and align were prematurely deprecated. Reverted to proposed to un-seize main. Lexical guard regex hardened to use word boundaries and ignore .venv.
 - **Feedforward Invariants**:
   - `N/A`
-
-## Activity 1035: Reflect - Synthesize Epistemic Retrospective retro-635.md
-- **Status**: Completed
-- **Learnings & Context**: Updated HOW-0001-spao-execution-loop.md with Orthogonal Scope Verification Invariant. Also wrote retro-1035.md to clear execution failure gate.
-- **Feedforward Invariants**:
-  - `none`
 
 ## Current Active Path
 **Path 634: Path: Refactor frontier_state for concurrent agent awareness**
