@@ -1,6 +1,5 @@
 current_active_path: null
-current_active_node: 'Node 1373: Discovery 1373: Harmonize - Full-Cycle External Support
-  Ticket Status Tracking'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4167,3 +4166,11 @@ nodes:
   learnings: Final reflection and path closure for Full-Cycle External Support Ticket
     Status Tracking.
   invariants: []
+- name: Harmonize - Full-Cycle Support Ticket Tracking Design
+  status: Completed
+  learnings: Support client is fire-and-forget. WHY-1372 defines status subcommand
+    with label-to-phase mapping, list fix, help improvements, and structured remediation
+    response format.
+  invariants:
+  - "GitHub labels already encode lifecycle state \u2014 map them rather than adding\
+    \ new infrastructure."
