@@ -4082,39 +4082,27 @@
   - `[x] WHAT-1071 specifications are complete and verified`
   - `[x] Parent gate inheritance boundaries are secure`
 
-## Node 1394: Path 1394: Dyad Practice Lineage Integration
-- **Status**: Backlog
-- **Learnings & Context**: Ensure DZ-CIL core invariants and practices act as a superset of the Dyad Practice framework.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1395: Discovery 1395: Harmonize - Dyad Practice Lineage Integration
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Dyad Practice Lineage Integration.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1396: Discovery 1396: Plan - Dyad Practice Lineage Integration
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Dyad Practice Lineage Integration.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1397: Activity 1397: Reflect - Dyad Practice Lineage Integration
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Dyad Practice Lineage Integration.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1398: Discovery 1398: harmonization-to-dyad-practice-superset
+## Node 636: Node 636: Probe 636: Plan - Path: Refactor frontier_state for concurrent agent awareness
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1398: Harmonization to Dyad Practice Superset
+## Node 1399: Activity 1399: Reflect - Synthesize Epistemic Retrospective retro-1398.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1398.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1401: Discovery 1401: dyad-instantiation-protocol
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1401: Dyad Instantiation Protocol
 - **Status**: Completed
-- **Learnings & Context**: Learnings: Replaced Dao/Ziran with wu-wei/friction_triage, codified Generate and Validate families, and added 7-Dimension bootstrapping sequence.
+- **Learnings & Context**: Learnings: Executed the 7 dimensions of the Dyad Practice. Deferred form-grounding, ontology, non-negotiables, and vocabulary to G0 until Telos is established. Authored personalized GEMINI.md anchor.
 - **Feedforward Invariants**:
   - `[x] Lexical Guard Invariant`
 
