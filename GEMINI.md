@@ -23,6 +23,11 @@ During the Bring-Up Process (AGENT.md §2, Step 5), use your `schedule` tool to 
 ## Antigravity-Specific: Asynchronous Execution
 For AGENT.md §5 Rule 19 (Asynchronous Execution Invariant), use the `run_command` tool for background bash tasks and the `schedule` tool for timers. The Agent's conversational turn must function exclusively as an "I am ready for the next prompt" signal while work completes silently in the background, waking the Agent via system callbacks. The Agent must never halt execution by yielding without a pending background task or timer, as this causes the Agent to become stuck.
 
+## Antigravity-Specific: Wu-wei NBA Handoff Message Structure
+When providing the Operator with the "Next Best Action" (NBA) handoff, you must strictly follow the **Wu-wei Handoff Structure**:
+1. **Contextual Reasoning**: Briefly explain *why* this is the next best action, grounding it in the current architectural state and recent discoveries.
+2. **Single Happy Path**: Present exactly ONE primary recommendation for the next step. Do not overload the Operator with multiple choices or divergent paths unless a hard architectural blocker forces a decision. This prevents Operator decision fatigue after context breaks.
+
 <!-- Testing True Hotfix -->
 
 <!-- CONTEXTUAL_ROM_INJECTION_START -->
