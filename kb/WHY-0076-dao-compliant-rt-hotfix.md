@@ -27,3 +27,6 @@ This makes `spao rt` a **PR-creation tool**, not a **direct-push tool**. The dis
 ## Scope
 - `kernel/daemon_rt.py`: `execute_hotfix` rearchitected to PR-based flow; `execute_insight` main-branch guard removed
 - `kb/WHY-0076-dao-compliant-rt-hotfix.md`: This document
+
+## Invariant Exemption (WIP-N=1)
+Because `bin/rt hotfix` explicitly bypasses the SPAO Node-Loop to operate directly as a Tier-2 mechanism, it does not acquire the `WIP-N=1` lock. Tier-2 Hotfixes may therefore be authored and merged concurrently (e.g., merging multiple hotfix PRs at once) without violating the `WIP-N=1` discipline.
