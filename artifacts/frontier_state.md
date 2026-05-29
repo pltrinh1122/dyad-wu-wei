@@ -1746,10 +1746,10 @@
   - `[ ]` None
 
 ## Node 635: Probe 635: Align - Path: Refactor frontier_state for concurrent agent awareness
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Completed
+- **Learnings & Context**: Created WHY-0635 to codify the architectural decision to migrate the singleton topological tracking pointers in frontier_state.yml to a multi-tenant matrix keyed by SPAO_PERSONA_ID, ensuring absolute orthogonal parallelism. Authored retro-635 to clear the post-failure gate.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `WHY-0635 exists and is correct.`
 
 ## Node 636: Probe 636: Plan - Path: Refactor frontier_state for concurrent agent awareness
 - **Status**: Backlog
@@ -2792,12 +2792,6 @@
 - **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-635.md into the system's operational guidelines (the Dao).
 - **Feedforward Invariants**:
   - `[ ]` None
-
-## Probe 635: Align - Path: Refactor frontier_state for concurrent agent awareness
-- **Status**: Completed
-- **Learnings & Context**: Created WHY-0635 to codify the architectural decision to migrate the singleton topological tracking pointers in frontier_state.yml to a multi-tenant matrix keyed by SPAO_PERSONA_ID, ensuring absolute orthogonal parallelism. Authored retro-635 to clear the post-failure gate.
-- **Feedforward Invariants**:
-  - `N/A`
 
 ## Node 1037: Discovery 1037: Probe 1037: Evaluate chat immediacy responses via Dialectical Falsification
 - **Status**: [///] Act Phase
@@ -4088,7 +4082,7 @@
   - `[x] Parent gate inheritance boundaries are secure`
 
 ## Current Active Path
-None
+**Path 634: Path: Refactor frontier_state for concurrent agent awareness**
 
 ## Current Active Node
 None
