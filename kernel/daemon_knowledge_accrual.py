@@ -69,7 +69,7 @@ def enforce_reflection_hook(issue_id: str, repo_root: str, worktree_root: str = 
                         event_type = str(obj.get("event", "")).upper()
                         status = obj.get("metadata", {}).get("status", "")
                         error = obj.get("metadata", {}).get("error", "")
-                        if event_type == "FAILURE" or status == "error" or error:
+                        if event_type == "FAILURE" or status == "error" or error or event_type == "OPERATOR_CORRECTION" or status == "operator_correction":
                             has_failures = True
                         if event_type == "POSITIVE_FEEDBACK" or status == "positive_feedback":
                             has_positive_feedback = True

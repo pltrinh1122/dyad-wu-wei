@@ -64,6 +64,53 @@ def record_positive_feedback(issue_id: str, insight: str, reaffirm_path: str) ->
     with open(reaffirm_path, "w", encoding="utf-8") as f:
         f.write(content)
 
+def record_operator_correction(issue_id: str, insight: str, retro_path: str) -> None:
+    """Materialises an operator-correction learning event into the system.
+
+    This implements the Autonomous Learning Loop (WHAT-0019). It writes an
+    ``OPERATOR_CORRECTION`` telemetry event to the ledger and generates the
+    ``retro-<id>.md`` file required for post-failure reflection.
+
+    Args:
+        issue_id:      The numeric node ID.
+        insight:       Free-text description of the correction.
+        retro_path:    Absolute filesystem path where the ``retro-<id>.md``
+                       file should be written.
+    """
+    if not issue_id or not str(issue_id).strip():
+        raise ValueError("issue_id must be a non-empty string.")
+    if not insight or not insight.strip():
+        raise ValueError("insight must be a non-empty string.")
+
+    issue_id = str(issue_id).strip()
+
+    # 1. Emit OPERATOR_CORRECTION telemetry event
+    daemon = TelemetryDaemon()
+    daemon.log_event(
+        stage="reflect",
+        event="OPERATOR_CORRECTION",
+        node_id=issue_id,
+        metadata={
+            "status": "operator_correction",
+            "insight_summary": insight[:200],
+        },
+    )
+
+    # 2. Materialise the retro document
+    os.makedirs(os.path.dirname(retro_path), exist_ok=True)
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    content = (
+        f"# Epistemic Retrospective: Node {issue_id}\n\n"
+        f"**Generated**: {ts}  \n"
+        f"**Node**: {issue_id}  \n\n"
+        f"## Operator Correction\n\n"
+        f"{insight.strip()}\n\n"
+        f"## Codified Insights & Guardrails\n\n"
+        f"*(Agent must synthesize guardrails here before completing reflection)*\n"
+    )
+    with open(retro_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
 @record_execution(stage="skill")
 def parse_test_failure_diagnostics(pytest_output: str) -> list[dict]:
     """
