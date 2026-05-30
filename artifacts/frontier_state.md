@@ -4334,17 +4334,17 @@
 - **Feedforward Invariants**:
   - `[x] GitHub issues updated`
 
-## Node 1494: Reflect - Path 1022
+## Node 1496: Reflect - Path 1017
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1494: Reflect - Path 1022
+## Activity 1496: Reflect - Path 1017
 - **Status**: Completed
-- **Learnings & Context**: Path 1022 successfully elevated chat immediacy protocol with Dao-Ziran intent bounding and completely eradicated legacy terminology.
+- **Learnings & Context**: Path 1017 successfully codified Chat Immediacy Protocol into the system rules.
 - **Feedforward Invariants**:
-  - `Path 1022 is permanently closed.`
+  - `Path 1017 is permanently closed.`
 
 ## Active Agents Matrix
 * **agent-ziran**:

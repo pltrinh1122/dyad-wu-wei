@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1494: Reflect - Path 1022'
+current_active_node: 'Node 1496: Reflect - Path 1017'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4374,16 +4374,16 @@ nodes:
   learnings: All legacy backlog references replaced
   invariants:
   - '[x] GitHub issues updated'
-- name: 'Node 1494: Reflect - Path 1022'
+- name: 'Node 1496: Reflect - Path 1017'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 1494: Reflect - Path 1022'
+- name: 'Activity 1496: Reflect - Path 1017'
   status: Completed
-  learnings: Path 1022 successfully elevated chat immediacy protocol with Dao-Ziran
-    intent bounding and completely eradicated legacy terminology.
+  learnings: Path 1017 successfully codified Chat Immediacy Protocol into the system
+    rules.
   invariants:
-  - Path 1022 is permanently closed.
+  - Path 1017 is permanently closed.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
