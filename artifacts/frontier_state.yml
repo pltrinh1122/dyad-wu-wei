@@ -1,7 +1,7 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1424: Discovery 1424: Harmonize - Codify Redundant Node
-  Closure Discipline'
+current_active_node: 'Node 1433: Activity 1433: Codify Load-Bearing Environment Mutation
+  Isolation'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4257,6 +4257,16 @@ nodes:
   status: Completed
   learnings: Codified the cancel sequence.
   invariants: []
+- name: 'Node 1433: Activity 1433: Codify Load-Bearing Environment Mutation Isolation'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Codify Load-Bearing Environment Mutation Isolation
+  status: Completed
+  learnings: Created an invariant explicitly forbidding the bundling of destructive
+    environment changes with feature branches.
+  invariants:
+  - '[x] WHY-1433 created'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
