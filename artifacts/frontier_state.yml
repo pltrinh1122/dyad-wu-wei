@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1485: Falsify and remediate dyad-wu-wei survivors'
+current_active_node: 'Node 1487: Retitle backlog issues to falsify dz-cil'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -2068,7 +2068,7 @@ nodes:
   invariants: ''
 - name: 'Probe 736: Align - Restructure Repository for Dao Portability'
   status: Completed
-  learnings: The DYAD-WU-WEI is an OS. Its physical manifestation is kernel, drivers,
+  learnings: The Wu-wei Dyad is an OS. Its physical manifestation is kernel, drivers,
     bin, kb, artifacts, and tests. We do not need arbitrary nested directories. Everything
     in CWD is an artificial manifestation of The Shaping.
   invariants:
@@ -2414,37 +2414,37 @@ nodes:
     and passing.
   invariants:
   - '[x] All deliverables for Path 916 verified and closed'
-- name: 'Node 920: Path 920: Implement DYAD-WU-WEI Workspace for Operator Digital
+- name: 'Node 920: Path 920: Implement Wu-wei Dyad Workspace for Operator Digital
     Needs'
   status: Backlog
   learnings: Build a local-first digital companion application enabling the Operator
     to manage vacations and write serial novels with automated semantic/logistical
     verification.
   invariants: []
-- name: 'Node 921: Discovery 921: Harmonize - Implement DYAD-WU-WEI Workspace for
+- name: 'Node 921: Discovery 921: Harmonize - Implement Wu-wei Dyad Workspace for
     Operator Digital Needs'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 922: Discovery 922: Plan - Implement DYAD-WU-WEI Workspace for Operator
+- name: 'Node 922: Discovery 922: Plan - Implement Wu-wei Dyad Workspace for Operator
     Digital Needs'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 923: Activity 923: Reflect - Implement DYAD-WU-WEI Workspace for Operator
+- name: 'Node 923: Activity 923: Reflect - Implement Wu-wei Dyad Workspace for Operator
     Digital Needs'
   status: Backlog
-  learnings: Final reflection and path closure for Implement DYAD-WU-WEI Workspace
+  learnings: Final reflection and path closure for Implement Wu-wei Dyad Workspace
     for Operator Digital Needs.
   invariants: []
-- name: 'Discovery 921: Harmonize - Implement DYAD-WU-WEI Workspace for Operator Digital
+- name: 'Discovery 921: Harmonize - Implement Wu-wei Dyad Workspace for Operator Digital
     Needs'
   status: Completed
   learnings: Harmonized on the local-first Python engine + local Flask-based UI +
     Markdown storage, documented in WHY-0921.
   invariants:
   - '[x] kb/WHY-0921-dyad-wu-wei-workspace-architecture.md exists and is registered.'
-- name: 'Discovery 922: Plan - Implement DYAD-WU-WEI Workspace for Operator Digital
+- name: 'Discovery 922: Plan - Implement Wu-wei Dyad Workspace for Operator Digital
     Needs'
   status: Completed
   learnings: Formulated the Model 1 Dual-Context Workspace implementation plan, detailing
@@ -2453,7 +2453,7 @@ nodes:
   invariants:
   - '[x] implementation_plan.md exists and is updated.'
   - '[x] task.md exists.'
-- name: 'Discovery 922: Plan - Implement DYAD-WU-WEI Workspace for Operator Digital
+- name: 'Discovery 922: Plan - Implement Wu-wei Dyad Workspace for Operator Digital
     Needs'
   status: Completed
   learnings: Formulated the Model 1 Dual-Context Workspace implementation plan, detailing
@@ -2466,7 +2466,7 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 923: Reflect - Implement DYAD-WU-WEI Workspace for Operator Digital
+- name: 'Activity 923: Reflect - Implement Wu-wei Dyad Workspace for Operator Digital
     Needs'
   status: Completed
   learnings: Implemented Model 1 dual-context workspace engine supporting path redirection,
@@ -2479,12 +2479,12 @@ nodes:
   - '[x] create bin/workspace CLI wrapper'
   - '[x] write tests/test_daemon_workspace.py'
   - '[x] run verification tests'
-- name: 'Node 928: Path 928: Implement DYAD-WU-WEI Deployment and Bootstrap Installer'
+- name: 'Node 928: Path 928: Implement Wu-wei Dyad Deployment and Bootstrap Installer'
   status: Backlog
-  learnings: Provide a playbook or script to deploy and configure a new DYAD-WU-WEI
+  learnings: Provide a playbook or script to deploy and configure a new Wu-wei Dyad
     deployment environment including virtual environment setup and audit daemon integration.
   invariants: []
-- name: 'Node 929: Discovery 929: Harmonize - Implement DYAD-WU-WEI Deployment and
+- name: 'Node 929: Discovery 929: Harmonize - Implement Wu-wei Dyad Deployment and
     Bootstrap Installer'
   status: Completed
   learnings: Successfully harmonized on Option A (a dedicated shell script installer
@@ -2494,7 +2494,7 @@ nodes:
   invariants:
   - '[x] kb/WHY-0929-dyad-wu-wei-installer-harmonization.md exists'
   - '[x] Registered in kb/HOW-0000-manifest.md'
-- name: 'Node 930: Discovery 930: Plan - Implement DYAD-WU-WEI Deployment and Bootstrap
+- name: 'Node 930: Discovery 930: Plan - Implement Wu-wei Dyad Deployment and Bootstrap
     Installer'
   status: Completed
   learnings: Successfully formulated the technical specifications for the new bin/dyad-wu-wei-install
@@ -2503,7 +2503,7 @@ nodes:
   invariants:
   - '[x] kb/WHAT-0930-dyad-wu-wei-installer-spec.md exists'
   - '[x] Registered in kb/HOW-0000-manifest.md'
-- name: 'Node 931: Activity 931: Reflect - Implement DYAD-WU-WEI Deployment and Bootstrap
+- name: 'Node 931: Activity 931: Reflect - Implement Wu-wei Dyad Deployment and Bootstrap
     Installer'
   status: '[///] Act Phase'
   learnings: Planning Phase
@@ -2512,7 +2512,7 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 931: Reflect - Implement DYAD-WU-WEI Deployment and Bootstrap Installer'
+- name: 'Activity 931: Reflect - Implement Wu-wei Dyad Deployment and Bootstrap Installer'
   status: Completed
   learnings: Implemented the unified workspace bootstrap installer bin/dyad-wu-wei-install
     (Option A) and integrated workspace worktree redirection inside node_lifecycle.py.
@@ -2890,28 +2890,28 @@ nodes:
     during the soft reset rollback.
   invariants:
   - N/A
-- name: 'Node 1022: Path 1022: Refine DYAD-WU-WEI Intent Understanding'
+- name: 'Node 1022: Path 1022: Refine Wu-wei Dyad Intent Understanding'
   status: Backlog
-  learnings: Refine Chat Immediacy Protocol to explicitly require DYAD-WU-WEI Intent
+  learnings: Refine Chat Immediacy Protocol to explicitly require Wu-wei Dyad Intent
     Understanding (Dao and Ziran context).
   invariants: []
-- name: 'Node 1023: Discovery 1023: Harmonize - Refine DYAD-WU-WEI Intent Understanding'
+- name: 'Node 1023: Discovery 1023: Harmonize - Refine Wu-wei Dyad Intent Understanding'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1024: Discovery 1024: Plan - Refine DYAD-WU-WEI Intent Understanding'
+- name: 'Node 1024: Discovery 1024: Plan - Refine Wu-wei Dyad Intent Understanding'
   status: Completed
   learnings: Generated the Implementation Blueprint detailing specification changes
     for WHAT-1037.
   invariants:
   - '[x] Completed Blueprint artifact'
-- name: 'Node 1025: Activity 1025: Reflect - Refine DYAD-WU-WEI Intent Understanding'
+- name: 'Node 1025: Activity 1025: Reflect - Refine Wu-wei Dyad Intent Understanding'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
 - name: 'Discovery 1023: Refine Intent Understanding'
   status: Completed
-  learnings: Refined the Chat Immediacy Protocol to explicitly require DYAD-WU-WEI
+  learnings: Refined the Chat Immediacy Protocol to explicitly require Wu-wei Dyad
     Intent Understanding rather than generic LLM interpretation.
   invariants:
   - N/A
@@ -4011,19 +4011,19 @@ nodes:
   learnings: 'Final reflection on Path 1043: Codified Wu-wei NBA Handoff Message Structure'
   invariants:
   - N/A
-- name: 'Discovery 1023: Harmonize - Refine DYAD-WU-WEI Intent Understanding'
+- name: 'Discovery 1023: Harmonize - Refine Wu-wei Dyad Intent Understanding'
   status: Completed
   learnings: Codified WHY-1022 and registered in meta manifest
   invariants:
   - N/A
-- name: 'Discovery 1024: Plan - Refine DYAD-WU-WEI Intent Understanding'
+- name: 'Discovery 1024: Plan - Refine Wu-wei Dyad Intent Understanding'
   status: Completed
   learnings: Codified WHAT-1022 specification and registered in meta manifest
   invariants:
   - N/A
-- name: 'Activity 1025: Reflect - Refine DYAD-WU-WEI Intent Understanding'
+- name: 'Activity 1025: Reflect - Refine Wu-wei Dyad Intent Understanding'
   status: Completed
-  learnings: 'Final reflection on Path 1022: Refined DYAD-WU-WEI Intent Understanding'
+  learnings: 'Final reflection on Path 1022: Refined Wu-wei Dyad Intent Understanding'
   invariants:
   - N/A
 - name: 'Node 1287: Path 1287: Mock venv provisioning in test_init_workspace to restore
@@ -4175,7 +4175,7 @@ nodes:
   - '[x] Parent gate inheritance boundaries are secure'
 - name: 'Node 1394: Path 1394: Dyad Practice Lineage Integration'
   status: Backlog
-  learnings: Ensure DYAD-WU-WEI core invariants and practices act as a superset of
+  learnings: Ensure Wu-wei Dyad core invariants and practices act as a superset of
     the Dyad Practice framework.
   invariants: []
 - name: 'Node 1395: Discovery 1395: Harmonize - Dyad Practice Lineage Integration'
@@ -4300,7 +4300,7 @@ nodes:
     in node reflection to prevent PR/Issue ambiguity.
   invariants:
   - WHY-1439
-- name: 'Node 1024: Node 1024: Discovery 1024: Plan - Refine DYAD-WU-WEI Intent Understanding'
+- name: 'Node 1024: Node 1024: Discovery 1024: Plan - Refine Wu-wei Dyad Intent Understanding'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
@@ -4319,62 +4319,61 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1075: Harmonize - Establish robust agentic bug reporting and triage
+- name: 'Node 1076: Plan - Establish robust agentic bug reporting and triage mechanisms'
+  status: Completed
+  learnings: Drafted WHAT-1076 outlining the architectural specification for global
+    exception handling, backlog issue generation, and telemetry logging.
+  invariants:
+  - '[x] WHAT-1076 created and passes static validation'
+- name: 'Node 1077: Reflect - Establish robust agentic bug reporting and triage mechanisms'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1077: Reflect - Establish robust agentic bug reporting and triage
     mechanisms'
   status: Completed
-  learnings: Created Epistemic Baseline outlining the architecture for global exception
-    interception, traceback capture, automated backlog issue generation, and telemetry
-    integration for agentic bug reporting.
-  invariants:
-  - '[x] Epistemic baseline established'
-- name: 'Node 1458: Act: Establish robust agentic bug reporting and triage mechanisms'
+  learnings: Compiled retrospective for Path 1074
+  invariants: []
+- name: 'Node 1461: Plan - Codify Stepped-Away Discipline'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Act: Establish robust agentic bug reporting and triage mechanisms'
+- name: 'Discovery: Plan - Codify Stepped-Away Discipline'
   status: Completed
-  learnings: Implemented global exception handler in daemon_node.py to automatically
-    file bugs into Triage Holding backlog and log telemetry.
-  invariants: []
-- name: 'Node 1460: Harmonize - Codify Stepped-Away Discipline'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Discovery: Harmonize - Codify Stepped-Away Discipline'
-  status: Completed
-  learnings: Codified the intent for the Stepped-Away Discipline in WHY-1460
+  learnings: Formulated WHAT-1461 specification
   invariants:
   - '[x] Asynchronous Execution Invariant'
-- name: 'Node 1471: Act: Codify Stepped-Away Discipline'
+- name: 'Node 1462: Reflect - Codify Stepped-Away Discipline'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity: Act: Codify Stepped-Away Discipline'
+- name: 'Activity: Reflect - Codify Stepped-Away Discipline'
   status: Completed
-  learnings: Implemented WHAT-1461 by codifying the Stepped-Away Discipline directly
-    into GEMINI.md
+  learnings: Compiled Path 1459 Retrospective
   invariants:
   - '[x] Asynchronous Execution Invariant'
-- name: 'Node 1478: Codify Frontier-Dyad Telos into GEMINI.md'
+- name: 'Node 1483: Refactor codebase to reflect dyad-wu-wei moniker'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Codify Frontier-Dyad Telos into GEMINI.md
+- name: Activity 1483
   status: Completed
-  learnings: Materialized the ratified Telos 'Pioneers of Materialized Autonomy' into
-    the GEMINI.md anchor.
+  learnings: '["Completed global refactor of dz-cil to dyad-wu-wei"]'
   invariants:
-  - '[x] GEMINI.md explicitly codifies the new Telos'
-- name: 'Node 1485: Falsify and remediate dyad-wu-wei survivors'
+  - Preserved lexical immunity
+- name: 'Node 1424: Harmonize - Codify Redundant Node Closure Discipline'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1485: Activity: Falsify and remediate dz-cil survivors'
+- name: 'Node 1487: Retitle backlog issues to falsify dz-cil'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1487: Retitle backlog issues to falsify dyad-wu-wei'
   status: Completed
-  learnings: Executed find-and-replace to migrate surviving dz-cil references to dyad-wu-wei
-    in frontier state and audit logs.
+  learnings: All legacy backlog references replaced
   invariants:
-  - '[x] All surviving references falsified'
+  - '[x] GitHub issues updated'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
