@@ -1,7 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1433: Activity 1433: Codify Load-Bearing Environment Mutation
-  Isolation'
+current_active_node: 'Node 1435: Activity 1435: Triage 76 Execution Failures'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4267,6 +4266,16 @@ nodes:
     environment changes with feature branches.
   invariants:
   - '[x] WHY-1433 created'
+- name: 'Node 1435: Activity 1435: Triage 76 Execution Failures'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Triage 76 Execution Failures
+  status: Completed
+  learnings: The test runner was failing to clean up historical test failure telemetry,
+    causing the Seizure Detector to trigger on accumulated historical debt. Added
+    cleanup logic to run-tests.
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
