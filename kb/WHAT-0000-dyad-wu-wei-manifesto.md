@@ -1,4 +1,4 @@
-# WHAT-0000: Dao-Ziran Continuous Inference Loop (DZ-CIL) Manifesto
+# WHAT-0000: Dao-Ziran Continuous Inference Loop (Wu-wei Dyad) Manifesto
 
 ## 1. The Solopreneur's Leverage
 We do not compete with corporations (Google, Anthropic) on base models. We "hire" them to fuel the loop. The objective is asymmetric leverage—using deterministic structures to bind probabilistic cognition.
@@ -9,5 +9,5 @@ We do not compete with corporations (Google, Anthropic) on base models. We "hire
 ## 3. The Supreme Value of the KB
 The true asset of the system is not the functional code—code is a disposable by-product. The real value is the immutable `WHAT/HOW/WHY` primitives stored in the KB, which exponentially increase the cognitive capacity of both the Operator and the Metasystem.
 
-## 4. Dao-Ziran (DZ-CIL)
-The system operates via a Continuous Inference Loop, functioning naturally and deterministically like the laws of physics. The North Star is the visionary reality that can be manifested and realized by a truly earnest individual growing in conjunction with their DZ-CIL partner.
+## 4. Dao-Ziran (Wu-wei Dyad)
+The system operates via a Continuous Inference Loop, functioning naturally and deterministically like the laws of physics. The North Star is the visionary reality that can be manifested and realized by a truly earnest individual growing in conjunction with their Wu-wei Dyad partner.

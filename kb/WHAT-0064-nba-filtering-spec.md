@@ -8,7 +8,7 @@ This specification defines the structural mechanism for the Next-Best-Action (NB
 ### 1. Persona Detection
 The active persona identity MUST be retrieved deterministically using the following order of precedence:
 1. `SPAO_PERSONA_ID` environment variable (if present).
-2. `agent_id` parameter inside `dz-cil.yml` (fallback).
+2. `agent_id` parameter inside `dyad-wu-wei.yml` (fallback).
 
 ### 2. Ownership Resolution
 The NBA scorer MUST resolve path ownership by tracing the candidate node back to its parent `Strategic Goal (SG)` using the `artifacts/strategic_intent.yml` ledger. The SG ID is then mapped to the authorized persona via the immutable `kb/WHAT-0062-agent-persona-ownership-index.md` index.

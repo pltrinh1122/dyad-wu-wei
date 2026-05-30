@@ -51,10 +51,10 @@ This breaks the bilateral contract of SG-0006 — external project agents cannot
 - **Status**: Resolved
 - **Fix**: <commit message or PR title>
 - **PR**: #<number>
-- **Pull Instructions**: `git -C <dz-cil-clone-path> pull origin main`
+- **Pull Instructions**: `git -C <dyad-wu-wei-clone-path> pull origin main`
 ```
 
-This convention is documented but not programmatically enforced — it's guidance for the DZ-CIL agent when closing support tickets.
+This convention is documented but not programmatically enforced — it's guidance for the Wu-wei Dyad agent when closing support tickets.
 
 ## 3. Rejected Alternatives
 

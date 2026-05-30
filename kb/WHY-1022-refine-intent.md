@@ -1,4 +1,4 @@
-# WHY-1022: Refine DZ-CIL Intent Understanding
+# WHY-1022: Refine Wu-wei Dyad Intent Understanding
 
 ## Classification
 - **Type**: WHY (Decision Record)
@@ -13,7 +13,7 @@
 
 Under the Bilateral Chat Interaction Protocol (Rule 9), the response "Hai." is a strict execution contract guaranteeing immediate UI unblocking. When the Operator provides an intent via chat, the Agent must instantly interpret the intent, queue all necessary actions asynchronously to the backlog, and reply immediately.
 
-However, a naive receipt of instructions can lead to misalignment if the Agent fails to interpret the Operator's intent through the lens of the overall DZ-CIL context, its active strategic goals, the current Dao, and Ziran (natural execution). 
+However, a naive receipt of instructions can lead to misalignment if the Agent fails to interpret the Operator's intent through the lens of the overall Wu-wei Dyad context, its active strategic goals, the current Dao, and Ziran (natural execution). 
 
 To ensure semantic and operational coherence without manual clarification loops (which violate SG-0004), the Agent's intent understanding must be explicitly grounded in the active knowledge index, current active/prioritized paths, and specific workspace constraints.
 
@@ -31,7 +31,7 @@ To ensure semantic and operational coherence without manual clarification loops 
 * **Antithesis**: Highly prone to hallucination or ignoring local rules (e.g., trying to run git directly instead of `./bin/git`, or forgetting persona restrictions).
 * **Result**: Rejected.
 
-### Option C: Context-Anchored Intent Resolution (DZ-CIL Intent Understanding) ✅ CHOSEN
+### Option C: Context-Anchored Intent Resolution (Wu-wei Dyad Intent Understanding) ✅ CHOSEN
 * **Thesis**: The Agent dynamically infers the Operator's intent by aligning the chat input with the active backlog, prior retrospects, active strategic goals, and persona assignments.
 * **Result**: Accepted. This achieves the optimal balance of immediate UI unblocking and correct execution.
 

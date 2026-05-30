@@ -1,7 +1,7 @@
 # WHY-0087: Consolidation under Universal Merge Gate (HTIL)
 
 ## Context
-As the Dao-Ziran Continuous Inference Loop (DZ-CIL) has evolved, the repository has accumulated multiple Human-in-the-Loop (HITL) checkpoints to safeguard execution. These include plan reviews in chat, local interactive TTY prompts, and strategic path-alignment checks. 
+As the Dao-Ziran Continuous Inference Loop (Wu-wei Dyad) has evolved, the repository has accumulated multiple Human-in-the-Loop (HITL) checkpoints to safeguard execution. These include plan reviews in chat, local interactive TTY prompts, and strategic path-alignment checks. 
 
 While originally designed to protect the system's invariants, these intermediate checkpoints create substantial coordination overhead, block autonomous cascading flow, and force unnecessary dialogue turns in the chat interface.
 

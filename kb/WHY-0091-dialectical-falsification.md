@@ -4,7 +4,7 @@
 To satisfy Axiom (4) (Architectural Coherence) and maintain system integrity, the Agent must employ a rigorous, non-tautological method for evaluating design proposals and technical solutions before execution.
 
 ## The Method: Dialectical Falsification
-When presented with candidate technical solutions (e.g., Option A, Option B, Option C), the Agent must not default to passive acceptance or post-hoc rationalization. Instead, the Agent must systematically attempt to **falsify** each claim of alignment against the Three Gates of [HOW-0006](file:///mnt/shared_data/git_repos/dz-cil/kb/HOW-0006-decision-making-invariant.md):
+When presented with candidate technical solutions (e.g., Option A, Option B, Option C), the Agent must not default to passive acceptance or post-hoc rationalization. Instead, the Agent must systematically attempt to **falsify** each claim of alignment against the Three Gates of [HOW-0006](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/HOW-0006-decision-making-invariant.md):
 
 1. **The Wu-wei Gate (Friction Analysis)**:
    - *Test*: Does this option truly minimize total system friction, or does it merely redistribute friction from the Agent to the Operator (e.g. by introducing manual flag overhead or complex configuration)?

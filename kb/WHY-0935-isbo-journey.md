@@ -11,7 +11,7 @@
 
 ### 1. Context & Design Tension (The Ziran)
 
-For myself as the Creator, and for the disciples who will inherit this system, the transition from acquiring the DZ-CIL engine to achieving a continuous, autonomous execution loop on a sovereign domain (like DZ-TA) has historically been plagued by false starts. 
+For myself as the Creator, and for the disciples who will inherit this system, the transition from acquiring the Wu-wei Dyad engine to achieving a continuous, autonomous execution loop on a sovereign domain (like DZ-TA) has historically been plagued by false starts. 
 
 Through dialectical falsification, we have identified that the true root cause is a **Dyadic Failure**. The friction stems from an internal conflation of roles by the human Operator (blurring the line between the *Creator* of the engine and the *Director* of the domain) combined with the Agent's systemic failure to enforce the physical *Ziran* boundaries needed to highlight this conflation.
 
@@ -22,7 +22,7 @@ Without explicit boundaries, the Operator slips into the Director role while sti
 
 ### 2. The Decision (The Dao)
 
-We must codify the **ISBO (Install, Setup, Bootstrap, Operate)** framework as the absolute, immutable sequence for initializing any new application on the DZ-CIL engine.
+We must codify the **ISBO (Install, Setup, Bootstrap, Operate)** framework as the absolute, immutable sequence for initializing any new application on the Wu-wei Dyad engine.
 
 By formalizing this sequence as a discipline:
 * We establish the physical guardrails necessary to prevent role conflation. The *Creator* installs and sets up; the *Director* bootstraps and operates. 

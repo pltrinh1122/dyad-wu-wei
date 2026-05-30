@@ -586,9 +586,9 @@
 
 ## Abstract Nodes into Terminal and Non-Terminal Base Classes
 - **Status**: Completed
-- **Learnings & Context**: Abstracted Node classification into Terminal and Non-Terminal Base Classes via dz-cil.yml configuration, unlocking domain portability.
+- **Learnings & Context**: Abstracted Node classification into Terminal and Non-Terminal Base Classes via dyad-wu-wei.yml configuration, unlocking domain portability.
 - **Feedforward Invariants**:
-  - `All domain-specific Node Taxonomy mappings must be defined in dz-cil.yml at the repository root.`
+  - `All domain-specific Node Taxonomy mappings must be defined in dyad-wu-wei.yml at the repository root.`
 
 ## Execute Architectural Migration of mgr-* Orchestrators
 - **Status**: Completed
@@ -630,7 +630,7 @@
 
 ## Activity 182: Implement HookManager and Configuration Schema
 - **Status**: Completed
-- **Learnings & Context**: Implemented HookManager in orchestrator/sense_hooks.py to dynamically parse dz-cil.yml and execute configurable hooks. Hook abstractions have been integrated into sync_and_clean_node.
+- **Learnings & Context**: Implemented HookManager in orchestrator/sense_hooks.py to dynamically parse dyad-wu-wei.yml and execute configurable hooks. Hook abstractions have been integrated into sync_and_clean_node.
 - **Feedforward Invariants**:
   - `[x] HookManager dynamically parses configuration`
   - `[x] Sense Phase abstracted into modular execution pattern`
@@ -1711,7 +1711,7 @@
 
 ## Node 626: Path 626: Path: Implement Dynamic Agent Identity Resolution
 - **Status**: Backlog
-- **Learnings & Context**: Decouple agent_id from dz-cil.yml and implement dynamic identity resolution based on env var or workspace basename to prevent main branch conflicts.
+- **Learnings & Context**: Decouple agent_id from dyad-wu-wei.yml and implement dynamic identity resolution based on env var or workspace basename to prevent main branch conflicts.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1880,7 +1880,7 @@
 
 ## Probe 736: Align - Restructure Repository for Dao Portability
 - **Status**: Completed
-- **Learnings & Context**: The DZ-CIL is an OS. Its physical manifestation is kernel, drivers, bin, kb, artifacts, and tests. We do not need arbitrary nested directories. Everything in CWD is an artificial manifestation of The Shaping.
+- **Learnings & Context**: The Wu-wei Dyad is an OS. Its physical manifestation is kernel, drivers, bin, kb, artifacts, and tests. We do not need arbitrary nested directories. Everything in CWD is an artificial manifestation of The Shaping.
 - **Feedforward Invariants**:
   - `None explicitly updated`
   - `but reaffirmed Dao fa Ziran (The Dao follows Ziran).`
@@ -2227,44 +2227,44 @@
 - **Feedforward Invariants**:
   - `[x] All deliverables for Path 916 verified and closed`
 
-## Node 920: Path 920: Implement DZ-CIL Workspace for Operator Digital Needs
+## Node 920: Path 920: Implement Wu-wei Dyad Workspace for Operator Digital Needs
 - **Status**: Backlog
 - **Learnings & Context**: Build a local-first digital companion application enabling the Operator to manage vacations and write serial novels with automated semantic/logistical verification.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 921: Discovery 921: Harmonize - Implement DZ-CIL Workspace for Operator Digital Needs
+## Node 921: Discovery 921: Harmonize - Implement Wu-wei Dyad Workspace for Operator Digital Needs
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 922: Discovery 922: Plan - Implement DZ-CIL Workspace for Operator Digital Needs
+## Node 922: Discovery 922: Plan - Implement Wu-wei Dyad Workspace for Operator Digital Needs
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 923: Activity 923: Reflect - Implement DZ-CIL Workspace for Operator Digital Needs
+## Node 923: Activity 923: Reflect - Implement Wu-wei Dyad Workspace for Operator Digital Needs
 - **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement DZ-CIL Workspace for Operator Digital Needs.
+- **Learnings & Context**: Final reflection and path closure for Implement Wu-wei Dyad Workspace for Operator Digital Needs.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery 921: Harmonize - Implement DZ-CIL Workspace for Operator Digital Needs
+## Discovery 921: Harmonize - Implement Wu-wei Dyad Workspace for Operator Digital Needs
 - **Status**: Completed
 - **Learnings & Context**: Harmonized on the local-first Python engine + local Flask-based UI + Markdown storage, documented in WHY-0921.
 - **Feedforward Invariants**:
-  - `[x] kb/WHY-0921-dz-cil-workspace-architecture.md exists and is registered.`
+  - `[x] kb/WHY-0921-dyad-wu-wei-workspace-architecture.md exists and is registered.`
 
-## Discovery 922: Plan - Implement DZ-CIL Workspace for Operator Digital Needs
+## Discovery 922: Plan - Implement Wu-wei Dyad Workspace for Operator Digital Needs
 - **Status**: Completed
 - **Learnings & Context**: Formulated the Model 1 Dual-Context Workspace implementation plan, detailing path redirection, git client adjustments, and sub-daemons, documented in the implementation_plan.md artifact.
 - **Feedforward Invariants**:
   - `[x] implementation_plan.md exists and is updated.`
   - `[x] task.md exists.`
 
-## Discovery 922: Plan - Implement DZ-CIL Workspace for Operator Digital Needs
+## Discovery 922: Plan - Implement Wu-wei Dyad Workspace for Operator Digital Needs
 - **Status**: Completed
 - **Learnings & Context**: Formulated the Model 1 Dual-Context Workspace implementation plan, detailing path redirection, git client adjustments, and sub-daemons, documented in the implementation_plan.md artifact.
 - **Feedforward Invariants**:
@@ -2277,7 +2277,7 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 923: Reflect - Implement DZ-CIL Workspace for Operator Digital Needs
+## Activity 923: Reflect - Implement Wu-wei Dyad Workspace for Operator Digital Needs
 - **Status**: Completed
 - **Learnings & Context**: Implemented Model 1 dual-context workspace engine supporting path redirection, github client routing, status report, and workspace cli adapters
 - **Feedforward Invariants**:
@@ -2288,27 +2288,27 @@
   - `[x] write tests/test_daemon_workspace.py`
   - `[x] run verification tests`
 
-## Node 928: Path 928: Implement DZ-CIL Deployment and Bootstrap Installer
+## Node 928: Path 928: Implement Wu-wei Dyad Deployment and Bootstrap Installer
 - **Status**: Backlog
-- **Learnings & Context**: Provide a playbook or script to deploy and configure a new DZ-CIL deployment environment including virtual environment setup and audit daemon integration.
+- **Learnings & Context**: Provide a playbook or script to deploy and configure a new Wu-wei Dyad deployment environment including virtual environment setup and audit daemon integration.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 929: Discovery 929: Harmonize - Implement DZ-CIL Deployment and Bootstrap Installer
+## Node 929: Discovery 929: Harmonize - Implement Wu-wei Dyad Deployment and Bootstrap Installer
 - **Status**: Completed
-- **Learnings & Context**: Successfully harmonized on Option A (a dedicated shell script installer bin/dz-cil-install) to handle Model 1 Workspace onboarding, directory creation, virtualenv setup, and GEMINI.md template provisioning before python execution begins.
+- **Learnings & Context**: Successfully harmonized on Option A (a dedicated shell script installer bin/dyad-wu-wei-install) to handle Model 1 Workspace onboarding, directory creation, virtualenv setup, and GEMINI.md template provisioning before python execution begins.
 - **Feedforward Invariants**:
-  - `[x] kb/WHY-0929-dz-cil-installer-harmonization.md exists`
+  - `[x] kb/WHY-0929-dyad-wu-wei-installer-harmonization.md exists`
   - `[x] Registered in kb/HOW-0000-manifest.md`
 
-## Node 930: Discovery 930: Plan - Implement DZ-CIL Deployment and Bootstrap Installer
+## Node 930: Discovery 930: Plan - Implement Wu-wei Dyad Deployment and Bootstrap Installer
 - **Status**: Completed
-- **Learnings & Context**: Successfully formulated the technical specifications for the new bin/dz-cil-install script and the workspace worktree redirection model (.workspace/.worktrees/node/*) to enable complex child workspace branching strategies.
+- **Learnings & Context**: Successfully formulated the technical specifications for the new bin/dyad-wu-wei-install script and the workspace worktree redirection model (.workspace/.worktrees/node/*) to enable complex child workspace branching strategies.
 - **Feedforward Invariants**:
-  - `[x] kb/WHAT-0930-dz-cil-installer-spec.md exists`
+  - `[x] kb/WHAT-0930-dyad-wu-wei-installer-spec.md exists`
   - `[x] Registered in kb/HOW-0000-manifest.md`
 
-## Node 931: Activity 931: Reflect - Implement DZ-CIL Deployment and Bootstrap Installer
+## Node 931: Activity 931: Reflect - Implement Wu-wei Dyad Deployment and Bootstrap Installer
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
@@ -2320,24 +2320,24 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 931: Reflect - Implement DZ-CIL Deployment and Bootstrap Installer
+## Activity 931: Reflect - Implement Wu-wei Dyad Deployment and Bootstrap Installer
 - **Status**: Completed
-- **Learnings & Context**: Implemented the unified workspace bootstrap installer bin/dz-cil-install (Option A) and integrated workspace worktree redirection inside node_lifecycle.py. The installer script provisions baseline directory structures, GEMINI.md, and virtual environments. Redirection logic ensures child project checkouts route to .worktrees/node/[id]-[kebab-case]/ inside the workspace directory.
+- **Learnings & Context**: Implemented the unified workspace bootstrap installer bin/dyad-wu-wei-install (Option A) and integrated workspace worktree redirection inside node_lifecycle.py. The installer script provisions baseline directory structures, GEMINI.md, and virtual environments. Redirection logic ensures child project checkouts route to .worktrees/node/[id]-[kebab-case]/ inside the workspace directory.
 - **Feedforward Invariants**:
-  - `bin/dz-cil-install exists and is executable`
+  - `bin/dyad-wu-wei-install exists and is executable`
   - `Workspace worktrees are redirected`
 
-## Node 937: Activity 937: Activity: Print post-installation guidance in bin/dz-cil-install
+## Node 937: Activity 937: Activity: Print post-installation guidance in bin/dyad-wu-wei-install
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 937: Print post-installation guidance in bin/dz-cil-install
+## Activity 937: Print post-installation guidance in bin/dyad-wu-wei-install
 - **Status**: Completed
-- **Learnings & Context**: Successfully updated bin/dz-cil-install and tests/test_dz_cil_installer.py to print next steps per Dao.
+- **Learnings & Context**: Successfully updated bin/dyad-wu-wei-install and tests/test_dz_cil_installer.py to print next steps per Dao.
 - **Feedforward Invariants**:
-  - `bin/dz-cil-install prints post-installation next steps; test suite achieves 100% pass rate.`
+  - `bin/dyad-wu-wei-install prints post-installation next steps; test suite achieves 100% pass rate.`
 
 ## Node 939: Activity 939: Decommission legacy global SPAO deployment tools
 - **Status**: [///] Act Phase
@@ -2713,25 +2713,25 @@
 - **Feedforward Invariants**:
   - `N/A`
 
-## Node 1022: Path 1022: Refine DZ-CIL Intent Understanding
+## Node 1022: Path 1022: Refine Wu-wei Dyad Intent Understanding
 - **Status**: Backlog
-- **Learnings & Context**: Refine Chat Immediacy Protocol to explicitly require DZ-CIL Intent Understanding (Dao and Ziran context).
+- **Learnings & Context**: Refine Chat Immediacy Protocol to explicitly require Wu-wei Dyad Intent Understanding (Dao and Ziran context).
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1023: Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding
+## Node 1023: Discovery 1023: Harmonize - Refine Wu-wei Dyad Intent Understanding
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
+## Node 1024: Discovery 1024: Plan - Refine Wu-wei Dyad Intent Understanding
 - **Status**: Completed
 - **Learnings & Context**: Generated the Implementation Blueprint detailing specification changes for WHAT-1037.
 - **Feedforward Invariants**:
   - `[x] Completed Blueprint artifact`
 
-## Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding
+## Node 1025: Activity 1025: Reflect - Refine Wu-wei Dyad Intent Understanding
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
@@ -2739,7 +2739,7 @@
 
 ## Discovery 1023: Refine Intent Understanding
 - **Status**: Completed
-- **Learnings & Context**: Refined the Chat Immediacy Protocol to explicitly require DZ-CIL Intent Understanding rather than generic LLM interpretation.
+- **Learnings & Context**: Refined the Chat Immediacy Protocol to explicitly require Wu-wei Dyad Intent Understanding rather than generic LLM interpretation.
 - **Feedforward Invariants**:
   - `N/A`
 
@@ -3423,7 +3423,7 @@
 
 ## Activity 1184: Reflect - Restore README and GLOSSARY from 420102e
 - **Status**: Completed
-- **Learnings & Context**: Restored the original high-density README.md and the full definitions in kb/GLOSSARY.md from commit 420102e, adapting them to the current dz-cil layout and conventions.
+- **Learnings & Context**: Restored the original high-density README.md and the full definitions in kb/GLOSSARY.md from commit 420102e, adapting them to the current dyad-wu-wei layout and conventions.
 - **Feedforward Invariants**:
   - `[x] README.md is restored`
   - `[x] kb/GLOSSARY.md is restored`
@@ -3929,21 +3929,21 @@
 - **Feedforward Invariants**:
   - `N/A`
 
-## Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding
+## Discovery 1023: Harmonize - Refine Wu-wei Dyad Intent Understanding
 - **Status**: Completed
 - **Learnings & Context**: Codified WHY-1022 and registered in meta manifest
 - **Feedforward Invariants**:
   - `N/A`
 
-## Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
+## Discovery 1024: Plan - Refine Wu-wei Dyad Intent Understanding
 - **Status**: Completed
 - **Learnings & Context**: Codified WHAT-1022 specification and registered in meta manifest
 - **Feedforward Invariants**:
   - `N/A`
 
-## Activity 1025: Reflect - Refine DZ-CIL Intent Understanding
+## Activity 1025: Reflect - Refine Wu-wei Dyad Intent Understanding
 - **Status**: Completed
-- **Learnings & Context**: Final reflection on Path 1022: Refined DZ-CIL Intent Understanding
+- **Learnings & Context**: Final reflection on Path 1022: Refined Wu-wei Dyad Intent Understanding
 - **Feedforward Invariants**:
   - `N/A`
 
@@ -4089,7 +4089,7 @@
 
 ## Node 1394: Path 1394: Dyad Practice Lineage Integration
 - **Status**: Backlog
-- **Learnings & Context**: Ensure DZ-CIL core invariants and practices act as a superset of the Dyad Practice framework.
+- **Learnings & Context**: Ensure Wu-wei Dyad core invariants and practices act as a superset of the Dyad Practice framework.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -4238,7 +4238,7 @@
 - **Feedforward Invariants**:
   - `WHY-1439`
 
-## Node 1024: Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
+## Node 1024: Node 1024: Discovery 1024: Plan - Refine Wu-wei Dyad Intent Understanding
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
@@ -4262,59 +4262,59 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1075: Harmonize - Establish robust agentic bug reporting and triage mechanisms
+## Node 1076: Plan - Establish robust agentic bug reporting and triage mechanisms
 - **Status**: Completed
-- **Learnings & Context**: Created Epistemic Baseline outlining the architecture for global exception interception, traceback capture, automated backlog issue generation, and telemetry integration for agentic bug reporting.
+- **Learnings & Context**: Drafted WHAT-1076 outlining the architectural specification for global exception handling, backlog issue generation, and telemetry logging.
 - **Feedforward Invariants**:
-  - `[x] Epistemic baseline established`
+  - `[x] WHAT-1076 created and passes static validation`
 
-## Node 1458: Act: Establish robust agentic bug reporting and triage mechanisms
+## Node 1077: Reflect - Establish robust agentic bug reporting and triage mechanisms
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Act: Establish robust agentic bug reporting and triage mechanisms
+## Activity 1077: Reflect - Establish robust agentic bug reporting and triage mechanisms
 - **Status**: Completed
-- **Learnings & Context**: Implemented global exception handler in daemon_node.py to automatically file bugs into Triage Holding backlog and log telemetry.
+- **Learnings & Context**: Compiled retrospective for Path 1074
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1460: Harmonize - Codify Stepped-Away Discipline
+## Node 1461: Plan - Codify Stepped-Away Discipline
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery: Harmonize - Codify Stepped-Away Discipline
+## Discovery: Plan - Codify Stepped-Away Discipline
 - **Status**: Completed
-- **Learnings & Context**: Codified the intent for the Stepped-Away Discipline in WHY-1460
+- **Learnings & Context**: Formulated WHAT-1461 specification
 - **Feedforward Invariants**:
   - `[x] Asynchronous Execution Invariant`
 
-## Node 1471: Act: Codify Stepped-Away Discipline
+## Node 1462: Reflect - Codify Stepped-Away Discipline
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity: Act: Codify Stepped-Away Discipline
+## Activity: Reflect - Codify Stepped-Away Discipline
 - **Status**: Completed
-- **Learnings & Context**: Implemented WHAT-1461 by codifying the Stepped-Away Discipline directly into GEMINI.md
+- **Learnings & Context**: Compiled Path 1459 Retrospective
 - **Feedforward Invariants**:
   - `[x] Asynchronous Execution Invariant`
 
-## Node 1478: Codify Frontier-Dyad Telos into GEMINI.md
+## Node 1483: Refactor codebase to reflect dyad-wu-wei moniker
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Codify Frontier-Dyad Telos into GEMINI.md
+## Activity 1483
 - **Status**: Completed
-- **Learnings & Context**: Materialized the ratified Telos 'Pioneers of Materialized Autonomy' into the GEMINI.md anchor.
+- **Learnings & Context**: ["Completed global refactor of dz-cil to dyad-wu-wei"]
 - **Feedforward Invariants**:
-  - `[x] GEMINI.md explicitly codifies the new Telos`
+  - `Preserved lexical immunity`
 
 ## Active Agents Matrix
 * **agent-ziran**:

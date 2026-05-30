@@ -11,7 +11,7 @@ Under the dynamic workspace resolution in `kernel/daemon_strategic.py`, if a chi
 - **Why it is necessary**: Without this bypass, a child workspace would either fail to transition (failing-closed due to missing files in a fresh clone) or be forced to carry massive boilerplate KB primitives, reducing execution efficiency.
 
 ### 2. Persona Auto-Resolution Invariant
-When `SPAO_PERSONA_ID` is absent inside a child workspace, the system dynamically resolves the persona by parsing the local `dz-cil.yml` configuration (which may be customized per-workspace) or by scanning parent path ownership. This ensures that even when the operator runs a CLI command inside a worktree without setting environmental flags, the system resolves to the correct persona context.
+When `SPAO_PERSONA_ID` is absent inside a child workspace, the system dynamically resolves the persona by parsing the local `dyad-wu-wei.yml` configuration (which may be customized per-workspace) or by scanning parent path ownership. This ensures that even when the operator runs a CLI command inside a worktree without setting environmental flags, the system resolves to the correct persona context.
 
 ### 3. Merging Rules & Intent
 Sovereign workspaces are allowed to merge child `GEMINI.md` overrides to resolve local strategic goals. This prevents configuration drift and allows subagents to run customized inner-loop policies under the parent ruleset baseline.

@@ -13,7 +13,7 @@ class DAGValidationError(Exception):
     """Raised when dependency graph validation fails."""
     pass
 
-def fetch_path_data(path_id: str, repository: str = "pltrinh1122/dz-cil") -> str:
+def fetch_path_data(path_id: str, repository: str = "pltrinh1122/dyad-wu-wei") -> str:
     """Fetches the issue body for a given Path ID."""
     result = subprocess.run(
         ["gh", "issue", "view", str(path_id), "--repo", repository, "--json", "body"],
@@ -88,7 +88,7 @@ def parse_meta_index(body: str) -> dict:
             merged_lines[-1] = merged_lines[-1] + " " + line.strip()
             
     pattern = re.compile(
-        r"^\s*-\s+\[([xX /])\]\s+(?:Node|Activity|Probe|Path)?\s*(\d+):?\s*(.*?)(?:\s*\[Depends:\s*(.*?)\s*\])?\s*$",
+        r"^\s*-\s+\[([xX /])\]\s+(?:Node|Activity|Discovery|Path)?\s*(\d+):?\s*(.*?)(?:\s*\[Depends:\s*(.*?)\s*\])?\s*$",
         re.IGNORECASE
     )
     

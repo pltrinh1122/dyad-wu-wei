@@ -41,4 +41,4 @@ When the strategic manager (`kernel/daemon_strategic.py`) evaluates transition p
 ### 4. Decoupling Tests from Generic Environment Mismatches
 The structural test suite (`tests/test_ownership_index.py`) must be updated to decouple generic CI or local developer environments from persona gates:
 1. **Fallback Bypass**:
-   - If the active `dz-cil.yml` contains a generic or unassigned `agent_id` (like `dz-cil`), or if the test is run in a local context where the index files are unpopulated, the test must skip or pass validation instead of failing-closed.
+   - If the active `dyad-wu-wei.yml` contains a generic or unassigned `agent_id` (like `dyad-wu-wei`), or if the test is run in a local context where the index files are unpopulated, the test must skip or pass validation instead of failing-closed.

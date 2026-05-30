@@ -9,7 +9,7 @@
 ---
 
 ## 1. Context & Rationale
-When the Continuous Inference Loop (DZ-CIL) enters a cognitive loop, crash-loop, or infinite loop during bootstrap or execution, the static loop invariants prevent the active loop from recovering itself. This is because the self-healing scripts (the Dao) assume a functioning system context. 
+When the Continuous Inference Loop (Wu-wei Dyad) enters a cognitive loop, crash-loop, or infinite loop during bootstrap or execution, the static loop invariants prevent the active loop from recovering itself. This is because the self-healing scripts (the Dao) assume a functioning system context. 
 
 To bridge this recovery gap, we require a recovery protocol. This protocol establishes a structured, state-of-exception mode where a secondary agent role (the Healer/Resuscitator) collaborates with the Operator to restore the primary agent (the Patient) back to laminar flow.
 

@@ -1,15 +1,15 @@
 # WHY-0075: The Semantic Indirection Invariant
 
 ## The Problem
-Node 840 (Refine: Remediate Legacy Terminology) demonstrated that terminology changes in DZ-CIL require surgical code-level refactoring when terminology strings are hardcoded directly in executable code. Specifically:
-- `dz-cil.yml` contained `terminal: [probe]` as a literal YAML value
+Node 840 (Refine: Remediate Legacy Terminology) demonstrated that terminology changes in Wu-wei Dyad require surgical code-level refactoring when terminology strings are hardcoded directly in executable code. Specifically:
+- `dyad-wu-wei.yml` contained `terminal: [probe]` as a literal YAML value
 - `kernel/daemon_backlog.py` contained `node_type="probe"` as a Python string literal
 - Test fixtures contained `"Probe 101: Align - New Path Title"` as assertion strings
 
 When the Operator ratified `probe` → `discovery`, the Agent was forced to touch 10+ source files, navigate synthesized lexical guard false positives, and manage detached HEAD failures across multiple retry cycles. This is the antithesis of Wu-wei.
 
 ## The Root Cause: Semantic Coupling
-Terminology is physically embedded in the computational substrate. The `kb/semantic_ledger.yml` — the single source of truth for canonical DZ-CIL terminology — is **completely disconnected** from the Python engines. The engines maintain their own independent vocabulary, hardcoded at authorship time.
+Terminology is physically embedded in the computational substrate. The `kb/semantic_ledger.yml` — the single source of truth for canonical Wu-wei Dyad terminology — is **completely disconnected** from the Python engines. The engines maintain their own independent vocabulary, hardcoded at authorship time.
 
 This creates a **Dual-Brain State**: the ledger declares philosophical intent, but the engines run on a separate, frozen vocabulary. Every terminology transition requires closing this gap manually — a forced, turbulent act (*you-wei*).
 

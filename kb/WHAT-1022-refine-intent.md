@@ -1,11 +1,11 @@
-# WHAT-1022: Refine DZ-CIL Intent Understanding Specification
+# WHAT-1022: Refine Wu-wei Dyad Intent Understanding Specification
 
 ## Classification
 - **Type**: WHAT (Technical Specification)
 - **ID**: WHAT-1022
 - **Author**: agent-ziran
 - **Created**: 2026-05-28 (Node 1024, Path 1022)
-- **Related Path**: Path 1022 (Refine DZ-CIL Intent Understanding)
+- **Related Path**: Path 1022 (Refine Wu-wei Dyad Intent Understanding)
 - **Implements decisions from**: WHY-1022
 
 ---

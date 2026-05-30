@@ -4,11 +4,11 @@ from drivers.github_client import create_issue, close_issue, reopen_issue, updat
 
 def test_create_issue(mock_tempfile, mock_subprocess):
     mock_gh_cmd, mock_file = mock_tempfile
-    mock_subprocess.return_value.stdout = "https://github.com/pltrinh1122/dz-cil/issues/99"
+    mock_subprocess.return_value.stdout = "https://github.com/pltrinh1122/dyad-wu-wei/issues/99"
     
     issue_url = create_issue("Test Title", "Test Body")
     
-    assert issue_url == "https://github.com/pltrinh1122/dz-cil/issues/99"
+    assert issue_url == "https://github.com/pltrinh1122/dyad-wu-wei/issues/99"
     mock_file.write.assert_called_once_with("Test Body")
     mock_subprocess.assert_called_once()
     args = mock_subprocess.call_args[0][0]
@@ -52,12 +52,12 @@ def test_create_pull_request(mock_tempfile, mock_subprocess):
     
     mock_git_ref = MagicMock(returncode=0, stdout="node/294-test\n")
     mock_pr_list = MagicMock(returncode=0, stdout="[]\n")
-    mock_pr_create = MagicMock(returncode=0, stdout="https://github.com/pltrinh1122/dz-cil/pull/99\n")
+    mock_pr_create = MagicMock(returncode=0, stdout="https://github.com/pltrinh1122/dyad-wu-wei/pull/99\n")
     
     mock_subprocess.side_effect = [mock_git_ref, mock_pr_list, mock_pr_create]
     
     pr_url = create_pull_request("Test PR Title", "Test PR Body")
-    assert pr_url == "https://github.com/pltrinh1122/dz-cil/pull/99"
+    assert pr_url == "https://github.com/pltrinh1122/dyad-wu-wei/pull/99"
     mock_file.write.assert_called_once_with("Test PR Body")
     
     assert mock_subprocess.call_count == 3
@@ -77,12 +77,12 @@ def test_create_pull_request_already_exists(mock_tempfile, mock_subprocess):
     mock_gh_cmd, mock_file = mock_tempfile
     
     mock_git_ref = MagicMock(returncode=0, stdout="node/294-test\n")
-    mock_pr_list = MagicMock(returncode=0, stdout='[{"url": "https://github.com/pltrinh1122/dz-cil/pull/99"}]\n')
+    mock_pr_list = MagicMock(returncode=0, stdout='[{"url": "https://github.com/pltrinh1122/dyad-wu-wei/pull/99"}]\n')
     
     mock_subprocess.side_effect = [mock_git_ref, mock_pr_list]
     
     pr_url = create_pull_request("Test PR Title", "Test PR Body")
-    assert pr_url == "https://github.com/pltrinh1122/dz-cil/pull/99"
+    assert pr_url == "https://github.com/pltrinh1122/dyad-wu-wei/pull/99"
     
     mock_file.write.assert_not_called()
     assert mock_subprocess.call_count == 2
@@ -99,12 +99,12 @@ def test_create_pull_request_with_explicit_head(mock_tempfile, mock_subprocess):
     mock_gh_cmd, mock_file = mock_tempfile
     
     mock_pr_list = MagicMock(returncode=0, stdout="[]\n")
-    mock_pr_create = MagicMock(returncode=0, stdout="https://github.com/pltrinh1122/dz-cil/pull/100\n")
+    mock_pr_create = MagicMock(returncode=0, stdout="https://github.com/pltrinh1122/dyad-wu-wei/pull/100\n")
     
     mock_subprocess.side_effect = [mock_pr_list, mock_pr_create]
     
     pr_url = create_pull_request("Test PR Title", "Test PR Body", head="custom-branch")
-    assert pr_url == "https://github.com/pltrinh1122/dz-cil/pull/100"
+    assert pr_url == "https://github.com/pltrinh1122/dyad-wu-wei/pull/100"
     mock_file.write.assert_called_once_with("Test PR Body")
     
     assert mock_subprocess.call_count == 2

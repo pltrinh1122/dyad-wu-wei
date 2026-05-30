@@ -78,10 +78,10 @@ terms:
     superseded_by: refine
   ziran_workspace:
     state: deprecated
-    superseded_by: dz-cil_workspace
+    superseded_by: dyad-wu-wei_workspace
   ziran_workspace_app:
     state: deprecated
-    superseded_by: dz-cil_workspace
+    superseded_by: dyad-wu-wei_workspace
   north_star:
     state: deprecated
     superseded_by: telos

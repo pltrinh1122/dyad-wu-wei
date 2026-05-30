@@ -6,7 +6,7 @@ The Agent-Antigravity system relies on a rigid, formalized topological graph to 
 As of Node 1004, the system identified four recent paths generated via direct chat interaction/hotfixes that exist in the global backlog but lack strategic mapping:
 1. Path 1043: Codify Wu-wei NBA Handoff Message Structure
 2. Path 1029: Fix Telemetry Logging Visibility
-3. Path 1022: Refine DZ-CIL Intent Understanding
+3. Path 1022: Refine Wu-wei Dyad Intent Understanding
 4. Path 1017: Codify Chat Immediacy Protocol
 
 Failing to map these nodes violates the `WHAT-0038-strategic-goal-path-alignment-verification.md` invariant, causing hygiene warnings and degrading the Deterministic Scoring model's ability to prioritize them.
@@ -22,7 +22,7 @@ To resolve this hygiene violation and restore full topological integrity, we mus
 - **Target SG:** **SG-0004 Efficient Intent-to-Goal Policy Communication**
 - **Rationale:** The Chat Immediacy Protocol ("Hai.") establishes a strict interaction boundary that prevents the Agent from engaging in unnecessary theoretical debates when receiving direct Operator commands, streamlining intent communication.
 
-### 3. Path 1022: Refine DZ-CIL Intent Understanding
+### 3. Path 1022: Refine Wu-wei Dyad Intent Understanding
 - **Target SG:** **SG-0004 Efficient Intent-to-Goal Policy Communication**
 - **Rationale:** Accurate interpretation of Dao/Ziran/CIL intent prevents the Agent from misunderstanding Operator instructions, thereby reducing the need for clarifying conversational loops (the primary falsification signal for SG-0004).
 

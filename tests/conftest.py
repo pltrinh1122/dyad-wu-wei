@@ -78,7 +78,7 @@ def temp_workspace(tmp_path):
     frontier = tmp_path / "frontier_state.md"
     frontier.write_text("# Agentic Frontier State\n\n## Current Active Node\nNone\n")
     
-    antigravity_yml = tmp_path / "dz-cil.yml"
+    antigravity_yml = tmp_path / "dyad-wu-wei.yml"
     antigravity_yml.write_text("nodes:\n  Activity: { status: Act }\n")
     
     return {

@@ -9,7 +9,7 @@ This specification governs the restoration of the `README.md` and `kb/GLOSSARY.m
 - **Source File**: `README.md` from commit `420102e`.
 - **Target File**: `/README.md` at root.
 - **Modifications for Integration**:
-  - Replace references to the old repository name with `dz-cil`.
+  - Replace references to the old repository name with `dyad-wu-wei`.
   - Update any documentation referring to the directory structure to reflect the current active layout (e.g. `kernel/` and `drivers/` instead of legacy directory names).
 
 ---
@@ -19,7 +19,7 @@ This specification governs the restoration of the `README.md` and `kb/GLOSSARY.m
 - **Source File**: `kb/GLOSSARY.md` from commit `420102e`.
 - **Target File**: `/kb/GLOSSARY.md`.
 - **Modifications for Integration**:
-  - The glossary is immune to static lexical validation, but restored content should conform to `dz-cil` terminology.
+  - The glossary is immune to static lexical validation, but restored content should conform to `dyad-wu-wei` terminology.
   - Re-merge the definitions of components (e.g., `WIP-N=1`, `Prompt Backlog`, `Sovereign Domain`, and the hierarchy of primitives) while preserving the current active glossary's definitions.
 
 ---

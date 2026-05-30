@@ -1,5 +1,5 @@
 ## Goal
-Harmonize the DZ-CIL framework with the Dyad Practice lineage, ensuring DZ-CIL becomes a superset. We need to falsify and deprecate the Dao/Ziran terminology as forced fits, update the execution scaffold from SPAO to SPAOR, and integrate the Generate/Validate mechanism catalog and 7-Dimension bootstrapping sequence.
+Harmonize the Wu-wei Dyad framework with the Dyad Practice lineage, ensuring Wu-wei Dyad becomes a superset. We need to falsify and deprecate the Dao/Ziran terminology as forced fits, update the execution scaffold from SPAO to SPAOR, and integrate the Generate/Validate mechanism catalog and 7-Dimension bootstrapping sequence.
 
 ## Scope
 1. Update kb/semantic_ledger.yml and any active kb/ files to deprecate `Dao` and `Ziran` terms (replaced with `Wu-wei` / `Friction Triage`).

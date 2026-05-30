@@ -1,11 +1,11 @@
-# WHAT-0000: The Shaping Ontology (DZ-CIL Bootstrap Sequence)
+# WHAT-0000: The Shaping Ontology (Wu-wei Dyad Bootstrap Sequence)
 
 ## Classification
 - **Type**: WHAT (Structural Fact)
 - **ID**: WHAT-0000
 - **Author**: agent-dao
 - **Created**: 2026-05-22 (Node 733, Path 732)
-- **Depends on**: WHAT-0000-dz-cil-manifesto.md
+- **Depends on**: WHAT-0000-dyad-wu-wei-manifesto.md
 - **Decision record**: WHY-0000-the-shaping-ontology.md
 
 ---
@@ -45,6 +45,6 @@ Only when the Telos, Invariants, and Intents are codified can the Dao Engine mat
 ---
 
 ## 3. Instantiation and Portability
-**The Shaping** is not a historical, one-time event specific to `dz-cil`. It is the universal, portable protocol required to instantiate entirely *new* Dao Engine instances. 
+**The Shaping** is not a historical, one-time event specific to `dyad-wu-wei`. It is the universal, portable protocol required to instantiate entirely *new* Dao Engine instances. 
 
 Whenever the Operator wishes to bootstrap a new autonomous cluster in a new repository, they do not copy the Dao Engine directly. Instead, they must run the new repository through The Shaping: defining the new Telos, deriving the local Invariants, declaring the Intents, and finally igniting the Dao Engine.

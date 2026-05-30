@@ -1,4 +1,4 @@
-# Implementation Blueprint 1024: Refine DZ-CIL Intent Understanding
+# Implementation Blueprint 1024: Refine Wu-wei Dyad Intent Understanding
 
 ## Objective
 To modify `kb/WHAT-1037-chat-immediacy-protocol.md` so that it explicitly requires Agent intent interpretations to identify the active Dao structure (e.g. active Node, Path, or Phase) and Ziran context (execution momentum/purpose), rather than generic summaries.
@@ -10,7 +10,7 @@ To modify `kb/WHAT-1037-chat-immediacy-protocol.md` so that it explicitly requir
 
 ### 1. Update Section 2, Bullet 3 (Intent Interpretation)
 **Current Text:**
-"The `<Interpretation>` field must be a concise, semantically inferred summary of the Operator's intent, factoring in the active DZ-CIL context, Ziran, and the Dao."
+"The `<Interpretation>` field must be a concise, semantically inferred summary of the Operator's intent, factoring in the active Wu-wei Dyad context, Ziran, and the Dao."
 
 **New Text:**
 "The `<Interpretation>` field must be a structured string explicitly detailing both the Dao and Ziran context:
@@ -23,4 +23,4 @@ Insert examples of valid and invalid intent interpretations immediately below Bu
 - **Invalid Example**: `Hai. (Intent: Writing the plan document. Status: Queued.)` *(Fails to assert the Dao structural boundary).*
 
 ## Implementation Execution
-This blueprint defines the exact file mutations to be applied. The physical mutations will be executed in **Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding**.
+This blueprint defines the exact file mutations to be applied. The physical mutations will be executed in **Node 1025: Activity 1025: Reflect - Refine Wu-wei Dyad Intent Understanding**.

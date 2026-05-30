@@ -14,7 +14,7 @@ The cached state will be persisted in JSON format at:
       "number": 1231,
       "title": "Example PR Title",
       "headRefName": "node/1230-document-intake-readme",
-      "url": "https://github.com/pltrinh1122/dz-cil/pull/1231"
+      "url": "https://github.com/pltrinh1122/dyad-wu-wei/pull/1231"
     }
   ],
   "open_issues": [

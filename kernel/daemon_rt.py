@@ -155,7 +155,7 @@ def execute_score_paths(start=None, end=None):
     report_lines.append("# NBA Historical Decision Scoring Report")
     report_lines.append("")
     report_lines.append("This report presents Next-Best-Action (NBA) scores for the evaluated range of paths.")
-    report_lines.append("Scoring methodology and rubrics are defined in [WHAT-0048-nba-scoring-rubric.md](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0048-nba-scoring-rubric.md).")
+    report_lines.append("Scoring methodology and rubrics are defined in [WHAT-0048-nba-scoring-rubric.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHAT-0048-nba-scoring-rubric.md).")
     report_lines.append("")
     report_lines.append("| Path ID | Title | Overall Score | Dependency ($C_{\\text{Dependency}}$) | Axiom ($C_{\\text{Axiom}}$) | Strategic ($C_{\\text{Strategic}}$) | Risk ($C_{\\text{Risk}}$) |")
     report_lines.append("| --- | --- | --- | --- | --- | --- | --- |")

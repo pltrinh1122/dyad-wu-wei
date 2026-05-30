@@ -11,7 +11,7 @@ When an Operator issues a command via chat (e.g., "Fix the telemetry logging"), 
 
 ### Option A: The Pure Dao ("Hai.")
 * **Thesis**: Absolute minimal friction. Achieves theoretical zero-latency UI unblocking.
-* **Antithesis**: Epistemic opacity. The Operator receives no verification that the Agent correctly understood the intent via the DZ-CIL engine, leading to anxiety regarding what was actually queued.
+* **Antithesis**: Epistemic opacity. The Operator receives no verification that the Agent correctly understood the intent via the Wu-wei Dyad engine, leading to anxiety regarding what was actually queued.
 * **Synthesis**: The immediacy of "Hai" must be preserved, but augmented with intent reflection to establish collaborative grounding (Axiom 1).
 
 ### Option B: The Conversational Pivot ("I have queued your request to fix telemetry...")
@@ -22,7 +22,7 @@ When an Operator issues a command via chat (e.g., "Fix the telemetry logging"), 
 ### Option C: Structured Intent Reflection
 * **Thesis**: `"Hai. (Intent: Fix telemetry logging visibility. Status: Queued via Prompt Backlog)."`
 * **Antithesis**: Requires the Agent to synthesize an interpretation of the intent before responding.
-* **Synthesis (The Victor)**: This model achieves the optimal Ziran equilibrium. It honors the "Hai." contract for instant UI unlocking while embedding a strictly formatted, non-conversational payload that proves the Agent's DZ-CIL context comprehension.
+* **Synthesis (The Victor)**: This model achieves the optimal Ziran equilibrium. It honors the "Hai." contract for instant UI unlocking while embedding a strictly formatted, non-conversational payload that proves the Agent's Wu-wei Dyad context comprehension.
 
 ## Differentiation: System Event Notifications
 

@@ -1,7 +1,7 @@
 # High-Reliability Agentic Retrospective (SHAR) - Node 1398 Harmonization to Dyad Practice Superset
 
 ## 1. Executive Abstract
-- *3-sentence synthesis*: (1) During the alignment of the DZ-CIL semantic ledger to the Dyad Practice, we encountered a Lexical Guard test failure because the initial updates to `kb/HOW-0002-bootstrap-audit-template.md` introduced forbidden terms (`align` and `dao`). (2) The core lesson is that when refactoring one document's terminology, we must strictly respect the entire semantic ledger and its most recent updates. (3) The primary recommendation is to always cross-check deprecated vs. superseded terms in `semantic_ledger.yml` during any content updates to avoid test suite rejections.
+- *3-sentence synthesis*: (1) During the alignment of the Wu-wei Dyad semantic ledger to the Dyad Practice, we encountered a Lexical Guard test failure because the initial updates to `kb/HOW-0002-bootstrap-audit-template.md` introduced forbidden terms (`align` and `dao`). (2) The core lesson is that when refactoring one document's terminology, we must strictly respect the entire semantic ledger and its most recent updates. (3) The primary recommendation is to always cross-check deprecated vs. superseded terms in `semantic_ledger.yml` during any content updates to avoid test suite rejections.
 
 ## 2. Operational Metrics & Timeline
 | Metric | Baseline | Observed | Variance |

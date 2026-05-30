@@ -1,20 +1,20 @@
-# WHAT-0930: DZ-CIL Workspace Deployment and Bootstrap Installer Specification
+# WHAT-0930: Wu-wei Dyad Workspace Deployment and Bootstrap Installer Specification
 
 ## Classification
 - **Type**: WHAT (Technical Specification)
 - **ID**: WHAT-0930
 - **Author**: agent-frontier
 - **Created**: 2026-05-24 (Node 930, Path 928)
-- **Related Path**: Path 928 (Implement DZ-CIL Deployment and Bootstrap Installer)
+- **Related Path**: Path 928 (Implement Wu-wei Dyad Deployment and Bootstrap Installer)
 - **Implements decisions from**: WHY-0929
 
 ---
 
 ### 1. Assumptions & Prerequisites
 Before executing the bootstrap installer, the following conditions must be met:
-1. **Core Retrieval**: The core `dz-cil` engine source code must be retrieved into a local directory (`DZ-CIL_ROOT`) by performing a `git-fetch` or `git-clone` operation.
+1. **Core Retrieval**: The core `dyad-wu-wei` engine source code must be retrieved into a local directory (`Wu-wei Dyad_ROOT`) by performing a `git-fetch` or `git-clone` operation.
 2. **System Dependencies**: The local environment must have `python3`, `git`, and the standard `venv` module available.
-3. **Execution CWD**: The initialization is invoked from the parent `DZ-CIL_ROOT` directory.
+3. **Execution CWD**: The initialization is invoked from the parent `Wu-wei Dyad_ROOT` directory.
 
 ---
 
@@ -31,7 +31,7 @@ The python daemon (`kernel/daemon_workspace.py`) must execute the following oper
 2. **Directory Creation**: Create the baseline folders inside the newly cloned workspace:
    - `[TARGET_DIR]/kb/` (empty workspace knowledge base)
    - `[TARGET_DIR]/artifacts/` (workspace-specific state tracking and logs)
-3. **GEMINI Invariant Injection**: Create `[TARGET_DIR]/GEMINI.md` populated with the workspace rules, explicitly indicating that the parent engine at `DZ-CIL_ROOT` is read-only.
+3. **GEMINI Invariant Injection**: Create `[TARGET_DIR]/GEMINI.md` populated with the workspace rules, explicitly indicating that the parent engine at `Wu-wei Dyad_ROOT` is read-only.
 4. **Virtual Environment Provisioning**: Initialize a local python virtual environment inside `[TARGET_DIR]/.venv/` and install `pytest`, `pytest-mock`, and `pyyaml`.
 5. **Ignorance Configuration**: Append `.workspace/` to the parent `.gitignore` file and sync it to the child.
 

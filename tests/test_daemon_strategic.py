@@ -395,13 +395,13 @@ class TestMgrStrategic(unittest.TestCase):
         daemon_strategic.save_ledger(data)
         daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
         
-        # mock dz-cil.yml and mock missing index files
-        mock_exists.side_effect = lambda path: "dz-cil.yml" in path
+        # mock dyad-wu-wei.yml and mock missing index files
+        mock_exists.side_effect = lambda path: "dyad-wu-wei.yml" in path
         mock_yaml_content = "agent_id: child-agent\n"
         
         with patch("builtins.open", unittest.mock.mock_open(read_data=mock_yaml_content)):
             daemon_strategic.verify_path_activation_allowed("416")
-            # Should fallback to agent_id in dz-cil.yml
+            # Should fallback to agent_id in dyad-wu-wei.yml
             self.assertEqual(os.environ.get("SPAO_PERSONA_ID"), "child-agent")
             
         daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False

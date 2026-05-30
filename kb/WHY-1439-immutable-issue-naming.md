@@ -1,7 +1,7 @@
 # WHY-1439: Immutable Issue and PR Naming Convention
 
 ## 1. Intent
-This document establishes the invariant naming conventions for GitHub Issues and Pull Requests within the DZ-CIL autonomous framework. The goal is to eliminate duplicate ID numbering, leverage GitHub as the sole source of truth for identification, and explicitly differentiate Issues from PRs.
+This document establishes the invariant naming conventions for GitHub Issues and Pull Requests within the Wu-wei Dyad autonomous framework. The goal is to eliminate duplicate ID numbering, leverage GitHub as the sole source of truth for identification, and explicitly differentiate Issues from PRs.
 
 ## 2. Context & The Bug (Node 1429 Falsification)
 Previously, when the Orchestrator utilized the issue factory (`daemon_backlog`), it attempted to proactively embed predictive Node IDs into the issue titles (e.g., generating `Activity 1430: Activity 1429: Implement...`). This generated two failure modes:

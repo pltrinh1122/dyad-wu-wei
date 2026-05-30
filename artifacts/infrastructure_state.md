@@ -1,6 +1,6 @@
 # Infrastructure State Ledger
 
-This document mathematically tracks the physical state of the Host OS infrastructure and daemons provisioned by the `dz-cil` system.
+This document mathematically tracks the physical state of the Host OS infrastructure and daemons provisioned by the `dyad-wu-wei` system.
 
 ## Active Daemons
 

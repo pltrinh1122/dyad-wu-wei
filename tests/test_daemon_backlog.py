@@ -49,7 +49,7 @@ def test_backlog_list(mock_backlog_gh):
 
 @patch('kernel.daemon_backlog.render_template')
 def test_backlog_add(mock_render, mock_backlog_gh):
-    mock_backlog_gh.create_issue.return_value = "https://github.com/pltrinh1122/dz-cil/issues/31"
+    mock_backlog_gh.create_issue.return_value = "https://github.com/pltrinh1122/dyad-wu-wei/issues/31"
     mock_backlog_gh.get_issue_details.return_value = {
         "title": "Path 10: Parent Path Title",
         "state": "OPEN",
@@ -60,7 +60,7 @@ def test_backlog_add(mock_render, mock_backlog_gh):
     daemon = BacklogDaemon()
     url = daemon.add("discovery", "Future Work Item", "Description of work", path_id="10")
 
-    assert url == "https://github.com/pltrinh1122/dz-cil/issues/31"
+    assert url == "https://github.com/pltrinh1122/dyad-wu-wei/issues/31"
     mock_backlog_gh.create_issue.assert_called_once()
     # Now labels are fetched dynamically or defaults to status: todo, backlog
     mock_backlog_gh.add_label.assert_any_call("31", "backlog")
@@ -123,7 +123,7 @@ def test_backlog_add_duplicate(mock_backlog_gh):
 @patch('kernel.agent_frontier.register_backlog_node')
 @patch('kernel.daemon_backlog.render_template')
 def test_backlog_add_frontier_registration(mock_render, mock_register, mock_backlog_gh):
-    mock_backlog_gh.create_issue.return_value = "https://github.com/pltrinh1122/dz-cil/issues/100"
+    mock_backlog_gh.create_issue.return_value = "https://github.com/pltrinh1122/dyad-wu-wei/issues/100"
     mock_backlog_gh.get_issue_details.return_value = {
         "title": "Path 10: Parent Path Title",
         "state": "OPEN",
@@ -148,10 +148,10 @@ def test_check_off_meta_index(mock_backlog_gh):
 @patch('kernel.daemon_backlog.render_template')
 def test_backlog_add_path(mock_render, mock_backlog_gh):
     mock_backlog_gh.create_issue.side_effect = [
-        "https://github.com/pltrinh1122/dz-cil/issues/100",
-        "https://github.com/pltrinh1122/dz-cil/issues/101",
-        "https://github.com/pltrinh1122/dz-cil/issues/102",
-        "https://github.com/pltrinh1122/dz-cil/issues/103"
+        "https://github.com/pltrinh1122/dyad-wu-wei/issues/100",
+        "https://github.com/pltrinh1122/dyad-wu-wei/issues/101",
+        "https://github.com/pltrinh1122/dyad-wu-wei/issues/102",
+        "https://github.com/pltrinh1122/dyad-wu-wei/issues/103"
     ]
     mock_backlog_gh.get_issue_details.return_value = {
         "title": "Path 100: New Path Title",
@@ -163,7 +163,7 @@ def test_backlog_add_path(mock_render, mock_backlog_gh):
     daemon = BacklogDaemon()
     url = daemon.add("path", "New Path Title", "Macro goal")
 
-    assert url == "https://github.com/pltrinh1122/dz-cil/issues/100"
+    assert url == "https://github.com/pltrinh1122/dyad-wu-wei/issues/100"
     assert mock_backlog_gh.create_issue.call_count == 4
     # Labels added for each issue (both backlog and status: todo for terminals, and path for path)
     assert mock_backlog_gh.add_label.call_count == 8 # 2 (Path: backlog, path) + 2*3 (Align, Plan, Reflect)
@@ -221,7 +221,7 @@ def test_backlog_workspace_isolation(tmp_path):
     
     with patch.dict(os.environ, mock_env), \
          patch("kernel.agent_frontier.register_backlog_node") as mock_register, \
-         patch("drivers.github_client.create_issue", return_value="https://github.com/pltrinh1122/dz-cil/issues/100"), \
+         patch("drivers.github_client.create_issue", return_value="https://github.com/pltrinh1122/dyad-wu-wei/issues/100"), \
          patch("drivers.github_client.get_issue_details", return_value={"title": "Path 10: Parent Path Title", "state": "OPEN", "body": "## Meta-Index"}), \
          patch("drivers.github_client.get_open_issues", return_value=[]), \
          patch("drivers.github_client.add_label"), \

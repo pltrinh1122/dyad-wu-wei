@@ -29,7 +29,7 @@ After a successful `--local` install, the final output block MUST print:
    Launch:     ./run-spao.sh
 
    One-step bootstrap (share with teammates):
-   curl -sSL https://raw.githubusercontent.com/pltrinh1122/dz-cil/main/bin/spao-install | bash -s -- --local
+   curl -sSL https://raw.githubusercontent.com/pltrinh1122/dyad-wu-wei/main/bin/spao-install | bash -s -- --local
 ```
 
 ### 1b. Global install output also prints the one-liner
@@ -38,7 +38,7 @@ After global install success, append:
 
 ```
    Bootstrap any project in one command:
-   curl -sSL https://raw.githubusercontent.com/pltrinh1122/dz-cil/main/bin/spao-install | bash -s -- --local
+   curl -sSL https://raw.githubusercontent.com/pltrinh1122/dyad-wu-wei/main/bin/spao-install | bash -s -- --local
 ```
 
 ### 1c. `_write_readme` helper — generates `README.spao.md`
@@ -82,7 +82,7 @@ Content:
 # SPAO — Sense-Plan-Act-Observe System
 
 This project is managed by the **SPAO Frontier Agent** via
-[Antigravity CLI (`agy`)](https://github.com/pltrinh1122/dz-cil).
+[Antigravity CLI (`agy`)](https://github.com/pltrinh1122/dyad-wu-wei).
 
 ## Quick Start
 
@@ -100,7 +100,7 @@ Resume your last conversation:
 
 ## Bootstrap (share with teammates)
 
-    curl -sSL https://raw.githubusercontent.com/pltrinh1122/dz-cil/main/bin/spao-install | bash -s -- --local
+    curl -sSL https://raw.githubusercontent.com/pltrinh1122/dyad-wu-wei/main/bin/spao-install | bash -s -- --local
 
 ## Version Management
 

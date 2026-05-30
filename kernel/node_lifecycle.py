@@ -333,7 +333,7 @@ class TerminalNode(BaseNode):
             
         self.update_body(body)
         
-        issue_url = f"https://github.com/pltrinh1122/dz-cil/issues/{self.issue_id}"
+        issue_url = f"https://github.com/pltrinh1122/dyad-wu-wei/issues/{self.issue_id}"
         log_stage_advancement("plan", "Plan Phase Completed", f"Node issue #{self.issue_id} successfully planned. Transitioning to Act phase.")
         return issue_url
 
