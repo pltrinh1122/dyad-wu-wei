@@ -3,7 +3,7 @@
 ## Context
 During operations, the human-agent dyad is highly sensitive to information signals. When a test run returns skipped tests, it can trigger cognitive or emotional friction in the Operator—who may interpret any non-passing test metric as an active failure, structural regression, or alignment gap (Turbulence). 
 
-This document codifies the operational distinction between **Operator Curiosity** and **System Turbulence** (as defined in [WHAT-0079](file:///mnt/shared_data/git_repos/dz-cil/kb/WHAT-0079-ziran-flow-riverbed-framework.md)), and defines the guidelines and safeguards for managing Operator anxiety without degrading system efficiency or introducing communication bloat.
+This document codifies the operational distinction between **Operator Curiosity** and **System Turbulence** (as defined in [WHAT-0079](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHAT-0079-ziran-flow-riverbed-framework.md)), and defines the guidelines and safeguards for managing Operator anxiety without degrading system efficiency or introducing communication bloat.
 
 ## 1. Defining the Boundary: Curiosity vs. Turbulence
 
@@ -27,9 +27,9 @@ The system's default state monitoring must remain highly concise, focusing on a 
 When the Operator expresses concern over bypassed checks or skipped tests:
 1.  **Check Context First**: The Operator should utilize standard diagnostic flags (e.g., the `-rs` flag on the test-runner) or inquire about the specific skip reasons before concluding that the system is broken.
 2.  **Clear Agent Reporting**: If asked about a skipped test in chat, the Agent must explain the exact environmental pre-conditions required for the test to run, showing that the bypass is expected and safe. And the Agent should proxy the command should it infer the Operator's actual intent is curiosity (e.g. running the test suite with `-rs` to fetch and present the exact skip reason inline).
-3.  **Preventive Documentation**: Any conditional bypass or test skip in the codebase must be documented inline with a clear, operator-readable explanation in the test's `pytest.skip()` or skip decorator string (see the example in [TestOwnershipIndex](file:///mnt/shared_data/git_repos/dz-cil/tests/test_ownership_index.py#L114-L123)).
+3.  **Preventive Documentation**: Any conditional bypass or test skip in the codebase must be documented inline with a clear, operator-readable explanation in the test's `pytest.skip()` or skip decorator string (see the example in [TestOwnershipIndex](file:///mnt/shared_data/git_repos/dyad-wu-wei/tests/test_ownership_index.py#L114-L123)).
 
 ## Rationale
 
-*   **Wu-wei (Lowest Energy)**: Flooding the Operator's screen or chat logs with explanations for every expected bypass on every run increases cognitive load and noise. Separating clean monitoring from verbose diagnostics allows the dyad to focus attention only on genuine failures (aligned with [HOW-0006](file:///mnt/shared_data/git_repos/dz-cil/kb/HOW-0006-decision-making-invariant.md)).
+*   **Wu-wei (Lowest Energy)**: Flooding the Operator's screen or chat logs with explanations for every expected bypass on every run increases cognitive load and noise. Separating clean monitoring from verbose diagnostics allows the dyad to focus attention only on genuine failures (aligned with [HOW-0006](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/HOW-0006-decision-making-invariant.md)).
 *   **Ziran (Coherence with Environment)**: Standard diagnostic tools (like `-rs` for reporting test skip reasons) are native to the testing substrate. Utilizing these native capabilities on-demand is more coherent and robust than inventing custom reporting templates or forcing tests to pass artificially via complex mocks.

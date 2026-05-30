@@ -11,7 +11,7 @@
 
 ## 1. The Philosophical Context
 
-The DZ-CIL operates under a strict ontology to preserve inner-loop velocity and prevent cognitive drift. As our understanding of system dynamics evolves, terminology and operational procedures must adapt. However, raw deletions or renaming can cause a "Split-Brain Crash" where active scripts or processes expect legacy terminology.
+The Wu-wei Dyad operates under a strict ontology to preserve inner-loop velocity and prevent cognitive drift. As our understanding of system dynamics evolves, terminology and operational procedures must adapt. However, raw deletions or renaming can cause a "Split-Brain Crash" where active scripts or processes expect legacy terminology.
 
 To prevent this, the metasystem establishes a structured, asynchronous decay lifecycle:
 1. **Declare Intent**: Mark legacy terms as `deprecated` in the semantic ledger.

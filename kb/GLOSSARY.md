@@ -1,7 +1,7 @@
 # WHAT-0002: Glossary of Terms
 
 > [!NOTE]
-> This glossary is the authoritative lexicon (The "What") for all domain-specific terms used across the `dz-cil` ecosystem. It prevents terminology drift across different models, sessions, and human operators.
+> This glossary is the authoritative lexicon (The "What") for all domain-specific terms used across the `dyad-wu-wei` ecosystem. It prevents terminology drift across different models, sessions, and human operators.
 
 ---
 
@@ -25,10 +25,10 @@ A leaf Node in the Meta-Graph that performs functional execution (e.g., an Activ
 A grouping or parent Node in the Meta-Graph that encapsulates a themed subgraph (e.g., a Path). It does not create branch mutations directly but acts as a macro-ledger container for tracking Terminal Nodes.
 
 ### Probe
-**[ALIAS → Discovery]** In DZ-CIL Hybrid Triad vocabulary, a **Probe** is a **Discovery** node — a time-boxed, investigatory Node that produces no functional mutations; its outcome is exclusively a `WHY-*` Decision Record or an implementation plan (see `WHY-0072`). The term `Probe` remains valid in backlog CLI invocations (e.g., `bin/backlog new discovery`) and in invariant documentation (e.g., the Probe Invariant). Use **Discovery** in new DZ-CIL narrative prose and **Probe** when referencing the structural invariant.
+**[ALIAS → Discovery]** In Wu-wei Dyad Hybrid Triad vocabulary, a **Probe** is a **Discovery** node — a time-boxed, investigatory Node that produces no functional mutations; its outcome is exclusively a `WHY-*` Decision Record or an implementation plan (see `WHY-0072`). The term `Probe` remains valid in backlog CLI invocations (e.g., `bin/backlog new discovery`) and in invariant documentation (e.g., the Probe Invariant). Use **Discovery** in new Wu-wei Dyad narrative prose and **Probe** when referencing the structural invariant.
 
 ### Discovery
-The **DZ-CIL Hybrid Triad** action for identifying the next step. A time-boxed, investigatory Node that synthesizes the Agent's mathematical execution (localized queries) with the Operator's high-level organic intent (macro-strategy).
+The **Wu-wei Dyad Hybrid Triad** action for identifying the next step. A time-boxed, investigatory Node that synthesizes the Agent's mathematical execution (localized queries) with the Operator's high-level organic intent (macro-strategy).
 * **Outcome**: A Discovery action does **not** produce functional logic mutations. It exclusively materializes a new Decision Record (`WHY-*` document) in `kb/` or an implementation plan, feeding forward critical constraints to subsequent Nodes.
 
 ### Path
@@ -45,11 +45,11 @@ The **checklist data structure** (`- [x] Node ...`) contained inside the body of
 ---
 
 ### Harmonization
-The **DZ-CIL Hybrid Triad** action for effortless adaptation. It replaces the mechanical concept of "Structural Alignment." Harmonization is the active negotiation between the Operator's fluid intent and the Agent's structural boundaries, ensuring the system yields to intent without breaking constraints.
+The **Wu-wei Dyad Hybrid Triad** action for effortless adaptation. It replaces the mechanical concept of "Structural Alignment." Harmonization is the active negotiation between the Operator's fluid intent and the Agent's structural boundaries, ensuring the system yields to intent without breaking constraints.
 * **Domain Boundary**: Read/Write access to codebase logic, adding tests, and altering functional pathways to build features or fix bugs. See `WHAT-0073`.
 
 ### Refinement
-The **DZ-CIL Hybrid Triad** action for increasing metabolic efficiency. It replaces the purely mathematical "Optimization" and the purely spiritual "Cultivation." Refinement ensures that as the system travels toward the Telos, it simultaneously streamlines code execution while preserving the epistemic history needed to prevent future errors.
+The **Wu-wei Dyad Hybrid Triad** action for increasing metabolic efficiency. It replaces the purely mathematical "Optimization" and the purely spiritual "Cultivation." Refinement ensures that as the system travels toward the Telos, it simultaneously streamlines code execution while preserving the epistemic history needed to prevent future errors.
 * **Domain Boundary**: Read/Write access to codebase logic and tests, but *strictly constrained* to not altering external feature behavior. Strictly metabolic (speed, safety, clarity). See `WHAT-0073`.
 
 ## ⚙️ The Operating Environment
@@ -62,8 +62,8 @@ The cloned repository of deterministic orchestrators (`kernel/`), stateless driv
 ### The Dao Engine (The Logic / State Machine)
 The conceptual, logical mechanism that governs the system (Stage 4 of The Shaping). It is the abstract SPAOR loop, the rules of Next-Best-Action (NBA) calculation, and the deterministic state-machine that channels our Intent vectors safely toward the Telos. The Dao Engine materializes only when The Core is combined with a Domain Telos and Semantic Entropy (`WHAT-0068`). *The laws that govern the current.*
 
-### The DZ-CIL (The Living Execution Instance)
-The Dao-Ziran Continuous Inference Loop. This is the Dao Engine *in motion* — the active, running instance cycling through Sense-Plan-Act-Observe-Reflect against a populated Strategic Intent, consuming Semantic Entropy and accruing epistemic knowledge into `kb/` on every tick. DZ-CIL is the Operate phase of ISBO — the steady-state where the system is alive and autonomously inferring. *The river flowing through the riverbed.*
+### The Wu-wei Dyad (The Living Execution Instance)
+The Dao-Ziran Continuous Inference Loop. This is the Dao Engine *in motion* — the active, running instance cycling through Sense-Plan-Act-Observe-Reflect against a populated Strategic Intent, consuming Semantic Entropy and accruing epistemic knowledge into `kb/` on every tick. Wu-wei Dyad is the Operate phase of ISBO — the steady-state where the system is alive and autonomously inferring. *The river flowing through the riverbed.*
 
 ### The DZ-OS (The Physical Substrate)
 The Dao-Ziran Operating System. This is the physical footprint and materialization of the Dao Engine on a hard drive. It is the specific architecture of folders (`kernel/`, `drivers/`, `kb/`, `artifacts/`) bounded by the Current Working Directory (`cwd = "."`). *The terrain the river flows through.*
@@ -145,7 +145,7 @@ A catastrophic exception event that corrupts the execution engine, the state led
 ## 🗃️ Memory & State
 
 ### Frontier
-The physical, chronological state ledger located at [frontier_state.md](file:///mnt/shared_data/git_repos/dz-cil/artifacts/frontier_state.md). It records the active node, completed nodes, learnings, and their feedforward invariants.
+The physical, chronological state ledger located at [frontier_state.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/artifacts/frontier_state.md). It records the active node, completed nodes, learnings, and their feedforward invariants.
 
 ### Backlog (Node Backlog)
 The **flat, dependency-linked queue** of declared future Nodes. Organized entirely as GitHub Issues labeled with `backlog` and containing explicit `depends-on: #XX` relationships to keep execution order mathematically sound.
@@ -187,7 +187,7 @@ We reserve the **"Meta-"** prefix strictly for **recursive structures** within t
 * **Meta-Tracker**: A cloud container (GitHub Issue, e.g. Issue #10) that tracks *other trackers* (the individual Node issues along a Path subgraph).
 * **Meta-Index**: A catalog (checklist) whose entries *index other indexes* (references to closed transaction issues).
 * **Meta-Loop (SPAOR Loop)**: A cyclic temporal protocol (**Sense-Plan-Act-Observe-Reflect**) governing the internal execution sequence of a single active Node.
-* **Meta-Repository**: The system repository (`dz-cil`) hosting the rules, tools, and engine managing other codebases.
+* **Meta-Repository**: The system repository (`dyad-wu-wei`) hosting the rules, tools, and engine managing other codebases.
 
 ---
 

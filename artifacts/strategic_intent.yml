@@ -120,17 +120,17 @@ strategic_goals:
   - 1152
   status: Active
   title: Autonomous Knowledge Accrual
-- collaborative_gap: External projects onboarding onto DZ-CIL lack a governed
+- collaborative_gap: External projects onboarding onto Wu-wei Dyad lack a governed
     feedback channel for requesting universal capabilities, causing the engine
     to stagnate as a self-referential system while external Agents build
     redundant project-local tooling.
   constraints: All external project interactions must flow through the External
-    Project Support Protocol (HOW-0099). DZ-CIL must maintain strict IP isolation
+    Project Support Protocol (HOW-0099). Wu-wei Dyad must maintain strict IP isolation
     — no project-specific rules, identifiers, or business constraints may enter
     the engine. The Operator gates all triage decisions.
   falsification_signal: External support tickets remain unserviced for more than
     two SPAOR cycles after Operator prioritization, or project-specific content
-    contaminates the DZ-CIL codebase.
+    contaminates the Wu-wei Dyad codebase.
   id: SG-0006
   prioritized_paths:
   - 1323

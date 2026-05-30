@@ -76,7 +76,7 @@ This document is stale and **must be updated** if any of the following are true:
 1. A new Strategic Goal is added to `artifacts/strategic_intent.yml` without a corresponding row here
 2. An `unassigned` entry is given an owner but this table is not updated
 3. A spec file listed here does not exist on disk
-4. The `agent_id` field in `dz-cil.yml` does not match any `owner_persona` in this table
+4. The `agent_id` field in `dyad-wu-wei.yml` does not match any `owner_persona` in this table
 
 The structural validation tests in `tests/test_ownership_index.py` (Activity 603)
 enforce conditions 1, 3, and 4 automatically on every CI run.

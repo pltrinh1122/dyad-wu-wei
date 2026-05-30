@@ -13,7 +13,7 @@ This document defines the formal ontology and rules governing how child workspac
 
 1.  **Local Bypass Principle**: If a Sovereign Workspace does not possess local ownership index files (`WHAT-0062` and `WHAT-0065` under the workspace's `kb/` directory), the strategic gates MUST emit a non-blocking warning rather than a blocking error.
 2.  **Ultimate Gatekeeping Principle**: Safety is preserved because sovereign local worktree changes are isolated. Verification occurs offline, and the changes are only integrated via the parent-level Pull Request review. The ultimate integration gate remains the parent PR merge.
-3.  **Dynamic Persona Resolution**: When `SPAO_PERSONA_ID` is absent inside a child workspace, the system dynamically resolves the persona by parsing the local `dz-cil.yml` configuration (which may be customized per-workspace) or by scanning parent path ownership.
+3.  **Dynamic Persona Resolution**: When `SPAO_PERSONA_ID` is absent inside a child workspace, the system dynamically resolves the persona by parsing the local `dyad-wu-wei.yml` configuration (which may be customized per-workspace) or by scanning parent path ownership.
 
 ## 4. Manifest Registration
 This specification is immune to project-specific constraints and remains a core primitive of the Antigravity engine.

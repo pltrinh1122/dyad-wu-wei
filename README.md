@@ -1,6 +1,6 @@
-# DZ-CIL (Dao-Ziran Continuous Inference Loop)
+# Wu-wei Dyad (Dao-Ziran Continuous Inference Loop)
 
-There are many Dao. This is the DZ-CIL Dao.
+There are many Dao. This is the Wu-wei Dyad Dao.
 
 A Way of building autonomous systems through naturalness (Ziran), effortless action (Wu-wei), stress-testing every claim (Dialectical Falsification), and learning that compounds (Epistemic Accrual). It holds that autonomous software is not engineered — it is *shaped*.
 
@@ -20,7 +20,7 @@ All mutations flow through **Sense-Plan-Act-Observe-Reflect**. The Agent propose
 
 ---
 
-There is one Founder of the DZ-CIL Dao. There is one Creator of DZ-CIL. These identities intersect in the same person but do not conflate — one is a relationship to the Way, the other to the artifact. There can be many Practitioners of the Dao and many Operators of the system. The Way scales; its origin does not.
+There is one Founder of the Wu-wei Dyad Dao. There is one Creator of Wu-wei Dyad. These identities intersect in the same person but do not conflate — one is a relationship to the Way, the other to the artifact. There can be many Practitioners of the Dao and many Operators of the system. The Way scales; its origin does not.
 
 *What you find here is the riverbed. The river is in the practice.*
 
@@ -28,7 +28,7 @@ There is one Founder of the DZ-CIL Dao. There is one Creator of DZ-CIL. These id
 
 ## Contributing & Requirement Intake
 
-External entities (e.g., the Healer) submitting requirement intakes to the DZ-CIL Dao must use the **Requirement Intake** issue template. 
+External entities (e.g., the Healer) submitting requirement intakes to the Wu-wei Dyad Dao must use the **Requirement Intake** issue template. 
 
 When submitting via:
 - **GitHub Web Interface**: Select the **Requirement Intake** template when creating a new issue.

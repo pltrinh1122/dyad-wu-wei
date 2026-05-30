@@ -17,7 +17,7 @@ sense_hooks:
   - type: prompt_queue
     location: artifacts/prompt_backlog.yml
   - type: next_best_action
-    repository: pltrinh1122/dz-cil
+    repository: pltrinh1122/dyad-wu-wei
 
 governance:
   spao_purity_enforcement: true

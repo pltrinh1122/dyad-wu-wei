@@ -12,7 +12,7 @@ def _get_active_persona():
     try:
         from drivers import path_resolver
         import yaml
-        yaml_path = path_resolver.resolve_workspace_path("dz-cil.yml")
+        yaml_path = path_resolver.resolve_workspace_path("dyad-wu-wei.yml")
         with open(yaml_path, "r") as f:
             data = yaml.safe_load(f)
             return data.get("agent_id")

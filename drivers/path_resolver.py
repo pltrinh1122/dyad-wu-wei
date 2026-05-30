@@ -102,12 +102,12 @@ def resolve_agent_id() -> str:
     return None
 
 def load_engine_config() -> dict:
-    """Loads dz-cil.yml from workspace directory, falling back to core directory if missing."""
-    workspace_path = resolve_workspace_path("dz-cil.yml")
+    """Loads dyad-wu-wei.yml from workspace directory, falling back to core directory if missing."""
+    workspace_path = resolve_workspace_path("dyad-wu-wei.yml")
     if os.path.exists(workspace_path):
         target_path = workspace_path
     else:
-        target_path = resolve_core_path("dz-cil.yml")
+        target_path = resolve_core_path("dyad-wu-wei.yml")
         
     if not os.path.exists(target_path):
         config = {}

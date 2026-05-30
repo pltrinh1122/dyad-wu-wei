@@ -3,7 +3,7 @@
 **Date:** 2026-05-28
 **Audit Type:** Post-Failure Reflection
 **Status:** RESOLVED
-**Node Reference:** Node 1023 (Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding)
+**Node Reference:** Node 1023 (Discovery 1023: Harmonize - Refine Wu-wei Dyad Intent Understanding)
 
 ## 1. Failure Analysis
 

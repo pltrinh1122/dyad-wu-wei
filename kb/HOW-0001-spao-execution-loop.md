@@ -45,7 +45,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
 
 ## Executing the Formal Bootstrap Audit
 Before a newly bootstrapped repository can transition into active "Operations," it must pass an audit.
-1. The Agent must fetch the `HOW-0002-bootstrap-audit-template.md` from the `dz-cil` meta-repository.
+1. The Agent must fetch the `HOW-0002-bootstrap-audit-template.md` from the `dyad-wu-wei` meta-repository.
 2. The Agent opens a new Node Issue using this template.
 3. The Agent performs the compliance checks against the codebase and checks off the boxes in the issue body.
 4. The Agent pauses (Observe phase) for a final Operator HITL sign-off before closing the audit ledger.

@@ -6,7 +6,7 @@ Structural validation tests for kb/WHAT-0062-agent-persona-ownership-index.md.
 These tests enforce the Falsification Criteria defined in WHAT-0062 §5:
   1. Every active SG in strategic_intent.yml has a row in the ownership index.
   2. Every covered spec_file exists on disk.
-  3. agent_id in dz-cil.yml matches an owner_persona in the index.
+  3. agent_id in dyad-wu-wei.yml matches an owner_persona in the index.
   4. No two non-shared SG rows share the same owner_persona.
 
 Authored by: agent-sg5 (SG-0005: Autonomous Knowledge Accrual)
@@ -25,7 +25,7 @@ import pytest
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WHAT_0062_PATH = os.path.join(REPO_ROOT, "kb", "WHAT-0062-agent-persona-ownership-index.md")
 STRATEGIC_INTENT_PATH = os.path.join(REPO_ROOT, "artifacts", "strategic_intent.yml")
-ANTIGRAVITY_PATH = os.path.join(REPO_ROOT, "dz-cil.yml")
+ANTIGRAVITY_PATH = os.path.join(REPO_ROOT, "dyad-wu-wei.yml")
 
 
 def parse_ownership_index(md_path: str) -> list[dict]:
@@ -113,13 +113,13 @@ class TestOwnershipIndexCompleteness:
 
     def test_agent_id_matches_ownership_index(self):
         """
-        The agent_id declared in dz-cil.yml must appear as owner_persona
+        The agent_id declared in dyad-wu-wei.yml must appear as owner_persona
         for at least one SG with status='covered' in WHAT-0062, or be registered
         in WHAT-0065.
         An agent operating without a registered identity cannot be gated correctly.
         """
         agent_id = load_agent_id()
-        if not agent_id or agent_id in ("dz-cil", "agent-antigravity", "unassigned"):
+        if not agent_id or agent_id in ("dyad-wu-wei", "agent-antigravity", "unassigned"):
             pytest.skip("No registered agent persona resolved (CI or operator environment). Skipping validation.")
 
         if not os.path.exists(WHAT_0062_PATH):
@@ -150,7 +150,7 @@ class TestOwnershipIndexCompleteness:
                             covered_owners.add(cells[1])
 
         assert agent_id in covered_owners, (
-            f"agent_id '{agent_id}' from dz-cil.yml is not registered as an owner "
+            f"agent_id '{agent_id}' from dyad-wu-wei.yml is not registered as an owner "
             f"of any covered SG in WHAT-0062 or WHAT-0065. Covered owners are: {sorted(covered_owners)}. "
             f"Add a row for this agent or correct the agent_id field."
         )

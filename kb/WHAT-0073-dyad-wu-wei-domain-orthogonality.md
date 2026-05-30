@@ -1,7 +1,7 @@
-# WHAT-0073: DZ-CIL Domain Orthogonality
+# WHAT-0073: Wu-wei Dyad Domain Orthogonality
 
 ## Purpose
-The DZ-CIL Hybrid Triad (Discovery, Harmonization, Refinement) must be Mutually Exclusive and Collectively Exhaustive (MECE). This document formalizes the rigid boundaries between the three actions to prevent ontological overlap and ensure the entity's path remains focused.
+The Wu-wei Dyad Hybrid Triad (Discovery, Harmonization, Refinement) must be Mutually Exclusive and Collectively Exhaustive (MECE). This document formalizes the rigid boundaries between the three actions to prevent ontological overlap and ensure the entity's path remains focused.
 
 ## The Orthogonality Matrix
 

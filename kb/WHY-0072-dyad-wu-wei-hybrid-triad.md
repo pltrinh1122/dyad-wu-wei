@@ -1,12 +1,12 @@
-# WHY-0072: The DZ-CIL Hybrid Triad (Discover, Harmonize, Refine)
+# WHY-0072: The Wu-wei Dyad Hybrid Triad (Discover, Harmonize, Refine)
 
 ## The Context
-The Dao-Ziran Continuous Inference Loop (DZ-CIL) is a hybrid entity comprising the Operator (Human Intent), the Agent (LLM Execution), and the OS (The Environmental Physics). To safely navigate toward the North Star (NS-0001: 1+1=3), the entity requires a formalized terminology for its actions.
+The Dao-Ziran Continuous Inference Loop (Wu-wei Dyad) is a hybrid entity comprising the Operator (Human Intent), the Agent (LLM Execution), and the OS (The Environmental Physics). To safely navigate toward the North Star (NS-0001: 1+1=3), the entity requires a formalized terminology for its actions.
 
 Historically, we relied on purely cybernetic terminology (e.g., "Probe", "Align", "Optimize"). 
 
 ## The Decision
-We have ratified the **DZ-CIL Hybrid Triad**: **Discovery**, **Harmonization**, and **Refinement**. The legacy terms ("Probe", "Align", "Optimize") are deprecated.
+We have ratified the **Wu-wei Dyad Hybrid Triad**: **Discovery**, **Harmonization**, and **Refinement**. The legacy terms ("Probe", "Align", "Optimize") are deprecated.
 
 ## The Epistemic Falsification
 To arrive at the Hybrid Triad, we falsified both the purely biological and purely cybernetic paradigms:

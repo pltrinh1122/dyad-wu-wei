@@ -1,4 +1,4 @@
-probe: 599
+discovery: 599
 generated: "2026-05-21T19:41:00Z"
 authored_by: agent-sg5
 purpose: Input specification for Activity 601 (WHAT-0062 ownership index)
@@ -51,6 +51,6 @@ what_0062_schema_requirements:
   required_rows: 6  # NS-0001, SG-0001, SG-0002, SG-0003, SG-0004, SG-0005
 
 recommended_actions:
-  - "Activity 600: Add agent_id: agent-sg5 to dz-cil.yml (unblocks identity resolution for gate)"
+  - "Activity 600: Add agent_id: agent-sg5 to dyad-wu-wei.yml (unblocks identity resolution for gate)"
   - "Activity 601: Create WHAT-0062 with all 6 SGs; mark SG-0003 and SG-0004 as 'unassigned' with (pending) spec files"
   - "Operator action: Assign SG-0003 and SG-0004 to agent personas before 578-B gate can enforce those boundaries"

@@ -414,7 +414,7 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
         if not resolved_owner and os.environ.get("SPAO_WORKSPACE_DIR"):
             resolved_owner = "frontier"
             try:
-                yaml_path = path_resolver.resolve_workspace_path("dz-cil.yml")
+                yaml_path = path_resolver.resolve_workspace_path("dyad-wu-wei.yml")
                 if os.path.exists(yaml_path):
                     with open(yaml_path, "r") as f:
                         data = yaml.safe_load(f)

@@ -11,20 +11,20 @@
 
 ### The Initiation Ritual
 
-To establish a new, autonomous application built upon the DZ-CIL Engine, the Operator (whether the Creator or a Disciple) must execute the ISBO sequence in strict order. Deviating from this ritual risks contaminating the Engine and violating the separation of domains.
+To establish a new, autonomous application built upon the Wu-wei Dyad Engine, the Operator (whether the Creator or a Disciple) must execute the ISBO sequence in strict order. Deviating from this ritual risks contaminating the Engine and violating the separation of domains.
 
 #### Step 1: [I]nstall (Procure the Loom)
 1. Open a terminal.
 2. Clone the core Dao Engine repository to a designated engine path:
    ```bash
-   git-clone <repo_url> /mnt/shared_data/git_repos/dz-cil
+   git-clone <repo_url> /mnt/shared_data/git_repos/dyad-wu-wei
    ```
 3. Install base OS-level dependencies (Python3, Git).
 
 #### Step 2: [S]etup (Provision the Temple)
 1. Ensure you are in the Engine directory:
    ```bash
-   cd /mnt/shared_data/git_repos/dz-cil
+   cd /mnt/shared_data/git_repos/dyad-wu-wei
    ```
 2. Provision the new child workspace using the engine's bootstrapper:
    ```bash

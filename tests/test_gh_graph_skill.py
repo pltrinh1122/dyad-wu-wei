@@ -8,7 +8,7 @@ def test_parse_meta_index_simple():
 - [x] Node 1: Completed Node
 - [ ] Node 2: Pending Node
 - [ ] Activity 3: Unblocked Activity [Depends: 1]
-- [ ] Probe 4: Blocked Probe [Depends: 2]
+- [ ] Discovery 4: Blocked Discovery [Depends: 2]
 """
     nodes = gh_graph_skill.parse_meta_index(body)
     assert nodes["1"]["completed"] is True
@@ -36,7 +36,7 @@ def test_get_ready_nodes():
 def test_parse_meta_index_mixed_formats():
     body = """
 - [x] Activity 100: Done
-- [ ] Probe 101: Wait
+- [ ] Discovery 101: Wait
 - [ ] 102: Raw ID
 """
     nodes = gh_graph_skill.parse_meta_index(body)

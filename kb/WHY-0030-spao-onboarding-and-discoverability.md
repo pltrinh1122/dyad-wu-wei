@@ -27,7 +27,7 @@ The SPAO system now has a working nvm-style installer (`spao-install`) and a
 The canonical onboarding for a new project MUST be a single command:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/pltrinh1122/dz-cil/main/bin/spao-install | bash -s -- --local
+curl -sSL https://raw.githubusercontent.com/pltrinh1122/dyad-wu-wei/main/bin/spao-install | bash -s -- --local
 ```
 
 This single invocation must:

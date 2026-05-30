@@ -1,9 +1,9 @@
 """
 Support Client — Stateless skill for filing and tracking external project support tickets.
 
-Files GitHub issues on the DZ-CIL repository using the support-external template.
+Files GitHub issues on the Wu-wei Dyad repository using the support-external template.
 This skill is invoked by bin/support and is designed for use from external project
-workstations with read-only DZ-CIL clones.
+workstations with read-only Wu-wei Dyad clones.
 
 Full lifecycle: file → status → list → remediation tracking.
 Per WHY-1372: Full-Cycle External Support Ticket Status Tracking.
@@ -17,14 +17,14 @@ import json
 VALID_TYPES = {
     "amendment": "Amendment — Domain Dao Digest rule correction, addition, or removal",
     "escalation": "Escalation — Blocking question requiring Operator guidance",
-    "tooling": "Tooling — New skill, wrapper, or infrastructure needed in DZ-CIL",
+    "tooling": "Tooling — New skill, wrapper, or infrastructure needed in Wu-wei Dyad",
     "retro": "Retrospective — Session learnings to flow back to the engine Dao",
-    "bug": "Bug — DZ-CIL toolchain issue encountered during external project work",
+    "bug": "Bug — Wu-wei Dyad toolchain issue encountered during external project work",
 }
 
-# The DZ-CIL repo where support tickets are filed.
+# The Wu-wei Dyad repo where support tickets are filed.
 # This is intentionally hardcoded — support tickets always target the engine repo.
-DZ_CIL_REPO = "pltrinh1122/dz-cil"
+DZ_CIL_REPO = "pltrinh1122/dyad-wu-wei"
 
 
 def _labels_to_phase(labels, state):
@@ -59,7 +59,7 @@ def file_support_ticket(
     session_id: str = "",
 ) -> str:
     """
-    Files a support ticket on the DZ-CIL repo.
+    Files a support ticket on the Wu-wei Dyad repo.
 
     Args:
         ticket_type: One of: amendment, escalation, tooling, retro, bug
@@ -187,7 +187,7 @@ def list_support_tickets(project_filter: str = "", state: str = "open") -> list:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="DZ-CIL External Project Support Line — File, track, and query support tickets.",
+        description="Wu-wei Dyad External Project Support Line — File, track, and query support tickets.",
         prog="bin/support",
         epilog="""Examples:
   %(prog)s file --type bug --project fl "NBA scorer recommends completed paths"
@@ -204,8 +204,8 @@ def main():
     # file subcommand
     file_parser = subparsers.add_parser(
         "file",
-        help="File a new support ticket on DZ-CIL",
-        description="Create a support ticket on the DZ-CIL repository. The ticket will be labeled 'support' and 'external-project' for tracking.",
+        help="File a new support ticket on Wu-wei Dyad",
+        description="Create a support ticket on the Wu-wei Dyad repository. The ticket will be labeled 'support' and 'external-project' for tracking.",
     )
     file_parser.add_argument(
         "--type", required=True, choices=VALID_TYPES.keys(),

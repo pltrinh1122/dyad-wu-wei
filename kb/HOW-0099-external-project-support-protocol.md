@@ -5,30 +5,30 @@
 
 ## 1. Purpose
 
-This protocol defines the bilateral communication channel between the DZ-CIL engine and external project workstations. It enables an Agent operating on a separate workstation — with a read-only DZ-CIL clone as its Dao reference — to request remedies, report amendments, escalate blockers, and feed learnings back to the engine.
+This protocol defines the bilateral communication channel between the Wu-wei Dyad engine and external project workstations. It enables an Agent operating on a separate workstation — with a read-only Wu-wei Dyad clone as its Dao reference — to request remedies, report amendments, escalate blockers, and feed learnings back to the engine.
 
 ## 2. Operating Model
 
 ```
 ┌─────────────────────┐         ┌──────────────────────┐
-│  External Project   │         │     DZ-CIL Engine    │
+│  External Project   │         │     Wu-wei Dyad Engine    │
 │    Workstation      │         │                      │
 │                     │         │                      │
-│  [Project Repo]     │  SUPPORT│  [DZ-CIL Repo]       │
+│  [Project Repo]     │  SUPPORT│  [Wu-wei Dyad Repo]       │
 │  - Domain Dao       │  TICKET │  - Generic Protocol   │
 │    Digest (private) │ ──────> │  - Issue Template     │
 │  - Source code      │         │  - kb/ primitives     │
 │  - Tests            │         │                      │
 │                     │ <────── │                      │
 │  [Read-Only Clone]  │ REMEDY  │  [Operator Review]   │
-│  - DZ-CIL kb/       │         │                      │
+│  - Wu-wei Dyad kb/       │         │                      │
 │  - Protocol docs    │         │                      │
 └─────────────────────┘         └──────────────────────┘
 ```
 
 ### Key Principle: IP Isolation
 
-The DZ-CIL engine (this repository) contains ONLY the generic protocol mechanics. All domain-specific content — governance rules, architecture constraints, business decisions, project identifiers — resides exclusively in the external project's private repository. The engine never caches or stores domain-specific content.
+The Wu-wei Dyad engine (this repository) contains ONLY the generic protocol mechanics. All domain-specific content — governance rules, architecture constraints, business decisions, project identifiers — resides exclusively in the external project's private repository. The engine never caches or stores domain-specific content.
 
 ## 3. Ticket Types
 
@@ -60,39 +60,39 @@ The DZ-CIL engine (this repository) contains ONLY the generic protocol mechanics
 
 ### 3.3 Tooling
 
-**When**: The Agent identifies a need for a new DZ-CIL skill, wrapper, or infrastructure component that would benefit all external projects (not just the requesting one).
+**When**: The Agent identifies a need for a new Wu-wei Dyad skill, wrapper, or infrastructure component that would benefit all external projects (not just the requesting one).
 
 **Flow**:
 1. Agent files `[SUPPORT]` issue with type "Tooling"
 2. Issue describes the capability gap and proposed solution
-3. Operator evaluates whether the tool is generic enough for DZ-CIL
-4. If accepted: DZ-CIL creates a backlog Path for the tool
+3. Operator evaluates whether the tool is generic enough for Wu-wei Dyad
+4. If accepted: Wu-wei Dyad creates a backlog Path for the tool
 5. If rejected: Agent works around the gap using project-local tooling
 
-**SLA**: Non-blocking. Tooling requests are queued for the next DZ-CIL planning cycle.
+**SLA**: Non-blocking. Tooling requests are queued for the next Wu-wei Dyad planning cycle.
 
 ### 3.4 Retrospective
 
-**When**: A work session on the external project produces learnings that should flow back to the DZ-CIL engine's knowledge base — new anti-patterns, process improvements, or corrections to meta-process rules.
+**When**: A work session on the external project produces learnings that should flow back to the Wu-wei Dyad engine's knowledge base — new anti-patterns, process improvements, or corrections to meta-process rules.
 
 **Flow**:
 1. Agent files `[SUPPORT]` issue with type "Retrospective"
 2. Issue contains the structured retro (What happened, Root cause, Codified insight)
 3. Operator reviews whether the insight is generic (applicable to all projects) or project-specific
-4. Generic insights: codified as DZ-CIL `kb/WHY-*` or GEMINI.md rule updates
+4. Generic insights: codified as Wu-wei Dyad `kb/WHY-*` or GEMINI.md rule updates
 5. Project-specific insights: Agent updates the project's Domain Dao Digest
 
-**SLA**: Non-blocking. Retros batched and reviewed during DZ-CIL planning cycles.
+**SLA**: Non-blocking. Retros batched and reviewed during Wu-wei Dyad planning cycles.
 
 ### 3.5 Bug
 
-**When**: The Agent encounters a defect in DZ-CIL's toolchain, scripts, or orchestration logic during external project work.
+**When**: The Agent encounters a defect in Wu-wei Dyad's toolchain, scripts, or orchestration logic during external project work.
 
 **Flow**:
 1. Agent files `[SUPPORT]` issue with type "Bug"
 2. Issue includes reproduction steps, expected vs actual behavior, and environment details
-3. Operator triages and routes to DZ-CIL's standard bug resolution pipeline
-4. Fix delivered via DZ-CIL's governed SPAOR loop
+3. Operator triages and routes to Wu-wei Dyad's standard bug resolution pipeline
+4. Fix delivered via Wu-wei Dyad's governed SPAOR loop
 
 **SLA**: Blocking bugs escalated immediately. Non-blocking bugs queued normally.
 
@@ -105,8 +105,8 @@ Each external project maintains its own Domain Dao Digest — a curated, address
 | Component | Location | Visibility |
 |-----------|----------|------------|
 | Digest (source of truth) | External project repo | Private |
-| Protocol docs | DZ-CIL `kb/` | Repo-scoped |
-| Issue template | DZ-CIL `github_templates/` | Repo-scoped |
+| Protocol docs | Wu-wei Dyad `kb/` | Repo-scoped |
+| Issue template | Wu-wei Dyad `github_templates/` | Repo-scoped |
 
 ### 4.2 Digest Format
 
@@ -117,7 +117,7 @@ Digests follow a sectioned monolith format with addressable IDs:
 - `TOOL-NNN` — Toolchain constraints
 - `ARCH-NNN` — Architecture constraints
 
-ID prefixes are project-scoped (e.g., a project may use `FL-INV-*` or `ACME-INV-*`). DZ-CIL does not dictate prefixes.
+ID prefixes are project-scoped (e.g., a project may use `FL-INV-*` or `ACME-INV-*`). Wu-wei Dyad does not dictate prefixes.
 
 ### 4.3 Digest Loading
 
@@ -130,7 +130,7 @@ When the Agent begins work on an external project:
 
 ```
 Agent discovers gap
-  → Files [SUPPORT] Amendment ticket (on DZ-CIL)
+  → Files [SUPPORT] Amendment ticket (on Wu-wei Dyad)
   → Operator ratifies or rejects (via issue comment)
   → Agent updates Digest in project repo (via project PR)
   → Support issue closed with project commit reference
@@ -141,15 +141,15 @@ Agent discovers gap
 When setting up a new external project workstation:
 
 - [ ] Project repo cloned with write access
-- [ ] Read-only DZ-CIL clone available for protocol reference
+- [ ] Read-only Wu-wei Dyad clone available for protocol reference
 - [ ] Project's Domain Dao Digest exists in the project repo
-- [ ] Agent can file issues on DZ-CIL repo (for support tickets)
+- [ ] Agent can file issues on Wu-wei Dyad repo (for support tickets)
 - [ ] Project-specific toolchain installed and verified
 - [ ] First work package assigned by Operator
 
 ## 6. Guardrails
 
-1. **IP Isolation**: DZ-CIL MUST NOT contain any project-specific rules, identifiers, architecture decisions, or business constraints. All domain content stays in the project's private repo.
+1. **IP Isolation**: Wu-wei Dyad MUST NOT contain any project-specific rules, identifiers, architecture decisions, or business constraints. All domain content stays in the project's private repo.
 2. **Generic Protocol**: The support template and this protocol document are project-agnostic. They serve any external project, not a specific one.
 3. **Operator Gate**: All amendments, escalations, and tooling requests flow through the Operator. The Agent cannot self-approve changes to the engine.
 4. **Traceability**: Every support ticket includes a session ID for audit trail. Every amendment links back to its support ticket.
@@ -185,15 +185,15 @@ This checklist covers the full operational workflow for onboarding an Agent onto
   - `<PROJECT>-TOOL-NNN` for toolchain constraints
   *(e.g., `FL-INV-001: All widget tests must use testWidgets()`, `FL-AP-003: Never use setState() in production code`)*
 - [ ] **Prioritize**: Group rules by criticality — blocking (Agent cannot proceed without) vs advisory (Agent should follow but can deviate with justification)
-- [ ] **Commit Digest to project repo**: The Digest lives exclusively in the project's private repository, never in DZ-CIL
+- [ ] **Commit Digest to project repo**: The Digest lives exclusively in the project's private repository, never in Wu-wei Dyad
 
 **Output**: `DOMAIN_DAO_DIGEST.md` (or equivalent) committed to the project repo.
 
 ### Phase 3: Skill Gap Assessment
 
-**Goal**: Identify which DZ-CIL capabilities the project needs that don't exist yet.
+**Goal**: Identify which Wu-wei Dyad capabilities the project needs that don't exist yet.
 
-- [ ] **Compare Digest against DZ-CIL tooling**: For each Digest rule, determine whether DZ-CIL's existing `drivers/`, `kernel/`, and `bin/` tooling can enforce or support it
+- [ ] **Compare Digest against Wu-wei Dyad tooling**: For each Digest rule, determine whether Wu-wei Dyad's existing `drivers/`, `kernel/`, and `bin/` tooling can enforce or support it
 - [ ] **Classify gaps**:
   - **Universal**: The missing capability would benefit any external project *(e.g., "need a wrapper for running project-specific test suites via a standardized interface")*
   - **Project-specific**: The missing capability is unique to this project's domain *(e.g., "need a Flutter widget snapshot comparator")*
@@ -203,13 +203,13 @@ This checklist covers the full operational workflow for onboarding an Agent onto
 
 ### Phase 4: Support Ticket Filing
 
-**Goal**: Request DZ-CIL assistance for universal gaps through the official protocol.
+**Goal**: Request Wu-wei Dyad assistance for universal gaps through the official protocol.
 
 - [ ] **File Tooling tickets** for each universal gap:
   ```
   bin/support file --type tooling --project <id> "Description of the universal capability needed"
   ```
-- [ ] **File Amendment tickets** for any Digest rules that reveal gaps in DZ-CIL's own protocol:
+- [ ] **File Amendment tickets** for any Digest rules that reveal gaps in Wu-wei Dyad's own protocol:
   ```
   bin/support file --type amendment --project <id> "Protocol section X needs clarification for projects using framework Y"
   ```
@@ -218,29 +218,29 @@ This checklist covers the full operational workflow for onboarding an Agent onto
   bin/support file --type escalation --project <id> --blocking "Cannot determine correct approach for X without Operator input"
   ```
 
-**Output**: Open support tickets on DZ-CIL repo.
+**Output**: Open support tickets on Wu-wei Dyad repo.
 
-### Phase 5: DZ-CIL Triage and Build
+### Phase 5: Wu-wei Dyad Triage and Build
 
-**Goal**: DZ-CIL Operator triages tickets; engine builds universal capabilities.
+**Goal**: Wu-wei Dyad Operator triages tickets; engine builds universal capabilities.
 
-- [ ] **Operator triages**: Each support ticket is classified as universal (accepted → DZ-CIL backlog) or project-specific (rejected → Agent builds locally)
-- [ ] **DZ-CIL builds universal skills**: Through the standard SPAOR loop, DZ-CIL implements accepted tooling requests
-- [ ] **Support tickets closed**: Each closed ticket references the DZ-CIL commit that delivers the capability
+- [ ] **Operator triages**: Each support ticket is classified as universal (accepted → Wu-wei Dyad backlog) or project-specific (rejected → Agent builds locally)
+- [ ] **Wu-wei Dyad builds universal skills**: Through the standard SPAOR loop, Wu-wei Dyad implements accepted tooling requests
+- [ ] **Support tickets closed**: Each closed ticket references the Wu-wei Dyad commit that delivers the capability
 - [ ] **Project-specific gaps**: Agent builds these locally in the project repo using project-local tooling
 
 **Output**: Closed support tickets with commit references.
 
 ### Phase 6: Pull and Integrate
 
-**Goal**: External project workstation gains new DZ-CIL capabilities.
+**Goal**: External project workstation gains new Wu-wei Dyad capabilities.
 
-- [ ] **Pull DZ-CIL clone**: `git pull` on the read-only DZ-CIL clone to get new capabilities
+- [ ] **Pull Wu-wei Dyad clone**: `git pull` on the read-only Wu-wei Dyad clone to get new capabilities
 - [ ] **Verify new tooling**: Run the new `bin/` commands or load updated `AGENT.md` instructions
-- [ ] **Update Digest if needed**: If new DZ-CIL capabilities change how Digest rules are enforced, update the Digest
+- [ ] **Update Digest if needed**: If new Wu-wei Dyad capabilities change how Digest rules are enforced, update the Digest
 - [ ] **Resume project work**: Agent continues with the expanded capability set
 
-**Output**: Agent operating with full DZ-CIL + project-local tooling.
+**Output**: Agent operating with full Wu-wei Dyad + project-local tooling.
 
 ### Lifecycle Diagram
 
@@ -257,7 +257,7 @@ This checklist covers the full operational workflow for onboarding an Agent onto
                                           │
                                           ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        DZ-CIL Engine                                │
+│                        Wu-wei Dyad Engine                                │
 │                                                                     │
 │  Phase 5                              Phase 6                       │
 │  Triage ──→ Build (SPAOR) ──→ Close ──→ Agent pulls clone          │

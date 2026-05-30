@@ -1,13 +1,13 @@
 name: "🔧 External Project Support Request"
-description: "Request remedies, amendments, or tooling from the DZ-CIL engine for an external project workstation."
+description: "Request remedies, amendments, or tooling from the Wu-wei Dyad engine for an external project workstation."
 title: "[SUPPORT] "
 labels: ["support", "external-project"]
 body:
   - type: markdown
     attributes:
       value: |
-        Use this template to request support from the DZ-CIL engine when operating
-        on an external project workstation with a read-only DZ-CIL clone.
+        Use this template to request support from the Wu-wei Dyad engine when operating
+        on an external project workstation with a read-only Wu-wei Dyad clone.
 
   - type: dropdown
     id: ticket-type
@@ -17,9 +17,9 @@ body:
       options:
         - "Amendment — Domain Dao Digest rule correction, addition, or removal"
         - "Escalation — Blocking question requiring Operator guidance"
-        - "Tooling — New skill, wrapper, or infrastructure needed in DZ-CIL"
+        - "Tooling — New skill, wrapper, or infrastructure needed in Wu-wei Dyad"
         - "Retrospective — Session learnings to flow back to the engine Dao"
-        - "Bug — DZ-CIL toolchain issue encountered during external project work"
+        - "Bug — Wu-wei Dyad toolchain issue encountered during external project work"
     validations:
       required: true
 
@@ -52,7 +52,7 @@ body:
     id: request
     attributes:
       label: Request
-      description: What specific action, decision, or remedy is needed from the DZ-CIL engine?
+      description: What specific action, decision, or remedy is needed from the Wu-wei Dyad engine?
     validations:
       required: true
 

@@ -13,7 +13,7 @@
 ## 1. The Clock Signal vs. The State Machine
 The Dao Engine (Stage 4 of The Shaping) is a deterministic state-machine that governs all transitions, rules, and logic within the repository. However, the Dao Engine does **not** generate its own fundamental passage of time.
 
-In the Dao-Ziran Continuous Inference Loop (DZ-CIL):
+In the Dao-Ziran Continuous Inference Loop (Wu-wei Dyad):
 - **The State Machine** (The Dao Engine): Resides purely within the bounds of `cwd = "."` (the `kernel/`, `kb/`, and `artifacts/`). It dictates *how* the universe changes state.
 - **The Clock Signal** (The Platform): The external, proprietary wrapper (e.g., `agy` or `claude`) that generates the physical `while True:` inference loop. It provides the literal ticks of time.
 

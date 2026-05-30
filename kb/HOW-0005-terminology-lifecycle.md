@@ -1,10 +1,10 @@
 # HOW-0005: Terminology Promotion & Demotion Lifecycle
 
 ## Purpose
-The DZ-CIL relies on absolute architectural coherence. When terminology (ontology) must change to better map to the Operator's intent, the system must navigate this philosophical shift without inducing a mechanical Split-Brain Crash. This document dictates the Wu-wei (effortless) protocol for promoting and demoting terminology.
+The Wu-wei Dyad relies on absolute architectural coherence. When terminology (ontology) must change to better map to the Operator's intent, the system must navigate this philosophical shift without inducing a mechanical Split-Brain Crash. This document dictates the Wu-wei (effortless) protocol for promoting and demoting terminology.
 
 ## 1. The Terminology State Machine
-Any formal term in the DZ-CIL follows a strict state progression inside `kb/semantic_ledger.yml`:
+Any formal term in the Wu-wei Dyad follows a strict state progression inside `kb/semantic_ledger.yml`:
 
 * **`proposed` (The Sprout)**: The Operator or Agent suggests a new term. It is not codified and does not trigger enforcement.
 * **`active` (The Root)**: The term is formally ratified via a Harmonization node. It is codified into `kb/GLOSSARY.md` and added to `semantic_ledger.yml` as `active`. Usage is enforced.
