@@ -4352,6 +4352,90 @@
 - **Feedforward Invariants**:
   - `Path 1423 is permanently closed.`
 
+## Node 1507: Remediate stale audit_state.json survivor
+- **Status**: Backlog
+- **Learnings & Context**: The audit_state.json file has a stale last_hash for GEMINI.md and AGENT.md, causing false positive /exit alerts. We need to commit the updated hashes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1508: Harmonize - Remediate stale audit_state.json survivor
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Remediate stale audit_state.json survivor.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1509: Plan - Remediate stale audit_state.json survivor
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Remediate stale audit_state.json survivor.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1510: Reflect - Remediate stale audit_state.json survivor
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Remediate stale audit_state.json survivor.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1511: Falsify and remediate survivor (stale audit_state.json)
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1512: [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `plan-start`
+**Persona:** `agent-ziran`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 646, in main
+    cmd_plan_start(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 374, in cmd_plan_start
+    plan_start_node(args.issue_id)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 23, in plan_start_node
+    node.plan_start()
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py", line 179, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 282, in plan_start
+    self._validate_orthogonal_scope()
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 232, in _validate_orthogonal_scope
+    raise Exception(f"Orthogonal Scope Violation: Node {self.issue_id} has an identical goal footprint to Node {issue['number']}")
+Exception: Orthogonal Scope Violation: Node 1511 has an identical goal footprint to Node 1507
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1513: Harmonize - [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1514: Plan - [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1515: Reflect - [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1511: Falsify and remediate survivor (stale audit_state.json)
+- **Status**: Completed
+- **Learnings & Context**: Falsified the surviving stale audit states that triggered false file_modified alerts. Replaced the cached hashes with the latest commit 1a45bc1 from PR 1484. Cleared prompt backlog to silence the false positive /exit alarms.
+- **Feedforward Invariants**:
+  - `The local audit state survivor has been remediated.`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`

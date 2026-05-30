@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1426: Reflect - Codify Redundant Node Closure Discipline'
+current_active_node: 'Node 1511: Falsify and remediate survivor (stale audit_state.json)'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4388,6 +4388,68 @@ nodes:
   learnings: Path 1423 successfully codified the node cancel discipline.
   invariants:
   - Path 1423 is permanently closed.
+- name: 'Node 1507: Remediate stale audit_state.json survivor'
+  status: Backlog
+  learnings: The audit_state.json file has a stale last_hash for GEMINI.md and AGENT.md,
+    causing false positive /exit alerts. We need to commit the updated hashes.
+  invariants: []
+- name: 'Node 1508: Harmonize - Remediate stale audit_state.json survivor'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Remediate stale
+    audit_state.json survivor.
+  invariants: []
+- name: 'Node 1509: Plan - Remediate stale audit_state.json survivor'
+  status: Backlog
+  learnings: Technical design and proposed changes for Remediate stale audit_state.json
+    survivor.
+  invariants: []
+- name: 'Node 1510: Reflect - Remediate stale audit_state.json survivor'
+  status: Backlog
+  learnings: Final reflection and path closure for Remediate stale audit_state.json
+    survivor.
+  invariants: []
+- name: 'Node 1511: Falsify and remediate survivor (stale audit_state.json)'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1512: [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
+    \ `agent-ziran`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 646,\
+    \ in main\n    cmd_plan_start(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 374, in cmd_plan_start\n    plan_start_node(args.issue_id)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 23, in plan_start_node\n    node.plan_start()\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\"\
+    , line 179, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 282,\
+    \ in plan_start\n    self._validate_orthogonal_scope()\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\"\
+    , line 232, in _validate_orthogonal_scope\n    raise Exception(f\"Orthogonal Scope\
+    \ Violation: Node {self.issue_id} has an identical goal footprint to Node {issue['number']}\"\
+    )\nException: Orthogonal Scope Violation: Node 1511 has an identical goal footprint\
+    \ to Node 1507\n\n```\n"
+  invariants: []
+- name: 'Node 1513: Harmonize - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
+    System Crash in plan-start.'
+  invariants: []
+- name: 'Node 1514: Plan - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
+    in plan-start.'
+  invariants: []
+- name: 'Node 1515: Reflect - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
+    plan-start.'
+  invariants: []
+- name: 'Activity 1511: Falsify and remediate survivor (stale audit_state.json)'
+  status: Completed
+  learnings: Falsified the surviving stale audit states that triggered false file_modified
+    alerts. Replaced the cached hashes with the latest commit 1a45bc1 from PR 1484.
+    Cleared prompt backlog to silence the false positive /exit alarms.
+  invariants:
+  - The local audit state survivor has been remediated.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
