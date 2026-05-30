@@ -4262,33 +4262,45 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1076: Plan - Establish robust agentic bug reporting and triage mechanisms
+## Node 1075: Harmonize - Establish robust agentic bug reporting and triage mechanisms
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-1076 outlining the architectural specification for global exception handling, backlog issue generation, and telemetry logging.
+- **Learnings & Context**: Created Epistemic Baseline outlining the architecture for global exception interception, traceback capture, automated backlog issue generation, and telemetry integration for agentic bug reporting.
 - **Feedforward Invariants**:
-  - `[x] WHAT-1076 created and passes static validation`
+  - `[x] Epistemic baseline established`
 
-## Node 1077: Reflect - Establish robust agentic bug reporting and triage mechanisms
+## Node 1458: Act: Establish robust agentic bug reporting and triage mechanisms
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1077: Reflect - Establish robust agentic bug reporting and triage mechanisms
+## Act: Establish robust agentic bug reporting and triage mechanisms
 - **Status**: Completed
-- **Learnings & Context**: Compiled retrospective for Path 1074
+- **Learnings & Context**: Implemented global exception handler in daemon_node.py to automatically file bugs into Triage Holding backlog and log telemetry.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1461: Plan - Codify Stepped-Away Discipline
+## Node 1460: Harmonize - Codify Stepped-Away Discipline
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery: Plan - Codify Stepped-Away Discipline
+## Discovery: Harmonize - Codify Stepped-Away Discipline
 - **Status**: Completed
-- **Learnings & Context**: Formulated WHAT-1461 specification
+- **Learnings & Context**: Codified the intent for the Stepped-Away Discipline in WHY-1460
+- **Feedforward Invariants**:
+  - `[x] Asynchronous Execution Invariant`
+
+## Node 1471: Act: Codify Stepped-Away Discipline
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity: Act: Codify Stepped-Away Discipline
+- **Status**: Completed
+- **Learnings & Context**: Implemented WHAT-1461 by codifying the Stepped-Away Discipline directly into GEMINI.md
 - **Feedforward Invariants**:
   - `[x] Asynchronous Execution Invariant`
 
