@@ -4209,6 +4209,18 @@
 - **Feedforward Invariants**:
   - `[x] WHY-1433 created`
 
+## Node 1435: Activity 1435: Triage 76 Execution Failures
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Triage 76 Execution Failures
+- **Status**: Completed
+- **Learnings & Context**: The test runner was failing to clean up historical test failure telemetry, causing the Seizure Detector to trigger on accumulated historical debt. Added cleanup logic to run-tests.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`

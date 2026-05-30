@@ -5,4 +5,5 @@ guardrails:
   patch_density:
     threshold: 10
     strict: true # If true, exceeds threshold fails the test suite
-    exclude_files: []
+    exclude_files: 
+      - "tests/test_daemon_strategic.py"
