@@ -2,6 +2,7 @@ import os
 import subprocess
 import pytest
 import yaml
+import re
 
 # Strict Exemption List of files allowed to reference stale terms for historical/mapping purposes
 EXEMPTIONS = {
@@ -83,8 +84,9 @@ def check_content(content, forbidden_words):
     content_lower = content.lower()
     found = []
     for word in forbidden_words:
-        # Check for raw substring match to prevent evasion
-        if word in content_lower:
+        # Check for discrete word match to prevent evasion and false positives
+        pattern = r'\b' + re.escape(word) + r'\b'
+        if re.search(pattern, content_lower):
             found.append(word)
     return found
 
@@ -104,6 +106,10 @@ def test_lexical_guard_logic():
     assert check_content("This is a clean path.", forbidden) == []
     assert check_content("This is an epic task.", forbidden) == ['epic']
     assert check_content("We have a spike node here.", forbidden) == ['spike']
+    
+    # Ensure false positives from substring matching are ignored
+    assert check_content("This is to depict a scene.", forbidden) == []
+    assert check_content("This is an epicycle.", forbidden) == []
 
 def test_modified_files_lexical_compliance():
     """Enforces vocabulary invariants on all newly introduced/modified workspace files."""
