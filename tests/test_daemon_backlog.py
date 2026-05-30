@@ -65,7 +65,6 @@ def test_backlog_add(mock_render, mock_backlog_gh):
     # Now labels are fetched dynamically or defaults to status: todo, backlog
     mock_backlog_gh.add_label.assert_any_call("31", "backlog")
     mock_backlog_gh.add_label.assert_any_call("31", "status: todo")
-    mock_backlog_gh.rename_issue_title.assert_called_once_with("31", "Discovery 31: Future Work Item")
     mock_backlog_gh.update_issue_body.assert_called_once()
     
     mock_render.assert_called_once_with("backlog_issue", {
@@ -169,7 +168,6 @@ def test_backlog_add_path(mock_render, mock_backlog_gh):
     # Labels added for each issue (both backlog and status: todo for terminals, and path for path)
     assert mock_backlog_gh.add_label.call_count == 8 # 2 (Path: backlog, path) + 2*3 (Align, Plan, Reflect)
     mock_backlog_gh.add_label.assert_any_call("100", "path")
-    mock_backlog_gh.rename_issue_title.assert_any_call("103", "Activity 103: Reflect - New Path Title")
 
 def test_backlog_cli_list(mock_backlog_gh, capsys):
     from kernel.daemon_backlog import main
@@ -227,7 +225,6 @@ def test_backlog_workspace_isolation(tmp_path):
          patch("drivers.github_client.get_issue_details", return_value={"title": "Path 10: Parent Path Title", "state": "OPEN", "body": "## Meta-Index"}), \
          patch("drivers.github_client.get_open_issues", return_value=[]), \
          patch("drivers.github_client.add_label"), \
-         patch("drivers.github_client.rename_issue_title"), \
          patch("drivers.github_client.update_issue_body"):
          
         daemon = BacklogDaemon()

@@ -131,18 +131,19 @@ class BacklogDaemon:
             except Exception:
                 pass
 
-        formatted_title = f"{node_type.capitalize()}: {title}"
+        import re
+        # Strip any accidentally prepended predictive IDs or redundant prefixes from the user title
+        cleaned_title = re.sub(r"^(Discovery|Activity|Node|Path)\s*\d*:\s*", "", title, flags=re.IGNORECASE)
+        formatted_title = f"{node_type.capitalize()}: {cleaned_title}"
 
         # Idempotency duplicate check
-        import re
         try:
             open_issues = github_client.get_open_issues()
             for issue in open_issues:
                 curr_title = issue.get("title", "")
-                clean_curr = re.sub(r"^(Discovery|Activity|Node|Path)\s*\d+:\s*", r"\1: ", curr_title, flags=re.IGNORECASE)
-                expected_clean = f"{node_type.capitalize()}: {title}"
-                if clean_curr.lower() == expected_clean.lower():
-                    print(f"Warning: Reusing existing issue for {node_type} '{title}'")
+                clean_curr = re.sub(r"^(Discovery|Activity|Node|Path)\s*\d*:\s*", "", curr_title, flags=re.IGNORECASE)
+                if clean_curr.lower() == cleaned_title.lower():
+                    print(f"Warning: Reusing existing issue for {node_type} '{cleaned_title}'")
                     return f"https://github.com/{self.repository}/issues/{issue['number']}"
         except Exception:
             pass
@@ -186,14 +187,11 @@ class BacklogDaemon:
             if is_non_terminal:
                 github_client.add_label(issue_id, "path")
 
-        new_title = f"{node_type.capitalize()} {issue_id}: {title}"
-        github_client.rename_issue_title(issue_id, new_title)
-        
         if is_terminal and path_id:
             path_details = github_client.get_issue_details(path_id)
             path_body = path_details.get("body", "")
             
-            checkbox_line = f"- [ ] Node {issue_id}: {new_title}"
+            checkbox_line = f"- [ ] Node {issue_id}: {formatted_title}"
             if depends_on:
                 checkbox_line += f" [Depends: {depends_on}]"
                 
@@ -208,10 +206,15 @@ class BacklogDaemon:
         try:
             from kernel import agent_frontier
             from drivers import path_resolver
-            frontier_file = path_resolver.resolve_workspace_path("artifacts", "frontier_state.md")
-            agent_frontier.register_backlog_node(frontier_file, int(issue_id), new_title, goal)
-        except Exception:
-            pass
+            workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
+            if workspace_dir:
+                frontier_file = os.path.join(workspace_dir, "artifacts", "frontier_state.md")
+            else:
+                frontier_file = path_resolver.resolve_workspace_path("artifacts/frontier_state.md")
+            if os.path.exists(frontier_file):
+                agent_frontier.register_backlog_node(frontier_file, issue_id, formatted_title)
+        except Exception as e:
+            print(f"Warning: Failed to auto-register node in frontier: {e}")
 
         if is_non_terminal:
             # 1. Discovery: Harmonization scoping
