@@ -144,6 +144,7 @@ def test_reflect_success(mock_enforce, mock_get_worktree_path, mock_nba, mock_fr
     mock_gh.get_issue_labels.return_value = []
     mock_git.get_git_common_dir.return_value = ".git"
     mock_git.check_merge_conflicts.return_value = False
+    mock_git.get_staged_files.return_value = ["dummy_file.py"]
     
     node = TerminalNode("390")
     
@@ -293,6 +294,7 @@ def test_reflect_admin_bypass_conditions(mock_enforce, mock_git, mock_gh, mock_t
     mock_nba.NBADaemon.return_value.evaluate.return_value = {"type": "continue"}
     mock_git.get_git_common_dir.return_value = ".git"
     mock_git.check_merge_conflicts.return_value = False
+    mock_git.get_staged_files.return_value = ["dummy_file.py"]
     
     node = TerminalNode("390")
     

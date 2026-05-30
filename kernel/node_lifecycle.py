@@ -499,6 +499,11 @@ class TerminalNode(BaseNode):
                 if files_to_stage:
                     git_client.add(files_to_stage, cwd=worktree_dir)
 
+            # Prevent empty commits/PRs for SPAO nodes
+            staged_files = git_client.get_staged_files(cwd=worktree_dir)
+            if not staged_files:
+                raise RuntimeError("SPAO Execution Error: No files were staged for commit. To close a redundant node without changes, use './bin/node cancel' instead of 'reflect'.")
+
             git_client.commit(commit_msg, cwd=worktree_dir)
             # rollback the local commit if remote operations fail
             tx.register_rollback(git_client.reset_hard, cwd=worktree_dir)
