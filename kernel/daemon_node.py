@@ -544,117 +544,169 @@ def cmd_test(args):
     sys.exit(exit_code)
 
 def main():
-    parser = argparse.ArgumentParser(description="Antigravity Domain Kernel for Node Lifecycle Management")
-    parser.add_argument("--workspace", action="store_true", help="Execute command under the active workspace context")
-    subparsers = parser.add_subparsers(dest="subcommand", required=True)
+    import argparse
+    import sys
+    import json
+    import traceback
+    import os
 
-    # sync
-    subparsers.add_parser("sync", help="Sync main, prune branches, and surface backlog")
+    try:
+        parser = argparse.ArgumentParser(description="Antigravity Domain Kernel for Node Lifecycle Management")
+        parser.add_argument("--workspace", action="store_true", help="Execute command under the active workspace context")
+        subparsers = parser.add_subparsers(dest="subcommand", required=True)
 
-    # plan-start
-    parser_ps = subparsers.add_parser("plan-start", help="Lock an issue to start multi-phase planning")
-    parser_ps.add_argument("issue_id")
+        # sync
+        subparsers.add_parser("sync", help="Sync main, prune branches, and surface backlog")
 
-    # plan-finish
-    parser_pf = subparsers.add_parser("plan-finish", help="Complete the plan phase by writing the Node Contract")
-    parser_pf.add_argument("issue_id")
-    parser_pf.add_argument("body_content")
+        # plan-start
+        parser_ps = subparsers.add_parser("plan-start", help="Lock an issue to start multi-phase planning")
+        parser_ps.add_argument("issue_id")
 
-    # checkout
-    parser_co = subparsers.add_parser("checkout", help="Create a worktree for the Act phase")
-    parser_co.add_argument("issue_id")
-    parser_co.add_argument("branch_name")
+        # plan-finish
+        parser_pf = subparsers.add_parser("plan-finish", help="Complete the plan phase by writing the Node Contract")
+        parser_pf.add_argument("issue_id")
+        parser_pf.add_argument("body_content")
 
-    # reflect
-    parser_r = subparsers.add_parser("reflect", help="Close node, push branch, open PR")
-    parser_r.add_argument("issue_id")
-    parser_r.add_argument("node_name")
-    parser_r.add_argument("learnings")
-    parser_r.add_argument("invariants")
-    parser_r.add_argument("commit_msg")
-    parser_r.add_argument("branch_name")
-    parser_r.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
-    parser_r.add_argument("--stage", nargs="?", const="all", default="all", help="Granular files to stage: 'all' (default), 'none', or list.")
-    parser_r.add_argument("--insights", default="", help="Active Insights (e.g., WHY-0071, WHY-0075)")
+        # checkout
+        parser_co = subparsers.add_parser("checkout", help="Create a worktree for the Act phase")
+        parser_co.add_argument("issue_id")
+        parser_co.add_argument("branch_name")
 
-    # cancel
-    parser_c = subparsers.add_parser("cancel", help="Cancel a structurally redundant node")
-    parser_c.add_argument("issue_id")
-    parser_c.add_argument("node_name")
-    parser_c.add_argument("reason")
-    parser_c.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
+        # reflect
+        parser_r = subparsers.add_parser("reflect", help="Close node, push branch, open PR")
+        parser_r.add_argument("issue_id")
+        parser_r.add_argument("node_name")
+        parser_r.add_argument("learnings")
+        parser_r.add_argument("invariants")
+        parser_r.add_argument("commit_msg")
+        parser_r.add_argument("branch_name")
+        parser_r.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
+        parser_r.add_argument("--stage", nargs="?", const="all", default="all", help="Granular files to stage: 'all' (default), 'none', or list.")
+        parser_r.add_argument("--insights", default="", help="Active Insights (e.g., WHY-0071, WHY-0075)")
 
-    # view
-    parser_v = subparsers.add_parser("view", help="View a Node issue")
-    parser_v.add_argument("issue_id")
+        # cancel
+        parser_c = subparsers.add_parser("cancel", help="Cancel a structurally redundant node")
+        parser_c.add_argument("issue_id")
+        parser_c.add_argument("node_name")
+        parser_c.add_argument("reason")
+        parser_c.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
 
-    # set-status
-    parser_ss = subparsers.add_parser("set-status", help="Set the logical status of a node")
-    parser_ss.add_argument("issue_id")
-    parser_ss.add_argument("status_key")
+        # view
+        parser_v = subparsers.add_parser("view", help="View a Node issue")
+        parser_v.add_argument("issue_id")
 
-    # set-classification
-    parser_sc = subparsers.add_parser("set-classification", help="Set the logical classification of a node")
-    parser_sc.add_argument("issue_id")
-    parser_sc.add_argument("classification_key")
+        # set-status
+        parser_ss = subparsers.add_parser("set-status", help="Set the logical status of a node")
+        parser_ss.add_argument("issue_id")
+        parser_ss.add_argument("status_key")
 
-    # test
-    parser_t = subparsers.add_parser("test", help="Execute test harness validation")
-    parser_t.add_argument("target", nargs="?", default="tests/", help="Target directory or file for pytest")
+        # set-classification
+        parser_sc = subparsers.add_parser("set-classification", help="Set the logical classification of a node")
+        parser_sc.add_argument("issue_id")
+        parser_sc.add_argument("classification_key")
 
-    # retro
-    parser_retro = subparsers.add_parser("retro", help="Compile, list, or view retrospectives")
-    subparsers_retro = parser_retro.add_subparsers(dest="retro_command", required=True)
+        # test
+        parser_t = subparsers.add_parser("test", help="Execute test harness validation")
+        parser_t.add_argument("target", nargs="?", default="tests/", help="Target directory or file for pytest")
 
-    # retro compile
-    parser_rc = subparsers_retro.add_parser("compile", help="Compile a retrospective for a range of path IDs")
-    parser_rc.add_argument("start_path", help="Starting path ID")
-    parser_rc.add_argument("end_path", help="Ending path ID")
-    parser_rc.add_argument("output_path", nargs="?", default=None, help="Optional output path")
+        # retro
+        parser_retro = subparsers.add_parser("retro", help="Compile, list, or view retrospectives")
+        subparsers_retro = parser_retro.add_subparsers(dest="retro_command", required=True)
 
-    # retro list
-    subparsers_retro.add_parser("list", help="List compiled retrospectives")
+        # retro compile
+        parser_rc = subparsers_retro.add_parser("compile", help="Compile a retrospective for a range of path IDs")
+        parser_rc.add_argument("start_path", help="Starting path ID")
+        parser_rc.add_argument("end_path", help="Ending path ID")
+        parser_rc.add_argument("output_path", nargs="?", default=None, help="Optional output path")
 
-    # retro view
-    parser_rv = subparsers_retro.add_parser("view", help="View a compiled retrospective")
-    parser_rv.add_argument("start_path", help="Starting path ID")
-    parser_rv.add_argument("end_path", nargs="?", default=None, help="Optional ending path ID")
+        # retro list
+        subparsers_retro.add_parser("list", help="List compiled retrospectives")
 
-    # retro attach
-    parser_ra = subparsers_retro.add_parser("attach", help="Attach a retro file to the active node branch")
-    parser_ra.add_argument("issue_id", help="The node issue ID (e.g. 806)")
-    parser_ra.add_argument("retro_file", help="Path to the retro-<id>.md file to attach")
-    parser_ra.add_argument("branch_name", help="The active node branch (e.g. node/806-implement-...)")
+        # retro view
+        parser_rv = subparsers_retro.add_parser("view", help="View a compiled retrospective")
+        parser_rv.add_argument("start_path", help="Starting path ID")
+        parser_rv.add_argument("end_path", nargs="?", default=None, help="Optional ending path ID")
 
-    args = parser.parse_args()
+        # retro attach
+        parser_ra = subparsers_retro.add_parser("attach", help="Attach a retro file to the active node branch")
+        parser_ra.add_argument("issue_id", help="The node issue ID (e.g. 806)")
+        parser_ra.add_argument("retro_file", help="Path to the retro-<id>.md file to attach")
+        parser_ra.add_argument("branch_name", help="The active node branch (e.g. node/806-implement-...)")
 
-    if getattr(args, "workspace", False):
-        if not os.environ.get("SPAO_WORKSPACE_DIR"):
-            from drivers import path_resolver
-            os.environ["SPAO_WORKSPACE_DIR"] = os.path.abspath(os.path.join(path_resolver.get_core_dir(), ".workspace"))
+        args = parser.parse_args()
 
-    if args.subcommand == "sync":
-        cmd_sync(args)
-    elif args.subcommand == "plan-start":
-        cmd_plan_start(args)
-    elif args.subcommand == "plan-finish":
-        cmd_plan_finish(args)
-    elif args.subcommand == "cancel":
-        cmd_cancel(args)
-    elif args.subcommand == "checkout":
-        cmd_checkout(args)
-    elif args.subcommand == "reflect":
-        cmd_reflect(args)
-    elif args.subcommand == "view":
-        cmd_view(args)
-    elif args.subcommand == "set-status":
-        cmd_set_status(args)
-    elif args.subcommand == "set-classification":
-        cmd_set_classification(args)
-    elif args.subcommand == "test":
-        cmd_test(args)
-    elif args.subcommand == "retro":
-        cmd_retro(args)
+        if getattr(args, "workspace", False):
+            if not os.environ.get("SPAO_WORKSPACE_DIR"):
+                from drivers import path_resolver
+                os.environ["SPAO_WORKSPACE_DIR"] = os.path.abspath(os.path.join(path_resolver.get_core_dir(), ".workspace"))
+
+        if args.subcommand == "sync":
+            cmd_sync(args)
+        elif args.subcommand == "plan-start":
+            cmd_plan_start(args)
+        elif args.subcommand == "plan-finish":
+            cmd_plan_finish(args)
+        elif args.subcommand == "cancel":
+            cmd_cancel(args)
+        elif args.subcommand == "checkout":
+            cmd_checkout(args)
+        elif args.subcommand == "reflect":
+            cmd_reflect(args)
+        elif args.subcommand == "view":
+            cmd_view(args)
+        elif args.subcommand == "set-status":
+            cmd_set_status(args)
+        elif args.subcommand == "set-classification":
+            cmd_set_classification(args)
+        elif args.subcommand == "test":
+            cmd_test(args)
+        elif args.subcommand == "retro":
+            cmd_retro(args)
+
+    except Exception as e:
+        subcommand = getattr(args, 'subcommand', 'unknown') if 'args' in locals() else 'unknown'
+        persona = os.environ.get("SPAO_PERSONA_ID", "Unknown")
+        tb_str = traceback.format_exc()
+        
+        body = f"## System Crash Report\n\n**Subcommand:** `{subcommand}`\n**Persona:** `{persona}`\n\n### Traceback\n```python\n{tb_str}\n```\n"
+        
+        try:
+            from kernel.daemon_backlog import BacklogDaemon
+            from kernel.daemon_telemetry import TelemetryDaemon
+            from drivers import github_client
+            
+            # Using node_type "path" to bypass terminal node path_id requirement
+            backlog_daemon = BacklogDaemon()
+            issue_url = backlog_daemon.add(
+                node_type="path",
+                title=f"[BUG] Intake: System Crash in {subcommand}",
+                goal=body
+            )
+            
+            issue_id = issue_url.split("/")[-1]
+            try:
+                github_client.add_label(issue_id, "status:triage")
+                github_client.add_label(issue_id, "bug")
+            except Exception as label_err:
+                print(f"Warning: Failed to add labels to bug report: {label_err}")
+            
+            telemetry = TelemetryDaemon()
+            telemetry.record_event("ERROR", {
+                "subcommand": subcommand,
+                "error": str(e),
+                "traceback": tb_str
+            })
+            
+            print(f"\n[❌ CRASH] A system crash was intercepted during execution.")
+            print(f"The exception has been caught and a bug report has been autonomously filed.")
+            print(f"Bug Report URL: {issue_url}\n")
+            sys.exit(1)
+            
+        except Exception as reporting_error:
+            print(f"\n[❌ CRASH] A system crash occurred: {e}")
+            print(f"WARNING: The autonomous bug reporting mechanism also failed: {reporting_error}")
+            print(f"\nOriginal Traceback:\n{tb_str}\n")
+            sys.exit(1)
 
 if __name__ == "__main__":
     main()
