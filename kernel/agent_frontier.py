@@ -326,7 +326,9 @@ def append_active_node(filepath: str, node_id: int, node_title: str, description
     yml_path = resolve_yml_path(filepath)
     state = load_state(yml_path)
     
-    node_name = f"Node {node_id}: {node_title}"
+    from kernel.title_utils import clean_node_title
+    clean_title = clean_node_title(node_title)
+    node_name = f"Node {node_id}: {clean_title}"
     nodes = state.get("nodes", [])
     found = False
     for node in nodes:
@@ -357,7 +359,9 @@ def register_backlog_node(filepath: str, node_id: int, node_title: str, descript
     yml_path = resolve_yml_path(filepath)
     state = load_state(yml_path)
     
-    node_name = f"Node {node_id}: {node_title}"
+    from kernel.title_utils import clean_node_title
+    clean_title = clean_node_title(node_title)
+    node_name = f"Node {node_id}: {clean_title}"
     nodes = state.get("nodes", [])
     found = False
     for node in nodes:
