@@ -648,3 +648,31 @@ class TerminalNode(BaseNode):
             if os.path.exists(wt_path):
                 git_client.worktree_remove(wt_path, force=True)
         git_client.branch_delete(branch_name)
+
+    @record_execution(stage="cancel")
+    def cancel(self, frontier_file: str, node_name: str, reason: str) -> None:
+        from drivers import path_resolver
+        if not os.path.isabs(frontier_file):
+            frontier_file = path_resolver.resolve_workspace_path(frontier_file)
+
+        with FlowTransaction(frontier_file) as tx:
+            log_stage_advancement("cancel", "Initiating Cancel Phase", f"Closing Issue #{self.issue_id} and canceling node")
+            
+            self.close(f"Node canceled by Metasystem. Reason: {reason}")
+            tx.register_rollback(self.reopen)
+            
+            # Automate Meta-Index Checkbox Synchronization
+            active_path_str = agent_frontier.read_active_path(frontier_file)
+            if active_path_str:
+                path_issue_id = agent_frontier.extract_path_id(active_path_str)
+                if path_issue_id:
+                    from kernel import daemon_backlog
+                    backlog = daemon_backlog.BacklogDaemon()
+                    # Check off the node so it doesn't block the path
+                    backlog.check_off_meta_index(path_issue_id, self.issue_id)
+                    tx.register_rollback(backlog.uncheck_meta_index, path_issue_id, self.issue_id)
+                else:
+                    print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
+                    
+            # ATOMIC UPDATE: Mark node cancelled AND clear pointers
+            agent_frontier.cancel_active_node(frontier_file, node_name, reason, clear_pointers=True)

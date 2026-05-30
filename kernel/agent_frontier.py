@@ -283,6 +283,44 @@ def complete_active_node(filepath: str, node_name: str, learnings: str, invarian
         
     save_state(yml_path, state)
 
+def cancel_active_node(filepath: str, node_name: str, reason: str, clear_pointers: bool = True) -> None:
+    """Marks the active node as cancelled in the YAML ledger."""
+    yml_path = resolve_yml_path(filepath)
+    state = load_state(yml_path)
+    
+    node_id = extract_path_id(node_name)
+    nodes = state.get("nodes", [])
+    found = False
+    for node in nodes:
+        if node.get("name") == node_name:
+            node["status"] = "Cancelled"
+            node["learnings"] = f"Cancelled: {reason}"
+            if node_id:
+                node.update(get_node_metadata(node_id))
+            found = True
+            break
+            
+    if not found:
+        new_node = {
+            "name": node_name,
+            "status": "Cancelled",
+            "learnings": f"Cancelled: {reason}",
+            "invariants": []
+        }
+        if node_id:
+            new_node.update(get_node_metadata(node_id))
+        nodes.append(new_node)
+        
+    state["nodes"] = nodes
+    if clear_pointers:
+        persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
+        if "active_agents" in state and persona in state["active_agents"]:
+            state["active_agents"][persona]["current_active_node"] = None
+        else:
+            state["current_active_node"] = None
+        
+    save_state(yml_path, state)
+
 def append_active_node(filepath: str, node_id: int, node_title: str, description: str, invariants: list[str]) -> None:
     """Appends a new active node block to the ledger."""
     yml_path = resolve_yml_path(filepath)
