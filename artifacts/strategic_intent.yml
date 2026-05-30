@@ -66,6 +66,10 @@ strategic_goals:
   - 993
   - 721
   - 712
+  - 1355
+  - 1308
+  - 1296
+  - 1206
   status: Active
   title: Preservation of Autonomous Velocity
 - collaborative_gap: The communication interface requires verbose conversational turns
@@ -118,6 +122,10 @@ strategic_goals:
   - 1094
   - 1074
   - 1152
+  - 1459
+  - 1394
+  - 1302
+  - 1161
   status: Active
   title: Autonomous Knowledge Accrual
 - collaborative_gap: External projects onboarding onto Wu-wei Dyad lack a governed
@@ -134,5 +142,7 @@ strategic_goals:
   id: SG-0006
   prioritized_paths:
   - 1323
+  - 1242
+  - 1223
   status: Active
   title: External Project Service Excellence

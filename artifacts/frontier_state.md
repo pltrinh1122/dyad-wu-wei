@@ -4436,6 +4436,148 @@ Exception: Orthogonal Scope Violation: Node 1511 has an identical goal footprint
 - **Feedforward Invariants**:
   - `The local audit state survivor has been remediated.`
 
+## Path: [BUG] Intake: System Crash in plan-start
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Redundant bug duplicate; root cause remediated via Path 1511
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Path: Remediate stale audit_state.json survivor
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Redundant Path; execution bypassed and completed via Activity 1511 directly
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Path: [BUG] Intake: System Crash in sync
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Redundant bug duplicate; root cause remediated via Path 1511
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Path: [BUG] Intake: System Crash in reflect
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Redundant bug duplicate; root cause remediated via Path 1511
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Path 1423: Codify Redundant Node Closure Discipline
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Path execution completed; final retrospective synthesized in retro-1423-final.md but node remained open in Github
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1517: Address Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Map the 10 unmapped backlog paths to their respective Strategic Goals in strategic_intent.yml to resolve the hygiene warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1518: Harmonize - Address Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Address Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1519: Plan - Address Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Address Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1520: Reflect - Address Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Address Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1521: Map Backlog Paths to Strategic Intent
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1522: [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `checkout`
+**Persona:** `agent-ziran`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 652, in main
+    cmd_checkout(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 380, in cmd_checkout
+    checkout_node(args.issue_id, args.branch_name)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 33, in checkout_node
+    node.checkout(branch_name)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py", line 179, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 343, in checkout
+    raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
+ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1523: Harmonize - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1524: Plan - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1525: Reflect - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1526: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `agent-ziran`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1521-map-backlog-paths/kernel/daemon_node.py", line 654, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1521-map-backlog-paths/kernel/daemon_node.py", line 384, in cmd_reflect
+    invariants = json.loads(args.invariants)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1521: Activity 1521: Map Backlog Paths to Strategic Intent
+- **Status**: Completed
+- **Learnings & Context**: Mapped the 10 unmapped backlog paths to their respective Strategic Goals in strategic_intent.yml to resolve the Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[x] mapped paths`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
