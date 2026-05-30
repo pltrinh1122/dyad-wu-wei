@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1441: Activity 1441: Audit Knowledge Accrual Coverage'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4279,9 +4279,13 @@ nodes:
   invariants:
   - WHY-1437
 - name: 'Node 1441: Activity 1441: Audit Knowledge Accrual Coverage'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
+  status: Completed
+  learnings: Refined the telemetry ledger to support autonomous capture of Operator
+    corrections.
+  invariants:
+  - '[x] Evaluated current mechanisms'
+  - '[x] Implemented operator correction tracking'
+  - '[x] Passed test suite'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

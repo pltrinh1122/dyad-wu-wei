@@ -4222,10 +4222,12 @@
   - `WHY-1437`
 
 ## Node 1441: Activity 1441: Audit Knowledge Accrual Coverage
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Completed
+- **Learnings & Context**: Refined the telemetry ledger to support autonomous capture of Operator corrections.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] Evaluated current mechanisms`
+  - `[x] Implemented operator correction tracking`
+  - `[x] Passed test suite`
 
 ## Active Agents Matrix
 * **agent-ziran**:
