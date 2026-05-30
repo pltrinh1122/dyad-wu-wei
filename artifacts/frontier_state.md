@@ -4334,17 +4334,23 @@
 - **Feedforward Invariants**:
   - `[x] GitHub issues updated`
 
-## Node 1496: Reflect - Path 1017
+## Discovery 1425: Plan - Codify Redundant Node Closure Discipline
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: All downstream activities in this Path have already been implemented and closed.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1426: Reflect - Codify Redundant Node Closure Discipline
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1496: Reflect - Path 1017
+## Activity 1426: Reflect - Codify Redundant Node Closure Discipline
 - **Status**: Completed
-- **Learnings & Context**: Path 1017 successfully codified Chat Immediacy Protocol into the system rules.
+- **Learnings & Context**: Path 1423 successfully codified the node cancel discipline.
 - **Feedforward Invariants**:
-  - `Path 1017 is permanently closed.`
+  - `Path 1423 is permanently closed.`
 
 ## Active Agents Matrix
 * **agent-ziran**:

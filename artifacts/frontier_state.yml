@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1496: Reflect - Path 1017'
+current_active_node: 'Node 1426: Reflect - Codify Redundant Node Closure Discipline'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4374,16 +4374,20 @@ nodes:
   learnings: All legacy backlog references replaced
   invariants:
   - '[x] GitHub issues updated'
-- name: 'Node 1496: Reflect - Path 1017'
+- name: 'Discovery 1425: Plan - Codify Redundant Node Closure Discipline'
+  status: Cancelled
+  learnings: 'Cancelled: All downstream activities in this Path have already been
+    implemented and closed.'
+  invariants: []
+- name: 'Node 1426: Reflect - Codify Redundant Node Closure Discipline'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 1496: Reflect - Path 1017'
+- name: 'Activity 1426: Reflect - Codify Redundant Node Closure Discipline'
   status: Completed
-  learnings: Path 1017 successfully codified Chat Immediacy Protocol into the system
-    rules.
+  learnings: Path 1423 successfully codified the node cancel discipline.
   invariants:
-  - Path 1017 is permanently closed.
+  - Path 1423 is permanently closed.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
