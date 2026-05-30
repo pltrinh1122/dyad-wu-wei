@@ -1,0 +1,2 @@
+{"timestamp": "2026-05-30T14:27:17.562819Z", "node_id": null, "path_id": null, "domain": "drivers", "component": "github_client", "execution_id": "79ca6847-726d-4be3-82c3-d0efe865f748", "stage": "SKILL", "event": "START", "metadata": {"function": "close_issue"}}
+{"timestamp": "2026-05-30T14:27:17.564732Z", "node_id": null, "path_id": null, "domain": "drivers", "component": "github_client", "execution_id": "79ca6847-726d-4be3-82c3-d0efe865f748", "stage": "SKILL", "event": "FINISH", "metadata": {"function": "close_issue", "duration_sec": 0.000983, "status": "success"}}
