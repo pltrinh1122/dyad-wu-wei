@@ -531,7 +531,9 @@ class TerminalNode(BaseNode):
             if insights:
                 pr_body += f"\n\nActive-Insights: {insights}"
             
-            pr_title = f"PR for Node {self.issue_id}: {node_name}"
+            from kernel.title_utils import clean_node_title
+            clean_name = clean_node_title(node_name)
+            pr_title = f"PR for Node {self.issue_id}: {clean_name}"
             pr_url = github_client.create_pull_request(pr_title, pr_body, head=branch_name)
             
             # Evaluate Administrative Node HTIL Bypass (WHY-0087-universal-merge-gate-bypass)

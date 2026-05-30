@@ -131,9 +131,9 @@ class BacklogDaemon:
             except Exception:
                 pass
 
-        import re
+        from kernel.title_utils import clean_node_title
         # Strip any accidentally prepended predictive IDs or redundant prefixes from the user title
-        cleaned_title = re.sub(r"^(Discovery|Activity|Node|Path)\s*\d*:\s*", "", title, flags=re.IGNORECASE)
+        cleaned_title = clean_node_title(title)
         formatted_title = f"{node_type.capitalize()}: {cleaned_title}"
 
         # Idempotency duplicate check
@@ -141,7 +141,7 @@ class BacklogDaemon:
             open_issues = github_client.get_open_issues()
             for issue in open_issues:
                 curr_title = issue.get("title", "")
-                clean_curr = re.sub(r"^(Discovery|Activity|Node|Path)\s*\d*:\s*", "", curr_title, flags=re.IGNORECASE)
+                clean_curr = clean_node_title(curr_title)
                 if clean_curr.lower() == cleaned_title.lower():
                     print(f"Warning: Reusing existing issue for {node_type} '{cleaned_title}'")
                     return f"https://github.com/{self.repository}/issues/{issue['number']}"
