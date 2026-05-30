@@ -18,3 +18,16 @@ We establish the formal ontological distinction between:
 
 ## Bedrock Principle
 The Core acts as the genetic code (ROM), whereas the Dao Engine represents the living organism executing within its environment. The Dao Engine must always respect and enforce the invariants defined in the Core, but the Core itself must remain clean of dynamic runtime leakage (e.g. root state mutations).
+
+## The CLI Adapter vs. Domain Kernel Boundary
+To preserve this ontological distinction in the implementation layer:
+
+1. **The CLI Adapter (`bin/`)**
+   - Must contain **only** thin argument parsing and proxying logic.
+   - Responsible strictly for formatting operator input and passing it to the domain kernel.
+   - Absolutely no core business logic, state mutations, or orchestrator state management may reside here.
+
+2. **The Domain Kernel (`kernel/`)**
+   - Must contain **all** core logic and Dao Engine state management.
+   - Responsible for enforcing system invariants and orchestrating the execution loop.
+   - The CLI adapter serves merely as a shell interface into this boundary-protected engine.
