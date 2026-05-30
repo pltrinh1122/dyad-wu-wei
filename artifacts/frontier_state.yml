@@ -2735,27 +2735,25 @@ nodes:
 - name: 'Node 978: Discovery 978: Harmonize - Maintenance: Refine Knowledge Accrual
     Mechanisms'
   status: Completed
-  learnings: Refined synthesized guard rule extraction in drivers/knowledge_accrual_skill.py
-    to prevent false-positives from generic assertion failures. Cleaned up four existing
-    false-positive synthesized lexical guards from infra/audit-daemon/audit_config.yml.
-    Isolated the lexical compliance check in tests/test_lexical_guard.py from untracked
-    git worktree directories.
+  learnings: Synthesized discovery document and documented persona execution failure.
   invariants:
-  - None
+  - '[x] Analyzed lexical guard false positives'
+  - '[x] Analyzed test isolation mock leak'
+  - '[x] Drafted artifacts/discovery_978.md'
 - name: 'Node 979: Discovery 979: Plan - Maintenance: Refine Knowledge Accrual Mechanisms'
   status: Completed
-  learnings: Drafted Implementation Blueprint targeting lexical guard and test isolation
-    fixes.
-  invariants:
-  - '[x] Identified fixes for lexical false positives'
-  - '[x] Identified missing mock in test_node_lifecycle.py'
-  - '[x] Created artifacts/implementation_blueprint_979.md'
-- name: 'Node 980: Activity 980: Reflect - Maintenance: Refine Knowledge Accrual Mechanisms'
-  status: Completed
-  learnings: Completed final reflection phase for Path 977. Verified all test suites
-    pass cleanly and closed Path 977.
+  learnings: Formulated the plan for knowledge accrual refinements. Added test case
+    test_synthesize_rule_false_positives to tests/test_knowledge_accrual.py verifying
+    that synthesize_rule ignores generic assertion error messages while successfully
+    parsing lexical guard tracebacks.
   invariants:
   - None
+- name: 'Node 980: Activity 980: Reflect - Maintenance: Refine Knowledge Accrual Mechanisms'
+  status: Completed
+  learnings: Concluded Dual-Discovery Initialization. Advancing to Act phase.
+  invariants:
+  - '[x] Completed Discovery'
+  - '[x] Completed Plan'
 - name: 'Node 981: Activity 981: Remove false-positive lexical guards'
   status: '[///] Act Phase'
   learnings: Planning Phase
@@ -2889,19 +2887,21 @@ nodes:
     (Dao and Ziran context).
   invariants: []
 - name: 'Node 1023: Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding'
   status: Completed
-  learnings: Generated the Implementation Blueprint detailing specification changes
-    for WHAT-1037.
+  learnings: Generated the Harmonize Discovery report detailing the gaps in Chat Immediacy
+    Protocol intent calculation.
   invariants:
-  - '[x] Completed Blueprint artifact'
-- name: 'Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding'
+  - '[x] Completed Discovery artifact'
+- name: 'Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding'
+  status: Completed
+  learnings: Refined Chat Immediacy Protocol to explicitly require Dao structural
+    boundary and Ziran execution momentum in intent understanding.
+  invariants:
+  - '[x] Updated intent interpretation in WHAT-1037'
 - name: 'Discovery 1023: Refine Intent Understanding'
   status: Completed
   learnings: Refined the Chat Immediacy Protocol to explicitly require DZ-CIL Intent
@@ -3420,13 +3420,9 @@ nodes:
   invariants: []
 - name: 'Node 1156: Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine
     distinction'
-  status: Completed
-  learnings: Codified the explicit boundary between the CLI Adapter (bin/) and Domain
-    Kernel (kernel/).
-  invariants:
-  - '[x] Updated WHY-1154'
-  - '[x] Established bin/ vs kernel/ boundary'
-  - '[x] Tests passed'
+  status: Backlog
+  learnings: Codify falsifications for kernel/bin and Core/Dao into the KB
+  invariants: []
 - name: 'Node 1157: Activity 1157: Extend semantic_ledger.yml and lexical_guard for
     GLOSSARY-driven renames'
   status: '[///] Act Phase'
@@ -4272,39 +4268,36 @@ nodes:
     environment changes with feature branches.
   invariants:
   - '[x] WHY-1433 created'
-- name: 'Node 1435: Activity 1435: Triage 76 Execution Failures'
+- name: 'Node 1437: Activity 1437: Implement Prevent Empty PR Guard'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Triage 76 Execution Failures
+- name: 'Activity 1437: Implement Prevent Empty PR Guard'
   status: Completed
-  learnings: The test runner was failing to clean up historical test failure telemetry,
-    causing the Seizure Detector to trigger on accumulated historical debt. Added
-    cleanup logic to run-tests.
-  invariants: []
-- name: 'Node 1439: Activity 1439: Refactor Issue and PR Naming Conventions'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity: Refactor Naming Conventions'
-  status: Completed
-  learnings: Removed predictive ID generation from backlog factory to allow GitHub
-    native numbering, and explicitly prefixed PR titles with 'PR for Node {issue_id}:'
-    in node reflection to prevent PR/Issue ambiguity.
+  learnings: Implemented invariant guard in reflect_node to block execution if git_client.status_porcelain()
+    and git_client.diff_names('origin/main') are both empty, preventing empty PRs
+    from merging automatically. Added a comprehensive test case and codified the invariant
+    in WHY-1437.
   invariants:
-  - WHY-1439
-- name: 'Node 1024: Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding'
+  - WHY-1437
+- name: 'Node 1441: Activity 1441: Audit Knowledge Accrual Coverage'
+  status: Completed
+  learnings: Refined the telemetry ledger to support autonomous capture of Operator
+    corrections.
+  invariants:
+  - '[x] Evaluated current mechanisms'
+  - '[x] Implemented operator correction tracking'
+  - '[x] Passed test suite'
+- name: 'Node 1023: Node 1023: Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1444: Activity: Reflect - Synthesize Epistemic Retrospective retro-1023.md'
-  status: Completed
-  learnings: Codified the Remote Branch Pruning Invariant into HOW-0001-spao-execution-loop.md
-    as learned from retro-1023.
-  invariants:
-  - '[x] Added invariant to HOW-0001'
-- name: 'Node 979: Node 979: Discovery 979: Plan - Maintenance: Refine Knowledge Accrual
-    Mechanisms'
+- name: 'Node 1025: Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 980: Node 980: Activity 980: Reflect - Maintenance: Refine Knowledge
+    Accrual Mechanisms'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
