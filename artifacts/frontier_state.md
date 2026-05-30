@@ -2819,25 +2819,25 @@
   - `N/A`
 
 ## Node 1043: Path 1043: Codify Wu-wei NBA Handoff Message Structure
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Update GEMINI.md to mandate the Wu-wei NBA handoff structure (contextual reasoning + single happy path) to prevent Operator decision fatigue after context breaks.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1044: Discovery 1044: Harmonize - Codify Wu-wei NBA Handoff Message Structure
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1045: Discovery 1045: Plan - Codify Wu-wei NBA Handoff Message Structure
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1046: Activity 1046: Reflect - Codify Wu-wei NBA Handoff Message Structure
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4167,7 +4167,31 @@
   - `[x] DAG Integrity Invariant added`
   - `[x] Observe phase automated`
 
+## Node 1423: Path 1423: Codify Redundant Node Closure Discipline
+- **Status**: Backlog
+- **Learnings & Context**: Establish a formal DAO-compliant mechanism for canceling and closing structurally redundant nodes without creating empty PRs or triggering frontier corruption.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1424: Discovery 1424: Harmonize - Codify Redundant Node Closure Discipline
+- **Status**: Completed
+- **Learnings & Context**: Codified cancel mechanism.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1425: Discovery 1425: Plan - Codify Redundant Node Closure Discipline
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Codify Redundant Node Closure Discipline.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1426: Activity 1426: Reflect - Codify Redundant Node Closure Discipline
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Codify Redundant Node Closure Discipline.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
-* **agent-default**:
-  - Current Active Path: `Path 634: Path: Refactor frontier_state for concurrent agent awareness`
+* **agent-ziran**:
+  - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
   - Current Active Node: `None`
