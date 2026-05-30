@@ -150,6 +150,11 @@ def diff_names(branch: str, cwd: str | None = None) -> list[str]:
     res = _run(["git", "diff", "--name-only", branch], capture_output=True, text=True, check=True, cwd=cwd)
     return [f.strip() for f in res.stdout.splitlines() if f.strip()]
 
+def get_staged_files(cwd: str | None = None) -> list[str]:
+    """Returns list of currently staged files."""
+    res = _run(["git", "diff", "--name-only", "--cached"], capture_output=True, text=True, check=True, cwd=cwd)
+    return [f.strip() for f in res.stdout.splitlines() if f.strip()]
+
 @record_execution(stage="skill")
 def reset_hard(cwd: str | None = None) -> None:
     """Performs a hard reset to HEAD~1."""

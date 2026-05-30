@@ -1,7 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1424: Discovery 1424: Harmonize - Codify Redundant Node
-  Closure Discipline'
+current_active_node: 'Node 1431: Activity 1431: Prevent Empty SPAO PR Generation'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4253,9 +4252,10 @@ nodes:
   status: Backlog
   learnings: Final reflection and path closure for Codify Redundant Node Closure Discipline.
   invariants: []
-- name: 'Node 1429: Activity 1429: Implement Redundant Node Closure Discipline'
+- name: 'Node 1431: Activity 1431: Prevent Empty SPAO PR Generation'
   status: Completed
-  learnings: Codified the cancel sequence.
+  learnings: Untracked .venv from git to avoid false staging, and added a hard block
+    in TerminalNode.reflect to fail when no files are staged.
   invariants: []
 active_agents:
   agent-ziran:
