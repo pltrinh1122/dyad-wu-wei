@@ -4197,6 +4197,18 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 1433: Activity 1433: Codify Load-Bearing Environment Mutation Isolation
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Codify Load-Bearing Environment Mutation Isolation
+- **Status**: Completed
+- **Learnings & Context**: Created an invariant explicitly forbidding the bundling of destructive environment changes with feature branches.
+- **Feedforward Invariants**:
+  - `[x] WHY-1433 created`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
