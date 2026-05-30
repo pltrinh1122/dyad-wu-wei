@@ -33,10 +33,10 @@ rules:
   type: file_modified
   file: AGENT.md
   alert_level: FAILURE
-  prompt_message: "AGENT.md changed — agent restart recommended to reload instructions"
+  prompt_message: "AGENT.md changed — agent (/exit) recommended to reload instructions"
 - id: gemini-md-changed
   type: file_modified
   file: GEMINI.md
   alert_level: FAILURE
-  prompt_message: "GEMINI.md changed — agent restart recommended to reload instructions"
+  prompt_message: "GEMINI.md changed — agent (/exit) recommended to reload instructions"
 

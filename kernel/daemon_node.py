@@ -84,7 +84,7 @@ def sync_and_clean_node() -> None:
         raise Exception(
             "CRITICAL ROM DRIFT DETECTED: GEMINI.md has been updated from the remote repository. "
             "Your current Agent session is operating on stale instructions. "
-            "Please RESTART the Agent (agy) immediately to load the new invariants."
+            "Please trigger an (/exit) immediately to safely reload the new invariants."
         )
 
     # 3. Assert WIP-N=1 Invariant

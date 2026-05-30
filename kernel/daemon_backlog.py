@@ -212,7 +212,7 @@ class BacklogDaemon:
             else:
                 frontier_file = path_resolver.resolve_workspace_path("artifacts/frontier_state.md")
             if os.path.exists(frontier_file):
-                agent_frontier.register_backlog_node(frontier_file, issue_id, formatted_title)
+                agent_frontier.register_backlog_node(frontier_file, issue_id, formatted_title, goal)
         except Exception as e:
             print(f"Warning: Failed to auto-register node in frontier: {e}")
 
