@@ -397,6 +397,20 @@ def cmd_reflect(args):
         insights=args.insights
     )
 
+def cancel_node(frontier_file: str, issue_id: str, node_name: str, reason: str) -> None:
+    """Closes the GH issue, updates frontier to cancelled."""
+    from kernel.node_lifecycle import TerminalNode
+    node = TerminalNode(issue_id)
+    node.cancel(frontier_file, node_name, reason)
+
+def cmd_cancel(args):
+    cancel_node(
+        frontier_file=args.frontier_file,
+        issue_id=args.issue_id,
+        node_name=args.node_name,
+        reason=args.reason
+    )
+
 def cmd_view(args):
     import re
     from drivers import gh_graph_skill
@@ -563,6 +577,13 @@ def main():
     parser_r.add_argument("--stage", nargs="?", const="all", default="all", help="Granular files to stage: 'all' (default), 'none', or list.")
     parser_r.add_argument("--insights", default="", help="Active Insights (e.g., WHY-0071, WHY-0075)")
 
+    # cancel
+    parser_c = subparsers.add_parser("cancel", help="Cancel a structurally redundant node")
+    parser_c.add_argument("issue_id")
+    parser_c.add_argument("node_name")
+    parser_c.add_argument("reason")
+    parser_c.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
+
     # view
     parser_v = subparsers.add_parser("view", help="View a Node issue")
     parser_v.add_argument("issue_id")
@@ -618,6 +639,8 @@ def main():
         cmd_plan_start(args)
     elif args.subcommand == "plan-finish":
         cmd_plan_finish(args)
+    elif args.subcommand == "cancel":
+        cmd_cancel(args)
     elif args.subcommand == "checkout":
         cmd_checkout(args)
     elif args.subcommand == "reflect":
