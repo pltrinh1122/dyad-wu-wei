@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1521: Map Backlog Paths to Strategic Intent'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4450,99 +4450,41 @@ nodes:
     Cleared prompt backlog to silence the false positive /exit alarms.
   invariants:
   - The local audit state survivor has been remediated.
-- name: 'Path: [BUG] Intake: System Crash in plan-start'
-  status: Cancelled
-  learnings: 'Cancelled: Redundant bug duplicate; root cause remediated via Path 1511'
-  invariants: []
-- name: 'Path: Remediate stale audit_state.json survivor'
-  status: Cancelled
-  learnings: 'Cancelled: Redundant Path; execution bypassed and completed via Activity
-    1511 directly'
-  invariants: []
-- name: 'Path: [BUG] Intake: System Crash in sync'
-  status: Cancelled
-  learnings: 'Cancelled: Redundant bug duplicate; root cause remediated via Path 1511'
-  invariants: []
-- name: 'Path: [BUG] Intake: System Crash in reflect'
-  status: Cancelled
-  learnings: 'Cancelled: Redundant bug duplicate; root cause remediated via Path 1511'
-  invariants: []
-- name: 'Path 1423: Codify Redundant Node Closure Discipline'
+- name: 'Path 1017: Codify Chat Immediacy Protocol'
   status: Cancelled
   learnings: 'Cancelled: Path execution completed; final retrospective synthesized
-    in retro-1423-final.md but node remained open in Github'
+    but node remained open in Github'
   invariants: []
-- name: 'Node 1517: Address Backlog Hygiene Warning'
+- name: 'Node 1528: [BUG] Intake: System Crash in plan-start'
   status: Backlog
-  learnings: Map the 10 unmapped backlog paths to their respective Strategic Goals
-    in strategic_intent.yml to resolve the hygiene warning.
+  learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
+    \ `agent-ziran`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 646,\
+    \ in main\n    cmd_plan_start(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 374, in cmd_plan_start\n    plan_start_node(args.issue_id)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 23, in plan_start_node\n    node.plan_start()\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\"\
+    , line 179, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 256,\
+    \ in plan_start\n    verify_node_transition_allowed(self.issue_id)\n  File \"\
+    /mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_strategic.py\", line 496, in verify_node_transition_allowed\n\
+    \    raise ValueError(f\"Harmonization Failure: Terminal Node #{node_id_str} has\
+    \ no parent Path.\")\nValueError: Harmonization Failure: Terminal Node #1022 has\
+    \ no parent Path.\n\n```\n"
   invariants: []
-- name: 'Node 1518: Harmonize - Address Backlog Hygiene Warning'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Address Backlog
-    Hygiene Warning.
+- name: 'Path 1022: Refine Wu-wei Dyad Intent Understanding'
+  status: Cancelled
+  learnings: 'Cancelled: Path execution completed; final retrospective synthesized
+    in retro-1022-final.md but node remained open in Github'
   invariants: []
-- name: 'Node 1519: Plan - Address Backlog Hygiene Warning'
-  status: Backlog
-  learnings: Technical design and proposed changes for Address Backlog Hygiene Warning.
-  invariants: []
-- name: 'Node 1520: Reflect - Address Backlog Hygiene Warning'
-  status: Backlog
-  learnings: Final reflection and path closure for Address Backlog Hygiene Warning.
-  invariants: []
-- name: 'Node 1521: Map Backlog Paths to Strategic Intent'
+- name: 'Node 1529: Reflect - Path 977'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1522: [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: "## System Crash Report\n\n**Subcommand:** `checkout`\n**Persona:** `agent-ziran`\n\
-    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
-    , line 652, in main\n    cmd_checkout(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
-    , line 380, in cmd_checkout\n    checkout_node(args.issue_id, args.branch_name)\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 33, in\
-    \ checkout_node\n    node.checkout(branch_name)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\"\
-    , line 179, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 343,\
-    \ in checkout\n    raise ValueError(\"Branch name MUST follow the standard: node/<id>-<kebab-case>\"\
-    )\nValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>\n\n\
-    ```\n"
-  invariants: []
-- name: 'Node 1523: Harmonize - [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
-    System Crash in checkout.'
-  invariants: []
-- name: 'Node 1524: Plan - [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
-    in checkout.'
-  invariants: []
-- name: 'Node 1525: Reflect - [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
-    checkout.'
-  invariants: []
-- name: 'Node 1526: [BUG] Intake: System Crash in reflect'
-  status: Backlog
-  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `agent-ziran`\n\
-    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1521-map-backlog-paths/kernel/daemon_node.py\"\
-    , line 654, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1521-map-backlog-paths/kernel/daemon_node.py\"\
-    , line 384, in cmd_reflect\n    invariants = json.loads(args.invariants)\n   \
-    \              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/__init__.py\"\
-    , line 346, in loads\n    return _default_decoder.decode(s)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/usr/lib/python3.12/json/decoder.py\", line 337, in decode\n    obj,\
-    \ end = self.raw_decode(s, idx=_w(s, 0).end())\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/usr/lib/python3.12/json/decoder.py\", line 355, in raw_decode\n   \
-    \ raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError:\
-    \ Expecting value: line 1 column 2 (char 1)\n\n```\n"
-  invariants: []
-- name: 'Node 1521: Activity 1521: Map Backlog Paths to Strategic Intent'
+- name: 'Node 1529: Activity: Reflect - Path 977'
   status: Completed
-  learnings: Mapped the 10 unmapped backlog paths to their respective Strategic Goals
-    in strategic_intent.yml to resolve the Backlog Hygiene Warning.
+  learnings: Synthesized retrospective for Path 977 and resolved node
   invariants:
-  - '[x] mapped paths'
+  - '[x] Drafted Node-1529-Contract.md'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
