@@ -4315,28 +4315,40 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1076: Plan - Establish robust agentic bug reporting and triage mechanisms'
-  status: Completed
-  learnings: Drafted WHAT-1076 outlining the architectural specification for global
-    exception handling, backlog issue generation, and telemetry logging.
-  invariants:
-  - '[x] WHAT-1076 created and passes static validation'
-- name: 'Node 1077: Reflect - Establish robust agentic bug reporting and triage mechanisms'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity 1077: Reflect - Establish robust agentic bug reporting and triage
+- name: 'Node 1075: Harmonize - Establish robust agentic bug reporting and triage
     mechanisms'
   status: Completed
-  learnings: Compiled retrospective for Path 1074
-  invariants: []
-- name: 'Node 1461: Plan - Codify Stepped-Away Discipline'
+  learnings: Created Epistemic Baseline outlining the architecture for global exception
+    interception, traceback capture, automated backlog issue generation, and telemetry
+    integration for agentic bug reporting.
+  invariants:
+  - '[x] Epistemic baseline established'
+- name: 'Node 1458: Act: Establish robust agentic bug reporting and triage mechanisms'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery: Plan - Codify Stepped-Away Discipline'
+- name: 'Act: Establish robust agentic bug reporting and triage mechanisms'
   status: Completed
-  learnings: Formulated WHAT-1461 specification
+  learnings: Implemented global exception handler in daemon_node.py to automatically
+    file bugs into Triage Holding backlog and log telemetry.
+  invariants: []
+- name: 'Node 1460: Harmonize - Codify Stepped-Away Discipline'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery: Harmonize - Codify Stepped-Away Discipline'
+  status: Completed
+  learnings: Codified the intent for the Stepped-Away Discipline in WHY-1460
+  invariants:
+  - '[x] Asynchronous Execution Invariant'
+- name: 'Node 1471: Act: Codify Stepped-Away Discipline'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity: Act: Codify Stepped-Away Discipline'
+  status: Completed
+  learnings: Implemented WHAT-1461 by codifying the Stepped-Away Discipline directly
+    into GEMINI.md
   invariants:
   - '[x] Asynchronous Execution Invariant'
 active_agents:

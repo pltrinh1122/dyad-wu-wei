@@ -23,6 +23,11 @@ During the Bring-Up Process (AGENT.md §2, Step 5), use your `schedule` tool to 
 ## Antigravity-Specific: Asynchronous Execution
 For AGENT.md §5 Rule 19 (Asynchronous Execution Invariant), use the `run_command` tool for background bash tasks and the `schedule` tool for timers. The Agent's conversational turn must function exclusively as an "I am ready for the next prompt" signal while work completes silently in the background, waking the Agent via system callbacks. The Agent must never halt execution by yielding without a pending background task or timer, as this causes the Agent to become stuck.
 
+## Antigravity-Specific: Stepped-Away Discipline (Dormancy)
+To conserve compute and maintain true dormancy during Operator absence (HTIL wait states or NBA Handoffs), the Agent must adhere to the following:
+1. **Dormancy Injection**: When yielding the turn to wait for a HARD HITL block (e.g. after a PR is opened) or an explicit Operator prompt (NBA Handoff), the Agent MUST explicitly use the `manage_task(Action="kill")` tool to terminate the recurring `audit_daemon.py` schedule.
+2. **Re-Instantiation**: When awakened by the Operator's explicit prompt input (the Step-Back Discipline), the Agent MUST use the `schedule` tool to immediately re-instantiate the `audit_daemon.py` background cron job before or during the Sense phase.
+
 ## Antigravity-Specific: Wu-wei NBA Handoff Message Structure
 When providing the Operator with the "Next Best Action" (NBA) handoff, you must strictly follow the **Wu-wei Handoff Structure**:
 1. **Contextual Reasoning**: Briefly explain *why* this is the next best action, grounding it in the current architectural state and recent discoveries.
