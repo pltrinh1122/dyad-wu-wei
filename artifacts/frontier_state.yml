@@ -4315,14 +4315,12 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1075: Harmonize - Establish robust agentic bug reporting and triage
-    mechanisms'
+- name: 'Node 1076: Plan - Establish robust agentic bug reporting and triage mechanisms'
   status: Completed
-  learnings: Created Epistemic Baseline outlining the architecture for global exception
-    interception, traceback capture, automated backlog issue generation, and telemetry
-    integration for agentic bug reporting.
+  learnings: Drafted WHAT-1076 outlining the architectural specification for global
+    exception handling, backlog issue generation, and telemetry logging.
   invariants:
-  - '[x] Epistemic baseline established'
+  - '[x] WHAT-1076 created and passes static validation'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
