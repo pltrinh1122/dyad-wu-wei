@@ -141,10 +141,10 @@
         "last_fail_count": 70
     },
     "agent-md-changed": {
-        "last_hash": "f185453bef07ee63f2a4f107f513684d8628908a"
+        "last_hash": "1a45bc1dbfa466e7f895ad1b07afe43b736ddf73"
     },
     "gemini-md-changed": {
-        "last_hash": "bf05434678da8b760c3260ced7e4c1486a2b9a48"
+        "last_hash": "1a45bc1dbfa466e7f895ad1b07afe43b736ddf73"
     },
     "frontier-integrity": {}
 }
