@@ -23,7 +23,11 @@ When the Operator issues a direct command or request via the chat interface, the
    - The response must strictly follow the format:
      `Hai. (Intent: <Interpretation>. Status: <Action taken>.)`
 3. **Intent Interpretation**:
-   - The `<Interpretation>` field must be a concise, semantically inferred summary of the Operator's intent, factoring in the active DZ-CIL context, Ziran, and the Dao.
+   - The `<Interpretation>` field must be a structured string explicitly detailing both the Dao and Ziran context:
+     - **The Dao Assertion**: Must explicitly state the current structural boundary (e.g., "Executing Act phase for Node X", "Creating PR for Path Y").
+     - **The Ziran Context**: Must recognize the current execution momentum and logical purpose (e.g., "to synthesize the implementation blueprint", "to recover from pipeline failure").
+   - **Valid Example**: `Hai. (Intent: Executing Act phase for Node 1024 to synthesize intent understanding blueprint. Status: Proceeding with execution.)`
+   - **Invalid Example**: `Hai. (Intent: Writing the plan document. Status: Queued.)` *(Fails to assert the Dao structural boundary).*
 4. **Conversational Ban**:
    - No additional greeting, conversational padding, or explanations are permitted.
 
