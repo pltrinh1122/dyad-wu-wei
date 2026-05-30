@@ -156,6 +156,27 @@ def test_reflect_success(mock_enforce, mock_get_worktree_path, mock_nba, mock_fr
     mock_git.commit.assert_called_once_with("commit-msg", cwd=expected_worktree)
     mock_git.push.assert_called_once_with("node/390-test", cwd=expected_worktree)
 
+@mock.patch("kernel.node_lifecycle.subprocess.run")
+@mock.patch("kernel.node_lifecycle.git_client")
+@mock.patch("kernel.node_lifecycle.github_client")
+@mock.patch("kernel.node_lifecycle.agent_frontier")
+@mock.patch("kernel.node_lifecycle.daemon_nba")
+@mock.patch("kernel.node_lifecycle.TerminalNode.get_worktree_path")
+@mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
+def test_reflect_empty_pr_blocked(mock_enforce, mock_get_worktree_path, mock_nba, mock_frontier, mock_gh, mock_git, mock_subprocess):
+    mock_get_worktree_path.return_value = ".worktrees/node/390-test"
+    mock_git.get_git_common_dir.return_value = ".git"
+    
+    # Simulate an empty PR with no workspace changes and no commits ahead of main
+    mock_git.status_porcelain.return_value = ""
+    mock_git.diff_names.return_value = []
+    
+    node = TerminalNode("390")
+    
+    with mock.patch("kernel.node_lifecycle.FlowTransaction") as mock_tx:
+        with pytest.raises(Exception, match="Reflection Blocked: No file changes detected"):
+            node.reflect("frontier.md", "node-390", "learnings", ["invariants"], "commit-msg", "node/390-test", stage="all")
+
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_labels")
 @mock.patch("kernel.node_lifecycle.FlowTransaction")
 @mock.patch("kernel.node_lifecycle.load_node_status_config")

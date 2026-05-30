@@ -428,6 +428,12 @@ class TerminalNode(BaseNode):
         with FlowTransaction(frontier_file) as tx:
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
             
+            # Enforce Prevent Empty PR Guard (Node 1437)
+            status_output = git_client.status_porcelain(cwd=worktree_dir).strip()
+            diff_against_main = git_client.diff_names("origin/main", cwd=worktree_dir)
+            if not status_output and not diff_against_main:
+                raise Exception("Reflection Blocked: No file changes detected. You cannot reflect an empty PR. Please implement the required changes before reflecting.")
+            
             # Enforce Conflict-Free Reflection Invariant (WHY-0083)
             git_client.fetch("origin")
             if git_client.check_merge_conflicts("origin/main", cwd=worktree_dir):
