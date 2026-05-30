@@ -4262,33 +4262,33 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1075: Harmonize - Establish robust agentic bug reporting and triage mechanisms
+## Node 1076: Plan - Establish robust agentic bug reporting and triage mechanisms
 - **Status**: Completed
-- **Learnings & Context**: Created Epistemic Baseline outlining the architecture for global exception interception, traceback capture, automated backlog issue generation, and telemetry integration for agentic bug reporting.
+- **Learnings & Context**: Drafted WHAT-1076 outlining the architectural specification for global exception handling, backlog issue generation, and telemetry logging.
 - **Feedforward Invariants**:
-  - `[x] Epistemic baseline established`
+  - `[x] WHAT-1076 created and passes static validation`
 
-## Node 1458: Act: Establish robust agentic bug reporting and triage mechanisms
+## Node 1077: Reflect - Establish robust agentic bug reporting and triage mechanisms
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Act: Establish robust agentic bug reporting and triage mechanisms
+## Activity 1077: Reflect - Establish robust agentic bug reporting and triage mechanisms
 - **Status**: Completed
-- **Learnings & Context**: Implemented global exception handler in daemon_node.py to automatically file bugs into Triage Holding backlog and log telemetry.
+- **Learnings & Context**: Compiled retrospective for Path 1074
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1460: Harmonize - Codify Stepped-Away Discipline
+## Node 1461: Plan - Codify Stepped-Away Discipline
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery: Harmonize - Codify Stepped-Away Discipline
+## Discovery: Plan - Codify Stepped-Away Discipline
 - **Status**: Completed
-- **Learnings & Context**: Codified the intent for the Stepped-Away Discipline in WHY-1460
+- **Learnings & Context**: Formulated WHAT-1461 specification
 - **Feedforward Invariants**:
   - `[x] Asynchronous Execution Invariant`
 
