@@ -2717,22 +2717,22 @@
   - `[ ]` None
 
 ## Node 1023: Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding
-- **Status**: Completed
-- **Learnings & Context**: Generated the Harmonize Discovery report detailing the gaps in Chat Immediacy Protocol intent calculation.
-- **Feedforward Invariants**:
-  - `[x] Completed Discovery artifact`
-
-## Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding
+## Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
 - **Status**: Completed
-- **Learnings & Context**: Refined Chat Immediacy Protocol to explicitly require Dao structural boundary and Ziran execution momentum in intent understanding.
+- **Learnings & Context**: Generated the Implementation Blueprint detailing specification changes for WHAT-1037.
 - **Feedforward Invariants**:
-  - `[x] Updated intent interpretation in WHAT-1037`
+  - `[x] Completed Blueprint artifact`
+
+## Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Discovery 1023: Refine Intent Understanding
 - **Status**: Completed
@@ -3307,10 +3307,12 @@
   - `[ ]` None
 
 ## Node 1156: Activity 1156: Codify kernel/bin coexistence and Core/Dao Engine distinction
-- **Status**: Backlog
-- **Learnings & Context**: Codify falsifications for kernel/bin and Core/Dao into the KB
+- **Status**: Completed
+- **Learnings & Context**: Codified the explicit boundary between the CLI Adapter (bin/) and Domain Kernel (kernel/).
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] Updated WHY-1154`
+  - `[x] Established bin/ vs kernel/ boundary`
+  - `[x] Tests passed`
 
 ## Node 1157: Activity 1157: Extend semantic_ledger.yml and lexical_guard for GLOSSARY-driven renames
 - **Status**: [///] Act Phase
@@ -4209,37 +4211,41 @@
 - **Feedforward Invariants**:
   - `[x] WHY-1433 created`
 
-## Node 1437: Activity 1437: Implement Prevent Empty PR Guard
+## Node 1435: Activity 1435: Triage 76 Execution Failures
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1437: Implement Prevent Empty PR Guard
+## Triage 76 Execution Failures
 - **Status**: Completed
-- **Learnings & Context**: Implemented invariant guard in reflect_node to block execution if git_client.status_porcelain() and git_client.diff_names('origin/main') are both empty, preventing empty PRs from merging automatically. Added a comprehensive test case and codified the invariant in WHY-1437.
+- **Learnings & Context**: The test runner was failing to clean up historical test failure telemetry, causing the Seizure Detector to trigger on accumulated historical debt. Added cleanup logic to run-tests.
 - **Feedforward Invariants**:
-  - `WHY-1437`
+  - `[ ]` None
 
-## Node 1441: Activity 1441: Audit Knowledge Accrual Coverage
+## Node 1439: Activity 1439: Refactor Issue and PR Naming Conventions
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity: Refactor Naming Conventions
 - **Status**: Completed
-- **Learnings & Context**: Refined the telemetry ledger to support autonomous capture of Operator corrections.
+- **Learnings & Context**: Removed predictive ID generation from backlog factory to allow GitHub native numbering, and explicitly prefixed PR titles with 'PR for Node {issue_id}:' in node reflection to prevent PR/Issue ambiguity.
 - **Feedforward Invariants**:
-  - `[x] Evaluated current mechanisms`
-  - `[x] Implemented operator correction tracking`
-  - `[x] Passed test suite`
+  - `WHY-1439`
 
-## Node 1023: Node 1023: Discovery 1023: Harmonize - Refine DZ-CIL Intent Understanding
+## Node 1024: Node 1024: Discovery 1024: Plan - Refine DZ-CIL Intent Understanding
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1025: Node 1025: Activity 1025: Reflect - Refine DZ-CIL Intent Understanding
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+## Node 1444: Activity: Reflect - Synthesize Epistemic Retrospective retro-1023.md
+- **Status**: Completed
+- **Learnings & Context**: Codified the Remote Branch Pruning Invariant into HOW-0001-spao-execution-loop.md as learned from retro-1023.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `[x] Added invariant to HOW-0001`
 
 ## Active Agents Matrix
 * **agent-ziran**:

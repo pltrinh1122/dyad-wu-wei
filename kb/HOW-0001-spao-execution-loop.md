@@ -22,6 +22,7 @@ The master objective is decomposed into discrete topological **Nodes**. For each
    - **Semantic and Command Purity Invariant:** Any specifications added under `kb/` (e.g. `WHAT-` files) during planning must not introduce deprecated terms defined in `kb/semantic_ledger.yml` or raw shell command strings (such as `git-fetch`), which trigger static KB conflict validation failures.
    - Mutate the body of the **Path Issue** to link to the newly active Node Issue via `./bin/meta link "Node X: Title" "ISSUE_ID"`.
    - Execute the checkout command to establish the worktree: `SPAO_PERSONA_ID=frontier ./bin/node checkout "ISSUE_ID" "branch_name"` from the repository root, ensuring "branch_name" conforms to the `node/<id>-<kebab-case>` format to pass validation. To ensure checkout resilience against pre-existing branch indexes, the git client automatically detects and cleans up stale local branches during worktree creation.
+   - **Remote Branch Pruning Invariant:** Prior to checkout or push operations, the Agent MUST verify that any stale or divergent remote branches matching the target branch name on GitHub are explicitly pruned or deleted to prevent non-fast-forward rejections during reflection.
    - *Do not execute codebase mutations until the Node Issue is explicitly locked and the worktree is checked out. Under the Universal Merge Gate (HTIL) model, the Agent may autonomously transition from Plan to Act once the NC is locked, without waiting for chat approval.*
 
 3. **Act (Execution):** 
