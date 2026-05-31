@@ -68,7 +68,7 @@ class TestRecordOperatorCorrection:
 
     def test_raises_on_empty_issue_id(self, tmp_path):
         from drivers import knowledge_accrual_skill
-        with pytest.raises(ValueError, match="issue_id"):
+        with pytest.raises((ValueError, SystemExit), match="issue_id"):
             knowledge_accrual_skill.record_operator_correction(
                 issue_id="",
                 insight="Some insight.",
@@ -98,7 +98,7 @@ class TestEnforceReflectionHookOperatorCorrection:
 
         from kernel import daemon_knowledge_accrual
         # No retro file exists, should block
-        with pytest.raises(Exception, match="REFLECTION BLOCKED: Node 42 experienced execution failures"):
+        with pytest.raises((Exception, SystemExit), match="REFLECTION BLOCKED: Node 42 experienced execution failures"):
             daemon_knowledge_accrual.enforce_reflection_hook(
                 issue_id="42",
                 repo_root=str(repo_root)

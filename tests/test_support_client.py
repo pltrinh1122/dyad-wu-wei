@@ -37,7 +37,7 @@ class TestFileTicket:
     """Test the file_support_ticket function."""
 
     def test_invalid_type_raises(self):
-        with pytest.raises(ValueError, match="Invalid ticket type"):
+        with pytest.raises((ValueError, SystemExit), match="Invalid ticket type"):
             file_support_ticket("invalid", "fl", "test")
 
     @patch("drivers.support_client.subprocess.run")

@@ -170,7 +170,7 @@ class TerminalNode(BaseNode):
             if expected_active and active_id and str(expected_active) == str(active_id):
                 return
                 
-            raise Exception(f"State Dissonance: Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
+            sys.exit(f"[🚫 BLOCKED] State Dissonance: Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
 
     def _validate_spao_purity(self, worktree_path: str | None = None):
         """Validates that a loop:spao branch only modifies policy/documentation paths."""
@@ -226,10 +226,10 @@ class TerminalNode(BaseNode):
             other_goal = extract_goal(issue.get("body", ""))
             
             if current_core_title and current_core_title == other_core_title:
-                raise Exception(f"Orthogonal Scope Violation: Node {self.issue_id} has an identical title footprint to Node {issue['number']}")
+                sys.exit(f"[🚫 BLOCKED] Orthogonal Scope Violation: Node {self.issue_id} has an identical title footprint to Node {issue['number']}")
                 
             if current_goal and current_goal == other_goal:
-                raise Exception(f"Orthogonal Scope Violation: Node {self.issue_id} has an identical goal footprint to Node {issue['number']}")
+                sys.exit(f"[🚫 BLOCKED] Orthogonal Scope Violation: Node {self.issue_id} has an identical goal footprint to Node {issue['number']}")
 
     @record_execution(stage="plan")
     def plan_start(self, frontier_file: str = "artifacts/frontier_state.md") -> None:
@@ -242,22 +242,22 @@ class TerminalNode(BaseNode):
             # Enforce Quarantine Gate: Only allow nodes that possess the 'backlog' label.
             labels = self.gh_labels
             if "backlog" not in labels:
-                raise Exception(
-                    f"Quarantine Protocol Violation: Node #{self.issue_id} does not possess the 'backlog' label. "
+                sys.exit(
+                    f"[🚫 BLOCKED] Quarantine Protocol Violation: Node #{self.issue_id} does not possess the 'backlog' label. "
                     f"Current labels: {labels}. Quarantined intake requirements must be promoted by the Operator first."
                 )
             
             open_prs = github_client.get_open_prs()
             if open_prs:
                 pr_list = [pr.get('number', 'Unknown') for pr in open_prs]
-                raise Exception(f"WIP-N=1 Invariant Violation: Cannot plan node #{self.issue_id} because there are open pull requests: {pr_list}. You must merge or close them first.")
+                sys.exit(f"[🚫 BLOCKED] WIP-N=1 Invariant Violation: Cannot plan node #{self.issue_id} because there are open pull requests: {pr_list}. You must merge or close them first.")
             
             from kernel.daemon_strategic import verify_node_transition_allowed
             verify_node_transition_allowed(self.issue_id)
             
             in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
             if in_progress_label in self.gh_labels:
-                raise Exception(f"Node #{self.issue_id} is already in progress by another thread!")
+                sys.exit(f"[🚫 BLOCKED] Node #{self.issue_id} is already in progress by another thread!")
                 
             # Verify dependencies
             details = github_client.get_issue_details(self.issue_id)
@@ -273,7 +273,7 @@ class TerminalNode(BaseNode):
                         try:
                             dep_details = github_client.get_issue_details(dep_id)
                             if dep_details.get("state") != "CLOSED":
-                                raise Exception(f"Dependency Violation: Node #{self.issue_id} depends on Node #{dep_id}, which is still open!")
+                                sys.exit(f"[🚫 BLOCKED] Dependency Violation: Node #{self.issue_id} depends on Node #{dep_id}, which is still open!")
                         except Exception as e:
                             if "Dependency Violation" in str(e):
                                 raise
@@ -316,7 +316,7 @@ class TerminalNode(BaseNode):
                                 
                     has_spec = any(f.startswith("kb/WHAT-") and f.endswith(".md") for f in modified_files)
                     if not has_spec:
-                        raise Exception("SPEC file violation: A corresponding WHAT- specification file under kb/ (e.g. kb/WHAT-*.md) must be created and modified/added to finish the Plan phase.")
+                        sys.exit("[🚫 BLOCKED] SPEC file violation: A corresponding WHAT- specification file under kb/ (e.g. kb/WHAT-*.md) must be created and modified/added to finish the Plan phase.")
             except Exception as e:
                 if "SPEC file violation" in str(e):
                     raise
@@ -355,7 +355,7 @@ class TerminalNode(BaseNode):
             open_prs = github_client.get_open_prs()
             if open_prs:
                 pr_list = [pr.get('number', 'Unknown') for pr in open_prs]
-                raise Exception(f"WIP-N=1 Invariant Violation: Cannot checkout node #{self.issue_id} because there are open pull requests: {pr_list}. You must merge or close them first.")
+                sys.exit(f"[🚫 BLOCKED] WIP-N=1 Invariant Violation: Cannot checkout node #{self.issue_id} because there are open pull requests: {pr_list}. You must merge or close them first.")
             
             self.set_status("in_progress")
             tx.register_rollback(self.set_status, "open")
@@ -432,12 +432,12 @@ class TerminalNode(BaseNode):
             status_output = git_client.status_porcelain(cwd=worktree_dir).strip()
             diff_against_main = git_client.diff_names("origin/main", cwd=worktree_dir)
             if not status_output and not diff_against_main:
-                raise Exception("Reflection Blocked: No file changes detected. You cannot reflect an empty PR. Please implement the required changes before reflecting.")
+                sys.exit("[🚫 BLOCKED] Reflection Blocked: No file changes detected. You cannot reflect an empty PR. Please implement the required changes before reflecting.")
             
             # Enforce Conflict-Free Reflection Invariant (WHY-0083)
             git_client.fetch("origin")
             if git_client.check_merge_conflicts("origin/main", cwd=worktree_dir):
-                raise Exception(f"Reflection Blocked (WHY-0083): Branch '{branch_name}' has unresolved merge conflicts with 'origin/main'. You must resolve these conflicts locally before reflecting.")
+                sys.exit(f"[🚫 BLOCKED] Reflection Blocked (WHY-0083): Branch '{branch_name}' has unresolved merge conflicts with 'origin/main'. You must resolve these conflicts locally before reflecting.")
             
             # Enforce Local CI Verification Invariant
             try:
@@ -449,7 +449,7 @@ class TerminalNode(BaseNode):
                 subprocess.run([run_tests_script], cwd=worktree_dir, check=True)
                 print("Local test suite passed.")
             except subprocess.CalledProcessError:
-                raise Exception("Reflection Blocked: Local test suite verification failed. You must remediate CI failures before reflecting.")
+                sys.exit("[🚫 BLOCKED] Reflection Blocked: Local test suite verification failed. You must remediate CI failures before reflecting.")
 
             # Enforce post-failure reflection gate (SG-0005)
             from kernel import daemon_knowledge_accrual

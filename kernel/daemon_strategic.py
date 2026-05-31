@@ -473,11 +473,11 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
         sg_to_owner = {r.get("sg_id"): r.get("owner_persona") for r in rows if "sg_id" in r}
         owner = sg_to_owner.get(sg_id)
         if not owner:
-            raise Exception(f"Persona Gate Blocked: SG {sg_id} is not mapped in WHAT-0062.")
+            sys.exit(f"[🚫 BLOCKED] Persona Gate Blocked: SG {sg_id} is not mapped in WHAT-0062.")
         if owner == "unassigned":
-            raise Exception(f"Persona Gate Blocked: SG {sg_id} is 'unassigned'.")
+            sys.exit(f"[🚫 BLOCKED] Persona Gate Blocked: SG {sg_id} is 'unassigned'.")
         if owner != "shared" and owner != spao_persona:
-            raise Exception(f"Persona Gate Blocked: Executing persona '{spao_persona}' does not match vertical SG owner '{owner}' for Path #{path_id}.")
+            sys.exit(f"[🚫 BLOCKED] Persona Gate Blocked: Executing persona '{spao_persona}' does not match vertical SG owner '{owner}' for Path #{path_id}.")
 
 
 def verify_node_transition_allowed(node_id: str) -> None:
@@ -493,7 +493,7 @@ def verify_node_transition_allowed(node_id: str) -> None:
         return
         
     if not parent_path_id:
-        raise ValueError(f"Harmonization Failure: Terminal Node #{node_id_str} has no parent Path.")
+        sys.exit(f"[🚫 BLOCKED] Harmonization Failure: Terminal Node #{node_id_str} has no parent Path. (Is it a Path issue? You cannot execute plan-start on a Path.)")
         
     ledger = load_ledger()
     active_prioritized_paths = set()

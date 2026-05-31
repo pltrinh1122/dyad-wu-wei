@@ -53,7 +53,7 @@ def test_base_node_set_status(mock_add_label, mock_load_config, mock_get_labels,
 def test_base_node_set_status_invalid(mock_load_config):
     mock_load_config.return_value = {"in_progress": "status: in-progress"}
     node = BaseNode("100")
-    with pytest.raises(ValueError, match="Status key 'invalid' is not defined in node.yml"):
+    with pytest.raises((ValueError, SystemExit), match="Status key 'invalid' is not defined in node.yml"):
         node.set_status("invalid")
 
 @mock.patch("kernel.node_lifecycle.load_node_classification_config")
@@ -68,7 +68,7 @@ def test_base_node_set_classification(mock_add_label, mock_load_config):
 def test_base_node_set_classification_invalid(mock_load_config):
     mock_load_config.return_value = {"backlog": "backlog"}
     node = BaseNode("100")
-    with pytest.raises(ValueError, match="Classification key 'invalid' is not defined in node.yml"):
+    with pytest.raises((ValueError, SystemExit), match="Classification key 'invalid' is not defined in node.yml"):
         node.set_classification("invalid")
 
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_labels")
@@ -114,7 +114,7 @@ def test_validate_spao_purity_failure(mock_get_labels, mock_diff_names):
     mock_diff_names.return_value = ["skills/path_resolver.py", "kb/WHAT-0034.md"]
     
     node = TerminalNode("390")
-    with pytest.raises(Exception, match="SPAO PR Purity Violation"):
+    with pytest.raises((Exception, SystemExit), match="SPAO PR Purity Violation"):
         node._validate_spao_purity(worktree_path="/some/dir")
     mock_diff_names.assert_called_once_with("main", cwd="/some/dir")
 
@@ -127,7 +127,7 @@ def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_lab
     mock_run.return_value = mock.MagicMock(returncode=0, stdout="skills/path_resolver.py")
     
     node = TerminalNode("390")
-    with pytest.raises(Exception, match="SPEC file violation"):
+    with pytest.raises((Exception, SystemExit), match="SPEC file violation"):
         node.plan_finish("dummy body")
 
 @mock.patch("kernel.node_lifecycle.subprocess.run")
@@ -174,7 +174,7 @@ def test_reflect_empty_pr_blocked(mock_enforce, mock_get_worktree_path, mock_nba
     node = TerminalNode("390")
     
     with mock.patch("kernel.node_lifecycle.FlowTransaction") as mock_tx:
-        with pytest.raises(Exception, match="Reflection Blocked: No file changes detected"):
+        with pytest.raises((Exception, SystemExit), match="Reflection Blocked: No file changes detected"):
             node.reflect("frontier.md", "node-390", "learnings", ["invariants"], "commit-msg", "node/390-test", stage="all")
 
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_labels")
@@ -209,7 +209,7 @@ def test_plan_start_dependency_violation(mock_kb_check, mock_append, mock_set_st
     
     node = TerminalNode("390")
     
-    with pytest.raises(Exception, match="Dependency Violation: Node #390 depends on Node #380, which is still open"):
+    with pytest.raises((Exception, SystemExit), match="Dependency Violation: Node #390 depends on Node #380, which is still open"):
         node.plan_start("dummy_frontier.md")
 
 
@@ -263,17 +263,18 @@ def test_log_stage_advancement():
 @mock.patch("kernel.node_lifecycle.agent_frontier")
 @mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
 def test_branch_naming_regex_enforcement_and_exemption(mock_enforce, mock_frontier, mock_gh, mock_git):
+    mock_gh.get_open_prs.return_value = []
     node = TerminalNode("1133")
     
     # 1. Normal mode (SPAO_WORKSPACE_DIR NOT set) - invalid branch name should raise ValueError in checkout
     if "SPAO_WORKSPACE_DIR" in os.environ:
         del os.environ["SPAO_WORKSPACE_DIR"]
         
-    with pytest.raises(ValueError, match="Branch name MUST follow the standard: node/.*"):
+    with pytest.raises((ValueError, SystemExit), match="Branch name MUST follow the standard: node/.*"):
         node.checkout("custom-branch-name", "dummy_frontier.md")
         
     # 2. Normal mode (SPAO_WORKSPACE_DIR NOT set) - invalid branch name should raise ValueError in reflect
-    with pytest.raises(ValueError, match="Branch name MUST follow the standard: node/.*"):
+    with pytest.raises((ValueError, SystemExit), match="Branch name MUST follow the standard: node/.*"):
         node.reflect("dummy_frontier.md", "node-1133", "learnings", [], "msg", "custom-branch-name")
 
     # 3. Workspace mode (SPAO_WORKSPACE_DIR set) - custom branch names should be allowed
@@ -288,7 +289,7 @@ def test_branch_naming_regex_enforcement_and_exemption(mock_enforce, mock_fronti
             # but ValueError("Branch name MUST follow...") should not be raised.
             try:
                 node.checkout("custom-branch-name", "dummy_frontier.md")
-            except Exception as e:
+            except (Exception, SystemExit) as e:
                 # We expect git/gh calls or other state/PR checks to fail, but not the ValueError
                 assert not isinstance(e, ValueError) or "Branch name MUST follow" not in str(e)
                 
@@ -298,7 +299,7 @@ def test_branch_naming_regex_enforcement_and_exemption(mock_enforce, mock_fronti
              mock.patch.object(node, "get_worktree_path", return_value="/tmp/wt"):
             try:
                 node.reflect("dummy_frontier.md", "node-1133", "learnings", [], "msg", "custom-branch-name")
-            except Exception as e:
+            except (Exception, SystemExit) as e:
                 assert not isinstance(e, ValueError) or "Branch name MUST follow" not in str(e)
     finally:
         del os.environ["SPAO_WORKSPACE_DIR"]
@@ -345,7 +346,7 @@ def test_plan_start_quarantine_protocol_violation():
          mock.patch("kernel.daemon_knowledge_accrual.run_kb_check"):
         
         node = TerminalNode("9999")
-        with pytest.raises(Exception, match="Quarantine Protocol Violation: Node #9999 does not possess the 'backlog' label"):
+        with pytest.raises((Exception, SystemExit), match="Quarantine Protocol Violation: Node #9999 does not possess the 'backlog' label"):
             node.plan_start("dummy_frontier.md")
 
 

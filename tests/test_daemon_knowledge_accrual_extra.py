@@ -128,5 +128,5 @@ def test_inject_contextual_rules_gemini_exception():
          patch("kernel.agent_frontier.read_active_path", return_value="current_active_path: 999"), \
          patch("builtins.open", side_effect=Exception("Read error")), \
          patch("drivers.knowledge_accrual_skill.build_contextual_prompt_injection", return_value="inj"):
-        with pytest.raises(Exception, match="Read error"):
+        with pytest.raises((Exception, SystemExit), match="Read error"):
             inject_contextual_rules("/mock/repo")

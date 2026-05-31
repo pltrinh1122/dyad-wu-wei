@@ -177,7 +177,7 @@ def test_run_kb_check_failure():
         mock_result.stdout = "diff text"
         mock_run.return_value = mock_result
         
-        with pytest.raises(Exception, match="KB Conflict Check Failed"):
+        with pytest.raises((Exception, SystemExit), match="KB Conflict Check Failed"):
             run_kb_check("/mock/repo", strict=True)
 
 
@@ -219,7 +219,7 @@ def test_enforce_reflection_hook_with_failures_no_retro():
             return False
             
         with patch("os.path.exists", mock_exists):
-            with pytest.raises(Exception, match="REFLECTION BLOCKED"):
+            with pytest.raises((Exception, SystemExit), match="REFLECTION BLOCKED"):
                 enforce_reflection_hook("544", "/mock/repo")
 
 
@@ -247,7 +247,7 @@ def test_enforce_reflection_hook_with_positive_feedback_no_reaffirm():
             return False
             
         with patch("os.path.exists", mock_exists):
-            with pytest.raises(Exception, match="REFLECTION BLOCKED"):
+            with pytest.raises((Exception, SystemExit), match="REFLECTION BLOCKED"):
                 enforce_reflection_hook("544", "/mock/repo")
     mock_frontier = "current_active_path: 541\n"
     mock_gemini = "Some instructions\n<!-- CONTEXTUAL_ROM_INJECTION_START -->\n<!-- CONTEXTUAL_ROM_INJECTION_END -->\n"

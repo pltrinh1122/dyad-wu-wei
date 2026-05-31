@@ -24,7 +24,7 @@ def test_plan_start_node_locked(mock_gh, mock_fe):
     mock_gh.get_open_prs.return_value = []
     
     # Act & Assert
-    with pytest.raises(Exception, match="already in progress"):
+    with pytest.raises((Exception, SystemExit), match="already in progress"):
         plan_start_node("157")
 
 def test_checkout_node(mock_gh, mock_fe, mock_telemetry, mock_subprocess):
@@ -144,7 +144,7 @@ def test_sync_and_clean_node_wip_violation():
         
         mock_wt.return_value = [{"number": 123, "url": "local:node/123-some-branch"}]
         
-        with pytest.raises(Exception, match="WIP-N=1 Violation"):
+        with pytest.raises((Exception, SystemExit), match="WIP-N=1 Violation"):
             sync_and_clean_node()
             
     backlog_content = "prompts:\n  - id: p-123\n    text: '[NOTIFICATION] Sluice Gate Opened: PR for Node 878'\n    status: pending"
@@ -158,7 +158,7 @@ def test_sync_and_clean_node_wip_violation():
         
         mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "some-branch"}]
         
-        with pytest.raises(Exception, match="WIP-N=1 Violation"):
+        with pytest.raises((Exception, SystemExit), match="WIP-N=1 Violation"):
             sync_and_clean_node()
 
 

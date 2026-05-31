@@ -13,6 +13,9 @@ from kernel.sense_hooks import HookDaemon
 from kernel.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement
 from kernel.daemon_telemetry import TelemetryDaemon, record_execution
 
+class ValidationError(Exception):
+    pass
+
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
     return os.environ.get("SPAO_VERBOSE") in ("1", "true", "TRUE") or os.environ.get("SPOA_VERBOSE") in ("1", "true", "TRUE")
@@ -36,11 +39,11 @@ def checkout_node(issue_id: str, branch_name: str) -> None:
 def sync_and_clean_node() -> None:
     """Synchronizes local workspace state, pruning merged nodes and tracking ROM updates."""
     import os
-    import sys
     import hashlib
     import subprocess
     import yaml
     from drivers import path_resolver
+    from drivers.tty_gate import require_operator_approval
     from kernel.node_lifecycle import TerminalNode
 
 
@@ -489,7 +492,6 @@ def cmd_view(args):
 def cmd_retro(args):
     import glob
     import os
-    import sys
     from kernel.daemon_retro import RetroCompiler
     
     if args.retro_command == "compile":
@@ -534,7 +536,6 @@ def cmd_test(args):
 
 def main():
     import argparse
-    import sys
     import json
     import traceback
     import os
@@ -652,6 +653,9 @@ def main():
         elif args.subcommand == "retro":
             cmd_retro(args)
 
+    except ValidationError as ve:
+        print(f"\n[🚫 BLOCKED] Execution Blocked: {ve}")
+        sys.exit(1)
     except Exception as e:
         subcommand = getattr(args, 'subcommand', 'unknown') if 'args' in locals() else 'unknown'
         persona = os.environ.get("SPAO_PERSONA_ID", "Unknown")

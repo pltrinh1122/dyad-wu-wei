@@ -89,7 +89,6 @@ class TelemetryParser:
                             )
 
 if __name__ == "__main__":
-    import sys
     path = sys.argv[1] if len(sys.argv) > 1 else None
     parser = TelemetryParser(path)
     for event in parser.parse_stream():
