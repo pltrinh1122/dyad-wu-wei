@@ -4496,6 +4496,12 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 1532: Activity: Falsify and Remediate dz-cil Survivor
+- **Status**: Completed
+- **Learnings & Context**: Removed ROM Drift safeguard exception from daemon_node.py and test to satisfy user feedback
+- **Feedforward Invariants**:
+  - `[x] Removed ROM Drift exception`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
