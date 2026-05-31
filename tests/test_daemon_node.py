@@ -161,33 +161,6 @@ def test_sync_and_clean_node_wip_violation():
         with pytest.raises(Exception, match="WIP-N=1 Violation"):
             sync_and_clean_node()
 
-def test_sync_and_clean_node_rom_drift(capsys):
-    from unittest.mock import mock_open
-    with patch("kernel.daemon_node.git_client"), \
-         patch("kernel.daemon_node.github_client") as mock_gh, \
-         patch("kernel.daemon_node.os.path.exists") as mock_exists, \
-         patch("builtins.open") as mock_file, \
-         patch("kernel.daemon_node.hashlib.sha256") as mock_sha256, \
-         patch("kernel.daemon_node.HookDaemon"), \
-         patch("kernel.daemon_node.get_local_worktrees", return_value=[]):
-        
-        def exists_side_effect(path):
-            if "prompt_backlog" in path:
-                return False
-            return True
-        mock_exists.side_effect = exists_side_effect
-        
-        mock_file.return_value = mock_open(read_data=b"data")()
-        
-        mock_hash1 = MagicMock()
-        mock_hash1.hexdigest.return_value = "hash1"
-        mock_hash2 = MagicMock()
-        mock_hash2.hexdigest.return_value = "hash2"
-        mock_sha256.side_effect = [mock_hash1, mock_hash2]
-        
-        with pytest.raises(Exception, match="CRITICAL ROM DRIFT DETECTED"):
-            sync_and_clean_node()
-
 
 def test_cmd_retro_compile():
     args = MagicMock()

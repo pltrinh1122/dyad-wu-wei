@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: null
+current_active_node: 'Node 1532: Falsify and Remediate dz-cil Survivor'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4485,6 +4485,10 @@ nodes:
   learnings: Synthesized retrospective for Path 977 and resolved node
   invariants:
   - '[x] Drafted Node-1529-Contract.md'
+- name: 'Node 1532: Falsify and Remediate dz-cil Survivor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
