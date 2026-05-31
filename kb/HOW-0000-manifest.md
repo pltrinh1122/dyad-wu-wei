@@ -23,6 +23,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Wu-wei Dyad Bootstrap Installer Harmonization**: Read [WHY-0929-dyad-wu-wei-installer-harmonization.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-0929-dyad-wu-wei-installer-harmonization.md)
 * **Dynamic Agent Identity Resolution Harmonization**: Read [WHY-0623-dynamic-identity-resolution-al&#105;gnment.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-0623-dynamic-identity-resolution-al&#105;gnment.md)
 * **Headless GH_TOKEN Fallback Harmonization**: Read [WHY-1314-headless-gh-token-rationale.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-1314-headless-gh-token-rationale.md)
+* **Private Repository Falsification**: Read [WHY-1562-falsify-private-repository-survivor.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-1562-falsify-private-repository-survivor.md)
 
 
 
