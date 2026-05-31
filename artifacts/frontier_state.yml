@@ -4485,6 +4485,16 @@ nodes:
   learnings: Synthesized retrospective for Path 977 and resolved node
   invariants:
   - '[x] Drafted Node-1529-Contract.md'
+- name: 'Node 1532: Falsify and Remediate dz-cil Survivor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1532: Activity: Falsify and Remediate dz-cil Survivor'
+  status: Completed
+  learnings: Removed ROM Drift safeguard exception from daemon_node.py and test to
+    satisfy user feedback
+  invariants:
+  - '[x] Removed ROM Drift exception'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

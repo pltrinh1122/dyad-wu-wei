@@ -20,10 +20,7 @@ The topological ledger must be verified.
 - **Action**: Run `./bin/meta lint` and `./bin/status`.
 - **Assertion**: `frontier_state.yml` must be valid and pure. The `./bin/status` output must accurately reflect the system state.
 
-### 2.3 ROM Currency (WHY-0085)
-The local knowledge base and configuration (ROM) must not be divergent from the source of truth.
-- **Action**: Verify branch currency (e.g., `git diff main...HEAD`).
-- **Assertion**: There must be no stale-ROM drift versus `main`.
+
 
 ### 2.4 WIP-N=1 + Active-Node Coherence
 The active node must perfectly cohere with the working branch.

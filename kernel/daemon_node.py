@@ -43,11 +43,7 @@ def sync_and_clean_node() -> None:
     from drivers import path_resolver
     from kernel.node_lifecycle import TerminalNode
 
-    def _get_file_hash(filepath):
-        if not os.path.exists(filepath):
-            return ""
-        with open(filepath, 'rb') as f:
-            return hashlib.sha256(f.read()).hexdigest()
+
 
     repo_root = path_resolver.get_workspace_dir()
     gemini_path = os.path.join(repo_root, "GEMINI.md")
@@ -68,8 +64,6 @@ def sync_and_clean_node() -> None:
         except Exception as e:
             print(f"Warning: Failed to parse prompt backlog: {e}")
 
-    pre_hash = _get_file_hash(gemini_path)
-
     # 2. Remote Mode: fetch remote updates
     if remote_mode:
         print("Sluice Gate event pending. Running remote synchronization...")
@@ -79,14 +73,6 @@ def sync_and_clean_node() -> None:
 
     git_client.switch("origin/main", detach=True)
     
-    post_hash = _get_file_hash(gemini_path)
-    if pre_hash and post_hash and pre_hash != post_hash:
-        raise Exception(
-            "CRITICAL ROM DRIFT DETECTED: GEMINI.md has been updated from the remote repository. "
-            "Your current Agent session is operating on stale instructions. "
-            "Please trigger an (/exit) immediately to safely reload the new invariants."
-        )
-
     # 3. Assert WIP-N=1 Invariant
     if remote_mode:
         open_prs = github_client.get_open_prs()
