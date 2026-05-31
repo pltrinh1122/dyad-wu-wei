@@ -133,6 +133,10 @@ def test_modified_files_lexical_compliance():
         if filepath.startswith('.worktrees/') or '/.worktrees/' in filepath:
             continue
             
+        # Ignore vendored dependencies (e.g. .venv) to prevent false positives from 3rd-party code
+        if filepath.startswith('.venv/') or '/.venv/' in filepath:
+            continue
+            
         # Read the file's current workspace content
         if os.path.exists(filepath):
             with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
