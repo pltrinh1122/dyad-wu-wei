@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: null
+current_active_node: 'Node 1531: [BUG] Intake: System Crash in sync'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4605,6 +4605,32 @@ nodes:
   learnings: Handled git switch errors gracefully in sync_and_clean_node and merged
     duplicate switch definitions in git_client.py.
   invariants: []
+- name: 'Node 1567: System Crash Fixes'
+  status: Backlog
+  learnings: Resolve intake crashes from telemetry and prompt daemon
+  invariants: []
+- name: 'Node 1568: Harmonize - System Crash Fixes'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for System Crash
+    Fixes.
+  invariants: []
+- name: 'Node 1569: Plan - System Crash Fixes'
+  status: Backlog
+  learnings: Technical design and proposed changes for System Crash Fixes.
+  invariants: []
+- name: 'Node 1570: Reflect - System Crash Fixes'
+  status: Backlog
+  learnings: Final reflection and path closure for System Crash Fixes.
+  invariants: []
+- name: 'Node 1531: [BUG] Intake: System Crash in sync'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '[BUG] Intake: System Crash in sync'
+  status: Completed
+  learnings: Fixed Telemetry log_event crash
+  invariants:
+  - '[x] Fixed TelemetryDaemon call'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

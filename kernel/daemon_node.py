@@ -680,7 +680,7 @@ def main():
                 print(f"Warning: Failed to add labels to bug report: {label_err}")
             
             telemetry = TelemetryDaemon()
-            telemetry.record_event("ERROR", {
+            telemetry.log_event(stage="SYSTEM", event="ERROR", metadata={
                 "subcommand": subcommand,
                 "error": str(e),
                 "traceback": tb_str
