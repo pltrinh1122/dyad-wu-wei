@@ -41,7 +41,7 @@ def run_kb_check(repo_root: str, strict: bool = True) -> bool:
         for conflict in conflicts:
             print(f"  - {conflict}")
         if strict:
-            raise Exception(f"KB Conflict Check Failed with {len(conflicts)} conflict(s). Blocked.")
+            sys.exit(f"KB Conflict Check Failed with {len(conflicts)} conflict(s). Blocked.")
         return False
 
     print("✅ KB Conflict Check Passed.")

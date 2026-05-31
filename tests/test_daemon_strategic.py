@@ -250,7 +250,7 @@ class TestMgrStrategic(unittest.TestCase):
         daemon_strategic._MOCK_PARENT_PATHS = {}
         
         try:
-            with self.assertRaises(ValueError) as ctx:
+            with self.assertRaises(SystemExit) as ctx:
                 daemon_strategic.verify_node_transition_allowed("419")
             self.assertIn("Harmonization Failure", str(ctx.exception))
         finally:

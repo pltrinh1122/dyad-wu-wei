@@ -52,7 +52,7 @@ def restore(files: list[str], staged: bool = False, cwd: str | None = None) -> N
 @record_execution(stage="skill")
 def rebase(target: str = "origin/main", cwd: str | None = None) -> None:
     """Rebases the current branch onto target, ensuring conflict-free push."""
-    _run(["git", "rebase", target], check=True, cwd=cwd)
+    _run(["git", "rebase", "--autostash", target], check=True, cwd=cwd)
 
 
 @record_execution(stage="skill")
@@ -76,7 +76,7 @@ def rebase_with_conflict_resolution(target: str = "origin/main", cwd: str | None
     SHA256_CHECKSUM_FILE = "artifacts/frontier_state.yml.sha256"
     SHA256_SOURCE_FILE   = "artifacts/frontier_state.yml"
 
-    res = _run(["git", "rebase", target], capture_output=True, text=True, cwd=cwd)
+    res = _run(["git", "rebase", "--autostash", target], capture_output=True, text=True, cwd=cwd)
     if res.returncode == 0:
         # Clean rebase — nothing to do.
         return

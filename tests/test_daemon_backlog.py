@@ -77,7 +77,7 @@ def test_backlog_add(mock_render, mock_backlog_gh):
 
 def test_backlog_add_missing_path():
     daemon = BacklogDaemon()
-    with pytest.raises(ValueError, match="Terminal nodes \\(Activities and Discoveries\\) must belong to a parent Path"):
+    with pytest.raises((ValueError, SystemExit), match="Terminal nodes \\(Activities and Discoveries\\) must belong to a parent Path"):
         daemon.add("discovery", "Title", "Goal")
 
 def test_backlog_add_invalid_path_cases(mock_backlog_gh):
@@ -85,7 +85,7 @@ def test_backlog_add_invalid_path_cases(mock_backlog_gh):
     
     # Case 1: Parent Path doesn't exist
     mock_backlog_gh.get_issue_details.return_value = None
-    with pytest.raises(ValueError, match="Parent Path issue 10 does not exist"):
+    with pytest.raises((ValueError, SystemExit), match="Parent Path issue 10 does not exist"):
         daemon.add("discovery", "Title", "Goal", path_id="10")
         
     # Case 2: Parent Path is closed
@@ -93,7 +93,7 @@ def test_backlog_add_invalid_path_cases(mock_backlog_gh):
         "title": "Path 10: Closed Path",
         "state": "CLOSED"
     }
-    with pytest.raises(ValueError, match="Parent Path issue 10 is already closed"):
+    with pytest.raises((ValueError, SystemExit), match="Parent Path issue 10 is already closed"):
         daemon.add("discovery", "Title", "Goal", path_id="10")
         
     # Case 3: Parent issue is not a Path
@@ -101,7 +101,7 @@ def test_backlog_add_invalid_path_cases(mock_backlog_gh):
         "title": "Discovery 10: Harmonize - title",
         "state": "OPEN"
     }
-    with pytest.raises(ValueError, match="Parent issue 10 is not classified as a Path"):
+    with pytest.raises((ValueError, SystemExit), match="Parent issue 10 is not classified as a Path"):
         daemon.add("discovery", "Title", "Goal", path_id="10")
 
 def test_backlog_add_duplicate(mock_backlog_gh):

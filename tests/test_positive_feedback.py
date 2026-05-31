@@ -81,7 +81,7 @@ class TestRecordPositiveFeedback:
 
     def test_raises_on_empty_issue_id(self, tmp_path):
         from drivers import knowledge_accrual_skill
-        with pytest.raises(ValueError, match="issue_id"):
+        with pytest.raises((ValueError, SystemExit), match="issue_id"):
             knowledge_accrual_skill.record_positive_feedback(
                 issue_id="",
                 insight="Some insight.",
@@ -90,7 +90,7 @@ class TestRecordPositiveFeedback:
 
     def test_raises_on_empty_insight(self, tmp_path):
         from drivers import knowledge_accrual_skill
-        with pytest.raises(ValueError, match="insight"):
+        with pytest.raises((ValueError, SystemExit), match="insight"):
             knowledge_accrual_skill.record_positive_feedback(
                 issue_id="42",
                 insight="   ",
@@ -162,7 +162,7 @@ class TestEnforceReflectionHookPositiveFeedback:
         (tmp_path / "artifacts" / "audit").mkdir(parents=True, exist_ok=True)
 
         from kernel import daemon_knowledge_accrual
-        with pytest.raises(Exception, match="reaffirm-42.md"):
+        with pytest.raises((Exception, SystemExit), match="reaffirm-42.md"):
             daemon_knowledge_accrual.enforce_reflection_hook("42", repo_root)
 
     def test_passes_when_positive_feedback_and_reaffirm_file_exists(self, tmp_path):
@@ -182,7 +182,7 @@ class TestEnforceReflectionHookPositiveFeedback:
         (tmp_path / "artifacts" / "audit").mkdir(parents=True, exist_ok=True)
 
         from kernel import daemon_knowledge_accrual
-        with pytest.raises(Exception, match="reaffirm-55.md"):
+        with pytest.raises((Exception, SystemExit), match="reaffirm-55.md"):
             daemon_knowledge_accrual.enforce_reflection_hook("55", repo_root)
 
     def test_gate_not_triggered_for_different_node_id(self, tmp_path):

@@ -4632,6 +4632,18 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `[x] Fixed dict append crash`
 
+## Node 1579: System Crash Validation Refactor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity: System Crash Validation Refactor
+- **Status**: Completed
+- **Learnings & Context**: Refactored validation gates to use sys.exit
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`

@@ -201,7 +201,7 @@ def test_rebase_with_conflict_resolution_clean(mock_subprocess):
     git_client.rebase_with_conflict_resolution("origin/main", cwd="/repo")
     # Only one subprocess call: the initial rebase
     mock_subprocess.assert_called_once_with(
-        ["git", "rebase", "origin/main"], capture_output=True, text=True, cwd="/repo"
+        ["git", "rebase", "--autostash", "origin/main"], capture_output=True, text=True, cwd="/repo"
     )
 
 
@@ -226,7 +226,7 @@ def test_rebase_with_conflict_resolution_sha256_autoresolve(tmp_path):
     def fake_run(cmd, **kwargs):
         call_log.append(cmd)
         mock = MagicMock()
-        if cmd == ["git", "rebase", "origin/main"]:
+        if cmd == ["git", "rebase", "--autostash", "origin/main"]:
             mock.returncode = 1
             mock.stdout = ""
             mock.stderr = "CONFLICT"
@@ -258,7 +258,7 @@ def test_rebase_with_conflict_resolution_unresolvable(tmp_path):
     def fake_run(cmd, **kwargs):
         call_log.append(cmd)
         mock = MagicMock()
-        if cmd == ["git", "rebase", "origin/main"]:
+        if cmd == ["git", "rebase", "--autostash", "origin/main"]:
             mock.returncode = 1
             mock.stdout = ""
             mock.stderr = "CONFLICT"
@@ -270,7 +270,7 @@ def test_rebase_with_conflict_resolution_unresolvable(tmp_path):
         return mock
 
     with patch("drivers.git_client._run", side_effect=fake_run):
-        with pytest.raises(Exception, match="Auto-resolution could not handle"):
+        with pytest.raises((Exception, SystemExit), match="Auto-resolution could not handle"):
             git_client.rebase_with_conflict_resolution("origin/main", cwd=str(tmp_path))
 
     assert ["git", "rebase", "--abort"] in call_log
