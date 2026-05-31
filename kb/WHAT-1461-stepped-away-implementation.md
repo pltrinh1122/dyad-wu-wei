@@ -15,7 +15,7 @@ To implement the philosophic intent defined in `WHY-1460` (conserve compute and 
 
 1. **GEMINI.md (Agent Anchor) Update**:
    We will update the `Antigravity-Specific: Asynchronous Execution` section in `GEMINI.md` to include explicit instructions for the Stepped-Away Discipline:
-   - When the Agent arrives at an HTIL block (e.g., after executing `reflect` or during an NBA Handoff) and prepares to yield its turn, it MUST explicitly use the `manage_task(Action="kill")` tool to terminate the recurring `audit_daemon.py` schedule.
+   - When the Agent arrives at an HTIL block (e.g., after executing `reflect`) and prepares to yield its turn, it MUST explicitly use the `manage_task(Action="kill")` tool to terminate the recurring `audit_daemon.py` schedule.
    - When the Agent is awakened by the Operator's explicit prompt input (the Step-Back Discipline), it MUST use the `schedule` tool to immediately re-instantiate the `audit_daemon.py` background cron job before or during the Sense phase.
 
 2. **Dormancy Execution**:
