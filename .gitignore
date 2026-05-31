@@ -15,3 +15,4 @@ artifacts/prompt_backlog.yml.lock
 # Workspace
 /.workspace/
 
+artifacts/cache/
