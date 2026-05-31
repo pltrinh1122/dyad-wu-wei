@@ -23,10 +23,6 @@ def checkout_b(branch: str, cwd: str | None = None) -> None:
     """Creates a new branch and switches to it."""
     _run(["git", "checkout", "-b", branch], check=True, cwd=cwd)
 
-@record_execution(stage="skill")
-def switch(branch: str, cwd: str | None = None) -> None:
-    """Switches to an existing branch."""
-    _run(["git", "switch", branch], check=True, cwd=cwd)
 
 @record_execution(stage="skill")
 def commit(message: str, cwd: str | None = None) -> None:
@@ -221,18 +217,24 @@ def branch_delete(branch: str) -> None:
             raise e
 
 @record_execution(stage="skill")
-def switch(branch: str, detach: bool = False) -> None:
-    """Switches to the specified branch, optionally detaching HEAD."""
+def switch(branch: str, detach: bool = False, discard_changes: bool = False, cwd: str | None = None) -> None:
+    """Switches to the specified branch, optionally detaching HEAD and discarding changes."""
     cmd = ["git", "switch"]
     if detach:
         cmd.append("--detach")
+    if discard_changes:
+        cmd.append("--discard-changes")
     cmd.append(branch)
     try:
-        _run(cmd, check=True)
+        _run(cmd, check=True, cwd=cwd)
     except subprocess.CalledProcessError as e:
         if not detach:
             # Fall back to detached HEAD if the branch is locked in another worktree
-            _run(["git", "switch", "--detach", branch], check=True)
+            fallback_cmd = ["git", "switch", "--detach"]
+            if discard_changes:
+                fallback_cmd.append("--discard-changes")
+            fallback_cmd.append(branch)
+            _run(fallback_cmd, check=True, cwd=cwd)
         else:
             raise e
 

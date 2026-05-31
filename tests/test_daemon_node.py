@@ -87,7 +87,7 @@ def test_sync_and_clean_node_order():
         
         # Local Mode: should switch but NOT fetch or get open prs
         assert filtered_calls == [
-            ('git.switch', ('origin/main',), {'detach': True})
+            ('git.switch', ('origin/main',), {'detach': True, 'discard_changes': True})
         ]
 
 def test_sync_and_clean_node_remote_mode():
@@ -128,7 +128,7 @@ prompts:
         # Remote Mode: should fetch, switch, and query get_open_prs
         assert filtered_calls == [
             ('git.fetch', ('origin',), {'prune': True}),
-            ('git.switch', ('origin/main',), {'detach': True}),
+            ('git.switch', ('origin/main',), {'detach': True, 'discard_changes': True}),
             ('gh.get_open_prs', (), {})
         ]
         mock_process.assert_called_once_with("p-123", resolution_context="sync")

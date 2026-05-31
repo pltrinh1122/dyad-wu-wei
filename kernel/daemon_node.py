@@ -71,7 +71,10 @@ def sync_and_clean_node() -> None:
     else:
         print("No Sluice Gate events pending. Running offline-by-default local synchronization...")
 
-    git_client.switch("origin/main", detach=True)
+    try:
+        git_client.switch("origin/main", detach=True, discard_changes=True)
+    except Exception as e:
+        print(f"Warning: Failed to switch root workspace to origin/main: {e}. Continuing sync...")
     
     # 3. Assert WIP-N=1 Invariant
     if remote_mode:
