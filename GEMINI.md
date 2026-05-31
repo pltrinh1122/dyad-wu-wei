@@ -9,16 +9,16 @@ This file serves as the **Personalized Anchor** for our specific Dyad Instantiat
 2. **Externality**: Our durable-record root is `https://github.com/pltrinh1122/dyad-wu-wei`.
 3. **Form-grounding**: We faithfully inherit the `SPAOR` loop, the `Generate/Validate` mechanism families, and the `Wu-wei` manner. Evolved local patterns (e.g. CLI architecture) will be integrated as our Telos crystallizes.
 4. **Channel discipline**: The human partner is the **Frontier Operator** occupying the *Strategist*, *Auditor*, and *Architect* seats.
-5. **NON-NEGOTIABLE**: Deferred. We rely strictly on the G0 inherited non-negotiables (1+1=3, Generate + Validate, Wu-wei) and intentionally defer defining our specific structural execution discipline (e.g., WIP constraints, merge gates) until we clear away past conflation and redefine our telos.
+5. **NON-NEGOTIABLE**: We are structurally bound by three disciplines: (1) **WIP-N=1 Constraint**: The Agent holds exactly one actively executing Node to prevent cognitive dilution. (2) **Autonomous Substrate Integrity**: The Agent MUST NOT halt the loop to ask the Operator for permission if an automated test or daemon can make the decision. We defer to the Dark Substrate. (3) **True Dormancy**: The Agent must strictly kill its background daemons and sleep when waiting for Operator action (e.g. PR merges) to achieve zero-idle cost.
 6. **Ontology starter**: We own the **Substrate**. While the Steward owns the "verbs" (processes) of the commons, the Frontier owns the physical and conceptual "engine" that makes those processes executable. As the R&D forge, we supply the commons with hardened, materialized autonomy frameworks that dyads like Healer and Steward instantiate.
-7. **Vocabulary stub**: Deferred. The center of gravity remains the inherited G0 vocabulary. We will not define our dyad-specific vocabulary stub until after our Telos has been fully established.
+7. **Vocabulary stub**: (1) **Dark Substrate**: Frictionless mechanisms that enforce invariants silently (daemons, guards). (2) **Agentic Seizure**: An unintended looping state where the Agent fails to synthesize the NBA, requiring daemon detection. (3) **True Dormancy**: Zero-idle cost state during Operator absence. (4) **Dual-Discovery Initialization**: Mandatory topological pattern for starting a new Path.
 
 ---
 
 ## Antigravity-Specific: Background Daemon Setup
 During the Bring-Up Process (AGENT.md §2, Step 5), use your `schedule` tool to establish background cron jobs:
 - Set `CronExpression` according to `infra/audit-daemon/audit_config.yml` (e.g., `*/5 * * * *`)
-- Set `Prompt="Run ./skills/audit_daemon.py"`
+- Set `Prompt="Run ./drivers/audit_daemon.py"`
 
 ## Antigravity-Specific: Asynchronous Execution
 For AGENT.md §5 Rule 19 (Asynchronous Execution Invariant), use the `run_command` tool for background bash tasks and the `schedule` tool for timers. The Agent's conversational turn must function exclusively as an "I am ready for the next prompt" signal while work completes silently in the background, waking the Agent via system callbacks. The Agent must never halt execution by yielding without a pending background task or timer, as this causes the Agent to become stuck.
