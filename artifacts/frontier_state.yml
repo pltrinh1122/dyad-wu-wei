@@ -4574,19 +4574,29 @@ nodes:
     as explicit execution directives that alter the current node goal.
   - The Agent MUST maintain dormancy during Wait states and not trigger execution
     loops to simply acknowledge ephemeral reminders.
-- name: 'Node 1358: Reflect - Suppress Iatrogenic-Injection Loops in Agy Harness'
+- name: 'Node 1357: Plan - Suppress Iatrogenic-Injection Loops in Agy Harness'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 1358: Reflect - Suppress Iatrogenic-Injection Loops in Agy Harness'
+- name: 'Discovery 1357: Plan - Suppress Iatrogenic-Injection Loops in Agy Harness'
   status: Completed
-  learnings: Closed Path 1355 after successfully creating the Iatrogenic-Injection
-    Suppression Rule in GEMINI.md.
+  learnings: Implemented the Iatrogenic-Injection Suppression Rule in GEMINI.md to
+    formally instruct the agent to ignore ephemeral reminders that would otherwise
+    cause execution seizures.
   invariants:
   - The Agent MUST NOT interpret EPHEMERAL_MESSAGE or bash_command_reminder blocks
     as explicit execution directives that alter the current node goal.
   - The Agent MUST maintain dormancy during Wait states and not trigger execution
     loops to simply acknowledge ephemeral reminders.
+- name: 'Node 1309: Harmonize - Enforce Local CI Verification Before Reflection'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery 1309: Harmonize - Enforce Local CI Verification Before Reflection'
+  status: Completed
+  learnings: Identified that local CI verification before reflection was already implemented
+    in e6526b6f.
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
