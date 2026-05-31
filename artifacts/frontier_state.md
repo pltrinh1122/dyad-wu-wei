@@ -4596,27 +4596,27 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
   - `The Agent MUST NOT interpret EPHEMERAL_MESSAGE or bash_command_reminder blocks as explicit execution directives that alter the current node goal.`
   - `The Agent MUST maintain dormancy during Wait states and not trigger execution loops to simply acknowledge ephemeral reminders.`
 
-## Node 1310: Plan - Enforce Local CI Verification Before Reflection
+## Node 1311: Reflect - Enforce Local CI Verification Before Reflection
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery 1310: Plan - Enforce Local CI Verification Before Reflection
+## Activity 1311: Reflect - Enforce Local CI Verification Before Reflection
 - **Status**: Completed
-- **Learnings & Context**: Completed Plan node by verifying no further changes are required since the CI verification was implemented in e6526b6f.
+- **Learnings & Context**: Formally closed Path 1308 after documenting the existing CI verification step implemented in e6526b6f.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1297: Harmonize - Remediate sync_and_clean_node WIP-N=1 offline block
+## Node 1504: Harmonize - [BUG] Intake: System Crash in sync
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery 1297: Harmonize - Remediate sync_and_clean_node WIP-N=1 offline block
+## Discovery: Harmonize - [BUG] Intake: System Crash in sync
 - **Status**: Completed
-- **Learnings & Context**: Identified that auto-fetch was already implemented in 1c1e2a2a.
+- **Learnings & Context**: Handled git switch errors gracefully in sync_and_clean_node and merged duplicate switch definitions in git_client.py.
 - **Feedforward Invariants**:
   - `[ ]` None
 
