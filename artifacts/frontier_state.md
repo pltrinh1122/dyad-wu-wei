@@ -4583,6 +4583,19 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
   - `The Agent MUST NOT interpret EPHEMERAL_MESSAGE or bash_command_reminder blocks as explicit execution directives that alter the current node goal.`
   - `The Agent MUST maintain dormancy during Wait states and not trigger execution loops to simply acknowledge ephemeral reminders.`
 
+## Node 1357: Plan - Suppress Iatrogenic-Injection Loops in Agy Harness
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1357: Plan - Suppress Iatrogenic-Injection Loops in Agy Harness
+- **Status**: Completed
+- **Learnings & Context**: Implemented the Iatrogenic-Injection Suppression Rule in GEMINI.md to formally instruct the agent to ignore ephemeral reminders that would otherwise cause execution seizures.
+- **Feedforward Invariants**:
+  - `The Agent MUST NOT interpret EPHEMERAL_MESSAGE or bash_command_reminder blocks as explicit execution directives that alter the current node goal.`
+  - `The Agent MUST maintain dormancy during Wait states and not trigger execution loops to simply acknowledge ephemeral reminders.`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
