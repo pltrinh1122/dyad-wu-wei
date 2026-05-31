@@ -20,6 +20,8 @@ def load_data(backlog_file):
                 loaded = yaml.safe_load(f)
                 if loaded and "prompts" in loaded:
                     data = loaded
+                    if not isinstance(data.get("prompts"), list):
+                        data["prompts"] = []
     return data
 
 def save_data(backlog_file, data):

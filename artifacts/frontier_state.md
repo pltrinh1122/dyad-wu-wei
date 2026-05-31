@@ -4620,41 +4620,17 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1567: System Crash Fixes
-- **Status**: Backlog
-- **Learnings & Context**: Resolve intake crashes from telemetry and prompt daemon
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1568: Harmonize - System Crash Fixes
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for System Crash Fixes.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1569: Plan - System Crash Fixes
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for System Crash Fixes.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1570: Reflect - System Crash Fixes
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for System Crash Fixes.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1531: [BUG] Intake: System Crash in sync
+## Node 1572: Fix daemon_prompt.py crash
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## [BUG] Intake: System Crash in sync
+## Fix daemon_prompt.py crash
 - **Status**: Completed
-- **Learnings & Context**: Fixed Telemetry log_event crash
+- **Learnings & Context**: Fixed list type initialization for prompts
 - **Feedforward Invariants**:
-  - `[x] Fixed TelemetryDaemon call`
+  - `[x] Fixed dict append crash`
 
 ## Active Agents Matrix
 * **agent-ziran**:
