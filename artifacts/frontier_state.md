@@ -4583,18 +4583,30 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
   - `The Agent MUST NOT interpret EPHEMERAL_MESSAGE or bash_command_reminder blocks as explicit execution directives that alter the current node goal.`
   - `The Agent MUST maintain dormancy during Wait states and not trigger execution loops to simply acknowledge ephemeral reminders.`
 
-## Node 1358: Reflect - Suppress Iatrogenic-Injection Loops in Agy Harness
+## Node 1357: Plan - Suppress Iatrogenic-Injection Loops in Agy Harness
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1358: Reflect - Suppress Iatrogenic-Injection Loops in Agy Harness
+## Discovery 1357: Plan - Suppress Iatrogenic-Injection Loops in Agy Harness
 - **Status**: Completed
-- **Learnings & Context**: Closed Path 1355 after successfully creating the Iatrogenic-Injection Suppression Rule in GEMINI.md.
+- **Learnings & Context**: Implemented the Iatrogenic-Injection Suppression Rule in GEMINI.md to formally instruct the agent to ignore ephemeral reminders that would otherwise cause execution seizures.
 - **Feedforward Invariants**:
   - `The Agent MUST NOT interpret EPHEMERAL_MESSAGE or bash_command_reminder blocks as explicit execution directives that alter the current node goal.`
   - `The Agent MUST maintain dormancy during Wait states and not trigger execution loops to simply acknowledge ephemeral reminders.`
+
+## Node 1309: Harmonize - Enforce Local CI Verification Before Reflection
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery 1309: Harmonize - Enforce Local CI Verification Before Reflection
+- **Status**: Completed
+- **Learnings & Context**: Identified that local CI verification before reflection was already implemented in e6526b6f.
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-ziran**:
