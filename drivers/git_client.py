@@ -225,8 +225,13 @@ def switch(branch: str, detach: bool = False, discard_changes: bool = False, cwd
     if discard_changes:
         cmd.append("--discard-changes")
     cmd.append(branch)
+    
+    kwargs = {"check": True}
+    if cwd is not None:
+        kwargs["cwd"] = cwd
+        
     try:
-        _run(cmd, check=True, cwd=cwd)
+        _run(cmd, **kwargs)
     except subprocess.CalledProcessError as e:
         if not detach:
             # Fall back to detached HEAD if the branch is locked in another worktree
@@ -234,7 +239,7 @@ def switch(branch: str, detach: bool = False, discard_changes: bool = False, cwd
             if discard_changes:
                 fallback_cmd.append("--discard-changes")
             fallback_cmd.append(branch)
-            _run(fallback_cmd, check=True, cwd=cwd)
+            _run(fallback_cmd, **kwargs)
         else:
             raise e
 
