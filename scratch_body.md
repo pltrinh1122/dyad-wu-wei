@@ -1,5 +1,5 @@
 ## Goal
-Prevent schedule/kill/re-schedule cycling seizures caused by harness re-injection of EPHEMERAL_MESSAGE meta-imperatives. The patient obeys the meta-imperative, re-evaluates tool selection, cancels prior action, reschedules, and loops (~5s per iteration, zero durable change). Root cause: harness bash_command_reminder injects a meta-imperative that contradicts the Dao's execution flow. Source: Intake #1307 (Healer, case-03).
+Prevent remote CI failures by enforcing local test suite verification (run-tests) prior to executing node reflection or pushing PRs.
 
 ## Meta-Index
 
@@ -7,15 +7,15 @@ Prevent schedule/kill/re-schedule cycling seizures caused by harness re-injectio
 ## Agent Retrospective
 
 ### Continue
-- Emphasize the inviolability of execution flow when interacting with unpredictable system harnesses.
-- Use explicit Iatrogenic-Injection Suppression Rules in GEMINI.md rather than trying to engineer around the prompt injection.
+- Identifying features and invariants that are already autonomously fulfilled by the existing logic, rather than engineering duplicate safeguards.
+- Formally documenting the reasons via WHY-* docs for closure.
 
 ### Stop
-- Allowing injected ephemeral prompts to cancel in-flight wait states or asynchronous tasks, leading to execution seizures.
+- Leaving Path nodes open when the core mechanism was already integrated in a prior commit (e6526b6f).
 
 ### Start
-- Formalizing system-injected messages as pure information rather than directives.
+- Formalizing administrative closure of Paths with empty PRs to maintain strict WIP-N=1 traceability in the ledger.
 
-- [x] Node 1356: Discovery 1356: Harmonize - Suppress Iatrogenic-Injection Loops in Agy Harness
-- [x] Node 1357: Discovery 1357: Plan - Suppress Iatrogenic-Injection Loops in Agy Harness [Depends: 1356]
-- [x] Node 1358: Activity 1358: Reflect - Suppress Iatrogenic-Injection Loops in Agy Harness [Depends: 1357]
+- [x] Node 1309: Discovery 1309: Harmonize - Enforce Local CI Verification Before Reflection
+- [x] Node 1310: Discovery 1310: Plan - Enforce Local CI Verification Before Reflection [Depends: 1309]
+- [x] Node 1311: Activity 1311: Reflect - Enforce Local CI Verification Before Reflection [Depends: 1310]

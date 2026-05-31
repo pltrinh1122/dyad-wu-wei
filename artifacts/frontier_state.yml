@@ -4587,14 +4587,14 @@ nodes:
     as explicit execution directives that alter the current node goal.
   - The Agent MUST maintain dormancy during Wait states and not trigger execution
     loops to simply acknowledge ephemeral reminders.
-- name: 'Node 1310: Plan - Enforce Local CI Verification Before Reflection'
+- name: 'Node 1311: Reflect - Enforce Local CI Verification Before Reflection'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery 1310: Plan - Enforce Local CI Verification Before Reflection'
+- name: 'Activity 1311: Reflect - Enforce Local CI Verification Before Reflection'
   status: Completed
-  learnings: Completed Plan node by verifying no further changes are required since
-    the CI verification was implemented in e6526b6f.
+  learnings: Formally closed Path 1308 after documenting the existing CI verification
+    step implemented in e6526b6f.
   invariants: []
 active_agents:
   agent-ziran:
