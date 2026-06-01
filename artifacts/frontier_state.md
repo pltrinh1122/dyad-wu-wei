@@ -1216,7 +1216,7 @@
   - `[x] Completed all child activities and probes of Path 404`
 
 ## Node 412: Path 412: Implement Strategic Goal Path Alignment Verification
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement a verification tool/test that programmatically asserts that all path IDs listed in active strategic goals under strategic_intent.yml correspond to existing, open backlog items on GitHub, preventing stale references.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1240,31 +1240,31 @@
   - `[ ]` None
 
 ## Node 416: Path 416: Implement NBA Strict Transition Enforcement Gate
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement an automated guardrail in the flow state manager that prevents starting or continuing any path unless that path is explicitly registered and prioritized in the active strategic ledger, enforcing strict transition compliance.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 417: Probe 417: Align - Implement NBA Strict Transition Enforcement Gate
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Align on the philosophical and technical intent for Implement NBA Strict Transition Enforcement Gate.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 418: Probe 418: Plan - Implement NBA Strict Transition Enforcement Gate
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Implement NBA Strict Transition Enforcement Gate.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 419: Activity 419: Reflect - Implement NBA Strict Transition Enforcement Gate
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Implement NBA Strict Transition Enforcement Gate.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 420: Path 420: Audit and Harden Inner-Loop Test Dependencies
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Analyze the test suite to identify and catalog all files making external network or GitHub API requests, establishing a baseline of network-isolated vs network-dependent tests to answer whether we can confidently execute downstream features.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1290,7 +1290,7 @@
   - `[x] All tests run offline`
 
 ## Node 424: Path 424: Strategic Evaluation of Knowledge Accrual vs Offline Velocity Priority
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Conduct a strategic evaluation and tradeoff analysis between prioritizing the offline velocity baseline (SG-0003, Path 368) vs bootstrapping the autonomous knowledge accrual pipeline (SG-0005) to determine which pathway unlocks higher compounding leverage first.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1316,7 +1316,7 @@
   - `[x] Path 424 reflected and complete`
 
 ## Node 428: Path 428: Value Comparison of Speculative Gap Analysis vs Immediate Velocity Remediation
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Analyze the tradeoff value between conducting a speculative future-state gap analysis versus executing immediate network-dependency velocity remediation (Path 368) to determine which pathway maximizes compounding system gains.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1368,7 +1368,7 @@
   - `[x] WHAT-0045 created`
 
 ## Node 458: Activity 458: Activity: Implement Automated Labeling Invariants
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement automated labeling invariants during node reflect and plan-start transitions.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1517,7 +1517,7 @@
   - `kb/WHY-0054-node-sync-latency.md exists`
 
 ## Node 523: Probe 523: Design and Scoping for DAG Meta-Index Support
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Design and specify the exact parsing and validation rules for DAG-based checklists in Meta-Index.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1531,7 +1531,7 @@
   - `All unit tests in tests/test_gh_graph_skill.py pass cleanly.`
 
 ## Node 525: Activity 525: Implement CLI DAG rendering in node view
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement visual rendering of the topologically sorted DAG in the node view and backlog list commands.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1598,7 +1598,7 @@
   - `[ ]` None
 
 ## Node 566: Path 566: Codify SG-0005 Tactical Goals and Persona Domain Ownership
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Define the official agent persona, tactical goals, and selection rubrics to claim domain ownership for SG-0005 (Autonomous Knowledge Accrual).
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1656,7 +1656,7 @@
   - `100% test coverage`
 
 ## Node 622: Path 622: Path: Dynamic agent identity resolution and policy ledger alignment
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Evaluate dynamic agent identity resolution against collaborative active goals and update the policy ledger to properly encompass the resolution logic.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1680,7 +1680,7 @@
   - `[ ]` None
 
 ## Node 626: Path 626: Path: Implement Dynamic Agent Identity Resolution
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Decouple agent_id from dyad-wu-wei.yml and implement dynamic identity resolution based on env var or workspace basename to prevent main branch conflicts.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1710,7 +1710,7 @@
   - `[ ]` None
 
 ## Node 634: Path 634: Path: Refactor frontier_state for concurrent agent awareness
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Refactor frontier_state.yml/md structure and flow state engine to handle concurrent agent executions without file contention or overwrite conflicts.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1771,31 +1771,31 @@
   - `[x] None`
 
 ## Node 727: Path 727: Prevent Overly Broad Synthesized Lexical Guards
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Refactor synthesize_rule in skills/knowledge_accrual_skill.py to ensure it does not synthesize overly broad lexical guards (e.g., single digits or absolute file paths) by validating the target term against a strict set of domain-specific lexical scoping constraints.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 728: Probe 728: Align - Prevent Overly Broad Synthesized Lexical Guards
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Align on the philosophical and technical intent for Prevent Overly Broad Synthesized Lexical Guards.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 729: Probe 729: Plan - Prevent Overly Broad Synthesized Lexical Guards
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Prevent Overly Broad Synthesized Lexical Guards.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 730: Activity 730: Reflect - Prevent Overly Broad Synthesized Lexical Guards
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Prevent Overly Broad Synthesized Lexical Guards.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 732: Path 732: Formalize The Shaping Sequence
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Codify the sequence to instantiate new Dao instances.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1807,13 +1807,13 @@
   - `[ ]` None
 
 ## Node 734: Path 734: Restructure Repository for Dao Portability
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Decouple the generic Dao engine from project-specific logic to allow clean instantiation.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 735: Probe 735: Plan - Formalize The Shaping Sequence
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Formalize The Shaping Sequence.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1825,7 +1825,7 @@
   - `[ ]` None
 
 ## Node 737: Activity 737: Reflect - Formalize The Shaping Sequence
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Formalize The Shaping Sequence.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1837,7 +1837,7 @@
   - `[ ]` None
 
 ## Node 739: Activity 739: Reflect - Restructure Repository for Dao Portability
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Restructure Repository for Dao Portability.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1905,7 +1905,7 @@
   - `[ ] None`
 
 ## Node 860: Path 860: Path: Codify Substrate-Embedded Playbooks
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Codify WHY-0088 and HOW-0000 changes to establish the self-documenting interface as playbook model
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1998,7 +1998,7 @@
   - `[x] All tests pass`
 
 ## Node 876: Path 876: Path: Optimize SPAO Loop Inner-Loop Velocity
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Optimize SPAO Loop execution and sync performance to maximize inner-loop velocity.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2038,7 +2038,7 @@
   - `Operational guidelines contain Root Execution and Semantic Purity rules`
 
 ## Node 887: Path 887: Optimize Next-Best-Action Hook Execution Speed
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement local-first next-best-action evaluation to eliminate network calls during node sync.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2198,7 +2198,7 @@
   - `[x] All deliverables for Path 916 verified and closed`
 
 ## Node 920: Path 920: Implement Wu-wei Dyad Workspace for Operator Digital Needs
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Build a local-first digital companion application enabling the Operator to manage vacations and write serial novels with automated semantic/logistical verification.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2216,7 +2216,7 @@
   - `[ ]` None
 
 ## Node 923: Activity 923: Reflect - Implement Wu-wei Dyad Workspace for Operator Digital Needs
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Implement Wu-wei Dyad Workspace for Operator Digital Needs.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2259,7 +2259,7 @@
   - `[x] run verification tests`
 
 ## Node 928: Path 928: Implement Wu-wei Dyad Deployment and Bootstrap Installer
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Provide a playbook or script to deploy and configure a new Wu-wei Dyad deployment environment including virtual environment setup and audit daemon integration.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2349,19 +2349,19 @@
   - `TDD test suite achieves 100% pass rate`
 
 ## Node 949: Path 949: Codify Operator Curiosity and Safeguards against Emotional Turbulence
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: SG-0005
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 950: Discovery 950: Harmonize - Codify Operator Curiosity and Safeguards against Emotional Turbulence
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Harmonize on the philosophical and technical intent for Codify Operator Curiosity and Safeguards against Emotional Turbulence.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 951: Discovery 951: Plan - Codify Operator Curiosity and Safeguards against Emotional Turbulence
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Codify Operator Curiosity and Safeguards against Emotional Turbulence.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2413,7 +2413,7 @@
   - `[x] All tests pass`
 
 ## Node 959: Activity 959: Reflect - Synthesize Epistemic Retrospective retro-952.md
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-952.md into the system's operational guidelines (the Dao).
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2470,7 +2470,7 @@
   - `[x] Rule 17 added\n[x] Python bootstrapper updated\n[x] Bash installer deleted`
 
 ## Node 970: Activity 970: Resolve Semantic Conflation in WIP-N=1 Exception
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Update WIP-N=1 exception message in daemon_node.py to distinguish between GitHub PR ID and topological Node ID
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2513,7 +2513,7 @@
   - `[ ]` None
 
 ## Node 977: Path 977: Maintenance: Refine Knowledge Accrual Mechanisms
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Address synthesized lexical guard false-positives and improve test harness isolation.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2552,7 +2552,7 @@
   - `Tested successfully.`
 
 ## Node 985: Path 985: Investigate and Enforce Workspace Isolation Boundaries
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Investigate PR 982 failure where file modifications hit the root directory instead of the active worktree, and enforce boundaries.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2588,7 +2588,7 @@
   - `N/A`
 
 ## Node 993: Path 993: Preserve Flow State: Autonomous HTIL Bypass for Administrative Nodes
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement orchestration logic to autonomously merge PRs or bypass HTIL for zero-mutation administrative node closures, preserving SG-0003.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2684,7 +2684,7 @@
   - `N/A`
 
 ## Node 1022: Path 1022: Refine Wu-wei Dyad Intent Understanding
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Refine Chat Immediacy Protocol to explicitly require Wu-wei Dyad Intent Understanding (Dao and Ziran context).
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2726,7 +2726,7 @@
   - `N/A`
 
 ## Node 1029: Path 1029: Fix Telemetry Logging Visibility
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Fix log_stage_advancement to explicitly print to stdout.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2929,7 +2929,7 @@
   - `[x] Updated WHAT-0001`
 
 ## Node 1094: Path 1094: Audit and Remediate Deprecated KB Files
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: SG-0005
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2941,7 +2941,7 @@
   - `WHY-1089`
 
 ## Node 1096: Discovery 1096: Plan - Audit and Remediate Deprecated KB Files
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Audit and Remediate Deprecated KB Files.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3024,13 +3024,13 @@
   - `WHY-0770`
 
 ## Node 1113: Path 1113: Codify ISBO Epistemic Primitives
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Establish the philosophical boundaries of Install, Setup, Bootstrap, and Operate to prevent Creator/Director conflation (SG-0002)
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1114: Discovery 1114: Harmonize - Codify ISBO Epistemic Primitives
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Harmonize on the philosophical and technical intent for Codify ISBO Epistemic Primitives.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3042,13 +3042,13 @@
   - `[ ]` None
 
 ## Node 1116: Discovery 1116: Plan - Codify ISBO Epistemic Primitives
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Codify ISBO Epistemic Primitives.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1117: Activity 1117: Reflect - Codify ISBO Epistemic Primitives
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Codify ISBO Epistemic Primitives.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3060,7 +3060,7 @@
   - `The Bootstrapping Invariant: The Agent must strictly require a strategic_intent.yml before entering the Operate phase.`
 
 ## Node 1119: Path 1119: Achieve ISBO Completeness
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: End-to-end implementation of the ISBO (Install, Setup, Bootstrap, Operate) architecture to support seamless child workspace generation without Creator/Director role conflation.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3072,7 +3072,7 @@
   - `[ ]` None
 
 ## Node 1121: Discovery 1121: Plan - Achieve ISBO Completeness
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Achieve ISBO Completeness.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3256,7 +3256,7 @@
   - `Strategic intent correctly reflects all backlog mapping`
 
 ## Node 1152: Path 1152: Codify Falsifications and Extend Lexical Guard
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Address prompt queue: Codify kernel/bin coexistence, Core/Dao Engine distinction, Terminology Abstraction Thesis falsification, and extend lexical_guard for GLOSSARY-driven renames.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3318,7 +3318,7 @@
   - `[ ]` None
 
 ## Node 1170: Activity 1170: Implement Healing-Protocol Evaluation
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Design and implement a post-healing controlled durable-layer fault injection process
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3610,7 +3610,7 @@
   - `[x] Unit tests added and pass`
 
 ## Node 1223: Path 1223: Implement Quarantine Protocol for External Requirement Intakes
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Define and enforce the Quarantine Protocol for requirements submitted by external entities, ensuring they are triaged before entering the execution backlog.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3653,7 +3653,7 @@
   - `[x] Backlog transition gate check added and passes tests`
 
 ## Node 1230: Activity 1230: Document Requirement Intake Protocol in README
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Add guidance in root README.md on using the Requirement Intake template with triage labeling
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3677,7 +3677,7 @@
   - `[x] WHAT-1208-frontier-cache-spec.md created`
 
 ## Node 1235: Activity 1235: Use status:triage label for Requirement Intake template
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Update requirement intake template labels and plan_start checks to use status:triage instead of triage
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3691,7 +3691,7 @@
   - `[x] Unit tests updated and pass`
 
 ## Node 1237: Activity 1237: Automate standalone backlog mapping and quarantine state cleanup
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Allow the system to automatically handle unmapped backlog terminal nodes and clean up quarantine status labels during sync.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3704,7 +3704,7 @@
   - `[x] standalone backlog terminal nodes are auto-mapped to best matching parent Paths during sync`
 
 ## Node 1239: Activity 1239: Implement Holding Path auto-reconciliation for triage nodes
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement auto-grouping and cleanup of status:triage nodes under a dedicated holding parent Path during sync.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3718,7 +3718,7 @@
   - `[x] promoted/active nodes are automatically pruned from the triage holding path during sync`
 
 ## Node 1242: Path 1242: Triage Holding - Standalone Triage & External Requirement Intakes
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: A holding Path to consolidate all unpromoted status:triage external intake nodes under the same parent class.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3797,7 +3797,7 @@
   - `[ ]` None
 
 ## Node 1257: Activity 1257: Implement Dynamic Agent Identity Resolution and Decoupled Gates
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement dynamic mapping of environment states to logical personas and adaptively relax strategic gates in child workspaces as specified in WHAT-0622
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3918,25 +3918,25 @@
   - `N/A`
 
 ## Node 1287: Path 1287: Mock venv provisioning in test_init_workspace to restore offline CI speed
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: The test_init_workspace test in tests/test_daemon_workspace.py creates a real virtual environment and uses pip to download packages from PyPI. This introduces network I/O and violates the offline inner-loop testing invariant (SG-0003), causing the PR CI check to slow down significantly. We need to mock venv.create and subprocess.check_call in this test.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1288: Discovery 1288: Harmonize - Mock venv provisioning in test_init_workspace to restore offline CI speed
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Harmonize on the philosophical and technical intent for Mock venv provisioning in test_init_workspace to restore offline CI speed.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1289: Discovery 1289: Plan - Mock venv provisioning in test_init_workspace to restore offline CI speed
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Mock venv provisioning in test_init_workspace to restore offline CI speed.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1290: Activity 1290: Reflect - Mock venv provisioning in test_init_workspace to restore offline CI speed
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Mock venv provisioning in test_init_workspace to restore offline CI speed.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -3978,7 +3978,7 @@
   - `Unit tests must remain completely isolated from dynamic repository files like telemetry.jsonl.`
 
 ## Node 1302: Path 1302: Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Update HOW-1170 to explicitly delegate the post-recovery recommendation phase to the universal Wu-wei NBA Handoff Protocol (WHAT-1043), maintaining strict orthogonality between physical state-assertion and interaction policy.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4008,7 +4008,7 @@
   - `WIP-N=1`
 
 ## Node 1313: Path 1313: Implement headless GH_TOKEN fallback
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement headless GH_TOKEN fallback in github_client.py to permanently remediate headless DBus keyring 401 failures.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4020,7 +4020,7 @@
   - `[ ]` None
 
 ## Node 1315: Discovery 1315: Plan - Implement headless GH_TOKEN fallback
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Implement headless GH_TOKEN fallback.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4058,25 +4058,25 @@
   - `[x] Parent gate inheritance boundaries are secure`
 
 ## Node 1394: Path 1394: Dyad Practice Lineage Integration
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Ensure Wu-wei Dyad core invariants and practices act as a superset of the Dyad Practice framework.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1395: Discovery 1395: Harmonize - Dyad Practice Lineage Integration
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Harmonize on the philosophical and technical intent for Dyad Practice Lineage Integration.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1396: Discovery 1396: Plan - Dyad Practice Lineage Integration
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Dyad Practice Lineage Integration.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1397: Activity 1397: Reflect - Dyad Practice Lineage Integration
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Dyad Practice Lineage Integration.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4106,7 +4106,7 @@
   - `N/A`
 
 ## Node 1408: Activity 1408: Activity: Act - Implement WHAT-0636 concurrent agent ledger
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Implement WHAT-0636 concurrent agent ledger by updating node_lifecycle.py, daemon_node.py, and agent_frontier.py
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4143,7 +4143,7 @@
   - `[x] Observe phase automated`
 
 ## Node 1423: Path 1423: Codify Redundant Node Closure Discipline
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Establish a formal DAO-compliant mechanism for canceling and closing structurally redundant nodes without creating empty PRs or triggering frontier corruption.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4155,13 +4155,13 @@
   - `[ ]` None
 
 ## Node 1425: Discovery 1425: Plan - Codify Redundant Node Closure Discipline
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Codify Redundant Node Closure Discipline.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1426: Activity 1426: Reflect - Codify Redundant Node Closure Discipline
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Codify Redundant Node Closure Discipline.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4323,19 +4323,19 @@
   - `Path 1423 is permanently closed.`
 
 ## Node 1507: Remediate stale audit_state.json survivor
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: The audit_state.json file has a stale last_hash for GEMINI.md and AGENT.md, causing false positive /exit alerts. We need to commit the updated hashes.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1508: Harmonize - Remediate stale audit_state.json survivor
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Harmonize on the philosophical and technical intent for Remediate stale audit_state.json survivor.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1509: Plan - Remediate stale audit_state.json survivor
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Remediate stale audit_state.json survivor.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -4353,7 +4353,7 @@
   - `[ ]` None
 
 ## Node 1512: [BUG] Intake: System Crash in plan-start
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: ## System Crash Report
 
 **Subcommand:** `plan-start`
