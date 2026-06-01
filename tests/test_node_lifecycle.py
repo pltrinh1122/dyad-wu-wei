@@ -371,3 +371,21 @@ def test_clean_if_merged_on_github(mock_gh, mock_git):
         TerminalNode.clean_if_merged("node/1234-test")
         
     mock_git.branch_delete.assert_called_once_with("node/1234-test")
+
+def test_plan_start_quarantine_bypass():
+    """Test that self-created nodes (Activity/Discovery) are exempt from quarantine."""
+    with mock.patch("kernel.node_lifecycle.github_client.get_issue_labels", return_value=["status:triage"]), \
+         mock.patch("kernel.node_lifecycle.github_client.get_issue_details", return_value={"title": "Node 999: Activity 999: Implement quarantine survivor"}), \
+         mock.patch("kernel.node_lifecycle.github_client.add_label") as mock_add_label, \
+         mock.patch("kernel.node_lifecycle.FlowTransaction"), \
+         mock.patch("kernel.node_lifecycle.github_client.get_open_prs", return_value=[]), \
+         mock.patch("kernel.node_lifecycle.TerminalNode._verify_state_purity"), \
+         mock.patch("kernel.daemon_strategic.verify_node_transition_allowed") as mock_verify:
+        
+        from kernel.node_lifecycle import TerminalNode
+        node = TerminalNode("999")
+        node.plan_start(frontier_file="artifacts/frontier_state.md")
+        
+        # Verify backlog label was added autonomously
+        mock_add_label.assert_any_call("999", "backlog")
+        mock_verify.assert_called_once_with("999")
