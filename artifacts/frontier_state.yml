@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1591: Reflect - [ALIGN] Falsify ontology orthogonal hierarchy'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4638,6 +4638,16 @@ nodes:
 - name: 'Activity: Reflect - [ALIGN] Falsify ontology orthogonal hierarchy'
   status: Completed
   learnings: Closed path 1585 by synthesizing learnings from discovery
+  invariants:
+  - None
+- name: 'Node 1598: Implement quarantine survivor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1598: Implement quarantine survivor'
+  status: Completed
+  learnings: Quarantine protocol updated to exempt self-created nodes by regex title
+    matching. Tests passed.
   invariants:
   - None
 active_agents:
