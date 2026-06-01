@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1589: Plan - [ALIGN] Falsify ontology orthogonal hierarchy'
+current_active_node: 'Node 1591: Reflect - [ALIGN] Falsify ontology orthogonal hierarchy'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4631,33 +4631,13 @@ nodes:
   learnings: Untracked .venv and stale artifacts from repository, updated .gitignore
   invariants:
   - None
-- name: 'Node 1585: [ALIGN] Falsify ontology orthogonal hierarchy'
-  status: Backlog
-  learnings: Falsify the claim that the repository ontology and organization does
-    not support best practices for orthogonal hierarchy.
-  invariants: []
-- name: 'Node 1586: Harmonize - Path: [ALIGN] Falsify ontology orthogonal hierarchy'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for Path: [ALIGN]
-    Falsify ontology orthogonal hierarchy.'
-  invariants: []
-- name: 'Node 1587: Plan - Path: [ALIGN] Falsify ontology orthogonal hierarchy'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for Path: [ALIGN] Falsify ontology
-    orthogonal hierarchy.'
-  invariants: []
-- name: 'Node 1588: Reflect - Path: [ALIGN] Falsify ontology orthogonal hierarchy'
-  status: Backlog
-  learnings: 'Final reflection and path closure for Path: [ALIGN] Falsify ontology
-    orthogonal hierarchy.'
-  invariants: []
-- name: 'Node 1589: Plan - [ALIGN] Falsify ontology orthogonal hierarchy'
+- name: 'Node 1591: Reflect - [ALIGN] Falsify ontology orthogonal hierarchy'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery: Plan - [ALIGN] Falsify ontology orthogonal hierarchy'
+- name: 'Activity: Reflect - [ALIGN] Falsify ontology orthogonal hierarchy'
   status: Completed
-  learnings: Authored blueprint verifying orthogonal architecture
+  learnings: Closed path 1585 by synthesizing learnings from discovery
   invariants:
   - None
 active_agents:
