@@ -51,7 +51,22 @@ def _run_gh(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
                 env["GH_REPO"] = repo
                 
     kwargs["env"] = env
-    return subprocess.run(cmd, **kwargs)
+    
+    check = kwargs.pop("check", False)
+    result = subprocess.run(cmd, **kwargs)
+    
+    if check and result.returncode != 0:
+        # Ignore GraphQL deprecation warnings if stdout is valid JSON
+        if "--json" in cmd and hasattr(result, "stdout") and result.stdout:
+            try:
+                import json
+                json.loads(_clean_json_output(result.stdout))
+                return result
+            except Exception:
+                pass
+        raise subprocess.CalledProcessError(result.returncode, cmd, output=getattr(result, "stdout", None), stderr=getattr(result, "stderr", None))
+        
+    return result
 
 import tempfile
 import json
