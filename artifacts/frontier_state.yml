@@ -1,7 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1564: Reflect - [ALIGN] Falsify and remediate private repository
-  survivor'
+current_active_node: 'Node 1589: Plan - [ALIGN] Falsify ontology orthogonal hierarchy'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4623,49 +4622,42 @@ nodes:
   status: Completed
   learnings: Refactored validation gates to use sys.exit
   invariants: []
-- name: 'Node 1575: Harmonize - [BUG] Intake: System Crash in plan-finish'
+- name: 'Node 1563: Plan - [ALIGN] Falsify and remediate private repository survivor'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1581: [BUG] Intake: System Crash in reflect'
-  status: Backlog
-  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `agent-ziran`\n\
-    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/daemon_node.py\"\
-    , line 644, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/daemon_node.py\"\
-    , line 380, in cmd_reflect\n    reflect_node(\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/daemon_node.py\"\
-    , line 355, in reflect_node\n    node.reflect(frontier_file, node_name, learnings,\
-    \ invariants, commit_msg, branch_name, stage=stage, insights=insights)\n  File\
-    \ \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/node_lifecycle.py\"\
-    , line 432, in reflect\n    status_output = git_client.status_porcelain(cwd=worktree_dir).strip()\n\
-    \                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"\
-    /mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/daemon_telemetry.py\"\
-    , line 179, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/drivers/git_client.py\"\
-    , line 140, in status_porcelain\n    res = _run([\"git\", \"status\", \"--porcelain\"\
-    ], capture_output=True, text=True, check=True, cwd=cwd)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/drivers/git_client.py\"\
-    , line 10, in _run\n    return subprocess.run(cmd, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/usr/lib/python3.12/subprocess.py\", line 548, in run\n    with Popen(*popenargs,\
-    \ **kwargs) as process:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/subprocess.py\"\
-    , line 1026, in __init__\n    self._execute_child(args, executable, preexec_fn,\
-    \ close_fds,\n  File \"/usr/lib/python3.12/subprocess.py\", line 1955, in _execute_child\n\
-    \    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError:\
-    \ [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/.worktrees/node/1575-harmonize-plan-finish-crash'\n\
-    \n```\n"
-  invariants: []
-- name: 'Discovery: Harmonize - [BUG] Intake: System Crash in plan-finish'
+- name: 'Discovery: Plan - [ALIGN] Falsify and remediate private repository survivor'
   status: Completed
-  learnings: Formalized system crash validation errors vs true runtime crashes.
+  learnings: Untracked .venv and stale artifacts from repository, updated .gitignore
   invariants:
-  - Validation rejections use sys.exit
-  - true crashes bubble up.
-- name: 'Node 1564: Reflect - [ALIGN] Falsify and remediate private repository survivor'
+  - None
+- name: 'Node 1585: [ALIGN] Falsify ontology orthogonal hierarchy'
+  status: Backlog
+  learnings: Falsify the claim that the repository ontology and organization does
+    not support best practices for orthogonal hierarchy.
+  invariants: []
+- name: 'Node 1586: Harmonize - Path: [ALIGN] Falsify ontology orthogonal hierarchy'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for Path: [ALIGN]
+    Falsify ontology orthogonal hierarchy.'
+  invariants: []
+- name: 'Node 1587: Plan - Path: [ALIGN] Falsify ontology orthogonal hierarchy'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for Path: [ALIGN] Falsify ontology
+    orthogonal hierarchy.'
+  invariants: []
+- name: 'Node 1588: Reflect - Path: [ALIGN] Falsify ontology orthogonal hierarchy'
+  status: Backlog
+  learnings: 'Final reflection and path closure for Path: [ALIGN] Falsify ontology
+    orthogonal hierarchy.'
+  invariants: []
+- name: 'Node 1589: Plan - [ALIGN] Falsify ontology orthogonal hierarchy'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity: Reflect - [ALIGN] Falsify and remediate private repository survivor'
+- name: 'Discovery: Plan - [ALIGN] Falsify ontology orthogonal hierarchy'
   status: Completed
-  learnings: Compiled SHAR retrospective for Path 1561
+  learnings: Authored blueprint verifying orthogonal architecture
   invariants:
   - None
 active_agents:
