@@ -1399,7 +1399,7 @@ nodes:
   invariants:
   - '[x] Completed all child activities and probes of Path 404'
 - name: 'Node 412: Path 412: Implement Strategic Goal Path Alignment Verification'
-  status: Backlog
+  status: Completed
   learnings: Implement a verification tool/test that programmatically asserts that
     all path IDs listed in active strategic goals under strategic_intent.yml correspond
     to existing, open backlog items on GitHub, preventing stale references.
@@ -1427,30 +1427,30 @@ nodes:
     command. Covered all conditions in unittest.
   invariants: []
 - name: 'Node 416: Path 416: Implement NBA Strict Transition Enforcement Gate'
-  status: Backlog
+  status: Completed
   learnings: Implement an automated guardrail in the flow state manager that prevents
     starting or continuing any path unless that path is explicitly registered and
     prioritized in the active strategic ledger, enforcing strict transition compliance.
   invariants: []
 - name: 'Node 417: Probe 417: Align - Implement NBA Strict Transition Enforcement
     Gate'
-  status: Backlog
+  status: Completed
   learnings: Align on the philosophical and technical intent for Implement NBA Strict
     Transition Enforcement Gate.
   invariants: []
 - name: 'Node 418: Probe 418: Plan - Implement NBA Strict Transition Enforcement Gate'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Implement NBA Strict Transition
     Enforcement Gate.
   invariants: []
 - name: 'Node 419: Activity 419: Reflect - Implement NBA Strict Transition Enforcement
     Gate'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Implement NBA Strict Transition
     Enforcement Gate.
   invariants: []
 - name: 'Node 420: Path 420: Audit and Harden Inner-Loop Test Dependencies'
-  status: Backlog
+  status: Completed
   learnings: Analyze the test suite to identify and catalog all files making external
     network or GitHub API requests, establishing a baseline of network-isolated vs
     network-dependent tests to answer whether we can confidently execute downstream
@@ -1479,7 +1479,7 @@ nodes:
   - '[x] All tests run offline'
 - name: 'Node 424: Path 424: Strategic Evaluation of Knowledge Accrual vs Offline
     Velocity Priority'
-  status: Backlog
+  status: Completed
   learnings: Conduct a strategic evaluation and tradeoff analysis between prioritizing
     the offline velocity baseline (SG-0003, Path 368) vs bootstrapping the autonomous
     knowledge accrual pipeline (SG-0005) to determine which pathway unlocks higher
@@ -1511,7 +1511,7 @@ nodes:
   - '[x] Path 424 reflected and complete'
 - name: 'Node 428: Path 428: Value Comparison of Speculative Gap Analysis vs Immediate
     Velocity Remediation'
-  status: Backlog
+  status: Completed
   learnings: Analyze the tradeoff value between conducting a speculative future-state
     gap analysis versus executing immediate network-dependency velocity remediation
     (Path 368) to determine which pathway maximizes compounding system gains.
@@ -1566,7 +1566,7 @@ nodes:
   - '[x] WHY-0045 created'
   - '[x] WHAT-0045 created'
 - name: 'Node 458: Activity 458: Activity: Implement Automated Labeling Invariants'
-  status: Backlog
+  status: Completed
   learnings: Implement automated labeling invariants during node reflect and plan-start
     transitions.
   invariants: []
@@ -1742,7 +1742,7 @@ nodes:
   invariants:
   - kb/WHY-0054-node-sync-latency.md exists
 - name: 'Node 523: Probe 523: Design and Scoping for DAG Meta-Index Support'
-  status: Backlog
+  status: Completed
   learnings: Design and specify the exact parsing and validation rules for DAG-based
     checklists in Meta-Index.
   invariants: []
@@ -1758,7 +1758,7 @@ nodes:
   - Topologically sorted list of ready nodes is returned deterministically.
   - All unit tests in tests/test_gh_graph_skill.py pass cleanly.
 - name: 'Node 525: Activity 525: Implement CLI DAG rendering in node view'
-  status: Backlog
+  status: Completed
   learnings: Implement visual rendering of the topologically sorted DAG in the node
     view and backlog list commands.
   invariants: []
@@ -1822,7 +1822,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 566: Path 566: Codify SG-0005 Tactical Goals and Persona Domain Ownership'
-  status: Backlog
+  status: Completed
   learnings: Define the official agent persona, tactical goals, and selection rubrics
     to claim domain ownership for SG-0005 (Autonomous Knowledge Accrual).
   invariants: []
@@ -1884,7 +1884,7 @@ nodes:
   - 100% test coverage
 - name: 'Node 622: Path 622: Path: Dynamic agent identity resolution and policy ledger
     alignment'
-  status: Backlog
+  status: Completed
   learnings: Evaluate dynamic agent identity resolution against collaborative active
     goals and update the policy ledger to properly encompass the resolution logic.
   invariants: []
@@ -1904,7 +1904,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 626: Path 626: Path: Implement Dynamic Agent Identity Resolution'
-  status: Backlog
+  status: Completed
   learnings: Decouple agent_id from dyad-wu-wei.yml and implement dynamic identity
     resolution based on env var or workspace basename to prevent main branch conflicts.
   invariants: []
@@ -1927,7 +1927,7 @@ nodes:
   learnings: Aligned on dynamic agent identity resolution policy.
   invariants: []
 - name: 'Node 634: Path 634: Path: Refactor frontier_state for concurrent agent awareness'
-  status: Backlog
+  status: Completed
   learnings: Refactor frontier_state.yml/md structure and flow state engine to handle
     concurrent agent executions without file contention or overwrite conflicts.
   invariants: []
@@ -1986,30 +1986,30 @@ nodes:
   invariants:
   - '[x] None'
 - name: 'Node 727: Path 727: Prevent Overly Broad Synthesized Lexical Guards'
-  status: Backlog
+  status: Completed
   learnings: Refactor synthesize_rule in skills/knowledge_accrual_skill.py to ensure
     it does not synthesize overly broad lexical guards (e.g., single digits or absolute
     file paths) by validating the target term against a strict set of domain-specific
     lexical scoping constraints.
   invariants: []
 - name: 'Node 728: Probe 728: Align - Prevent Overly Broad Synthesized Lexical Guards'
-  status: Backlog
+  status: Completed
   learnings: Align on the philosophical and technical intent for Prevent Overly Broad
     Synthesized Lexical Guards.
   invariants: []
 - name: 'Node 729: Probe 729: Plan - Prevent Overly Broad Synthesized Lexical Guards'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Prevent Overly Broad Synthesized
     Lexical Guards.
   invariants: []
 - name: 'Node 730: Activity 730: Reflect - Prevent Overly Broad Synthesized Lexical
     Guards'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Prevent Overly Broad Synthesized
     Lexical Guards.
   invariants: []
 - name: 'Node 732: Path 732: Formalize The Shaping Sequence'
-  status: Backlog
+  status: Completed
   learnings: Codify the sequence to instantiate new Dao instances.
   invariants: []
 - name: 'Node 733: Probe 733: Align - Formalize The Shaping Sequence'
@@ -2017,12 +2017,12 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 734: Path 734: Restructure Repository for Dao Portability'
-  status: Backlog
+  status: Completed
   learnings: Decouple the generic Dao engine from project-specific logic to allow
     clean instantiation.
   invariants: []
 - name: 'Node 735: Probe 735: Plan - Formalize The Shaping Sequence'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Formalize The Shaping Sequence.
   invariants: []
 - name: 'Node 736: Probe 736: Align - Restructure Repository for Dao Portability'
@@ -2030,7 +2030,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 737: Activity 737: Reflect - Formalize The Shaping Sequence'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Formalize The Shaping Sequence.
   invariants: []
 - name: 'Node 738: Probe 738: Plan - Restructure Repository for Dao Portability'
@@ -2038,7 +2038,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 739: Activity 739: Reflect - Restructure Repository for Dao Portability'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Restructure Repository for Dao
     Portability.
   invariants: []
@@ -2101,7 +2101,7 @@ nodes:
   invariants:
   - '[ ] None'
 - name: 'Node 860: Path 860: Path: Codify Substrate-Embedded Playbooks'
-  status: Backlog
+  status: Completed
   learnings: Codify WHY-0088 and HOW-0000 changes to establish the self-documenting
     interface as playbook model
   invariants: []
@@ -2187,7 +2187,7 @@ nodes:
   - '[x] bin/status performs no remote network calls to GitHub'
   - '[x] All tests pass'
 - name: 'Node 876: Path 876: Path: Optimize SPAO Loop Inner-Loop Velocity'
-  status: Backlog
+  status: Completed
   learnings: Optimize SPAO Loop execution and sync performance to maximize inner-loop
     velocity.
   invariants: []
@@ -2230,7 +2230,7 @@ nodes:
   - Unit tests pass 100% green
   - Operational guidelines contain Root Execution and Semantic Purity rules
 - name: 'Node 887: Path 887: Optimize Next-Best-Action Hook Execution Speed'
-  status: Backlog
+  status: Completed
   learnings: Implement local-first next-best-action evaluation to eliminate network
     calls during node sync.
   invariants: []
@@ -2396,7 +2396,7 @@ nodes:
   - '[x] All deliverables for Path 916 verified and closed'
 - name: 'Node 920: Path 920: Implement Wu-wei Dyad Workspace for Operator Digital
     Needs'
-  status: Backlog
+  status: Completed
   learnings: Build a local-first digital companion application enabling the Operator
     to manage vacations and write serial novels with automated semantic/logistical
     verification.
@@ -2413,7 +2413,7 @@ nodes:
   invariants: []
 - name: 'Node 923: Activity 923: Reflect - Implement Wu-wei Dyad Workspace for Operator
     Digital Needs'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Implement Wu-wei Dyad Workspace
     for Operator Digital Needs.
   invariants: []
@@ -2460,7 +2460,7 @@ nodes:
   - '[x] write tests/test_daemon_workspace.py'
   - '[x] run verification tests'
 - name: 'Node 928: Path 928: Implement Wu-wei Dyad Deployment and Bootstrap Installer'
-  status: Backlog
+  status: Completed
   learnings: Provide a playbook or script to deploy and configure a new Wu-wei Dyad
     deployment environment including virtual environment setup and audit daemon integration.
   invariants: []
@@ -2554,18 +2554,18 @@ nodes:
   - TDD test suite achieves 100% pass rate
 - name: 'Node 949: Path 949: Codify Operator Curiosity and Safeguards against Emotional
     Turbulence'
-  status: Backlog
+  status: Completed
   learnings: SG-0005
   invariants: []
 - name: 'Node 950: Discovery 950: Harmonize - Codify Operator Curiosity and Safeguards
     against Emotional Turbulence'
-  status: Backlog
+  status: Completed
   learnings: Harmonize on the philosophical and technical intent for Codify Operator
     Curiosity and Safeguards against Emotional Turbulence.
   invariants: []
 - name: 'Node 951: Discovery 951: Plan - Codify Operator Curiosity and Safeguards
     against Emotional Turbulence'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Codify Operator Curiosity and
     Safeguards against Emotional Turbulence.
   invariants: []
@@ -2611,7 +2611,7 @@ nodes:
   - '[x] Rule 7 added to GEMINI.md'
   - '[x] All tests pass'
 - name: 'Node 959: Activity 959: Reflect - Synthesize Epistemic Retrospective retro-952.md'
-  status: Backlog
+  status: Completed
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-952.md into the system's operational guidelines (the Dao).
   invariants: []
@@ -2671,7 +2671,7 @@ nodes:
   invariants:
   - '[x] Rule 17 added\n[x] Python bootstrapper updated\n[x] Bash installer deleted'
 - name: 'Node 970: Activity 970: Resolve Semantic Conflation in WIP-N=1 Exception'
-  status: Backlog
+  status: Completed
   learnings: Update WIP-N=1 exception message in daemon_node.py to distinguish between
     GitHub PR ID and topological Node ID
   invariants: []
@@ -2712,7 +2712,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 977: Path 977: Maintenance: Refine Knowledge Accrual Mechanisms'
-  status: Backlog
+  status: Completed
   learnings: Address synthesized lexical guard false-positives and improve test harness
     isolation.
   invariants: []
@@ -2755,7 +2755,7 @@ nodes:
   invariants:
   - Tested successfully.
 - name: 'Node 985: Path 985: Investigate and Enforce Workspace Isolation Boundaries'
-  status: Backlog
+  status: Completed
   learnings: Investigate PR 982 failure where file modifications hit the root directory
     instead of the active worktree, and enforce boundaries.
   invariants: []
@@ -2787,7 +2787,7 @@ nodes:
   - N/A
 - name: 'Node 993: Path 993: Preserve Flow State: Autonomous HTIL Bypass for Administrative
     Nodes'
-  status: Backlog
+  status: Completed
   learnings: Implement orchestration logic to autonomously merge PRs or bypass HTIL
     for zero-mutation administrative node closures, preserving SG-0003.
   invariants: []
@@ -2871,7 +2871,7 @@ nodes:
   invariants:
   - N/A
 - name: 'Node 1022: Path 1022: Refine Wu-wei Dyad Intent Understanding'
-  status: Backlog
+  status: Completed
   learnings: Refine Chat Immediacy Protocol to explicitly require Wu-wei Dyad Intent
     Understanding (Dao and Ziran context).
   invariants: []
@@ -2906,7 +2906,7 @@ nodes:
   invariants:
   - N/A
 - name: 'Node 1029: Path 1029: Fix Telemetry Logging Visibility'
-  status: Backlog
+  status: Completed
   learnings: Fix log_stage_advancement to explicitly print to stdout.
   invariants: []
 - name: 'Node 1030: Discovery 1030: Harmonize - Fix Telemetry Logging Visibility'
@@ -3100,7 +3100,7 @@ nodes:
   - '[x] Created WHY-1089'
   - '[x] Updated WHAT-0001'
 - name: 'Node 1094: Path 1094: Audit and Remediate Deprecated KB Files'
-  status: Backlog
+  status: Completed
   learnings: SG-0005
   invariants: []
 - name: 'Node 1095: Discovery 1095: Harmonize - Audit and Remediate Deprecated KB
@@ -3110,7 +3110,7 @@ nodes:
   invariants:
   - WHY-1089
 - name: 'Node 1096: Discovery 1096: Plan - Audit and Remediate Deprecated KB Files'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Audit and Remediate Deprecated
     KB Files.
   invariants: []
@@ -3188,12 +3188,12 @@ nodes:
   - WHY-0082
   - WHY-0770
 - name: 'Node 1113: Path 1113: Codify ISBO Epistemic Primitives'
-  status: Backlog
+  status: Completed
   learnings: Establish the philosophical boundaries of Install, Setup, Bootstrap,
     and Operate to prevent Creator/Director conflation (SG-0002)
   invariants: []
 - name: 'Node 1114: Discovery 1114: Harmonize - Codify ISBO Epistemic Primitives'
-  status: Backlog
+  status: Completed
   learnings: Harmonize on the philosophical and technical intent for Codify ISBO Epistemic
     Primitives.
   invariants: []
@@ -3202,11 +3202,11 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1116: Discovery 1116: Plan - Codify ISBO Epistemic Primitives'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Codify ISBO Epistemic Primitives.
   invariants: []
 - name: 'Node 1117: Activity 1117: Reflect - Codify ISBO Epistemic Primitives'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Codify ISBO Epistemic Primitives.
   invariants: []
 - name: Materialize ISBO Epistemology
@@ -3217,7 +3217,7 @@ nodes:
   - 'The Bootstrapping Invariant: The Agent must strictly require a strategic_intent.yml
     before entering the Operate phase.'
 - name: 'Node 1119: Path 1119: Achieve ISBO Completeness'
-  status: Backlog
+  status: Completed
   learnings: End-to-end implementation of the ISBO (Install, Setup, Bootstrap, Operate)
     architecture to support seamless child workspace generation without Creator/Director
     role conflation.
@@ -3227,7 +3227,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1121: Discovery 1121: Plan - Achieve ISBO Completeness'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Achieve ISBO Completeness.
   invariants: []
 - name: 'Node 1122: Activity 1122: Reflect - Achieve ISBO Completeness'
@@ -3385,7 +3385,7 @@ nodes:
   invariants:
   - Strategic intent correctly reflects all backlog mapping
 - name: 'Node 1152: Path 1152: Codify Falsifications and Extend Lexical Guard'
-  status: Backlog
+  status: Completed
   learnings: 'Address prompt queue: Codify kernel/bin coexistence, Core/Dao Engine
     distinction, Terminology Abstraction Thesis falsification, and extend lexical_guard
     for GLOSSARY-driven renames.'
@@ -3439,7 +3439,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1170: Activity 1170: Implement Healing-Protocol Evaluation'
-  status: Backlog
+  status: Completed
   learnings: Design and implement a post-healing controlled durable-layer fault injection
     process
   invariants: []
@@ -3709,7 +3709,7 @@ nodes:
   - '[x] Unit tests added and pass'
 - name: 'Node 1223: Path 1223: Implement Quarantine Protocol for External Requirement
     Intakes'
-  status: Backlog
+  status: Completed
   learnings: Define and enforce the Quarantine Protocol for requirements submitted
     by external entities, ensuring they are triaged before entering the execution
     backlog.
@@ -3753,7 +3753,7 @@ nodes:
   - '[x] Issue template created with triage label'
   - '[x] Backlog transition gate check added and passes tests'
 - name: 'Node 1230: Activity 1230: Document Requirement Intake Protocol in README'
-  status: Backlog
+  status: Completed
   learnings: Add guidance in root README.md on using the Requirement Intake template
     with triage labeling
   invariants: []
@@ -3779,7 +3779,7 @@ nodes:
   - '[x] WHAT-1208-frontier-cache-spec.md created'
 - name: 'Node 1235: Activity 1235: Use status:triage label for Requirement Intake
     template'
-  status: Backlog
+  status: Completed
   learnings: Update requirement intake template labels and plan_start checks to use
     status:triage instead of triage
   invariants: []
@@ -3793,7 +3793,7 @@ nodes:
   - '[x] Unit tests updated and pass'
 - name: 'Node 1237: Activity 1237: Automate standalone backlog mapping and quarantine
     state cleanup'
-  status: Backlog
+  status: Completed
   learnings: Allow the system to automatically handle unmapped backlog terminal nodes
     and clean up quarantine status labels during sync.
   invariants: []
@@ -3809,7 +3809,7 @@ nodes:
     Paths during sync'
 - name: 'Node 1239: Activity 1239: Implement Holding Path auto-reconciliation for
     triage nodes'
-  status: Backlog
+  status: Completed
   learnings: Implement auto-grouping and cleanup of status:triage nodes under a dedicated
     holding parent Path during sync.
   invariants: []
@@ -3828,7 +3828,7 @@ nodes:
     during sync'
 - name: 'Node 1242: Path 1242: Triage Holding - Standalone Triage & External Requirement
     Intakes'
-  status: Backlog
+  status: Completed
   learnings: A holding Path to consolidate all unpromoted status:triage external intake
     nodes under the same parent class.
   invariants: []
@@ -3903,7 +3903,7 @@ nodes:
   invariants: []
 - name: 'Node 1257: Activity 1257: Implement Dynamic Agent Identity Resolution and
     Decoupled Gates'
-  status: Backlog
+  status: Completed
   learnings: Implement dynamic mapping of environment states to logical personas and
     adaptively relax strategic gates in child workspaces as specified in WHAT-0622
   invariants: []
@@ -4008,7 +4008,7 @@ nodes:
   - N/A
 - name: 'Node 1287: Path 1287: Mock venv provisioning in test_init_workspace to restore
     offline CI speed'
-  status: Backlog
+  status: Completed
   learnings: The test_init_workspace test in tests/test_daemon_workspace.py creates
     a real virtual environment and uses pip to download packages from PyPI. This introduces
     network I/O and violates the offline inner-loop testing invariant (SG-0003), causing
@@ -4017,19 +4017,19 @@ nodes:
   invariants: []
 - name: 'Node 1288: Discovery 1288: Harmonize - Mock venv provisioning in test_init_workspace
     to restore offline CI speed'
-  status: Backlog
+  status: Completed
   learnings: Harmonize on the philosophical and technical intent for Mock venv provisioning
     in test_init_workspace to restore offline CI speed.
   invariants: []
 - name: 'Node 1289: Discovery 1289: Plan - Mock venv provisioning in test_init_workspace
     to restore offline CI speed'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Mock venv provisioning in test_init_workspace
     to restore offline CI speed.
   invariants: []
 - name: 'Node 1290: Activity 1290: Reflect - Mock venv provisioning in test_init_workspace
     to restore offline CI speed'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Mock venv provisioning in test_init_workspace
     to restore offline CI speed.
   invariants: []
@@ -4071,7 +4071,7 @@ nodes:
   - Unit tests must remain completely isolated from dynamic repository files like
     telemetry.jsonl.
 - name: 'Node 1302: Path 1302: Harmonize HOW-1170 with Wu-wei NBA Handoff Protocol'
-  status: Backlog
+  status: Completed
   learnings: Update HOW-1170 to explicitly delegate the post-recovery recommendation
     phase to the universal Wu-wei NBA Handoff Protocol (WHAT-1043), maintaining strict
     orthogonality between physical state-assertion and interaction policy.
@@ -4103,7 +4103,7 @@ nodes:
   invariants:
   - WIP-N=1
 - name: 'Node 1313: Path 1313: Implement headless GH_TOKEN fallback'
-  status: Backlog
+  status: Completed
   learnings: Implement headless GH_TOKEN fallback in github_client.py to permanently
     remediate headless DBus keyring 401 failures.
   invariants: []
@@ -4112,7 +4112,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1315: Discovery 1315: Plan - Implement headless GH_TOKEN fallback'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Implement headless GH_TOKEN
     fallback.
   invariants: []
@@ -4154,21 +4154,21 @@ nodes:
   - '[x] WHAT-1071 specifications are complete and verified'
   - '[x] Parent gate inheritance boundaries are secure'
 - name: 'Node 1394: Path 1394: Dyad Practice Lineage Integration'
-  status: Backlog
+  status: Completed
   learnings: Ensure Wu-wei Dyad core invariants and practices act as a superset of
     the Dyad Practice framework.
   invariants: []
 - name: 'Node 1395: Discovery 1395: Harmonize - Dyad Practice Lineage Integration'
-  status: Backlog
+  status: Completed
   learnings: Harmonize on the philosophical and technical intent for Dyad Practice
     Lineage Integration.
   invariants: []
 - name: 'Node 1396: Discovery 1396: Plan - Dyad Practice Lineage Integration'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Dyad Practice Lineage Integration.
   invariants: []
 - name: 'Node 1397: Activity 1397: Reflect - Dyad Practice Lineage Integration'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Dyad Practice Lineage Integration.
   invariants: []
 - name: 'Node 1398: Discovery 1398: harmonization-to-dyad-practice-superset'
@@ -4194,7 +4194,7 @@ nodes:
   - N/A
 - name: 'Node 1408: Activity 1408: Activity: Act - Implement WHAT-0636 concurrent
     agent ledger'
-  status: Backlog
+  status: Completed
   learnings: Implement WHAT-0636 concurrent agent ledger by updating node_lifecycle.py,
     daemon_node.py, and agent_frontier.py
   invariants: []
@@ -4227,7 +4227,7 @@ nodes:
   - '[x] DAG Integrity Invariant added'
   - '[x] Observe phase automated'
 - name: 'Node 1423: Path 1423: Codify Redundant Node Closure Discipline'
-  status: Backlog
+  status: Completed
   learnings: Establish a formal DAO-compliant mechanism for canceling and closing
     structurally redundant nodes without creating empty PRs or triggering frontier
     corruption.
@@ -4237,12 +4237,12 @@ nodes:
   learnings: Codified cancel mechanism.
   invariants: []
 - name: 'Node 1425: Discovery 1425: Plan - Codify Redundant Node Closure Discipline'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Codify Redundant Node Closure
     Discipline.
   invariants: []
 - name: 'Node 1426: Activity 1426: Reflect - Codify Redundant Node Closure Discipline'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Codify Redundant Node Closure Discipline.
   invariants: []
 - name: 'Node 1429: Activity 1429: Implement Redundant Node Closure Discipline'
@@ -4369,17 +4369,17 @@ nodes:
   invariants:
   - Path 1423 is permanently closed.
 - name: 'Node 1507: Remediate stale audit_state.json survivor'
-  status: Backlog
+  status: Completed
   learnings: The audit_state.json file has a stale last_hash for GEMINI.md and AGENT.md,
     causing false positive /exit alerts. We need to commit the updated hashes.
   invariants: []
 - name: 'Node 1508: Harmonize - Remediate stale audit_state.json survivor'
-  status: Backlog
+  status: Completed
   learnings: Harmonize on the philosophical and technical intent for Remediate stale
     audit_state.json survivor.
   invariants: []
 - name: 'Node 1509: Plan - Remediate stale audit_state.json survivor'
-  status: Backlog
+  status: Completed
   learnings: Technical design and proposed changes for Remediate stale audit_state.json
     survivor.
   invariants: []
@@ -4393,7 +4393,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1512: [BUG] Intake: System Crash in plan-start'
-  status: Backlog
+  status: Completed
   learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
     \ `agent-ziran`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
     \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 646,\

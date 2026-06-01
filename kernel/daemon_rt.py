@@ -49,10 +49,11 @@ def execute_hotfix(file_path, commit_msg):
     git_client.fetch("origin")
 
     # 2. Create hotfix branch off origin/main (works from any context)
+    git_client.switch("origin/main", detach=True, discard_changes=False)
     git_client.checkout_b(branch_name)
 
-    # 3. Stage and commit
-    git_client.add([file_path])
+    # 3. Stage all changes (including derived side-effects) and commit
+    git_client.add(["."])
     git_client.commit(commit_msg)
 
     # 4. Push branch
@@ -62,9 +63,8 @@ def execute_hotfix(file_path, commit_msg):
     pr_body = f"{commit_msg}\n\n> Dao-compliant Tier-2 hotfix via `spao rt hotfix`. Operator review required before merge."
     pr_url = github_client.create_pull_request(commit_msg, pr_body, head=branch_name)
     print(f"Hotfix PR created: {pr_url}")
-    print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
 
-    # 6. Append to ledger
+    # 6. Append to ledger with commit hash and PR url
     commit_hash = git_client.get_commit_hash("HEAD")
     ledger_file = get_ledger_file()
     data = load_data(ledger_file)
@@ -79,6 +79,15 @@ def execute_hotfix(file_path, commit_msg):
     })
     save_data(ledger_file, data)
     print(f"Hotfix logged to {ledger_file}")
+
+    # 7. Commit the ledger update and push again
+    git_client.add([ledger_file])
+    git_client.commit("chore(artifacts): append hotfix ledger")
+    git_client.push(branch_name)
+
+    print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
+
+
 
 def execute_insight(files, title, message, insights=""):
     from drivers import github_client
