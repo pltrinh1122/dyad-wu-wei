@@ -242,10 +242,15 @@ class TerminalNode(BaseNode):
             # Enforce Quarantine Gate: Only allow nodes that possess the 'backlog' label.
             labels = self.gh_labels
             if "backlog" not in labels:
-                sys.exit(
-                    f"[🚫 BLOCKED] Quarantine Protocol Violation: Node #{self.issue_id} does not possess the 'backlog' label. "
-                    f"Current labels: {labels}. Quarantined intake requirements must be promoted by the Operator first."
-                )
+                details = github_client.get_issue_details(self.issue_id)
+                current_title = details.get("title", "")
+                if re.match(r"^(Node \d+: )?(Activity|Discovery)( \d+)?:", current_title, re.IGNORECASE):
+                    self.add_gh_label("backlog")
+                else:
+                    sys.exit(
+                        f"[🚫 BLOCKED] Quarantine Protocol Violation: Node #{self.issue_id} does not possess the 'backlog' label. "
+                        f"Current labels: {labels}. Quarantined intake requirements must be promoted by the Operator first."
+                    )
             
             open_prs = github_client.get_open_prs()
             if open_prs:

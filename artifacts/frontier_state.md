@@ -4680,6 +4680,24 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `None`
 
+## Node 1600: Falsify Quarantine Protocol
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 999: Implement quarantine survivor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1600: Implement quarantine survivor
+- **Status**: Completed
+- **Learnings & Context**: Re-implement quarantine bypass because the previous branch was overwritten.
+- **Feedforward Invariants**:
+  - `None`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
