@@ -11,6 +11,7 @@ venv/
 artifacts/telemetry.jsonl
 artifacts/prompt_backlog.yml
 artifacts/prompt_backlog.yml.lock
+artifacts/audit_state.json
 
 # Workspace
 /.workspace/
