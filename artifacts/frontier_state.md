@@ -4656,39 +4656,15 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `None`
 
-## Node 1585: [ALIGN] Falsify ontology orthogonal hierarchy
-- **Status**: Backlog
-- **Learnings & Context**: Falsify the claim that the repository ontology and organization does not support best practices for orthogonal hierarchy.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1586: Harmonize - Path: [ALIGN] Falsify ontology orthogonal hierarchy
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: [ALIGN] Falsify ontology orthogonal hierarchy.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1587: Plan - Path: [ALIGN] Falsify ontology orthogonal hierarchy
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: [ALIGN] Falsify ontology orthogonal hierarchy.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1588: Reflect - Path: [ALIGN] Falsify ontology orthogonal hierarchy
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Path: [ALIGN] Falsify ontology orthogonal hierarchy.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1589: Plan - [ALIGN] Falsify ontology orthogonal hierarchy
+## Node 1591: Reflect - [ALIGN] Falsify ontology orthogonal hierarchy
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery: Plan - [ALIGN] Falsify ontology orthogonal hierarchy
+## Activity: Reflect - [ALIGN] Falsify ontology orthogonal hierarchy
 - **Status**: Completed
-- **Learnings & Context**: Authored blueprint verifying orthogonal architecture
+- **Learnings & Context**: Closed path 1585 by synthesizing learnings from discovery
 - **Feedforward Invariants**:
   - `None`
 
