@@ -4644,60 +4644,17 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1575: Harmonize - [BUG] Intake: System Crash in plan-finish
+## Node 1563: Plan - [ALIGN] Falsify and remediate private repository survivor
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1581: [BUG] Intake: System Crash in reflect
-- **Status**: Backlog
-- **Learnings & Context**: ## System Crash Report
-
-**Subcommand:** `reflect`
-**Persona:** `agent-ziran`
-
-### Traceback
-```python
-Traceback (most recent call last):
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/daemon_node.py", line 644, in main
-    cmd_reflect(args)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/daemon_node.py", line 380, in cmd_reflect
-    reflect_node(
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/daemon_node.py", line 355, in reflect_node
-    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/node_lifecycle.py", line 432, in reflect
-    status_output = git_client.status_porcelain(cwd=worktree_dir).strip()
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/kernel/daemon_telemetry.py", line 179, in wrapper
-    result = func(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/drivers/git_client.py", line 140, in status_porcelain
-    res = _run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True, cwd=cwd)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/drivers/git_client.py", line 10, in _run
-    return subprocess.run(cmd, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/subprocess.py", line 548, in run
-    with Popen(*popenargs, **kwargs) as process:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
-    raise child_exception_type(errno_num, err_msg, err_filename)
-FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1575-harmonize-plan-finish-crash/.worktrees/node/1575-harmonize-plan-finish-crash'
-
-```
-
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Discovery: Harmonize - [BUG] Intake: System Crash in plan-finish
+## Discovery: Plan - [ALIGN] Falsify and remediate private repository survivor
 - **Status**: Completed
-- **Learnings & Context**: Formalized system crash validation errors vs true runtime crashes.
+- **Learnings & Context**: Untracked .venv and stale artifacts from repository, updated .gitignore
 - **Feedforward Invariants**:
-  - `Validation rejections use sys.exit`
-  - `true crashes bubble up.`
+  - `None`
 
 ## Active Agents Matrix
 * **agent-ziran**:
