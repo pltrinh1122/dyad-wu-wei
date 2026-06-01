@@ -254,8 +254,8 @@ class TerminalNode(BaseNode):
             
             open_prs = github_client.get_open_prs()
             if open_prs:
-                pr_list = [pr.get('number', 'Unknown') for pr in open_prs]
-                sys.exit(f"[🚫 BLOCKED] WIP-N=1 Invariant Violation: Cannot plan node #{self.issue_id} because there are open pull requests: {pr_list}. You must merge or close them first.")
+                pr_info = [f"PR #{pr.get('number', 'Unknown')} (branch: {pr.get('headRefName', 'Unknown')})" for pr in open_prs]
+                sys.exit(f"[🚫 BLOCKED] WIP-N=1 Invariant Violation: Cannot plan node #{self.issue_id} because there are open pull requests: {pr_info}. You must merge or close them first.")
             
             from kernel.daemon_strategic import verify_node_transition_allowed
             verify_node_transition_allowed(self.issue_id)
@@ -359,8 +359,8 @@ class TerminalNode(BaseNode):
             
             open_prs = github_client.get_open_prs()
             if open_prs:
-                pr_list = [pr.get('number', 'Unknown') for pr in open_prs]
-                sys.exit(f"[🚫 BLOCKED] WIP-N=1 Invariant Violation: Cannot checkout node #{self.issue_id} because there are open pull requests: {pr_list}. You must merge or close them first.")
+                pr_info = [f"PR #{pr.get('number', 'Unknown')} (branch: {pr.get('headRefName', 'Unknown')})" for pr in open_prs]
+                sys.exit(f"[🚫 BLOCKED] WIP-N=1 Invariant Violation: Cannot checkout node #{self.issue_id} because there are open pull requests: {pr_info}. You must merge or close them first.")
             
             self.set_status("in_progress")
             tx.register_rollback(self.set_status, "open")
