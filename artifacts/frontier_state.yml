@@ -4650,25 +4650,7 @@ nodes:
     matching. Tests passed.
   invariants:
   - None
-- name: 'Node 1602: Falsify PR and Node Conflation'
-  status: Backlog
-  learnings: Investigate and remediate the issue where PR IDs and Node IDs are conflated
-    by the Agent due to conflicting rules.
-  invariants: []
-- name: 'Node 1603: Harmonize - Falsify PR and Node Conflation'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Falsify PR and
-    Node Conflation.
-  invariants: []
-- name: 'Node 1604: Plan - Falsify PR and Node Conflation'
-  status: Backlog
-  learnings: Technical design and proposed changes for Falsify PR and Node Conflation.
-  invariants: []
-- name: 'Node 1605: Reflect - Falsify PR and Node Conflation'
-  status: Backlog
-  learnings: Final reflection and path closure for Falsify PR and Node Conflation.
-  invariants: []
-- name: 'Node 1606: Implement PR and Node ID decoupling'
+- name: 'Node 1600: Falsify Quarantine Protocol'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
@@ -4676,11 +4658,21 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Implement PR and Node ID decoupling
+- name: 'Activity 1600: Implement quarantine survivor'
   status: Completed
-  learnings: Falsified the conflation between PR IDs and Node IDs. Added explicit
-    branch name output in WIP-N=1 check to prevent the Agent from confusing the PR
-    number with the Node number. Wrote WHY-1606.
+  learnings: Re-implement quarantine bypass because the previous branch was overwritten.
+  invariants:
+  - None
+- name: 'Node 1603: Harmonize - Falsify PR and Node Conflation'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Harmonize PR and Node Conflation and fix NBA sync bug
+  status: Completed
+  learnings: Created 1603_harmonization.md detailing the PR/Node ID falsification.
+    Fixed a severe bug in github_client.py where GraphQL deprecation warnings on stderr
+    caused gh issue view to exit with 1, which broke daemon_nba.py and surfaced corrupt
+    mock nodes.
   invariants:
   - None
 active_agents:
