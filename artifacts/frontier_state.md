@@ -1199,36 +1199,6 @@
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 31: Probe 31: Future Work Item
-- **Status**: Backlog
-- **Learnings & Context**: Description of work
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 100: Path 100: New Path Title
-- **Status**: Backlog
-- **Learnings & Context**: Macro goal
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 101: Probe 101: Align - New Path Title
-- **Status**: Backlog
-- **Learnings & Context**: Align on the philosophical and technical intent for New Path Title.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 102: Probe 102: Plan - New Path Title
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for New Path Title.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 103: Activity 103: Reflect - New Path Title
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for New Path Title.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
 ## Node 378: Activity 378: Reflect - Implement Backlog Node Factory Robustness
 - **Status**: Completed
 - **Learnings & Context**: Implemented the Backlog Node Factory robustness improvements: duplicate reuse (idempotency), parent path verification, dynamic labeling from node.yml, and active dependency checking during plan-start. Added 6 new unit tests and verified all 130 tests pass successfully.
@@ -4707,6 +4677,18 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 ## Harmonize PR and Node Conflation and fix NBA sync bug
 - **Status**: Completed
 - **Learnings & Context**: Created 1603_harmonization.md detailing the PR/Node ID falsification. Fixed a severe bug in github_client.py where GraphQL deprecation warnings on stderr caused gh issue view to exit with 1, which broke daemon_nba.py and surfaced corrupt mock nodes.
+- **Feedforward Invariants**:
+  - `None`
+
+## Node 1604: Plan - Falsify PR and Node Conflation
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Documented the Falsify PR and Node Conflation plan
+- **Status**: Completed
+- **Learnings & Context**: Created 1604_plan.md to summarize the decoupling of PR logic and Node locking (implemented out of band in Node 1606). Further closed all legacy dummy issues from the GitHub backlog and purged them from the worktree frontier state.
 - **Feedforward Invariants**:
   - `None`
 

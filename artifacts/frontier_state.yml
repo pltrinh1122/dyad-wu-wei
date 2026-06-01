@@ -1380,26 +1380,6 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 31: Probe 31: Future Work Item'
-  status: Backlog
-  learnings: Description of work
-  invariants: []
-- name: 'Node 100: Path 100: New Path Title'
-  status: Backlog
-  learnings: Macro goal
-  invariants: []
-- name: 'Node 101: Probe 101: Align - New Path Title'
-  status: Backlog
-  learnings: Align on the philosophical and technical intent for New Path Title.
-  invariants: []
-- name: 'Node 102: Probe 102: Plan - New Path Title'
-  status: Backlog
-  learnings: Technical design and proposed changes for New Path Title.
-  invariants: []
-- name: 'Node 103: Activity 103: Reflect - New Path Title'
-  status: Backlog
-  learnings: Final reflection and path closure for New Path Title.
-  invariants: []
 - name: 'Node 378: Activity 378: Reflect - Implement Backlog Node Factory Robustness'
   status: Completed
   learnings: 'Implemented the Backlog Node Factory robustness improvements: duplicate
@@ -4673,6 +4653,17 @@ nodes:
     Fixed a severe bug in github_client.py where GraphQL deprecation warnings on stderr
     caused gh issue view to exit with 1, which broke daemon_nba.py and surfaced corrupt
     mock nodes.
+  invariants:
+  - None
+- name: 'Node 1604: Plan - Falsify PR and Node Conflation'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Documented the Falsify PR and Node Conflation plan
+  status: Completed
+  learnings: Created 1604_plan.md to summarize the decoupling of PR logic and Node
+    locking (implemented out of band in Node 1606). Further closed all legacy dummy
+    issues from the GitHub backlog and purged them from the worktree frontier state.
   invariants:
   - None
 active_agents:
