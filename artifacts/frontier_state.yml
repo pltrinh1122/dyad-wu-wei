@@ -4666,6 +4666,18 @@ nodes:
     issues from the GitHub backlog and purged them from the worktree frontier state.
   invariants:
   - None
+- name: 'Node 1605: Reflect - Falsify PR and Node Conflation'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Reflect on Falsify PR and Node Conflation
+  status: Completed
+  learnings: Completed the implementation, harmonization, and plan for PR and Node
+    Conflation. PR 1607 handled the logical branch isolation. PR 1608 fixed the NBA
+    exit code 1 bug in daemon_nba. PR 1609 documented the plan and purged legacy ghost
+    backlog issues. Path 1602 is now structurally satisfied.
+  invariants:
+  - None
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
