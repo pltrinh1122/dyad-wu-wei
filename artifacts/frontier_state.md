@@ -4692,6 +4692,18 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `None`
 
+## Node 1605: Reflect - Falsify PR and Node Conflation
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Reflect on Falsify PR and Node Conflation
+- **Status**: Completed
+- **Learnings & Context**: Completed the implementation, harmonization, and plan for PR and Node Conflation. PR 1607 handled the logical branch isolation. PR 1608 fixed the NBA exit code 1 bug in daemon_nba. PR 1609 documented the plan and purged legacy ghost backlog issues. Path 1602 is now structurally satisfied.
+- **Feedforward Invariants**:
+  - `None`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
