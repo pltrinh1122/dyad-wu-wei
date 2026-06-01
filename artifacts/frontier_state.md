@@ -4680,7 +4680,31 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `None`
 
-## Node 1600: Falsify Quarantine Protocol
+## Node 1602: Falsify PR and Node Conflation
+- **Status**: Backlog
+- **Learnings & Context**: Investigate and remediate the issue where PR IDs and Node IDs are conflated by the Agent due to conflicting rules.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1603: Harmonize - Falsify PR and Node Conflation
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Falsify PR and Node Conflation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1604: Plan - Falsify PR and Node Conflation
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Falsify PR and Node Conflation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1605: Reflect - Falsify PR and Node Conflation
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Falsify PR and Node Conflation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1606: Implement PR and Node ID decoupling
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
@@ -4692,9 +4716,9 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1600: Implement quarantine survivor
+## Implement PR and Node ID decoupling
 - **Status**: Completed
-- **Learnings & Context**: Re-implement quarantine bypass because the previous branch was overwritten.
+- **Learnings & Context**: Falsified the conflation between PR IDs and Node IDs. Added explicit branch name output in WIP-N=1 check to prevent the Agent from confusing the PR number with the Node number. Wrote WHY-1606.
 - **Feedforward Invariants**:
   - `None`
 
