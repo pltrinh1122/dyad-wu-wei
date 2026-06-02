@@ -92,3 +92,9 @@ hotfixes:
   message: 'docs(policy): codify intent broadcast to mitigate operator anxiety'
   pr: https://github.com/pltrinh1122/dyad-wu-wei/pull/1637
   dao_compliant: true
+- hash: c7510733d1640e3906d6c394783022acda05e11e
+  timestamp: '2026-06-02T19:03:33Z'
+  file: artifacts/frontier_state.yml
+  message: 'Hotfix: Correct Path 1692 mapping and append child nodes'
+  pr: https://github.com/pltrinh1122/dyad-wu-wei/pull/1697
+  dao_compliant: true
