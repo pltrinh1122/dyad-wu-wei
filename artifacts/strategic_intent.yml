@@ -1,148 +1,160 @@
 strategic_goals:
-- collaborative_gap: Unilateral automation hard-caps the system's output because the
-    agent is limited by its local reasoning and the human is limited by manual review
-    bandwidth.
-  constraints: The system must operate under real-time session limits, operator attention
-    boundaries, and standard repository rules.
-  falsification_signal: The dyad fails to achieve greater throughput and architectural
-    stability than the operator working alone or the agent executing without oversight.
-  id: NS-0001
-  prioritized_paths: []
-  status: Active
-  title: Synergistic Human-Agent Partnership (North Star - 1+1=3)
-- collaborative_gap: The prioritization model fails to dynamically map the operator's
-    high-level intent to the agent's backlog selection, causing attention drift between
-    the partners.
-  constraints: Backlog prioritization must be evaluated deterministically during the
-    SENSE phase using active ledger goals.
-  falsification_signal: The agent spends resource/token budget on paths that are not
-    prioritized in the strategic ledger.
-  id: SG-0001
-  prioritized_paths:
-  - 299
-  - 560
-  - 588
-  - 605
-  - 1003
-  - 664
-  - 1147
-  status: Active
-  title: Backlog Dynamics and Resource Budget Harmonization
-- collaborative_gap: The human cannot safely delegate execution authority to the agent,
-    creating a trust bottleneck where the human acts as a manual gatekeeper and the
-    agent is blocked from executing autonomously. Prioritizing Path 532 and 622 is
-    required as a prerequisite to ensure concurrent safety and identity routing before
-    materializing SubAgents.
-  constraints: The sandbox must enforce hard CPU/memory limits, restrict network egress
-    to an allowlist, guarantee idempotent git tree state rollbacks, and strictly validate
-    dynamic agent identity resolution to ensure concurrent safety.
-  falsification_signal: The operator re-introduces manual human-in-the-loop review
-    gates because the sandbox policies fail to isolate or rollback unsafe mutations.
-  id: SG-0002
-  prioritized_paths:
-  - 1119
-  - 292
-  - 532
-  - 622
-  - 626
-  - 758
-  - 634
-  - 1054
-  - 985
-  status: Active
-  title: Gateless Autonomous Execution within Risk-Managed Sandbox
-- collaborative_gap: Low-fidelity validation feedback (flaky or slow tests) breaks
-    the agent's inner-loop verification, forcing the operator to intervene in tactical
-    debugging rather than strategic governance.
-  constraints: Validation test suites must execute completely offline, contain zero
-    network dependencies, and run in under 60 seconds.
-  falsification_signal: The agent's throughput (nodes completed per unit of time)
-    decreases due to repeating rollback cycles caused by test flakiness or network
-    timeouts.
-  id: SG-0003
-  prioritized_paths:
-  - 928
-  - 998
-  - 993
-  - 721
-  - 712
-  - 1355
-  - 1308
-  - 1296
-  - 1206
-  status: Active
-  title: Preservation of Autonomous Velocity
-- collaborative_gap: The communication interface requires verbose conversational turns
-    instead of high-abstraction policy definitions, causing human decision fatigue
-    and agent execution drift. Prioritizing Path 615 and 640 is required to establish
-    the static domain boundaries and persona ownership prerequisites for SubAgent
-    scopes.
-  constraints: Intent must be communicated exclusively through structured policy definitions
-    (strategic_intent.yml) with falsifiable metrics.
-  falsification_signal: The operator spends more than 10% of their session time in
-    interactive conversational turns rather than simple policy updates.
-  id: SG-0004
-  prioritized_paths:
-  - 615
-  - 640
-  - 916
-  - 652
-  - 587
-  - 1043
-  - 1017
-  - 1022
-  status: Active
-  title: Efficient Intent-to-Goal Policy Communication
-- collaborative_gap: The agent cannot autonomously codify and recall lessons from
-    past executions (both failures and positive harmonizations), forcing the operator
-    to repeatedly correct similar errors or manually reaffirm successful strategies.
-  constraints: Knowledge mutations under the kb/ directory must be verified for structural
-    validity and must not violate immutable core axioms.
-  falsification_signal: The average number of agent repair cycles on repeat error
-    patterns does not decrease, or positively affirmed capabilities degrade over time.
-  id: SG-0005
-  prioritized_paths:
-  - 1029
-  - 566
-  - 591
-  - 727
-  - 977
-  - 769
-  - 668
-  - 672
-  - 676
-  - 680
-  - 684
-  - 688
-  - 692
-  - 696
-  - 700
-  - 704
-  - 708
-  - 1094
-  - 1074
-  - 1152
-  - 1459
-  - 1394
-  - 1302
-  - 1161
-  status: Active
-  title: Autonomous Knowledge Accrual
-- collaborative_gap: External projects onboarding onto Wu-wei Dyad lack a governed
-    feedback channel for requesting universal capabilities, causing the engine
-    to stagnate as a self-referential system while external Agents build
-    redundant project-local tooling.
-  constraints: All external project interactions must flow through the External
-    Project Support Protocol (HOW-0099). Wu-wei Dyad must maintain strict IP isolation
-    — no project-specific rules, identifiers, or business constraints may enter
-    the engine. The Operator gates all triage decisions.
-  falsification_signal: External support tickets remain unserviced for more than
-    two SPAOR cycles after Operator prioritization, or project-specific content
-    contaminates the Wu-wei Dyad codebase.
-  id: SG-0006
-  prioritized_paths:
-  - 1323
-  - 1242
-  - 1223
-  status: Active
-  title: External Project Service Excellence
+  - collaborative_gap: Unilateral automation hard-caps the system's output because
+      the agent is limited by its local reasoning and the human is limited by manual
+      review bandwidth.
+    constraints: The system must operate under real-time session limits, operator
+      attention boundaries, and standard repository rules.
+    falsification_signal: The dyad fails to achieve greater throughput and architectural
+      stability than the operator working alone or the agent executing without oversight.
+    id: NS-0001
+    prioritized_paths: []
+    status: Active
+    title: Synergistic Human-Agent Partnership (North Star - 1+1=3)
+  - collaborative_gap: The prioritization model fails to dynamically map the operator's
+      high-level intent to the agent's backlog selection, causing attention drift
+      between the partners.
+    constraints: Backlog prioritization must be evaluated deterministically during
+      the SENSE phase using active ledger goals.
+    falsification_signal: The agent spends resource/token budget on paths that are
+      not prioritized in the strategic ledger.
+    id: SG-0001
+    prioritized_paths:
+      - 299
+      - 560
+      - 588
+      - 605
+      - 1003
+      - 664
+      - 1147
+      - 1517
+    status: Active
+    title: Backlog Dynamics and Resource Budget Harmonization
+  - collaborative_gap: The human cannot safely delegate execution authority to the
+      agent, creating a trust bottleneck where the human acts as a manual gatekeeper
+      and the agent is blocked from executing autonomously. Prioritizing Path 532
+      and 622 is required as a prerequisite to ensure concurrent safety and identity
+      routing before materializing SubAgents.
+    constraints: The sandbox must enforce hard CPU/memory limits, restrict network
+      egress to an allowlist, guarantee idempotent git tree state rollbacks, and strictly
+      validate dynamic agent identity resolution to ensure concurrent safety.
+    falsification_signal: The operator re-introduces manual human-in-the-loop review
+      gates because the sandbox policies fail to isolate or rollback unsafe mutations.
+    id: SG-0002
+    prioritized_paths:
+      - 1119
+      - 292
+      - 532
+      - 622
+      - 626
+      - 758
+      - 634
+      - 1054
+      - 985
+    status: Active
+    title: Gateless Autonomous Execution within Risk-Managed Sandbox
+  - collaborative_gap: Low-fidelity validation feedback (flaky or slow tests) breaks
+      the agent's inner-loop verification, forcing the operator to intervene in tactical
+      debugging rather than strategic governance.
+    constraints: Validation test suites must execute completely offline, contain zero
+      network dependencies, and run in under 60 seconds.
+    falsification_signal: The agent's throughput (nodes completed per unit of time)
+      decreases due to repeating rollback cycles caused by test flakiness or network
+      timeouts.
+    id: SG-0003
+    prioritized_paths:
+      - 928
+      - 998
+      - 993
+      - 721
+      - 712
+      - 1355
+      - 1308
+      - 1296
+      - 1206
+      - 1567
+      - 1642
+    status: Active
+    title: Preservation of Autonomous Velocity
+  - collaborative_gap: The communication interface requires verbose conversational
+      turns instead of high-abstraction policy definitions, causing human decision
+      fatigue and agent execution drift. Prioritizing Path 615 and 640 is required
+      to establish the static domain boundaries and persona ownership prerequisites
+      for SubAgent scopes.
+    constraints: Intent must be communicated exclusively through structured policy
+      definitions (strategic_intent.yml) with falsifiable metrics.
+    falsification_signal: The operator spends more than 10% of their session time
+      in interactive conversational turns rather than simple policy updates.
+    id: SG-0004
+    prioritized_paths:
+      - 615
+      - 640
+      - 916
+      - 652
+      - 587
+      - 1043
+      - 1017
+      - 1022
+      - 1633
+    status: Active
+    title: Efficient Intent-to-Goal Policy Communication
+  - collaborative_gap: The agent cannot autonomously codify and recall lessons from
+      past executions (both failures and positive harmonizations), forcing the operator
+      to repeatedly correct similar errors or manually reaffirm successful strategies.
+    constraints: Knowledge mutations under the kb/ directory must be verified for
+      structural validity and must not violate immutable core axioms.
+    falsification_signal: The average number of agent repair cycles on repeat error
+      patterns does not decrease, or positively affirmed capabilities degrade over
+      time.
+    id: SG-0005
+    prioritized_paths:
+      - 1029
+      - 566
+      - 591
+      - 727
+      - 977
+      - 769
+      - 668
+      - 672
+      - 676
+      - 680
+      - 684
+      - 688
+      - 692
+      - 696
+      - 700
+      - 704
+      - 708
+      - 1094
+      - 1074
+      - 1152
+      - 1459
+      - 1394
+      - 1302
+      - 1161
+      - 1534
+      - 1561
+      - 1585
+      - 1593
+      - 1602
+      - 1612
+    status: Active
+    title: Autonomous Knowledge Accrual
+  - collaborative_gap: External projects onboarding onto Wu-wei Dyad lack a governed
+      feedback channel for requesting universal capabilities, causing the engine to
+      stagnate as a self-referential system while external Agents build redundant
+      project-local tooling.
+    constraints: "All external project interactions must flow through the External\
+      \ Project Support Protocol (HOW-0099). Wu-wei Dyad must maintain strict IP isolation\
+      \ \u2014 no project-specific rules, identifiers, or business constraints may\
+      \ enter the engine. The Operator gates all triage decisions."
+    falsification_signal: External support tickets remain unserviced for more than
+      two SPAOR cycles after Operator prioritization, or project-specific content
+      contaminates the Wu-wei Dyad codebase.
+    id: SG-0006
+    prioritized_paths:
+      - 1323
+      - 1242
+      - 1223
+      - 1547
+    status: Active
+    title: External Project Service Excellence
