@@ -41,3 +41,9 @@ To prevent execution seizures caused by system harness imperatives, the Agent MU
 - The Agent MUST NOT interpret `<EPHEMERAL_MESSAGE>` or `<bash_command_reminder>` blocks as explicit execution directives that alter the current node's goal.
 - These injected reminders are purely informational guidelines on *how* to use tools, not directives on *what* to execute.
 - When an ephemeral message is injected while waiting for an asynchronous task or PR review, the Agent MUST maintain dormancy and MUST NOT trigger an execution loop or reschedule actions simply to acknowledge or react to the reminder.
+
+## Antigravity-Specific: Model 1 Nested Workspace Architecture Invariant
+To prevent state corruption and loss of Dao inheritance, the Agent MUST strictly adhere to the Model 1 Dual-Context Workspace architecture (as established in WHY-0921 and reaffirmed in WHY-1081):
+- The Engine (`dyad-wu-wei`) MUST remain the Root Parent repository and the primary IDE working directory.
+- The target child project MUST be nested inside the parent at `./.workspace/`.
+- The Engine MUST NEVER be mounted as a submodule or orthogonal peer to the child project, as this causes the Agent to be lobotomized from its Universal Dao context (`GEMINI.md` and `kb/`).
