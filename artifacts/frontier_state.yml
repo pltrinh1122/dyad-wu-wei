@@ -1763,10 +1763,10 @@ nodes:
     view and backlog list commands.
   invariants: []
 - name: 'Node 526: Activity 526: Reflect - Elevate Path Meta-Index from List to DAG'
-  status: Backlog
-  learnings: Perform final verification of the DAG parsing and rendering implementations,
-    update the path status, and close the path.
-  invariants: []
+  status: Completed
+  learnings: Synthesized retrospective for Path 299 in retro-526.md
+  invariants:
+  - none
 - name: 'Node 300: Probe 300: Probe: Evaluation of DAG Visualization Requirements'
   status: Completed
   learnings: Documented DAG visualization requirements in WHY-0055 and registered
@@ -4934,9 +4934,11 @@ nodes:
   invariants: []
 - name: 'Node 1693: Discovery: Harmonize - Establish Job Discipline for JTBD and Dialectical
     Falsification'
-  status: Backlog
-  learnings: ''
-  invariants: []
+  status: Completed
+  learnings: Synthesized industry best practices for JTBD and Dialectical Falsification,
+    affirming the constraint axiom and decision-framing.
+  invariants:
+  - none
 - name: 'Node 1694: Discovery: Plan - Establish Job Discipline for JTBD and Dialectical
     Falsification'
   status: Backlog
@@ -4952,17 +4954,21 @@ nodes:
   status: Backlog
   learnings: ''
   invariants: []
-- name: 'Node 1694: Plan - Establish Job Discipline for JTBD and Dialectical Falsification'
+- name: 'Node 1693: Harmonize - Establish Job Discipline for JTBD and Dialectical
+    Falsification'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1695: Reflect - Establish Job Discipline for JTBD and Dialectical Falsification'
   status: Completed
-  learnings: Created schema and specification for the Job Discipline template.
+  learnings: Captured insights from Node 1694 into retro-1695.md regarding structural
+    invariants.
   invariants:
   - none
-- name: 'Node 1696: Create Job Discipline template for JTBD and Dialectical Falsification'
-  status: Completed
-  learnings: Created the Job Discipline template artifacts/job-discipline-template.md
-    in accordance with WHAT-1694.
-  invariants:
-  - none
+- name: 'Node 526: Reflect - Elevate Path Meta-Index from List to DAG'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
