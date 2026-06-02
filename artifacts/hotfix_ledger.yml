@@ -81,3 +81,9 @@ hotfixes:
   message: 'Hotfix: Remove deprecated term examples from WHAT-1096 spec'
   pr: https://github.com/pltrinh1122/dyad-wu-wei/pull/1251
   dao_compliant: true
+- hash: 3968ee57e772c85b6944e63f561f4ba668706796
+  timestamp: '2026-06-02T01:13:23Z'
+  file: kb/WHY-1633-intent-broadcast.md
+  message: 'docs(kdr): add decision record for intent broadcast'
+  pr: https://github.com/pltrinh1122/dyad-wu-wei/pull/1638
+  dao_compliant: true
