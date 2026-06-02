@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 999: Implement quarantine survivor'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -4847,6 +4847,12 @@ nodes:
     broadcasts its intent (Flight Plan) before dropping into an autonomous execution
     loop.
   invariants: []
+- name: 'Node 1535: Discovery: Harmonize - Falsify NBA Handoff and Automate Path Starting'
+  status: Completed
+  learnings: Confirmed WHY-1538 explicitly falsifies manual handoff. Clarified in
+    the document.
+  invariants:
+  - '[x] Rationale documented'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

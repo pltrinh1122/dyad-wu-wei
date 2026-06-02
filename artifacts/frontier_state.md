@@ -4937,6 +4937,12 @@ FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dy
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Node 1535: Discovery: Harmonize - Falsify NBA Handoff and Automate Path Starting
+- **Status**: Completed
+- **Learnings & Context**: Confirmed WHY-1538 explicitly falsifies manual handoff. Clarified in the document.
+- **Feedforward Invariants**:
+  - `[x] Rationale documented`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
