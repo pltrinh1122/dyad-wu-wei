@@ -15,7 +15,7 @@ To optimize for Wu-wei while preserving structural safety, the SPAO execution lo
 **The Administrative Boundary:**
 A node reflection is mathematically defined as "Administrative" if the physical `git diff` against `origin/main` reveals that **100% of the modified files** are contained within the `artifacts/` directory.
 
-- **`artifacts/`**: Represents ephemeral or tracked state/telemetry (e.g., `frontier_state.md`, `audit_state.json`, `prompt_backlog.yml`). Changes here cannot alter agentic behavior or code execution. Auto-merging is provably safe.
+- **`artifacts/`**: Represents ephemeral or tracked state/telemetry (e.g., `frontier_state.md`, `audit_state.json`, `prompt_backlog.yml`). Changes here cannot alter agentic behavior or code execution. Auto-merging is provably safe. However, **load-bearing artifacts**, such as templates (files containing 'template' in their name), establish architectural axioms and MUST be subjected to HTIL review.
 - **`kb/`**: Represents the system's "ROM". Mutating knowledge primitives alters future Agent decision-making. These must be subjected to HTIL to prevent hallucinatory policy drift.
 - **`kernel/`, `drivers/`, `tests/`**: Represents executable code logic. These must be subjected to HTIL to prevent functional degradation.
 

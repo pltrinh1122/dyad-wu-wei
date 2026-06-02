@@ -546,7 +546,7 @@ class TerminalNode(BaseNode):
             is_admin_bypass = False
             if not modified_files:
                 is_admin_bypass = True
-            elif all(f.startswith("artifacts/") or f.startswith("kb/") for f in modified_files):
+            elif all(f.startswith("artifacts/") and "template" not in f.lower() for f in modified_files):
                 is_admin_bypass = True
 
             if is_admin_bypass:
