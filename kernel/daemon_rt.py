@@ -56,7 +56,19 @@ def execute_hotfix(file_path, commit_msg):
     git_client.add(["."])
     git_client.commit(commit_msg)
 
-    # 4. Push branch
+    # 4. Enforce Local CI Verification Invariant for hotfixes
+    try:
+        import subprocess
+        print("Running local test suite verification before hotfix reflection...")
+        from drivers import path_resolver
+        run_tests_script = os.path.join(path_resolver.get_core_dir(), "bin", "run-tests")
+        subprocess.run([run_tests_script], cwd=path_resolver.get_core_dir(), check=True)
+        print("Local test suite passed.")
+    except subprocess.CalledProcessError:
+        print("[🚫 BLOCKED] Reflection Blocked: Local test suite verification failed. You must remediate CI failures before executing this hotfix.")
+        sys.exit(1)
+
+    # 5. Push branch
     git_client.push(branch_name)
 
     # 5. Open PR for Operator review (HITL preserved)
@@ -105,9 +117,23 @@ def execute_insight(files, title, message, insights=""):
 
     # Fetch latest main, create branch from origin/main (works from any context)
     git_client.fetch("origin")
+    git_client.switch("origin/main", detach=True, discard_changes=False)
     git_client.checkout_b(branch_name)
     git_client.add(files)
     git_client.commit(title)
+
+    # Enforce Local CI Verification Invariant for insights
+    try:
+        import subprocess
+        print("Running local test suite verification before insight reflection...")
+        from drivers import path_resolver
+        run_tests_script = os.path.join(path_resolver.get_core_dir(), "bin", "run-tests")
+        subprocess.run([run_tests_script], cwd=path_resolver.get_core_dir(), check=True)
+        print("Local test suite passed.")
+    except subprocess.CalledProcessError:
+        print("[🚫 BLOCKED] Reflection Blocked: Local test suite verification failed. You must remediate CI failures before executing this insight.")
+        sys.exit(1)
+
     git_client.push(branch_name)
 
     if insights:
