@@ -35,3 +35,9 @@ The formal lifecycle execution is:
 
 ## Summary
 Declare intent. Accept current reality. Accrue passive friction. Refine when the environment demands it.
+
+## 3. The Soft-Mutation Rule (Dao Evolution)
+To preserve historical traceability while allowing Dao evolution, KB deprecation follows the Soft-Mutation rule (codified via Node 1089):
+- The **Body** of a KB primitive is immutable ROM. We do not rewrite the historical context or dialectical arguments.
+- The **Header** (metadata, classification) is mutable. We append deprecation flags or `Superseded By` pointers at the top of the file.
+This allows the Wu-wei Dyad to seamlessly evolve its Dao without breaking the immutable historical record.
