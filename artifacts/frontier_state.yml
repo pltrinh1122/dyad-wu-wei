@@ -4821,13 +4821,13 @@ nodes:
   invariants: []
 - name: 'Node 1655: Harmonize - Path: Create Job Discipline for JTBD and Dialectical
     Falsification'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for Path: Create
+    Job Discipline for JTBD and Dialectical Falsification.'
   invariants: []
 - name: 'Node 1656: Plan - Path: Create Job Discipline for JTBD and Dialectical Falsification'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for Path: Create Job Discipline
-    for JTBD and Dialectical Falsification.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1657: Reflect - Path: Create Job Discipline for JTBD and Dialectical
     Falsification'
@@ -4878,43 +4878,10 @@ nodes:
     cycle from execution, and resolved lexical constraints.
   invariants:
   - '[x] Rationale documented'
-- name: 'Node 1667: [BUG] Intake: System Crash in plan-start'
-  status: Backlog
-  learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
-    \ `Unknown`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 646,\
-    \ in main\n    cmd_plan_start(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
-    , line 366, in cmd_plan_start\n    plan_start_node(args.issue_id)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
-    , line 26, in plan_start_node\n    node.plan_start()\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\"\
-    , line 179, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 261,\
-    \ in plan_start\n    verify_node_transition_allowed(self.issue_id)\n  File \"\
-    /mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_strategic.py\", line 507, in verify_node_transition_allowed\n\
-    \    _verify_persona(str(parent_path_id), ledger)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_strategic.py\"\
-    , line 436, in _verify_persona\n    raise Exception(\"Persona Gate Blocked: SPAO_PERSONA_ID\
-    \ environment variable is absent. Cannot verify identity.\")\nException: Persona\
-    \ Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify\
-    \ identity.\n\n```\n"
-  invariants: []
-- name: 'Node 1668: Harmonize - [BUG] Intake: System Crash in plan-start'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
-    System Crash in plan-start.'
-  invariants: []
-- name: 'Node 1669: Plan - [BUG] Intake: System Crash in plan-start'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
-    in plan-start.'
-  invariants: []
-- name: 'Node 1670: Reflect - [BUG] Intake: System Crash in plan-start'
-  status: Backlog
-  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
-    plan-start.'
-  invariants: []
-- name: 'Node 1655: Discovery: Harmonize - Path: Create Job Discipline for JTBD and
-    Dialectical Falsification'
+- name: 'Node 1656: Discovery: Plan - Path: Create Job Discipline for JTBD and Dialectical
+    Falsification'
   status: Completed
-  learnings: Harmonized on JTBD JD
+  learnings: Drafted Job Discipline template.
   invariants:
   - None
 active_agents:
