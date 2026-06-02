@@ -4871,75 +4871,101 @@ ValueError: Status key 'completed' is not defined in node.yml
 - **Feedforward Invariants**:
   - `Adhere to Soft-Mutation rule for KB deprecation`
 
-## Node 1519: Plan - Address Backlog Hygiene Warning
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+## Node 1649: Map 11 Backlog Paths to Strategic Intent
+- **Status**: Completed
+- **Learnings & Context**: Appended paths 1517, 1567, 1642, 1633, 1534, 1561, 1585, 1593, 1602, 1612, 1547 to strategic_intent.yml
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1519: Discovery: Plan - Address Backlog Hygiene Warning
+## Node 1649: Activity: Map 11 Backlog Paths to Strategic Intent
 - **Status**: Completed
-- **Learnings & Context**: Created plan_1519.md outlining the changes to strategic_intent.yml
+- **Learnings & Context**: Appended paths 1517, 1567, 1642, 1633, 1534, 1561, 1585, 1593, 1602, 1612, 1547 to strategic_intent.yml
 - **Feedforward Invariants**:
   - `None`
 
-## Node 1634: Harmonize - Intent Broadcast Protocol
+## Node 1654: Create Job Discipline for JTBD and Dialectical Falsification
+- **Status**: Backlog
+- **Learnings & Context**: Create a new job discipline (JD) for ideating and intaking the requirements for a job based on the JTBD framework + our own invention of dialectical falsification towards a problem vs. constraint framing for the job.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1655: Harmonize - Path: Create Job Discipline for JTBD and Dialectical Falsification
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: Create Job Discipline for JTBD and Dialectical Falsification.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1656: Plan - Path: Create Job Discipline for JTBD and Dialectical Falsification
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Path: Create Job Discipline for JTBD and Dialectical Falsification.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1657: Reflect - Path: Create Job Discipline for JTBD and Dialectical Falsification
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Path: Create Job Discipline for JTBD and Dialectical Falsification.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1658: Plan JD for JTBD and Dialectical Falsification
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1651: [BUG] Intake: System Crash in reflect
+## Node 1659: [BUG] Intake: System Crash in checkout
 - **Status**: Backlog
 - **Learnings & Context**: ## System Crash Report
 
-**Subcommand:** `reflect`
-**Persona:** `agent-ziran`
+**Subcommand:** `checkout`
+**Persona:** `Unknown`
 
 ### Traceback
 ```python
 Traceback (most recent call last):
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/daemon_node.py", line 654, in main
-    cmd_reflect(args)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/daemon_node.py", line 380, in cmd_reflect
-    reflect_node(
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/daemon_node.py", line 355, in reflect_node
-    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/node_lifecycle.py", line 437, in reflect
-    status_output = git_client.status_porcelain(cwd=worktree_dir).strip()
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/daemon_telemetry.py", line 179, in wrapper
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 652, in main
+    cmd_checkout(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 372, in cmd_checkout
+    checkout_node(args.issue_id, args.branch_name)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 36, in checkout_node
+    node.checkout(branch_name)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py", line 179, in wrapper
     result = func(*args, **kwargs)
              ^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/drivers/git_client.py", line 140, in status_porcelain
-    res = _run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True, cwd=cwd)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/drivers/git_client.py", line 10, in _run
-    return subprocess.run(cmd, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/subprocess.py", line 548, in run
-    with Popen(*popenargs, **kwargs) as process:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
-    raise child_exception_type(errno_num, err_msg, err_filename)
-FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/.worktrees/node/1634-intent-broadcast-protocol'
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 351, in checkout
+    verify_node_transition_allowed(self.issue_id)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_strategic.py", line 507, in verify_node_transition_allowed
+    _verify_persona(str(parent_path_id), ledger)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_strategic.py", line 436, in _verify_persona
+    raise Exception("Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify identity.")
+Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify identity.
 
 ```
 
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Intent Broadcast Protocol
-- **Status**: Completed
-- **Learnings & Context**: Modified GEMINI.md and HOW-1170 to mandate that the Agent proactively broadcasts its intent (Flight Plan) before dropping into an autonomous execution loop.
+## Node 1660: Harmonize - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in checkout.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1535: Discovery: Harmonize - Falsify NBA Handoff and Automate Path Starting
+## Node 1661: Plan - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1662: Reflect - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1658: Discovery: Plan JD for JTBD and Dialectical Falsification
 - **Status**: Completed
-- **Learnings & Context**: Confirmed WHY-1538 explicitly falsifies manual handoff. Clarified in the document.
+- **Learnings & Context**: Created the Requirements-Discovery JD which separates Pre-SPAOR dyadic cycle from execution, and resolved lexical constraints.
 - **Feedforward Invariants**:
   - `[x] Rationale documented`
 
