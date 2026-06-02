@@ -122,6 +122,8 @@ class NBADaemon:
                 for n in all_nodes:
                     if n.get("status") == "Backlog":
                         n_name = n.get("name", "")
+                        if "Path:" in n_name or n_name.startswith("Path:"):
+                            continue
                         match = re.search(r"Node (\d+)", n_name)
                         if match:
                             issue_num = int(match.group(1))
