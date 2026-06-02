@@ -4865,11 +4865,89 @@ ValueError: Status key 'completed' is not defined in node.yml
 - **Feedforward Invariants**:
   - `System gracefully handles invalid status or classification keys without crashing.`
 
-## Activity 1090: Reflect - Synthesize Epistemic Retrospective retro-1089.md
-- **Status**: Completed
-- **Learnings & Context**: The epistemic learnings from Node 1089 were already synthesized into HOW-0005. Node 1090 is functionally complete and is being reflected to clear the backlog.
+## Node 1082: Reflect - Synthesize Epistemic Retrospective retro-1081.md
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `Adhere to Soft-Mutation rule for KB deprecation`
+  - `[ ]` None
+
+## Activity 1082: Reflect - Synthesize Epistemic Retrospective retro-1081.md
+- **Status**: Completed
+- **Learnings & Context**: The epistemic learnings from Node 1081 were already synthesized into GEMINI.md. Node 1082 is functionally complete and is being reflected to clear the backlog. Authored retro-1082.md to document execution failures.
+- **Feedforward Invariants**:
+  - `Model 1 Workspace Architecture Invariant`
+
+## Node 1641: Fix github_client.py gh CLI GraphQL exit status 1
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1642: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `agent-ziran`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1641-fix-github-client-exit-status/kernel/daemon_node.py", line 654, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1641-fix-github-client-exit-status/kernel/daemon_node.py", line 380, in cmd_reflect
+    reflect_node(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1641-fix-github-client-exit-status/kernel/daemon_node.py", line 355, in reflect_node
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1641-fix-github-client-exit-status/kernel/node_lifecycle.py", line 437, in reflect
+    status_output = git_client.status_porcelain(cwd=worktree_dir).strip()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1641-fix-github-client-exit-status/kernel/daemon_telemetry.py", line 179, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1641-fix-github-client-exit-status/drivers/git_client.py", line 140, in status_porcelain
+    res = _run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True, cwd=cwd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1641-fix-github-client-exit-status/drivers/git_client.py", line 10, in _run
+    return subprocess.run(cmd, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1641-fix-github-client-exit-status/.worktrees/node/1641-fix-github-client-exit-status'
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1643: Harmonize - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1644: Plan - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1645: Reflect - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1641: Fix github_client.py gh CLI GraphQL exit status 1
+- **Status**: Completed
+- **Learnings & Context**: gh CLI issue list randomly fails due to ProjectCard query deprecation warnings; added retry mechanism
+- **Feedforward Invariants**:
+  - `Drivers must be robust against external API flakiness`
 
 ## Active Agents Matrix
 * **agent-ziran**:
