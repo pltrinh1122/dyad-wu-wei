@@ -81,3 +81,9 @@ hotfixes:
   message: 'Hotfix: Remove deprecated term examples from WHAT-1096 spec'
   pr: https://github.com/pltrinh1122/dyad-wu-wei/pull/1251
   dao_compliant: true
+- hash: 108e1077c6953cad75a969bcd645b6e5cb0672eb
+  timestamp: '2026-06-02T01:12:20Z'
+  file: GEMINI.md
+  message: 'docs(policy): codify intent broadcast to mitigate operator anxiety'
+  pr: https://github.com/pltrinh1122/dyad-wu-wei/pull/1637
+  dao_compliant: true
