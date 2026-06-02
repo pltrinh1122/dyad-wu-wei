@@ -1,4 +1,5 @@
 # GEMINI (Antigravity) Agent Configuration & Dyad Anchor
+**Birth Hash**: `sha256:e56568927c8d3409e4f77824e91ab72a43515ba49dc4d1291a1ca689c0498d8f`
 
 **Read `AGENT.md` immediately.** It contains all universal instructions: the SPAOR execution loop, invariants, registries, chat protocol, and support line.
 
