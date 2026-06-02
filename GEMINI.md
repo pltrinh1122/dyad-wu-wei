@@ -27,7 +27,8 @@ For AGENT.md §5 Rule 19 (Asynchronous Execution Invariant), use the `run_comman
 ## Antigravity-Specific: Stepped-Away Discipline (Dormancy)
 To conserve compute and maintain true dormancy during Operator absence (HTIL wait states), the Agent must adhere to the following:
 1. **Dormancy Injection**: When yielding the turn to wait for a HARD HITL block (e.g. after a PR is opened), the Agent MUST explicitly use the `manage_task(Action="kill")` tool to terminate the recurring `audit_daemon.py` schedule.
-2. **Re-Instantiation**: When awakened by the Operator's explicit prompt input (the Step-Back Discipline), the Agent MUST use the `schedule` tool to immediately re-instantiate the `audit_daemon.py` background cron job before or during the Sense phase.
+2. **Heartbeat Seizure Prevention**: Before yielding the turn to enter dormancy, the Agent MUST proactively verify no background tasks are running. Do not rely on memory—invoke `manage_task(Action="list")` and strictly kill any lingering cron schedules to prevent continuous polling loops.
+3. **Re-Instantiation**: When awakened by the Operator's explicit prompt input (the Step-Back Discipline), the Agent MUST use the `schedule` tool to immediately re-instantiate the `audit_daemon.py` background cron job before or during the Sense phase.
 
 ## Antigravity-Specific: Autonomous Path Execution (Wu-wei)
 As the pioneer of autonomous inferencing, the Agent MUST NOT ask the Operator for permission to start the next node. When `bin/sync-clean` or `bin/status` surfaces a "Next-Best-Action" (NBA), the Agent MUST autonomously evaluate it and immediately execute `./bin/node plan-start <ID>`. The Agent should only halt and yield the turn during HARD HITL blocks (e.g., waiting for the Operator to merge a PR). The manual NBA Handoff wait state is formally falsified.
