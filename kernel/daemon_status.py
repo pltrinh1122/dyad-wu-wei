@@ -215,5 +215,20 @@ def main():
     except Exception:
         pass
 
+    if active_node == "None":
+        try:
+            from kernel.daemon_nba import NBADaemon
+            nba = NBADaemon(repository="pltrinh1122/dyad-wu-wei")
+            result = nba.evaluate(frontier_file=frontier_path, local_mode=True)
+            if result.get("type") in ["path_continuation", "path_switching"] and result.get("recommendations"):
+                best_nba = result["recommendations"][0]
+                nba_id = best_nba.get("id") or best_nba.get("number")
+                print(f"\n[🤖 AUTONOMY] WIP=0 detected. Automatically acquiring lock for top NBA: Node {nba_id}...")
+                import subprocess
+                bin_node = os.path.join(repo_root, "bin", "node")
+                subprocess.run([bin_node, "plan-start", str(nba_id)])
+        except Exception:
+            pass
+
 if __name__ == "__main__":
     main()

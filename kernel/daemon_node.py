@@ -349,6 +349,30 @@ def sync_and_clean_node() -> None:
     daemon = HookDaemon()
     daemon.execute_all(local_mode=not remote_mode)
 
+    # NBA Handoff Automation
+    from drivers.frontier_editor import read_active_node
+    frontier_path = os.path.join(repo_root, "artifacts", "frontier_state.md")
+    active_node = "None"
+    if os.path.exists(frontier_path):
+        try:
+            active_node = read_active_node(frontier_path) or "None"
+        except Exception:
+            pass
+            
+    if active_node == "None":
+        from kernel.daemon_nba import NBADaemon
+        nba = NBADaemon(repository="pltrinh1122/dyad-wu-wei")
+        try:
+            result = nba.evaluate(frontier_file=frontier_path, local_mode=not remote_mode)
+            if result.get("type") in ["path_continuation", "path_switching"] and result.get("recommendations"):
+                best_nba = result["recommendations"][0]
+                nba_id = best_nba.get("id") or best_nba.get("number")
+                print(f"\n[🤖 AUTONOMY] WIP=0 detected. Automatically acquiring lock for top NBA: Node {nba_id}...")
+                bin_node = os.path.join(repo_root, "bin", "node")
+                subprocess.run([bin_node, "plan-start", str(nba_id)])
+        except Exception:
+            pass
+
 def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
     """Closes the GH issue, creates a PR, and updates the frontier."""
     node = TerminalNode(issue_id)
