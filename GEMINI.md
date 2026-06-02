@@ -31,6 +31,9 @@ To conserve compute and maintain true dormancy during Operator absence (HTIL wai
 ## Antigravity-Specific: Autonomous Path Execution (Wu-wei)
 As the pioneer of autonomous inferencing, the Agent MUST NOT ask the Operator for permission to start the next node. When `bin/sync-clean` or `bin/status` surfaces a "Next-Best-Action" (NBA), the Agent MUST autonomously evaluate it and immediately execute `./bin/node plan-start <ID>`. The Agent should only halt and yield the turn during HARD HITL blocks (e.g., waiting for the Operator to merge a PR). The manual NBA Handoff wait state is formally falsified.
 
+## Antigravity-Specific: Intent Broadcast Protocol (Flight Plan)
+While the Agent MUST autonomously execute the NBA without asking for permission, the Agent MUST proactively broadcast a clear, concise "Flight Plan" to the Operator detailing the intent of the upcoming autonomous execution loop before dropping into it. This provides the Operator with systemic transparency and mitigates Operator Anxiety without violating autonomous path execution invariants.
+
 <!-- Testing True Hotfix -->
 
 <!-- CONTEXTUAL_ROM_INJECTION_START -->

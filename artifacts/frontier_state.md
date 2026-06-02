@@ -4871,17 +4871,71 @@ ValueError: Status key 'completed' is not defined in node.yml
 - **Feedforward Invariants**:
   - `Adhere to Soft-Mutation rule for KB deprecation`
 
-## Node 1649: Map 11 Backlog Paths to Strategic Intent
-- **Status**: Completed
-- **Learnings & Context**: Appended paths 1517, 1567, 1642, 1633, 1534, 1561, 1585, 1593, 1602, 1612, 1547 to strategic_intent.yml
+## Node 1519: Plan - Address Backlog Hygiene Warning
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1649: Activity: Map 11 Backlog Paths to Strategic Intent
+## Node 1519: Discovery: Plan - Address Backlog Hygiene Warning
 - **Status**: Completed
-- **Learnings & Context**: Appended paths 1517, 1567, 1642, 1633, 1534, 1561, 1585, 1593, 1602, 1612, 1547 to strategic_intent.yml
+- **Learnings & Context**: Created plan_1519.md outlining the changes to strategic_intent.yml
 - **Feedforward Invariants**:
   - `None`
+
+## Node 1634: Harmonize - Intent Broadcast Protocol
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1651: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `agent-ziran`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/daemon_node.py", line 654, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/daemon_node.py", line 380, in cmd_reflect
+    reflect_node(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/daemon_node.py", line 355, in reflect_node
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/node_lifecycle.py", line 437, in reflect
+    status_output = git_client.status_porcelain(cwd=worktree_dir).strip()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/kernel/daemon_telemetry.py", line 179, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/drivers/git_client.py", line 140, in status_porcelain
+    res = _run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True, cwd=cwd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/drivers/git_client.py", line 10, in _run
+    return subprocess.run(cmd, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1634-intent-broadcast-protocol/.worktrees/node/1634-intent-broadcast-protocol'
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Intent Broadcast Protocol
+- **Status**: Completed
+- **Learnings & Context**: Modified GEMINI.md and HOW-1170 to mandate that the Agent proactively broadcasts its intent (Flight Plan) before dropping into an autonomous execution loop.
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-ziran**:
