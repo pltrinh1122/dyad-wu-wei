@@ -4678,71 +4678,122 @@ nodes:
     backlog issues. Path 1602 is now structurally satisfied.
   invariants:
   - None
-- name: 'Node 1082: Reflect - Synthesize Epistemic Retrospective retro-1081.md'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Reflect - Synthesize Epistemic Retrospective retro-1081.md
-  status: Completed
-  learnings: Synthesized retro-1081.md into GEMINI.md to codify the Model 1 workspace
-    architecture invariant.
-  invariants:
-  - Strict adherence to Model 1 Workspace architecture
-- name: 'Node 526: Reflect - Elevate Path Meta-Index from List to DAG'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Node 1621: [BUG] Intake: System Crash in reflect'
+- name: 'Node 1612: Implement PR Discipline Formalization'
   status: Backlog
-  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `Unknown`\n\
-    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/526-reflect-elevate-path-meta-index/kernel/daemon_node.py\"\
-    , line 644, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/526-reflect-elevate-path-meta-index/kernel/daemon_node.py\"\
-    , line 380, in cmd_reflect\n    reflect_node(\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/526-reflect-elevate-path-meta-index/kernel/daemon_node.py\"\
+  learnings: Formally define PR Discipline and implement automated test gates
+  invariants: []
+- name: 'Node 1613: Harmonize - Implement PR Discipline Formalization'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Implement PR
+    Discipline Formalization.
+  invariants: []
+- name: 'Node 1614: Plan - Implement PR Discipline Formalization'
+  status: Backlog
+  learnings: Technical design and proposed changes for Implement PR Discipline Formalization.
+  invariants: []
+- name: 'Node 1615: Reflect - Implement PR Discipline Formalization'
+  status: Backlog
+  learnings: Final reflection and path closure for Implement PR Discipline Formalization.
+  invariants: []
+- name: 'Node 1616: Automate test gates in Node Reflect'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1617: [BUG] Intake: System Crash in reflect'
+  status: Backlog
+  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `antigravity`\n\
+    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1616-automate-test-gates/kernel/daemon_node.py\"\
+    , line 644, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1616-automate-test-gates/kernel/daemon_node.py\"\
+    , line 380, in cmd_reflect\n    reflect_node(\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1616-automate-test-gates/kernel/daemon_node.py\"\
     , line 355, in reflect_node\n    node.reflect(frontier_file, node_name, learnings,\
     \ invariants, commit_msg, branch_name, stage=stage, insights=insights)\n  File\
-    \ \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/526-reflect-elevate-path-meta-index/kernel/node_lifecycle.py\"\
+    \ \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1616-automate-test-gates/kernel/node_lifecycle.py\"\
     , line 437, in reflect\n    status_output = git_client.status_porcelain(cwd=worktree_dir).strip()\n\
     \                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"\
-    /mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/526-reflect-elevate-path-meta-index/kernel/daemon_telemetry.py\"\
+    /mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1616-automate-test-gates/kernel/daemon_telemetry.py\"\
     , line 179, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/526-reflect-elevate-path-meta-index/drivers/git_client.py\"\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1616-automate-test-gates/drivers/git_client.py\"\
     , line 140, in status_porcelain\n    res = _run([\"git\", \"status\", \"--porcelain\"\
     ], capture_output=True, text=True, check=True, cwd=cwd)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/526-reflect-elevate-path-meta-index/drivers/git_client.py\"\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1616-automate-test-gates/drivers/git_client.py\"\
     , line 10, in _run\n    return subprocess.run(cmd, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/usr/lib/python3.12/subprocess.py\", line 548, in run\n    with Popen(*popenargs,\
     \ **kwargs) as process:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/subprocess.py\"\
     , line 1026, in __init__\n    self._execute_child(args, executable, preexec_fn,\
     \ close_fds,\n  File \"/usr/lib/python3.12/subprocess.py\", line 1955, in _execute_child\n\
     \    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError:\
-    \ [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/526-reflect-elevate-path-meta-index/.worktrees/node/526-reflect-elevate-path-meta-index'\n\
+    \ [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1616-automate-test-gates/.worktrees/node/1616-automate-test-gates'\n\
     \n```\n"
   invariants: []
-- name: Reflect - Elevate Path Meta-Index from List to DAG
+- name: Automate test gates in Node Reflect
   status: Completed
-  learnings: Compiled Retrospective for Path 299 verifying DAG integration.
+  learnings: Automated test gates in daemon_rt.py to enforce PR discipline, and documented
+    PR discipline.
   invariants:
-  - Path 299 is closed.
-- name: 'Node 1244: Plan - Triage Holding - Standalone Triage & External Requirement
+  - Automate CI gates before PRs
+- name: 'Node 1090: Reflect - Synthesize Epistemic Retrospective retro-1089.md'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Reflect - Synthesize Epistemic Retrospective retro-1089.md
+  status: Completed
+  learnings: Synthesized retro-1089.md by formally encoding the Soft-Mutation rule
+    for KB Deprecation into HOW-0005-terminology-lifecycle.md.
+  invariants:
+  - Adhere to Soft-Mutation rule for KB deprecation
+- name: 'Node 1243: Harmonize - Triage Holding - Standalone Triage & External Requirement
     Intakes'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+- name: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
   status: Completed
-  learnings: Created implementation blueprint for triage queue
+  learnings: Created discovery_1243.md artifact
   invariants:
   - None
+- name: 'Node 1625: [BUG] Intake: System Crash in set-status'
+  status: Backlog
+  learnings: "## System Crash Report\n\n**Subcommand:** `set-status`\n**Persona:**\
+    \ `agent-ziran`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 648,\
+    \ in main\n    cmd_set_status(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 525, in cmd_set_status\n    node.set_status(args.status_key)\n  File \"\
+    /mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 122, in set_status\n\
+    \    raise ValueError(f\"Status key '{status_key}' is not defined in node.yml\"\
+    )\nValueError: Status key 'completed' is not defined in node.yml\n\n```\n"
+  invariants: []
 - name: 'Node 1626: Harmonize - [BUG] Intake: System Crash in set-status'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
+    System Crash in set-status.'
+  invariants: []
+- name: 'Node 1627: Plan - [BUG] Intake: System Crash in set-status'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery: Harmonize - [BUG] Intake: System Crash in set-status'
+- name: 'Node 1628: Reflect - [BUG] Intake: System Crash in set-status'
+  status: Backlog
+  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
+    set-status.'
+  invariants: []
+- name: 'Node 1245: Reflect - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1245: Reflect - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
   status: Completed
-  learnings: Documented root cause of daemon_status.py crash when receiving invalid
-    status keys, and proposed graceful error handling.
+  learnings: Compiled retrospective for Path 1242 and replaced deprecated terms with
+    active counterparts.
   invariants:
-  - artifacts/discovery_1626.md is created.
+  - Path 1242 is closed.
+- name: 'Discovery: Plan - [BUG] Intake: System Crash in set-status'
+  status: Completed
+  learnings: Created implementation blueprint to fix daemon_status.py crash when receiving
+    invalid status keys.
+  invariants:
+  - artifacts/implementation_blueprint_1627.md is created.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
