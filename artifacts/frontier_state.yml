@@ -4802,13 +4802,13 @@ nodes:
     backlog.
   invariants:
   - Adhere to Soft-Mutation rule for KB deprecation
-- name: 'Node 1518: Harmonize - Address Backlog Hygiene Warning'
+- name: 'Node 1519: Plan - Address Backlog Hygiene Warning'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1518: Discovery: Harmonize - Address Backlog Hygiene Warning'
+- name: 'Node 1519: Discovery: Plan - Address Backlog Hygiene Warning'
   status: Completed
-  learnings: Created discovery_1518.md to map 11 unmapped paths to Strategic Goals
+  learnings: Created plan_1519.md outlining the changes to strategic_intent.yml
   invariants:
   - None
 active_agents:
