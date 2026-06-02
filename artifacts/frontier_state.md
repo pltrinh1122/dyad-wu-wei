@@ -4890,20 +4890,20 @@ ValueError: Status key 'completed' is not defined in node.yml
   - `[ ]` None
 
 ## Node 1655: Harmonize - Path: Create Job Discipline for JTBD and Dialectical Falsification
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: Create Job Discipline for JTBD and Dialectical Falsification.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1656: Plan - Path: Create Job Discipline for JTBD and Dialectical Falsification
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1657: Reflect - Path: Create Job Discipline for JTBD and Dialectical Falsification
+## Node 1656: Plan - Path: Create Job Discipline for JTBD and Dialectical Falsification
 - **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Path: Create Job Discipline for JTBD and Dialectical Falsification.
+- **Learnings & Context**: Technical design and proposed changes for Path: Create Job Discipline for JTBD and Dialectical Falsification.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1657: Reflect - Path: Create Job Discipline for JTBD and Dialectical Falsification
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -4969,9 +4969,65 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[x] Rationale documented`
 
-## Node 1656: Discovery: Plan - Path: Create Job Discipline for JTBD and Dialectical Falsification
+## Node 1667: [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `plan-start`
+**Persona:** `Unknown`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 646, in main
+    cmd_plan_start(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 366, in cmd_plan_start
+    plan_start_node(args.issue_id)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 26, in plan_start_node
+    node.plan_start()
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py", line 179, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 261, in plan_start
+    verify_node_transition_allowed(self.issue_id)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_strategic.py", line 507, in verify_node_transition_allowed
+    _verify_persona(str(parent_path_id), ledger)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_strategic.py", line 436, in _verify_persona
+    raise Exception("Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify identity.")
+Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify identity.
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1668: Harmonize - [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1669: Plan - [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1670: Reflect - [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1655: Discovery: Harmonize - Path: Create Job Discipline for JTBD and Dialectical Falsification
 - **Status**: Completed
-- **Learnings & Context**: Drafted Job Discipline template.
+- **Learnings & Context**: Harmonized on JTBD JD
+- **Feedforward Invariants**:
+  - `None`
+
+## Node 1657: Activity: Reflect - Path: Create Job Discipline for JTBD and Dialectical Falsification
+- **Status**: Completed
+- **Learnings & Context**: Finalized Path 1654
 - **Feedforward Invariants**:
   - `None`
 
