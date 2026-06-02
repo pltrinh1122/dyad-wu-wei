@@ -4476,13 +4476,13 @@ nodes:
     and Automate Path Starting.
   invariants: []
 - name: 'Node 1536: Plan - Falsify NBA Handoff and Automate Path Starting'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: Technical design and proposed changes for Falsify NBA Handoff and Automate
+    Path Starting.
   invariants: []
 - name: 'Node 1537: Reflect - Falsify NBA Handoff and Automate Path Starting'
-  status: Backlog
-  learnings: Final reflection and path closure for Falsify NBA Handoff and Automate
-    Path Starting.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1538: Falsify manual NBA handoff and automate path switching to align
     with Telos'
@@ -4921,9 +4921,9 @@ nodes:
   learnings: Finalized Path 1654
   invariants:
   - None
-- name: 'Node 1536: Discovery: Plan - Falsify NBA Handoff and Automate Path Starting'
+- name: 'Node 1537: Activity: Reflect - Falsify NBA Handoff and Automate Path Starting'
   status: Completed
-  learnings: Drafted WHAT spec for CLI wrapper automation
+  learnings: Reflected Discovery phase for NBA Handoff Automation
   invariants:
   - None
 active_agents:

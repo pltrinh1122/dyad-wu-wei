@@ -4473,14 +4473,14 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
   - `[ ]` None
 
 ## Node 1536: Plan - Falsify NBA Handoff and Automate Path Starting
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Falsify NBA Handoff and Automate Path Starting.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1537: Reflect - Falsify NBA Handoff and Automate Path Starting
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Falsify NBA Handoff and Automate Path Starting.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -5031,9 +5031,9 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `None`
 
-## Node 1536: Discovery: Plan - Falsify NBA Handoff and Automate Path Starting
+## Node 1537: Activity: Reflect - Falsify NBA Handoff and Automate Path Starting
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT spec for CLI wrapper automation
+- **Learnings & Context**: Reflected Discovery phase for NBA Handoff Automation
 - **Feedforward Invariants**:
   - `None`
 
