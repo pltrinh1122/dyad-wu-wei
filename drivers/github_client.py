@@ -53,18 +53,29 @@ def _run_gh(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
     kwargs["env"] = env
     
     check = kwargs.pop("check", False)
-    result = subprocess.run(cmd, **kwargs)
     
-    if check and result.returncode != 0:
-        # Ignore GraphQL deprecation warnings if stdout is valid JSON
-        if "--json" in cmd and hasattr(result, "stdout") and result.stdout:
-            try:
-                import json
-                json.loads(_clean_json_output(result.stdout))
-                return result
-            except Exception:
-                pass
-        raise subprocess.CalledProcessError(result.returncode, cmd, output=getattr(result, "stdout", None), stderr=getattr(result, "stderr", None))
+    is_read_cmd = len(cmd) >= 3 and cmd[0] == "gh" and cmd[1] in ("issue", "pr", "run") and cmd[2] in ("list", "view", "search", "checks")
+    max_retries = 3 if is_read_cmd else 1
+    
+    for attempt in range(max_retries):
+        result = subprocess.run(cmd, **kwargs)
+        
+        if check and result.returncode != 0:
+            # Ignore GraphQL deprecation warnings if stdout is valid JSON
+            if "--json" in cmd and hasattr(result, "stdout") and result.stdout:
+                try:
+                    import json
+                    json.loads(_clean_json_output(result.stdout))
+                    return result
+                except Exception:
+                    pass
+            if attempt < max_retries - 1:
+                import time
+                time.sleep(2 ** attempt)
+                continue
+            raise subprocess.CalledProcessError(result.returncode, cmd, output=getattr(result, "stdout", None), stderr=getattr(result, "stderr", None))
+            
+        return result
         
     return result
 
