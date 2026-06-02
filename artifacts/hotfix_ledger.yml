@@ -86,4 +86,9 @@ hotfixes:
   file: kb/WHY-1633-intent-broadcast.md
   message: 'docs(kdr): add decision record for intent broadcast'
   pr: https://github.com/pltrinh1122/dyad-wu-wei/pull/1638
+- hash: 108e1077c6953cad75a969bcd645b6e5cb0672eb
+  timestamp: '2026-06-02T01:12:20Z'
+  file: GEMINI.md
+  message: 'docs(policy): codify intent broadcast to mitigate operator anxiety'
+  pr: https://github.com/pltrinh1122/dyad-wu-wei/pull/1637
   dao_compliant: true

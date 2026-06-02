@@ -4836,14 +4836,14 @@ ValueError: Status key 'completed' is not defined in node.yml
   - `[ ]` None
 
 ## Node 1627: Plan - [BUG] Intake: System Crash in set-status
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in set-status.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1628: Reflect - [BUG] Intake: System Crash in set-status
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in set-status.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -4859,11 +4859,11 @@ ValueError: Status key 'completed' is not defined in node.yml
 - **Feedforward Invariants**:
   - `Path 1242 is closed.`
 
-## Discovery: Plan - [BUG] Intake: System Crash in set-status
+## Act - [BUG] Intake: System Crash in set-status
 - **Status**: Completed
-- **Learnings & Context**: Created implementation blueprint to fix daemon_status.py crash when receiving invalid status keys.
+- **Learnings & Context**: Updated cmd_set_status and cmd_set_classification in daemon_node.py to catch ValueError raised by node.yml invalid keys and gracefully exit with sys.exit(2). Added tests in test_daemon_node.py.
 - **Feedforward Invariants**:
-  - `artifacts/implementation_blueprint_1627.md is created.`
+  - `System gracefully handles invalid status or classification keys without crashing.`
 
 ## Active Agents Matrix
 * **agent-ziran**:
