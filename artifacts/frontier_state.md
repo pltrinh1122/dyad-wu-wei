@@ -5050,10 +5050,10 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1693: Discovery: Harmonize - Establish Job Discipline for JTBD and Dialectical Falsification
-- **Status**: Backlog
-- **Learnings & Context**: 
+- **Status**: Completed
+- **Learnings & Context**: Synthesized industry best practices for JTBD and Dialectical Falsification, affirming the constraint axiom and decision-framing.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `none`
 
 ## Node 1694: Discovery: Plan - Establish Job Discipline for JTBD and Dialectical Falsification
 - **Status**: Backlog
@@ -5073,9 +5073,15 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1694: Plan - Establish Job Discipline for JTBD and Dialectical Falsification
+## Node 1693: Harmonize - Establish Job Discipline for JTBD and Dialectical Falsification
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1695: Reflect - Establish Job Discipline for JTBD and Dialectical Falsification
 - **Status**: Completed
-- **Learnings & Context**: Created schema and specification for the Job Discipline template.
+- **Learnings & Context**: Captured insights from Node 1694 into retro-1695.md regarding structural invariants.
 - **Feedforward Invariants**:
   - `none`
 

@@ -4934,9 +4934,11 @@ nodes:
   invariants: []
 - name: 'Node 1693: Discovery: Harmonize - Establish Job Discipline for JTBD and Dialectical
     Falsification'
-  status: Backlog
-  learnings: ''
-  invariants: []
+  status: Completed
+  learnings: Synthesized industry best practices for JTBD and Dialectical Falsification,
+    affirming the constraint axiom and decision-framing.
+  invariants:
+  - none
 - name: 'Node 1694: Discovery: Plan - Establish Job Discipline for JTBD and Dialectical
     Falsification'
   status: Backlog
@@ -4952,9 +4954,15 @@ nodes:
   status: Backlog
   learnings: ''
   invariants: []
-- name: 'Node 1694: Plan - Establish Job Discipline for JTBD and Dialectical Falsification'
+- name: 'Node 1693: Harmonize - Establish Job Discipline for JTBD and Dialectical
+    Falsification'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 1695: Reflect - Establish Job Discipline for JTBD and Dialectical Falsification'
   status: Completed
-  learnings: Created schema and specification for the Job Discipline template.
+  learnings: Captured insights from Node 1694 into retro-1695.md regarding structural
+    invariants.
   invariants:
   - none
 active_agents:
