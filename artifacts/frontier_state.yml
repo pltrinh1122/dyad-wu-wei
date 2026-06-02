@@ -4795,6 +4795,17 @@ nodes:
     Added tests in test_daemon_node.py.
   invariants:
   - System gracefully handles invalid status or classification keys without crashing.
+- name: 'Node 1082: Reflect - Synthesize Epistemic Retrospective retro-1081.md'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1082: Reflect - Synthesize Epistemic Retrospective retro-1081.md'
+  status: Completed
+  learnings: The epistemic learnings from Node 1081 were already synthesized into
+    GEMINI.md. Node 1082 is functionally complete and is being reflected to clear
+    the backlog. Authored retro-1082.md to document execution failures.
+  invariants:
+  - Model 1 Workspace Architecture Invariant
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
