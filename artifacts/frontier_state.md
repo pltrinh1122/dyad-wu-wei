@@ -4871,15 +4871,15 @@ ValueError: Status key 'completed' is not defined in node.yml
 - **Feedforward Invariants**:
   - `Adhere to Soft-Mutation rule for KB deprecation`
 
-## Node 1518: Harmonize - Address Backlog Hygiene Warning
+## Node 1519: Plan - Address Backlog Hygiene Warning
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1518: Discovery: Harmonize - Address Backlog Hygiene Warning
+## Node 1519: Discovery: Plan - Address Backlog Hygiene Warning
 - **Status**: Completed
-- **Learnings & Context**: Created discovery_1518.md to map 11 unmapped paths to Strategic Goals
+- **Learnings & Context**: Created plan_1519.md outlining the changes to strategic_intent.yml
 - **Feedforward Invariants**:
   - `None`
 
