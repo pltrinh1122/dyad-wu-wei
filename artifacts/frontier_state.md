@@ -4704,7 +4704,7 @@ ValueError: Harmonization Failure: Terminal Node #1022 has no parent Path.
 - **Feedforward Invariants**:
   - `None`
 
-## Node 1612: Implement PR Discipline Formalization
+## Node 1612: Path: Implement PR Discipline Formalization
 - **Status**: Backlog
 - **Learnings & Context**: Formally define PR Discipline and implement automated test gates
 - **Feedforward Invariants**:
@@ -4883,7 +4883,7 @@ ValueError: Status key 'completed' is not defined in node.yml
 - **Feedforward Invariants**:
   - `None`
 
-## Node 1654: Create Job Discipline for JTBD and Dialectical Falsification
+## Node 1654: Path: Create Job Discipline for JTBD and Dialectical Falsification
 - **Status**: Backlog
 - **Learnings & Context**: Create a new job discipline (JD) for ideating and intaking the requirements for a job based on the JTBD framework + our own invention of dialectical falsification towards a problem vs. constraint framing for the job.
 - **Feedforward Invariants**:
@@ -5036,6 +5036,12 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Learnings & Context**: Implemented NBA Auto-Start automation in CLI wrappers
 - **Feedforward Invariants**:
   - `None`
+
+## Node 1690: Plan - [BUG] Intake: System Crash in sync
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in sync.
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-ziran**:
