@@ -522,11 +522,21 @@ def cmd_retro(args):
 
 def cmd_set_status(args):
     node = BaseNode(args.issue_id)
-    node.set_status(args.status_key)
+    try:
+        node.set_status(args.status_key)
+    except ValueError as e:
+        print(f"\n[🚫 BLOCKED] Execution Blocked: {e}")
+        import sys
+        sys.exit(2)
 
 def cmd_set_classification(args):
     node = BaseNode(args.issue_id)
-    node.set_classification(args.classification_key)
+    try:
+        node.set_classification(args.classification_key)
+    except ValueError as e:
+        print(f"\n[🚫 BLOCKED] Execution Blocked: {e}")
+        import sys
+        sys.exit(2)
 
 def cmd_test(args):
     log_stage_advancement("act", "Executing TDD Test Harness Validation", f"Running pytest on target: {args.target}")

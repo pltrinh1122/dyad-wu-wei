@@ -231,3 +231,30 @@ def test_retro_attach_file_not_found(tmp_path):
         with pytest.raises(FileNotFoundError, match="does not exist"):
             node.retro_attach("artifacts/audit/retro-806-nonexistent.md", "node/806-test")
 
+@patch("kernel.daemon_node.BaseNode")
+@patch("sys.exit")
+def test_cmd_set_status_invalid(mock_exit, mock_base_node):
+    from kernel.daemon_node import cmd_set_status
+    class DummyArgs:
+        issue_id = "123"
+        status_key = "invalid"
+        
+    mock_node_instance = mock_base_node.return_value
+    mock_node_instance.set_status.side_effect = ValueError("Status key 'invalid' is not defined")
+    
+    cmd_set_status(DummyArgs())
+    mock_exit.assert_called_once_with(2)
+
+@patch("kernel.daemon_node.BaseNode")
+@patch("sys.exit")
+def test_cmd_set_classification_invalid(mock_exit, mock_base_node):
+    from kernel.daemon_node import cmd_set_classification
+    class DummyArgs:
+        issue_id = "123"
+        classification_key = "invalid"
+        
+    mock_node_instance = mock_base_node.return_value
+    mock_node_instance.set_classification.side_effect = ValueError("Classification key 'invalid' is not defined")
+    
+    cmd_set_classification(DummyArgs())
+    mock_exit.assert_called_once_with(2)
