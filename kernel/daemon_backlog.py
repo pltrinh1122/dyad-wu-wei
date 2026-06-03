@@ -285,6 +285,88 @@ class BacklogDaemon:
         except Exception as e:
             print(f"Warning: Failed to uncheck Meta-Index for Node {node_id} in Path {path_id}: {e}")
 
+    def map(self) -> None:
+        """Generates a Mermaid.js DAG visualization of the open issue backlog."""
+        import re
+        
+        open_issues = github_client.get_open_issues()
+        
+        nodes = {"Summit": "Summit (dyad-wu-wei)"}
+        edges = []
+        
+        path_ids = set()
+        activity_ids = set()
+        
+        for issue in open_issues:
+            labels = [l.get("name", "").lower() for l in issue.get("labels", []) if isinstance(l, dict)]
+            labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
+            issue_num = str(issue["number"])
+            title = issue.get("title", "")
+            
+            if "path" in labels or title.lower().startswith("path:"):
+                path_ids.add(issue_num)
+                nodes[issue_num] = title
+                edges.append(("Summit", issue_num, "", False))
+                
+        for issue in open_issues:
+            issue_num = str(issue["number"])
+            if issue_num in path_ids:
+                body = issue.get("body") or ""
+                meta_index_match = re.search(r"## Meta-Index\s*\n(.*?)(?=\n##|\Z)", body, re.IGNORECASE | re.DOTALL)
+                if meta_index_match:
+                    meta_content = meta_index_match.group(1)
+                    for line in meta_content.split('\n'):
+                        line = line.strip()
+                        m = re.match(r"-\s*\[[ xX]?\]\s*(?:Node|Activity|Discovery)?\s*#?(\d+):?\s*(.*)", line, re.IGNORECASE)
+                        if m:
+                            child_id = m.group(1)
+                            child_title = m.group(2).strip()
+                            activity_ids.add(child_id)
+                            nodes[child_id] = f"Node {child_id}: {child_title}"
+                            edges.append((issue_num, child_id, "", False))
+                            
+        for issue in open_issues:
+            issue_num = str(issue["number"])
+            title = issue.get("title", "")
+            body = issue.get("body") or ""
+            
+            if issue_num not in path_ids:
+                if issue_num in activity_ids:
+                    nodes[issue_num] = title
+                    
+            dep_match = re.search(r"## Depends On\s*\n+([^\n#]+)", body, re.IGNORECASE)
+            if dep_match:
+                dep_content = dep_match.group(1).strip()
+                if dep_content.upper() != "TBD" and dep_content:
+                    deps = re.findall(r"\d+", dep_content)
+                    for d in deps:
+                        edges.append((d, issue_num, "depends on", True))
+                        
+        print("```mermaid")
+        print("flowchart TD")
+        print("    Summit((\"Summit (dyad-wu-wei)\"))")
+        
+        for nid, ntitle in nodes.items():
+            if nid == "Summit":
+                continue
+            safe_title = ntitle.replace('"', "'").replace("(", "[").replace(")", "]")
+            print(f'    N{nid}["#{nid}: {safe_title}"]')
+            
+        for frm, to, label, is_dotted in edges:
+            frm_str = "Summit" if frm == "Summit" else f"N{frm}"
+            to_str = "Summit" if to == "Summit" else f"N{to}"
+            
+            link = "-.->" if is_dotted else "-->"
+            if label:
+                if is_dotted:
+                    link = f"-. {label} .->"
+                else:
+                    link = f"-- {label} -->"
+            
+            print(f"    {frm_str} {link} {to_str}")
+            
+        print("```")
+
 from kernel.daemon_telemetry import record_execution
 
 @record_execution(stage="sense")
@@ -313,6 +395,9 @@ def main():
     parser_edit = subparsers.add_parser("edit", help="Edit a backlog item body")
     parser_edit.add_argument("issue_id", help="Issue ID to edit")
     parser_edit.add_argument("new_body", help="New body content")
+    
+    # map
+    parser_map = subparsers.add_parser("map", help="Generate a Mermaid.js DAG of the active backlog")
     
     args = parser.parse_args()
     daemon = BacklogDaemon()
@@ -352,6 +437,9 @@ def main():
         
     elif args.subcommand == "edit":
         daemon.edit(args.issue_id, args.new_body)
+
+    elif args.subcommand == "map":
+        daemon.map()
 
 if __name__ == "__main__":
     main()
