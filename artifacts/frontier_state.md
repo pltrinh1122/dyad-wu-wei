@@ -811,8 +811,8 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1662: Reflect - [BUG] Intake: System Crash in checkout
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -928,41 +928,58 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[x] The technical design satisfies the harmonization constraints`
   - `[x] The implementation satisfies the technical design`
 
-## Activity: Reflect - [BUG] Intake: System Crash in checkout
-- **Status**: Completed
-- **Learnings & Context**: Executed a formal no-op reflection to close Path 1659.
+## Node 1730: [ALIGN] Falsify and implement DAG mapping survivor
+- **Status**: Backlog
+- **Learnings & Context**: Address the Operator's [ALIGN] request: Falsify the assumption that the agent has a clear DAG mapping of backlog items to the root summit, and implement the survivor (a mechanism to map backlog items to the DAG summit).
 - **Feedforward Invariants**:
-  - `[x] The bug root cause is formally identified and recorded`
-  - `[x] The technical design satisfies the harmonization constraints`
-  - `[x] The implementation satisfies the technical design`
+  - `[ ]` None
 
-## Node 1733: Plan - [ALIGN] Falsify and implement DAG mapping survivor
+## Node 1731: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery: Plan - [ALIGN] Falsify and implement DAG mapping survivor
+## Discovery: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor
 - **Status**: Completed
-- **Learnings & Context**: Produced WHAT-1733 technical design for the DAG mapping survivor.
+- **Learnings & Context**: Produced WHY-1731 falsifying DAG clarity and planning survivor.
 - **Feedforward Invariants**:
   - `[x] The bug root cause is formally identified and recorded`
   - `[x] The technical design satisfies the harmonization constraints`
   - `[x] The implementation satisfies the technical design`
 
-## Node 1737: Reflect - [ALIGN] Falsify and implement DAG mapping survivor
+## Node 1735: Act - [ALIGN] Falsify and implement DAG mapping survivor
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity: Reflect - [ALIGN] Falsify and implement DAG mapping survivor
+## Activity: Act - [ALIGN] Falsify and implement DAG mapping survivor
 - **Status**: Completed
-- **Learnings & Context**: Executed a formal no-op reflection to close Path 1730.
+- **Learnings & Context**: Implemented the bin/backlog map command and tested successfully.
 - **Feedforward Invariants**:
   - `[x] The bug root cause is formally identified and recorded`
   - `[x] The technical design satisfies the harmonization constraints`
   - `[x] The implementation satisfies the technical design`
+
+## Node 1739: Establish Dyadic-Autonomous Handoff Boundary
+- **Status**: Backlog
+- **Learnings & Context**: Formalize the architectural separation between the synchronous Dyadic design cycle and the asynchronous SPAO execution engine to eliminate design session friction.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1740: Harmonize - Establish Dyadic-Autonomous Handoff Boundary
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery: Harmonize - Establish Dyadic-Autonomous Handoff Boundary
+- **Status**: Completed
+- **Learnings & Context**: Formalized the falsification of the universal SPAO application and established the handoff boundary.
+- **Feedforward Invariants**:
+  - `[x] The goal context and boundaries have been mapped`
+  - `[x] Discovered unknowns have been formulated into actionable tasks`
 
 ## Active Agents Matrix
 * **agent-ziran**:

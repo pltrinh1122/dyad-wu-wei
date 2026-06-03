@@ -56,3 +56,9 @@ To prevent state corruption and loss of Dao inheritance, the Agent MUST strictly
 - The Engine (`dyad-wu-wei`) MUST remain the Root Parent repository and the primary IDE working directory.
 - The target child project MUST be nested inside the parent at `./.workspace/`.
 - The Engine MUST NEVER be mounted as a submodule or orthogonal peer to the child project, as this causes the Agent to be lobotomized from its Universal Dao context (`GEMINI.md` and `kb/`).
+
+## Antigravity-Specific: Dyadic vs Autonomous Engine Handoff Discipline
+The SPAO Execution Loop (`plan-start -> checkout -> act -> reflect`) is an asynchronous executor, not a universal interface. Attempting to run synchronous, parallel design sessions through this state machine generates friction and limits exploration. The Agent MUST adhere to the following boundary:
+- **Domain A (The Dyadic Cycle)**: Design, brainstorming, and philosophical alignment occur in a lock-free conversational mode. The SPAO engine is intentionally bypassed. The output of this domain is `WHY` and `WHAT` artifacts and `Path` specifications on the backlog.
+- **The Handoff (The Sluice Gate)**: Once the design is mathematically sound, the Operator or Agent declares a handoff. The Agent generates the formal backlog nodes.
+- **Domain B (The Autonomous Engine)**: The Agent drops into True Dormancy, acquires a lock on the `Path`/`Node`, and strictly executes the SPAO state machine autonomously to materialize the design.
