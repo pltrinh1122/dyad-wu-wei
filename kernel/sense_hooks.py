@@ -24,8 +24,39 @@ class HookDaemon:
                 self.execute_prompt_queue_hook(hook_config)
             elif hook_type == "next_best_action":
                 self.execute_next_best_action_hook(hook_config, local_mode=local_mode)
+            elif hook_type == "dm_inbox":
+                self.execute_dm_inbox_hook(hook_config)
             else:
                 print(f"Warning: Unknown hook type '{hook_type}'")
+
+    def execute_dm_inbox_hook(self, config):
+        """Silently queries falsify.py for unread mail during the Sense phase."""
+        import subprocess
+        
+        try:
+            from drivers import path_resolver
+            workspace_dir = path_resolver.get_workspace_dir()
+            falsify_script = os.path.join(workspace_dir, "commons", "scripts", "falsify.py")
+            if not os.path.exists(falsify_script):
+                return
+                
+            me = config.get("me", "dyad-wu-wei")
+            r = subprocess.run(
+                ["python3", falsify_script, "inbox", "--me", me],
+                cwd=workspace_dir,
+                capture_output=True,
+                text=True
+            )
+            if r.returncode == 0:
+                output = r.stdout.strip()
+                if output and output != "✓ no mail":
+                    print("\n┌──────────────────────────────────────────────────────────┐")
+                    print(f"│ 📬 \033[1;33mIncoming Communication Detected\033[0m")
+                    print(f"│   {output}")
+                    print(f"│   Run: \033[1;30mpython3 commons/scripts/falsify.py dm --me {me}\033[0m")
+                    print("└──────────────────────────────────────────────────────────┘")
+        except Exception as e:
+            print(f"Warning: Failed to execute dm_inbox hook: {e}")
 
     def execute_prompt_queue_hook(self, config):
         """Surfaces pending operator prompts from a configurable file path."""
