@@ -1537,10 +1537,10 @@
   - `[ ]` None
 
 ## Node 526: Activity 526: Reflect - Elevate Path Meta-Index from List to DAG
-- **Status**: Backlog
-- **Learnings & Context**: Perform final verification of the DAG parsing and rendering implementations, update the path status, and close the path.
+- **Status**: Completed
+- **Learnings & Context**: Synthesized retrospective for Path 299 in retro-526.md
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `none`
 
 ## Node 300: Probe 300: Probe: Evaluation of DAG Visualization Requirements
 - **Status**: Completed
@@ -5050,10 +5050,10 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1693: Discovery: Harmonize - Establish Job Discipline for JTBD and Dialectical Falsification
-- **Status**: Backlog
-- **Learnings & Context**: 
+- **Status**: Completed
+- **Learnings & Context**: Synthesized industry best practices for JTBD and Dialectical Falsification, affirming the constraint axiom and decision-framing.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `none`
 
 ## Node 1694: Discovery: Plan - Establish Job Discipline for JTBD and Dialectical Falsification
 - **Status**: Backlog
@@ -5073,15 +5073,15 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1694: Plan - Establish Job Discipline for JTBD and Dialectical Falsification
-- **Status**: Completed
-- **Learnings & Context**: Created schema and specification for the Job Discipline template.
+## Node 1693: Harmonize - Establish Job Discipline for JTBD and Dialectical Falsification
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `none`
+  - `[ ]` None
 
-## Node 1696: Create Job Discipline template for JTBD and Dialectical Falsification
+## Node 1695: Reflect - Establish Job Discipline for JTBD and Dialectical Falsification
 - **Status**: Completed
-- **Learnings & Context**: Created the Job Discipline template artifacts/job-discipline-template.md in accordance with WHAT-1694.
+- **Learnings & Context**: Captured insights from Node 1694 into retro-1695.md regarding structural invariants.
 - **Feedforward Invariants**:
   - `none`
 
@@ -5091,39 +5091,27 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1703: Remediate HTIL Bypass Survivor
-- **Status**: Backlog
-- **Learnings & Context**: Fix the HTIL bypass logic that permitted a load-bearing artifact to be merged without review.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1704: Harmonize - Remediate HTIL Bypass Survivor
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Remediate HTIL Bypass Survivor.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1705: Plan - Remediate HTIL Bypass Survivor
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Remediate HTIL Bypass Survivor.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1706: Reflect - Remediate HTIL Bypass Survivor
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Remediate HTIL Bypass Survivor.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1707: Falsify HTIL bypass for load-bearing artifacts
+## Node 1082: Reflect - Synthesize Epistemic Retrospective retro-1081.md
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1707: Falsify HTIL bypass for load-bearing artifacts
+## Activity 1082: Reflect - Synthesize Epistemic Retrospective retro-1081.md
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Switching to high priority path 1602 to fix PR conflation root cause
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1709: Remediate PR Conflation Root Cause
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1709: Remediate PR Conflation Root Cause
 - **Status**: Completed
-- **Learnings & Context**: Updated kernel/node_lifecycle.py and kb/WHY-0087-universal-merge-gate-bypass.md to ensure kb/ files and artifact templates do not bypass HTIL review.
+- **Learnings & Context**: Modified kernel/node_lifecycle.py to explicitly include the created PR URL in the log_stage_advancement message. This ensures the Agent observes the true PR number instead of conflating it with the Node issue ID.
 - **Feedforward Invariants**:
   - `none`
 
