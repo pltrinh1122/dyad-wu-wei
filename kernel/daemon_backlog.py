@@ -135,6 +135,8 @@ class BacklogDaemon:
         # Strip any accidentally prepended predictive IDs or redundant prefixes from the user title
         cleaned_title = clean_node_title(title)
         formatted_title = cleaned_title
+        if is_non_terminal and not formatted_title.lower().startswith("path:"):
+            formatted_title = f"Path: {formatted_title}"
 
         # Idempotency duplicate check
         try:
@@ -191,7 +193,7 @@ class BacklogDaemon:
             path_details = github_client.get_issue_details(path_id)
             path_body = path_details.get("body", "")
             
-            checkbox_line = f"- [ ] #{issue_id}: {formatted_title}"
+            checkbox_line = f"- [ ] Node {issue_id}: {formatted_title}"
             if depends_on:
                 checkbox_line += f" [Depends: {depends_on}]"
                 
@@ -265,7 +267,7 @@ class BacklogDaemon:
             pattern = re.compile(r"-\s+\[\s*\]\s+(?:Node\s+|#)?" + str(node_id) + r":", re.IGNORECASE)
             
             if pattern.search(body):
-                new_body = pattern.sub(f"- [x] #{node_id}:", body)
+                new_body = pattern.sub(f"- [x] Node {node_id}:", body)
                 github_client.update_issue_body(str(path_id), new_body)
         except Exception as e:
             print(f"Warning: Failed to check off Meta-Index for Node {node_id} in Path {path_id}: {e}")
@@ -280,7 +282,7 @@ class BacklogDaemon:
             pattern = re.compile(r"-\s+\[x\]\s+(?:Node\s+|#)?" + str(node_id) + r":", re.IGNORECASE)
             
             if pattern.search(body):
-                new_body = pattern.sub(f"- [ ] #{node_id}:", body)
+                new_body = pattern.sub(f"- [ ] Node {node_id}:", body)
                 github_client.update_issue_body(str(path_id), new_body)
         except Exception as e:
             print(f"Warning: Failed to uncheck Meta-Index for Node {node_id} in Path {path_id}: {e}")

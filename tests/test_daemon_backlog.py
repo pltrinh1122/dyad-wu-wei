@@ -143,7 +143,7 @@ def test_check_off_meta_index(mock_backlog_gh):
     daemon.check_off_meta_index("213", "229")
 
     mock_backlog_gh.get_issue_details.assert_called_once_with("213")
-    mock_backlog_gh.update_issue_body.assert_called_once_with("213", "## Meta-Index\n- [x] #229: Title [Depends: 228]\n- [ ] Node 230: Title")
+    mock_backlog_gh.update_issue_body.assert_called_once_with("213", "## Meta-Index\n- [x] Node 229: Title [Depends: 228]\n- [ ] Node 230: Title")
 
 @patch('kernel.daemon_backlog.render_template')
 def test_backlog_add_path(mock_render, mock_backlog_gh):
