@@ -799,8 +799,8 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1660: Harmonize - [BUG] Intake: System Crash in checkout
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in checkout.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -896,15 +896,21 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[x] Attached retro`
 
+## Node 1643: Harmonize - [BUG] Intake: System Crash in reflect
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Node 999: Implement quarantine survivor
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery: Harmonize - [BUG] Intake: System Crash in checkout
+## Discovery: Harmonize - [BUG] Intake: System Crash in reflect
 - **Status**: Completed
-- **Learnings & Context**: Harmonized that checkout crash is fundamentally identical to plan-start crash and resolved globally by PR 1722
+- **Learnings & Context**: Harmonized that reflect crash is caused by double-nested execution context and must be guarded by an explicit block
 - **Feedforward Invariants**:
   - `[x] The bug root cause is formally identified and recorded`
 
