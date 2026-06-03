@@ -854,8 +854,9 @@ nodes:
     in checkout.'
   invariants: []
 - name: 'Node 1662: Reflect - [BUG] Intake: System Crash in checkout'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
+    checkout.'
   invariants: []
 - name: 'Node 1667: [BUG] Intake: System Crash in plan-start'
   status: Backlog
@@ -940,46 +941,62 @@ nodes:
   - '[x] The bug root cause is formally identified and recorded'
   - '[x] The technical design satisfies the harmonization constraints'
   - '[x] The implementation satisfies the technical design'
-- name: 'Activity: Reflect - [BUG] Intake: System Crash in checkout'
+- name: 'Node 1730: [ALIGN] Falsify and implement DAG mapping survivor'
+  status: Backlog
+  learnings: 'Address the Operator''s [ALIGN] request: Falsify the assumption that
+    the agent has a clear DAG mapping of backlog items to the root summit, and implement
+    the survivor (a mechanism to map backlog items to the DAG summit).'
+  invariants: []
+- name: 'Node 1731: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor'
   status: Completed
-  learnings: Executed a formal no-op reflection to close Path 1659.
+  learnings: Produced WHY-1731 falsifying DAG clarity and planning survivor.
   invariants:
   - '[x] The bug root cause is formally identified and recorded'
   - '[x] The technical design satisfies the harmonization constraints'
   - '[x] The implementation satisfies the technical design'
-- name: 'Node 1733: Plan - [ALIGN] Falsify and implement DAG mapping survivor'
+- name: 'Node 1735: Act - [ALIGN] Falsify and implement DAG mapping survivor'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery: Plan - [ALIGN] Falsify and implement DAG mapping survivor'
+- name: 'Activity: Act - [ALIGN] Falsify and implement DAG mapping survivor'
   status: Completed
-  learnings: Produced WHAT-1733 technical design for the DAG mapping survivor.
+  learnings: Implemented the bin/backlog map command and tested successfully.
   invariants:
   - '[x] The bug root cause is formally identified and recorded'
   - '[x] The technical design satisfies the harmonization constraints'
   - '[x] The implementation satisfies the technical design'
-- name: 'Node 1737: Reflect - [ALIGN] Falsify and implement DAG mapping survivor'
+- name: 'Node 1739: Establish Dyadic-Autonomous Handoff Boundary'
+  status: Backlog
+  learnings: Formalize the architectural separation between the synchronous Dyadic
+    design cycle and the asynchronous SPAO execution engine to eliminate design session
+    friction.
+  invariants: []
+- name: 'Node 1740: Harmonize - Establish Dyadic-Autonomous Handoff Boundary'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity: Reflect - [ALIGN] Falsify and implement DAG mapping survivor'
+- name: 'Discovery: Harmonize - Establish Dyadic-Autonomous Handoff Boundary'
   status: Completed
-  learnings: Executed a formal no-op reflection to close Path 1730.
+  learnings: Formalized the falsification of the universal SPAO application and established
+    the handoff boundary.
   invariants:
-  - '[x] The bug root cause is formally identified and recorded'
-  - '[x] The technical design satisfies the harmonization constraints'
-  - '[x] The implementation satisfies the technical design'
-- name: 'Node 1742: Plan - Establish Dyadic-Autonomous Handoff Boundary'
+  - '[x] The goal context and boundaries have been mapped'
+  - '[x] Discovered unknowns have been formulated into actionable tasks'
+- name: 'Node 1744: Act - Handoff Friction Remediation'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery: Plan - Establish Dyadic-Autonomous Handoff Boundary'
+- name: 'Activity: Act - Handoff Friction Remediation'
   status: Completed
-  learnings: Drafted the WHAT-1742 spec detailing the technical fixes required in
-    daemon_backlog.py to eliminate handoff friction.
+  learnings: Implemented the daemon_backlog.py code changes to auto-prefix path titles
+    and correctly format the Meta-Index array. Tests successfully updated to enforce
+    Node prefixing.
   invariants:
-  - '[x] Ensure the plan is physically materializable'
-  - '[x] Ensure the plan aligns with the intent DAG'
+  - '[x] Ensure tests pass'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
