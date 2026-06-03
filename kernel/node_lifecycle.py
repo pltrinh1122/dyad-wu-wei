@@ -551,9 +551,9 @@ class TerminalNode(BaseNode):
 
             if is_admin_bypass:
                 github_client.admin_merge_pull_request(pr_url)
-                log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created and AUTONOMOUSLY MERGED. HTIL bypassed for pure administrative node.")
+                log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} successfully created and AUTONOMOUSLY MERGED. HTIL bypassed for pure administrative node.")
             else:
-                log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block.")
+                log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} successfully created. Entering Observe phase under HARD HITL block.")
 
     @record_execution(stage="act")
     def retro_attach(self, retro_file: str, branch_name: str) -> str:
