@@ -331,10 +331,7 @@ class TerminalNode(BaseNode):
         from drivers import path_resolver
         daemon_knowledge_accrual.run_kb_check(repo_root=path_resolver.get_workspace_dir(), strict=True)
         
-        prefix = f"Node {self.issue_id}:"
-        if not current_title.startswith(prefix):
-            new_title = f"{prefix} {current_title}"
-            github_client.rename_issue_title(self.issue_id, new_title)
+        # Removed logic that previously added "Node <ID>:" to issue titles.
             
         self.update_body(body)
         
@@ -538,7 +535,7 @@ class TerminalNode(BaseNode):
             
             from kernel.title_utils import clean_node_title
             clean_name = clean_node_title(node_name)
-            pr_title = f"PR for Node {self.issue_id}: {clean_name}"
+            pr_title = f"PR: {clean_name}"
             pr_url = github_client.create_pull_request(pr_title, pr_body, head=branch_name)
             
             # Evaluate Administrative Node HTIL Bypass (WHY-0087-universal-merge-gate-bypass)
