@@ -811,8 +811,8 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1662: Reflect - [BUG] Intake: System Crash in checkout
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -928,9 +928,21 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[x] The technical design satisfies the harmonization constraints`
   - `[x] The implementation satisfies the technical design`
 
-## Activity: Reflect - [BUG] Intake: System Crash in checkout
+## Node 1730: [ALIGN] Falsify and implement DAG mapping survivor
+- **Status**: Backlog
+- **Learnings & Context**: Address the Operator's [ALIGN] request: Falsify the assumption that the agent has a clear DAG mapping of backlog items to the root summit, and implement the survivor (a mechanism to map backlog items to the DAG summit).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1731: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor
 - **Status**: Completed
-- **Learnings & Context**: Executed a formal no-op reflection to close Path 1659.
+- **Learnings & Context**: Produced WHY-1731 falsifying DAG clarity and planning survivor.
 - **Feedforward Invariants**:
   - `[x] The bug root cause is formally identified and recorded`
   - `[x] The technical design satisfies the harmonization constraints`
