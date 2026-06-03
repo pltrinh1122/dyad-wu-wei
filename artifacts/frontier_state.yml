@@ -4989,6 +4989,11 @@ nodes:
     true PR number instead of conflating it with the Node issue ID.
   invariants:
   - none
+- name: Node 1082
+  status: Completed
+  learnings: Synthesized retrospective for 1081
+  invariants:
+  - '[x] Retro created'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
