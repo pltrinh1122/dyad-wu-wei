@@ -799,14 +799,14 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1660: Harmonize - [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in checkout.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1661: Plan - [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -896,37 +896,35 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[x] Attached retro`
 
-## Node 1643: Harmonize - [BUG] Intake: System Crash in reflect
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
 ## Node 999: Implement quarantine survivor
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Discovery: Harmonize - [BUG] Intake: System Crash in reflect
+## Discovery: Harmonize - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
-- **Learnings & Context**: Harmonized that reflect crash is caused by double-nested execution context and must be guarded by an explicit block
+- **Learnings & Context**: Harmonized that checkout crash is fundamentally identical to plan-start crash and resolved globally by PR 1722
 - **Feedforward Invariants**:
   - `[x] The bug root cause is formally identified and recorded`
 
-## Node 1645: Reflect - [BUG] Intake: System Crash in reflect
+## Node 1644: Plan - [BUG] Intake: System Crash in reflect
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity: Reflect - [BUG] Intake: System Crash in reflect
+## Discovery: Plan - [BUG] Intake: System Crash in reflect
 - **Status**: Completed
-- **Learnings & Context**: Implemented explicit block in cmd_reflect to halt worktree-relative executions, preventing fatal Path resolving bugs.
+- **Learnings & Context**: Produced specification WHAT-1644 for structural guard in cmd_reflect
 - **Feedforward Invariants**:
-  - `[x] The bug root cause is formally identified and recorded`
   - `[x] The technical design satisfies the harmonization constraints`
-  - `[x] The implementation satisfies the technical design`
+
+## Discovery: Plan - [BUG] Intake: System Crash in checkout
+- **Status**: Completed
+- **Learnings & Context**: Produced specification WHAT-1661 confirming duplicate status of checkout crash
+- **Feedforward Invariants**:
+  - `[x] The technical design satisfies the harmonization constraints`
 
 ## Active Agents Matrix
 * **agent-ziran**:
