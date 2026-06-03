@@ -4890,14 +4890,12 @@ nodes:
     \ identity.\n\n```\n"
   invariants: []
 - name: 'Node 1668: Harmonize - [BUG] Intake: System Crash in plan-start'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
-    System Crash in plan-start.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1669: Plan - [BUG] Intake: System Crash in plan-start'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
-    in plan-start.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1670: Reflect - [BUG] Intake: System Crash in plan-start'
   status: Backlog
@@ -4992,36 +4990,18 @@ nodes:
 - name: Node 1082
   status: Cancelled
   learnings: 'Cancelled: Ghost node bypass'
-  invariants:
-  - '[x] Retro created'
-- name: 'Node 1716: Falsify Title Decorations'
-  status: Backlog
-  learnings: Remove Node and Activity prefixes from issue titles and templates as
-    they are no longer necessary for operator monitoring.
   invariants: []
-- name: 'Node 1717: Harmonize - Falsify Title Decorations'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Falsify Title
-    Decorations.
-  invariants: []
-- name: 'Node 1718: Plan - Falsify Title Decorations'
-  status: Backlog
-  learnings: Technical design and proposed changes for Falsify Title Decorations.
-  invariants: []
-- name: 'Node 1719: Reflect - Falsify Title Decorations'
-  status: Backlog
-  learnings: Final reflection and path closure for Falsify Title Decorations.
-  invariants: []
-- name: 'Node 1720: Implement Title Decoration Falsification'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Implement Title Decoration Falsification
+- name: Node 1668
   status: Completed
-  learnings: Falsified Node and Activity prefixes in issue and PR titles as they are
-    unnecessary.
+  learnings: Harmonized persona fallback intent
   invariants:
-  - '[x] Removed ID prefixes'
+  - '[x] Spec created'
+- name: 'Plan: Implement Persona Fallback'
+  status: Completed
+  learnings: Implemented root system daemon fallback in _verify_persona to resolve
+    plan-start crashes.
+  invariants:
+  - '[x] Added fallback logic to daemon_strategic.py'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
