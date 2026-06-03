@@ -5002,8 +5002,8 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1668: Harmonize - [BUG] Intake: System Crash in plan-start
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in plan-start.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -5116,10 +5116,16 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `none`
 
 ## Node 1082
-- **Status**: Completed
-- **Learnings & Context**: Synthesized retrospective for 1081
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Ghost
 - **Feedforward Invariants**:
-  - `[x] Retro created`
+  - `[ ]` None
+
+## Node 1668
+- **Status**: Completed
+- **Learnings & Context**: Harmonized persona fallback intent
+- **Feedforward Invariants**:
+  - `[x] Spec created`
 
 ## Active Agents Matrix
 * **agent-ziran**:
