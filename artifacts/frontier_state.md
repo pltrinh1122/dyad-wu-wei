@@ -993,35 +993,31 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[x] Ensure tests pass`
 
-## Node 1748: Establish Lean DM Protocol Integration
-- **Status**: Backlog
-- **Learnings & Context**: Integrate the public DM protocol via the commons falsify inbox script directly into the SPAO Sense phase transitions (sync/status), eliminating the need for an external daemon.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1749: Harmonize - Path: Establish Lean DM Protocol Integration
+## Node 1746: Reflect - Establish Dyadic-Autonomous Handoff Boundary
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1750: Plan - Path: Establish Lean DM Protocol Integration
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: Establish Lean DM Protocol Integration.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1751: Reflect - Path: Establish Lean DM Protocol Integration
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Path: Establish Lean DM Protocol Integration.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1749: Harmonize
+## Activity: Reflect - Establish Dyadic-Autonomous Handoff Boundary
 - **Status**: Completed
-- **Learnings & Context**: Validated the commons submodule can be updated to fetch falsify.py. Identified kernel/sense_hooks.py as the perfect injection point for the dm_inbox HookDaemon to print alerts during SENSE phase. Explored falsify.py inbox behavior.
+- **Learnings & Context**: Finalized the path retrospective for the Dyadic-Autonomous Handoff Boundary and logged frictional fixes into artifacts/retrospective_path_1739.md
 - **Feedforward Invariants**:
-  - `[x] Ensure no functional codebase mutations`
+  - `[x] Ensure path retrospective drafted`
+  - `[x] Ensure PR discipline was followed`
+
+## Node 1750: Plan - Path: Establish Lean DM Protocol Integration
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1750: Plan
+- **Status**: Completed
+- **Learnings & Context**: Authored the WHAT specification for the lean DM integration. Generated Activity node #1753 on the backlog.
+- **Feedforward Invariants**:
+  - `[x] Ensure WHAT specification exists`
+  - `[x] Ensure Activity nodes are on backlog`
 
 ## Active Agents Matrix
 * **agent-ziran**:
