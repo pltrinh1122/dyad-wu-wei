@@ -993,6 +993,19 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[x] Ensure tests pass`
 
+## Node 1746: Reflect - Establish Dyadic-Autonomous Handoff Boundary
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity: Reflect - Establish Dyadic-Autonomous Handoff Boundary
+- **Status**: Completed
+- **Learnings & Context**: Finalized the path retrospective for the Dyadic-Autonomous Handoff Boundary and logged frictional fixes into artifacts/retrospective_path_1739.md
+- **Feedforward Invariants**:
+  - `[x] Ensure path retrospective drafted`
+  - `[x] Ensure PR discipline was followed`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
