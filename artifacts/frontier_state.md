@@ -5002,20 +5002,20 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1668: Harmonize - [BUG] Intake: System Crash in plan-start
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in plan-start.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1669: Plan - [BUG] Intake: System Crash in plan-start
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in plan-start.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1670: Reflect - [BUG] Intake: System Crash in plan-start
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in plan-start.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -5119,19 +5119,49 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Status**: Cancelled
 - **Learnings & Context**: Cancelled: Ghost node bypass
 - **Feedforward Invariants**:
+  - `[x] Retro created`
+
+## Node 1716: Falsify Title Decorations
+- **Status**: Backlog
+- **Learnings & Context**: Remove Node and Activity prefixes from issue titles and templates as they are no longer necessary for operator monitoring.
+- **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1668
-- **Status**: Completed
-- **Learnings & Context**: Harmonized persona fallback intent
+## Node 1717: Harmonize - Falsify Title Decorations
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Falsify Title Decorations.
 - **Feedforward Invariants**:
-  - `[x] Spec created`
+  - `[ ]` None
 
-## Plan: Implement Persona Fallback
-- **Status**: Completed
-- **Learnings & Context**: Implemented root system daemon fallback in _verify_persona to resolve plan-start crashes.
+## Node 1718: Plan - Falsify Title Decorations
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Falsify Title Decorations.
 - **Feedforward Invariants**:
-  - `[x] Added fallback logic to daemon_strategic.py`
+  - `[ ]` None
+
+## Node 1719: Reflect - Falsify Title Decorations
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Falsify Title Decorations.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1720: Implement Title Decoration Falsification
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Implement Title Decoration Falsification
+- **Status**: Completed
+- **Learnings & Context**: Falsified Node and Activity prefixes in issue and PR titles as they are unnecessary.
+- **Feedforward Invariants**:
+  - `[x] Removed ID prefixes`
+
+## Reflect: System Crash Resolution
+- **Status**: Completed
+- **Learnings & Context**: Path 1667 is resolved. Attached retro-1667.md.
+- **Feedforward Invariants**:
+  - `[x] Attached retro`
 
 ## Active Agents Matrix
 * **agent-ziran**:
