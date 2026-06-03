@@ -18,6 +18,8 @@ sense_hooks:
     location: artifacts/prompt_backlog.yml
   - type: next_best_action
     repository: pltrinh1122/dyad-wu-wei
+  - type: dm_inbox
+    me: dyad-wu-wei
 
 governance:
   spao_purity_enforcement: true
