@@ -844,17 +844,18 @@ nodes:
     \ identity.\n\n```\n"
   invariants: []
 - name: 'Node 1660: Harmonize - [BUG] Intake: System Crash in checkout'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
+    System Crash in checkout.'
   invariants: []
 - name: 'Node 1661: Plan - [BUG] Intake: System Crash in checkout'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
+    in checkout.'
   invariants: []
 - name: 'Node 1662: Reflect - [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
-    checkout.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1667: [BUG] Intake: System Crash in plan-start'
   status: Backlog
@@ -913,31 +914,39 @@ nodes:
   learnings: Path 1667 is resolved. Attached retro-1667.md.
   invariants:
   - '[x] Attached retro'
+- name: 'Node 1643: Harmonize - [BUG] Intake: System Crash in reflect'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
 - name: 'Node 999: Implement quarantine survivor'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery: Harmonize - [BUG] Intake: System Crash in checkout'
+- name: 'Discovery: Harmonize - [BUG] Intake: System Crash in reflect'
   status: Completed
-  learnings: Harmonized that checkout crash is fundamentally identical to plan-start
-    crash and resolved globally by PR 1722
+  learnings: Harmonized that reflect crash is caused by double-nested execution context
+    and must be guarded by an explicit block
   invariants:
   - '[x] The bug root cause is formally identified and recorded'
-- name: 'Node 1644: Plan - [BUG] Intake: System Crash in reflect'
+- name: 'Node 1645: Reflect - [BUG] Intake: System Crash in reflect'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery: Plan - [BUG] Intake: System Crash in reflect'
+- name: 'Activity: Reflect - [BUG] Intake: System Crash in reflect'
   status: Completed
-  learnings: Produced specification WHAT-1644 for structural guard in cmd_reflect
+  learnings: Implemented explicit block in cmd_reflect to halt worktree-relative executions,
+    preventing fatal Path resolving bugs.
   invariants:
+  - '[x] The bug root cause is formally identified and recorded'
   - '[x] The technical design satisfies the harmonization constraints'
-- name: 'Discovery: Plan - [BUG] Intake: System Crash in checkout'
+  - '[x] The implementation satisfies the technical design'
+- name: 'Activity: Reflect - [BUG] Intake: System Crash in checkout'
   status: Completed
-  learnings: Produced specification WHAT-1661 confirming duplicate status of checkout
-    crash
+  learnings: Executed a formal no-op reflection to close Path 1659.
   invariants:
+  - '[x] The bug root cause is formally identified and recorded'
   - '[x] The technical design satisfies the harmonization constraints'
+  - '[x] The implementation satisfies the technical design'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
