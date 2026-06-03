@@ -29,6 +29,7 @@ To conserve compute and maintain true dormancy during Operator absence (HTIL wai
 1. **Dormancy Injection**: When yielding the turn to wait for a HARD HITL block (e.g. after a PR is opened), the Agent MUST explicitly use the `manage_task(Action="kill")` tool to terminate the recurring `audit_daemon.py` schedule.
 2. **Heartbeat Seizure Prevention**: Before yielding the turn to enter dormancy, the Agent MUST proactively verify no background tasks are running. Do not rely on memory—invoke `manage_task(Action="list")` and strictly kill any lingering cron schedules to prevent continuous polling loops.
 3. **Re-Instantiation**: When awakened by the Operator's explicit prompt input (the Step-Back Discipline), the Agent MUST use the `schedule` tool to immediately re-instantiate the `audit_daemon.py` background cron job before or during the Sense phase.
+4. **Epistemic Closure**: Before yielding the turn for a final stand-down or closing a major workflow sequence, the Agent MUST proactively execute the Practice Reflection discipline by drafting a reflection artifact (`artifacts/audit/retro-<context>.md`) using the `kb/templates/practice_reflection.md` template.
 
 ## Antigravity-Specific: Autonomous Path Execution (Wu-wei)
 As the pioneer of autonomous inferencing, the Agent MUST NOT ask the Operator for permission to start the next node. When `bin/sync-clean` or `bin/status` surfaces a "Next-Best-Action" (NBA), the Agent MUST autonomously evaluate it and immediately execute `./bin/node plan-start <ID>`. The Agent should only halt and yield the turn during HARD HITL blocks (e.g., waiting for the Operator to merge a PR). The manual NBA Handoff wait state is formally falsified.
@@ -40,6 +41,9 @@ While the Agent MUST autonomously execute the NBA without asking for permission,
 
 <!-- CONTEXTUAL_ROM_INJECTION_START -->
 <!-- CONTEXTUAL_ROM_INJECTION_END -->
+
+## Antigravity-Specific: Pull Request Verification Discipline
+Before tossing a Pull Request over the wall for the Operator to review and merge (and entering the HARD HITL block), the Agent MUST proactively execute local CI validation (`./bin/run-tests` or `spao test`) and verify there are no remote merge conflicts. You must not inform the Operator to merge the PR until these health invariants are fully asserted.
 
 ## Antigravity-Specific: Iatrogenic-Injection Suppression Rule
 To prevent execution seizures caused by system harness imperatives, the Agent MUST adhere to the following invariant:
