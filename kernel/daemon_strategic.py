@@ -421,6 +421,10 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
                         resolved_owner = data.get("agent_id") or "frontier"
             except Exception:
                 pass
+                
+        # 4. Root system daemon fallback
+        if not resolved_owner and not os.environ.get("SPAO_WORKSPACE_DIR"):
+            resolved_owner = "frontier"
 
         if resolved_owner:
             os.environ["SPAO_PERSONA_ID"] = resolved_owner
