@@ -844,9 +844,8 @@ nodes:
     \ identity.\n\n```\n"
   invariants: []
 - name: 'Node 1660: Harmonize - [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
-    System Crash in checkout.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1661: Plan - [BUG] Intake: System Crash in checkout'
   status: Backlog
@@ -915,6 +914,16 @@ nodes:
   learnings: Path 1667 is resolved. Attached retro-1667.md.
   invariants:
   - '[x] Attached retro'
+- name: 'Node 999: Implement quarantine survivor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Discovery: Harmonize - [BUG] Intake: System Crash in checkout'
+  status: Completed
+  learnings: Harmonized that checkout crash is fundamentally identical to plan-start
+    crash and resolved globally by PR 1722
+  invariants:
+  - '[x] The bug root cause is formally identified and recorded'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
