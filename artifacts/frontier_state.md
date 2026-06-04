@@ -1109,17 +1109,29 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[x] Fixed daemon_status bug causing backlog issues to be improperly closed`
   - `[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes`
 
-## #296: Generalize Telemetry Test-Safety
+## #295: Enforce Adapter Execution Invariants
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 296: Act - Enforce Adapter Execution Invariants
+## Activity 295: Plan - Enforce Adapter Execution Invariants
 - **Status**: Completed
-- **Learnings & Context**: Implemented test_bin_executable.py
+- **Learnings & Context**: Drafted WHAT-0295 for executable bit guard
 - **Feedforward Invariants**:
-  - `Tests pass and bin scripts are verified`
+  - `Spec aligns with agentic OS requirements`
+
+## #586: Implement bin/node abort to atomically release an in-progress plan-start lock
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 586: Activity: Implement bin/node abort to atomically release an in-progress plan-start lock
+- **Status**: Completed
+- **Learnings & Context**: Implemented abort subcommand
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-ziran**:

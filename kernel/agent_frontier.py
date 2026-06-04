@@ -356,6 +356,24 @@ def append_active_node(filepath: str, node_id: int, node_title: str, description
     state["current_active_node"] = node_name
     save_state(yml_path, state)
 
+def abort_active_node(filepath: str, node_id: str) -> None:
+    """Removes the aborted node from the ledger and clears pointers."""
+    yml_path = resolve_yml_path(filepath)
+    state = load_state(yml_path)
+    
+    nodes = state.get("nodes", [])
+    # Remove nodes matching this ID
+    state["nodes"] = [node for node in nodes if str(extract_path_id(node.get("name", ""))) != str(node_id)]
+    
+    # Clear pointers
+    persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
+    if "active_agents" in state and persona in state["active_agents"]:
+        state["active_agents"][persona]["current_active_node"] = None
+    else:
+        state["current_active_node"] = None
+        
+    save_state(yml_path, state)
+
 def register_backlog_node(filepath: str, node_id: int, node_title: str, description: str) -> None:
     """Registers a newly created backlog node in the ledger with Backlog status."""
     yml_path = resolve_yml_path(filepath)

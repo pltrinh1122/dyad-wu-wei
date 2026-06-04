@@ -434,6 +434,15 @@ def cmd_cancel(args):
         reason=args.reason
     )
 
+def abort_node(issue_id: str) -> None:
+    """Aborts a node, releasing its locks and cleaning up worktrees."""
+    from kernel.node_lifecycle import TerminalNode
+    node = TerminalNode(issue_id)
+    node.abort()
+
+def cmd_abort(args):
+    abort_node(args.issue_id)
+
 def cmd_view(args):
     import re
     from drivers import gh_graph_skill
@@ -622,6 +631,10 @@ def main():
         parser_c.add_argument("reason")
         parser_c.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
 
+        # abort
+        parser_a = subparsers.add_parser("abort", help="Atomically release an in-progress plan-start lock")
+        parser_a.add_argument("issue_id")
+
         # view
         parser_v = subparsers.add_parser("view", help="View a Node issue")
         parser_v.add_argument("issue_id")
@@ -679,6 +692,8 @@ def main():
             cmd_plan_finish(args)
         elif args.subcommand == "cancel":
             cmd_cancel(args)
+        elif args.subcommand == "abort":
+            cmd_abort(args)
         elif args.subcommand == "checkout":
             cmd_checkout(args)
         elif args.subcommand == "reflect":
