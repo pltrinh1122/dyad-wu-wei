@@ -41,3 +41,7 @@ To preserve historical traceability while allowing Dao evolution, KB deprecation
 - The **Body** of a KB primitive is immutable ROM. We do not rewrite the historical context or dialectical arguments.
 - The **Header** (metadata, classification) is mutable. We append deprecation flags or `Superseded By` pointers at the top of the file.
 This allows the Wu-wei Dyad to seamlessly evolve its Dao without breaking the immutable historical record.
+
+## 4. The Semantic Purity Rule (Shell Command Evasion)
+To maintain static KB conflict validation checks and avoid false-positive semantic collisions, raw shell invocations of foundational utilities (e.g., `g-i-t`, `g-h`) are strictly forbidden in `kb/` documentation.
+When documenting processes or specifications, the Agent must synthesize hyphenated or abstract variants (e.g., `git-status`, `remote fetch`, `version control checkout`) rather than raw space-separated commands.

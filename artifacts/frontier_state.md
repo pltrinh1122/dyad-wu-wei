@@ -1121,15 +1121,15 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `Spec aligns with agentic OS requirements`
 
-## #535: Reflect - Concurrent Pull Safety in Node Sync
+## #1320: Reflect - Synthesize Epistemic Retrospective retro-1304.md
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 535: Activity: Reflect - Concurrent Pull Safety in Node Sync
+## Activity 1320: Reflect - Synthesize Epistemic Retrospective retro-1304.md
 - **Status**: Completed
-- **Learnings & Context**: Completed concurrent pull safety implementation.
+- **Learnings & Context**: Synthesized retro-1304 into Dao rules by forbidding raw shell commands in KB
 - **Feedforward Invariants**:
   - `[ ]` None
 
