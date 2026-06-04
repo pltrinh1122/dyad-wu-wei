@@ -139,11 +139,21 @@ class TestMgrStrategic(unittest.TestCase):
         }
         daemon_strategic.save_ledger(data)
         
-        mock_list.return_value = [
-            {"number": 362, "title": "Path 362"},
-            {"number": 368, "title": "Path 368"},
-            {"number": 355, "title": "Path 355"}
-        ]
+        def mock_list_side_effect(label):
+            if label == "backlog":
+                return [
+                    {"number": 362, "title": "Node 362"},
+                    {"number": 368, "title": "Node 368"},
+                    {"number": 355, "title": "Node 355"}
+                ]
+            elif label == "path":
+                return [
+                    {"number": 100, "body": "- [ ] Node 362"},
+                    {"number": 368, "body": "- [ ] Node 368"}, # Path 368 contains Node 368 (for test purposes)
+                    {"number": 200, "body": "- [ ] Node 355"}
+                ]
+            return []
+        mock_list.side_effect = mock_list_side_effect
         
         nba = NBADaemon()
         # Mock active path as None to test global switching logic reordering
@@ -154,8 +164,8 @@ class TestMgrStrategic(unittest.TestCase):
         self.assertEqual(len(recs), 3)
         # 368 must be moved to the first place
         self.assertEqual(recs[0]["number"], 368)
-        self.assertEqual(recs[1]["number"], 362)
-        self.assertEqual(recs[2]["number"], 355)
+        self.assertEqual(recs[1]["number"], 355)
+        self.assertEqual(recs[2]["number"], 362)
 
     @patch("drivers.github_client.get_issue_details")
     @patch("os.environ.get")
