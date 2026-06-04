@@ -1080,18 +1080,15 @@ nodes:
   status: Completed
   learnings: 'Falsified Node prefix. Modified kernel and tests to rely on #ID.'
   invariants: []
-- name: '#665: Probe 665: Align - Automate Backlog Hygiene via Python Governance Rules'
+- name: '#666: Probe 666: Plan - Automate Backlog Hygiene via Python Governance Rules'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 665: Align - Automate Backlog Hygiene via Python Governance Rules'
+- name: Plan - Automate Backlog Hygiene via Python Governance Rules
   status: Completed
-  learnings: Drafted WHY-0665 to align on backlog hygiene automation
+  learnings: Drafted WHAT-0666 specifying the daemon patches
   invariants:
-  - '[x] Affirmed invariant that backlog hygiene must be enforced via Python governance
-    rules'
-  - '[x] Fixed daemon_status bug causing backlog issues to be improperly closed'
-  - '[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes'
+  - WHAT-0666 exists
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
