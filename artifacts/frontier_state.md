@@ -799,8 +799,8 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1660: Harmonize - [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in checkout.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1058,6 +1058,12 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 ## Reflect - Implement PR Discipline Formalization
 - **Status**: Completed
 - **Learnings & Context**: Synthesized path 1613-1615 outcomes into retro-1613-1615.md, confirming PR Discipline is properly codified in node_lifecycle.py.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize - [BUG] Intake: System Crash in checkout
+- **Status**: Completed
+- **Learnings & Context**: Confirmed that the checkout Persona Gate exception was already fixed by PR #1722, which implemented root-level environment fallback.
 - **Feedforward Invariants**:
   - `[ ]` None
 
