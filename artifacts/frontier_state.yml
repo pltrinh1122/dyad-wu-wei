@@ -823,7 +823,7 @@ nodes:
     Added tests in test_daemon_node.py.
   invariants:
   - System gracefully handles invalid status or classification keys without crashing.
-- name: 'Node 1659: [BUG] Intake: System Crash in checkout'
+- name: 'Node 1659: Path: [BUG] Intake: System Crash in checkout'
   status: Backlog
   learnings: "## System Crash Report\n\n**Subcommand:** `checkout`\n**Persona:** `Unknown`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
@@ -846,15 +846,14 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1661: Plan - [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
-    in checkout.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1662: Reflect - [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
-    checkout.'
-  invariants: []
+  status: Completed
+  learnings: Reflected on checkout system crash and filed post-mortem retro-1662.md
+  invariants:
+  - None
 - name: 'Node 1667: [BUG] Intake: System Crash in plan-start'
   status: Backlog
   learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\

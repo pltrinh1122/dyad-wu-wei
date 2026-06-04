@@ -766,7 +766,7 @@
 - **Feedforward Invariants**:
   - `System gracefully handles invalid status or classification keys without crashing.`
 
-## Node 1659: [BUG] Intake: System Crash in checkout
+## Node 1659: Path: [BUG] Intake: System Crash in checkout
 - **Status**: Backlog
 - **Learnings & Context**: ## System Crash Report
 
@@ -805,16 +805,16 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1661: Plan - [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1662: Reflect - [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
+- **Status**: Completed
+- **Learnings & Context**: Reflected on checkout system crash and filed post-mortem retro-1662.md
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Node 1667: [BUG] Intake: System Crash in plan-start
 - **Status**: Backlog
