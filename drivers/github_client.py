@@ -207,7 +207,7 @@ def list_issues_by_label(label: str) -> list[dict]:
     """
     result = _run_gh(
         ["gh", "issue", "list", "--label", label, "--state", "open",
-         "--limit", "300", "--json", "number,title,url,state"],
+         "--limit", "300", "--json", "number,title,url,state,labels"],
         capture_output=True, text=True, check=True
     )
     import json
@@ -219,7 +219,8 @@ def list_issues_by_label(label: str) -> list[dict]:
             valid_issues.append({
                 "number": issue["number"],
                 "title": issue["title"],
-                "url": issue["url"]
+                "url": issue["url"],
+                "labels": [lbl.get("name") for lbl in issue.get("labels", [])]
             })
             
     return valid_issues

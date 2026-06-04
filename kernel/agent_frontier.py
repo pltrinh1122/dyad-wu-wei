@@ -238,6 +238,8 @@ def get_node_metadata(node_id: int | str) -> dict:
                 metadata["area"] = label.split(":", 1)[1].strip()
             elif label.startswith("kind:"):
                 metadata["kind"] = label.split(":", 1)[1].strip()
+            elif label == "path":
+                metadata["kind"] = "path"
     except Exception:
         # Ignore errors (e.g. offline tests or missing API stubs)
         pass

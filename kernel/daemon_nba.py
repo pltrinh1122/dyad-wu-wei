@@ -122,7 +122,7 @@ class NBADaemon:
                 for n in all_nodes:
                     if n.get("status") == "Backlog":
                         n_name = n.get("name", "")
-                        if "Path:" in n_name or n_name.startswith("Path:"):
+                        if "Path:" in n_name or n_name.startswith("Path:") or n.get("kind") == "path":
                             continue
                         match = re.search(r"(?:Node |#)(\d+)", n_name)
                         if match:
@@ -135,6 +135,7 @@ class NBADaemon:
                             })
             else:
                 backlog_items = github_client.list_issues_by_label("backlog")
+                backlog_items = [item for item in backlog_items if "path" not in item.get("labels", [])]
             
             # Reorder backlog_items based on active strategic goals
             prioritized_ids = []
