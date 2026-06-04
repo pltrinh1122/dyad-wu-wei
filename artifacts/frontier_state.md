@@ -720,6 +720,7 @@
 
 ## Node 1612: Path: Implement PR Discipline Formalization
 - **Status**: Backlog
+- **Kind**: path
 - **Learnings & Context**: Formally define PR Discipline and implement automated test gates
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -879,7 +880,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1719: Reflect - Falsify Title Decorations
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Falsify Title Decorations.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -930,6 +931,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 
 ## Node 1730: [ALIGN] Falsify and implement DAG mapping survivor
 - **Status**: Backlog
+- **Kind**: path
 - **Learnings & Context**: Address the Operator's [ALIGN] request: Falsify the assumption that the agent has a clear DAG mapping of backlog items to the root summit, and implement the survivor (a mechanism to map backlog items to the DAG summit).
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -964,6 +966,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 
 ## Node 1739: Establish Dyadic-Autonomous Handoff Boundary
 - **Status**: Backlog
+- **Kind**: path
 - **Learnings & Context**: Formalize the architectural separation between the synchronous Dyadic design cycle and the asynchronous SPAO execution engine to eliminate design session friction.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -995,6 +998,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 
 ## Node 1748: Establish Lean DM Protocol Integration
 - **Status**: Backlog
+- **Kind**: path
 - **Learnings & Context**: Integrate the public DM protocol via the commons falsify inbox script directly into the SPAO Sense phase transitions (sync/status), eliminating the need for an external daemon.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1006,13 +1010,13 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 1750: Plan - Path: Establish Lean DM Protocol Integration
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for Path: Establish Lean DM Protocol Integration.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1751: Reflect - Path: Establish Lean DM Protocol Integration
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for Path: Establish Lean DM Protocol Integration.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1080,7 +1084,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## #1719: Reflect - Falsify Title Decorations
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1090,6 +1094,20 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Learnings & Context**: Falsified Node prefix. Modified kernel and tests to rely on #ID.
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## #665: Probe 665: Align - Automate Backlog Hygiene via Python Governance Rules
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 665: Align - Automate Backlog Hygiene via Python Governance Rules
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHY-0665 to align on backlog hygiene automation
+- **Feedforward Invariants**:
+  - `[x] Affirmed invariant that backlog hygiene must be enforced via Python governance rules`
+  - `[x] Fixed daemon_status bug causing backlog issues to be improperly closed`
+  - `[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes`
 
 ## Active Agents Matrix
 * **agent-ziran**:

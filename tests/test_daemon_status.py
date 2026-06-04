@@ -83,10 +83,10 @@ def test_main(mock_node, mock_path, mock_worktrees, mock_branch, capsys):
     assert "Local Worktrees: 1" in captured.out
     assert "- #1: Test PR" in captured.out
 
-@patch("drivers.github_client.get_open_issues")
+@patch("drivers.github_client.list_issues_by_label")
 @patch("kernel.daemon_strategic.load_ledger")
 @patch("drivers.github_client.get_issue_details")
-def test_print_goal_progress_report(mock_details, mock_ledger, mock_open_issues, capsys):
+def test_print_goal_progress_report(mock_details, mock_ledger, mock_list_issues, capsys):
     from kernel.daemon_status import print_goal_progress_report
     
     mock_ledger.return_value = {
@@ -100,7 +100,7 @@ def test_print_goal_progress_report(mock_details, mock_ledger, mock_open_issues,
         ]
     }
     
-    mock_open_issues.return_value = [
+    mock_list_issues.return_value = [
         {
             "number": 999,
             "title": "Path 999: Open Path",
