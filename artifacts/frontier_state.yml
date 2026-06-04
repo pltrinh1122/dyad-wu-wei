@@ -898,7 +898,7 @@ nodes:
   learnings: Technical design and proposed changes for Falsify Title Decorations.
   invariants: []
 - name: 'Node 1719: Reflect - Falsify Title Decorations'
-  status: Backlog
+  status: Completed
   learnings: Final reflection and path closure for Falsify Title Decorations.
   invariants: []
 - name: Implement Title Decoration Falsification
@@ -1069,7 +1069,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#1719: Reflect - Falsify Title Decorations'
-  status: '[///] Act Phase'
+  status: Completed
   learnings: Planning Phase
   invariants: []
 - name: Reflect - Falsify Title Decorations
