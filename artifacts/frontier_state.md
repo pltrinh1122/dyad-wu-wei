@@ -725,8 +725,8 @@
   - `[ ]` None
 
 ## Node 1613: Harmonize - Implement PR Discipline Formalization
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Implement PR Discipline Formalization.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1040,6 +1040,12 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 ## Activity: Reflect - Remediate stale audit_state.json survivor
 - **Status**: Completed
 - **Learnings & Context**: Synthesized retro-1507_1511.md. Orthogonal Scope Violation safeguard correctly halted redundant path-to-node execution.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discovery: Harmonize - Implement PR Discipline Formalization
+- **Status**: Completed
+- **Learnings & Context**: Synthesized PR discipline formalization in 1613_harmonization.md, mandating automated pre-flight CI checks.
 - **Feedforward Invariants**:
   - `[ ]` None
 

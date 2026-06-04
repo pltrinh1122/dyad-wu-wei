@@ -788,9 +788,8 @@ nodes:
   learnings: Formally define PR Discipline and implement automated test gates
   invariants: []
 - name: 'Node 1613: Harmonize - Implement PR Discipline Formalization'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Implement PR
-    Discipline Formalization.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1614: Plan - Implement PR Discipline Formalization'
   status: Backlog
@@ -1040,6 +1039,11 @@ nodes:
   status: Completed
   learnings: Synthesized retro-1507_1511.md. Orthogonal Scope Violation safeguard
     correctly halted redundant path-to-node execution.
+  invariants: []
+- name: 'Discovery: Harmonize - Implement PR Discipline Formalization'
+  status: Completed
+  learnings: Synthesized PR discipline formalization in 1613_harmonization.md, mandating
+    automated pre-flight CI checks.
   invariants: []
 active_agents:
   agent-ziran:
