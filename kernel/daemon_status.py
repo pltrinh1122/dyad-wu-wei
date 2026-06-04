@@ -220,6 +220,9 @@ def main():
             from kernel.daemon_nba import NBADaemon
             nba = NBADaemon(repository="pltrinh1122/dyad-wu-wei")
             result = nba.evaluate(frontier_file=frontier_path, local_mode=True)
+            if not result.get("recommendations"):
+                result = nba.evaluate(frontier_file=frontier_path, local_mode=False)
+            
             if result.get("type") in ["path_continuation", "path_switching"] and result.get("recommendations"):
                 best_nba = result["recommendations"][0]
                 nba_id = best_nba.get("id") or best_nba.get("number")
