@@ -1,8 +1,9 @@
 ## Goal
-Final reflection and path closure for System Crash Fixes (Path 1567).
+Technical design and proposed changes for Path 578-B: Implement Persona and Path Alignment Gates in CLI Runtime.
 
 ## Specification
-Reflect this node to close out the Path. The substantive crash resolution (Nodes 1531, 1572, 1579, 1641) and harmonization specs (WHAT-1568, WHAT-1569) have been merged successfully.
+Created `kb/WHAT-0592-cli-persona-alignment-gates.md` detailing the structural architecture of the `SPAO_PERSONA_ID` verification gate in the CLI runtime. 
 
 ## Execution Plan
-1. Reflect this administrative node to formally close Path 1567.
+1. Reflect this Plan node.
+2. The subsequent Act/Reflect nodes of this Discovery will formalize the design.
