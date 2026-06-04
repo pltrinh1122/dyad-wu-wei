@@ -1101,14 +1101,13 @@ nodes:
   learnings: Drafted WHAT-0295 for executable bit guard
   invariants:
   - Spec aligns with agentic OS requirements
-- name: '#1320: Reflect - Synthesize Epistemic Retrospective retro-1304.md'
+- name: '#1568: Harmonize - System Crash Fixes'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 1320: Reflect - Synthesize Epistemic Retrospective retro-1304.md'
+- name: 'Discovery 1568: Harmonize - System Crash Fixes'
   status: Completed
-  learnings: Synthesized retro-1304 into Dao rules by forbidding raw shell commands
-    in KB
+  learnings: Documented System Crash Fixes in WHAT-1568
   invariants: []
 active_agents:
   agent-ziran:

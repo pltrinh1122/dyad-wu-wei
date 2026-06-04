@@ -1121,15 +1121,15 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `Spec aligns with agentic OS requirements`
 
-## #1320: Reflect - Synthesize Epistemic Retrospective retro-1304.md
+## #1568: Harmonize - System Crash Fixes
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1320: Reflect - Synthesize Epistemic Retrospective retro-1304.md
+## Discovery 1568: Harmonize - System Crash Fixes
 - **Status**: Completed
-- **Learnings & Context**: Synthesized retro-1304 into Dao rules by forbidding raw shell commands in KB
+- **Learnings & Context**: Documented System Crash Fixes in WHAT-1568
 - **Feedforward Invariants**:
   - `[ ]` None
 
