@@ -105,7 +105,10 @@ def sync_and_clean_node() -> None:
                         TerminalNode.clean_if_merged(branch)
                         continue
                 except Exception as e:
+                    import traceback
+                    tb = traceback.format_exc()
                     print(f"Warning: Failed to fetch state for branch {branch}: {e}")
+                    print(tb)
                 still_open.append(w)
             
             if still_open:
@@ -230,7 +233,7 @@ def sync_and_clean_node() -> None:
                 if is_quarantined:
                     # Ensure it is in the Triage Holding Path's Meta-Index
                     if not has_checkbox:
-                        checkbox_line = f"- [ ] Node {issue_id}: {title}"
+                        checkbox_line = f"- [ ] #{issue_id}: {title}"
                         if "## Meta-Index" in triage_path_body:
                             triage_path_body += f"\n{checkbox_line}"
                         else:
@@ -322,7 +325,7 @@ def sync_and_clean_node() -> None:
                 if best_path:
                     path_id = str(best_path["number"])
                     path_body = best_path.get("body") or ""
-                    checkbox_line = f"- [ ] Node {node_id}: {node_title}"
+                    checkbox_line = f"- [ ] #{node_id}: {node_title}"
                     if "## Meta-Index" in path_body:
                         path_body += f"\n{checkbox_line}"
                     else:
@@ -487,11 +490,11 @@ def cmd_view(args):
                 visited.add(nid)
                     
                 if is_root:
-                    rendered_lines.append(f"{status_str} Node {nid}: {ndata['title']}")
+                    rendered_lines.append(f"{status_str} #{nid}: {ndata['title']}")
                     new_prefix = ""
                 else:
                     connector = "└──► " if is_last else "├──► "
-                    rendered_lines.append(f"{prefix}{connector}{status_str} Node {nid}: {ndata['title']}{dep_str}")
+                    rendered_lines.append(f"{prefix}{connector}{status_str} #{nid}: {ndata['title']}{dep_str}")
                     new_prefix = prefix + ("    " if is_last else "│   ")
                 
                 children = [cid for cid, cdata in nodes.items() if nid in cdata["depends"]]
@@ -698,6 +701,7 @@ def main():
         subcommand = getattr(args, 'subcommand', 'unknown') if 'args' in locals() else 'unknown'
         persona = os.environ.get("SPAO_PERSONA_ID", "Unknown")
         tb_str = traceback.format_exc()
+        print("CRASH TRACEBACK:\n" + tb_str)
         
         body = f"## System Crash Report\n\n**Subcommand:** `{subcommand}`\n**Persona:** `{persona}`\n\n### Traceback\n```python\n{tb_str}\n```\n"
         

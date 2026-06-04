@@ -83,12 +83,12 @@ def test_append_active_node(dummy_frontier):
     )
     content = open(dummy_frontier).read()
 
-    assert "## Node 40: Great Success" in content
+    assert "## #40: Great Success" in content
     assert "- **Status**: [///] Act Phase" in content
     assert "- **Learnings & Context**: Completed the mission." in content
     assert "- `[ ] Verified system is stable.`" in content
     assert "## Active Agents Matrix" in content
-    assert "`Node 40: Great Success`" in content
+    assert "`#40: Great Success`" in content
 
 def test_checksum_mismatch(dummy_frontier):
     yml_path = dummy_frontier[:-3] + ".yml"
@@ -116,7 +116,7 @@ def test_register_backlog_node(dummy_frontier):
     )
     
     content = open(dummy_frontier).read()
-    assert "## Node 45: Backlog Task" in content
+    assert "## #45: Backlog Task" in content
     assert "- **Status**: Backlog" in content
     assert "- **Learnings & Context**: A task in backlog." in content
 
