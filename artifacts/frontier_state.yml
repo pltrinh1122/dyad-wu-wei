@@ -1101,15 +1101,13 @@ nodes:
   learnings: Drafted WHAT-0295 for executable bit guard
   invariants:
   - Spec aligns with agentic OS requirements
-- name: '#586: Implement bin/node abort to atomically release an in-progress plan-start
-    lock'
+- name: '#535: Reflect - Concurrent Pull Safety in Node Sync'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 586: Activity: Implement bin/node abort to atomically release an
-    in-progress plan-start lock'
+- name: 'Activity 535: Activity: Reflect - Concurrent Pull Safety in Node Sync'
   status: Completed
-  learnings: Implemented abort subcommand
+  learnings: Completed concurrent pull safety implementation.
   invariants: []
 active_agents:
   agent-ziran:
