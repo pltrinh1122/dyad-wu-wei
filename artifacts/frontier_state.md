@@ -798,25 +798,25 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1660: Harmonize - [BUG] Intake: System Crash in checkout
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1661: Plan - [BUG] Intake: System Crash in checkout
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1662: Reflect - [BUG] Intake: System Crash in checkout
+## Path 1660: Harmonize - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
-- **Learnings & Context**: Reflected on checkout system crash and filed post-mortem retro-1662.md
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `None`
+  - `[ ]` None
 
-## Node 1667: [BUG] Intake: System Crash in plan-start
+## Path 1661: Plan - [BUG] Intake: System Crash in checkout
+- **Status**: Completed
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Path 1662: Reflect - [BUG] Intake: System Crash in checkout
+- **Status**: Completed
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Path 1667: [BUG] Intake: System Crash in plan-start
 - **Status**: Backlog
 - **Learnings & Context**: ## System Crash Report
 
@@ -848,7 +848,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1690: Plan - [BUG] Intake: System Crash in sync
+## Path 1690: Plan - [BUG] Intake: System Crash in sync
 - **Status**: Backlog
 - **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in sync.
 - **Feedforward Invariants**:
@@ -860,17 +860,17 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1716: Falsify Title Decorations
+## Path 1716: Falsify Title Decorations
 - **Status**: Backlog
 - **Learnings & Context**: Remove Node and Activity prefixes from issue titles and templates as they are no longer necessary for operator monitoring.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 1717: Harmonize - Falsify Title Decorations
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Falsify Title Decorations.
+- **Status**: Completed
+- **Learnings & Context**: Harmonized the requirements for falsifying title decorations. Identified that Node and Activity prefixes are currently hardcoded in issue_factory.py and GitHub issue templates. Confirmed that removing these prefixes aligns with the current structural maturity of the SPAO ledger and reduces noise.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Node 1718: Plan - Falsify Title Decorations
 - **Status**: Backlog
@@ -896,7 +896,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[x] Attached retro`
 
-## Node 1643: Harmonize - [BUG] Intake: System Crash in reflect
+## Path 1643: Harmonize - [BUG] Intake: System Crash in reflect
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
@@ -914,7 +914,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[x] The bug root cause is formally identified and recorded`
 
-## Node 1645: Reflect - [BUG] Intake: System Crash in reflect
+## Path 1645: Reflect - [BUG] Intake: System Crash in reflect
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
