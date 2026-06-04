@@ -1,6 +1,6 @@
 ## Goal
-Implement Spec-First HTIL Inversion (Anti-CI/CD Doctrine) bypassing Hard-HITL gates for Act nodes.
+Implement a metadata guard to verify executable bits for bin/* scripts.
 
 ## Execution
-- Modified `kernel/node_lifecycle.py` to auto-merge downstream nodes (e.g. Phase == `Act`) if they pass local CI verification, leveraging topological alignment achieved during the upstream `Plan` phase.
-- Verified test suite passes (`tests/test_node_lifecycle.py`).
+- Drafted `kb/WHAT-0295-bin-executable-guard.md` specifying a new unit test to enforce executable bits for all scripts in `bin/`.
+- Formally locked implementation specifics.

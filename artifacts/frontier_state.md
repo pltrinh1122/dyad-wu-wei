@@ -1109,23 +1109,17 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[x] Fixed daemon_status bug causing backlog issues to be improperly closed`
   - `[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes`
 
-## Node 1520
-- **Status**: Cancelled
-- **Learnings & Context**: Cancelled: Deferred for urgent User directive (Node 1774)
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1774: Act - Implement Spec-First HTIL Inversion
+## #295: Enforce Adapter Execution Invariants
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1774: Act - Implement Spec-First HTIL Inversion
+## Activity 295: Plan - Enforce Adapter Execution Invariants
 - **Status**: Completed
-- **Learnings & Context**: Implemented the anti-CI/CD spec-first HTIL bypass in node_lifecycle.py
+- **Learnings & Context**: Drafted WHAT-0295 for executable bit guard
 - **Feedforward Invariants**:
-  - `Tests pass and Act nodes are securely auto-merged`
+  - `Spec aligns with agentic OS requirements`
 
 ## Active Agents Matrix
 * **agent-ziran**:

@@ -1092,19 +1092,15 @@ nodes:
     rules'
   - '[x] Fixed daemon_status bug causing backlog issues to be improperly closed'
   - '[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes'
-- name: Node 1520
-  status: Cancelled
-  learnings: 'Cancelled: Deferred for urgent User directive (Node 1774)'
-  invariants: []
-- name: '#1774: Act - Implement Spec-First HTIL Inversion'
+- name: '#295: Enforce Adapter Execution Invariants'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 1774: Act - Implement Spec-First HTIL Inversion'
+- name: 'Activity 295: Plan - Enforce Adapter Execution Invariants'
   status: Completed
-  learnings: Implemented the anti-CI/CD spec-first HTIL bypass in node_lifecycle.py
+  learnings: Drafted WHAT-0295 for executable bit guard
   invariants:
-  - Tests pass and Act nodes are securely auto-merged
+  - Spec aligns with agentic OS requirements
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
