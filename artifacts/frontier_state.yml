@@ -787,6 +787,7 @@ nodes:
   status: Backlog
   learnings: Formally define PR Discipline and implement automated test gates
   invariants: []
+  kind: path
 - name: 'Node 1613: Harmonize - Implement PR Discipline Formalization'
   status: '[///] Act Phase'
   learnings: Planning Phase
@@ -944,6 +945,7 @@ nodes:
     the agent has a clear DAG mapping of backlog items to the root summit, and implement
     the survivor (a mechanism to map backlog items to the DAG summit).'
   invariants: []
+  kind: path
 - name: 'Node 1731: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor'
   status: '[///] Act Phase'
   learnings: Planning Phase
@@ -972,6 +974,7 @@ nodes:
     design cycle and the asynchronous SPAO execution engine to eliminate design session
     friction.
   invariants: []
+  kind: path
 - name: 'Node 1740: Harmonize - Establish Dyadic-Autonomous Handoff Boundary'
   status: '[///] Act Phase'
   learnings: Planning Phase
@@ -1000,6 +1003,7 @@ nodes:
     directly into the SPAO Sense phase transitions (sync/status), eliminating the
     need for an external daemon.
   invariants: []
+  kind: path
 - name: 'Node 1749: Harmonize - Path: Establish Lean DM Protocol Integration'
   status: '[///] Act Phase'
   learnings: Planning Phase
