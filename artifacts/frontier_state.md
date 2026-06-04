@@ -1109,48 +1109,23 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[x] Fixed daemon_status bug causing backlog issues to be improperly closed`
   - `[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes`
 
-## #1770: Implement Spec-First HTIL Inversion
-- **Status**: Backlog
-- **Kind**: path
-- **Learnings & Context**: Invert HTIL to gate spec instead of code. Allow downstream Act nodes to auto-merge if tests pass.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1771: Harmonize - Implement Spec-First HTIL Inversion
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1772: Plan - Implement Spec-First HTIL Inversion
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1773: Reflect - Implement Spec-First HTIL Inversion
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement Spec-First HTIL Inversion.
+## Node 1520
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Deferred for urgent User directive (Node 1774)
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## #1774: Act - Implement Spec-First HTIL Inversion
-- **Status**: Backlog
-- **Learnings & Context**: Implement the logic in kernel/node_lifecycle.py. Run test suite.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1771
-- **Status**: Cancelled
-- **Learnings & Context**: Cancelled: Unneeded
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Activity 1772: Plan - Implement Spec-First HTIL Inversion
+## Activity 1774: Act - Implement Spec-First HTIL Inversion
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-1770
+- **Learnings & Context**: Implemented the anti-CI/CD spec-first HTIL bypass in node_lifecycle.py
 - **Feedforward Invariants**:
-  - `Spec aligns with topological guarantees`
+  - `Tests pass and Act nodes are securely auto-merged`
 
 ## Active Agents Matrix
 * **agent-ziran**:

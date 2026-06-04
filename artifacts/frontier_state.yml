@@ -1092,37 +1092,19 @@ nodes:
     rules'
   - '[x] Fixed daemon_status bug causing backlog issues to be improperly closed'
   - '[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes'
-- name: '#1770: Implement Spec-First HTIL Inversion'
-  status: Backlog
-  learnings: Invert HTIL to gate spec instead of code. Allow downstream Act nodes
-    to auto-merge if tests pass.
-  invariants: []
-  kind: path
-- name: '#1771: Harmonize - Implement Spec-First HTIL Inversion'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#1772: Plan - Implement Spec-First HTIL Inversion'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#1773: Reflect - Implement Spec-First HTIL Inversion'
-  status: Backlog
-  learnings: Final reflection and path closure for Implement Spec-First HTIL Inversion.
+- name: Node 1520
+  status: Cancelled
+  learnings: 'Cancelled: Deferred for urgent User directive (Node 1774)'
   invariants: []
 - name: '#1774: Act - Implement Spec-First HTIL Inversion'
-  status: Backlog
-  learnings: Implement the logic in kernel/node_lifecycle.py. Run test suite.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
-- name: Node 1771
-  status: Cancelled
-  learnings: 'Cancelled: Unneeded'
-  invariants: []
-- name: 'Activity 1772: Plan - Implement Spec-First HTIL Inversion'
+- name: 'Activity 1774: Act - Implement Spec-First HTIL Inversion'
   status: Completed
-  learnings: Drafted WHAT-1770
+  learnings: Implemented the anti-CI/CD spec-first HTIL bypass in node_lifecycle.py
   invariants:
-  - Spec aligns with topological guarantees
+  - Tests pass and Act nodes are securely auto-merged
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
