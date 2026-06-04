@@ -17,3 +17,4 @@ Historically, issues were prepended with `Node <ID>:` or `Activity <ID>:` to hel
 - Modified `kernel/daemon_knowledge_accrual.py` to remove `Node {id}:` prefix dependencies.
 - Updated `daemon_nba.py` regex `match = re.search(r"(?:Node |#)(\d+)", n_name)` to gracefully handle both old and new formats.
 - Fixed associated tests in `tests/test_frontier_editor.py` and `tests/test_daemon_backlog.py`.
+ 

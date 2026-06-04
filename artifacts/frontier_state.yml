@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: 'Node 1718: Plan - Falsify Title Decorations'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1062,6 +1062,14 @@ nodes:
   status: Completed
   learnings: 'Confirmed implicit fix via PR #1722 and materialized WHAT-1661. Synthesized
     retro to pass post-failure gate.'
+  invariants: []
+- name: '#999: Implement quarantine survivor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Plan - Falsify Title Decorations
+  status: Completed
+  learnings: Removed Node and Activity prefixes from titles and ledgers.
   invariants: []
 active_agents:
   agent-ziran:
