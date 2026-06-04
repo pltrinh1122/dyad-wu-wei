@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: null
+current_active_node: 'Node 1718: Plan - Falsify Title Decorations'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -823,8 +823,8 @@ nodes:
     Added tests in test_daemon_node.py.
   invariants:
   - System gracefully handles invalid status or classification keys without crashing.
-- name: 'Node 1659: Path: [BUG] Intake: System Crash in checkout'
-  status: Backlog
+- name: 'Path 1659: [BUG] Intake: System Crash in checkout'
+  status: Completed
   learnings: "## System Crash Report\n\n**Subcommand:** `checkout`\n**Persona:** `Unknown`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
     , line 652, in main\n    cmd_checkout(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
@@ -841,21 +841,22 @@ nodes:
     \ Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify\
     \ identity.\n\n```\n"
   invariants: []
-- name: 'Path 1660: Harmonize - [BUG] Intake: System Crash in checkout'
+- name: 'Node 1660: Harmonize - [BUG] Intake: System Crash in checkout'
   status: Completed
   learnings: Planning Phase
   invariants: []
-- name: 'Path 1661: Plan - [BUG] Intake: System Crash in checkout'
+- name: 'Node 1661: Plan - [BUG] Intake: System Crash in checkout'
   status: Completed
   learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
     in checkout.'
   invariants: []
-- name: 'Path 1662: Reflect - [BUG] Intake: System Crash in checkout'
+- name: 'Node 1662: Reflect - [BUG] Intake: System Crash in checkout'
   status: Completed
-  learnings: Planning Phase
+  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
+    checkout.'
   invariants: []
-- name: 'Path 1667: [BUG] Intake: System Crash in plan-start'
-  status: Backlog
+- name: 'Node 1667: [BUG] Intake: System Crash in plan-start'
+  status: Completed
   learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
     \ `Unknown`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
     \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 646,\
@@ -872,8 +873,8 @@ nodes:
     \ Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify\
     \ identity.\n\n```\n"
   invariants: []
-- name: 'Path 1690: Plan - [BUG] Intake: System Crash in sync'
-  status: Backlog
+- name: 'Node 1690: Plan - [BUG] Intake: System Crash in sync'
+  status: Completed
   learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
     in sync.'
   invariants: []
@@ -889,15 +890,11 @@ nodes:
   invariants: []
 - name: 'Node 1717: Harmonize - Falsify Title Decorations'
   status: Completed
-  learnings: Harmonized the requirements for falsifying title decorations. Identified
-    that Node and Activity prefixes are currently hardcoded in issue_factory.py and
-    GitHub issue templates. Confirmed that removing these prefixes aligns with the
-    current structural maturity of the SPAO ledger and reduces noise.
-  invariants:
-  - None
+  learnings: Planning Phase
+  invariants: []
 - name: 'Node 1718: Plan - Falsify Title Decorations'
-  status: Backlog
-  learnings: Technical design and proposed changes for Falsify Title Decorations.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1719: Reflect - Falsify Title Decorations'
   status: Backlog
@@ -914,8 +911,8 @@ nodes:
   learnings: Path 1667 is resolved. Attached retro-1667.md.
   invariants:
   - '[x] Attached retro'
-- name: 'Path 1643: Harmonize - [BUG] Intake: System Crash in reflect'
-  status: '[///] Act Phase'
+- name: 'Node 1643: Harmonize - [BUG] Intake: System Crash in reflect'
+  status: Completed
   learnings: Planning Phase
   invariants: []
 - name: 'Node 999: Implement quarantine survivor'
@@ -928,8 +925,8 @@ nodes:
     and must be guarded by an explicit block
   invariants:
   - '[x] The bug root cause is formally identified and recorded'
-- name: 'Path 1645: Reflect - [BUG] Intake: System Crash in reflect'
-  status: '[///] Act Phase'
+- name: 'Node 1645: Reflect - [BUG] Intake: System Crash in reflect'
+  status: Completed
   learnings: Planning Phase
   invariants: []
 - name: 'Activity: Reflect - [BUG] Intake: System Crash in reflect'
