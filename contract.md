@@ -1,6 +1,6 @@
 ## Goal
-Final reflection and path closure for Automate Backlog Hygiene via Python Governance Rules.
+Draft WHAT document specifying the 2-line logic change to is_autonomous_merge in kernel/node_lifecycle.py.
 
 ## Execution
-- Draft retrospective for the Backlog Hygiene automation (Node 666).
-- Attach retrospective.
+- Drafted `kb/WHAT-1770-spec-first-htil-inversion.md` detailing the Anti-CI/CD Spec-First HTIL bypass.
+- Formally locked implementation specifics.

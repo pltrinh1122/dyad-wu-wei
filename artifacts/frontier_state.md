@@ -1109,17 +1109,48 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[x] Fixed daemon_status bug causing backlog issues to be improperly closed`
   - `[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes`
 
-## #667: Reflect - Automate Backlog Hygiene via Python Governance Rules
+## #1770: Implement Spec-First HTIL Inversion
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: Invert HTIL to gate spec instead of code. Allow downstream Act nodes to auto-merge if tests pass.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1771: Harmonize - Implement Spec-First HTIL Inversion
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 667: Reflect - Automate Backlog Hygiene
-- **Status**: Completed
-- **Learnings & Context**: Drafted retro-664.md
+## #1772: Plan - Implement Spec-First HTIL Inversion
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `Node 667 Retro exists`
+  - `[ ]` None
+
+## #1773: Reflect - Implement Spec-First HTIL Inversion
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Implement Spec-First HTIL Inversion.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1774: Act - Implement Spec-First HTIL Inversion
+- **Status**: Backlog
+- **Learnings & Context**: Implement the logic in kernel/node_lifecycle.py. Run test suite.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1771
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Unneeded
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1772: Plan - Implement Spec-First HTIL Inversion
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHAT-1770
+- **Feedforward Invariants**:
+  - `Spec aligns with topological guarantees`
 
 ## Active Agents Matrix
 * **agent-ziran**:
