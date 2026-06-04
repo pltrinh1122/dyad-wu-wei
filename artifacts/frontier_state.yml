@@ -823,7 +823,7 @@ nodes:
     Added tests in test_daemon_node.py.
   invariants:
   - System gracefully handles invalid status or classification keys without crashing.
-- name: 'Path 1659: [BUG] Intake: System Crash in checkout'
+- name: 'Node 1659: [BUG] Intake: System Crash in checkout'
   status: Completed
   learnings: "## System Crash Report\n\n**Subcommand:** `checkout`\n**Persona:** `Unknown`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
@@ -842,7 +842,7 @@ nodes:
     \ identity.\n\n```\n"
   invariants: []
 - name: 'Node 1660: Harmonize - [BUG] Intake: System Crash in checkout'
-  status: Completed
+  status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1661: Plan - [BUG] Intake: System Crash in checkout'
@@ -883,18 +883,19 @@ nodes:
   learnings: Define philosophical tenets, create templates, and implement automated
     validation for the JTBD Job Discipline.
   invariants: []
-- name: 'Path 1716: Falsify Title Decorations'
-  status: Backlog
+- name: 'Node 1716: Falsify Title Decorations'
+  status: Completed
   learnings: Remove Node and Activity prefixes from issue titles and templates as
     they are no longer necessary for operator monitoring.
   invariants: []
 - name: 'Node 1717: Harmonize - Falsify Title Decorations'
   status: Completed
-  learnings: Planning Phase
+  learnings: Harmonize on the philosophical and technical intent for Falsify Title
+    Decorations.
   invariants: []
 - name: 'Node 1718: Plan - Falsify Title Decorations'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Completed
+  learnings: Technical design and proposed changes for Falsify Title Decorations.
   invariants: []
 - name: 'Node 1719: Reflect - Falsify Title Decorations'
   status: Backlog
@@ -912,7 +913,7 @@ nodes:
   invariants:
   - '[x] Attached retro'
 - name: 'Node 1643: Harmonize - [BUG] Intake: System Crash in reflect'
-  status: Completed
+  status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
 - name: 'Node 999: Implement quarantine survivor'
@@ -926,7 +927,7 @@ nodes:
   invariants:
   - '[x] The bug root cause is formally identified and recorded'
 - name: 'Node 1645: Reflect - [BUG] Intake: System Crash in reflect'
-  status: Completed
+  status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
 - name: 'Activity: Reflect - [BUG] Intake: System Crash in reflect'
@@ -1067,9 +1068,13 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Plan - Falsify Title Decorations
+- name: '#1719: Reflect - Falsify Title Decorations'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Reflect - Falsify Title Decorations
   status: Completed
-  learnings: Removed Node and Activity prefixes from titles and ledgers.
+  learnings: 'Falsified Node prefix. Modified kernel and tests to rely on #ID.'
   invariants: []
 active_agents:
   agent-ziran:
