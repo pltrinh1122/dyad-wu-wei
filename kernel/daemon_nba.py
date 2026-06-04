@@ -51,7 +51,7 @@ class NBADaemon:
                         n_name = n.get("name", "")
                         if core_title in n_name and f"Path {active_id}" not in n_name:
                             # Reconstruct item
-                            match = re.search(r"Node (\d+)", n_name)
+                            match = re.search(r"(?:Node |#)(\d+)", n_name)
                             if match:
                                 issue_num = int(match.group(1))
                                 title = n_name.split(":", 1)[1].strip()
@@ -124,7 +124,7 @@ class NBADaemon:
                         n_name = n.get("name", "")
                         if "Path:" in n_name or n_name.startswith("Path:"):
                             continue
-                        match = re.search(r"Node (\d+)", n_name)
+                        match = re.search(r"(?:Node |#)(\d+)", n_name)
                         if match:
                             issue_num = int(match.group(1))
                             title = n_name.split(":", 1)[1].strip()

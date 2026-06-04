@@ -766,8 +766,8 @@
 - **Feedforward Invariants**:
   - `System gracefully handles invalid status or classification keys without crashing.`
 
-## Node 1659: Path: [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
+## Path 1659: [BUG] Intake: System Crash in checkout
+- **Status**: Completed
 - **Learnings & Context**: ## System Crash Report
 
 **Subcommand:** `checkout`
@@ -798,26 +798,26 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Path 1660: Harmonize - [BUG] Intake: System Crash in checkout
+## Node 1660: Harmonize - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Path 1661: Plan - [BUG] Intake: System Crash in checkout
+## Node 1661: Plan - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Path 1662: Reflect - [BUG] Intake: System Crash in checkout
+## Node 1662: Reflect - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
-- **Learnings & Context**: Planning Phase
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Path 1667: [BUG] Intake: System Crash in plan-start
-- **Status**: Backlog
+## Node 1667: [BUG] Intake: System Crash in plan-start
+- **Status**: Completed
 - **Learnings & Context**: ## System Crash Report
 
 **Subcommand:** `plan-start`
@@ -848,8 +848,8 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Path 1690: Plan - [BUG] Intake: System Crash in sync
-- **Status**: Backlog
+## Node 1690: Plan - [BUG] Intake: System Crash in sync
+- **Status**: Completed
 - **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in sync.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -868,13 +868,13 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 
 ## Node 1717: Harmonize - Falsify Title Decorations
 - **Status**: Completed
-- **Learnings & Context**: Harmonized the requirements for falsifying title decorations. Identified that Node and Activity prefixes are currently hardcoded in issue_factory.py and GitHub issue templates. Confirmed that removing these prefixes aligns with the current structural maturity of the SPAO ledger and reduces noise.
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `None`
+  - `[ ]` None
 
 ## Node 1718: Plan - Falsify Title Decorations
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Falsify Title Decorations.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -896,8 +896,8 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[x] Attached retro`
 
-## Path 1643: Harmonize - [BUG] Intake: System Crash in reflect
-- **Status**: [///] Act Phase
+## Node 1643: Harmonize - [BUG] Intake: System Crash in reflect
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -914,8 +914,8 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[x] The bug root cause is formally identified and recorded`
 
-## Path 1645: Reflect - [BUG] Intake: System Crash in reflect
-- **Status**: [///] Act Phase
+## Node 1645: Reflect - [BUG] Intake: System Crash in reflect
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1070,6 +1070,18 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 ## Plan - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
 - **Learnings & Context**: Confirmed implicit fix via PR #1722 and materialized WHAT-1661. Synthesized retro to pass post-failure gate.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #999: Implement quarantine survivor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Plan - Falsify Title Decorations
+- **Status**: Completed
+- **Learnings & Context**: Removed Node and Activity prefixes from titles and ledgers.
 - **Feedforward Invariants**:
   - `[ ]` None
 

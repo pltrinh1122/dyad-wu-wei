@@ -135,7 +135,7 @@ def enforce_reflection_hook(issue_id: str, repo_root: str, worktree_root: str = 
                     path_issues = github_client.list_issues_by_label("path")
                     for path_issue in path_issues:
                         body = path_issue.get("body", "")
-                        if f"#{issue_id}" in body or f"Node {issue_id}:" in body:
+                        if f"#{issue_id}" in body or f"#{issue_id}:" in body:
                             parent_path_id = str(path_issue["number"])
                             break
                             
