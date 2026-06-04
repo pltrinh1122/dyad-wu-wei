@@ -792,8 +792,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1614: Plan - Implement PR Discipline Formalization'
-  status: Backlog
-  learnings: Technical design and proposed changes for Implement PR Discipline Formalization.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 1615: Reflect - Implement PR Discipline Formalization'
   status: Backlog
@@ -1044,6 +1044,11 @@ nodes:
   status: Completed
   learnings: Synthesized PR discipline formalization in 1613_harmonization.md, mandating
     automated pre-flight CI checks.
+  invariants: []
+- name: Plan - Implement PR Discipline Formalization
+  status: Completed
+  learnings: Validated that node_lifecycle.py and kb/ already structurally enforce
+    the Pull Request Verification Discipline. No codebase modifications needed.
   invariants: []
 active_agents:
   agent-ziran:

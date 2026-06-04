@@ -731,8 +731,8 @@
   - `[ ]` None
 
 ## Node 1614: Plan - Implement PR Discipline Formalization
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Implement PR Discipline Formalization.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1046,6 +1046,12 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 ## Discovery: Harmonize - Implement PR Discipline Formalization
 - **Status**: Completed
 - **Learnings & Context**: Synthesized PR discipline formalization in 1613_harmonization.md, mandating automated pre-flight CI checks.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Plan - Implement PR Discipline Formalization
+- **Status**: Completed
+- **Learnings & Context**: Validated that node_lifecycle.py and kb/ already structurally enforce the Pull Request Verification Discipline. No codebase modifications needed.
 - **Feedforward Invariants**:
   - `[ ]` None
 
