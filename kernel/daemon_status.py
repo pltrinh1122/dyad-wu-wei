@@ -124,16 +124,13 @@ def print_goal_progress_report():
     print("\n--- Strategic Goal Progress ---")
     
     try:
-        open_issues = github_client.get_open_issues()
+        open_paths = github_client.list_issues_by_label("path")
     except Exception:
-        open_issues = []
+        open_paths = []
         
     open_paths_map = {}
-    for issue in open_issues:
-        labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
-        labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
-        if "path" in labels:
-            open_paths_map[str(issue["number"])] = issue.get("title", f"Path {issue['number']}")
+    for issue in open_paths:
+        open_paths_map[str(issue["number"])] = issue.get("title", f"Path {issue['number']}")
             
     for goal in active_goals:
         goal_id = goal.get("id")

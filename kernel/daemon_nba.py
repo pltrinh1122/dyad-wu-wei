@@ -165,17 +165,36 @@ class NBADaemon:
                 except Exception:
                     pass  # If API fails, proceed with unfiltered list
                 
+                # Build child_to_path map from open Path issues
+                child_to_path = {}
+                try:
+                    import re
+                    for p in open_path_issues:
+                        pid = str(p.get("number", ""))
+                        body = p.get("body", "")
+                        # Find all child node IDs in the Path checklist
+                        matches = re.findall(r"-\s+\[\s*[xX ]?\s*\]\s+(?:Node|Activity|Discovery)\s+(\d+)\b", body, re.IGNORECASE)
+                        for m in matches:
+                            child_to_path[m] = pid
+                except Exception:
+                    pass
+
                 prioritized_set = set(prioritized_ids)
                 matched_items = []
                 unmatched_items = []
+                
                 for item in backlog_items:
                     num_str = str(item.get("number", ""))
-                    if num_str in prioritized_set:
-                        matched_items.append(item)
+                    parent_id = child_to_path.get(num_str, "")
+                    
+                    if parent_id in prioritized_set:
+                        matched_items.append((prioritized_ids.index(parent_id), item))
                     else:
                         unmatched_items.append(item)
                 
-                matched_items.sort(key=lambda x: prioritized_ids.index(str(x.get("number", ""))))
+                matched_items.sort(key=lambda x: (x[0], x[1].get("number", 0)))
+                matched_items = [x[1] for x in matched_items]
+                unmatched_items.sort(key=lambda x: x.get("number", 0))
                 backlog_items = matched_items + unmatched_items
 
 
