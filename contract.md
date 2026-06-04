@@ -1,8 +1,8 @@
 ## Goal
-Technical design and proposed changes for System Crash Fixes.
+Final reflection and path closure for System Crash Fixes (Path 1567).
 
 ## Specification
-The technical implementation for system crash fixes was already completed out-of-band via Nodes 1531, 1572, 1579, and 1641. These nodes resolved the respective crashes for `git switch`, `daemon_prompt.py`, `validation gate` unhandled exceptions, and `gh GraphQL` deprecation noise. No further technical implementation is required for this path.
+Reflect this node to close out the Path. The substantive crash resolution (Nodes 1531, 1572, 1579, 1641) and harmonization specs (WHAT-1568, WHAT-1569) have been merged successfully.
 
 ## Execution Plan
-1. Reflect this node to formally close the Plan phase for Path 1567.
+1. Reflect this administrative node to formally close Path 1567.

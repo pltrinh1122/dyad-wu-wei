@@ -1121,40 +1121,15 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `Spec aligns with agentic OS requirements`
 
-## #1569: Plan - System Crash Fixes
+## #1570: Reflect - System Crash Fixes
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1783: Systematic Hardening of System Crash Boundaries
-- **Status**: Backlog
-- **Kind**: path
-- **Learnings & Context**: Systematically tackle crash regressions and architectural gaps in error handling across the engine to prevent execution seizures.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1784: Harmonize - Systematic Hardening of System Crash Boundaries
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Systematic Hardening of System Crash Boundaries.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1785: Plan - Systematic Hardening of System Crash Boundaries
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Systematic Hardening of System Crash Boundaries.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1786: Reflect - Systematic Hardening of System Crash Boundaries
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Systematic Hardening of System Crash Boundaries.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Discovery 1569: Plan - System Crash Fixes
+## Activity 1570: Reflect - System Crash Fixes
 - **Status**: Completed
-- **Learnings & Context**: Documented System Crash Fixes Plan in WHAT-1569
+- **Learnings & Context**: Closed Path 1567
 - **Feedforward Invariants**:
   - `[ ]` None
 
