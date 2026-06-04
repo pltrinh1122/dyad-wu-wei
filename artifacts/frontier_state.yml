@@ -1005,12 +1005,12 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1750: Plan - Path: Establish Lean DM Protocol Integration'
-  status: Backlog
+  status: Completed
   learnings: 'Technical design and proposed changes for Path: Establish Lean DM Protocol
     Integration.'
   invariants: []
 - name: 'Node 1751: Reflect - Path: Establish Lean DM Protocol Integration'
-  status: Backlog
+  status: Completed
   learnings: 'Final reflection and path closure for Path: Establish Lean DM Protocol
     Integration.'
   invariants: []
