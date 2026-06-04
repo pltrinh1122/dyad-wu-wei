@@ -1059,6 +1059,11 @@ nodes:
   learnings: 'Confirmed that the checkout Persona Gate exception was already fixed
     by PR #1722, which implemented root-level environment fallback.'
   invariants: []
+- name: 'Plan - [BUG] Intake: System Crash in checkout'
+  status: Completed
+  learnings: 'Confirmed implicit fix via PR #1722 and materialized WHAT-1661. Synthesized
+    retro to pass post-failure gate.'
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
