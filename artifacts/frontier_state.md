@@ -1095,17 +1095,31 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #666: Probe 666: Plan - Automate Backlog Hygiene via Python Governance Rules
+## #665: Probe 665: Align - Automate Backlog Hygiene via Python Governance Rules
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Plan - Automate Backlog Hygiene via Python Governance Rules
+## Node 665: Align - Automate Backlog Hygiene via Python Governance Rules
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-0666 specifying the daemon patches
+- **Learnings & Context**: Drafted WHY-0665 to align on backlog hygiene automation
 - **Feedforward Invariants**:
-  - `WHAT-0666 exists`
+  - `[x] Affirmed invariant that backlog hygiene must be enforced via Python governance rules`
+  - `[x] Fixed daemon_status bug causing backlog issues to be improperly closed`
+  - `[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes`
+
+## #667: Reflect - Automate Backlog Hygiene via Python Governance Rules
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 667: Reflect - Automate Backlog Hygiene
+- **Status**: Completed
+- **Learnings & Context**: Drafted retro-664.md
+- **Feedforward Invariants**:
+  - `Node 667 Retro exists`
 
 ## Active Agents Matrix
 * **agent-ziran**:
