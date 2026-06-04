@@ -796,8 +796,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 1615: Reflect - Implement PR Discipline Formalization'
-  status: Backlog
-  learnings: Final reflection and path closure for Implement PR Discipline Formalization.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: Automate test gates in Node Reflect
   status: Completed
@@ -1049,6 +1049,11 @@ nodes:
   status: Completed
   learnings: Validated that node_lifecycle.py and kb/ already structurally enforce
     the Pull Request Verification Discipline. No codebase modifications needed.
+  invariants: []
+- name: Reflect - Implement PR Discipline Formalization
+  status: Completed
+  learnings: Synthesized path 1613-1615 outcomes into retro-1613-1615.md, confirming
+    PR Discipline is properly codified in node_lifecycle.py.
   invariants: []
 active_agents:
   agent-ziran:
