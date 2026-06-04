@@ -1101,13 +1101,14 @@ nodes:
   learnings: Drafted WHAT-0295 for executable bit guard
   invariants:
   - Spec aligns with agentic OS requirements
-- name: '#535: Reflect - Concurrent Pull Safety in Node Sync'
+- name: '#1320: Reflect - Synthesize Epistemic Retrospective retro-1304.md'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 535: Activity: Reflect - Concurrent Pull Safety in Node Sync'
+- name: 'Activity 1320: Reflect - Synthesize Epistemic Retrospective retro-1304.md'
   status: Completed
-  learnings: Completed concurrent pull safety implementation.
+  learnings: Synthesized retro-1304 into Dao rules by forbidding raw shell commands
+    in KB
   invariants: []
 active_agents:
   agent-ziran:
