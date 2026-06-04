@@ -397,6 +397,40 @@ class TerminalNode(BaseNode):
                 print(f"Warning: Failed to sync frontier state to worktree during checkout: {e}")
             
             print(f"\nWorktree established. Please `cd {worktree_path}` to begin work.")
+
+    @record_execution(stage="abort")
+    def abort(self, frontier_file: str = "artifacts/frontier_state.md") -> None:
+        from drivers import path_resolver
+        if not os.path.isabs(frontier_file):
+            frontier_file = path_resolver.resolve_workspace_path(frontier_file)
+
+        with FlowTransaction(frontier_file) as tx:
+            log_stage_advancement("abort", "Initiating Abort Phase", f"Releasing lock on Issue #{self.issue_id}")
+            
+            # Remove in-progress label and restore 'open' status
+            try:
+                self.set_status("open")
+            except Exception as e:
+                print(f"Warning: Failed to set status to open: {e}")
+                
+            # Discard any associated worktrees
+            branches = [f"node/{self.issue_id}-plan", f"node/{self.issue_id}-act", f"node/{self.issue_id}-observe"]
+            for branch_name in branches:
+                wt_path = self.get_worktree_path(branch_name)
+                if os.path.exists(wt_path):
+                    try:
+                        git_client.worktree_remove(wt_path, force=True)
+                    except Exception as e:
+                        print(f"Warning: Failed to remove worktree {wt_path}: {e}")
+                try:
+                    if branch_name in git_client.list_local_branches():
+                        git_client.branch_delete(branch_name)
+                except Exception:
+                    pass
+            
+            # Revert the active node entry
+            agent_frontier.abort_active_node(frontier_file, str(self.issue_id))
+
     def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
         if not os.environ.get("SPAO_WORKSPACE_DIR") and not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")

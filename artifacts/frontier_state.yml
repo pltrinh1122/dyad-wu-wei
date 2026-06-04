@@ -1092,15 +1092,25 @@ nodes:
     rules'
   - '[x] Fixed daemon_status bug causing backlog issues to be improperly closed'
   - '[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes'
-- name: '#296: Generalize Telemetry Test-Safety'
+- name: '#295: Enforce Adapter Execution Invariants'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 296: Act - Enforce Adapter Execution Invariants'
+- name: 'Activity 295: Plan - Enforce Adapter Execution Invariants'
   status: Completed
-  learnings: Implemented test_bin_executable.py
+  learnings: Drafted WHAT-0295 for executable bit guard
   invariants:
-  - Tests pass and bin scripts are verified
+  - Spec aligns with agentic OS requirements
+- name: '#586: Implement bin/node abort to atomically release an in-progress plan-start
+    lock'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 586: Activity: Implement bin/node abort to atomically release an
+    in-progress plan-start lock'
+  status: Completed
+  learnings: Implemented abort subcommand
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
