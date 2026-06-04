@@ -737,8 +737,8 @@
   - `[ ]` None
 
 ## Node 1615: Reflect - Implement PR Discipline Formalization
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement PR Discipline Formalization.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1052,6 +1052,12 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 ## Plan - Implement PR Discipline Formalization
 - **Status**: Completed
 - **Learnings & Context**: Validated that node_lifecycle.py and kb/ already structurally enforce the Pull Request Verification Discipline. No codebase modifications needed.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Reflect - Implement PR Discipline Formalization
+- **Status**: Completed
+- **Learnings & Context**: Synthesized path 1613-1615 outcomes into retro-1613-1615.md, confirming PR Discipline is properly codified in node_lifecycle.py.
 - **Feedforward Invariants**:
   - `[ ]` None
 
