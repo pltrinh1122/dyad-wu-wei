@@ -1067,6 +1067,12 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Plan - [BUG] Intake: System Crash in checkout
+- **Status**: Completed
+- **Learnings & Context**: Confirmed implicit fix via PR #1722 and materialized WHAT-1661. Synthesized retro to pass post-failure gate.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
