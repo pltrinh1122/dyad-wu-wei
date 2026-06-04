@@ -713,9 +713,8 @@ nodes:
   invariants:
   - '[x] Asynchronous Execution Invariant'
 - name: 'Node 1510: Reflect - Remediate stale audit_state.json survivor'
-  status: Backlog
-  learnings: Final reflection and path closure for Remediate stale audit_state.json
-    survivor.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Path 1017: Codify Chat Immediacy Protocol'
   status: Cancelled
@@ -997,38 +996,51 @@ nodes:
     Node prefixing.
   invariants:
   - '[x] Ensure tests pass'
-- name: 'Node 1746: Reflect - Establish Dyadic-Autonomous Handoff Boundary'
+- name: 'Node 1748: Establish Lean DM Protocol Integration'
+  status: Backlog
+  learnings: Integrate the public DM protocol via the commons falsify inbox script
+    directly into the SPAO Sense phase transitions (sync/status), eliminating the
+    need for an external daemon.
+  invariants: []
+- name: 'Node 1749: Harmonize - Path: Establish Lean DM Protocol Integration'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity: Reflect - Establish Dyadic-Autonomous Handoff Boundary'
-  status: Completed
-  learnings: Finalized the path retrospective for the Dyadic-Autonomous Handoff Boundary
-    and logged frictional fixes into artifacts/retrospective_path_1739.md
-  invariants:
-  - '[x] Ensure path retrospective drafted'
-  - '[x] Ensure PR discipline was followed'
 - name: 'Node 1750: Plan - Path: Establish Lean DM Protocol Integration'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: 'Technical design and proposed changes for Path: Establish Lean DM Protocol
+    Integration.'
   invariants: []
-- name: 'Node 1750: Plan'
-  status: Completed
-  learnings: 'Authored the WHAT specification for the lean DM integration. Generated
-    Activity node #1753 on the backlog.'
-  invariants:
-  - '[x] Ensure WHAT specification exists'
-  - '[x] Ensure Activity nodes are on backlog'
 - name: 'Node 1751: Reflect - Path: Establish Lean DM Protocol Integration'
+  status: Backlog
+  learnings: 'Final reflection and path closure for Path: Establish Lean DM Protocol
+    Integration.'
+  invariants: []
+- name: 'Node 1749: Harmonize'
+  status: Completed
+  learnings: Validated the commons submodule can be updated to fetch falsify.py. Identified
+    kernel/sense_hooks.py as the perfect injection point for the dm_inbox HookDaemon
+    to print alerts during SENSE phase. Explored falsify.py inbox behavior.
+  invariants:
+  - '[x] Ensure no functional codebase mutations'
+- name: 'Node 1753: Implement Lean DM Hook integration'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 1751: Reflect'
+- name: 'Node 1753: Activity'
   status: Completed
-  learnings: 'Final reflection and path closure for Path: Establish Lean DM Protocol
-    Integration. Created retro-1748-lean-dm-integration.md.'
+  learnings: Implemented Lean DM Hook integration in sense_hooks.py to asynchronously
+    alert upon unread DMs during the Sense phase. Also configured dyad-wu-wei.yml
+    and ensured dm/ directory scaffold.
   invariants:
-  - '[x] Write Practice Reflection'
+  - '[x] Implement execute_dm_inbox_hook'
+  - '[x] Configure dyad-wu-wei.yml'
+  - '[x] Add dm/ scaffold'
+- name: 'Activity: Reflect - Remediate stale audit_state.json survivor'
+  status: Completed
+  learnings: Synthesized retro-1507_1511.md. Orthogonal Scope Violation safeguard
+    correctly halted redundant path-to-node execution.
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
