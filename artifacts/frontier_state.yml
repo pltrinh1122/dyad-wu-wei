@@ -1101,34 +1101,13 @@ nodes:
   learnings: Drafted WHAT-0295 for executable bit guard
   invariants:
   - Spec aligns with agentic OS requirements
-- name: '#1569: Plan - System Crash Fixes'
+- name: '#1570: Reflect - System Crash Fixes'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: '#1783: Systematic Hardening of System Crash Boundaries'
-  status: Backlog
-  learnings: Systematically tackle crash regressions and architectural gaps in error
-    handling across the engine to prevent execution seizures.
-  invariants: []
-  kind: path
-- name: '#1784: Harmonize - Systematic Hardening of System Crash Boundaries'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent for Systematic Hardening
-    of System Crash Boundaries.
-  invariants: []
-- name: '#1785: Plan - Systematic Hardening of System Crash Boundaries'
-  status: Backlog
-  learnings: Technical design and proposed changes for Systematic Hardening of System
-    Crash Boundaries.
-  invariants: []
-- name: '#1786: Reflect - Systematic Hardening of System Crash Boundaries'
-  status: Backlog
-  learnings: Final reflection and path closure for Systematic Hardening of System
-    Crash Boundaries.
-  invariants: []
-- name: 'Discovery 1569: Plan - System Crash Fixes'
+- name: 'Activity 1570: Reflect - System Crash Fixes'
   status: Completed
-  learnings: Documented System Crash Fixes Plan in WHAT-1569
+  learnings: Closed Path 1567
   invariants: []
 active_agents:
   agent-ziran:
