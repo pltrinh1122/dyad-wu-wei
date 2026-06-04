@@ -1,8 +1,8 @@
 ## Goal
-Synthesize the epistemic learnings from the post-failure retrospective retro-1304.md into the system's operational guidelines (the Dao).
+Harmonize on the philosophical and technical intent for System Crash Fixes.
 
 ## Specification
-Updated `kb/HOW-0005-terminology-lifecycle.md` to include Section 4: The Semantic Purity Rule (Shell Command Evasion), explicitly forbidding raw shell invocations of foundational utilities (`git`, `gh`) in KB documentation.
+Created `kb/WHAT-1568-system-crash-fixes.md` to document the root causes, resolutions, and system invariants derived from the recent series of system crashes (sync, prompts, validation gates, gh CLI).
 
 ## Execution Plan
-1. Reflect this administrative node to close the feedback loop and capture the learning.
+1. Reflect this node to lock the harmonization.
