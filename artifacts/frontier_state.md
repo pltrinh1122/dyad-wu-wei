@@ -1121,15 +1121,15 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `Spec aligns with agentic OS requirements`
 
-## #586: Implement bin/node abort to atomically release an in-progress plan-start lock
+## #535: Reflect - Concurrent Pull Safety in Node Sync
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 586: Activity: Implement bin/node abort to atomically release an in-progress plan-start lock
+## Activity 535: Activity: Reflect - Concurrent Pull Safety in Node Sync
 - **Status**: Completed
-- **Learnings & Context**: Implemented abort subcommand
+- **Learnings & Context**: Completed concurrent pull safety implementation.
 - **Feedforward Invariants**:
   - `[ ]` None
 
