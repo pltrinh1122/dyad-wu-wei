@@ -1121,15 +1121,34 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `Spec aligns with agentic OS requirements`
 
-## #595: Reflect - Path 578-B: Implement Persona and Path Alignment Gates in CLI Runtime
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+## #1790: Implement CLI Persona Alignment Gates
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: Implement the architectural design specified in WHAT-0592
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 595: Reflect - Path 578-B
+## #1791: Harmonize - Implement CLI Persona Alignment Gates
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Implement CLI Persona Alignment Gates.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1792: Plan - Implement CLI Persona Alignment Gates
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Implement CLI Persona Alignment Gates.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1793: Reflect - Implement CLI Persona Alignment Gates
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Implement CLI Persona Alignment Gates.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1784: Harmonize Systematic Hardening SPEC
 - **Status**: Completed
-- **Learnings & Context**: Closed Path 587
+- **Learnings & Context**: Created RCA and SPEC for system crashes
 - **Feedforward Invariants**:
   - `[ ]` None
 

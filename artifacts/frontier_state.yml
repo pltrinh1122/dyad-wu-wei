@@ -1,6 +1,6 @@
 current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
   awareness'
-current_active_node: '#999: Implement quarantine survivor'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1101,14 +1101,29 @@ nodes:
   learnings: Drafted WHAT-0295 for executable bit guard
   invariants:
   - Spec aligns with agentic OS requirements
-- name: '#595: Reflect - Path 578-B: Implement Persona and Path Alignment Gates in
-    CLI Runtime'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+- name: '#1790: Implement CLI Persona Alignment Gates'
+  status: Backlog
+  learnings: Implement the architectural design specified in WHAT-0592
   invariants: []
-- name: 'Activity 595: Reflect - Path 578-B'
+  kind: path
+- name: '#1791: Harmonize - Implement CLI Persona Alignment Gates'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Implement CLI
+    Persona Alignment Gates.
+  invariants: []
+- name: '#1792: Plan - Implement CLI Persona Alignment Gates'
+  status: Backlog
+  learnings: Technical design and proposed changes for Implement CLI Persona Alignment
+    Gates.
+  invariants: []
+- name: '#1793: Reflect - Implement CLI Persona Alignment Gates'
+  status: Backlog
+  learnings: Final reflection and path closure for Implement CLI Persona Alignment
+    Gates.
+  invariants: []
+- name: 'Node 1784: Harmonize Systematic Hardening SPEC'
   status: Completed
-  learnings: Closed Path 587
+  learnings: Created RCA and SPEC for system crashes
   invariants: []
 active_agents:
   agent-ziran:
