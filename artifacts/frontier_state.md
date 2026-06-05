@@ -1121,36 +1121,29 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `Spec aligns with agentic OS requirements`
 
-## #1790: Implement CLI Persona Alignment Gates
-- **Status**: Backlog
-- **Kind**: path
-- **Learnings & Context**: Implement the architectural design specified in WHAT-0592
+## #595: Reflect - Path 578-B: Implement Persona and Path Alignment Gates in CLI Runtime
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1791: Harmonize - Implement CLI Persona Alignment Gates
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Implement CLI Persona Alignment Gates.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1792: Plan - Implement CLI Persona Alignment Gates
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Implement CLI Persona Alignment Gates.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1793: Reflect - Implement CLI Persona Alignment Gates
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Implement CLI Persona Alignment Gates.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1784: Harmonize Systematic Hardening SPEC
+## Activity 595: Reflect - Path 578-B
 - **Status**: Completed
-- **Learnings & Context**: Created RCA and SPEC for system crashes
+- **Learnings & Context**: Closed Path 587
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## #771: Probe 771: Plan - Autonomous Learning Loop
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Plan - Autonomous Learning Loop
+- **Status**: Completed
+- **Learnings & Context**: Formalized the plan for Path 769 Autonomous Learning Loop. Documented the completion of the 5 gaps identified in WHY-0770 by creating WHAT-0771.
+- **Feedforward Invariants**:
+  - `None`
 
 ## Active Agents Matrix
 * **agent-ziran**:
