@@ -1121,15 +1121,15 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `Spec aligns with agentic OS requirements`
 
-## #1570: Reflect - System Crash Fixes
+## #592: Probe 592: Plan - Path 578-B: Implement Persona and Path Alignment Gates in CLI Runtime
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 1570: Reflect - System Crash Fixes
+## Discovery 592: Plan - Path 578-B
 - **Status**: Completed
-- **Learnings & Context**: Closed Path 1567
+- **Learnings & Context**: Designed WHAT-0592 for CLI Persona Alignment Gates
 - **Feedforward Invariants**:
   - `[ ]` None
 
