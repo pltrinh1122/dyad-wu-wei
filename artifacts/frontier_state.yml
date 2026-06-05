@@ -1101,14 +1101,14 @@ nodes:
   learnings: Drafted WHAT-0295 for executable bit guard
   invariants:
   - Spec aligns with agentic OS requirements
-- name: '#592: Probe 592: Plan - Path 578-B: Implement Persona and Path Alignment
-    Gates in CLI Runtime'
+- name: '#595: Reflect - Path 578-B: Implement Persona and Path Alignment Gates in
+    CLI Runtime'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Discovery 592: Plan - Path 578-B'
+- name: 'Activity 595: Reflect - Path 578-B'
   status: Completed
-  learnings: Designed WHAT-0592 for CLI Persona Alignment Gates
+  learnings: Closed Path 587
   invariants: []
 active_agents:
   agent-ziran:
