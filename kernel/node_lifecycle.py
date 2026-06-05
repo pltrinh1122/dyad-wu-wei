@@ -464,6 +464,9 @@ class TerminalNode(BaseNode):
         with FlowTransaction(frontier_file) as tx:
             log_stage_advancement("reflect", "Initiating Reflect Phase", f"Closing Issue #{self.issue_id}, updating ledger, and preparing branch: '{branch_name}'")
             
+            from kernel.daemon_strategic import verify_node_transition_allowed
+            verify_node_transition_allowed(self.issue_id)
+            
             # Enforce Prevent Empty PR Guard (Node 1437)
             status_output = git_client.status_porcelain(cwd=worktree_dir).strip()
             diff_against_main = git_client.diff_names("origin/main", cwd=worktree_dir)
