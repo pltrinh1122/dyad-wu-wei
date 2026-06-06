@@ -1101,34 +1101,38 @@ nodes:
   learnings: Drafted WHAT-0295 for executable bit guard
   invariants:
   - Spec aligns with agentic OS requirements
-- name: '#595: Reflect - Path 578-B: Implement Persona and Path Alignment Gates in
-    CLI Runtime'
+- name: '#1790: Implement CLI Persona Alignment Gates'
+  status: Backlog
+  learnings: Implement the architectural design specified in WHAT-0592
+  invariants: []
+  kind: path
+- name: '#1791: Harmonize - Implement CLI Persona Alignment Gates'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 595: Reflect - Path 578-B'
-  status: Completed
-  learnings: Closed Path 587
-  invariants: []
-- name: '#771: Probe 771: Plan - Autonomous Learning Loop'
+- name: '#1792: Plan - Implement CLI Persona Alignment Gates'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Plan - Autonomous Learning Loop
+- name: '#1793: Reflect - Implement CLI Persona Alignment Gates'
+  status: Backlog
+  learnings: Final reflection and path closure for Implement CLI Persona Alignment
+    Gates.
+  invariants: []
+- name: 'Node 1784: Harmonize Systematic Hardening SPEC'
   status: Completed
-  learnings: Formalized the plan for Path 769 Autonomous Learning Loop. Documented
-    the completion of the 5 gaps identified in WHY-0770 by creating WHAT-0771.
+  learnings: Created RCA and SPEC for system crashes
+  invariants: []
+- name: Harmonize - Implement CLI Persona Alignment Gates
+  status: Completed
+  learnings: Harmonized the persona alignment gates according to WHAT-0592. Added
+    missing verification in reflect action and documented in WHAT-1791.
   invariants:
   - None
-- name: '#772: Reflect - Autonomous Learning Loop'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity 772: Reflect - Autonomous Learning Loop'
+- name: Plan - Implement CLI Persona Alignment Gates
   status: Completed
-  learnings: Formalized the completion of Path 769 by creating WHAT-0772, cementing
-    the Autonomous Learning Loop mechanism. Also included hygiene mapping of Path
-    1748 to SG-0004.
+  learnings: Formalized the redundancy of the Plan phase since implementation was
+    completed during Harmonization.
   invariants:
   - None
 active_agents:
