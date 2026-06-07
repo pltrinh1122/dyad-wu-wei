@@ -1259,10 +1259,16 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
   - `None`
 
 ## #1826: Remediate Node Lifecycle Reflection Ordering Bug
-- **Status**: Backlog
-- **Learnings & Context**: Act
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## Activity: Remediate Node Lifecycle Reflection Ordering Bug
+- **Status**: Completed
+- **Learnings & Context**: Moved complete_active_node to run before nba.evaluate.
+- **Feedforward Invariants**:
+  - `- [x] nba.evaluate reflects clear path`
 
 ## Active Agents Matrix
 * **agent-ziran**:
