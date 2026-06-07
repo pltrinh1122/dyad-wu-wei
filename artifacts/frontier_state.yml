@@ -1137,21 +1137,59 @@ nodes:
     Synthesis.
   invariants:
   - None
-- name: '#1112: Encapsulate bin/backlog new <terminal_type> behind Path-decomposition
-    interface'
+- name: "#1110: Probe: Investigate kb graph CLI \u2014 infrastructure precondition\
+    \ for KB metadata linking thesis"
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: '#1808: Implement Two-Tier Backlog Abstraction in CLI'
+- name: '#1802: [BUG] Intake: System Crash in checkout'
   status: Backlog
-  learnings: Modify daemon_backlog.py to restrict direct terminal node creation by
-    the Operator and implement interactive decomposition during Path creation.
+  learnings: "## System Crash Report\n\n**Subcommand:** `checkout`\n**Persona:** `Unknown`\n\
+    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 698, in main\n    cmd_checkout(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 399, in cmd_checkout\n    checkout_node(args.issue_id, args.branch_name)\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 36, in\
+    \ checkout_node\n    node.checkout(branch_name)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\"\
+    , line 179, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 345,\
+    \ in checkout\n    raise ValueError(\"Branch name MUST follow the standard: node/<id>-<kebab-case>\"\
+    )\nValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>\n\n\
+    ```\n"
   invariants: []
-- name: 'Discovery 1112: Discovery: Encapsulate bin/backlog new <terminal_type> behind
-    Path-decomposition interface'
+  kind: path
+- name: '#1803: Harmonize - [BUG] Intake: System Crash in checkout'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
+    System Crash in checkout.'
+  invariants: []
+- name: '#1804: Plan - [BUG] Intake: System Crash in checkout'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
+    in checkout.'
+  invariants: []
+- name: '#1805: Reflect - [BUG] Intake: System Crash in checkout'
+  status: Backlog
+  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
+    checkout.'
+  invariants: []
+- name: '#1806: Implement stateless bin/kb graph CLI tool'
+  status: Backlog
+  learnings: Create a stateless CLI tool that parses kb/ markdown files dynamically
+    to generate a machine-queryable adjacency graph without relying on static files.
+  invariants: []
+- name: 'Probe 1110: Investigate kb graph CLI'
   status: Completed
-  learnings: Drafted WHY-1112 and spawned Activity node 1808 to implement Two-Tier
-    Backlog Abstraction Contract.
+  learnings: Architecturally falsified kb/graph_index.yml due to Retrieval Architecture
+    Mismatch and PR discipline violations. Proposed stateless CLI.
+  invariants: []
+- name: '#1811: Harmonize - Adopt CSI Governance Model for HTIL Block'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Harmonize - Adopt CSI Governance Model for HTIL Block
+  status: Completed
+  learnings: Drafted kb/WHY-1810-csi-governance-htil.md to codify the Asymmetric CSI
+    Guard for the HTIL block.
   invariants: []
 active_agents:
   agent-ziran:
