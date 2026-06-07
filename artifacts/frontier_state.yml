@@ -1257,14 +1257,14 @@ nodes:
     dictated top-down by agent-meta.
   invariants:
   - '[x] Drafted technical design'
-- name: '#677: Probe 677: Align - Codify The Void of the Metasystem (Agnostic Payload
+- name: '#678: Probe 678: Plan - Codify The Void of the Metasystem (Agnostic Payload
     Execution)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Align - Codify The Void of the Metasystem (Agnostic Payload Execution)
+- name: Plan - Codify The Void of the Metasystem (Agnostic Payload Execution)
   status: Completed
-  learnings: Aligned on metasystem void
+  learnings: Created WHAT document
   invariants:
   - None
 active_agents:
