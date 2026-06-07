@@ -36,11 +36,10 @@ def checkout_node(issue_id: str, branch_name: str) -> None:
     node.checkout(branch_name)
 
 @record_execution(stage="sense")
-def sync_and_clean_node() -> None:
+def sync_and_clean_node(force_discard: bool = False) -> None:
     """Synchronizes local workspace state, pruning merged nodes and tracking ROM updates."""
     import os
     import hashlib
-    import subprocess
     import yaml
     from drivers import path_resolver
     from drivers.tty_gate import require_operator_approval
@@ -73,6 +72,19 @@ def sync_and_clean_node() -> None:
         git_client.fetch("origin", prune=True)
     else:
         print("No Sluice Gate events pending. Running offline-by-default local synchronization...")
+
+    # Discard Invariant Guard
+    try:
+        status_output = subprocess.check_output(["git", "status", "--porcelain"], cwd=repo_root, text=True).strip()
+        if status_output and not force_discard:
+            print("\n[🚫 BLOCKED] Sync operation halted. Uncommitted tracked edits detected.")
+            print(f"Files at risk of being silently discarded:\n{status_output}")
+            print("\nSTEERING VECTOR:")
+            print("  (a) To save these changes: Commit them to your active PR branch or stash them.")
+            print("  (b) To discard them intentionally: Run sync with the '--force-discard' override.\n")
+            sys.exit(1)
+    except Exception as e:
+        pass
 
     try:
         git_client.switch("origin/main", detach=True, discard_changes=True)
@@ -387,7 +399,7 @@ import sys
 import json
 
 def cmd_sync(args):
-    sync_and_clean_node()
+    sync_and_clean_node(force_discard=getattr(args, 'force_discard', False))
 
 def cmd_plan_start(args):
     plan_start_node(args.issue_id)
@@ -593,7 +605,8 @@ def main():
         subparsers = parser.add_subparsers(dest="subcommand", required=True)
 
         # sync
-        subparsers.add_parser("sync", help="Sync main, prune branches, and surface backlog")
+        parser_sync = subparsers.add_parser("sync", help="Sync main, prune branches, and surface backlog")
+        parser_sync.add_argument("--force-discard", action="store_true", help="Intentionally discard uncommitted tracked changes")
 
         # plan-start
         parser_ps = subparsers.add_parser("plan-start", help="Lock an issue to start multi-phase planning")

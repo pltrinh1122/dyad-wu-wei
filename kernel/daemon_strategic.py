@@ -334,7 +334,7 @@ def find_parent_path_id(node_id: str) -> str | None:
             details = github_client.get_issue_details(num)
             body = details.get("body", "")
             
-            pattern = re.compile(r"-\s+\[\s*x?\s*\]\s+(?:Node|Activity|Discovery)\s+" + re.escape(str(node_id)) + r"\b", re.IGNORECASE)
+            pattern = re.compile(r"-\s+\[\s*x?\s*\]\s*(?:(?:Node|Activity|Discovery)\s+|#)" + re.escape(str(node_id)) + r"\b", re.IGNORECASE)
             if pattern.search(body):
                 return num
         except Exception as e:
