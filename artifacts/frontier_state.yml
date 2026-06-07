@@ -1276,14 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#710: Probe 710: Plan - Codify The Supremacy of the Logic Gates (Engine over
-    Context)'
+- name: '#711: Reflect - Codify The Supremacy of the Logic Gates (Engine over Context)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 710: Plan - The Supremacy of the Logic Gates'
+- name: 'Probe 711: Reflect - The Supremacy of the Logic Gates'
   status: Completed
-  learnings: Drafted HOW-0708-supremacy-of-logic-gates.md
+  learnings: Drafted retro-708-final.md
   invariants: []
 active_agents:
   agent-ziran:

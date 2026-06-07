@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #710: Probe 710: Plan - Codify The Supremacy of the Logic Gates (Engine over Context)
+## #711: Reflect - Codify The Supremacy of the Logic Gates (Engine over Context)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 710: Plan - The Supremacy of the Logic Gates
+## Probe 711: Reflect - The Supremacy of the Logic Gates
 - **Status**: Completed
-- **Learnings & Context**: Drafted HOW-0708-supremacy-of-logic-gates.md
+- **Learnings & Context**: Drafted retro-708-final.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
