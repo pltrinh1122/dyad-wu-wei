@@ -1257,13 +1257,14 @@ nodes:
     dictated top-down by agent-meta.
   invariants:
   - '[x] Drafted technical design'
-- name: '#675: Reflect - Codify Deterministic Enforcement of System Rules'
+- name: '#677: Probe 677: Align - Codify The Void of the Metasystem (Agnostic Payload
+    Execution)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 675: Reflect - Codify Deterministic Enforcement of System Rules'
+- name: Align - Codify The Void of the Metasystem (Agnostic Payload Execution)
   status: Completed
-  learnings: Reflected on path
+  learnings: Aligned on metasystem void
   invariants:
   - None
 active_agents:
