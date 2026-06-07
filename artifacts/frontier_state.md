@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1587: Plan - Path: [ALIGN] Falsify ontology orthogonal hierarchy
+## #1588: Reflect - Path: [ALIGN] Falsify ontology orthogonal hierarchy
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 1587: Reflect - Falsify ontology orthogonal hierarchy
+## Probe 1588: Align - Falsify Quarantine for self-created nodes
 - **Status**: Completed
-- **Learnings & Context**: Drafted retro-1585-final.md
+- **Learnings & Context**: Drafted WHY-1593-falsify-quarantine-for-self-created-nodes.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
