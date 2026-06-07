@@ -1276,13 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#1588: Reflect - Path: [ALIGN] Falsify ontology orthogonal hierarchy'
+- name: '#1594: Harmonize - [ALIGN] Falsify Quarantine for self-created nodes'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 1588: Align - Falsify Quarantine for self-created nodes'
+- name: 'Probe 1594: Reflect - Falsify Quarantine for self-created nodes'
   status: Completed
-  learnings: Drafted WHY-1593-falsify-quarantine-for-self-created-nodes.md
+  learnings: Drafted retro-1593-final.md
   invariants: []
 active_agents:
   agent-ziran:
