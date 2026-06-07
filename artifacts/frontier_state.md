@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #703: Reflect - Codify The Absolute Invariance of the Audit Ledger
+## #705: Probe 705: Align - Codify The Decoupled Geometry of the State Machine (Meta vs Platform)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 703: Reflect - Codify The Absolute Invariance of the Audit Ledger
+## Probe 705: Align - The Decoupled Geometry of the State Machine (Meta vs Platform)
 - **Status**: Completed
-- **Learnings & Context**: Compiled final path retrospective and closed path
+- **Learnings & Context**: Drafted WHAT-0704-decoupled-geometry.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
