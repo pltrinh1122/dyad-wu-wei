@@ -1277,10 +1277,16 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes
+- **Status**: Completed
+- **Learnings & Context**: Codified the invariant that agents must rely on local GEMINI.md, deprecating global UI prompts to preserve orthogonality.
+- **Feedforward Invariants**:
+  - `Agents MUST strictly rely on their local GEMINI.md rules.`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
   - Current Active Node: `None`
 * **agent-sg5**:
   - Current Active Path: `Path 634: Path: Refactor frontier_state for concurrent agent awareness`
-  - Current Active Node: `#669: Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes`
+  - Current Active Node: `None`

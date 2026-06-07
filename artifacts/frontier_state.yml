@@ -1218,6 +1218,12 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes'
+  status: Completed
+  learnings: Codified the invariant that agents must rely on local GEMINI.md, deprecating
+    global UI prompts to preserve orthogonality.
+  invariants:
+  - Agents MUST strictly rely on their local GEMINI.md rules.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
@@ -1225,5 +1231,4 @@ active_agents:
   agent-sg5:
     current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
       awareness'
-    current_active_node: '#669: Probe 669: Align - Codify Emergent Orthogonality of
-      Agent Scopes'
+    current_active_node: null
