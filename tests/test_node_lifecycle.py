@@ -80,9 +80,12 @@ def test_base_node_metadata_properties(mock_get_labels):
     assert node.kind == "infra"
 
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_labels")
-def test_get_worktree_path(mock_get_labels):
+def test_get_worktree_path(mock_get_labels, monkeypatch):
+    monkeypatch.delenv("SPAO_WORKSPACE_DIR", raising=False)
     from drivers import path_resolver
     base_dir = path_resolver.get_core_dir()
+    if ".worktrees" in base_dir.split(os.sep):
+        base_dir = base_dir.split(".worktrees")[0]
     
     # SPAO loop
     mock_get_labels.return_value = ["loop:spao"]
