@@ -1276,13 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#686: Probe 686: Plan - Codify The Absolute Equality of Execution (No God-Mode)'
+- name: '#687: Reflect - Codify The Absolute Equality of Execution (No God-Mode)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 686: Plan - Codify The Absolute Equality of Execution'
+- name: 'Probe 687: Reflect - Codify The Absolute Equality of Execution'
   status: Completed
-  learnings: Drafted HOW-0684-absolute-equality.md
+  learnings: Compiled final path retrospective and closed path
   invariants: []
 active_agents:
   agent-ziran:
