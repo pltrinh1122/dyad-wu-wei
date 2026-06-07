@@ -1179,6 +1179,18 @@ nodes:
   learnings: Architecturally falsified kb/graph_index.yml due to Retrieval Architecture
     Mismatch and PR discipline violations. Proposed stateless CLI.
   invariants: []
+- name: '#1819: Harmonize - Automate Retrospective Compilation'
+  status: Backlog
+  learnings: Harmonize
+  invariants: []
+- name: '#1820: Plan - Automate Retrospective Compilation'
+  status: Backlog
+  learnings: Plan
+  invariants: []
+- name: '#1821: Reflect - Automate Retrospective Compilation'
+  status: Backlog
+  learnings: Reflect
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

@@ -1228,6 +1228,24 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #1819: Harmonize - Automate Retrospective Compilation
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1820: Plan - Automate Retrospective Compilation
+- **Status**: Backlog
+- **Learnings & Context**: Plan
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1821: Reflect - Automate Retrospective Compilation
+- **Status**: Backlog
+- **Learnings & Context**: Reflect
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
