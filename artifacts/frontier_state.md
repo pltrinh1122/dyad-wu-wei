@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #699: Reflect - Codify Temporal Immutability (The Lock-State Axiom)
+## #701: Probe 701: Align - Codify The Absolute Invariance of the Audit Ledger
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 699: Reflect - Codify Temporal Immutability
+## Probe 701: Align - The Absolute Invariance of the Audit Ledger
 - **Status**: Completed
-- **Learnings & Context**: Compiled final path retrospective and closed path
+- **Learnings & Context**: Drafted WHAT-0700-absolute-invariance.md
 - **Feedforward Invariants**:
   - `[ ]` None
 

@@ -1276,13 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#699: Reflect - Codify Temporal Immutability (The Lock-State Axiom)'
+- name: '#701: Probe 701: Align - Codify The Absolute Invariance of the Audit Ledger'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 699: Reflect - Codify Temporal Immutability'
+- name: 'Probe 701: Align - The Absolute Invariance of the Audit Ledger'
   status: Completed
-  learnings: Compiled final path retrospective and closed path
+  learnings: Drafted WHAT-0700-absolute-invariance.md
   invariants: []
 active_agents:
   agent-ziran:
