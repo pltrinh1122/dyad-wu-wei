@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1586: Harmonize - Path: [ALIGN] Falsify ontology orthogonal hierarchy
+## #1587: Plan - Path: [ALIGN] Falsify ontology orthogonal hierarchy
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 1586: Align - Falsify ontology orthogonal hierarchy
+## Probe 1587: Reflect - Falsify ontology orthogonal hierarchy
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHY-1586-falsify-ontology-orthogonal-hierarchy.md
+- **Learnings & Context**: Drafted retro-1585-final.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
