@@ -508,6 +508,9 @@ class TerminalNode(BaseNode):
                 else:
                     print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
             
+            # ATOMIC UPDATE: Mark node completed AND clear pointers
+            agent_frontier.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
+            
             # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
             nba = daemon_nba.NBADaemon()
             nba_result = nba.evaluate(frontier_file=frontier_file)
@@ -522,8 +525,6 @@ class TerminalNode(BaseNode):
                     log_stage_advancement("reflect", "Path Invariant Enforced", f"Automatically closed parent {active_path_str}")
                     clear_path = True
             
-            # ATOMIC UPDATE: Mark node completed AND clear pointers
-            agent_frontier.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
             if clear_path:
                 agent_frontier.set_active_path(frontier_file, "None")
             
