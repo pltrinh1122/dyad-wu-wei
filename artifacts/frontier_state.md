@@ -1067,13 +1067,13 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 
 ## Harmonize - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
-- **Learnings & Context**: Harmonized on graceful validation handling
+- **Learnings & Context**: Confirmed that the checkout Persona Gate exception was already fixed by PR #1722, which implemented root-level environment fallback.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Plan - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
-- **Learnings & Context**: Confirmed implicit fix via PR #1722 and materialized WHAT-1661. Synthesized retro to pass post-failure gate.
+- **Learnings & Context**: Planned graceful validation for cmd_checkout
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1205,8 +1205,8 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
   - `[ ]` None
 
 ## #1804: Plan - [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
