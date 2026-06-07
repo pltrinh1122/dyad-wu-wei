@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #711: Reflect - Codify The Supremacy of the Logic Gates (Engine over Context)
+## #1586: Harmonize - Path: [ALIGN] Falsify ontology orthogonal hierarchy
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 711: Reflect - The Supremacy of the Logic Gates
+## Probe 1586: Align - Falsify ontology orthogonal hierarchy
 - **Status**: Completed
-- **Learnings & Context**: Drafted retro-708-final.md
+- **Learnings & Context**: Drafted WHY-1586-falsify-ontology-orthogonal-hierarchy.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
