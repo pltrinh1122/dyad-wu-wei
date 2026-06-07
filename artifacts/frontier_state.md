@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #687: Reflect - Codify The Absolute Equality of Execution (No God-Mode)
+## #689: Probe 689: Align - Codify The Dyad is Bound by the Protocol (Operator Non-Exemption)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 687: Reflect - Codify The Absolute Equality of Execution
+## Probe 689: Align - Codify The Dyad is Bound by the Protocol
 - **Status**: Completed
-- **Learnings & Context**: Compiled final path retrospective and closed path
+- **Learnings & Context**: Drafted WHAT-0688-operator-non-exemption.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
