@@ -1276,13 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#1586: Harmonize - Path: [ALIGN] Falsify ontology orthogonal hierarchy'
+- name: '#1587: Plan - Path: [ALIGN] Falsify ontology orthogonal hierarchy'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 1586: Align - Falsify ontology orthogonal hierarchy'
+- name: 'Probe 1587: Reflect - Falsify ontology orthogonal hierarchy'
   status: Completed
-  learnings: Drafted WHY-1586-falsify-ontology-orthogonal-hierarchy.md
+  learnings: Drafted retro-1585-final.md
   invariants: []
 active_agents:
   agent-ziran:
