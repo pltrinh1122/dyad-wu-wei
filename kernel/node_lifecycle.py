@@ -590,13 +590,9 @@ class TerminalNode(BaseNode):
             
             # Evaluate Administrative Node HTIL Bypass (WHY-0087-universal-merge-gate-bypass)
             modified_files = git_client.diff_names("origin/main", cwd=worktree_dir)
-            is_autonomous_merge = False
-            if not modified_files:
-                is_autonomous_merge = True
-            elif all(f.startswith("artifacts/") and "template" not in f.lower() for f in modified_files):
-                is_autonomous_merge = True
-            elif "act" in node_name.lower():
-                is_autonomous_merge = True
+            is_autonomous_merge = True
+            if any(f in ("GEMINI.md", "AGENT.md") for f in modified_files):
+                is_autonomous_merge = False
 
             if is_autonomous_merge:
                 github_client.admin_merge_pull_request(pr_url)
