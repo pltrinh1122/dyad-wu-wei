@@ -1277,17 +1277,76 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1836: Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism Guards
+## Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes
+- **Status**: Completed
+- **Learnings & Context**: Codified the invariant that agents must rely on local GEMINI.md, deprecating global UI prompts to preserve orthogonality.
+- **Feedforward Invariants**:
+  - `Agents MUST strictly rely on their local GEMINI.md rules.`
+
+## #1838: Implement Discard Invariant Guard
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: Mechanize the Discard Invariant guard in sync_and_clean_node to detect uncommitted tracked edits before destructive git switch.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1839: Harmonize - Implement Discard Invariant Guard
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism Guards
-- **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-1836-csi-vs-mechanism-guards.md distinguishing CSI Guards from symptomatic Mechanism Guards, reducing Local CI latency. Referenced PR 1794. Also fixed UnboundLocalError in node_lifecycle.py.
+## #1840: Plan - Implement Discard Invariant Guard
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Implement Discard Invariant Guard.
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## #1841: Reflect - Implement Discard Invariant Guard
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Implement Discard Invariant Guard.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1842: Harmonize - Discard Invariant Guard
+- **Status**: Backlog
+- **Learnings & Context**: Mechanize the Discard Invariant guard in sync_and_clean_node to detect uncommitted tracked edits before destructive git switch.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1843: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `frontier`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1839-discard-invariant-guard/kernel/daemon_node.py", line 710, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1839-discard-invariant-guard/kernel/daemon_node.py", line 420, in cmd_reflect
+    reflect_node(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1839-discard-invariant-guard/kernel/daemon_node.py", line 394, in reflect_node
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1839-discard-invariant-guard/kernel/node_lifecycle.py", line 500, in reflect
+    daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo, worktree_root=worktree_dir)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1839-discard-invariant-guard/kernel/daemon_knowledge_accrual.py", line 89, in enforce_reflection_hook
+    raise Exception(
+Exception: REFLECTION BLOCKED: Node 1839 experienced execution failures. Under SG-0005 (TG-0005-04), a structured post-mortem reflection record is required under artifacts/audit/retro-1839.md before reflection.
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Discard Invariant Guard
+- **Status**: Completed
+- **Learnings & Context**: Mechanized the Discard Invariant guard in sync_and_clean_node to protect uncommitted tracked changes before git_client.switch(detach=True, discard_changes=True). Added --force-discard option and self-validating test.
+- **Feedforward Invariants**:
+  - `[x] Added discard invariant guard check before git switch`
 
 ## Active Agents Matrix
 * **agent-ziran**:
@@ -1295,4 +1354,4 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
   - Current Active Node: `None`
 * **agent-sg5**:
   - Current Active Path: `Path 634: Path: Refactor frontier_state for concurrent agent awareness`
-  - Current Active Node: `#669: Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes`
+  - Current Active Node: `None`

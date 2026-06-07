@@ -76,6 +76,7 @@ def test_sync_and_clean_node_order():
         
         mock_git.list_merged_branches.return_value = []
         mock_git.list_local_branches.return_value = []
+        mock_sub.check_output.return_value = ""
         
         sync_and_clean_node()
         
@@ -116,6 +117,7 @@ prompts:
         mock_gh.get_merged_prs.return_value = []
         mock_git.list_merged_branches.return_value = []
         mock_git.list_local_branches.return_value = []
+        mock_sub.check_output.return_value = ""
         
         sync_and_clean_node()
         
@@ -137,11 +139,12 @@ prompts:
 def test_sync_and_clean_node_wip_violation():
     with patch("kernel.daemon_node.git_client"), \
          patch("kernel.daemon_node.github_client"), \
-         patch("kernel.daemon_node.subprocess"), \
+         patch("kernel.daemon_node.subprocess") as mock_sub, \
          patch("kernel.daemon_node.HookDaemon"), \
          patch("kernel.daemon_node.get_local_worktrees") as mock_wt, \
          patch("kernel.daemon_node.os.path.exists", return_value=False):
         
+        mock_sub.check_output.return_value = ""
         mock_wt.return_value = [{"number": 123, "url": "local:node/123-some-branch"}]
         
         with pytest.raises((Exception, SystemExit), match="WIP-N=1 Violation"):
@@ -151,11 +154,12 @@ def test_sync_and_clean_node_wip_violation():
     from unittest.mock import mock_open
     with patch("kernel.daemon_node.git_client"), \
          patch("kernel.daemon_node.github_client") as mock_gh, \
-         patch("kernel.daemon_node.subprocess"), \
+         patch("kernel.daemon_node.subprocess") as mock_sub, \
          patch("kernel.daemon_node.HookDaemon"), \
          patch("kernel.daemon_node.os.path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=backlog_content.encode('utf-8'))):
         
+        mock_sub.check_output.return_value = ""
         mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "some-branch"}]
         
         with pytest.raises((Exception, SystemExit), match="WIP-N=1 Violation"):
@@ -258,3 +262,29 @@ def test_cmd_set_classification_invalid(mock_exit, mock_base_node):
     
     cmd_set_classification(DummyArgs())
     mock_exit.assert_called_once_with(2)
+
+def test_sync_and_clean_node_discard_invariant_guard_blocked():
+    with patch("kernel.daemon_node.git_client") as mock_git, \
+         patch("kernel.daemon_node.github_client"), \
+         patch("kernel.daemon_node.subprocess") as mock_sub, \
+         patch("kernel.daemon_node.get_local_worktrees", return_value=[]), \
+         patch("kernel.daemon_node.os.path.exists", return_value=False):
+        
+        mock_sub.check_output.return_value = " M some_file.txt\n"
+        with pytest.raises((Exception, SystemExit)):
+            sync_and_clean_node()
+        
+        mock_git.switch.assert_not_called()
+
+def test_sync_and_clean_node_discard_invariant_guard_force():
+    with patch("kernel.daemon_node.git_client") as mock_git, \
+         patch("kernel.daemon_node.github_client"), \
+         patch("kernel.daemon_node.subprocess") as mock_sub, \
+         patch("kernel.daemon_node.get_local_worktrees", return_value=[]), \
+         patch("kernel.daemon_node.os.path.exists", return_value=False):
+        
+        mock_sub.check_output.return_value = " M some_file.txt\n"
+        
+        sync_and_clean_node(force_discard=True)
+        
+        mock_git.switch.assert_called_once()
