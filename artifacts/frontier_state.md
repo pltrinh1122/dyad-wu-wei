@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #697: Probe 697: Align - Codify Temporal Immutability (The Lock-State Axiom)
+## #698: Probe 698: Plan - Codify Temporal Immutability (The Lock-State Axiom)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 697: Align - Codify Temporal Immutability
+## Probe 698: Plan - Codify Temporal Immutability
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-0696-temporal-immutability.md
+- **Learnings & Context**: Drafted HOW-0696-temporal-immutability.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
