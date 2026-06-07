@@ -1276,14 +1276,14 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#694: Probe 694: Plan - Codify Evolutionary Determinism (Mutable Physics
-    via Rigid Pipelines)'
+- name: '#695: Reflect - Codify Evolutionary Determinism (Mutable Physics via Rigid
+    Pipelines)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 694: Plan - Codify Evolutionary Determinism'
+- name: 'Probe 695: Reflect - Codify Evolutionary Determinism'
   status: Completed
-  learnings: Drafted HOW-0692-evolutionary-determinism.md
+  learnings: Compiled final path retrospective and closed path
   invariants: []
 active_agents:
   agent-ziran:
