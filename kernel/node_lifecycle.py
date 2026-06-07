@@ -249,7 +249,14 @@ class TerminalNode(BaseNode):
             if "backlog" not in labels:
                 details = github_client.get_issue_details(self.issue_id)
                 current_title = details.get("title", "")
-                if re.match(r"^(Node \d+: )?(Activity|Discovery)( \d+)?:", current_title, re.IGNORECASE):
+                from kernel import daemon_strategic
+                path_id = daemon_strategic.find_parent_path_id(str(self.issue_id))
+                
+                # Structurally bypass Quarantine for any node authored by the system itself:
+                # 1. It belongs to a Path (it is a sub-node).
+                # 2. Or its title matches system-generated prefixes (Node, Path, Align, Plan, Act, Reflect, Harmonize, etc.)
+                system_prefix_pattern = r"^(Node\s*\d+:\s*)?(Activity|Discovery|Align|Plan|Act|Reflect|Harmonize|Path)\b"
+                if path_id or re.match(system_prefix_pattern, current_title, re.IGNORECASE):
                     self.add_gh_label("backlog")
                 else:
                     sys.exit(
