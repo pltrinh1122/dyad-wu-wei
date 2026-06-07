@@ -1329,6 +1329,40 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[x] Drafted technical design`
 
+## #1847: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `agent-sg5`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/671-reflect/kernel/daemon_node.py", line 710, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/671-reflect/kernel/daemon_node.py", line 420, in cmd_reflect
+    reflect_node(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/671-reflect/kernel/daemon_node.py", line 394, in reflect_node
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/671-reflect/kernel/node_lifecycle.py", line 500, in reflect
+    daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo, worktree_root=worktree_dir)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/671-reflect/kernel/daemon_knowledge_accrual.py", line 89, in enforce_reflection_hook
+    raise Exception(
+Exception: REFLECTION BLOCKED: Node 671 experienced execution failures. Under SG-0005 (TG-0005-04), a structured post-mortem reflection record is required under artifacts/audit/retro-671.md before reflection.
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 671: Reflect - Codify Emergent Orthogonality of Agent Scopes
+- **Status**: Completed
+- **Learnings & Context**: Compiled Path 668 retro
+- **Feedforward Invariants**:
+  - `None`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
