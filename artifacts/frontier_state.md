@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #695: Reflect - Codify Evolutionary Determinism (Mutable Physics via Rigid Pipelines)
+## #697: Probe 697: Align - Codify Temporal Immutability (The Lock-State Axiom)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 695: Reflect - Codify Evolutionary Determinism
+## Probe 697: Align - Codify Temporal Immutability
 - **Status**: Completed
-- **Learnings & Context**: Compiled final path retrospective and closed path
+- **Learnings & Context**: Drafted WHAT-0696-temporal-immutability.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
