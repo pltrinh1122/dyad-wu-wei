@@ -1276,14 +1276,14 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#706: Probe 706: Plan - Codify The Decoupled Geometry of the State Machine
-    (Meta vs Platform)'
+- name: '#707: Reflect - Codify The Decoupled Geometry of the State Machine (Meta
+    vs Platform)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 706: Plan - The Decoupled Geometry of the State Machine'
+- name: 'Probe 707: Reflect - Codify The Decoupled Geometry of the State Machine'
   status: Completed
-  learnings: Drafted HOW-0704-decoupled-geometry.md
+  learnings: Compiled final path retrospective and closed path
   invariants: []
 active_agents:
   agent-ziran:
