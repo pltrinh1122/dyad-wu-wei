@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #685: Probe 685: Align - Codify The Absolute Equality of Execution (No God-Mode)
+## #686: Probe 686: Plan - Codify The Absolute Equality of Execution (No God-Mode)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 685: Align - Codify The Absolute Equality of Execution
+## Probe 686: Plan - Codify The Absolute Equality of Execution
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-0684-absolute-equality.md
+- **Learnings & Context**: Drafted HOW-0684-absolute-equality.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
