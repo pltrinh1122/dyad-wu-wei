@@ -1060,12 +1060,12 @@ nodes:
   invariants: []
 - name: 'Harmonize - [BUG] Intake: System Crash in checkout'
   status: Completed
-  learnings: Harmonized on graceful validation handling
+  learnings: 'Confirmed that the checkout Persona Gate exception was already fixed
+    by PR #1722, which implemented root-level environment fallback.'
   invariants: []
 - name: 'Plan - [BUG] Intake: System Crash in checkout'
   status: Completed
-  learnings: 'Confirmed implicit fix via PR #1722 and materialized WHAT-1661. Synthesized
-    retro to pass post-failure gate.'
+  learnings: Planned graceful validation for cmd_checkout
   invariants: []
 - name: '#999: Implement quarantine survivor'
   status: '[///] Act Phase'
@@ -1161,9 +1161,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#1804: Plan - [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
-    in checkout.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#1805: Reflect - [BUG] Intake: System Crash in checkout'
   status: Backlog
