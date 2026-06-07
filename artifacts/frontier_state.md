@@ -1216,8 +1216,9 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1806: Implement stateless bin/kb graph CLI tool
+## Path 1806: Implement stateless bin/kb graph CLI tool
 - **Status**: Backlog
+- **Kind**: path
 - **Learnings & Context**: Create a stateless CLI tool that parses kb/ markdown files dynamically to generate a machine-queryable adjacency graph without relying on static files.
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -1270,7 +1271,16 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
 - **Feedforward Invariants**:
   - `- [x] nba.evaluate reflects clear path`
 
+## #669: Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
   - Current Active Node: `None`
+* **agent-sg5**:
+  - Current Active Path: `Path 634: Path: Refactor frontier_state for concurrent agent awareness`
+  - Current Active Node: `#669: Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes`

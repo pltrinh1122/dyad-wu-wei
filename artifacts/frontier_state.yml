@@ -1,6 +1,5 @@
-current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
-  awareness'
-current_active_node: null
+current_active_path: null
+current_active_node: '#999: Implement quarantine survivor'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1169,7 +1168,8 @@ nodes:
   learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
     checkout.'
   invariants: []
-- name: '#1806: Implement stateless bin/kb graph CLI tool'
+- name: 'Path 1806: Implement stateless bin/kb graph CLI tool'
+  kind: path
   status: Backlog
   learnings: Create a stateless CLI tool that parses kb/ markdown files dynamically
     to generate a machine-queryable adjacency graph without relying on static files.
@@ -1214,7 +1214,16 @@ nodes:
   learnings: Moved complete_active_node to run before nba.evaluate.
   invariants:
   - '- [x] nba.evaluate reflects clear path'
+- name: '#669: Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
     current_active_node: null
+  agent-sg5:
+    current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
+      awareness'
+    current_active_node: '#669: Probe 669: Align - Codify Emergent Orthogonality of
+      Agent Scopes'
