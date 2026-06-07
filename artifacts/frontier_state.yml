@@ -1276,14 +1276,14 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#707: Reflect - Codify The Decoupled Geometry of the State Machine (Meta
-    vs Platform)'
+- name: '#709: Probe 709: Align - Codify The Supremacy of the Logic Gates (Engine
+    over Context)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 707: Reflect - Codify The Decoupled Geometry of the State Machine'
+- name: 'Probe 709: Align - The Supremacy of the Logic Gates'
   status: Completed
-  learnings: Compiled final path retrospective and closed path
+  learnings: Drafted WHAT-0708-supremacy-of-logic-gates.md
   invariants: []
 active_agents:
   agent-ziran:
