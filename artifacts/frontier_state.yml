@@ -1060,8 +1060,7 @@ nodes:
   invariants: []
 - name: 'Harmonize - [BUG] Intake: System Crash in checkout'
   status: Completed
-  learnings: 'Confirmed that the checkout Persona Gate exception was already fixed
-    by PR #1722, which implemented root-level environment fallback.'
+  learnings: Harmonized on graceful validation handling
   invariants: []
 - name: 'Plan - [BUG] Intake: System Crash in checkout'
   status: Completed
@@ -1158,9 +1157,8 @@ nodes:
   invariants: []
   kind: path
 - name: '#1803: Harmonize - [BUG] Intake: System Crash in checkout'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
-    System Crash in checkout.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#1804: Plan - [BUG] Intake: System Crash in checkout'
   status: Backlog
@@ -1181,15 +1179,6 @@ nodes:
   status: Completed
   learnings: Architecturally falsified kb/graph_index.yml due to Retrieval Architecture
     Mismatch and PR discipline violations. Proposed stateless CLI.
-  invariants: []
-- name: '#1811: Harmonize - Adopt CSI Governance Model for HTIL Block'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Harmonize - Adopt CSI Governance Model for HTIL Block
-  status: Completed
-  learnings: Drafted kb/WHY-1810-csi-governance-htil.md to codify the Asymmetric CSI
-    Guard for the HTIL block.
   invariants: []
 active_agents:
   agent-ziran:

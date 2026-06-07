@@ -1067,7 +1067,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 
 ## Harmonize - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
-- **Learnings & Context**: Confirmed that the checkout Persona Gate exception was already fixed by PR #1722, which implemented root-level environment fallback.
+- **Learnings & Context**: Harmonized on graceful validation handling
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1199,8 +1199,8 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
   - `[ ]` None
 
 ## #1803: Harmonize - [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in checkout.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1225,18 +1225,6 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
 ## Probe 1110: Investigate kb graph CLI
 - **Status**: Completed
 - **Learnings & Context**: Architecturally falsified kb/graph_index.yml due to Retrieval Architecture Mismatch and PR discipline violations. Proposed stateless CLI.
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #1811: Harmonize - Adopt CSI Governance Model for HTIL Block
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Harmonize - Adopt CSI Governance Model for HTIL Block
-- **Status**: Completed
-- **Learnings & Context**: Drafted kb/WHY-1810-csi-governance-htil.md to codify the Asymmetric CSI Guard for the HTIL block.
 - **Feedforward Invariants**:
   - `[ ]` None
 
