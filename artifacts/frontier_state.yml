@@ -1267,13 +1267,23 @@ nodes:
   learnings: Aligned on metasystem void
   invariants:
   - None
-- name: '#679: Reflect - Codify The Void of the Metasystem (Agnostic Payload Execution)'
+- name: '#678: Probe 678: Plan - Codify The Void of the Metasystem (Agnostic Payload
+    Execution)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity 679: Reflect - Codify The Void of the Metasystem'
+- name: 'Probe 678: Plan - Codify The Void of the Metasystem'
   status: Completed
-  learnings: Compiled final path retrospective and closed path
+  learnings: Defined metasystem void alignment and execution boundaries
+  invariants: []
+- name: '#681: Probe 681: Align - Codify The Guardian of Rigidity (Inflexible Metasystem
+    Invariants)'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Probe 681: Align - Codify The Guardian of Rigidity'
+  status: Completed
+  learnings: Drafted WHAT-0681-guardian-of-rigidity.md
   invariants: []
 active_agents:
   agent-ziran:
