@@ -1276,14 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#695: Reflect - Codify Evolutionary Determinism (Mutable Physics via Rigid
-    Pipelines)'
+- name: '#697: Probe 697: Align - Codify Temporal Immutability (The Lock-State Axiom)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 695: Reflect - Codify Evolutionary Determinism'
+- name: 'Probe 697: Align - Codify Temporal Immutability'
   status: Completed
-  learnings: Compiled final path retrospective and closed path
+  learnings: Drafted WHAT-0696-temporal-immutability.md
   invariants: []
 active_agents:
   agent-ziran:
