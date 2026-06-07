@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #681: Probe 681: Align - Codify The Guardian of Rigidity (Inflexible Metasystem Invariants)
+## #682: Probe 682: Plan - Codify The Guardian of Rigidity (Inflexible Metasystem Invariants)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 681: Align - Codify The Guardian of Rigidity
+## Probe 682: Plan - Codify The Guardian of Rigidity
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-0681-guardian-of-rigidity.md
+- **Learnings & Context**: Drafted HOW-0681-guardian-of-rigidity.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
