@@ -1276,14 +1276,14 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#689: Probe 689: Align - Codify The Dyad is Bound by the Protocol (Operator
+- name: '#690: Probe 690: Plan - Codify The Dyad is Bound by the Protocol (Operator
     Non-Exemption)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 689: Align - Codify The Dyad is Bound by the Protocol'
+- name: 'Probe 690: Plan - Codify The Dyad is Bound by the Protocol'
   status: Completed
-  learnings: Drafted WHAT-0688-operator-non-exemption.md
+  learnings: Drafted HOW-0688-operator-non-exemption.md
   invariants: []
 active_agents:
   agent-ziran:
