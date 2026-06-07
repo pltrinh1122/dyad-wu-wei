@@ -95,13 +95,18 @@ class BaseNode:
         if workspace_dir:
             return os.path.join(os.path.abspath(workspace_dir), ".worktrees", branch_name)
         
+        from drivers import path_resolver
+        base_dir = path_resolver.get_core_dir()
+        if ".worktrees" in base_dir.split(os.sep):
+            base_dir = base_dir.split(".worktrees")[0]
+            
         loop_val = self.loop
         if loop_val == "spao":
-            return os.path.join(".worktrees", "spao", branch_name)
+            return os.path.join(base_dir, ".worktrees", "spao", branch_name)
         elif loop_val == "sdlc":
-            return os.path.join(".worktrees", "sdlc", branch_name)
+            return os.path.join(base_dir, ".worktrees", "sdlc", branch_name)
         else:
-            return os.path.join(".worktrees", branch_name)
+            return os.path.join(base_dir, ".worktrees", branch_name)
         
     def add_gh_label(self, label: str):
         github_client.add_label(self.issue_id, label)
@@ -439,12 +444,7 @@ class TerminalNode(BaseNode):
         if not os.path.isabs(frontier_file):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
 
-        main_repo = path_resolver.get_core_dir()
-        workspace_dir = os.environ.get("SPAO_WORKSPACE_DIR")
-        if workspace_dir:
-            worktree_dir = os.path.abspath(self.get_worktree_path(branch_name))
-        else:
-            worktree_dir = os.path.abspath(os.path.join(main_repo, self.get_worktree_path(branch_name)))
+        worktree_dir = self.get_worktree_path(branch_name)
 
         # Redirect frontier_file to mutate directly inside the worktree checkout (Node 1080)
         try:
@@ -484,6 +484,10 @@ class TerminalNode(BaseNode):
                 print("Running local test suite verification before reflection...")
                 run_tests_script = os.path.join(worktree_dir, "bin", "run-tests")
                 if not os.path.exists(run_tests_script):
+                    from drivers import path_resolver
+                    main_repo = path_resolver.get_core_dir()
+                    if ".worktrees" in main_repo.split(os.sep):
+                        main_repo = main_repo.split(".worktrees")[0]
                     run_tests_script = os.path.join(main_repo, "bin", "run-tests")
                 subprocess.run([run_tests_script], cwd=worktree_dir, check=True)
                 print("Local test suite passed.")

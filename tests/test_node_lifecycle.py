@@ -81,20 +81,23 @@ def test_base_node_metadata_properties(mock_get_labels):
 
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_labels")
 def test_get_worktree_path(mock_get_labels):
+    from drivers import path_resolver
+    base_dir = path_resolver.get_core_dir()
+    
     # SPAO loop
     mock_get_labels.return_value = ["loop:spao"]
     node = BaseNode("390")
-    assert node.get_worktree_path("node/390-test") == os.path.join(".worktrees", "spao", "node/390-test")
+    assert node.get_worktree_path("node/390-test") == os.path.join(base_dir, ".worktrees", "spao", "node/390-test")
 
     # SDLC loop
     mock_get_labels.return_value = ["loop:sdlc"]
     node = BaseNode("390")
-    assert node.get_worktree_path("node/390-test") == os.path.join(".worktrees", "sdlc", "node/390-test")
+    assert node.get_worktree_path("node/390-test") == os.path.join(base_dir, ".worktrees", "sdlc", "node/390-test")
 
     # Default loop
     mock_get_labels.return_value = []
     node = BaseNode("390")
-    assert node.get_worktree_path("node/390-test") == os.path.join(".worktrees", "node/390-test")
+    assert node.get_worktree_path("node/390-test") == os.path.join(base_dir, ".worktrees", "node/390-test")
 
 @mock.patch("kernel.node_lifecycle.git_client.diff_names")
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_labels")
@@ -138,7 +141,8 @@ def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_lab
 @mock.patch("kernel.node_lifecycle.TerminalNode.get_worktree_path")
 @mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
 def test_reflect_success(mock_enforce, mock_get_worktree_path, mock_nba, mock_frontier, mock_gh, mock_git, mock_subprocess):
-    mock_get_worktree_path.return_value = ".worktrees/node/390-test"
+    from drivers import path_resolver
+    mock_get_worktree_path.return_value = os.path.join(path_resolver.get_core_dir(), ".worktrees/node/390-test")
     mock_frontier.read_active_path.return_value = None
     mock_nba.NBADaemon.return_value.evaluate.return_value = {"type": "continue"}
     mock_gh.get_issue_labels.return_value = []
@@ -164,7 +168,8 @@ def test_reflect_success(mock_enforce, mock_get_worktree_path, mock_nba, mock_fr
 @mock.patch("kernel.node_lifecycle.TerminalNode.get_worktree_path")
 @mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
 def test_reflect_empty_pr_blocked(mock_enforce, mock_get_worktree_path, mock_nba, mock_frontier, mock_gh, mock_git, mock_subprocess):
-    mock_get_worktree_path.return_value = ".worktrees/node/390-test"
+    from drivers import path_resolver
+    mock_get_worktree_path.return_value = os.path.join(path_resolver.get_core_dir(), ".worktrees/node/390-test")
     mock_git.get_git_common_dir.return_value = ".git"
     
     # Simulate an empty PR with no workspace changes and no commits ahead of main
