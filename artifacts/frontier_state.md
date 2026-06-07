@@ -1170,7 +1170,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## #1802: [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
+- **Status**: Completed
 - **Kind**: path
 - **Learnings & Context**: ## System Crash Report
 
@@ -1205,13 +1205,13 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
   - `[ ]` None
 
 ## #1804: Plan - [BUG] Intake: System Crash in checkout
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## #1805: Reflect - [BUG] Intake: System Crash in checkout
-- **Status**: Backlog
+- **Status**: Completed
 - **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
 - **Feedforward Invariants**:
   - `[ ]` None
