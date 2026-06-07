@@ -340,18 +340,25 @@ def test_reflect_admin_bypass_conditions(mock_enforce, mock_git, mock_gh, mock_t
     mock_gh.admin_merge_pull_request.assert_called_once()
     mock_gh.admin_merge_pull_request.reset_mock()
     
-    # Case 3: kb/ modifications -> should NOT bypass
+    # Case 3: kb/ modifications -> should bypass now
     mock_git.diff_names.return_value = ["artifacts/frontier_state.md", "kb/WHY-0001.md"]
     node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
-    mock_gh.admin_merge_pull_request.assert_not_called()
+    mock_gh.admin_merge_pull_request.assert_called_once()
+    mock_gh.admin_merge_pull_request.reset_mock()
 
-    # Case 4: artifacts/ template modifications -> should NOT bypass
-    mock_git.diff_names.return_value = ["artifacts/frontier_state.md", "artifacts/job-discipline-template.md"]
+    # Case 4: Code changes -> should bypass now
+    mock_git.diff_names.return_value = ["kernel/node_lifecycle.py", "artifacts/frontier_state.md"]
+    node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
+    mock_gh.admin_merge_pull_request.assert_called_once()
+    mock_gh.admin_merge_pull_request.reset_mock()
+    
+    # Case 5: GEMINI.md modification -> should NOT bypass
+    mock_git.diff_names.return_value = ["kernel/node_lifecycle.py", "GEMINI.md"]
     node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
     mock_gh.admin_merge_pull_request.assert_not_called()
     
-    # Case 5: Code changes -> should NOT bypass
-    mock_git.diff_names.return_value = ["kernel/node_lifecycle.py", "artifacts/frontier_state.md"]
+    # Case 6: AGENT.md modification -> should NOT bypass
+    mock_git.diff_names.return_value = ["AGENT.md"]
     node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
     mock_gh.admin_merge_pull_request.assert_not_called()
 
