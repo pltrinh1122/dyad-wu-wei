@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #701: Probe 701: Align - Codify The Absolute Invariance of the Audit Ledger
+## #702: Probe 702: Plan - Codify The Absolute Invariance of the Audit Ledger
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 701: Align - The Absolute Invariance of the Audit Ledger
+## Probe 702: Plan - The Absolute Invariance of the Audit Ledger
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-0700-absolute-invariance.md
+- **Learnings & Context**: Drafted HOW-0700-absolute-invariance.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
