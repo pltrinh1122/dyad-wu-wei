@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #705: Probe 705: Align - Codify The Decoupled Geometry of the State Machine (Meta vs Platform)
+## #706: Probe 706: Plan - Codify The Decoupled Geometry of the State Machine (Meta vs Platform)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 705: Align - The Decoupled Geometry of the State Machine (Meta vs Platform)
+## Probe 706: Plan - The Decoupled Geometry of the State Machine
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-0704-decoupled-geometry.md
+- **Learnings & Context**: Drafted HOW-0704-decoupled-geometry.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
