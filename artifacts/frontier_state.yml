@@ -1205,6 +1205,10 @@ nodes:
     via the newly inserted node_lifecycle.py hook.
   invariants:
   - None
+- name: '#1826: Remediate Node Lifecycle Reflection Ordering Bug'
+  status: Backlog
+  learnings: Act
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
