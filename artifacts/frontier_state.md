@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #690: Probe 690: Plan - Codify The Dyad is Bound by the Protocol (Operator Non-Exemption)
+## #691: Reflect - Codify The Dyad is Bound by the Protocol (Operator Non-Exemption)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 690: Plan - Codify The Dyad is Bound by the Protocol
+## Probe 691: Reflect - Codify The Dyad is Bound by the Protocol
 - **Status**: Completed
-- **Learnings & Context**: Drafted HOW-0688-operator-non-exemption.md
+- **Learnings & Context**: Compiled final path retrospective and closed path
 - **Feedforward Invariants**:
   - `[ ]` None
 
