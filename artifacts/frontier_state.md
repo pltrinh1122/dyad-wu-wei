@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1594: Harmonize - [ALIGN] Falsify Quarantine for self-created nodes
+## #1595: Plan - [ALIGN] Falsify Quarantine for self-created nodes
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 1594: Reflect - Falsify Quarantine for self-created nodes
+## Probe 1595: Plan - Falsify quarantine for self-created nodes
 - **Status**: Completed
-- **Learnings & Context**: Drafted retro-1593-final.md
+- **Learnings & Context**: Created HOW-1595 and updated kernel/node_lifecycle.py
 - **Feedforward Invariants**:
   - `[ ]` None
 

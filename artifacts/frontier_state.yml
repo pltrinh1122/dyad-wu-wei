@@ -1276,13 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#1594: Harmonize - [ALIGN] Falsify Quarantine for self-created nodes'
+- name: '#1595: Plan - [ALIGN] Falsify Quarantine for self-created nodes'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 1594: Reflect - Falsify Quarantine for self-created nodes'
+- name: 'Probe 1595: Plan - Falsify quarantine for self-created nodes'
   status: Completed
-  learnings: Drafted retro-1593-final.md
+  learnings: Created HOW-1595 and updated kernel/node_lifecycle.py
   invariants: []
 active_agents:
   agent-ziran:
