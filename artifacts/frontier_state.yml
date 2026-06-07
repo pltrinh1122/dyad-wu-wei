@@ -1276,13 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#702: Probe 702: Plan - Codify The Absolute Invariance of the Audit Ledger'
+- name: '#703: Reflect - Codify The Absolute Invariance of the Audit Ledger'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 702: Plan - The Absolute Invariance of the Audit Ledger'
+- name: 'Probe 703: Reflect - Codify The Absolute Invariance of the Audit Ledger'
   status: Completed
-  learnings: Drafted HOW-0700-absolute-invariance.md
+  learnings: Compiled final path retrospective and closed path
   invariants: []
 active_agents:
   agent-ziran:
