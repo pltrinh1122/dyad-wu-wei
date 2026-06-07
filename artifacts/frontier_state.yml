@@ -1257,13 +1257,13 @@ nodes:
     dictated top-down by agent-meta.
   invariants:
   - '[x] Drafted technical design'
-- name: '#674: Probe 674: Plan - Codify Deterministic Enforcement of System Rules'
+- name: '#675: Reflect - Codify Deterministic Enforcement of System Rules'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 674: Plan - Codify Deterministic Enforcement of System Rules'
+- name: 'Activity 675: Reflect - Codify Deterministic Enforcement of System Rules'
   status: Completed
-  learnings: Codified deterministic enforcement into WHAT document
+  learnings: Reflected on path
   invariants:
   - None
 active_agents:
