@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #693: Probe 693: Align - Codify Evolutionary Determinism (Mutable Physics via Rigid Pipelines)
+## #694: Probe 694: Plan - Codify Evolutionary Determinism (Mutable Physics via Rigid Pipelines)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 693: Align - Codify Evolutionary Determinism
+## Probe 694: Plan - Codify Evolutionary Determinism
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-0692-evolutionary-determinism.md
+- **Learnings & Context**: Drafted HOW-0692-evolutionary-determinism.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
