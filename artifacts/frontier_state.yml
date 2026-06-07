@@ -1276,14 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#682: Probe 682: Plan - Codify The Guardian of Rigidity (Inflexible Metasystem
-    Invariants)'
+- name: '#683: Reflect - Codify The Guardian of Rigidity (Inflexible Metasystem Invariants)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 682: Plan - Codify The Guardian of Rigidity'
+- name: 'Activity 683: Reflect - Codify The Guardian of Rigidity'
   status: Completed
-  learnings: Drafted HOW-0681-guardian-of-rigidity.md
+  learnings: Compiled final path retrospective and closed path
   invariants: []
 active_agents:
   agent-ziran:
