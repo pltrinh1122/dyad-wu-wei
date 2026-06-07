@@ -1276,13 +1276,14 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#691: Reflect - Codify The Dyad is Bound by the Protocol (Operator Non-Exemption)'
+- name: '#693: Probe 693: Align - Codify Evolutionary Determinism (Mutable Physics
+    via Rigid Pipelines)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 691: Reflect - Codify The Dyad is Bound by the Protocol'
+- name: 'Probe 693: Align - Codify Evolutionary Determinism'
   status: Completed
-  learnings: Compiled final path retrospective and closed path
+  learnings: Drafted WHAT-0692-evolutionary-determinism.md
   invariants: []
 active_agents:
   agent-ziran:

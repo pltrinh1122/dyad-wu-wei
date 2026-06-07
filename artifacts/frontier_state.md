@@ -1353,15 +1353,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #691: Reflect - Codify The Dyad is Bound by the Protocol (Operator Non-Exemption)
+## #693: Probe 693: Align - Codify Evolutionary Determinism (Mutable Physics via Rigid Pipelines)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 691: Reflect - Codify The Dyad is Bound by the Protocol
+## Probe 693: Align - Codify Evolutionary Determinism
 - **Status**: Completed
-- **Learnings & Context**: Compiled final path retrospective and closed path
+- **Learnings & Context**: Drafted WHAT-0692-evolutionary-determinism.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
