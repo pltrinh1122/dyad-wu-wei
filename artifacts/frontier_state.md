@@ -1329,15 +1329,15 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[x] Drafted technical design`
 
-## #673: Probe 673: Align - Codify Deterministic Enforcement of System Rules
+## #674: Probe 674: Plan - Codify Deterministic Enforcement of System Rules
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 673: Align - Codify Deterministic Enforcement of System Rules
+## Probe 674: Plan - Codify Deterministic Enforcement of System Rules
 - **Status**: Completed
-- **Learnings & Context**: Aligned on deterministic enforcement
+- **Learnings & Context**: Codified deterministic enforcement into WHAT document
 - **Feedforward Invariants**:
   - `None`
 
