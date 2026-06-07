@@ -1184,12 +1184,12 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#1820: Plan - Automate Retrospective Compilation'
-  status: Backlog
-  learnings: Plan
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#1821: Reflect - Automate Retrospective Compilation'
-  status: Backlog
-  learnings: Reflect
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: Harmonize - Automate Retrospective Compilation
   status: Completed
@@ -1197,6 +1197,12 @@ nodes:
     inside node_lifecycle.py. When clear_path is triggered after exhaustion of the
     path DAG, the retro is automatically generated to artifacts/audit/retro-<id>.md
     and force-staged.
+  invariants:
+  - None
+- name: Reflect - Automate Retrospective Compilation
+  status: Completed
+  learnings: Confirmed the autonomous execution of daemon_retro.py during path clearance
+    via the newly inserted node_lifecycle.py hook.
   invariants:
   - None
 active_agents:
