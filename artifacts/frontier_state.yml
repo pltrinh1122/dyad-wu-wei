@@ -1276,13 +1276,13 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#697: Probe 697: Align - Codify Temporal Immutability (The Lock-State Axiom)'
+- name: '#698: Probe 698: Plan - Codify Temporal Immutability (The Lock-State Axiom)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 697: Align - Codify Temporal Immutability'
+- name: 'Probe 698: Plan - Codify Temporal Immutability'
   status: Completed
-  learnings: Drafted WHAT-0696-temporal-immutability.md
+  learnings: Drafted HOW-0696-temporal-immutability.md
   invariants: []
 active_agents:
   agent-ziran:
