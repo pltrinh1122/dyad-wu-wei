@@ -399,9 +399,6 @@ def cmd_checkout(args):
     checkout_node(args.issue_id, args.branch_name)
 
 def cmd_reflect(args):
-    import os
-    if ".worktrees" in os.path.abspath(os.getcwd()).split(os.sep):
-        sys.exit("[🚫 BLOCKED] Reflection Blocked: You must run the reflect command exclusively from the repository root directory, not from within the active worktree.")
 
     if args.invariants.startswith("[") and args.invariants.endswith("]"):
         invariants = json.loads(args.invariants)
