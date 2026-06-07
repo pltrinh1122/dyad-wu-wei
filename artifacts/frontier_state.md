@@ -1277,11 +1277,17 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes
-- **Status**: Completed
-- **Learnings & Context**: Codified the invariant that agents must rely on local GEMINI.md, deprecating global UI prompts to preserve orthogonality.
+## #1836: Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism Guards
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `Agents MUST strictly rely on their local GEMINI.md rules.`
+  - `[ ]` None
+
+## Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism Guards
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHAT-1836-csi-vs-mechanism-guards.md distinguishing CSI Guards from symptomatic Mechanism Guards, reducing Local CI latency. Referenced PR 1794. Also fixed UnboundLocalError in node_lifecycle.py.
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-ziran**:
@@ -1289,4 +1295,4 @@ ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
   - Current Active Node: `None`
 * **agent-sg5**:
   - Current Active Path: `Path 634: Path: Refactor frontier_state for concurrent agent awareness`
-  - Current Active Node: `None`
+  - Current Active Node: `#669: Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes`

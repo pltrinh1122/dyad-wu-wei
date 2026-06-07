@@ -1,5 +1,5 @@
 current_active_path: null
-current_active_node: '#999: Implement quarantine survivor'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1218,12 +1218,17 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes'
+- name: '#1836: Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism
+    Guards'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism Guards
   status: Completed
-  learnings: Codified the invariant that agents must rely on local GEMINI.md, deprecating
-    global UI prompts to preserve orthogonality.
-  invariants:
-  - Agents MUST strictly rely on their local GEMINI.md rules.
+  learnings: Drafted WHAT-1836-csi-vs-mechanism-guards.md distinguishing CSI Guards
+    from symptomatic Mechanism Guards, reducing Local CI latency. Referenced PR 1794.
+    Also fixed UnboundLocalError in node_lifecycle.py.
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
@@ -1231,4 +1236,5 @@ active_agents:
   agent-sg5:
     current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
       awareness'
-    current_active_node: null
+    current_active_node: '#669: Probe 669: Align - Codify Emergent Orthogonality of
+      Agent Scopes'

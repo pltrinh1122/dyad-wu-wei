@@ -479,15 +479,16 @@ class TerminalNode(BaseNode):
                 sys.exit(f"[🚫 BLOCKED] Reflection Blocked (WHY-0083): Branch '{branch_name}' has unresolved merge conflicts with 'origin/main'. You must resolve these conflicts locally before reflecting.")
             
             # Enforce Local CI Verification Invariant
+            from drivers import path_resolver
+            main_repo = path_resolver.get_core_dir()
+            if ".worktrees" in main_repo.split(os.sep):
+                main_repo = main_repo.split(".worktrees")[0]
+                
             try:
                 import subprocess
                 print("Running local test suite verification before reflection...")
                 run_tests_script = os.path.join(worktree_dir, "bin", "run-tests")
                 if not os.path.exists(run_tests_script):
-                    from drivers import path_resolver
-                    main_repo = path_resolver.get_core_dir()
-                    if ".worktrees" in main_repo.split(os.sep):
-                        main_repo = main_repo.split(".worktrees")[0]
                     run_tests_script = os.path.join(main_repo, "bin", "run-tests")
                 subprocess.run([run_tests_script], cwd=worktree_dir, check=True)
                 print("Local test suite passed.")
