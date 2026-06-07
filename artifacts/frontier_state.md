@@ -1163,6 +1163,71 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `None`
 
+## #1110: Probe: Investigate kb graph CLI — infrastructure precondition for KB metadata linking thesis
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1802: [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `checkout`
+**Persona:** `Unknown`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 698, in main
+    cmd_checkout(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 399, in cmd_checkout
+    checkout_node(args.issue_id, args.branch_name)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 36, in checkout_node
+    node.checkout(branch_name)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py", line 179, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 345, in checkout
+    raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
+ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1803: Harmonize - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1804: Plan - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1805: Reflect - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1806: Implement stateless bin/kb graph CLI tool
+- **Status**: Backlog
+- **Learnings & Context**: Create a stateless CLI tool that parses kb/ markdown files dynamically to generate a machine-queryable adjacency graph without relying on static files.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 1110: Investigate kb graph CLI
+- **Status**: Completed
+- **Learnings & Context**: Architecturally falsified kb/graph_index.yml due to Retrieval Architecture Mismatch and PR discipline violations. Proposed stateless CLI.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
