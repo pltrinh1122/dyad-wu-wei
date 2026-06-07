@@ -1353,17 +1353,17 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1887: Implement Universal Merge Gate Adjustment
+## #1324: Harmonize - Domain Dao Onboarding Protocol for External Projects
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity: Implement Universal Merge Gate Adjustment
+## Align - Automate Backlog Hygiene via Python Governance Rules
 - **Status**: Completed
-- **Learnings & Context**: Adjusted HTIL PR block to merge autonomously unless GEMINI.md or AGENT.md is modified.
+- **Learnings & Context**: Drafted WHAT-0665 and WHY-0665 to align on backlog hygiene automation
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `None`
 
 ## Active Agents Matrix
 * **agent-ziran**:
