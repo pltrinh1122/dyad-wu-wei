@@ -351,10 +351,37 @@ class TerminalNode(BaseNode):
         log_stage_advancement("plan", "Plan Phase Completed", f"Node issue #{self.issue_id} successfully planned. Transitioning to Act phase.")
         return issue_url
 
+    def _get_domain_config(self):
+        try:
+            import yaml
+            from drivers import path_resolver
+            labels = github_client.get_issue_labels(self.issue_id)
+            domain_id = None
+            for label in labels:
+                if isinstance(label, str) and label.startswith("domain:"):
+                    domain_id = label.split(":")[1]
+                    break
+            if not domain_id:
+                return None
+            main_repo_dir = path_resolver.get_core_dir()
+            if ".worktrees" in main_repo_dir.split(os.sep):
+                main_repo_dir = main_repo_dir.split(".worktrees")[0]
+            import os
+            dyad_config_path = os.path.join(main_repo_dir, "dyad-wu-wei.yml")
+            if os.path.exists(dyad_config_path):
+                with open(dyad_config_path, 'r') as cf:
+                    dyad_config = yaml.safe_load(cf) or {}
+                    return dyad_config.get("domains", {}).get(domain_id)
+        except Exception as e:
+            print(f"Warning: Failed to parse dyad-wu-wei.yml or fetch labels for domains. Error: {e}")
+        return None
+
     @record_execution(stage="act")
     def checkout(self, branch_name: str, frontier_file: str = "artifacts/frontier_state.md") -> None:
+        domain_config = self._get_domain_config()
         if not os.environ.get("SPAO_WORKSPACE_DIR") and not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
-            raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
+            if not (domain_config and domain_config.get("branch_prefix") and branch_name.startswith(domain_config["branch_prefix"])):
+                raise ValueError(f"Branch name MUST follow the standard: node/<id>-<kebab-case> or domain prefix")
             
         from kernel.daemon_strategic import verify_node_transition_allowed
         verify_node_transition_allowed(self.issue_id)
@@ -494,10 +521,17 @@ class TerminalNode(BaseNode):
             try:
                 import subprocess
                 print("Running local test suite verification before reflection...")
-                run_tests_script = os.path.join(worktree_dir, "bin", "run-tests")
-                if not os.path.exists(run_tests_script):
-                    run_tests_script = os.path.join(main_repo, "bin", "run-tests")
-                subprocess.run([run_tests_script], cwd=worktree_dir, check=True)
+                domain_config = self._get_domain_config()
+                if domain_config and domain_config.get("validation_hook"):
+                    run_tests_script = domain_config["validation_hook"]
+                    print(f"Running domain-specific validation hook: {run_tests_script}")
+                    import shlex
+                    subprocess.run(shlex.split(run_tests_script), cwd=worktree_dir, check=True)
+                else:
+                    run_tests_script = os.path.join(worktree_dir, "bin", "run-tests")
+                    if not os.path.exists(run_tests_script):
+                        run_tests_script = os.path.join(main_repo, "bin", "run-tests")
+                    subprocess.run([run_tests_script], cwd=worktree_dir, check=True)
                 print("Local test suite passed.")
             except subprocess.CalledProcessError:
                 sys.exit("[🚫 BLOCKED] Reflection Blocked: Local test suite verification failed. You must remediate CI failures before reflecting.")
@@ -611,6 +645,12 @@ class TerminalNode(BaseNode):
             is_autonomous_merge = True
             if any(f in sacred_files for f in modified_files):
                 is_autonomous_merge = False
+                
+            domain_config = self._get_domain_config()
+            if domain_config and domain_config.get("auto_approve_labels"):
+                labels = github_client.get_issue_labels(self.issue_id)
+                if any(label in domain_config["auto_approve_labels"] for label in labels):
+                    is_autonomous_merge = True
 
             if is_autonomous_merge:
                 github_client.admin_merge_pull_request(pr_url)

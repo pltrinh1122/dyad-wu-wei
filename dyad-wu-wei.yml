@@ -27,3 +27,11 @@ governance:
     - GEMINI.md
     - AGENT.md
 
+domains:
+  family_legacy:
+    path: /mnt/shared_data/git_repos/family_legacy/main
+    domain_dao_digest: artifacts/Domain_Dao_Digest_v0.1.md
+    branch_prefix: solo/main/
+    validation_hook: tools/repo content-parity
+    auto_approve_labels:
+      - forward-port
