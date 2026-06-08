@@ -21,12 +21,28 @@ class SynthesisEngine:
     def _parse_ts(self, ts_str):
         return datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
 
-    def calculate_metrics(self):
-        """Groups events by node/stage and calculates durations."""
+    def calculate_metrics(self, level="stage"):
+        """Groups events by the specified level and calculates durations."""
         metrics = {}
         
         for event in self.events:
-            key = (event.get("node_id"), event.get("stage"))
+            node_id = event.get("node_id")
+            stage = event.get("stage")
+            domain = event.get("domain")
+            component = event.get("component")
+            execution_id = event.get("execution_id")
+            
+            if level == "node":
+                key = (node_id,)
+            elif level == "domain":
+                key = (node_id, stage, domain)
+            elif level == "component":
+                key = (node_id, stage, domain, component)
+            elif level == "execution":
+                key = (node_id, stage, domain, component, execution_id)
+            else:
+                key = (node_id, stage)
+                
             if key not in metrics:
                 metrics[key] = {"start": None, "finish": None, "events": []}
             
@@ -34,13 +50,20 @@ class SynthesisEngine:
             ts = self._parse_ts(event["timestamp"])
             
             if event["event"] == "START":
-                metrics[key]["start"] = ts
+                if metrics[key]["start"] is None or ts < metrics[key]["start"]:
+                    metrics[key]["start"] = ts
             elif event["event"] == "FINISH":
-                metrics[key]["finish"] = ts
+                if metrics[key]["finish"] is None or ts > metrics[key]["finish"]:
+                    metrics[key]["finish"] = ts
 
         results = []
         for key, data in metrics.items():
-            node_id, stage = key
+            node_id = key[0]
+            stage = key[1] if len(key) > 1 else "OVERALL"
+            domain = key[2] if len(key) > 2 else None
+            component = key[3] if len(key) > 3 else None
+            execution_id = key[4] if len(key) > 4 else None
+            
             if data["start"] and data["finish"]:
                 duration = data["finish"] - data["start"]
                 threshold = self.thresholds.get(stage, timedelta(hours=24))
@@ -49,9 +72,13 @@ class SynthesisEngine:
                 results.append({
                     "node_id": node_id,
                     "stage": stage,
+                    "domain": domain,
+                    "component": component,
+                    "execution_id": execution_id,
                     "duration": duration,
                     "is_bottleneck": is_bottleneck,
-                    "threshold": threshold
+                    "threshold": threshold,
+                    "level": level
                 })
         
         return results
@@ -105,7 +132,7 @@ class TelemetryDaemon:
             with open(self.ledger_path, "a") as f:
                 f.write(json.dumps(entry) + "\n")
 
-    def generate_report(self):
+    def generate_report(self, level="stage"):
         """Synthesizes the ledger into a health report."""
         if not os.path.exists(self.ledger_path):
             return f"No telemetry data available at {self.ledger_path}."
@@ -114,10 +141,11 @@ class TelemetryDaemon:
             events = [json.loads(line) for line in f]
             
         engine = SynthesisEngine(events)
-        metrics = engine.calculate_metrics()
+        metrics = engine.calculate_metrics(level=level)
         
         report = ["# SPAO Operational Health Report", ""]
         report.append(f"Source: {self.ledger_path}")
+        report.append(f"Aggregation Level: {level.upper()}")
         report.append(f"Total Observation Points: {len(events)}")
         report.append("")
         
@@ -125,8 +153,21 @@ class TelemetryDaemon:
             report.append("No completed phases found to calculate durations.")
             return "\n".join(report)
 
-        report.append("| Node | Stage | Duration | Status |")
-        report.append("| :--- | :--- | :--- | :--- |")
+        if level == "node":
+            report.append("| Node | Duration | Status |")
+            report.append("| :--- | :--- | :--- |")
+        elif level == "stage":
+            report.append("| Node | Stage | Duration | Status |")
+            report.append("| :--- | :--- | :--- | :--- |")
+        elif level == "domain":
+            report.append("| Node | Stage | Domain | Duration | Status |")
+            report.append("| :--- | :--- | :--- | :--- | :--- |")
+        elif level == "component":
+            report.append("| Node | Stage | Domain | Component | Duration | Status |")
+            report.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
+        elif level == "execution":
+            report.append("| Node | Stage | Domain | Component | Execution ID | Duration | Status |")
+            report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
         
         bottlenecks = []
         for m in metrics:
@@ -136,7 +177,17 @@ class TelemetryDaemon:
                 bottlenecks.append(m)
             
             node_display = f"#{m['node_id']}" if m['node_id'] else "Global"
-            report.append(f"| {node_display} | {m['stage']} | {m['duration']} | {status} |")
+            
+            if level == "node":
+                report.append(f"| {node_display} | {m['duration']} | {status} |")
+            elif level == "stage":
+                report.append(f"| {node_display} | {m['stage']} | {m['duration']} | {status} |")
+            elif level == "domain":
+                report.append(f"| {node_display} | {m['stage']} | {m['domain']} | {m['duration']} | {status} |")
+            elif level == "component":
+                report.append(f"| {node_display} | {m['stage']} | {m['domain']} | {m['component']} | {m['duration']} | {status} |")
+            elif level == "execution":
+                report.append(f"| {node_display} | {m['stage']} | {m['domain']} | {m['component']} | {m['execution_id']} | {m['duration']} | {status} |")
             
         if bottlenecks:
             report.append("\n## 🚨 Bottleneck Alerts")
@@ -223,7 +274,8 @@ def main():
     parser = argparse.ArgumentParser(description="Telemetry Daemon CLI")
     subparsers = parser.add_subparsers(dest="subcommand", required=True)
     
-    subparsers.add_parser("report", help="Generate a health report")
+    parser_report = subparsers.add_parser("report", help="Generate a health report")
+    parser_report.add_argument("--level", choices=["node", "stage", "domain", "component", "execution"], default="stage", help="Aggregation level")
     
     parser_log = subparsers.add_parser("log", help="Log a telemetry event")
     parser_log.add_argument("stage", help="Stage (e.g., ACT, SENSE)")
@@ -237,7 +289,7 @@ def main():
     daemon = TelemetryDaemon()
     
     if args.subcommand == "report":
-        print(daemon.generate_report())
+        print(daemon.generate_report(level=args.level))
     elif args.subcommand == "log":
         metadata = json.loads(args.metadata) if args.metadata else {}
         daemon.log_event(
