@@ -588,10 +588,28 @@ class TerminalNode(BaseNode):
             pr_title = f"PR: {clean_name}"
             pr_url = github_client.create_pull_request(pr_title, pr_body, head=branch_name)
             
-            # Evaluate Administrative Node HTIL Bypass (WHY-0087-universal-merge-gate-bypass)
+            # Evaluate Administrative Node HTIL Bypass (WHY-0473-configurable-htil-pr-gate)
+            import yaml
+            from drivers import path_resolver
+            
+            sacred_files = ["GEMINI.md", "AGENT.md"]
+            try:
+                main_repo_dir = path_resolver.get_core_dir()
+                if ".worktrees" in main_repo_dir.split(os.sep):
+                    main_repo_dir = main_repo_dir.split(".worktrees")[0]
+                dyad_config_path = os.path.join(main_repo_dir, "dyad-wu-wei.yml")
+                if os.path.exists(dyad_config_path):
+                    with open(dyad_config_path, 'r') as f:
+                        dyad_config = yaml.safe_load(f) or {}
+                        sacred_files_conf = dyad_config.get("governance", {}).get("sacred_files")
+                        if sacred_files_conf and isinstance(sacred_files_conf, list):
+                            sacred_files = sacred_files_conf
+            except Exception as e:
+                print(f"Warning: Failed to parse dyad-wu-wei.yml for sacred_files, using default. Error: {e}")
+
             modified_files = git_client.diff_names("origin/main", cwd=worktree_dir)
             is_autonomous_merge = True
-            if any(f in ("GEMINI.md", "AGENT.md") for f in modified_files):
+            if any(f in sacred_files for f in modified_files):
                 is_autonomous_merge = False
 
             if is_autonomous_merge:

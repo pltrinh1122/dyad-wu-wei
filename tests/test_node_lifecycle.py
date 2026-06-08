@@ -319,12 +319,15 @@ def test_branch_naming_regex_enforcement_and_exemption(mock_enforce, mock_fronti
 @mock.patch("kernel.node_lifecycle.FlowTransaction")
 @mock.patch("kernel.node_lifecycle.github_client")
 @mock.patch("kernel.node_lifecycle.git_client")
+@mock.patch("kernel.node_lifecycle.yaml.safe_load")
 @mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
-def test_reflect_admin_bypass_conditions(mock_enforce, mock_git, mock_gh, mock_tx, mock_frontier, mock_nba, mock_subprocess):
+def test_reflect_admin_bypass_conditions(mock_enforce, mock_yaml_load, mock_git, mock_gh, mock_tx, mock_frontier, mock_nba, mock_subprocess):
     mock_frontier.read_active_path.return_value = None
     mock_nba.NBADaemon.return_value.evaluate.return_value = {"type": "continue"}
     mock_git.get_git_common_dir.return_value = ".git"
     mock_git.check_merge_conflicts.return_value = False
+    # Default behavior without custom sacred_files
+    mock_yaml_load.return_value = {}
     
     node = TerminalNode("390")
     
@@ -352,15 +355,23 @@ def test_reflect_admin_bypass_conditions(mock_enforce, mock_git, mock_gh, mock_t
     mock_gh.admin_merge_pull_request.assert_called_once()
     mock_gh.admin_merge_pull_request.reset_mock()
     
-    # Case 5: GEMINI.md modification -> should NOT bypass
+    # Case 5: GEMINI.md modification -> should NOT bypass (fallback)
     mock_git.diff_names.return_value = ["kernel/node_lifecycle.py", "GEMINI.md"]
     node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
     mock_gh.admin_merge_pull_request.assert_not_called()
     
-    # Case 6: AGENT.md modification -> should NOT bypass
-    mock_git.diff_names.return_value = ["AGENT.md"]
+    # Case 6: Custom sacred_files logic
+    mock_yaml_load.return_value = {"governance": {"sacred_files": ["CUSTOM.md"]}}
+    # GEMINI.md no longer sacred -> should bypass
+    mock_git.diff_names.return_value = ["GEMINI.md"]
+    node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
+    mock_gh.admin_merge_pull_request.assert_called_once()
+    mock_gh.admin_merge_pull_request.reset_mock()
+    # CUSTOM.md is sacred -> should NOT bypass
+    mock_git.diff_names.return_value = ["CUSTOM.md"]
     node.reflect("frontier.md", "node-390", "learnings", [], "msg", "node/390-test")
     mock_gh.admin_merge_pull_request.assert_not_called()
+
 
 def test_plan_start_quarantine_protocol_violation():
     # Setup mocks to return an issue labeled with "status:triage" (lacking "backlog")

@@ -23,4 +23,7 @@ sense_hooks:
 
 governance:
   spao_purity_enforcement: true
+  sacred_files:
+    - GEMINI.md
+    - AGENT.md
 
