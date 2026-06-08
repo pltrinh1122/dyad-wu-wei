@@ -1,3 +1,4 @@
+from kernel.daemon_telemetry import record_execution
 import os
 import sys
 import yaml
@@ -172,6 +173,7 @@ def print_goal_progress_report():
             print(f"     [{mark}] Path {p_id}: {clean_title}")
         print()
 
+@record_execution(stage="sense")
 def main():
     frontier_path = os.path.join(repo_root, "artifacts", "frontier_state.md")
     

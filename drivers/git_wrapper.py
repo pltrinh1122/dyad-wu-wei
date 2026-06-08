@@ -8,6 +8,7 @@ def run_git_command(args: list[str]) -> int:
     res = subprocess.run(["git"] + args)
     return res.returncode
 
+@record_execution(stage="act")
 def main():
     sys.exit(run_git_command(sys.argv[1:]))
 

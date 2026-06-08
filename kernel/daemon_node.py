@@ -1,3 +1,4 @@
+from kernel.daemon_telemetry import record_execution
 import os
 import re
 import hashlib
@@ -593,6 +594,7 @@ def cmd_test(args):
     exit_code = daemon.run([args.target] if args.target else [])
     sys.exit(exit_code)
 
+@record_execution(stage="system")
 def main():
     import argparse
     import json

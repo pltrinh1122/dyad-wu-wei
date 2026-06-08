@@ -1,3 +1,4 @@
+from kernel.daemon_telemetry import record_execution
 import os
 import sys
 import yaml
@@ -535,6 +536,7 @@ def verify_path_activation_allowed(path_id: str) -> None:
         print(f"⚠️  WARNING: Path #{path_id_str} is not prioritized in the active strategic ledger.", file=sys.stderr)
 
     _verify_persona(path_id_str, ledger)
+@record_execution(stage="align")
 def main():
     parser = argparse.ArgumentParser(description="Manage the strategic intent ledger.")
     subparsers = parser.add_subparsers(dest="command", required=True)

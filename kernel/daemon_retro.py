@@ -1,3 +1,4 @@
+from kernel.daemon_telemetry import record_execution
 import json
 import os
 import re
@@ -295,6 +296,7 @@ class RetroCompiler:
 
         print(f"Retrospective successfully compiled to {output_path}")
 
+@record_execution(stage="reflect")
 def main():
     if len(sys.argv) < 4 or sys.argv[1] != "compile":
         print("Usage: python -m kernel.daemon_retro compile <start_path_id> <end_path_id> [output_path]")
