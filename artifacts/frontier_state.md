@@ -1365,116 +1365,67 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #282: Hierarchical Telemetry Reporting
+## #281: System-Wide Telemetry Integration
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1893: [BUG] Intake: System Crash in reflect
-- **Status**: Backlog
-- **Kind**: path
-- **Learnings & Context**: ## System Crash Report
-
-**Subcommand:** `reflect`
-**Persona:** `frontier`
-
-### Traceback
-```python
-Traceback (most recent call last):
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py", line 712, in main
-    cmd_reflect(args)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py", line 421, in cmd_reflect
-    reflect_node(
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py", line 395, in reflect_node
-    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/node_lifecycle.py", line 507, in reflect
-    daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo, worktree_root=worktree_dir)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_knowledge_accrual.py", line 89, in enforce_reflection_hook
-    raise Exception(
-Exception: REFLECTION BLOCKED: Node 282 experienced execution failures. Under SG-0005 (TG-0005-04), a structured post-mortem reflection record is required under artifacts/audit/retro-282.md before reflection.
-
-```
-
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Activity 282: Hierarchical Telemetry Reporting
+## Node 281: System-Wide Telemetry Integration
 - **Status**: Completed
-- **Learnings & Context**: Implemented hierarchical reporting in SynthesisEngine and bin/telemetry via a --level flag allowing aggregation by node, stage, domain, component, and execution.
+- **Learnings & Context**: Instrumented all bin/ shell scripts and daemon main functions with @record_execution and trap-based telemetry.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #473: Probe 473: Align - Path: Operator Configurable Gate Enforcement
+## #298: Probe 298: Probe: Root Cause Analysis of Path Population Failure
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1896: [BUG] Intake: System Crash in reflect
-- **Status**: Backlog
-- **Kind**: path
-- **Learnings & Context**: ## System Crash Report
-
-**Subcommand:** `reflect`
-**Persona:** `Unknown`
-
-### Traceback
-```python
-Traceback (most recent call last):
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/473-probe-align-path-operator-configurable-gate-enforcement/kernel/daemon_node.py", line 712, in main
-    cmd_reflect(args)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/473-probe-align-path-operator-configurable-gate-enforcement/kernel/daemon_node.py", line 417, in cmd_reflect
-    invariants = json.loads(args.invariants)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
-    return _default_decoder.decode(s)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
-    raise JSONDecodeError("Expecting value", s, err.value) from None
-json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
-
-```
-
+## Probe 298: Probe: Root Cause Analysis of Path Population Failure
+- **Status**: Completed
+- **Learnings & Context**: Determined the root cause of the Path 292 population failure was a premature conversation yield by the agent asking a prioritization question, conflating statement of intent with tool execution.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Probe 473: Align - Path: Operator Configurable Gate Enforcement
-- **Status**: Completed
-- **Learnings & Context**: Drafted WHY-0473 formalizing Operator Configurable Gate Enforcement to bypass HTIL for non-Dao mutations.
+## #474: Probe 474: Plan - Path: Operator Configurable Gate Enforcement
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `[x] WHY-0473 created`
+  - `[ ]` None
+
+## Probe 474: Plan - Path: Operator Configurable Gate Enforcement
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHAT-0474 spec for parsing dyad-wu-wei.yml governance.sacred_files and enforcing dynamic HTIL block.
+- **Feedforward Invariants**:
+  - `[x] WHAT-0474 created`
   - `[x] Manifest updated`
 
-## #475: Reflect - Path: Operator Configurable Gate Enforcement
+## #497: Probe 497: Align - Path: Optimization of Node Sync Audit Performance (Lightweight Audit)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity: Act - Path: Operator Configurable Gate Enforcement
+## Probe 497: Align - Path: Optimization of Node Sync Audit Performance
 - **Status**: Completed
-- **Learnings & Context**: Implemented dynamic parsing of dyad-wu-wei.yml governance.sacred_files to override HTIL block logic. Added robust tests.
+- **Learnings & Context**: Drafted WHY-0497 to bifurcate the audit logic into a hot-path Lightweight Audit and a cold-path Exhaustive Audit.
 - **Feedforward Invariants**:
-  - `[x] Config parsing implemented in node_lifecycle.py`
-  - `[x] Tests updated`
-  - `[x] dyad-wu-wei.yml default config added`
-
-## #498: Probe 498: Plan - Path: Optimization of Node Sync Audit Performance (Lightweight Audit)
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Probe 498: Plan - Path: Optimization of Node Sync Audit Performance
-- **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-0498 outlining the technical specs for implementing the --lightweight flag in audit_daemon.py and configuring it in audit_config.yml.
-- **Feedforward Invariants**:
-  - `[x] WHAT-0498 created`
+  - `[x] WHY-0497 created`
   - `[x] Manifest updated`
+
+## #1773: Reflect - Implement Spec-First HTIL Inversion
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Reflect - Implement Spec-First HTIL Inversion
+- **Status**: Completed
+- **Learnings & Context**: Closed path
+- **Feedforward Invariants**:
+  - `[x] Path closed`
 
 ## #499: Reflect - Path: Optimization of Node Sync Audit Performance (Lightweight Audit)
 - **Status**: [///] Act Phase
@@ -1482,14 +1433,12 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity: Act - Path: Optimization of Node Sync Audit Performance (Lightweight Audit)
+## Activity: Reflect - Path: Optimization of Node Sync Audit Performance (Lightweight Audit)
 - **Status**: Completed
-- **Learnings & Context**: Implemented WHAT-0498 by adding --lightweight flag to audit_daemon.py and configuring lightweight rules in audit_config.yml.
+- **Learnings & Context**: Reflected on the lightweight audit implementation.
 - **Feedforward Invariants**:
-  - `[x] Added lightweight flag`
-  - `[x] Configured audit_config.yml`
-  - `[x] Passed --lightweight from daemon_node.py`
-  - `[x] Wrote tests`
+  - `[x] Wrote retrospective`
+  - `[x] Finished path`
 
 ## Active Agents Matrix
 * **agent-ziran**:
