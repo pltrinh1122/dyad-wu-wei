@@ -1353,17 +1353,17 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1324: Harmonize - Domain Dao Onboarding Protocol for External Projects
+## #666: Probe 666: Plan - Automate Backlog Hygiene via Python Governance Rules
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Align - Automate Backlog Hygiene via Python Governance Rules
+## Plan - Automate Backlog Hygiene via Python Governance Rules
 - **Status**: Completed
-- **Learnings & Context**: Drafted WHAT-0665 and WHY-0665 to align on backlog hygiene automation
+- **Learnings & Context**: Implemented sweep_orphans in daemon_backlog.py and evaluate_orphaned_nodes in audit_daemon.py
 - **Feedforward Invariants**:
-  - `None`
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-ziran**:
