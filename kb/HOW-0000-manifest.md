@@ -26,6 +26,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Private Repository Falsification**: Read [WHY-1562-falsify-private-repository-survivor.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-1562-falsify-private-repository-survivor.md)
 * **Operator Configurable Gate Enforcement**: Read [WHY-0473-configurable-htil-pr-gate.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-0473-configurable-htil-pr-gate.md)
 * **Operator Configurable Gate Enforcement Spec**: Read [WHAT-0474-configurable-htil-pr-gate-spec.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHAT-0474-configurable-htil-pr-gate-spec.md)
+* **Lightweight Sync Audit**: Read [WHY-0497-lightweight-sync-audit.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-0497-lightweight-sync-audit.md)
 
 
 
