@@ -1491,20 +1491,17 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
   - `[x] Passed --lightweight from daemon_node.py`
   - `[x] Wrote tests`
 
-## #1324: Harmonize - Domain Dao Onboarding Protocol for External Projects
+## #1325: Plan - Domain Dao Onboarding Protocol for External Projects
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Domain Dao Onboarding Protocol for External Projects
+## Plan - Domain Dao Onboarding Protocol for External Projects
 - **Status**: Completed
-- **Learnings & Context**: Synthesized Familyloom legacy governance into Domain Dao Digest v0.1 and drafted DDOP Infrastructure Design outlining gap analysis and onboarding protocol.
+- **Learnings & Context**: Drafted DDOP Technical Spec outlining schema changes for dyad-wu-wei.yml and lifecycle hooks for node checkout and reflection.
 - **Feedforward Invariants**:
-  - `[x] All Tier 1-3 governance documents read in full`
-  - `[x] Rules extracted with addressable IDs`
-  - `[x] Domain Dao Digest v0.1 synthesized as sectioned monolith`
-  - `[x] Digest submitted for Operator ratification`
+  - `[x] Technical Design Completed`
 
 ## Active Agents Matrix
 * **agent-ziran**:
