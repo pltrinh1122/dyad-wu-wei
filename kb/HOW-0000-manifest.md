@@ -24,6 +24,7 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Dynamic Agent Identity Resolution Harmonization**: Read [WHY-0623-dynamic-identity-resolution-al&#105;gnment.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-0623-dynamic-identity-resolution-al&#105;gnment.md)
 * **Headless GH_TOKEN Fallback Harmonization**: Read [WHY-1314-headless-gh-token-rationale.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-1314-headless-gh-token-rationale.md)
 * **Private Repository Falsification**: Read [WHY-1562-falsify-private-repository-survivor.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-1562-falsify-private-repository-survivor.md)
+* **Operator Configurable Gate Enforcement**: Read [WHY-0473-configurable-htil-pr-gate.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-0473-configurable-htil-pr-gate.md)
 
 
 
