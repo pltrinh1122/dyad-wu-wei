@@ -1365,43 +1365,27 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #282: Hierarchical Telemetry Reporting
+## #281: System-Wide Telemetry Integration
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1893: [BUG] Intake: System Crash in reflect
-- **Status**: Backlog
-- **Kind**: path
-- **Learnings & Context**: ## System Crash Report
-
-**Subcommand:** `reflect`
-**Persona:** `frontier`
-
-### Traceback
-```python
-Traceback (most recent call last):
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py", line 712, in main
-    cmd_reflect(args)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py", line 421, in cmd_reflect
-    reflect_node(
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py", line 395, in reflect_node
-    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/node_lifecycle.py", line 507, in reflect
-    daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo, worktree_root=worktree_dir)
-  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_knowledge_accrual.py", line 89, in enforce_reflection_hook
-    raise Exception(
-Exception: REFLECTION BLOCKED: Node 282 experienced execution failures. Under SG-0005 (TG-0005-04), a structured post-mortem reflection record is required under artifacts/audit/retro-282.md before reflection.
-
-```
-
+## Node 281: System-Wide Telemetry Integration
+- **Status**: Completed
+- **Learnings & Context**: Instrumented all bin/ shell scripts and daemon main functions with @record_execution and trap-based telemetry.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Activity 282: Hierarchical Telemetry Reporting
+## #298: Probe 298: Probe: Root Cause Analysis of Path Population Failure
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Probe 298: Probe: Root Cause Analysis of Path Population Failure
 - **Status**: Completed
-- **Learnings & Context**: Implemented hierarchical reporting in SynthesisEngine and bin/telemetry via a --level flag allowing aggregation by node, stage, domain, component, and execution.
+- **Learnings & Context**: Determined the root cause of the Path 292 population failure was a premature conversation yield by the agent asking a prioritization question, conflating statement of intent with tool execution.
 - **Feedforward Invariants**:
   - `[ ]` None
 

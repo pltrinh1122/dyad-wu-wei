@@ -1285,32 +1285,24 @@ nodes:
   learnings: Implemented sweep_orphans in daemon_backlog.py and evaluate_orphaned_nodes
     in audit_daemon.py
   invariants: []
-- name: '#282: Hierarchical Telemetry Reporting'
+- name: '#281: System-Wide Telemetry Integration'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: '#1893: [BUG] Intake: System Crash in reflect'
-  status: Backlog
-  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `frontier`\n\
-    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py\"\
-    , line 712, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py\"\
-    , line 421, in cmd_reflect\n    reflect_node(\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py\"\
-    , line 395, in reflect_node\n    node.reflect(frontier_file, node_name, learnings,\
-    \ invariants, commit_msg, branch_name, stage=stage, insights=insights)\n  File\
-    \ \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/node_lifecycle.py\"\
-    , line 507, in reflect\n    daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id,\
-    \ repo_root=main_repo, worktree_root=worktree_dir)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_knowledge_accrual.py\"\
-    , line 89, in enforce_reflection_hook\n    raise Exception(\nException: REFLECTION\
-    \ BLOCKED: Node 282 experienced execution failures. Under SG-0005 (TG-0005-04),\
-    \ a structured post-mortem reflection record is required under artifacts/audit/retro-282.md\
-    \ before reflection.\n\n```\n"
-  invariants: []
-  kind: path
-- name: 'Activity 282: Hierarchical Telemetry Reporting'
+- name: 'Node 281: System-Wide Telemetry Integration'
   status: Completed
-  learnings: Implemented hierarchical reporting in SynthesisEngine and bin/telemetry
-    via a --level flag allowing aggregation by node, stage, domain, component, and
-    execution.
+  learnings: Instrumented all bin/ shell scripts and daemon main functions with @record_execution
+    and trap-based telemetry.
+  invariants: []
+- name: '#298: Probe 298: Probe: Root Cause Analysis of Path Population Failure'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Probe 298: Probe: Root Cause Analysis of Path Population Failure'
+  status: Completed
+  learnings: Determined the root cause of the Path 292 population failure was a premature
+    conversation yield by the agent asking a prioritization question, conflating statement
+    of intent with tool execution.
   invariants: []
 active_agents:
   agent-ziran:
