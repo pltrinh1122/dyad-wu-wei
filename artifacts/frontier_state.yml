@@ -1,5 +1,5 @@
 current_active_path: null
-current_active_node: '#999: Implement quarantine survivor'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1367,6 +1367,16 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Activity: Act - Path: Optimization of Node Sync Audit Performance (Lightweight
+    Audit)'
+  status: Completed
+  learnings: Implemented WHAT-0498 by adding --lightweight flag to audit_daemon.py
+    and configuring lightweight rules in audit_config.yml.
+  invariants:
+  - '[x] Added lightweight flag'
+  - '[x] Configured audit_config.yml'
+  - '[x] Passed --lightweight from daemon_node.py'
+  - '[x] Wrote tests'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

@@ -1482,6 +1482,15 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Activity: Act - Path: Optimization of Node Sync Audit Performance (Lightweight Audit)
+- **Status**: Completed
+- **Learnings & Context**: Implemented WHAT-0498 by adding --lightweight flag to audit_daemon.py and configuring lightweight rules in audit_config.yml.
+- **Feedforward Invariants**:
+  - `[x] Added lightweight flag`
+  - `[x] Configured audit_config.yml`
+  - `[x] Passed --lightweight from daemon_node.py`
+  - `[x] Wrote tests`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
