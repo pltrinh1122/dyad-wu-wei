@@ -32,7 +32,6 @@ class TestNBADaemon(unittest.TestCase):
         
         self.assertEqual(result["type"], "path_switching")
         self.assertEqual(len(result["recommendations"]), 0)
-        pass
 
     @patch("kernel.daemon_nba.agent_frontier.extract_path_id")
     @patch("kernel.daemon_nba.agent_frontier.load_state")
