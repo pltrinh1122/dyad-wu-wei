@@ -21,6 +21,9 @@ rules:
 - id: backlog_hygiene_auditor
   type: backlog_hygiene
   alert_level: NOTIFICATION
+- id: orphaned_nodes_auditor
+  type: orphaned_nodes
+  alert_level: NOTIFICATION
 - id: seizure_detector
   type: seizure_detection
   threshold: 3

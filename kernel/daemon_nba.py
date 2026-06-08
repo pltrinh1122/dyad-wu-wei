@@ -189,7 +189,7 @@ class NBADaemon:
                     
                     if parent_id in prioritized_set:
                         matched_items.append((prioritized_ids.index(parent_id), item))
-                    else:
+                    elif parent_id != "":
                         unmatched_items.append(item)
                 
                 matched_items.sort(key=lambda x: (x[0], x[1].get("number", 0)))

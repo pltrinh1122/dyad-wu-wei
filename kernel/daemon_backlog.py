@@ -101,6 +101,52 @@ class BacklogDaemon:
         grouped["📋 [Backlog / Unmapped]"] = unmapped_paths
         return grouped
 
+    def sweep_orphans(self) -> int:
+        """Identifies and defers orphaned terminal nodes."""
+        import re
+        open_issues = github_client.get_open_issues()
+        path_ids = set()
+        activity_ids = set()
+        
+        for issue in open_issues:
+            labels = [l.get("name", "").lower() for l in issue.get("labels", []) if isinstance(l, dict)]
+            labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
+            if "path" in labels or issue.get("title", "").lower().startswith("path:"):
+                path_ids.add(str(issue["number"]))
+                
+        for issue in open_issues:
+            if str(issue["number"]) in path_ids:
+                body = issue.get("body") or ""
+                meta_match = re.search(r"## Meta-Index\s*\n(.*?)(?=\n##|\Z)", body, re.IGNORECASE | re.DOTALL)
+                if meta_match:
+                    for line in meta_match.group(1).split('\n'):
+                        m = re.match(r"-\s*\[[ xX]?\]\s*(?:Node|Activity|Discovery)?\s*#?(\d+):?", line.strip(), re.IGNORECASE)
+                        if m:
+                            activity_ids.add(m.group(1))
+                            
+        orphaned_count = 0
+        for issue in open_issues:
+            labels = [l.get("name", "").lower() for l in issue.get("labels", []) if isinstance(l, dict)]
+            labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
+            issue_num = str(issue["number"])
+            
+            if "backlog" in labels and "path" not in labels:
+                if issue_num not in activity_ids:
+                    try:
+                        github_client.remove_label(issue_num, "backlog")
+                        github_client.add_label(issue_num, "status: deferred")
+                        try:
+                            github_client.remove_label(issue_num, "status: todo")
+                        except:
+                            pass
+                        github_client.update_issue_body(issue_num, issue.get("body", "") + "\n\n**Automated Hygiene Sweep**: Node deferred because it is an orphaned terminal node with no parent Path.")
+                        orphaned_count += 1
+                        print(f"Swept orphaned node #{issue_num}")
+                    except Exception as e:
+                        print(f"Failed to sweep node #{issue_num}: {e}")
+                        
+        return orphaned_count
+
     def add(self, node_type: str, title: str, goal: str, path_id: str = None, depends_on: str = None) -> str:
         """Creates a GH issue based on whether the node type maps to a Terminal or Non-Terminal Base Class."""
         node_type_lower = node_type.lower()
