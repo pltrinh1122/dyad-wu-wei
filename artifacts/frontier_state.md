@@ -1491,17 +1491,17 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
   - `[x] Passed --lightweight from daemon_node.py`
   - `[x] Wrote tests`
 
-## #1325: Plan - Domain Dao Onboarding Protocol for External Projects
+## #1326: Reflect - Domain Dao Onboarding Protocol for External Projects
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Plan - Domain Dao Onboarding Protocol for External Projects
+## Node 1326
 - **Status**: Completed
-- **Learnings & Context**: Drafted DDOP Technical Spec outlining schema changes for dyad-wu-wei.yml and lifecycle hooks for node checkout and reflection.
+- **Learnings & Context**: Implemented DDOP
 - **Feedforward Invariants**:
-  - `[x] Technical Design Completed`
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-ziran**:
