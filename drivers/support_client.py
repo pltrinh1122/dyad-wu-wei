@@ -8,6 +8,7 @@ workstations with read-only Wu-wei Dyad clones.
 Full lifecycle: file → status → list → remediation tracking.
 Per WHY-1372: Full-Cycle External Support Ticket Status Tracking.
 """
+from kernel.daemon_telemetry import record_execution
 import argparse
 import subprocess
 import sys
@@ -185,6 +186,7 @@ def list_support_tickets(project_filter: str = "", state: str = "open") -> list:
     return tickets
 
 
+@record_execution(stage="act")
 def main():
     parser = argparse.ArgumentParser(
         description="Wu-wei Dyad External Project Support Line — File, track, and query support tickets.",

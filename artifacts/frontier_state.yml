@@ -1285,6 +1285,15 @@ nodes:
   learnings: Implemented sweep_orphans in daemon_backlog.py and evaluate_orphaned_nodes
     in audit_daemon.py
   invariants: []
+- name: '#281: System-Wide Telemetry Integration'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Node 281: System-Wide Telemetry Integration'
+  status: Completed
+  learnings: Instrumented all bin/ shell scripts and daemon main functions with @record_execution
+    and trap-based telemetry.
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

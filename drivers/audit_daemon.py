@@ -1,3 +1,4 @@
+from kernel.daemon_telemetry import record_execution
 import os
 import sys
 import yaml
@@ -463,6 +464,7 @@ RULE_REGISTRY = {
     "liveness_stall": evaluate_liveness_stall
 }
 
+@record_execution(stage="system")
 def main(args=None):
     import argparse
     parser = argparse.ArgumentParser(description="Metasystem Integrity Audit Daemon")

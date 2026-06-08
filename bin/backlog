@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Telemetry Instrumentation
+python3 -m kernel.daemon_telemetry log SYSTEM START --domain bin --component $(basename "$0")
+trap 'EXIT_CODE=$?; python3 -m kernel.daemon_telemetry log SYSTEM FINISH --domain bin --component '$(basename "$0")' --metadata "{\"exit_code\": $EXIT_CODE}"' EXIT
+
+
 # Resolve repository root
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
