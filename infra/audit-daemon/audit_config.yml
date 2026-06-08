@@ -8,6 +8,7 @@ rules:
 - id: stale_pointer_check
   type: stale_active_node
   alert_level: FAILURE
+  lightweight: true
 - id: refresh-ci-venv
   type: file_modified
   file: requirements-dev.txt
@@ -16,6 +17,7 @@ rules:
 - id: frontier-integrity
   type: frontier_integrity
   alert_level: FAILURE
+  lightweight: true
 - id: semantic_immune_system_scanner
   type: semantic_immune_system
 - id: backlog_hygiene_auditor

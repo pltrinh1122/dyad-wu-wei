@@ -359,6 +359,7 @@ def sync_and_clean_node(force_discard: bool = False) -> None:
     audit_cmd = [sys.executable, audit_script]
     if not remote_mode:
         audit_cmd.append("--local")
+    audit_cmd.append("--lightweight")
     subprocess.run(audit_cmd, check=False)
  
     # Surface pending backlog items at Sense phase

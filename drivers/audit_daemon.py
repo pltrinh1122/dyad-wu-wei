@@ -469,6 +469,7 @@ def main(args=None):
     import argparse
     parser = argparse.ArgumentParser(description="Metasystem Integrity Audit Daemon")
     parser.add_argument("--local", action="store_true", help="Bypass remote network-bound checks")
+    parser.add_argument("--lightweight", action="store_true", help="Run only rules marked as lightweight: true")
     parsed_args, _ = parser.parse_known_args(args)
 
     config = load_config()
@@ -485,6 +486,9 @@ def main(args=None):
             return
     else:
         rules_to_evaluate = rules
+        
+    if parsed_args.lightweight:
+        rules_to_evaluate = [r for r in rules_to_evaluate if r.get("lightweight") is True]
         
     state = load_state()
     state_changed = False
