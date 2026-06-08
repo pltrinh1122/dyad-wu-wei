@@ -1276,15 +1276,15 @@ nodes:
   status: Completed
   learnings: Defined metasystem void alignment and execution boundaries
   invariants: []
-- name: '#1324: Harmonize - Domain Dao Onboarding Protocol for External Projects'
+- name: '#666: Probe 666: Plan - Automate Backlog Hygiene via Python Governance Rules'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Align - Automate Backlog Hygiene via Python Governance Rules
+- name: Plan - Automate Backlog Hygiene via Python Governance Rules
   status: Completed
-  learnings: Drafted WHAT-0665 and WHY-0665 to align on backlog hygiene automation
-  invariants:
-  - None
+  learnings: Implemented sweep_orphans in daemon_backlog.py and evaluate_orphaned_nodes
+    in audit_daemon.py
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

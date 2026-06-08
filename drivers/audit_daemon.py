@@ -436,6 +436,18 @@ def evaluate_liveness_stall(rule, state):
     
     return False, state
 
+def evaluate_orphaned_nodes(rule, state):
+    from kernel.daemon_backlog import BacklogDaemon
+    try:
+        orphaned_count = BacklogDaemon().sweep_orphans()
+        if orphaned_count > 0:
+            msg = f"[NOTIFICATION] Automated Hygiene Sweep: Deferred {orphaned_count} orphaned terminal nodes."
+            inject_prompt(msg)
+            return True, state
+    except Exception as e:
+        print(f"Error evaluating orphaned nodes: {e}")
+    return False, state
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
@@ -446,6 +458,7 @@ RULE_REGISTRY = {
     "pr_merged_monitor": evaluate_pr_merged_monitor,
     "semantic_immune_system": evaluate_semantic_immune_system,
     "backlog_hygiene": evaluate_backlog_hygiene,
+    "orphaned_nodes": evaluate_orphaned_nodes,
     "seizure_detection": evaluate_seizure_detection,
     "liveness_stall": evaluate_liveness_stall
 }
