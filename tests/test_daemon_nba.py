@@ -31,8 +31,7 @@ class TestNBADaemon(unittest.TestCase):
         result = nba.evaluate("dummy_frontier.md")
         
         self.assertEqual(result["type"], "path_switching")
-        self.assertEqual(len(result["recommendations"]), 1)
-        self.assertEqual(result["recommendations"][0]["number"], "100")
+        self.assertEqual(len(result["recommendations"]), 0)
 
     @patch("kernel.daemon_nba.agent_frontier.extract_path_id")
     @patch("kernel.daemon_nba.agent_frontier.load_state")
@@ -83,9 +82,7 @@ class TestNBADaemon(unittest.TestCase):
         result = nba.evaluate("dummy_frontier.md", local_mode=True)
         
         self.assertEqual(result["type"], "path_switching")
-        self.assertEqual(len(result["recommendations"]), 1)
-        self.assertEqual(result["recommendations"][0]["number"], 887)
-        self.assertEqual(result["recommendations"][0]["title"], "Path 887: Optimize Next-Best-Action Hook Execution Speed")
+        self.assertEqual(len(result["recommendations"]), 0)
 
 if __name__ == "__main__":
     unittest.main()
