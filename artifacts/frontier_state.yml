@@ -1285,69 +1285,111 @@ nodes:
   learnings: Implemented sweep_orphans in daemon_backlog.py and evaluate_orphaned_nodes
     in audit_daemon.py
   invariants: []
-- name: '#281: System-Wide Telemetry Integration'
+- name: '#282: Hierarchical Telemetry Reporting'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Node 281: System-Wide Telemetry Integration'
-  status: Completed
-  learnings: Instrumented all bin/ shell scripts and daemon main functions with @record_execution
-    and trap-based telemetry.
+- name: '#1893: [BUG] Intake: System Crash in reflect'
+  status: Backlog
+  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `frontier`\n\
+    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py\"\
+    , line 712, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py\"\
+    , line 421, in cmd_reflect\n    reflect_node(\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py\"\
+    , line 395, in reflect_node\n    node.reflect(frontier_file, node_name, learnings,\
+    \ invariants, commit_msg, branch_name, stage=stage, insights=insights)\n  File\
+    \ \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/node_lifecycle.py\"\
+    , line 507, in reflect\n    daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id,\
+    \ repo_root=main_repo, worktree_root=worktree_dir)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_knowledge_accrual.py\"\
+    , line 89, in enforce_reflection_hook\n    raise Exception(\nException: REFLECTION\
+    \ BLOCKED: Node 282 experienced execution failures. Under SG-0005 (TG-0005-04),\
+    \ a structured post-mortem reflection record is required under artifacts/audit/retro-282.md\
+    \ before reflection.\n\n```\n"
   invariants: []
-- name: '#298: Probe 298: Probe: Root Cause Analysis of Path Population Failure'
+  kind: path
+- name: 'Activity 282: Hierarchical Telemetry Reporting'
+  status: Completed
+  learnings: Implemented hierarchical reporting in SynthesisEngine and bin/telemetry
+    via a --level flag allowing aggregation by node, stage, domain, component, and
+    execution.
+  invariants: []
+- name: '#473: Probe 473: Align - Path: Operator Configurable Gate Enforcement'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 298: Probe: Root Cause Analysis of Path Population Failure'
-  status: Completed
-  learnings: Determined the root cause of the Path 292 population failure was a premature
-    conversation yield by the agent asking a prioritization question, conflating statement
-    of intent with tool execution.
+- name: '#1896: [BUG] Intake: System Crash in reflect'
+  status: Backlog
+  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `Unknown`\n\
+    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/473-probe-align-path-operator-configurable-gate-enforcement/kernel/daemon_node.py\"\
+    , line 712, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/473-probe-align-path-operator-configurable-gate-enforcement/kernel/daemon_node.py\"\
+    , line 417, in cmd_reflect\n    invariants = json.loads(args.invariants)\n   \
+    \              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/__init__.py\"\
+    , line 346, in loads\n    return _default_decoder.decode(s)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/usr/lib/python3.12/json/decoder.py\", line 337, in decode\n    obj,\
+    \ end = self.raw_decode(s, idx=_w(s, 0).end())\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/usr/lib/python3.12/json/decoder.py\", line 355, in raw_decode\n   \
+    \ raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError:\
+    \ Expecting value: line 1 column 2 (char 1)\n\n```\n"
   invariants: []
-- name: '#474: Probe 474: Plan - Path: Operator Configurable Gate Enforcement'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Probe 474: Plan - Path: Operator Configurable Gate Enforcement'
+  kind: path
+- name: 'Probe 473: Align - Path: Operator Configurable Gate Enforcement'
   status: Completed
-  learnings: Drafted WHAT-0474 spec for parsing dyad-wu-wei.yml governance.sacred_files
-    and enforcing dynamic HTIL block.
+  learnings: Drafted WHY-0473 formalizing Operator Configurable Gate Enforcement to
+    bypass HTIL for non-Dao mutations.
   invariants:
-  - '[x] WHAT-0474 created'
+  - '[x] WHY-0473 created'
   - '[x] Manifest updated'
-- name: '#497: Probe 497: Align - Path: Optimization of Node Sync Audit Performance
+- name: '#475: Reflect - Path: Operator Configurable Gate Enforcement'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity: Act - Path: Operator Configurable Gate Enforcement'
+  status: Completed
+  learnings: Implemented dynamic parsing of dyad-wu-wei.yml governance.sacred_files
+    to override HTIL block logic. Added robust tests.
+  invariants:
+  - '[x] Config parsing implemented in node_lifecycle.py'
+  - '[x] Tests updated'
+  - '[x] dyad-wu-wei.yml default config added'
+- name: '#498: Probe 498: Plan - Path: Optimization of Node Sync Audit Performance
     (Lightweight Audit)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Probe 497: Align - Path: Optimization of Node Sync Audit Performance'
+- name: 'Probe 498: Plan - Path: Optimization of Node Sync Audit Performance'
   status: Completed
-  learnings: Drafted WHY-0497 to bifurcate the audit logic into a hot-path Lightweight
-    Audit and a cold-path Exhaustive Audit.
+  learnings: Drafted WHAT-0498 outlining the technical specs for implementing the
+    --lightweight flag in audit_daemon.py and configuring it in audit_config.yml.
   invariants:
-  - '[x] WHY-0497 created'
+  - '[x] WHAT-0498 created'
   - '[x] Manifest updated'
-- name: '#1773: Reflect - Implement Spec-First HTIL Inversion'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Reflect - Implement Spec-First HTIL Inversion
-  status: Completed
-  learnings: Closed path
-  invariants:
-  - '[x] Path closed'
 - name: '#499: Reflect - Path: Optimization of Node Sync Audit Performance (Lightweight
     Audit)'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Activity: Reflect - Path: Optimization of Node Sync Audit Performance (Lightweight
+- name: 'Activity: Act - Path: Optimization of Node Sync Audit Performance (Lightweight
     Audit)'
   status: Completed
-  learnings: Reflected on the lightweight audit implementation.
+  learnings: Implemented WHAT-0498 by adding --lightweight flag to audit_daemon.py
+    and configuring lightweight rules in audit_config.yml.
   invariants:
-  - '[x] Wrote retrospective'
-  - '[x] Finished path'
+  - '[x] Added lightweight flag'
+  - '[x] Configured audit_config.yml'
+  - '[x] Passed --lightweight from daemon_node.py'
+  - '[x] Wrote tests'
+- name: '#1324: Harmonize - Domain Dao Onboarding Protocol for External Projects'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Domain Dao Onboarding Protocol for External Projects
+  status: Completed
+  learnings: Synthesized Familyloom legacy governance into Domain Dao Digest v0.1
+    and drafted DDOP Infrastructure Design outlining gap analysis and onboarding protocol.
+  invariants:
+  - '[x] All Tier 1-3 governance documents read in full'
+  - '[x] Rules extracted with addressable IDs'
+  - '[x] Domain Dao Digest v0.1 synthesized as sectioned monolith'
+  - '[x] Digest submitted for Operator ratification'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
