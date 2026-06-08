@@ -1365,6 +1365,18 @@ Exception: REFLECTION BLOCKED: Node 670 experienced execution failures. Under SG
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #281: System-Wide Telemetry Integration
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 281: System-Wide Telemetry Integration
+- **Status**: Completed
+- **Learnings & Context**: Instrumented all bin/ shell scripts and daemon main functions with @record_execution and trap-based telemetry.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
