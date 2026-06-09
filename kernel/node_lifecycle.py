@@ -428,7 +428,7 @@ class TerminalNode(BaseNode):
         domain_config = self._get_domain_config()
         if not os.environ.get("SPAO_WORKSPACE_DIR") and not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             if not (domain_config and domain_config.get("branch_prefix") and branch_name.startswith(domain_config["branch_prefix"])):
-                raise ValueError(f"Branch name MUST follow the standard: node/<id>-<kebab-case> or domain prefix")
+                sys.exit(f"[🚫 BLOCKED] Branch name MUST follow the standard: node/<id>-<kebab-case> or domain prefix")
             
         from kernel.daemon_strategic import verify_node_transition_allowed
         verify_node_transition_allowed(self.issue_id)
