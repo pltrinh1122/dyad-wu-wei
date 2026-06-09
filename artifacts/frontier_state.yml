@@ -1,5 +1,5 @@
 current_active_path: null
-current_active_node: '#999: Implement quarantine survivor'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1384,6 +1384,15 @@ nodes:
 - name: Node 1326
   status: Completed
   learnings: Implemented DDOP
+  invariants: []
+- name: '#1911: Implement Substrate CI Guard'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Implement Substrate CI Guard
+  status: Completed
+  learnings: Implemented Substrate CI Guard in cmd_reflect to physically block PR
+    creation when tests fail or remote conflicts exist.
   invariants: []
 active_agents:
   agent-ziran:
