@@ -1589,6 +1589,12 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Feedforward Invariants**:
   - `SG-0008 is defined as the Triage Holding catchment mechanism`
 
+## Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Completed
+- **Learnings & Context**: Created WHAT-1915-audit-sg-triage-plan.md
+- **Feedforward Invariants**:
+  - `SG-0008 will intercept support tickets; paths must explicitly map to SG-0008.`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
