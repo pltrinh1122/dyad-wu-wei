@@ -159,7 +159,8 @@ def test_reflect_success(mock_enforce, mock_get_worktree_path, mock_nba, mock_fr
         
     from drivers import path_resolver
     expected_worktree = os.path.abspath(os.path.join(path_resolver.get_core_dir(), ".worktrees/node/390-test"))
-    mock_git.add.assert_called_once_with(["."], cwd=expected_worktree)
+    mock_git.add.assert_any_call(["artifacts/frontier_state.md", "artifacts/frontier_state.yml", "artifacts/frontier_state.yml.sha256"], cwd=expected_worktree)
+    mock_git.add.assert_any_call(["."], cwd=expected_worktree)
     mock_git.commit.assert_called_once_with("commit-msg", cwd=expected_worktree)
     mock_git.push.assert_called_once_with("node/390-test", cwd=expected_worktree)
 

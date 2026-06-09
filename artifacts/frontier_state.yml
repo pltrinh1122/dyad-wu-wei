@@ -1533,9 +1533,8 @@ nodes:
   invariants: []
   kind: path
 - name: '#1940: Harmonize - [BUG] Intake: System Crash in reflect'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
-    System Crash in reflect.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#1941: Plan - [BUG] Intake: System Crash in reflect'
   status: Backlog
@@ -1550,6 +1549,10 @@ nodes:
 - name: 'Harmonize - Path: Implement Two-Tier Backlog Abstraction'
   status: Completed
   learnings: Codified intent in kb/WHY-1112-backlog-two-tier-abstraction.md.
+  invariants: []
+- name: 'Harmonize - [BUG] Intake: System Crash in reflect'
+  status: Completed
+  learnings: Identified reflect crash during --stage none
   invariants: []
 active_agents:
   agent-ziran:
