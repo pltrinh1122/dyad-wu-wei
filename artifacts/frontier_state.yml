@@ -1554,6 +1554,23 @@ nodes:
   status: Completed
   learnings: Identified reflect crash during --stage none
   invariants: []
+- name: '#1945: Implement git checkout abstraction'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Activity 1945: Implement git checkout abstraction'
+  status: Cancelled
+  learnings: 'Cancelled: Already implemented in PR 744 (commit 013a6283). Node is
+    redundant.'
+  invariants: []
+- name: '#1909: Harmonize - Abstract git checkout into domain orchestrator'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Harmonize - Abstract git checkout into domain orchestrator
+  status: Cancelled
+  learnings: 'Cancelled: Feature already implemented in PR 744. Path is obsolete.'
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

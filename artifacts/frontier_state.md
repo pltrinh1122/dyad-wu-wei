@@ -1730,6 +1730,30 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #1945: Implement git checkout abstraction
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Activity 1945: Implement git checkout abstraction
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Already implemented in PR 744 (commit 013a6283). Node is redundant.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1909: Harmonize - Abstract git checkout into domain orchestrator
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize - Abstract git checkout into domain orchestrator
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Feature already implemented in PR 744. Path is obsolete.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
