@@ -1,1 +1,95 @@
-backlog_items: []
+backlog_items:
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Implement resilient gh
+    wrapper.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 1947
+  title: Harmonize - Implement resilient gh wrapper
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1947
+- body: '## Goal
+
+    Technical design and proposed changes for Implement resilient gh wrapper.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    1947
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 1948
+  title: Plan - Implement resilient gh wrapper
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1948
+- body: '## Goal
+
+    Final reflection and path closure for Implement resilient gh wrapper.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    1948
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 1949
+  title: Reflect - Implement resilient gh wrapper
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1949
