@@ -1406,9 +1406,8 @@ nodes:
   invariants: []
 - name: '#1916: Reflect - Triage Holding - Standalone Triage & External Requirement
     Intakes'
-  status: Backlog
-  learnings: Final reflection and path closure for Triage Holding - Standalone Triage
-    & External Requirement Intakes.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#1917: Design Node Lifecycle OOP Class Interface'
   status: '[///] Act Phase'
@@ -1463,6 +1462,50 @@ nodes:
   learnings: Created WHAT-1915-audit-sg-triage-plan.md
   invariants:
   - SG-0008 will intercept support tickets; paths must explicitly map to SG-0008.
+- name: '#1931: [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
+    \ `Unknown`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 727,\
+    \ in main\n    cmd_plan_start(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 431, in cmd_plan_start\n    plan_start_node(args.issue_id)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 27, in plan_start_node\n    node.plan_start()\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\"\
+    , line 230, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 252,\
+    \ in plan_start\n    self._verify_state_purity(frontier_file)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\"\
+    , line 178, in _verify_state_purity\n    raise StateDissonanceError(f\"Cannot\
+    \ proceed because Node '{current_active}' is already marked as active in {frontier_file}.\
+    \ Release the lock first.\")\n          ^^^^^^^^^^^^^^^^^^^^\nNameError: name\
+    \ 'StateDissonanceError' is not defined\n\n```\n"
+  invariants: []
+  kind: path
+- name: '#1932: Harmonize - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
+    System Crash in plan-start.'
+  invariants: []
+- name: '#1933: Plan - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
+    in plan-start.'
+  invariants: []
+- name: '#1934: Reflect - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
+    plan-start.'
+  invariants: []
+- name: '#1935: Reflect - Synthesize Epistemic Retrospective retro-1916.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-1916.md into the system's operational guidelines (the Dao).
+  invariants: []
+- name: 'Node 1916: Reflect - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
+  status: Completed
+  learnings: SG-0008 successfully metabolizes exogenous interrupts (e.g. sync crashes)
+    into isolated paths.
+  invariants:
+  - '[x] Triage SG boxes exogenous issues into Paths'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
