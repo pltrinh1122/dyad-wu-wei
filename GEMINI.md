@@ -62,3 +62,18 @@ The SPAO Execution Loop (`plan-start -> checkout -> act -> reflect`) is an async
 - **Domain A (The Dyadic Cycle)**: Design, brainstorming, and philosophical alignment occur in a lock-free conversational mode. The SPAO engine is intentionally bypassed. The output of this domain is `WHY` and `WHAT` artifacts and `Path` specifications on the backlog.
 - **The Handoff (The Sluice Gate)**: Once the design is mathematically sound, the Operator or Agent declares a handoff. The Agent generates the formal backlog nodes.
 - **Domain B (The Autonomous Engine)**: The Agent drops into True Dormancy, acquires a lock on the `Path`/`Node`, and strictly executes the SPAO state machine autonomously to materialize the design.
+
+## Antigravity-Specific: HTIL Lexical Markers and Configurable Gates
+The system exposes explicit execution markers and configurable gates to control Agent autonomy (see `artifacts/htil_gates.yml`):
+- `HTIL_GATE_NBA_HANDOFF`: Block before starting a new Node/Path.
+- `HTIL_GATE_PLAN_REVIEW`: Block after Plan generation.
+- `HTIL_GATE_PR_MERGE`: Block after PR is opened (Default HARD HITL).
+- `HTIL_GATE_BACKLOG_MUTATION`: Block before adding new nodes/paths.
+
+**Lexical Operator Markers:**
+- `lean!`: Operator ratifies the recommendation; engage full-auto execution (disengage all gates except PR_MERGE if token restricts).
+- `lean.`: Operator directs the Agent to step-through execution with ALL HTIL Gates engaged.
+- `lean: {prompt}`: Same as `lean.`, but injects the provided instruction.
+- `clip.`: Operator ratifies the recommendation and expects the Agent to immediately capture the intent/spec and implement the necessary guards.
+
+</RULE[GEMINI.md]>

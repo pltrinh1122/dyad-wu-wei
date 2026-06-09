@@ -1,5 +1,5 @@
 current_active_path: null
-current_active_node: null
+current_active_node: '#999: Implement quarantine survivor'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed

@@ -44,6 +44,7 @@ cannot be verified, the gate **must fail-closed**.
 | SG-0004 | frontier      | kb/WHAT-1633-agent-persona-frontier.md      | kb/WHY-1633-agent-persona-frontier.md       | covered     |
 | SG-0005 | agent-sg5     | kb/WHAT-0059-agent-persona-sg-0005-ownership.md | kb/WHY-0059-agent-persona-sg-0005-ownership.md | covered |
 | SG-0006 | shared        | —                                           | —                                           | shared      |
+| SG-0007 | shared        | —                                           | —                                           | shared      |
 
 ---
 
