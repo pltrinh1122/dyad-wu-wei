@@ -1,5 +1,5 @@
 current_active_path: null
-current_active_node: '#999: Implement quarantine survivor'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1505,6 +1505,12 @@ nodes:
     into isolated paths.
   invariants:
   - '[x] Triage SG boxes exogenous issues into Paths'
+- name: 'Plan - [BUG] Intake: System Crash in plan-start'
+  status: Completed
+  learnings: Successfully planned and implemented bug fixes for system crash
+  invariants:
+  - '[x] Problem definition verified'
+  - '[x] Plan formulated'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

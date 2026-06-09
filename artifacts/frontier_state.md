@@ -1657,6 +1657,13 @@ NameError: name 'StateDissonanceError' is not defined
 - **Feedforward Invariants**:
   - `[x] Triage SG boxes exogenous issues into Paths`
 
+## Plan - [BUG] Intake: System Crash in plan-start
+- **Status**: Completed
+- **Learnings & Context**: Successfully planned and implemented bug fixes for system crash
+- **Feedforward Invariants**:
+  - `[x] Problem definition verified`
+  - `[x] Plan formulated`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
