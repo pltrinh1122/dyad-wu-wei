@@ -1578,12 +1578,13 @@ nodes:
   invariants: []
   kind: path
 - name: '#1961: Harmonize - Falsify Daemon Prompt Injection'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Falsify Daemon
+    Prompt Injection.
   invariants: []
 - name: '#1962: Plan - Falsify Daemon Prompt Injection'
-  status: Backlog
-  learnings: Technical design and proposed changes for Falsify Daemon Prompt Injection.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#1963: Reflect - Falsify Daemon Prompt Injection'
   status: Backlog
@@ -1612,9 +1613,9 @@ nodes:
   learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
     and explicit local sync invocation.
   invariants: []
-- name: Node 1961
+- name: Node 1962
   status: Completed
-  learnings: Formalized harmonization of WHY-1960
+  learnings: Formalized architectural plan for falsifying daemon prompt injection
   invariants: []
 active_agents:
   agent-ziran:
