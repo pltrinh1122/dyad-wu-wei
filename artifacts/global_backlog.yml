@@ -1,1 +1,32 @@
-backlog_items: []
+backlog_items:
+- body: '## Goal
+
+    Abstract git checkout into domain orchestrator
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 1945
+  title: Implement git checkout abstraction
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1945
