@@ -470,6 +470,20 @@ def main():
         try:
             url = daemon.add(args.type, args.title, args.goal, path_id=args.path, depends_on=args.depends)
             print(url)
+            
+            # Sync Tier 2 Global Backlog Cache immediately
+            from drivers import github_client, path_resolver
+            import yaml
+            try:
+                repo_root = path_resolver.get_workspace_dir()
+                backlog_items = github_client.list_issues_by_label("backlog")
+                backlog_items = [item for item in backlog_items if "path" not in item.get("labels", [])]
+                backlog_items.sort(key=lambda x: x.get("number", 0))
+                backlog_file_path = os.path.join(repo_root, "artifacts", "global_backlog.yml")
+                with open(backlog_file_path, "w", encoding="utf-8") as f:
+                    yaml.dump({"backlog_items": backlog_items}, f)
+            except Exception as e:
+                pass
         except Exception as e:
             print(str(e))
             sys.exit(1)

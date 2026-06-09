@@ -1552,6 +1552,43 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #1919: Implement Two-Tier Backlog Abstraction
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: SG-0001
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1920: Harmonize - Path: Implement Two-Tier Backlog Abstraction
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: Implement Two-Tier Backlog Abstraction.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1921: Plan - Path: Implement Two-Tier Backlog Abstraction
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Path: Implement Two-Tier Backlog Abstraction.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1922: Reflect - Path: Implement Two-Tier Backlog Abstraction
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Path: Implement Two-Tier Backlog Abstraction.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1923: Design and Implement CSI Guards for Two-Tier Backlog
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Design and Implement CSI Guards for Two-Tier Backlog
+- **Status**: Completed
+- **Learnings & Context**: Added CSI guards for SSOT Asymmetry and Mutually Exclusive Residence. Synchronized remote backlog locally in global_backlog.yml.
+- **Feedforward Invariants**:
+  - `Mutually Exclusive Residence Purge`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
