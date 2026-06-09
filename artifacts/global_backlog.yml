@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Path: Implement Two-Tier
-    Backlog Abstraction.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1920
-  title: 'Harmonize - Path: Implement Two-Tier Backlog Abstraction'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1920
-- body: '## Goal
-
     Technical design and proposed changes for Path: Implement Two-Tier Backlog Abstraction.
 
 
