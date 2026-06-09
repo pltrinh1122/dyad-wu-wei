@@ -1,37 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Technical design and proposed changes for Falsify Daemon Prompt Injection.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    1961
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1962
-  title: Plan - Falsify Daemon Prompt Injection
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1962
-- body: '## Goal
-
     Final reflection and path closure for Falsify Daemon Prompt Injection.
 
 
