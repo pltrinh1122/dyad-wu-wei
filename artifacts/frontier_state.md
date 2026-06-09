@@ -1529,8 +1529,8 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
   - `[ ]` None
 
 ## #1916: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1594,6 +1594,68 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Learnings & Context**: Created WHAT-1915-audit-sg-triage-plan.md
 - **Feedforward Invariants**:
   - `SG-0008 will intercept support tickets; paths must explicitly map to SG-0008.`
+
+## #1931: [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `plan-start`
+**Persona:** `Unknown`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 727, in main
+    cmd_plan_start(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 431, in cmd_plan_start
+    plan_start_node(args.issue_id)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 27, in plan_start_node
+    node.plan_start()
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py", line 230, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 252, in plan_start
+    self._verify_state_purity(frontier_file)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 178, in _verify_state_purity
+    raise StateDissonanceError(f"Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
+          ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'StateDissonanceError' is not defined
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1932: Harmonize - [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1933: Plan - [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1934: Reflect - [BUG] Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1935: Reflect - Synthesize Epistemic Retrospective retro-1916.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1916.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1916: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Completed
+- **Learnings & Context**: SG-0008 successfully metabolizes exogenous interrupts (e.g. sync crashes) into isolated paths.
+- **Feedforward Invariants**:
+  - `[x] Triage SG boxes exogenous issues into Paths`
 
 ## Active Agents Matrix
 * **agent-ziran**:
