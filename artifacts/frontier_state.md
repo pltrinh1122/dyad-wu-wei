@@ -1754,6 +1754,136 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #1946: Implement resilient gh wrapper
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: Intercept native gh calls to handle GraphQL deprecation and JSON formatting transparently.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1947: Harmonize - Implement resilient gh wrapper
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1948: Plan - Implement resilient gh wrapper
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Implement resilient gh wrapper.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1949: Reflect - Implement resilient gh wrapper
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Implement resilient gh wrapper.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1950: Implement bin/gh wrapper
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1951: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `Unknown`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 737, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 446, in cmd_reflect
+    reflect_node(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 420, in reflect_node
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 530, in reflect
+    raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
+ValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1952: Harmonize - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1953: Plan - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1954: Reflect - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1955: [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `checkout`
+**Persona:** `frontier`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 735, in main
+    cmd_checkout(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 437, in cmd_checkout
+    checkout_node(args.issue_id, args.branch_name)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 37, in checkout_node
+    node.checkout(branch_name)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py", line 230, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 441, in checkout
+    self._verify_state_purity(frontier_file, expected_active=self.issue_id)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 181, in _verify_state_purity
+    raise StateDissonanceError(f"Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
+kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#999: Implement quarantine survivor' is already marked as active in /mnt/shared_data/dzw/dyad-wu-wei/artifacts/frontier_state.md. Release the lock first.
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1956: Harmonize - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1957: Plan - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1958: Reflect - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize - Implement resilient gh wrapper
+- **Status**: Completed
+- **Learnings & Context**: Intercepted native gh calls via drivers.gh_wrapper with JSON parsing for issue view
+- **Feedforward Invariants**:
+  - `The GraphQL deprecation warning is bypassed automatically`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
