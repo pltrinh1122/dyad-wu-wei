@@ -527,7 +527,7 @@ class TerminalNode(BaseNode):
 
 
         if not os.environ.get("SPAO_WORKSPACE_DIR") and not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
-            raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
+            sys.exit("[🚫 BLOCKED] Branch name MUST follow the standard: node/<id>-<kebab-case>")
  
         from drivers import path_resolver
         if not os.path.isabs(frontier_file):
