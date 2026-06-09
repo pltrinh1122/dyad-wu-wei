@@ -1583,12 +1583,12 @@ nodes:
     Prompt Injection.
   invariants: []
 - name: '#1962: Plan - Falsify Daemon Prompt Injection'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: Technical design and proposed changes for Falsify Daemon Prompt Injection.
   invariants: []
 - name: '#1963: Reflect - Falsify Daemon Prompt Injection'
-  status: Backlog
-  learnings: Final reflection and path closure for Falsify Daemon Prompt Injection.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#1948: Plan - Implement resilient gh wrapper'
   status: '[///] Act Phase'
@@ -1613,9 +1613,9 @@ nodes:
   learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
     and explicit local sync invocation.
   invariants: []
-- name: Node 1962
+- name: Node 1963
   status: Completed
-  learnings: Formalized architectural plan for falsifying daemon prompt injection
+  learnings: Reflected upon falsification of daemon prompt injection
   invariants: []
 active_agents:
   agent-ziran:
