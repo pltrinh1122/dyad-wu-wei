@@ -1377,16 +1377,14 @@ nodes:
   - '[x] Configured audit_config.yml'
   - '[x] Passed --lightweight from daemon_node.py'
   - '[x] Wrote tests'
-- name: '#1325: Plan - Domain Dao Onboarding Protocol for External Projects'
+- name: '#1326: Reflect - Domain Dao Onboarding Protocol for External Projects'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Plan - Domain Dao Onboarding Protocol for External Projects
+- name: Node 1326
   status: Completed
-  learnings: Drafted DDOP Technical Spec outlining schema changes for dyad-wu-wei.yml
-    and lifecycle hooks for node checkout and reflection.
-  invariants:
-  - '[x] Technical Design Completed'
+  learnings: Implemented DDOP
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
