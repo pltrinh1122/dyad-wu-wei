@@ -1762,8 +1762,8 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[ ]` None
 
 ## #1961: Harmonize - Falsify Daemon Prompt Injection
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Falsify Daemon Prompt Injection.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1809,15 +1809,9 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1958: Reflect - [BUG] Intake: System Crash in checkout
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Node 1958
+## Node 1961
 - **Status**: Completed
-- **Learnings & Context**: Implemented fix for checkout branch validation crash
+- **Learnings & Context**: Formalized harmonization of WHY-1960
 - **Feedforward Invariants**:
   - `[ ]` None
 
