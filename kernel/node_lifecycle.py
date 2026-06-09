@@ -168,14 +168,14 @@ class TerminalNode(BaseNode):
             if expected_active and current_active == expected_active:
                 return
             
-            # Special case for "Node <ID>: Title" format
-            match = re.search(r"Node (\d+):", current_active)
+            # Special case for "Node <ID>: Title" or "#<ID>:" format
+            match = re.search(r"(?:Node |#)(\d+):", current_active)
             active_id = match.group(1) if match else None
             
             if expected_active and active_id and str(expected_active) == str(active_id):
                 return
                 
-            sys.exit(f"[🚫 BLOCKED] State Dissonance: Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
+            raise StateDissonanceError(f"Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
 
     def _validate_spao_purity(self, worktree_path: str | None = None):
         """Validates that a loop:spao branch only modifies policy/documentation paths."""

@@ -1523,8 +1523,8 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
   - `[ ]` None
 
 ## #1914: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1588,6 +1588,12 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Learnings & Context**: Added CSI guards for SSOT Asymmetry and Mutually Exclusive Residence. Synchronized remote backlog locally in global_backlog.yml.
 - **Feedforward Invariants**:
   - `Mutually Exclusive Residence Purge`
+
+## Node 1914: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHAT-1914-audit-sg-triage.md to establish SG-0008: Metasystem Operational Integrity & Support Triage to handle unmapped external intakes without hacking NBA logic.
+- **Feedforward Invariants**:
+  - `SG-0008 is defined as the Triage Holding catchment mechanism`
 
 ## Active Agents Matrix
 * **agent-ziran**:
