@@ -1613,14 +1613,14 @@ nodes:
   learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
     and explicit local sync invocation.
   invariants: []
-- name: '#1985: Harmonize: Enforce core.filemode and synthesize Operator Retro'
+- name: '#1971: Harmonize - [BUG] Intake: Backlog Hygiene Warning'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Harmonize: Enforce core.filemode and synthesize Operator Retro'
+- name: 'Harmonize - [BUG] Intake: Backlog Hygiene Warning'
   status: Completed
-  learnings: Enforced core.filemode in workspace init and synthesized Operator feedback
-    on queue timing into retro.
+  learnings: Mapped unmapped backlog paths (1970, 1960, 1955, 1951, 1946, 1913) to
+    their respective Strategic Goals in strategic_intent.yml.
   invariants: []
 active_agents:
   agent-ziran:

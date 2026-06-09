@@ -27,6 +27,7 @@ strategic_goals:
   - 664
   - 1147
   - 1517
+  - 1970
   status: Active
   title: Backlog Dynamics and Resource Budget Harmonization
 - collaborative_gap: The human cannot safely delegate execution authority to the agent,
@@ -75,6 +76,9 @@ strategic_goals:
   - 1567
   - 1642
   - 1825
+  - 1955
+  - 1951
+  - 1946
   status: Active
   title: Preservation of Autonomous Velocity
 - collaborative_gap: The communication interface requires verbose conversational turns
@@ -139,6 +143,7 @@ strategic_goals:
   - 1602
   - 1612
   - 1692
+  - 1960
   status: Active
   title: Autonomous Knowledge Accrual
 - collaborative_gap: External projects onboarding onto Wu-wei Dyad lack a governed
@@ -158,11 +163,16 @@ strategic_goals:
   - 1242
   - 1223
   - 1547
+  - 1913
   status: Active
   title: External Project Service Excellence
-- collaborative_gap: The engine's execution loops are procedurally coupled to physical shell environments (e.g. git checkout), causing friction when establishing new architectural boundaries (like isolated worktrees) or implementing HTIL gates.
-  constraints: Substrate components must be strictly OOP-abstracted, testable offline, and decoupled from raw system states. HTIL gates must be configurable boundaries.
-  falsification_signal: The SPAOR engine crashes due to unmanaged side effects in shell scripts, or fails to enforce Operator-configured HTIL gates.
+- collaborative_gap: The engine's execution loops are procedurally coupled to physical
+    shell environments (e.g. git checkout), causing friction when establishing new
+    architectural boundaries (like isolated worktrees) or implementing HTIL gates.
+  constraints: Substrate components must be strictly OOP-abstracted, testable offline,
+    and decoupled from raw system states. HTIL gates must be configurable boundaries.
+  falsification_signal: The SPAOR engine crashes due to unmanaged side effects in
+    shell scripts, or fails to enforce Operator-configured HTIL gates.
   id: SG-0007
   prioritized_paths:
   - 115
