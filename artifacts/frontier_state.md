@@ -1762,14 +1762,14 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[ ]` None
 
 ## #1961: Harmonize - Falsify Daemon Prompt Injection
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Falsify Daemon Prompt Injection.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## #1962: Plan - Falsify Daemon Prompt Injection
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Falsify Daemon Prompt Injection.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1809,9 +1809,9 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1961
+## Node 1962
 - **Status**: Completed
-- **Learnings & Context**: Formalized harmonization of WHY-1960
+- **Learnings & Context**: Formalized architectural plan for falsifying daemon prompt injection
 - **Feedforward Invariants**:
   - `[ ]` None
 
