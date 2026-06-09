@@ -116,15 +116,20 @@ def _get_cached_value(key: str, ttl_seconds: int = 60):
     cache = _load_cache()
     if not cache:
         return None
-    timestamp = cache.get("timestamp", 0)
+    entry = cache.get(key)
+    if not entry or not isinstance(entry, dict):
+        return None
+    timestamp = entry.get("timestamp", 0)
     if time.time() - timestamp > ttl_seconds:
         return None
-    return cache.get(key)
+    return entry.get("data")
 
 def _set_cached_value(key: str, value) -> None:
     cache = _load_cache()
-    cache["timestamp"] = int(time.time())
-    cache[key] = value
+    cache[key] = {
+        "timestamp": int(time.time()),
+        "data": value
+    }
     _write_cache(cache)
 
 def _clean_json_output(stdout: str) -> str:
