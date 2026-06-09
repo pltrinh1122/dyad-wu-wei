@@ -33,38 +33,6 @@ backlog_items:
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1935
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash
-    in reflect.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1940
-  title: 'Harmonize - [BUG] Intake: System Crash in reflect'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1940
-- body: '## Goal
-
     Technical design and proposed changes for [BUG] Intake: System Crash in reflect.
 
 
