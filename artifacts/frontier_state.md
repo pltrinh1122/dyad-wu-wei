@@ -1809,15 +1809,40 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1952: Harmonize - [BUG] Intake: System Crash in reflect
+## #1970: [BUG] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: [NOTIFICATION] Backlog Hygiene Warning: Unmapped Paths (5) exceed Mapped Paths (0). Repository state is unhealthy.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1971: Harmonize - [BUG] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1972: Plan - [BUG] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1973: Reflect - [BUG] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1953: Plan - [BUG] Intake: System Crash in reflect
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1952
+## Node 1953
 - **Status**: Completed
-- **Learnings & Context**: Formalize harmonization for reflect validation crash
+- **Learnings & Context**: Created implementation plan for system crash resolution
 - **Feedforward Invariants**:
   - `[ ]` None
 
