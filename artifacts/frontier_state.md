@@ -1774,8 +1774,8 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[ ]` None
 
 ## #1963: Reflect - Falsify Daemon Prompt Injection
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Falsify Daemon Prompt Injection.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1798,8 +1798,8 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[ ]` None
 
 ## #1965: Reflect - Synthesize Epistemic Retrospective retro-1964.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1964.md into the system's operational guidelines (the Dao).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1809,9 +1809,9 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1963
+## Node 1965
 - **Status**: Completed
-- **Learnings & Context**: Reflected upon falsification of daemon prompt injection
+- **Learnings & Context**: Synthesized epistemic learnings from retro-1964.md into GEMINI.md
 - **Feedforward Invariants**:
   - `[ ]` None
 
