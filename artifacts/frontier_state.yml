@@ -1613,6 +1613,10 @@ nodes:
   learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
     and explicit local sync invocation.
   invariants: []
+- name: Node 1948
+  status: Completed
+  learnings: formalize WHAT-1948 spec for resilient gh wrapper
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
