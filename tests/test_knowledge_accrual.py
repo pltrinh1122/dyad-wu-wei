@@ -285,7 +285,7 @@ def test_evaluate_lexical_guard():
     
     # Mock git status --porcelain returning modified file
     with patch("drivers.audit_daemon.subprocess.run") as mock_run, \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject, \
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject, \
          patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data="This contains forbidden_word!")):
              

@@ -100,15 +100,11 @@ prompts:
     text: '[NOTIFICATION] Sluice Gate Opened: PR for Node 878'
     status: pending
 """
-    from unittest.mock import mock_open
     with patch("kernel.daemon_node.git_client") as mock_git, \
          patch("kernel.daemon_node.github_client") as mock_gh, \
          patch("kernel.daemon_node.subprocess") as mock_sub, \
          patch("kernel.daemon_node.HookDaemon") as mock_hook, \
-         patch("kernel.daemon_node.os.path.exists", return_value=True), \
-         patch("builtins.open", mock_open(read_data=backlog_content.encode('utf-8'))), \
-         patch("kernel.daemon_node.process_prompts") as mock_process, \
-         patch("kernel.daemon_node.clean_prompts") as mock_clean:
+         patch("kernel.daemon_node.os.path.exists", return_value=True):
         
         daemon.attach_mock(mock_git, 'git')
         daemon.attach_mock(mock_gh, 'gh')
@@ -119,7 +115,7 @@ prompts:
         mock_git.list_local_branches.return_value = []
         mock_sub.check_output.return_value = ""
         
-        sync_and_clean_node()
+        sync_and_clean_node(force_remote=True)
         
         calls = daemon.mock_calls
         filtered_calls = [
@@ -133,8 +129,6 @@ prompts:
             ('git.switch', ('origin/main',), {'detach': True, 'discard_changes': True}),
             ('gh.get_open_prs', (), {})
         ]
-        mock_process.assert_called_once_with("p-123", resolution_context="sync")
-        mock_clean.assert_called_once()
 
 def test_sync_and_clean_node_wip_violation():
     with patch("kernel.daemon_node.git_client"), \
@@ -150,20 +144,17 @@ def test_sync_and_clean_node_wip_violation():
         with pytest.raises((Exception, SystemExit), match="WIP-N=1 Violation"):
             sync_and_clean_node()
             
-    backlog_content = "prompts:\n  - id: p-123\n    text: '[NOTIFICATION] Sluice Gate Opened: PR for Node 878'\n    status: pending"
-    from unittest.mock import mock_open
     with patch("kernel.daemon_node.git_client"), \
          patch("kernel.daemon_node.github_client") as mock_gh, \
          patch("kernel.daemon_node.subprocess") as mock_sub, \
          patch("kernel.daemon_node.HookDaemon"), \
-         patch("kernel.daemon_node.os.path.exists", return_value=True), \
-         patch("builtins.open", mock_open(read_data=backlog_content.encode('utf-8'))):
+         patch("kernel.daemon_node.os.path.exists", return_value=True):
         
         mock_sub.check_output.return_value = ""
         mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "some-branch"}]
         
         with pytest.raises((Exception, SystemExit), match="WIP-N=1 Violation"):
-            sync_and_clean_node()
+            sync_and_clean_node(force_remote=True)
 
 
 def test_cmd_retro_compile():

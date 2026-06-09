@@ -1785,6 +1785,30 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #1964: Implement Falsify Daemon Prompt Injection
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #999: Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: A holding Path to consolidate all unpromoted status:triage external intake nodes under the same parent class.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1965: Reflect - Synthesize Epistemic Retrospective retro-1964.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1964.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Node 1964
+- **Status**: Completed
+- **Learnings & Context**: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon and explicit local sync invocation.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`

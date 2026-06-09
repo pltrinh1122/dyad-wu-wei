@@ -53,9 +53,35 @@ def save_state(state):
     with open(state_file, "w") as f:
         json.dump(state, f, indent=4)
 
-def inject_prompt(message):
-    print(f"Injecting prompt: {message}")
-    subprocess.run([str(get_prompt_cli()), "add", message], check=True, cwd=get_workspace_dir())
+def dispatch_alert(message):
+    print(f"Dispatching alert to DAG: {message}")
+    import sys
+    sys.path.append(str(get_repo_root()))
+    from drivers import github_client
+    import re
+    
+    match = re.match(r"^\[(.*?)\]\s*(.*)", message)
+    if match:
+        content = match.group(2)
+    else:
+        content = message
+        
+    title_suffix = content.split(":")[0][:50] if ":" in content else content[:50]
+    title = f"[BUG] Intake: {title_suffix}"
+    
+    try:
+        open_issues = github_client.get_open_issues()
+        for issue in open_issues:
+            if issue.get("title", "") == title:
+                print(f"Alert already tracked in DAG: {title}")
+                return
+                
+        from kernel.daemon_backlog import BacklogDaemon
+        backlog_daemon = BacklogDaemon()
+        backlog_daemon.add("path", title, message)
+        print(f"Alert successfully mapped to DAG: {title}")
+    except Exception as e:
+        print(f"Failed to dispatch alert to DAG: {e}")
 
 
 def evaluate_node_completion_threshold(rule, state):
@@ -73,7 +99,7 @@ def evaluate_node_completion_threshold(rule, state):
     if current_count >= last_count + threshold:
         alert_level = rule.get("alert_level", "NOTIFICATION").upper()
         msg = f"[{alert_level}] " + rule.get("prompt_message", "").replace("{current}", str(current_count))
-        inject_prompt(msg)
+        dispatch_alert(msg)
         state["last_count"] = current_count
         return True, state
         
@@ -96,7 +122,7 @@ def evaluate_file_modified(rule, state):
         # We only trigger if last_hash was already set (to avoid triggering on first run)
         alert_level = rule.get("alert_level", "FAILURE").upper()
         msg = f"[{alert_level}] " + rule.get("prompt_message", "")
-        inject_prompt(msg)
+        dispatch_alert(msg)
         state["last_hash"] = current_hash
         return True, state
     elif last_hash == "":
@@ -128,7 +154,7 @@ def evaluate_stale_active_node(rule, state):
     if re.search(pattern, content):
         alert_level = rule.get("alert_level", "FAILURE").upper()
         msg = f"[{alert_level}] STALE_POINTER: Node '{active_node}' is marked as Active but is already Completed in the ledger."
-        inject_prompt(msg)
+        dispatch_alert(msg)
         return True, state
         
     return False, state
@@ -143,7 +169,7 @@ def evaluate_frontier_integrity(rule, state):
     except Exception as e:
         alert_level = rule.get("alert_level", "FAILURE").upper()
         msg = f"[{alert_level}] FRONTIER_INTEGRITY_VIOLATION: {str(e)}"
-        inject_prompt(msg)
+        dispatch_alert(msg)
         return True, state
     return False, state
 
@@ -208,7 +234,7 @@ def evaluate_lexical_guard(rule, state):
             if triggered_files_state.get(f_rel) != content_hash:
                 alert_level = rule.get("alert_level", "FAILURE").upper()
                 msg = f"[{alert_level}] " + rule.get("prompt_message", f"Lexical Guard Violation in {f_rel}")
-                inject_prompt(msg)
+                dispatch_alert(msg)
                 triggered_files_state[f_rel] = content_hash
                 triggered = True
                 
@@ -249,9 +275,10 @@ def evaluate_pr_merged_monitor(rule, state):
     if not result["triggered"]:
         return False, state
 
-    alert_level = rule.get("alert_level", "NOTIFICATION").upper()
-    msg = f"[{alert_level}] {result['message']}"
-    inject_prompt(msg)
+    print(f"[Sluice Gate Sensor] {result['message']}")
+    print(f"Executing local sync...")
+    node_cli = str(get_repo_root() / "bin" / "node")
+    subprocess.run([node_cli, "sync", "--remote"], cwd=get_workspace_dir())
 
     state["last_alerted_node"] = result["node_id"]
     return True, state
@@ -322,7 +349,7 @@ def evaluate_semantic_immune_system(rule, state):
                 activity_key = f"{term}_{filename}"
                 if activity_key not in created_activities:
                     msg = f"[NOTIFICATION] Semantic immune system detected pollution: deprecated term '{term}' found in {filename}. Please remediate."
-                    inject_prompt(msg)
+                    dispatch_alert(msg)
                     created_activities.append(activity_key)
                     state_changed = True
                     
@@ -347,7 +374,7 @@ def evaluate_backlog_hygiene(rule, state):
             last_ratio = state.get("last_ratio")
             current_ratio = f"{unmapped_count}:{mapped_count}"
             if current_ratio != last_ratio:
-                inject_prompt(msg)
+                dispatch_alert(msg)
                 state["last_ratio"] = current_ratio
                 return True, state
         else:
@@ -374,7 +401,7 @@ def evaluate_seizure_detection(rule, state):
     if fail_count >= last_fail_count + threshold:
         alert_level = rule.get("alert_level", "FAILURE").upper()
         msg = f"[{alert_level}] SEIZURE_DETECTED: System has encountered {fail_count - last_fail_count} new execution failures (Total: {fail_count}). Cognitive loop lock likely. Initiating triage protocol."
-        inject_prompt(msg)
+        dispatch_alert(msg)
         state["last_fail_count"] = fail_count
         return True, state
         
@@ -431,7 +458,7 @@ def evaluate_liveness_stall(rule, state):
             f"modified for {elapsed_minutes:.0f} minutes while node "
             f"'{active_node}' is active. Possible silent seizure."
         )
-        inject_prompt(msg)
+        dispatch_alert(msg)
         state["last_alerted_at"] = time.time()
         return True, state
     
@@ -443,7 +470,7 @@ def evaluate_orphaned_nodes(rule, state):
         orphaned_count = BacklogDaemon().sweep_orphans()
         if orphaned_count > 0:
             msg = f"[NOTIFICATION] Automated Hygiene Sweep: Deferred {orphaned_count} orphaned terminal nodes."
-            inject_prompt(msg)
+            dispatch_alert(msg)
             return True, state
     except Exception as e:
         print(f"Error evaluating orphaned nodes: {e}")

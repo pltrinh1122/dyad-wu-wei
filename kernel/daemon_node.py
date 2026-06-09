@@ -37,7 +37,7 @@ def checkout_node(issue_id: str, branch_name: str) -> None:
     node.checkout(branch_name)
 
 @record_execution(stage="sense")
-def sync_and_clean_node(force_discard: bool = False) -> None:
+def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False) -> None:
     """Synchronizes local workspace state, pruning merged nodes and tracking ROM updates."""
     import os
     import hashlib
@@ -51,28 +51,14 @@ def sync_and_clean_node(force_discard: bool = False) -> None:
     repo_root = path_resolver.get_workspace_dir()
     gemini_path = os.path.join(repo_root, "GEMINI.md")
     
-    # 1. Read prompt backlog to determine if Remote Mode is triggered
-    backlog_file = get_backlog_file()
-    remote_mode = False
-    pending_sluice_prompts = []
+    # 1. Remote Mode: fetch remote updates
+    remote_mode = force_remote
     
-    if os.path.exists(backlog_file):
-        try:
-            with open(backlog_file, "r", encoding="utf-8") as f:
-                backlog_data = yaml.safe_load(f) or {}
-            for prompt in backlog_data.get("prompts", []):
-                if prompt.get("status") == "pending" and str(prompt.get("text", "")).startswith("[NOTIFICATION] Sluice Gate Opened: PR for Node"):
-                    remote_mode = True
-                    pending_sluice_prompts.append(prompt)
-        except Exception as e:
-            print(f"Warning: Failed to parse prompt backlog: {e}")
-
-    # 2. Remote Mode: fetch remote updates
     if remote_mode:
-        print("Sluice Gate event pending. Running remote synchronization...")
+        print("Remote sync requested. Running remote synchronization...")
         git_client.fetch("origin", prune=True)
     else:
-        print("No Sluice Gate events pending. Running offline-by-default local synchronization...")
+        print("Offline-by-default local synchronization...")
 
     # Discard Invariant Guard
     try:
@@ -178,13 +164,6 @@ def sync_and_clean_node(force_discard: bool = False) -> None:
             TerminalNode.clean_if_merged(branch)
             
     git_client.worktree_prune()
-
-    # 6. Consume Sluice Gate Opened prompts
-    if remote_mode and pending_sluice_prompts:
-        prompt_ids = ",".join([p["id"] for p in pending_sluice_prompts])
-        process_prompts(prompt_ids, resolution_context="sync")
-        clean_prompts()
- 
     # 7. Automate standalone backlog mapping and quarantine status label cleanup
     try:
         import re
@@ -425,7 +404,7 @@ import sys
 import json
 
 def cmd_sync(args):
-    sync_and_clean_node(force_discard=getattr(args, 'force_discard', False))
+    sync_and_clean_node(force_discard=getattr(args, 'force_discard', False), force_remote=getattr(args, 'remote', False))
 
 def cmd_plan_start(args):
     plan_start_node(args.issue_id)
@@ -634,6 +613,7 @@ def main():
         # sync
         parser_sync = subparsers.add_parser("sync", help="Sync main, prune branches, and surface backlog")
         parser_sync.add_argument("--force-discard", action="store_true", help="Intentionally discard uncommitted tracked changes")
+        parser_sync.add_argument("--remote", action="store_true", help="Force a remote fetch of the latest state")
 
         # plan-start
         parser_ps = subparsers.add_parser("plan-start", help="Lock an issue to start multi-phase planning")

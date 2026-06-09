@@ -14,7 +14,7 @@ def test_seizure_detection_no_failures():
     
     with patch("pathlib.Path.glob") as mock_glob, \
          patch("pathlib.Path.exists", return_value=True), \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
          
         mock_glob.return_value = []
         
@@ -35,7 +35,7 @@ def test_seizure_detection_under_threshold():
     
     with patch("pathlib.Path.glob") as mock_glob, \
          patch("pathlib.Path.exists", return_value=True), \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
          
         mock_glob.return_value = [
             Path("test-fail-1.json"),
@@ -59,7 +59,7 @@ def test_seizure_detection_recovery_reset():
     
     with patch("pathlib.Path.glob") as mock_glob, \
          patch("pathlib.Path.exists", return_value=True), \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
          
         mock_glob.return_value = [
             Path("test-fail-1.json"),
