@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Implement resilient gh
-    wrapper.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1947
-  title: Harmonize - Implement resilient gh wrapper
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1947
-- body: '## Goal
-
     Technical design and proposed changes for Implement resilient gh wrapper.
 
 
