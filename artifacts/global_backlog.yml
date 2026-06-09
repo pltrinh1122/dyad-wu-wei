@@ -1,1 +1,127 @@
-backlog_items: []
+backlog_items:
+- body: '## Goal
+
+    Synthesize the epistemic learnings from the post-failure retrospective retro-1916.md
+    into the system''s operational guidelines (the Dao).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 1935
+  title: Reflect - Synthesize Epistemic Retrospective retro-1916.md
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1935
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash
+    in reflect.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 1940
+  title: 'Harmonize - [BUG] Intake: System Crash in reflect'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1940
+- body: '## Goal
+
+    Technical design and proposed changes for [BUG] Intake: System Crash in reflect.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    1940
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 1941
+  title: 'Plan - [BUG] Intake: System Crash in reflect'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1941
+- body: '## Goal
+
+    Final reflection and path closure for [BUG] Intake: System Crash in reflect.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    1941
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 1942
+  title: 'Reflect - [BUG] Intake: System Crash in reflect'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1942
