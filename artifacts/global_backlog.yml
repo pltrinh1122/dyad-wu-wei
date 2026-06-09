@@ -1,37 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Final reflection and path closure for [BUG] Intake: System Crash in checkout.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    1957
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1958
-  title: 'Reflect - [BUG] Intake: System Crash in checkout'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1958
-- body: '## Goal
-
     Harmonize on the philosophical and technical intent for Falsify Daemon Prompt
     Injection.
 
