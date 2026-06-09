@@ -1809,15 +1809,15 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #1985: Harmonize: Enforce core.filemode and synthesize Operator Retro
+## #1971: Harmonize - [BUG] Intake: Backlog Hygiene Warning
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Harmonize: Enforce core.filemode and synthesize Operator Retro
+## Harmonize - [BUG] Intake: Backlog Hygiene Warning
 - **Status**: Completed
-- **Learnings & Context**: Enforced core.filemode in workspace init and synthesized Operator feedback on queue timing into retro.
+- **Learnings & Context**: Mapped unmapped backlog paths (1970, 1960, 1955, 1951, 1946, 1913) to their respective Strategic Goals in strategic_intent.yml.
 - **Feedforward Invariants**:
   - `[ ]` None
 
