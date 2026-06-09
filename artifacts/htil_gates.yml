@@ -1,0 +1,28 @@
+# Human-in-the-Loop (HTIL) Gates Configuration
+# Defines the system boundaries where the Agent must halt and wait for Operator input.
+# Modifying this file will dynamically change the Agent's execution autonomy.
+
+gates:
+  # Halts execution before autonomously starting a new Node/Path from the backlog.
+  # Engaged: Agent waits for Operator to type `plan-start`.
+  # Disengaged: Agent autonomously selects and starts NBA.
+  HTIL_GATE_NBA_HANDOFF: false
+
+  # Halts execution after Sense/Plan phases.
+  # Engaged: Agent presents Technical Design/Approach and waits for ratification.
+  # Disengaged: Agent drops directly from Plan to Act.
+  HTIL_GATE_PLAN_REVIEW: false
+
+  # Halts execution after local CI passes and PR is opened.
+  # Engaged (HARD HITL): Agent enters True Dormancy until Operator merges PR.
+  # Disengaged: Agent attempts auto-merge and continuation.
+  HTIL_GATE_PR_MERGE: true
+
+  # Halts execution before synthesizing new Path/Node issues into the global backlog.
+  # Engaged: Agent presents proposed backlog additions for scoping approval.
+  # Disengaged: Agent adds items to Backlog silently.
+  HTIL_GATE_BACKLOG_MUTATION: false
+
+# Operational Modes:
+# - lean! : All gates are disengaged (except PR_MERGE if token restricts auto-merge).
+# - lean. : All gates are engaged (Agent stops at every step).
