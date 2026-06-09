@@ -25,7 +25,7 @@ def test_evaluate_node_completion_threshold():
     
     with patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=mock_frontier)), \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
              
         triggered, new_state = evaluate_node_completion_threshold(rule, state.copy())
         
@@ -44,7 +44,7 @@ def test_evaluate_node_completion_threshold_not_reached():
     
     with patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=mock_frontier)), \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
              
         triggered, new_state = evaluate_node_completion_threshold(rule, state.copy())
         
@@ -63,7 +63,7 @@ def test_evaluate_file_modified():
     state = {"last_hash": "old_hash"}
     
     with patch("drivers.audit_daemon.subprocess.run") as mock_run, \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
              
         mock_result = MagicMock()
         mock_result.stdout = "new_hash\n"
@@ -84,7 +84,7 @@ def test_evaluate_file_modified_initial_run():
     state = {} # First run
     
     with patch("drivers.audit_daemon.subprocess.run") as mock_run, \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
              
         mock_result = MagicMock()
         mock_result.stdout = "new_hash\n"
@@ -182,7 +182,7 @@ def test_evaluate_seizure_detection():
     
     with patch("pathlib.Path.glob") as mock_glob, \
          patch("pathlib.Path.exists", return_value=True), \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
          
         mock_glob.return_value = [
             Path("test-fail-1.json"),
@@ -218,7 +218,7 @@ def test_liveness_stall_fires_when_active_and_stale():
     with patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=frontier_md_content)), \
          patch("os.path.getmtime", return_value=stale_mtime), \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
         
         triggered, new_state = evaluate_liveness_stall(rule, state.copy())
         
@@ -244,7 +244,7 @@ def test_liveness_stall_silent_when_no_active_node():
     
     with patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=frontier_md_content)), \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
         
         triggered, new_state = evaluate_liveness_stall(rule, state.copy())
         
@@ -271,7 +271,7 @@ def test_liveness_stall_silent_when_recent_progress():
     with patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=frontier_md_content)), \
          patch("os.path.getmtime", return_value=recent_mtime), \
-         patch("drivers.audit_daemon.inject_prompt") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
         
         triggered, new_state = evaluate_liveness_stall(rule, state.copy())
         

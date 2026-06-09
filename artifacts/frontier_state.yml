@@ -1594,6 +1594,25 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: '#1964: Implement Falsify Daemon Prompt Injection'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#999: Triage Holding - Standalone Triage & External Requirement Intakes'
+  status: Backlog
+  learnings: A holding Path to consolidate all unpromoted status:triage external intake
+    nodes under the same parent class.
+  invariants: []
+- name: '#1965: Reflect - Synthesize Epistemic Retrospective retro-1964.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-1964.md into the system's operational guidelines (the Dao).
+  invariants: []
+- name: Node 1964
+  status: Completed
+  learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
+    and explicit local sync invocation.
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
