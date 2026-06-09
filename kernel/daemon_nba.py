@@ -180,8 +180,8 @@ class NBADaemon:
                     for p in open_path_issues:
                         pid = str(p.get("number", ""))
                         body = p.get("body", "")
-                        # Support both `- [ ] Node 1914` and `- [ ] #1914` formats
-                        matches = re.findall(r"-\s+\[\s*[xX ]?\s*\]\s+(?:(?:Node|Activity|Discovery)\s+|#)(\d+)\b", body, re.IGNORECASE)
+                        # Support both `- [ ] Node 1914` and `- [ ] #1914` formats, but only for open (unchecked) nodes
+                        matches = re.findall(r"-\s+\[\s*\]\s+(?:(?:Node|Activity|Discovery)\s+|#)(\d+)\b", body, re.IGNORECASE)
                         for m in matches:
                             child_to_path[m] = pid
                 except Exception:

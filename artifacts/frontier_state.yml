@@ -1459,6 +1459,7 @@ nodes:
     hacking NBA logic.'
   invariants:
   - SG-0008 is defined as the Triage Holding catchment mechanism
+
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
