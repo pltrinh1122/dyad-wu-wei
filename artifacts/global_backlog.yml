@@ -312,34 +312,3 @@ backlog_items:
   number: 1963
   title: Reflect - Falsify Daemon Prompt Injection
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1963
-- body: '## Goal
-
-    Deprecate inject_prompt and enforce DAG-direct mutations
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1964
-  title: Implement Falsify Daemon Prompt Injection
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1964
