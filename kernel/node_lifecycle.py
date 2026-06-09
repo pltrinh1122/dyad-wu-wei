@@ -314,6 +314,22 @@ class TerminalNode(BaseNode):
             
             log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} and updated frontier.")
 
+            # Purge from Tier 2 Global Backlog to enforce Mutually Exclusive Residence
+            global_backlog_path = path_resolver.resolve_workspace_path("artifacts/global_backlog.yml")
+            if os.path.exists(global_backlog_path):
+                import yaml
+                try:
+                    with open(global_backlog_path, "r", encoding="utf-8") as f:
+                        data = yaml.safe_load(f) or {}
+                    backlog_items = data.get("backlog_items", [])
+                    original_len = len(backlog_items)
+                    backlog_items = [item for item in backlog_items if str(item.get("number", "")) != str(self.issue_id)]
+                    if len(backlog_items) < original_len:
+                        data["backlog_items"] = backlog_items
+                        with open(global_backlog_path, "w", encoding="utf-8") as f:
+                            yaml.dump(data, f)
+                except Exception as e:
+                    print(f"Warning: Failed to purge Issue #{self.issue_id} from global backlog cache: {e}")
     @record_execution(stage="plan")
     def plan_finish(self, body: str) -> str:
         log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Issue #{self.issue_id}")

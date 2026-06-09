@@ -1427,6 +1427,36 @@ nodes:
     directly into the Node state machine (node_lifecycle.py TerminalNode). Fixed infinite
     test loop.
   invariants: []
+- name: '#1919: Implement Two-Tier Backlog Abstraction'
+  status: Backlog
+  learnings: SG-0001
+  invariants: []
+  kind: path
+- name: '#1920: Harmonize - Path: Implement Two-Tier Backlog Abstraction'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for Path: Implement
+    Two-Tier Backlog Abstraction.'
+  invariants: []
+- name: '#1921: Plan - Path: Implement Two-Tier Backlog Abstraction'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for Path: Implement Two-Tier Backlog
+    Abstraction.'
+  invariants: []
+- name: '#1922: Reflect - Path: Implement Two-Tier Backlog Abstraction'
+  status: Backlog
+  learnings: 'Final reflection and path closure for Path: Implement Two-Tier Backlog
+    Abstraction.'
+  invariants: []
+- name: '#1923: Design and Implement CSI Guards for Two-Tier Backlog'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Design and Implement CSI Guards for Two-Tier Backlog
+  status: Completed
+  learnings: Added CSI guards for SSOT Asymmetry and Mutually Exclusive Residence.
+    Synchronized remote backlog locally in global_backlog.yml.
+  invariants:
+  - Mutually Exclusive Residence Purge
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

@@ -77,13 +77,18 @@ def sync_and_clean_node(force_discard: bool = False) -> None:
     # Discard Invariant Guard
     try:
         status_output = subprocess.check_output(["git", "status", "--porcelain"], cwd=repo_root, text=True).strip()
-        if status_output and not force_discard:
-            print("\n[🚫 BLOCKED] Sync operation halted. Uncommitted tracked edits detected.")
-            print(f"Files at risk of being silently discarded:\n{status_output}")
-            print("\nSTEERING VECTOR:")
-            print("  (a) To save these changes: Commit them to your active PR branch or stash them.")
-            print("  (b) To discard them intentionally: Run sync with the '--force-discard' override.\n")
-            sys.exit(1)
+        if status_output:
+            if "artifacts/global_backlog.yml" in status_output:
+                print("\n[CYBERNETIC STEERING VECTOR] Global Backlog projection is read-only. Do not edit artifacts/global_backlog.yml manually. Use bin/backlog to mutate global issues.\n")
+                sys.exit(1)
+            
+            if not force_discard:
+                print("\n[🚫 BLOCKED] Sync operation halted. Uncommitted tracked edits detected.")
+                print(f"Files at risk of being silently discarded:\n{status_output}")
+                print("\nSTEERING VECTOR:")
+                print("  (a) To save these changes: Commit them to your active PR branch or stash them.")
+                print("  (b) To discard them intentionally: Run sync with the '--force-discard' override.\n")
+                sys.exit(1)
     except Exception as e:
         pass
 
@@ -145,6 +150,19 @@ def sync_and_clean_node(force_discard: bool = False) -> None:
                     merged_branches.add(pr["headRefName"])
         except Exception as e:
             print(f"Warning: Failed to fetch merged PRs from GitHub: {e}")
+
+        # Sync Tier 2 Global Backlog Cache
+        try:
+            backlog_items = github_client.list_issues_by_label("backlog")
+            backlog_items = [item for item in backlog_items if "path" not in item.get("labels", [])]
+            backlog_items.sort(key=lambda x: x.get("number", 0))
+            
+            backlog_file_path = os.path.join(repo_root, "artifacts", "global_backlog.yml")
+            with open(backlog_file_path, "w", encoding="utf-8") as f:
+                yaml.dump({"backlog_items": backlog_items}, f)
+            print("Successfully synchronized Tier 2 Global Backlog cache.")
+        except Exception as e:
+            print(f"Warning: Failed to sync global backlog: {e}")
  
     # Verify which of these actually exist locally and clean them
     local_branches = set(git_client.list_local_branches())

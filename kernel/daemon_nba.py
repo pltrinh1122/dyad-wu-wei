@@ -119,20 +119,28 @@ class NBADaemon:
                 state = agent_frontier.load_state(frontier_file)
                 all_nodes = state.get("nodes", [])
                 backlog_items = []
+                
+                active_ids = set()
                 for n in all_nodes:
-                    if n.get("status") == "Backlog":
-                        n_name = n.get("name", "")
-                        if "Path:" in n_name or n_name.startswith("Path:") or n.get("kind") == "path":
-                            continue
-                        match = re.search(r"(?:Node |#)(\d+)", n_name)
+                    if n.get("status") != "Completed":
+                        match = re.search(r"(?:Node |#)(\d+)", n.get("name", ""))
                         if match:
-                            issue_num = int(match.group(1))
-                            title = n_name.split(":", 1)[1].strip()
-                            backlog_items.append({
-                                "number": issue_num,
-                                "id": str(issue_num),
-                                "title": title
-                            })
+                            active_ids.add(str(match.group(1)))
+
+                from drivers import path_resolver
+                import yaml
+                repo_root = path_resolver.get_workspace_dir()
+                global_backlog_path = os.path.join(repo_root, "artifacts", "global_backlog.yml")
+                
+                if os.path.exists(global_backlog_path):
+                    with open(global_backlog_path, "r", encoding="utf-8") as f:
+                        data = yaml.safe_load(f) or {}
+                    backlog_items = data.get("backlog_items", [])
+                
+                for item in backlog_items:
+                    item_id = str(item.get("number", ""))
+                    if item_id in active_ids:
+                        raise Exception(f"[CYBERNETIC STEERING VECTOR] Mutually Exclusive Residence Violation: Issue {item_id} is active but still exists in the global backlog cache. Purge it from global_backlog.yml.")
             else:
                 backlog_items = github_client.list_issues_by_label("backlog")
                 backlog_items = [item for item in backlog_items if "path" not in item.get("labels", [])]
