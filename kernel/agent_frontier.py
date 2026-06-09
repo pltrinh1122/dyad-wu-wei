@@ -142,8 +142,9 @@ def write_markdown_derived(yml_path: str, md_path: str) -> None:
 def extract_active_node_from_state(state: dict) -> str:
     persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
     active_agents = state.get("active_agents")
-    if active_agents is not None:
-        return active_agents.get(persona, {}).get("current_active_node") or ""
+    if active_agents is not None and persona in active_agents:
+        val = active_agents[persona].get("current_active_node")
+        if val: return val
     return state.get("current_active_node") or ""
 
 def read_active_node(filepath: str) -> str:
@@ -165,8 +166,9 @@ def read_last_completed_node(filepath: str) -> str:
 def extract_active_path_from_state(state: dict) -> str | None:
     persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
     active_agents = state.get("active_agents")
-    if active_agents is not None:
-        return active_agents.get(persona, {}).get("current_active_path")
+    if active_agents is not None and persona in active_agents:
+        val = active_agents[persona].get("current_active_path")
+        if val: return val
     return state.get("current_active_path")
 
 def read_active_path(filepath: str) -> str | None:
