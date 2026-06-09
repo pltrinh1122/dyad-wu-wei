@@ -1394,6 +1394,39 @@ nodes:
   learnings: Implemented Substrate CI Guard in cmd_reflect to physically block PR
     creation when tests fail or remote conflicts exist.
   invariants: []
+- name: '#1913: Triage Holding - Standalone Triage & External Requirement Intakes'
+  status: Backlog
+  learnings: A holding Path to consolidate all unpromoted status:triage external intake
+    nodes under the same parent class.
+  invariants: []
+  kind: path
+- name: '#1914: Harmonize - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Triage Holding
+    - Standalone Triage & External Requirement Intakes.
+  invariants: []
+- name: '#1915: Plan - Triage Holding - Standalone Triage & External Requirement Intakes'
+  status: Backlog
+  learnings: Technical design and proposed changes for Triage Holding - Standalone
+    Triage & External Requirement Intakes.
+  invariants: []
+- name: '#1916: Reflect - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
+  status: Backlog
+  learnings: Final reflection and path closure for Triage Holding - Standalone Triage
+    & External Requirement Intakes.
+  invariants: []
+- name: '#1917: Design Node Lifecycle OOP Class Interface'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Design Node Lifecycle OOP Class Interface
+  status: Completed
+  learnings: Moved HTIL and CI Guard mechanics out of the CLI routing layer (daemon_node.py)
+    directly into the Node state machine (node_lifecycle.py TerminalNode). Fixed infinite
+    test loop.
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

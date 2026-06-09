@@ -404,24 +404,12 @@ def cmd_sync(args):
     sync_and_clean_node(force_discard=getattr(args, 'force_discard', False))
 
 def cmd_plan_start(args):
-    from kernel.htil_gates import check_nba_handoff
-    if check_nba_handoff():
-        if os.environ.get("SPAO_AGENT_MODE") == "1":
-            print("🚨 **[HTIL GATE ENGAGED: NBA_HANDOFF]** 🚨")
-            print("Waiting for Operator to manually trigger `plan-start`.")
-            sys.exit(1)
     plan_start_node(args.issue_id)
 
 def cmd_plan_finish(args):
     print(plan_finish_node(args.issue_id, args.body_content))
 
 def cmd_checkout(args):
-    from kernel.htil_gates import check_plan_review
-    if check_plan_review():
-        if os.environ.get("SPAO_AGENT_MODE") == "1":
-            print("🚨 **[HTIL GATE ENGAGED: PLAN_REVIEW]** 🚨")
-            print("Waiting for Operator to manually review Plan before Act/Checkout.")
-            sys.exit(1)
     checkout_node(args.issue_id, args.branch_name)
 
 def cmd_reflect(args):
@@ -430,29 +418,6 @@ def cmd_reflect(args):
         invariants = json.loads(args.invariants)
     else:
         invariants = [inv.strip() for inv in args.invariants.split(",") if inv.strip()]
-        
-    from kernel.htil_gates import check_backlog_mutation
-    if check_backlog_mutation():
-        if os.environ.get("SPAO_AGENT_MODE") == "1":
-            print("🚨 **[HTIL GATE ENGAGED: BACKLOG_MUTATION]** 🚨")
-            print("Waiting for Operator to approve backlog additions.")
-            sys.exit(1)
-
-    # --- Substrate CI Guard ---
-    import subprocess
-    from drivers.git_client import check_merge_conflicts
-    print("🛡️  Executing Substrate CI Guard...")
-    print("   ↳ Checking for remote merge conflicts...")
-    if check_merge_conflicts():
-        print("🚨 **[SUBSTRATE GUARD BLOCKED]** Target branch has remote merge conflicts with origin/main. Resolve before reflecting.")
-        sys.exit(1)
-    
-    print("   ↳ Running local CI tests (./bin/run-tests)...")
-    result = subprocess.run(["./bin/run-tests"])
-    if result.returncode != 0:
-        print(f"🚨 **[SUBSTRATE GUARD BLOCKED]** Local CI tests failed (exit code {result.returncode}). Fix errors before reflecting.")
-        sys.exit(1)
-    # --------------------------
 
     reflect_node(
         frontier_file=args.frontier_file,

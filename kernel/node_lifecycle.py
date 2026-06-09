@@ -238,6 +238,13 @@ class TerminalNode(BaseNode):
 
     @record_execution(stage="plan")
     def plan_start(self, frontier_file: str = "artifacts/frontier_state.md") -> None:
+        from kernel.htil_gates import check_nba_handoff
+        if check_nba_handoff():
+            if os.environ.get("SPAO_AGENT_MODE") == "1":
+                print("🚨 **[HTIL GATE ENGAGED: NBA_HANDOFF]** 🚨")
+                print("Waiting for Operator to manually trigger `plan-start`.")
+                sys.exit(1)
+
         from drivers import path_resolver
         if not os.path.isabs(frontier_file):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
@@ -378,6 +385,13 @@ class TerminalNode(BaseNode):
 
     @record_execution(stage="act")
     def checkout(self, branch_name: str, frontier_file: str = "artifacts/frontier_state.md") -> None:
+        from kernel.htil_gates import check_plan_review
+        if check_plan_review():
+            if os.environ.get("SPAO_AGENT_MODE") == "1":
+                print("🚨 **[HTIL GATE ENGAGED: PLAN_REVIEW]** 🚨")
+                print("Waiting for Operator to manually review Plan before Act/Checkout.")
+                sys.exit(1)
+
         domain_config = self._get_domain_config()
         if not os.environ.get("SPAO_WORKSPACE_DIR") and not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             if not (domain_config and domain_config.get("branch_prefix") and branch_name.startswith(domain_config["branch_prefix"])):
@@ -471,6 +485,14 @@ class TerminalNode(BaseNode):
             agent_frontier.abort_active_node(frontier_file, str(self.issue_id))
 
     def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
+        from kernel.htil_gates import check_backlog_mutation
+        if check_backlog_mutation():
+            if os.environ.get("SPAO_AGENT_MODE") == "1":
+                print("🚨 **[HTIL GATE ENGAGED: BACKLOG_MUTATION]** 🚨")
+                print("Waiting for Operator to approve backlog additions.")
+                sys.exit(1)
+
+
         if not os.environ.get("SPAO_WORKSPACE_DIR") and not re.match(r"^node/\d+-[a-z0-9-]+$", branch_name):
             raise ValueError("Branch name MUST follow the standard: node/<id>-<kebab-case>")
  

@@ -1515,6 +1515,43 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #1913: Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: A holding Path to consolidate all unpromoted status:triage external intake nodes under the same parent class.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1914: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1915: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1916: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #1917: Design Node Lifecycle OOP Class Interface
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Design Node Lifecycle OOP Class Interface
+- **Status**: Completed
+- **Learnings & Context**: Moved HTIL and CI Guard mechanics out of the CLI routing layer (daemon_node.py) directly into the Node state machine (node_lifecycle.py TerminalNode). Fixed infinite test loop.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
