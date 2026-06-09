@@ -77,3 +77,9 @@ The system exposes explicit execution markers and configurable gates to control 
 - `clip.`: Operator ratifies the recommendation and expects the Agent to immediately capture the intent/spec and implement the necessary guards.
 
 </RULE[GEMINI.md]>
+
+## Antigravity-Specific: Test-Driven Development (TDD) Discipline
+To avoid regression and ensure the durability of the engine's invariants, the Agent MUST adhere to the following test discipline:
+- **Simultaneous Test Evolution**: When modifying source files, the Agent MUST proactively locate, review, and update the associated test files.
+- **Refactoring Hazard Mitigation**: Before utilizing bulk replacement tools or refactoring core components, verify that automated tests validate the intended structural change and continue passing.
+

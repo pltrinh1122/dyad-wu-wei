@@ -1587,8 +1587,8 @@ nodes:
   learnings: Technical design and proposed changes for Falsify Daemon Prompt Injection.
   invariants: []
 - name: '#1963: Reflect - Falsify Daemon Prompt Injection'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: Final reflection and path closure for Falsify Daemon Prompt Injection.
   invariants: []
 - name: '#1948: Plan - Implement resilient gh wrapper'
   status: '[///] Act Phase'
@@ -1604,18 +1604,17 @@ nodes:
     nodes under the same parent class.
   invariants: []
 - name: '#1965: Reflect - Synthesize Epistemic Retrospective retro-1964.md'
-  status: Backlog
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-1964.md into the system's operational guidelines (the Dao).
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: Node 1964
   status: Completed
   learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
     and explicit local sync invocation.
   invariants: []
-- name: Node 1963
+- name: Node 1965
   status: Completed
-  learnings: Reflected upon falsification of daemon prompt injection
+  learnings: Synthesized epistemic learnings from retro-1964.md into GEMINI.md
   invariants: []
 active_agents:
   agent-ziran:
