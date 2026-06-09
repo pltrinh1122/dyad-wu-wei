@@ -1613,15 +1613,14 @@ nodes:
   learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
     and explicit local sync invocation.
   invariants: []
-- name: '#1972: Plan - [BUG] Intake: Backlog Hygiene Warning'
+- name: '#1973: Reflect - [BUG] Intake: Backlog Hygiene Warning'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Plan - [BUG] Intake: Backlog Hygiene Warning'
+- name: 'Reflect - [BUG] Intake: Backlog Hygiene Warning'
   status: Completed
-  learnings: The hygiene warning was successfully remediated in the previous node
-    by mapping unmapped paths to their respective Strategic Goals in strategic_intent.yml.
-    No further design or changes are necessary for this path.
+  learnings: Administratively closing the reflect node to formally seal the Backlog
+    Hygiene Warning path since the remediations were completed and verified.
   invariants: []
 active_agents:
   agent-ziran:
