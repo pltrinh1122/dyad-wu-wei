@@ -1554,8 +1554,8 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
   - `[ ]` None
 
 ## #1920: Harmonize - Path: Implement Two-Tier Backlog Abstraction
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: Implement Two-Tier Backlog Abstraction.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1628,14 +1628,14 @@ NameError: name 'StateDissonanceError' is not defined
   - `[ ]` None
 
 ## #1932: Harmonize - [BUG] Intake: System Crash in plan-start
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in plan-start.
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## #1933: Plan - [BUG] Intake: System Crash in plan-start
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in plan-start.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1657,11 +1657,12 @@ NameError: name 'StateDissonanceError' is not defined
 - **Feedforward Invariants**:
   - `[x] Triage SG boxes exogenous issues into Paths`
 
-## Harmonize - [BUG] Intake: System Crash in plan-start
+## Plan - [BUG] Intake: System Crash in plan-start
 - **Status**: Completed
-- **Learnings & Context**: Successfully defined WHAT requirements for bug fixes
+- **Learnings & Context**: Successfully planned and implemented bug fixes for system crash
 - **Feedforward Invariants**:
   - `[x] Problem definition verified`
+  - `[x] Plan formulated`
 
 ## Active Agents Matrix
 * **agent-ziran**:

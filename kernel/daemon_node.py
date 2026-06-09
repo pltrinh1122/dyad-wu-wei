@@ -164,7 +164,7 @@ def sync_and_clean_node(force_discard: bool = False) -> None:
             try:
                 subprocess.check_call(["git", "add", "artifacts/global_backlog.yml"], cwd=repo_root)
                 subprocess.check_call(["git", "commit", "-m", "chore: sync Tier 2 global backlog cache"], cwd=repo_root)
-                subprocess.check_call(["git", "push", "origin", "main"], cwd=repo_root)
+                subprocess.check_call(["git", "push", "origin", "HEAD:main"], cwd=repo_root)
             except Exception as e:
                 pass
         except Exception as e:

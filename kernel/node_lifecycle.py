@@ -9,6 +9,9 @@ from kernel import agent_frontier, daemon_prompt, daemon_backlog, daemon_nba
 from kernel.daemon_telemetry import TelemetryDaemon, record_execution
 from kernel.daemon_transaction import FlowTransaction
 
+class StateDissonanceError(Exception):
+    pass
+
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
     return os.environ.get("SPAO_VERBOSE") in ("1", "true", "TRUE") or os.environ.get("SPOA_VERBOSE") in ("1", "true", "TRUE")
@@ -333,7 +336,7 @@ class TerminalNode(BaseNode):
                         try:
                             subprocess.check_call(["git", "add", "artifacts/global_backlog.yml"], cwd=path_resolver.get_workspace_dir())
                             subprocess.check_call(["git", "commit", "-m", f"chore: purge Node {self.issue_id} from global backlog cache"], cwd=path_resolver.get_workspace_dir())
-                            subprocess.check_call(["git", "push", "origin", "main"], cwd=path_resolver.get_workspace_dir())
+                            subprocess.check_call(["git", "push", "origin", "HEAD:main"], cwd=path_resolver.get_workspace_dir())
                         except Exception:
                             pass
                 except Exception as e:
