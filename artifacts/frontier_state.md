@@ -1523,8 +1523,8 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
   - `[ ]` None
 
 ## #1915: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1589,11 +1589,11 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Feedforward Invariants**:
   - `SG-0008 is defined as the Triage Holding catchment mechanism`
 
-## #1914: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+## Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Completed
+- **Learnings & Context**: Created WHAT-1915-audit-sg-triage-plan.md
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `SG-0008 will intercept support tickets; paths must explicitly map to SG-0008.`
 
 ## Active Agents Matrix
 * **agent-ziran**:

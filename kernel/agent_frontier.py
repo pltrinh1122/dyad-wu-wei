@@ -143,8 +143,9 @@ def extract_active_node_from_state(state: dict) -> str:
     persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
     active_agents = state.get("active_agents")
     if active_agents is not None and persona in active_agents:
-        val = active_agents[persona].get("current_active_node")
-        if val: return val
+        if "current_active_node" in active_agents[persona]:
+            val = active_agents[persona].get("current_active_node")
+            return val if val is not None else ""
     return state.get("current_active_node") or ""
 
 def read_active_node(filepath: str) -> str:
@@ -167,8 +168,8 @@ def extract_active_path_from_state(state: dict) -> str | None:
     persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
     active_agents = state.get("active_agents")
     if active_agents is not None and persona in active_agents:
-        val = active_agents[persona].get("current_active_path")
-        if val: return val
+        if "current_active_path" in active_agents[persona]:
+            return active_agents[persona].get("current_active_path")
     return state.get("current_active_path")
 
 def read_active_path(filepath: str) -> str | None:
@@ -187,8 +188,6 @@ def set_active_path(filepath: str, path_name: str) -> None:
     """Updates the text below Current Active Path."""
     yml_path = resolve_yml_path(filepath)
     state = load_state(yml_path)
-    persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
-    
     val = None
     if path_name != "None" and path_name is not None:
         path_id = extract_path_id(path_name)
@@ -196,6 +195,8 @@ def set_active_path(filepath: str, path_name: str) -> None:
             from kernel.daemon_strategic import verify_path_activation_allowed
             verify_path_activation_allowed(path_id)
         val = path_name
+        
+    persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
         
     if "active_agents" not in state:
         state["active_agents"] = {}
