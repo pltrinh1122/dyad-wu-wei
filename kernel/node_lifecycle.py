@@ -328,8 +328,22 @@ class TerminalNode(BaseNode):
                         data["backlog_items"] = backlog_items
                         with open(global_backlog_path, "w", encoding="utf-8") as f:
                             yaml.dump(data, f)
+                        
+                        import subprocess
+                        try:
+                            subprocess.check_call(["git", "add", "artifacts/global_backlog.yml"], cwd=path_resolver.get_workspace_dir())
+                            subprocess.check_call(["git", "commit", "-m", f"chore: purge Node {self.issue_id} from global backlog cache"], cwd=path_resolver.get_workspace_dir())
+                            subprocess.check_call(["git", "push", "origin", "main"], cwd=path_resolver.get_workspace_dir())
+                        except Exception:
+                            pass
                 except Exception as e:
                     print(f"Warning: Failed to purge Issue #{self.issue_id} from global backlog cache: {e}")
+                
+                # Strip the backlog label from GitHub so it doesn't reappear on the next remote sync
+                try:
+                    github_client.remove_label(self.issue_id, "backlog")
+                except Exception as e:
+                    print(f"Warning: Failed to remove 'backlog' label from GitHub issue #{self.issue_id}: {e}")
     @record_execution(stage="plan")
     def plan_finish(self, body: str) -> str:
         log_stage_advancement("plan", "Formulating Implementation Contract", f"Locking Node Contract into Issue #{self.issue_id}")

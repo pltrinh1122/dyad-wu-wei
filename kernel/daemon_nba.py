@@ -122,7 +122,7 @@ class NBADaemon:
                 
                 active_ids = set()
                 for n in all_nodes:
-                    if n.get("status") != "Completed":
+                    if n.get("status") not in ("Completed", "Backlog"):
                         match = re.search(r"(?:Node |#)(\d+)", n.get("name", ""))
                         if match:
                             active_ids.add(str(match.group(1)))
