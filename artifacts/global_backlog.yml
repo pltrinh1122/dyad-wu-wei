@@ -1,38 +1,4 @@
 backlog_items:
-
-
-- body: '## Goal
-
-    Final reflection and path closure for Triage Holding - Standalone Triage & External
-    Requirement Intakes.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    1915
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1916
-  title: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1916
 - body: '## Goal
 
     Harmonize on the philosophical and technical intent for Path: Implement Two-Tier
