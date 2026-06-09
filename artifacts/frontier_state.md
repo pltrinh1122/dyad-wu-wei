@@ -1509,6 +1509,12 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Implement Substrate CI Guard
+- **Status**: Completed
+- **Learnings & Context**: Implemented Substrate CI Guard in cmd_reflect to physically block PR creation when tests fail or remote conflicts exist.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
