@@ -1604,17 +1604,23 @@ nodes:
     nodes under the same parent class.
   invariants: []
 - name: '#1965: Reflect - Synthesize Epistemic Retrospective retro-1964.md'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-1964.md into the system's operational guidelines (the Dao).
   invariants: []
 - name: Node 1964
   status: Completed
   learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
     and explicit local sync invocation.
   invariants: []
-- name: Node 1965
+- name: '#1985: Harmonize: Enforce core.filemode and synthesize Operator Retro'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Harmonize: Enforce core.filemode and synthesize Operator Retro'
   status: Completed
-  learnings: Synthesized epistemic learnings from retro-1964.md into GEMINI.md
+  learnings: Enforced core.filemode in workspace init and synthesized Operator feedback
+    on queue timing into retro.
   invariants: []
 active_agents:
   agent-ziran:

@@ -42,7 +42,7 @@ def test_init_workspace(tmp_path):
         
         mock_clone.assert_called_once_with("https://github.com/foo/bar.git", workspace_dir)
         mock_venv_create.assert_called_once_with(os.path.join(workspace_dir, ".venv"), with_pip=True)
-        assert mock_check_call.call_count == 2
+        assert mock_check_call.call_count == 3
         
         with open(parent_gitignore, "r") as f:
             content = f.read()

@@ -1798,8 +1798,8 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[ ]` None
 
 ## #1965: Reflect - Synthesize Epistemic Retrospective retro-1964.md
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-1964.md into the system's operational guidelines (the Dao).
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1809,9 +1809,15 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 1965
+## #1985: Harmonize: Enforce core.filemode and synthesize Operator Retro
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize: Enforce core.filemode and synthesize Operator Retro
 - **Status**: Completed
-- **Learnings & Context**: Synthesized epistemic learnings from retro-1964.md into GEMINI.md
+- **Learnings & Context**: Enforced core.filemode in workspace init and synthesized Operator feedback on queue timing into retro.
 - **Feedforward Invariants**:
   - `[ ]` None
 
