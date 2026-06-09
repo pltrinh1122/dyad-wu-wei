@@ -1613,9 +1613,13 @@ nodes:
   learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
     and explicit local sync invocation.
   invariants: []
-- name: Node 1948
+- name: '#1949: Reflect - Implement resilient gh wrapper'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Node 1949
   status: Completed
-  learnings: formalize WHAT-1948 spec for resilient gh wrapper
+  learnings: Final reflection and path closure for resilient gh wrapper
   invariants: []
 active_agents:
   agent-ziran:
