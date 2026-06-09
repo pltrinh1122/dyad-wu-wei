@@ -438,6 +438,22 @@ def cmd_reflect(args):
             print("Waiting for Operator to approve backlog additions.")
             sys.exit(1)
 
+    # --- Substrate CI Guard ---
+    import subprocess
+    from drivers.git_client import check_merge_conflicts
+    print("🛡️  Executing Substrate CI Guard...")
+    print("   ↳ Checking for remote merge conflicts...")
+    if check_merge_conflicts():
+        print("🚨 **[SUBSTRATE GUARD BLOCKED]** Target branch has remote merge conflicts with origin/main. Resolve before reflecting.")
+        sys.exit(1)
+    
+    print("   ↳ Running local CI tests (./bin/run-tests)...")
+    result = subprocess.run(["./bin/run-tests"])
+    if result.returncode != 0:
+        print(f"🚨 **[SUBSTRATE GUARD BLOCKED]** Local CI tests failed (exit code {result.returncode}). Fix errors before reflecting.")
+        sys.exit(1)
+    # --------------------------
+
     reflect_node(
         frontier_file=args.frontier_file,
         issue_id=args.issue_id,

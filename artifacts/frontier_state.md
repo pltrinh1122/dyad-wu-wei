@@ -1503,6 +1503,12 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #1911: Implement Substrate CI Guard
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
