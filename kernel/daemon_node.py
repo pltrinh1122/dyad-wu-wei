@@ -161,6 +161,12 @@ def sync_and_clean_node(force_discard: bool = False) -> None:
             with open(backlog_file_path, "w", encoding="utf-8") as f:
                 yaml.dump({"backlog_items": backlog_items}, f)
             print("Successfully synchronized Tier 2 Global Backlog cache.")
+            try:
+                subprocess.check_call(["git", "add", "artifacts/global_backlog.yml"], cwd=repo_root)
+                subprocess.check_call(["git", "commit", "-m", "chore: sync Tier 2 global backlog cache"], cwd=repo_root)
+                subprocess.check_call(["git", "push", "origin", "main"], cwd=repo_root)
+            except Exception as e:
+                pass
         except Exception as e:
             print(f"Warning: Failed to sync global backlog: {e}")
  

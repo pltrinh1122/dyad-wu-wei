@@ -482,6 +482,14 @@ def main():
                 backlog_file_path = os.path.join(repo_root, "artifacts", "global_backlog.yml")
                 with open(backlog_file_path, "w", encoding="utf-8") as f:
                     yaml.dump({"backlog_items": backlog_items}, f)
+                
+                import subprocess
+                try:
+                    subprocess.check_call(["git", "add", "artifacts/global_backlog.yml"], cwd=repo_root)
+                    subprocess.check_call(["git", "commit", "-m", "chore: auto-sync Tier 2 backlog cache on new"], cwd=repo_root)
+                    subprocess.check_call(["git", "push", "origin", "main"], cwd=repo_root)
+                except Exception:
+                    pass
             except Exception as e:
                 pass
         except Exception as e:
