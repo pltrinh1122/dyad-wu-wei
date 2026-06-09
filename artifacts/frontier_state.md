@@ -1701,8 +1701,8 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[ ]` None
 
 ## #1940: Harmonize - [BUG] Intake: System Crash in reflect
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in reflect.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1721,6 +1721,12 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 ## Harmonize - Path: Implement Two-Tier Backlog Abstraction
 - **Status**: Completed
 - **Learnings & Context**: Codified intent in kb/WHY-1112-backlog-two-tier-abstraction.md.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize - [BUG] Intake: System Crash in reflect
+- **Status**: Completed
+- **Learnings & Context**: Identified reflect crash during --stage none
 - **Feedforward Invariants**:
   - `[ ]` None
 
