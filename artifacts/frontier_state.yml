@@ -1425,9 +1425,8 @@ nodes:
   invariants: []
   kind: path
 - name: '#1920: Harmonize - Path: Implement Two-Tier Backlog Abstraction'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for Path: Implement
-    Two-Tier Backlog Abstraction.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#1921: Plan - Path: Implement Two-Tier Backlog Abstraction'
   status: Backlog
@@ -1480,9 +1479,8 @@ nodes:
   invariants: []
   kind: path
 - name: '#1932: Harmonize - [BUG] Intake: System Crash in plan-start'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
-    System Crash in plan-start.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#1933: Plan - [BUG] Intake: System Crash in plan-start'
   status: Backlog
@@ -1506,6 +1504,11 @@ nodes:
     into isolated paths.
   invariants:
   - '[x] Triage SG boxes exogenous issues into Paths'
+- name: 'Harmonize - [BUG] Intake: System Crash in plan-start'
+  status: Completed
+  learnings: Successfully defined WHAT requirements for bug fixes
+  invariants:
+  - '[x] Problem definition verified'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

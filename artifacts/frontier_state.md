@@ -1554,8 +1554,8 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
   - `[ ]` None
 
 ## #1920: Harmonize - Path: Implement Two-Tier Backlog Abstraction
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: Implement Two-Tier Backlog Abstraction.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1628,8 +1628,8 @@ NameError: name 'StateDissonanceError' is not defined
   - `[ ]` None
 
 ## #1932: Harmonize - [BUG] Intake: System Crash in plan-start
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in plan-start.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1656,6 +1656,12 @@ NameError: name 'StateDissonanceError' is not defined
 - **Learnings & Context**: SG-0008 successfully metabolizes exogenous interrupts (e.g. sync crashes) into isolated paths.
 - **Feedforward Invariants**:
   - `[x] Triage SG boxes exogenous issues into Paths`
+
+## Harmonize - [BUG] Intake: System Crash in plan-start
+- **Status**: Completed
+- **Learnings & Context**: Successfully defined WHAT requirements for bug fixes
+- **Feedforward Invariants**:
+  - `[x] Problem definition verified`
 
 ## Active Agents Matrix
 * **agent-ziran**:
