@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash
-    in checkout.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1956
-  title: 'Harmonize - [BUG] Intake: System Crash in checkout'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1956
-- body: '## Goal
-
     Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
 
 
