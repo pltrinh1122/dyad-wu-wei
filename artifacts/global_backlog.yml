@@ -1,37 +1,6 @@
 backlog_items:
 
-- body: '## Goal
 
-    Technical design and proposed changes for Triage Holding - Standalone Triage &
-    External Requirement Intakes.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    1914
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1915
-  title: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1915
 - body: '## Goal
 
     Final reflection and path closure for Triage Holding - Standalone Triage & External
