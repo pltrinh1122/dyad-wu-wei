@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Falsify Daemon Prompt
-    Injection.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 1961
-  title: Harmonize - Falsify Daemon Prompt Injection
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/1961
-- body: '## Goal
-
     Technical design and proposed changes for Falsify Daemon Prompt Injection.
 
 
