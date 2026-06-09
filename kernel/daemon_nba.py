@@ -180,8 +180,8 @@ class NBADaemon:
                     for p in open_path_issues:
                         pid = str(p.get("number", ""))
                         body = p.get("body", "")
-                        # Find all child node IDs in the Path checklist
-                        matches = re.findall(r"-\s+\[\s*[xX ]?\s*\]\s+(?:Node|Activity|Discovery)\s+(\d+)\b", body, re.IGNORECASE)
+                        # Support both `- [ ] Node 1914` and `- [ ] #1914` formats
+                        matches = re.findall(r"-\s+\[\s*[xX ]?\s*\]\s+(?:(?:Node|Activity|Discovery)\s+|#)(\d+)\b", body, re.IGNORECASE)
                         for m in matches:
                             child_to_path[m] = pid
                 except Exception:
@@ -198,6 +198,8 @@ class NBADaemon:
                     if parent_id in prioritized_set:
                         matched_items.append((prioritized_ids.index(parent_id), item))
                     elif parent_id != "":
+                        unmatched_items.append(item)
+                    else:
                         unmatched_items.append(item)
                 
                 matched_items.sort(key=lambda x: (x[0], x[1].get("number", 0)))
