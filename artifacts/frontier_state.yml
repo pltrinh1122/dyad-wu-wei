@@ -1622,6 +1622,53 @@ nodes:
   learnings: Administratively closing the reflect node to formally seal the Backlog
     Hygiene Warning path since the remediations were completed and verified.
   invariants: []
+- name: '#1999: [BUG] Intake: Backlog Hygiene Warning'
+  status: Backlog
+  learnings: '[NOTIFICATION] Backlog Hygiene Warning: Unmapped Paths (1) exceed Mapped
+    Paths (0). Repository state is unhealthy.'
+  invariants: []
+  kind: path
+- name: '#2000: Harmonize - [BUG] Intake: Backlog Hygiene Warning'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
+    Backlog Hygiene Warning.'
+  invariants: []
+- name: '#2001: Plan - [BUG] Intake: Backlog Hygiene Warning'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for [BUG] Intake: Backlog Hygiene
+    Warning.'
+  invariants: []
+- name: '#2002: Reflect - [BUG] Intake: Backlog Hygiene Warning'
+  status: Backlog
+  learnings: 'Final reflection and path closure for [BUG] Intake: Backlog Hygiene
+    Warning.'
+  invariants: []
+- name: '#2003: [BUG] Intake: Automated Hygiene Sweep'
+  status: Backlog
+  learnings: '[NOTIFICATION] Automated Hygiene Sweep: Deferred 3 orphaned terminal
+    nodes.'
+  invariants: []
+  kind: path
+- name: '#2004: Harmonize - [BUG] Intake: Automated Hygiene Sweep'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#2005: Plan - [BUG] Intake: Automated Hygiene Sweep'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for [BUG] Intake: Automated Hygiene
+    Sweep.'
+  invariants: []
+- name: '#2006: Reflect - [BUG] Intake: Automated Hygiene Sweep'
+  status: Backlog
+  learnings: 'Final reflection and path closure for [BUG] Intake: Automated Hygiene
+    Sweep.'
+  invariants: []
+- name: 2004-harmonize-bug-intake
+  status: Completed
+  learnings: The audit daemon failed to link child nodes to the parent path in its
+    initial automated Path generation.
+  invariants:
+  - None
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
