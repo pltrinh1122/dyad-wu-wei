@@ -73,6 +73,7 @@ The system exposes explicit execution markers and configurable gates to control 
 **Lexical Operator Markers:**
 - `lean!`: Operator ratifies the recommendation; engage full-auto execution (disengage all gates except PR_MERGE if token restricts).
 - `lean.`: Operator directs the Agent to step-through execution with ALL HTIL Gates engaged.
+- `lean?`: Operator directs the Agent to assess the context and propose a path/recommendation, but STRICTLY HALT and wait for explicit Operator ratification before execution.
 - `lean: {prompt}`: Same as `lean.`, but injects the provided instruction.
 - `clip.`: Operator ratifies the recommendation and expects the Agent to immediately capture the intent/spec and implement the necessary guards.
 

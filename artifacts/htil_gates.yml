@@ -26,3 +26,4 @@ gates:
 # Operational Modes:
 # - lean! : All gates are disengaged (except PR_MERGE if token restricts auto-merge).
 # - lean. : All gates are engaged (Agent stops at every step).
+# - lean? : Assessment mode. Agent proposes a path but stops before execution (equivalent to engaging NBA_HANDOFF and PLAN_REVIEW).
