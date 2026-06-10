@@ -1846,8 +1846,8 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[ ]` None
 
 ## #2020: Act - Guard: Retain exhaust telemetry for steering efficiency
-- **Status**: Backlog
-- **Learnings & Context**: Implement ExhaustLogger primitive in drivers and integrate into CSI Guards
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1868,6 +1868,13 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Learnings & Context**: ExhaustLogger implements pointer-based steering and durable serialization.
 - **Feedforward Invariants**:
   - `Guard must autoclear historical exhaust on pass.`
+
+## Act: Exhaust Logger
+- **Status**: Completed
+- **Learnings & Context**: Implemented ExhaustLogger in drivers/exhaust_logger.py and integrated it into kernel/daemon_node.py guards.
+- **Feedforward Invariants**:
+  - `WIP-N=1 Invariant Guard`
+  - `Discard Invariant Guard`
 
 ## Active Agents Matrix
 * **agent-ziran**:
