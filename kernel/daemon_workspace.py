@@ -40,6 +40,12 @@ def init_workspace(repo_url: str, target_dir: str = None) -> None:
     else:
         print(f"Target directory {workspace_path} already exists. Skipping clone.")
         
+    # 2.5 Enforce filemode tracking (Environmental Invariant)
+    try:
+        subprocess.check_call(["git", "config", "core.filemode", "true"], cwd=workspace_path)
+    except Exception as e:
+        print(f"Warning: Failed to enforce core.filemode true: {e}")
+        
     # 3. Provision Directories
     kb_dir = os.path.join(workspace_path, "kb")
     artifacts_dir = os.path.join(workspace_path, "artifacts")
