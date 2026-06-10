@@ -248,6 +248,13 @@ class TerminalNode(BaseNode):
                 print("Waiting for Operator to manually trigger `plan-start`.")
                 sys.exit(1)
 
+        from kernel.daemon_status import get_prompt_backlog_size
+        from drivers.path_resolver import get_workspace_dir
+        if get_prompt_backlog_size(get_workspace_dir()) > 0:
+            print("🚨 **[HTIL GATE ENGAGED: CONVERSATIONAL_ALIGNMENT]** 🚨")
+            print("Pending operator prompts detected. You must clear the prompt queue using `bin/prompt process` before acquiring a new Node lock.")
+            sys.exit(1)
+
         from drivers import path_resolver
         if not os.path.isabs(frontier_file):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
