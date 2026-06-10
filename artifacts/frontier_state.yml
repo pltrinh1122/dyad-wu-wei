@@ -1622,14 +1622,14 @@ nodes:
   learnings: Administratively closing the reflect node to formally seal the Backlog
     Hygiene Warning path since the remediations were completed and verified.
   invariants: []
-- name: '#2005: Plan - [BUG] Intake: Automated Hygiene Sweep'
+- name: '#2006: Reflect - [BUG] Intake: Automated Hygiene Sweep'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 2005-plan-bug-intake
+- name: 2006-reflect-bug-intake
   status: Completed
-  learnings: Identified absolute append in daemon_backlog.py as root cause for orphaned
-    terminal nodes.
+  learnings: Identified and fixed the root cause of orphaned terminal nodes caused
+    by absolute body appends.
   invariants:
   - None
 active_agents:

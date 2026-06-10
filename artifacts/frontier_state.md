@@ -1821,15 +1821,15 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #2005: Plan - [BUG] Intake: Automated Hygiene Sweep
+## #2006: Reflect - [BUG] Intake: Automated Hygiene Sweep
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## 2005-plan-bug-intake
+## 2006-reflect-bug-intake
 - **Status**: Completed
-- **Learnings & Context**: Identified absolute append in daemon_backlog.py as root cause for orphaned terminal nodes.
+- **Learnings & Context**: Identified and fixed the root cause of orphaned terminal nodes caused by absolute body appends.
 - **Feedforward Invariants**:
   - `None`
 
