@@ -1821,6 +1821,62 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #1999: [BUG] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: [NOTIFICATION] Backlog Hygiene Warning: Unmapped Paths (1) exceed Mapped Paths (0). Repository state is unhealthy.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2000: Harmonize - [BUG] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2001: Plan - [BUG] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2002: Reflect - [BUG] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2003: [BUG] Intake: Automated Hygiene Sweep
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: [NOTIFICATION] Automated Hygiene Sweep: Deferred 3 orphaned terminal nodes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2004: Harmonize - [BUG] Intake: Automated Hygiene Sweep
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2005: Plan - [BUG] Intake: Automated Hygiene Sweep
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: Automated Hygiene Sweep.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2006: Reflect - [BUG] Intake: Automated Hygiene Sweep
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: Automated Hygiene Sweep.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## 2004-harmonize-bug-intake
+- **Status**: Completed
+- **Learnings & Context**: The audit daemon failed to link child nodes to the parent path in its initial automated Path generation.
+- **Feedforward Invariants**:
+  - `None`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
