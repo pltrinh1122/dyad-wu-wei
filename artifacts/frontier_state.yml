@@ -1622,22 +1622,13 @@ nodes:
   learnings: Administratively closing the reflect node to formally seal the Backlog
     Hygiene Warning path since the remediations were completed and verified.
   invariants: []
-- name: '#2010: Harmonize - Guard: Enforce prompt queue clearance'
+- name: '#2011: Plan - Guard: Enforce prompt queue clearance'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: '#2011: Plan - Guard: Enforce prompt queue clearance'
-  status: Backlog
-  learnings: Formulate technical spec
-  invariants: []
-- name: '#2012: Reflect - Guard: Enforce prompt queue clearance'
-  status: Backlog
-  learnings: Implement and reflect
-  invariants: []
-- name: 2010-harmonize-prompt-clearance
+- name: 2011-plan-prompt-clearance
   status: Completed
-  learnings: Aligned on Sluice Gate discipline and lexical guard injection for prompt
-    queue clearance.
+  learnings: Designed the technical specification for the prompt queue clearance guard.
   invariants:
   - None
 active_agents:
