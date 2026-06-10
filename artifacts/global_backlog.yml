@@ -30,3 +30,66 @@ backlog_items:
   number: 2018
   title: 'Harmonize - Guard: Retain exhaust telemetry for steering efficiency'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2018
+- body: '## Goal
+
+    Draft technical implementation for ExhaustLogger primitive and Guard serialization
+    pattern
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2018
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2019
+  title: 'Plan - Guard: Retain exhaust telemetry for steering efficiency'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2019
+- body: '## Goal
+
+    Implement ExhaustLogger primitive in drivers and integrate into CSI Guards
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2019
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2020
+  title: 'Act - Guard: Retain exhaust telemetry for steering efficiency'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2020
