@@ -1833,6 +1833,36 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `None`
 
+## #2018: Harmonize - Guard: Retain exhaust telemetry for steering efficiency
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2019: Plan - Guard: Retain exhaust telemetry for steering efficiency
+- **Status**: Backlog
+- **Learnings & Context**: Draft technical implementation for ExhaustLogger primitive and Guard serialization pattern
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2020: Act - Guard: Retain exhaust telemetry for steering efficiency
+- **Status**: Backlog
+- **Learnings & Context**: Implement ExhaustLogger primitive in drivers and integrate into CSI Guards
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2021: Reflect - Guard: Retain exhaust telemetry for steering efficiency
+- **Status**: Backlog
+- **Learnings & Context**: Verify ExhaustLogger works via TDD tests and close Path
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize - Guard: Retain exhaust telemetry for steering efficiency
+- **Status**: Completed
+- **Learnings & Context**: Transience causes AI blindness. Exhaust must survive.
+- **Feedforward Invariants**:
+  - `Serialize before panic.`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
