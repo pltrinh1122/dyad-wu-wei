@@ -1821,15 +1821,27 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #2006: Reflect - [BUG] Intake: Automated Hygiene Sweep
+## #2010: Harmonize - Guard: Enforce prompt queue clearance
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## 2006-reflect-bug-intake
+## #2011: Plan - Guard: Enforce prompt queue clearance
+- **Status**: Backlog
+- **Learnings & Context**: Formulate technical spec
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2012: Reflect - Guard: Enforce prompt queue clearance
+- **Status**: Backlog
+- **Learnings & Context**: Implement and reflect
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## 2010-harmonize-prompt-clearance
 - **Status**: Completed
-- **Learnings & Context**: Identified and fixed the root cause of orphaned terminal nodes caused by absolute body appends.
+- **Learnings & Context**: Aligned on Sluice Gate discipline and lexical guard injection for prompt queue clearance.
 - **Feedforward Invariants**:
   - `None`
 
