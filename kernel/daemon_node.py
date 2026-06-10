@@ -68,6 +68,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
 
     # Discard Invariant Guard
     try:
+        from drivers.exhaust_logger import ExhaustLogger
         status_output = subprocess.check_output(["git", "status", "--porcelain"], cwd=repo_root, text=True).strip()
         if status_output:
             if "artifacts/global_backlog.yml" in status_output:
@@ -75,12 +76,20 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
                 sys.exit(1)
             
             if not force_discard:
-                print("\n[🚫 BLOCKED] Sync operation halted. Uncommitted tracked edits detected.")
-                print(f"Files at risk of being silently discarded:\n{status_output}")
+                exhaust_path = ExhaustLogger.dump_transient_exhaust(
+                    "DiscardInvariantGuard",
+                    {"git_status": status_output},
+                    "Uncommitted tracked edits detected."
+                )
+                print(f"\n[🚫 BLOCKED] DiscardInvariantGuard failed. Transient exhaust serialized to {exhaust_path}. You must read this file to deduce the failure.")
                 print("\nSTEERING VECTOR:")
                 print("  (a) To save these changes: Commit them to your active PR branch or stash them.")
                 print("  (b) To discard them intentionally: Run sync with the '--force-discard' override.\n")
                 sys.exit(1)
+            else:
+                ExhaustLogger.clear_historical_exhaust("DiscardInvariantGuard")
+        else:
+            ExhaustLogger.clear_historical_exhaust("DiscardInvariantGuard")
     except Exception as e:
         pass
 
@@ -90,6 +99,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
         print(f"Warning: Failed to switch root workspace to origin/main: {e}. Continuing sync...")
     
     # 3. Assert WIP-N=1 Invariant
+    from drivers.exhaust_logger import ExhaustLogger
     if remote_mode:
         open_prs = github_client.get_open_prs()
         if open_prs:
@@ -101,7 +111,14 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
                 return f"PR #{pr['number']}{node_part} (branch: {branch})"
             
             pr_list = ", ".join([format_pr(pr) for pr in open_prs])
-            raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
+            exhaust_path = ExhaustLogger.dump_transient_exhaust(
+                "WipN1Guard",
+                {"open_prs": [pr.get('headRefName', '') for pr in open_prs]},
+                f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}"
+            )
+            raise Exception(f"[🚫 BLOCKED] WipN1Guard failed. Transient exhaust serialized to {exhaust_path}. You must read this file to deduce the failure.\nWIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
+        else:
+            ExhaustLogger.clear_historical_exhaust("WipN1Guard")
     else:
         open_worktrees = get_local_worktrees(repo_root)
         if open_worktrees:
@@ -123,7 +140,16 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
             
             if still_open:
                 wt_list = ", ".join([f"Node #{w.get('number', '?')} (branch: {w.get('branch', w.get('url', ''))})" for w in still_open])
-                raise Exception(f"WIP-N=1 Violation: Cannot initiate SENSE phase while local Node worktrees are still active: {wt_list}\n(If the corresponding PR was merged on GitHub, you must manually delete this worktree to sync offline.)")
+                exhaust_path = ExhaustLogger.dump_transient_exhaust(
+                    "WipN1Guard",
+                    {"still_open_worktrees": [w.get('branch', '') for w in still_open]},
+                    f"WIP-N=1 Violation: Cannot initiate SENSE phase while local Node worktrees are still active: {wt_list}"
+                )
+                raise Exception(f"[🚫 BLOCKED] WipN1Guard failed. Transient exhaust serialized to {exhaust_path}. You must read this file to deduce the failure.\nWIP-N=1 Violation: Cannot initiate SENSE phase while local Node worktrees are still active: {wt_list}\n(If the corresponding PR was merged on GitHub, you must manually delete this worktree to sync offline.)")
+            else:
+                ExhaustLogger.clear_historical_exhaust("WipN1Guard")
+        else:
+            ExhaustLogger.clear_historical_exhaust("WipN1Guard")
     
     merged_branches = set()
     

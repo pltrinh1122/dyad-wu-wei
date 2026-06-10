@@ -1640,8 +1640,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2020: Act - Guard: Retain exhaust telemetry for steering efficiency'
-  status: Backlog
-  learnings: Implement ExhaustLogger primitive in drivers and integrate into CSI Guards
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2021: Reflect - Guard: Retain exhaust telemetry for steering efficiency'
   status: Backlog
@@ -1657,6 +1657,13 @@ nodes:
   learnings: ExhaustLogger implements pointer-based steering and durable serialization.
   invariants:
   - Guard must autoclear historical exhaust on pass.
+- name: 'Act: Exhaust Logger'
+  status: Completed
+  learnings: Implemented ExhaustLogger in drivers/exhaust_logger.py and integrated
+    it into kernel/daemon_node.py guards.
+  invariants:
+  - WIP-N=1 Invariant Guard
+  - Discard Invariant Guard
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

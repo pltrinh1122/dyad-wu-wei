@@ -1,0 +1,8 @@
+{
+  "guard": "DiscardInvariantGuard",
+  "message": "Uncommitted tracked edits detected.",
+  "payload": {
+    "git_status": "M some_file.txt"
+  },
+  "timestamp": 1781111993
+}
