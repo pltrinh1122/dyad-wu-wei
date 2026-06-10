@@ -1644,8 +1644,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2021: Reflect - Guard: Retain exhaust telemetry for steering efficiency'
-  status: Backlog
-  learnings: Verify ExhaustLogger works via TDD tests and close Path
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Harmonize - Guard: Retain exhaust telemetry for steering efficiency'
   status: Completed
@@ -1664,6 +1664,11 @@ nodes:
   invariants:
   - WIP-N=1 Invariant Guard
   - Discard Invariant Guard
+- name: node-2021-reflect
+  status: Completed
+  learnings: Verified exhaust logger via TDD tests
+  invariants:
+  - Exhaust logger functionality must remain active
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
