@@ -244,7 +244,8 @@ class BacklogDaemon:
                 checkbox_line += f" [Depends: {depends_on}]"
                 
             if "## Meta-Index" in path_body:
-                path_body += f"\n{checkbox_line}"
+                import re
+                path_body = re.sub(r"(## Meta-Index[ \t]*\r?\n)", r"\1" + checkbox_line + "\n", path_body, count=1)
             else:
                 path_body += f"\n\n## Meta-Index\n{checkbox_line}"
                 
