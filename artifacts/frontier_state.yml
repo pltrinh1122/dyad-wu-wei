@@ -1636,9 +1636,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2019: Plan - Guard: Retain exhaust telemetry for steering efficiency'
-  status: Backlog
-  learnings: Draft technical implementation for ExhaustLogger primitive and Guard
-    serialization pattern
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2020: Act - Guard: Retain exhaust telemetry for steering efficiency'
   status: Backlog
@@ -1653,6 +1652,11 @@ nodes:
   learnings: Transience causes AI blindness. Exhaust must survive.
   invariants:
   - Serialize before panic.
+- name: 'Plan - Guard: Retain exhaust telemetry for steering efficiency'
+  status: Completed
+  learnings: ExhaustLogger implements pointer-based steering and durable serialization.
+  invariants:
+  - Guard must autoclear historical exhaust on pass.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
