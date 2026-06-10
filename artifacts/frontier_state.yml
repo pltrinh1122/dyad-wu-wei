@@ -1622,14 +1622,22 @@ nodes:
   learnings: Administratively closing the reflect node to formally seal the Backlog
     Hygiene Warning path since the remediations were completed and verified.
   invariants: []
-- name: '#2006: Reflect - [BUG] Intake: Automated Hygiene Sweep'
+- name: '#2010: Harmonize - Guard: Enforce prompt queue clearance'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 2006-reflect-bug-intake
+- name: '#2011: Plan - Guard: Enforce prompt queue clearance'
+  status: Backlog
+  learnings: Formulate technical spec
+  invariants: []
+- name: '#2012: Reflect - Guard: Enforce prompt queue clearance'
+  status: Backlog
+  learnings: Implement and reflect
+  invariants: []
+- name: 2010-harmonize-prompt-clearance
   status: Completed
-  learnings: Identified and fixed the root cause of orphaned terminal nodes caused
-    by absolute body appends.
+  learnings: Aligned on Sluice Gate discipline and lexical guard injection for prompt
+    queue clearance.
   invariants:
   - None
 active_agents:
