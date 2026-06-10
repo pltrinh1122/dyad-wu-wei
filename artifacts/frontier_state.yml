@@ -1622,13 +1622,13 @@ nodes:
   learnings: Administratively closing the reflect node to formally seal the Backlog
     Hygiene Warning path since the remediations were completed and verified.
   invariants: []
-- name: '#2011: Plan - Guard: Enforce prompt queue clearance'
+- name: '#2012: Reflect - Guard: Enforce prompt queue clearance'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 2011-plan-prompt-clearance
+- name: 2012-reflect-prompt-clearance
   status: Completed
-  learnings: Designed the technical specification for the prompt queue clearance guard.
+  learnings: Implemented prompt queue clearance guard in sync_and_clean_node and plan_start.
   invariants:
   - None
 active_agents:
