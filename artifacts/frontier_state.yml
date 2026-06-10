@@ -1631,6 +1631,28 @@ nodes:
   learnings: Implemented prompt queue clearance guard in sync_and_clean_node and plan_start.
   invariants:
   - None
+- name: '#2018: Harmonize - Guard: Retain exhaust telemetry for steering efficiency'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#2019: Plan - Guard: Retain exhaust telemetry for steering efficiency'
+  status: Backlog
+  learnings: Draft technical implementation for ExhaustLogger primitive and Guard
+    serialization pattern
+  invariants: []
+- name: '#2020: Act - Guard: Retain exhaust telemetry for steering efficiency'
+  status: Backlog
+  learnings: Implement ExhaustLogger primitive in drivers and integrate into CSI Guards
+  invariants: []
+- name: '#2021: Reflect - Guard: Retain exhaust telemetry for steering efficiency'
+  status: Backlog
+  learnings: Verify ExhaustLogger works via TDD tests and close Path
+  invariants: []
+- name: 'Harmonize - Guard: Retain exhaust telemetry for steering efficiency'
+  status: Completed
+  learnings: Transience causes AI blindness. Exhaust must survive.
+  invariants:
+  - Serialize before panic.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
