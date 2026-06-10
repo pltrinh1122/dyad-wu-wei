@@ -1821,15 +1821,15 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #2011: Plan - Guard: Enforce prompt queue clearance
+## #2012: Reflect - Guard: Enforce prompt queue clearance
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## 2011-plan-prompt-clearance
+## 2012-reflect-prompt-clearance
 - **Status**: Completed
-- **Learnings & Context**: Designed the technical specification for the prompt queue clearance guard.
+- **Learnings & Context**: Implemented prompt queue clearance guard in sync_and_clean_node and plan_start.
 - **Feedforward Invariants**:
   - `None`
 
