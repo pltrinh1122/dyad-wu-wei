@@ -1,37 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Analyze WHAT-0058 and align on ExhaustLogger primitive implementation.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2018
-  title: 'Harmonize - Guard: Retain exhaust telemetry for steering efficiency'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2018
-- body: '## Goal
-
     Draft technical implementation for ExhaustLogger primitive and Guard serialization
     pattern
 
