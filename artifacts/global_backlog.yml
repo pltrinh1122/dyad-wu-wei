@@ -93,3 +93,34 @@ backlog_items:
   number: 2020
   title: 'Act - Guard: Retain exhaust telemetry for steering efficiency'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2020
+- body: '## Goal
+
+    Verify ExhaustLogger works via TDD tests and close Path
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2020
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2021
+  title: 'Reflect - Guard: Retain exhaust telemetry for steering efficiency'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2021
