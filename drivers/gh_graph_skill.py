@@ -88,7 +88,7 @@ def parse_meta_index(body: str) -> dict:
             merged_lines[-1] = merged_lines[-1] + " " + line.strip()
             
     pattern = re.compile(
-        r"^\s*-\s+\[([xX /])\]\s+(?:Node|Activity|Discovery|Path)?\s*(\d+):?\s*(.*?)(?:\s*\[Depends:\s*(.*?)\s*\])?\s*$",
+        r"^\s*-\s+\[([xX /])\]\s+(?:Node|Activity|Discovery|Path|#)?\s*(\d+):?\s*(.*?)(?:\s*\[Depends:\s*(.*?)\s*\])?\s*$",
         re.IGNORECASE
     )
     

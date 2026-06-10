@@ -18,9 +18,11 @@ def get_prompt_backlog_size(repo_root: str) -> int:
     try:
         with open(path, "r") as f:
             data = yaml.safe_load(f) or {}
-        return len(data.get("prompts", []))
+        prompts = data.get("prompts", [])
+        return len([p for p in prompts if p.get("status") != "consumed"])
     except Exception:
         return 0
+
 
 def get_local_worktrees(repo_root: str) -> list[dict]:
     worktrees_dir = os.path.join(repo_root, ".worktrees")
