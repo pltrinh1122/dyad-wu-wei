@@ -1840,8 +1840,8 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[ ]` None
 
 ## #2019: Plan - Guard: Retain exhaust telemetry for steering efficiency
-- **Status**: Backlog
-- **Learnings & Context**: Draft technical implementation for ExhaustLogger primitive and Guard serialization pattern
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1862,6 +1862,12 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Learnings & Context**: Transience causes AI blindness. Exhaust must survive.
 - **Feedforward Invariants**:
   - `Serialize before panic.`
+
+## Plan - Guard: Retain exhaust telemetry for steering efficiency
+- **Status**: Completed
+- **Learnings & Context**: ExhaustLogger implements pointer-based steering and durable serialization.
+- **Feedforward Invariants**:
+  - `Guard must autoclear historical exhaust on pass.`
 
 ## Active Agents Matrix
 * **agent-ziran**:
