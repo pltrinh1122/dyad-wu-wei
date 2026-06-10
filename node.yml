@@ -1,8 +1,0 @@
-node_attributes:
-  status:
-    todo: "status: todo"
-    in_progress: "status: in-progress"
-    in_review: "status: in-review"
-    blocked: "status: blocked"
-  classification:
-    backlog: "backlog"
