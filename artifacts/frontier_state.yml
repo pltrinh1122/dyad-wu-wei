@@ -1458,9 +1458,9 @@ nodes:
   - SG-0008 is defined as the Triage Holding catchment mechanism
 - name: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
   status: Completed
-  learnings: Created WHAT-1915-audit-sg-triage-plan.md
+  learnings: Created administrative plan.
   invariants:
-  - SG-0008 will intercept support tickets; paths must explicitly map to SG-0008.
+  - '[x] Plan created.'
 - name: '#1931: [BUG] Intake: System Crash in plan-start'
   status: Backlog
   learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
@@ -1725,6 +1725,11 @@ nodes:
   invariants:
   - '[x] All unmapped paths must be addressed.'
 - name: '#2037: Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#2042: Harmonize - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
