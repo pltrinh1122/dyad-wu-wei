@@ -221,35 +221,3 @@ backlog_items:
   number: 2061
   title: 'Harmonize Bug Intake: System Crash in plan-start'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2061
-- body: '## Goal
-
-    Apply code changes to node_lifecycle.py and github_client.py to resolve the triad
-    of crash bugs
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2062
-  title: 'Act: Fix system crash bugs in plan-start'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2062
