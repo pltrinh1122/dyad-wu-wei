@@ -1,1 +1,191 @@
-backlog_items: []
+backlog_items:
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Triage Holding - Standalone
+    Triage & External Requirement Intakes.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2054
+  title: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2054
+- body: '## Goal
+
+    Technical design and proposed changes for Triage Holding - Standalone Triage &
+    External Requirement Intakes.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2054
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2055
+  title: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2055
+- body: '## Goal
+
+    Final reflection and path closure for Triage Holding - Standalone Triage & External
+    Requirement Intakes.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2055
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2056
+  title: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2056
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Bug Intake: System Crash
+    in plan-start.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2058
+  title: 'Harmonize - Bug Intake: System Crash in plan-start'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2058
+- body: '## Goal
+
+    Technical design and proposed changes for Bug Intake: System Crash in plan-start.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2058
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2059
+  title: 'Plan - Bug Intake: System Crash in plan-start'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2059
+- body: '## Goal
+
+    Final reflection and path closure for Bug Intake: System Crash in plan-start.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2059
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2060
+  title: 'Reflect - Bug Intake: System Crash in plan-start'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2060
