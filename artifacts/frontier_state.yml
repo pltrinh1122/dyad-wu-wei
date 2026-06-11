@@ -1683,9 +1683,8 @@ nodes:
   invariants: []
 - name: "#2028: Plan - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
     \ to r"
-  status: Backlog
-  learnings: "Technical design and proposed changes for [BUG] Intake: GEMINI.md changed\
-    \ \u2014 agent (/exit) recommended to r."
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: "#2029: Reflect - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
     \ to r"
@@ -1700,6 +1699,27 @@ nodes:
   invariants:
   - '[x] Operational directives (like system prompt reloads) must trigger a stateless
     interrupt (HALT) and skip DAG node creation.'
+- name: '#2031: [NOTICE] Intake: Backlog Hygiene Warning'
+  status: Backlog
+  learnings: '[NOTIFICATION] Backlog Hygiene Warning: Unmapped Paths (6) exceed Mapped
+    Paths (0). Repository state is unhealthy.'
+  invariants: []
+  kind: path
+- name: '#2032: Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [NOTICE] Intake:
+    Backlog Hygiene Warning.'
+  invariants: []
+- name: '#2033: Plan - [NOTICE] Intake: Backlog Hygiene Warning'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for [NOTICE] Intake: Backlog Hygiene
+    Warning.'
+  invariants: []
+- name: '#2034: Reflect - [NOTICE] Intake: Backlog Hygiene Warning'
+  status: Backlog
+  learnings: 'Final reflection and path closure for [NOTICE] Intake: Backlog Hygiene
+    Warning.'
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

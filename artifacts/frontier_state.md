@@ -1896,8 +1896,8 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[ ]` None
 
 ## #2028: Plan - [BUG] Intake: GEMINI.md changed — agent (/exit) recommended to r
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: GEMINI.md changed — agent (/exit) recommended to r.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1912,6 +1912,31 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Learnings & Context**: Categorizing operational file modifications (like GEMINI.md) as [BUG] intakes creates execution waste and pollutes the problem space.
 - **Feedforward Invariants**:
   - `[x] Operational directives (like system prompt reloads) must trigger a stateless interrupt (HALT) and skip DAG node creation.`
+
+## #2031: [NOTICE] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: [NOTIFICATION] Backlog Hygiene Warning: Unmapped Paths (6) exceed Mapped Paths (0). Repository state is unhealthy.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2032: Harmonize - [NOTICE] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [NOTICE] Intake: Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2033: Plan - [NOTICE] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [NOTICE] Intake: Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2034: Reflect - [NOTICE] Intake: Backlog Hygiene Warning
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [NOTICE] Intake: Backlog Hygiene Warning.
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-ziran**:
