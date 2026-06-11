@@ -29,6 +29,9 @@ strategic_goals:
   - 1517
   - 1970
   - 2031
+  - 1999
+  - 2003
+  - 2036
   status: Active
   title: Backlog Dynamics and Resource Budget Harmonization
 - collaborative_gap: The human cannot safely delegate execution authority to the agent,
@@ -80,6 +83,8 @@ strategic_goals:
   - 1955
   - 1951
   - 1946
+  - 1976
+  - 2017
   status: Active
   title: Preservation of Autonomous Velocity
 - collaborative_gap: The communication interface requires verbose conversational turns
@@ -165,6 +170,7 @@ strategic_goals:
   - 1223
   - 1547
   - 1913
+  - 2016
   status: Active
   title: External Project Service Excellence
 - collaborative_gap: The engine's execution loops are procedurally coupled to physical
