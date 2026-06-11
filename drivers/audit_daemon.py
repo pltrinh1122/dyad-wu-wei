@@ -54,10 +54,7 @@ def save_state(state):
         json.dump(state, f, indent=4)
 
 def dispatch_alert(message):
-    print(f"Dispatching alert to DAG: {message}")
-    import sys
-    sys.path.append(str(get_repo_root()))
-    from drivers import github_client
+    print(f"Dispatching alert to prompt queue: {message}")
     import re
     
     match = re.match(r"^\[(.*?)\]\s*(.*)", message)
@@ -80,18 +77,20 @@ def dispatch_alert(message):
     title = f"{prefix} Intake: {title_suffix}"
     
     try:
-        open_issues = github_client.get_open_issues()
-        for issue in open_issues:
-            if issue.get("title", "") == title:
-                print(f"Alert already tracked in DAG: {title}")
-                return
-                
-        from kernel.daemon_backlog import BacklogDaemon
-        backlog_daemon = BacklogDaemon()
-        backlog_daemon.add("path", title, message)
-        print(f"Alert successfully mapped to DAG: {title}")
+        from drivers import path_resolver
+        prompt_file = Path(path_resolver.resolve_workspace_path("artifacts", "prompt_backlog.yml"))
+        if prompt_file.exists():
+            with open(prompt_file, "r") as f:
+                prompt_content = f.read()
+                if title in prompt_content:
+                    print(f"Alert already tracked in prompt queue: {title}")
+                    return
+
+        prompt_cli = get_prompt_cli()
+        subprocess.run([str(prompt_cli), "add", f"{title}\n\n{message}"], check=True)
+        print(f"Alert successfully routed to prompt queue: {title}")
     except Exception as e:
-        print(f"Failed to dispatch alert to DAG: {e}")
+        print(f"Failed to dispatch alert to prompt queue: {e}")
 
 
 def evaluate_node_completion_threshold(rule, state):
