@@ -1956,6 +1956,37 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #2046: Falsify Triage Holding and Implement Prompt Routing Survivor
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: Route system daemon alerts directly to the prompt queue to leverage Agentic Healing, bypassing the SPAO Path lifecycle and eliminating the Triage Holding administrative overhead.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2047: Harmonize - Falsify Triage Holding and Implement Prompt Routing Survivor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2048: Plan - Falsify Triage Holding and Implement Prompt Routing Survivor
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Falsify Triage Holding and Implement Prompt Routing Survivor.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2049: Reflect - Falsify Triage Holding and Implement Prompt Routing Survivor
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Falsify Triage Holding and Implement Prompt Routing Survivor.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Plan - Falsify Triage Holding and Implement Prompt Routing Survivor
+- **Status**: Completed
+- **Learnings & Context**: Generated implementation plan
+- **Feedforward Invariants**:
+  - `[x] Plan created.`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
