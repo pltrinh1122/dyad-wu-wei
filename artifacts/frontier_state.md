@@ -1999,6 +1999,74 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `[x] Route system alerts to prompt queue`
 
+## #2053: Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: A holding Path to consolidate all unpromoted status:triage external intake nodes under the same parent class.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2054: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2055: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2056: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Triage Holding - Standalone Triage & External Requirement Intakes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2057: Bug Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: Fix detached HEAD push bug, global cache persistency bug, and StateDissonanceError exception bug
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2058: Harmonize - Bug Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Bug Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2059: Plan - Bug Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Bug Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2060: Reflect - Bug Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Bug Intake: System Crash in plan-start.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2061: Harmonize Bug Intake: System Crash in plan-start
+- **Status**: Backlog
+- **Learnings & Context**: Fix detached HEAD push bug, global cache persistency bug, and StateDissonanceError exception bug
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2062: Act: Fix system crash bugs in plan-start
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Act: Fix system crash bugs in plan-start
+- **Status**: Completed
+- **Learnings & Context**: Existing main hotfix fulfilled requirements, empty PR closed.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`

@@ -1769,6 +1769,62 @@ nodes:
   learnings: Implemented Prompt Routing Survivor
   invariants:
   - '[x] Route system alerts to prompt queue'
+- name: '#2053: Triage Holding - Standalone Triage & External Requirement Intakes'
+  status: Backlog
+  learnings: A holding Path to consolidate all unpromoted status:triage external intake
+    nodes under the same parent class.
+  invariants: []
+  kind: path
+- name: '#2054: Harmonize - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Triage Holding
+    - Standalone Triage & External Requirement Intakes.
+  invariants: []
+- name: '#2055: Plan - Triage Holding - Standalone Triage & External Requirement Intakes'
+  status: Backlog
+  learnings: Technical design and proposed changes for Triage Holding - Standalone
+    Triage & External Requirement Intakes.
+  invariants: []
+- name: '#2056: Reflect - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
+  status: Backlog
+  learnings: Final reflection and path closure for Triage Holding - Standalone Triage
+    & External Requirement Intakes.
+  invariants: []
+- name: '#2057: Bug Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: Fix detached HEAD push bug, global cache persistency bug, and StateDissonanceError
+    exception bug
+  invariants: []
+  kind: path
+- name: '#2058: Harmonize - Bug Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for Bug Intake:
+    System Crash in plan-start.'
+  invariants: []
+- name: '#2059: Plan - Bug Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for Bug Intake: System Crash in
+    plan-start.'
+  invariants: []
+- name: '#2060: Reflect - Bug Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Final reflection and path closure for Bug Intake: System Crash in plan-start.'
+  invariants: []
+- name: '#2061: Harmonize Bug Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: Fix detached HEAD push bug, global cache persistency bug, and StateDissonanceError
+    exception bug
+  invariants: []
+- name: '#2062: Act: Fix system crash bugs in plan-start'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Act: Fix system crash bugs in plan-start'
+  status: Completed
+  learnings: Existing main hotfix fulfilled requirements, empty PR closed.
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
