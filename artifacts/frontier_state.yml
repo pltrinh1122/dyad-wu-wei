@@ -1721,9 +1721,13 @@ nodes:
   invariants: []
 - name: 'Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
   status: Completed
-  learnings: Mapped Path 2031 to SG-0001 to resolve the hygiene warning condition.
+  learnings: Mapped dangling paths and closed them.
   invariants:
-  - '[x] All paths must be mapped to a Strategic Goal to prevent hygiene warnings.'
+  - '[x] All unmapped paths must be addressed.'
+- name: '#2037: Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
