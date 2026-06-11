@@ -1,0 +1,8 @@
+{
+  "guard": "DiscardInvariantGuard",
+  "message": "Uncommitted tracked edits detected.",
+  "payload": {
+    "git_status": "D artifacts/audit/exhaust_WipN1Guard_1781153726.json\n?? artifacts/audit/retro-2046-prompt-routing-survivor.md"
+  },
+  "timestamp": 1781153976
+}
