@@ -1882,6 +1882,37 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 - **Feedforward Invariants**:
   - `Exhaust logger functionality must remain active`
 
+## #2026: [BUG] Intake: GEMINI.md changed — agent (/exit) recommended to r
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: [FAILURE] GEMINI.md changed — agent (/exit) recommended to reload instructions
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2027: Harmonize - [BUG] Intake: GEMINI.md changed — agent (/exit) recommended to r
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2028: Plan - [BUG] Intake: GEMINI.md changed — agent (/exit) recommended to r
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: GEMINI.md changed — agent (/exit) recommended to r.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2029: Reflect - [BUG] Intake: GEMINI.md changed — agent (/exit) recommended to r
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: GEMINI.md changed — agent (/exit) recommended to r.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize GEMINI.md Bug Intake
+- **Status**: Completed
+- **Learnings & Context**: Categorizing operational file modifications (like GEMINI.md) as [BUG] intakes creates execution waste and pollutes the problem space.
+- **Feedforward Invariants**:
+  - `[x] Operational directives (like system prompt reloads) must trigger a stateless interrupt (HALT) and skip DAG node creation.`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`

@@ -1669,6 +1669,37 @@ nodes:
   learnings: Verified exhaust logger via TDD tests
   invariants:
   - Exhaust logger functionality must remain active
+- name: "#2026: [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended to\
+    \ r"
+  status: Backlog
+  learnings: "[FAILURE] GEMINI.md changed \u2014 agent (/exit) recommended to reload\
+    \ instructions"
+  invariants: []
+  kind: path
+- name: "#2027: Harmonize - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
+    \ to r"
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: "#2028: Plan - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
+    \ to r"
+  status: Backlog
+  learnings: "Technical design and proposed changes for [BUG] Intake: GEMINI.md changed\
+    \ \u2014 agent (/exit) recommended to r."
+  invariants: []
+- name: "#2029: Reflect - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
+    \ to r"
+  status: Backlog
+  learnings: "Final reflection and path closure for [BUG] Intake: GEMINI.md changed\
+    \ \u2014 agent (/exit) recommended to r."
+  invariants: []
+- name: Harmonize GEMINI.md Bug Intake
+  status: Completed
+  learnings: Categorizing operational file modifications (like GEMINI.md) as [BUG]
+    intakes creates execution waste and pollutes the problem space.
+  invariants:
+  - '[x] Operational directives (like system prompt reloads) must trigger a stateless
+    interrupt (HALT) and skip DAG node creation.'
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

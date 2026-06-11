@@ -63,11 +63,21 @@ def dispatch_alert(message):
     match = re.match(r"^\[(.*?)\]\s*(.*)", message)
     if match:
         content = match.group(2)
+        level = match.group(1).upper()
     else:
         content = message
+        level = "BUG"
         
     title_suffix = content.split(":")[0][:50] if ":" in content else content[:50]
-    title = f"[BUG] Intake: {title_suffix}"
+    
+    if level == "FAILURE":
+        prefix = "[ALERT]"
+    elif level == "NOTIFICATION":
+        prefix = "[NOTICE]"
+    else:
+        prefix = f"[{level}]"
+        
+    title = f"{prefix} Intake: {title_suffix}"
     
     try:
         open_issues = github_client.get_open_issues()
@@ -122,7 +132,12 @@ def evaluate_file_modified(rule, state):
         # We only trigger if last_hash was already set (to avoid triggering on first run)
         alert_level = rule.get("alert_level", "FAILURE").upper()
         msg = f"[{alert_level}] " + rule.get("prompt_message", "")
-        dispatch_alert(msg)
+        
+        if rule.get("create_intake") is False:
+            print(f"File modified (no intake created): {msg}")
+        else:
+            dispatch_alert(msg)
+            
         state["last_hash"] = current_hash
         return True, state
     elif last_hash == "":
