@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Falsify Triage Holding
-    and Implement Prompt Routing Survivor.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2047
-  title: Harmonize - Falsify Triage Holding and Implement Prompt Routing Survivor
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2047
-- body: '## Goal
-
     Technical design and proposed changes for Falsify Triage Holding and Implement
     Prompt Routing Survivor.
 
