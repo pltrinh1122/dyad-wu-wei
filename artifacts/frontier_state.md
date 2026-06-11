@@ -1591,9 +1591,9 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
 
 ## Plan - Triage Holding - Standalone Triage & External Requirement Intakes
 - **Status**: Completed
-- **Learnings & Context**: Created WHAT-1915-audit-sg-triage-plan.md
+- **Learnings & Context**: Created administrative plan.
 - **Feedforward Invariants**:
-  - `SG-0008 will intercept support tickets; paths must explicitly map to SG-0008.`
+  - `[x] Plan created.`
 
 ## #1931: [BUG] Intake: System Crash in plan-start
 - **Status**: Backlog
@@ -1945,6 +1945,12 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
   - `[x] All unmapped paths must be addressed.`
 
 ## #2037: Harmonize - [NOTICE] Intake: Backlog Hygiene Warning
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2042: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
