@@ -189,3 +189,35 @@ backlog_items:
   number: 2060
   title: 'Reflect - Bug Intake: System Crash in plan-start'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2060
+- body: '## Goal
+
+    Fix detached HEAD push bug, global cache persistency bug, and StateDissonanceError
+    exception bug
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2061
+  title: 'Harmonize Bug Intake: System Crash in plan-start'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2061
