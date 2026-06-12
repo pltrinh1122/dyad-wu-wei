@@ -96,6 +96,9 @@ The directed application of force. With a destination (Telos) and the laws of ph
 
 ## 🔄 Execution Loop & Governance
 
+### Cybernetic Steering Invariant (CSI)
+Deterministic enforcement is not a passive wall; it is an active steering mechanism. While the Operator's Generative Spec provides the Intent, the mechanical guardrails provide the Vector. By violently rejecting invalid states and surfacing precise corrections, the deterministic engine actively funnels generative variance into grounded truth, creating the mechanical pressure necessary to achieve the +1 synthesis.
+
 ### SPAOR (Meta-Loop)
 The universal **Sense-Plan-Act-Observe-Reflect** agentic protocol governing **all** agent/operator interactions. SPAOR is **not scoped exclusively to Node execution** — it is the common temporal algorithm from which all loop instantiations are derived. The acronym names all five load-bearing phases; the prior shorthand "SPAO" omitted Reflect by convention, not by design. Two concrete instantiations exist:
 
