@@ -3,7 +3,8 @@ from unittest.mock import MagicMock, patch
 from kernel.daemon_node import plan_start_node, plan_finish_node, checkout_node, reflect_node, sync_and_clean_node
 
 
-def test_plan_start_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subprocess):
+@patch("kernel.daemon_strategic.verify_node_transition_allowed")
+def test_plan_start_node(mock_verify, mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subprocess):
     # Setup
     mock_gh.get_issue_labels.return_value = ["backlog"]
     mock_gh.get_issue_details.return_value = {"title": "Test Title"}
@@ -17,7 +18,8 @@ def test_plan_start_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_su
     mock_gh.add_label.assert_called_with("157", "status: in-progress")
     mock_fe.append_active_node.assert_called_once()
 
-def test_plan_start_node_locked(mock_gh, mock_fe):
+@patch("kernel.daemon_strategic.verify_node_transition_allowed")
+def test_plan_start_node_locked(mock_verify, mock_gh, mock_fe):
     # Setup
     mock_gh.get_issue_labels.return_value = ["backlog", "status: in-progress"]
     mock_fe.read_active_node.return_value = "None"
@@ -27,7 +29,8 @@ def test_plan_start_node_locked(mock_gh, mock_fe):
     with pytest.raises((Exception, SystemExit), match="already in progress"):
         plan_start_node("157")
 
-def test_checkout_node(mock_gh, mock_fe, mock_telemetry, mock_subprocess):
+@patch("kernel.daemon_strategic.verify_node_transition_allowed")
+def test_checkout_node(mock_verify, mock_gh, mock_fe, mock_telemetry, mock_subprocess):
     # Setup
     mock_fe.read_active_node.return_value = "None"
     mock_gh.get_open_prs.return_value = []
@@ -39,7 +42,8 @@ def test_checkout_node(mock_gh, mock_fe, mock_telemetry, mock_subprocess):
     mock_gh.add_label.assert_called_with("157", "status: in-progress")
     mock_subprocess.assert_called()
 
-def test_reflect_node(mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subprocess, mock_nba):
+@patch("kernel.daemon_strategic.verify_node_transition_allowed")
+def test_reflect_node(mock_verify, mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subprocess, mock_nba):
     # Setup
     mock_fe.read_active_path.return_value = "Path 181: Configurable Sense Hooks"
     mock_fe.extract_path_id.return_value = "181"
@@ -279,3 +283,33 @@ def test_sync_and_clean_node_discard_invariant_guard_force():
         sync_and_clean_node(force_discard=True)
         
         mock_git.switch.assert_called_once()
+
+def test_sync_and_clean_node_csi_guard_orphaned_wip():
+    with patch("kernel.daemon_node.git_client"), \
+         patch("kernel.daemon_node.github_client") as mock_gh, \
+         patch("kernel.daemon_node.subprocess") as mock_sub, \
+         patch("kernel.daemon_node.HookDaemon"), \
+         patch("kernel.daemon_node.get_local_worktrees", return_value=[]), \
+         patch("kernel.daemon_node.os.path.exists") as mock_exists, \
+         patch("kernel.daemon_node.open") as mock_open:
+        
+        mock_sub.check_output.return_value = ""
+        mock_gh.get_open_prs.return_value = []
+        
+        # Simulate lock file existing with issue_id 999
+        def fake_exists(path):
+            if "lock.json" in path: return True
+            return False
+        mock_exists.side_effect = fake_exists
+        
+        from unittest.mock import mock_open as make_mock_open
+        mock_open.side_effect = make_mock_open(read_data='{"issue_id": "999"}')
+        
+        # Simulate GitHub returning issues with 'status: in-progress'
+        mock_gh.list_issues_by_label.side_effect = lambda label: [{"number": 999}, {"number": 1000}] if label == "status: in-progress" else []
+        
+        sync_and_clean_node(force_remote=True)
+        
+        # The guard should remove the label and add 'status: todo' for issue 1000, but leave 999 alone.
+        mock_gh.remove_label.assert_called_once_with("1000", "status: in-progress")
+        mock_gh.add_label.assert_called_once_with("1000", "status: todo")
