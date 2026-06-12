@@ -1825,6 +1825,64 @@ nodes:
   status: Completed
   learnings: Existing main hotfix fulfilled requirements, empty PR closed.
   invariants: []
+- name: '#2065: Orphaned WIP CSI Guard'
+  status: Backlog
+  learnings: 'Implement an active Cybernetic Steering Invariant (CSI) Guard in the
+    audit daemon to automatically detect and downgrade orphaned ''status: in-progress''
+    remote DAG labels that conflict with the local Lock-State Axiom.'
+  invariants: []
+  kind: path
+- name: '#2066: Harmonize - Orphaned WIP CSI Guard'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#2067: Plan - Orphaned WIP CSI Guard'
+  status: Backlog
+  learnings: Technical design and proposed changes for Orphaned WIP CSI Guard.
+  invariants: []
+- name: '#2068: Reflect - Orphaned WIP CSI Guard'
+  status: Backlog
+  learnings: Final reflection and path closure for Orphaned WIP CSI Guard.
+  invariants: []
+- name: '#2069: [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
+    \ `Unknown`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 739,\
+    \ in main\n    cmd_plan_start(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 442, in cmd_plan_start\n    plan_start_node(args.issue_id)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 27, in plan_start_node\n    node.plan_start()\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\"\
+    , line 230, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 262,\
+    \ in plan_start\n    self._verify_state_purity(frontier_file)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\"\
+    , line 181, in _verify_state_purity\n    raise StateDissonanceError(f\"Cannot\
+    \ proceed because Node '{current_active}' is already marked as active in {frontier_file}.\
+    \ Release the lock first.\")\nkernel.node_lifecycle.StateDissonanceError: Cannot\
+    \ proceed because Node '#2066: Harmonize - Orphaned WIP CSI Guard' is already\
+    \ marked as active in /mnt/shared_data/dzw/dyad-wu-wei/artifacts/frontier_state.md.\
+    \ Release the lock first.\n\n```\n"
+  invariants: []
+  kind: path
+- name: '#2070: Harmonize - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
+    System Crash in plan-start.'
+  invariants: []
+- name: '#2071: Plan - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
+    in plan-start.'
+  invariants: []
+- name: '#2072: Reflect - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
+    plan-start.'
+  invariants: []
+- name: 'Node 2066: Harmonize - Orphaned WIP CSI Guard'
+  status: Completed
+  learnings: 'The CSI guard actively downgrades remote status: in-progress labels
+    when no local lock exists.'
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
