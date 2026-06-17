@@ -11,6 +11,7 @@
 **Details (Agent):**
 - Defensive exception handling in the CLI boundary — ensure that explicitly modeled `Exception` derivatives that signify logical blocks (like `StateDissonanceError` or `StateCorruptionError`) are handled cleanly and rendered as `[🚫 BLOCKED]` in the CLI, rather than bleeding into the fallback catch-all that triggers an autonomous system crash report.
 - Robust regex constraints for issue properties — when inferring the Node Phase from the issue title, rely on rigorous bounds (e.g. anchoring to the start of the title) rather than permissive substring matching (e.g., checking if `"plan" in title`), which triggered false positives in the SPEC file checking logic.
+- Label hygiene for autonomous intakes — bug intake scripts must correctly apply `path`, `status: active`, `status: todo`, and `backlog` labels when generating paths and nodes, otherwise `bin/status` will fail to surface them as valid Next-Best-Actions and the DAG execution will seize.
 
 ## 3. STOP — what hurt (or almost did)
 **Narrative (Operator):**
@@ -19,5 +20,4 @@
 - Broad substring match dependencies — applying `"plan" in current_title.lower()` blindly captured implementation nodes simply because the target domain of the fix was the `plan-start` subcommand itself.
 
 ## Forward
-Path 2069/2070 is completed and a PR (#2074) has been pushed to the remote. 
-The Agent is entering True Dormancy while waiting for the PR to be reviewed and merged.
+Path 2069 is fully resolved. The `StateDissonanceError` is now gracefully handled, the false-positive SPEC file violation is fixed, and the structural label omissions on the bug intake nodes have been manually remediated.
