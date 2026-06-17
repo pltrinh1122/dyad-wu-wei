@@ -1,1 +1,159 @@
-backlog_items: []
+backlog_items:
+- body: '## Goal
+
+    Technical design and proposed changes for [BUG] Intake: System Crash in sync.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2076
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2077
+  title: 'Plan - [BUG] Intake: System Crash in sync'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2077
+- body: '## Goal
+
+    Final reflection and path closure for [BUG] Intake: System Crash in sync.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2077
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2079
+  title: 'Reflect - [BUG] Intake: System Crash in sync'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2079
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Triage Holding - Standalone
+    Triage & External Requirement Intakes.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2080
+  title: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2080
+- body: '## Goal
+
+    Technical design and proposed changes for Triage Holding - Standalone Triage &
+    External Requirement Intakes.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2080
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2081
+  title: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2081
+- body: '## Goal
+
+    Final reflection and path closure for Triage Holding - Standalone Triage & External
+    Requirement Intakes.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2081
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2082
+  title: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2082
