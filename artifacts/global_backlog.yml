@@ -1,37 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Final reflection and path closure for [BUG] Intake: System Crash in sync.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    2077
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2079
-  title: 'Reflect - [BUG] Intake: System Crash in sync'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2079
-- body: '## Goal
-
     Harmonize on the philosophical and technical intent for Triage Holding - Standalone
     Triage & External Requirement Intakes.
 
