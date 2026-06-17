@@ -11,7 +11,7 @@ from kernel.daemon_prompt import process_prompts, get_backlog_file, clean_prompt
 from kernel.daemon_status import get_local_worktrees
 from kernel.sense_hooks import HookDaemon
 
-from kernel.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement
+from kernel.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement, StateDissonanceError
 from kernel.daemon_telemetry import TelemetryDaemon, record_execution
 
 class ValidationError(Exception):
@@ -777,7 +777,7 @@ def main():
         elif args.subcommand == "retro":
             cmd_retro(args)
 
-    except ValidationError as ve:
+    except (ValidationError, StateDissonanceError) as ve:
         print(f"\n[🚫 BLOCKED] Execution Blocked: {ve}")
         sys.exit(1)
     except Exception as e:
