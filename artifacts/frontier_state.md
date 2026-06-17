@@ -2136,14 +2136,20 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2072: Reflect - [BUG] Intake: System Crash in plan-start
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in plan-start.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## Node 2066: Harmonize - Orphaned WIP CSI Guard
 - **Status**: Completed
 - **Learnings & Context**: The CSI guard actively downgrades remote status: in-progress labels when no local lock exists.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Reflect - [BUG] Intake: System Crash in plan-start
+- **Status**: Completed
+- **Learnings & Context**: Proper label hygiene is critical for daemon status surfacing.
 - **Feedforward Invariants**:
   - `[ ]` None
 
