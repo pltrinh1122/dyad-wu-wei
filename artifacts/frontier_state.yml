@@ -1886,6 +1886,15 @@ nodes:
   status: Completed
   learnings: Proper label hygiene is critical for daemon status surfacing.
   invariants: []
+- name: '#2076: Harmonize - [BUG] Intake: System Crash in sync'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Fix WipN1Guard Exception
+  status: Completed
+  learnings: Upgraded WipN1Guard to raise StateDissonanceError instead of generic
+    Exception
+  invariants: []
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

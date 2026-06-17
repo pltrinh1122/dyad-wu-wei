@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import MagicMock, patch
 from kernel.daemon_node import plan_start_node, plan_finish_node, checkout_node, reflect_node, sync_and_clean_node
+from kernel.node_lifecycle import StateDissonanceError
 
 
 @patch("kernel.daemon_strategic.verify_node_transition_allowed")
@@ -145,7 +146,7 @@ def test_sync_and_clean_node_wip_violation():
         mock_sub.check_output.return_value = ""
         mock_wt.return_value = [{"number": 123, "url": "local:node/123-some-branch"}]
         
-        with pytest.raises((Exception, SystemExit), match="WIP-N=1 Violation"):
+        with pytest.raises((StateDissonanceError, SystemExit), match="WIP-N=1 Violation"):
             sync_and_clean_node()
             
     with patch("kernel.daemon_node.git_client"), \
@@ -157,7 +158,7 @@ def test_sync_and_clean_node_wip_violation():
         mock_sub.check_output.return_value = ""
         mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "some-branch"}]
         
-        with pytest.raises((Exception, SystemExit), match="WIP-N=1 Violation"):
+        with pytest.raises((StateDissonanceError, SystemExit), match="WIP-N=1 Violation"):
             sync_and_clean_node(force_remote=True)
 
 

@@ -2153,6 +2153,18 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #2076: Harmonize - [BUG] Intake: System Crash in sync
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Fix WipN1Guard Exception
+- **Status**: Completed
+- **Learnings & Context**: Upgraded WipN1Guard to raise StateDissonanceError instead of generic Exception
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
