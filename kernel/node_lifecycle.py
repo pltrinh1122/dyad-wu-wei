@@ -362,7 +362,7 @@ class TerminalNode(BaseNode):
         current_title = issue_details.get("title", "")
         
         # Enforce WHAT- spec file tracking in git
-        if "plan" in current_title.lower():
+        if re.search(r"^(?:Node\s*\d+:\s*|#\d+:\s*)?Plan\b", current_title, flags=re.IGNORECASE):
             try:
                 res = subprocess.run(["git", "diff", "--name-only", "main"], capture_output=True, text=True)
                 if res.returncode != 0:
