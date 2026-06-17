@@ -1874,14 +1874,17 @@ nodes:
     in plan-start.'
   invariants: []
 - name: '#2072: Reflect - [BUG] Intake: System Crash in plan-start'
-  status: Backlog
-  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
-    plan-start.'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: 'Node 2066: Harmonize - Orphaned WIP CSI Guard'
   status: Completed
   learnings: 'The CSI guard actively downgrades remote status: in-progress labels
     when no local lock exists.'
+  invariants: []
+- name: 'Reflect - [BUG] Intake: System Crash in plan-start'
+  status: Completed
+  learnings: Proper label hygiene is critical for daemon status surfacing.
   invariants: []
 active_agents:
   agent-ziran:
