@@ -116,7 +116,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
                 {"open_prs": [pr.get('headRefName', '') for pr in open_prs]},
                 f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}"
             )
-            raise Exception(f"[🚫 BLOCKED] WipN1Guard failed. Transient exhaust serialized to {exhaust_path}. You must read this file to deduce the failure.\nWIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
+            raise StateDissonanceError(f"[🚫 BLOCKED] WipN1Guard failed. Transient exhaust serialized to {exhaust_path}. You must read this file to deduce the failure.\nWIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
         else:
             ExhaustLogger.clear_historical_exhaust("WipN1Guard")
     else:
@@ -145,7 +145,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
                     {"still_open_worktrees": [w.get('branch', '') for w in still_open]},
                     f"WIP-N=1 Violation: Cannot initiate SENSE phase while local Node worktrees are still active: {wt_list}"
                 )
-                raise Exception(f"[🚫 BLOCKED] WipN1Guard failed. Transient exhaust serialized to {exhaust_path}. You must read this file to deduce the failure.\nWIP-N=1 Violation: Cannot initiate SENSE phase while local Node worktrees are still active: {wt_list}\n(If the corresponding PR was merged on GitHub, you must manually delete this worktree to sync offline.)")
+                raise StateDissonanceError(f"[🚫 BLOCKED] WipN1Guard failed. Transient exhaust serialized to {exhaust_path}. You must read this file to deduce the failure.\nWIP-N=1 Violation: Cannot initiate SENSE phase while local Node worktrees are still active: {wt_list}\n(If the corresponding PR was merged on GitHub, you must manually delete this worktree to sync offline.)")
             else:
                 ExhaustLogger.clear_historical_exhaust("WipN1Guard")
         else:
