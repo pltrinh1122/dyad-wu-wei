@@ -363,7 +363,7 @@ def _is_pure_ziran(path_id: str, ledger: dict) -> bool:
                 
     return True
 
-def _verify_persona(path_id: str, ledger: dict) -> None:
+def _verify_persona(path_id: str, ledger: dict, node_id: str = None) -> None:
     is_offline = os.environ.get("ANTIGRAVITY_RUNNING_TESTS") == "1" or os.environ.get("SPAO_OFFLINE") == "1"
     if is_offline and not _FORCE_STRATEGIC_VERIFICATION:
         return
@@ -372,8 +372,23 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
     what_0065_path = path_resolver.resolve_workspace_path("kb", "WHAT-0065-domain-path-ownership-index.md")
     what_0062_path = path_resolver.resolve_workspace_path("kb", "WHAT-0062-agent-persona-ownership-index.md")
 
+    is_admin_node = False
+    if node_id:
+        try:
+            details = github_client.get_issue_details(str(node_id))
+            title = details.get("title", "")
+            prefixes = ["Harmonize", "Plan", "Reflect", "Align", "Activity", "Discovery"]
+            if any(title.strip().startswith(prefix) for prefix in prefixes):
+                is_admin_node = True
+        except Exception:
+            pass
+
     if not spao_persona:
         resolved_owner = None
+        # 0. Check node administrative prefix
+        if is_admin_node:
+            resolved_owner = "frontier"
+
         # 1. Check WHAT-0065 (Horizontal Domain Override)
         if os.path.exists(what_0065_path):
             try:
@@ -458,7 +473,7 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
         if domain_id:
             owner = domain_to_owner.get(domain_id)
             if owner and owner != "unassigned":
-                if owner == "shared" or owner == spao_persona:
+                if owner == "shared" or owner == spao_persona or (spao_persona == "frontier" and is_admin_node):
                     return # Authorized by horizontal override!
                 else:
                     raise Exception(f"Persona Gate Blocked: Executing persona '{spao_persona}' does not match horizontal domain owner '{owner}' for Path #{path_id}.")
@@ -482,7 +497,8 @@ def _verify_persona(path_id: str, ledger: dict) -> None:
         if owner == "unassigned":
             sys.exit(f"[🚫 BLOCKED] Persona Gate Blocked: SG {sg_id} is 'unassigned'.")
         if owner != "shared" and owner != spao_persona:
-            sys.exit(f"[🚫 BLOCKED] Persona Gate Blocked: Executing persona '{spao_persona}' does not match vertical SG owner '{owner}' for Path #{path_id}.")
+            if not (spao_persona == "frontier" and is_admin_node):
+                sys.exit(f"[🚫 BLOCKED] Persona Gate Blocked: Executing persona '{spao_persona}' does not match vertical SG owner '{owner}' for Path #{path_id}.")
 
 
 def verify_node_transition_allowed(node_id: str) -> None:
@@ -509,11 +525,11 @@ def verify_node_transition_allowed(node_id: str) -> None:
                 
     if str(parent_path_id) not in active_prioritized_paths:
         if _is_pure_ziran(str(parent_path_id), ledger):
-            _verify_persona(str(parent_path_id), ledger)
+            _verify_persona(str(parent_path_id), ledger, node_id=node_id_str)
             return
         print(f"⚠️  WARNING: Parent Path #{parent_path_id} of Node #{node_id_str} is not prioritized in the active strategic ledger.", file=sys.stderr)
 
-    _verify_persona(str(parent_path_id), ledger)
+    _verify_persona(str(parent_path_id), ledger, node_id=node_id_str)
 
 def verify_path_activation_allowed(path_id: str) -> None:
     """Verifies that a path activation is allowed based on the strategic intent ledger."""

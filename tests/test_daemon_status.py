@@ -119,3 +119,31 @@ def test_print_goal_progress_report(mock_details, mock_ledger, mock_list_issues,
     assert "[█████░░░░░] 50.0% (1/2)" in captured.out
     assert "[x] Path 916: Completed Path" in captured.out
     assert "[ ] Path 999: Open Path" in captured.out
+
+def test_main_dispatcher_auto_lock(capsys, monkeypatch):
+    import kernel.daemon_status
+    import kernel.daemon_nba
+    import subprocess
+    
+    monkeypatch.setattr(kernel.daemon_status, "get_current_branch", lambda cwd=None: "main")
+    monkeypatch.setattr(kernel.daemon_status, "get_local_worktrees", lambda repo: [])
+    monkeypatch.setattr(kernel.daemon_status, "read_active_path", lambda f: "802")
+    monkeypatch.setattr(kernel.daemon_status, "read_active_node", lambda f: "None")
+    
+    mock_proc = MagicMock()
+    mock_proc.stdout = "ℹ️  Auto-resolved SPAO_PERSONA_ID to 'agent-sg5' for Path #802"
+    mock_proc.stderr = ""
+    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: mock_proc)
+    
+    monkeypatch.setattr(kernel.daemon_nba.NBADaemon, "evaluate", lambda self, frontier_file, local_mode=False: {
+        "type": "path_continuation",
+        "recommendations": [{"id": 805, "title": "Act - Something"}]
+    })
+    
+    with patch("kernel.daemon_status.repo_root", "/tmp"):
+        with patch("os.path.exists", return_value=True):
+            kernel.daemon_status.main()
+            
+    captured = capsys.readouterr()
+    assert "[🤖 AUTONOMY] WIP=0 detected. Automatically acquiring lock for top NBA: Node 805..." in captured.out
+    assert "[🤖 DISPATCH] NBA Auto-Locked for subagent agent-sg5. Main Agent MUST use invoke_subagent to dispatch this node." in captured.out

@@ -230,7 +230,16 @@ def main():
                 print(f"\n[🤖 AUTONOMY] WIP=0 detected. Automatically acquiring lock for top NBA: Node {nba_id}...")
                 import subprocess
                 bin_node = os.path.join(repo_root, "bin", "node")
-                subprocess.run([bin_node, "plan-start", str(nba_id)])
+                process = subprocess.run([bin_node, "plan-start", str(nba_id)], capture_output=True, text=True)
+                print(process.stdout)
+                if process.stderr:
+                    print(process.stderr, file=sys.stderr)
+                
+                match = re.search(r"Auto-resolved SPAO_PERSONA_ID to '([^']+)'", process.stdout)
+                if match:
+                    persona = match.group(1)
+                    if persona != "frontier":
+                        print(f"\n[🤖 DISPATCH] NBA Auto-Locked for subagent {persona}. Main Agent MUST use invoke_subagent to dispatch this node.")
         except Exception:
             pass
 
