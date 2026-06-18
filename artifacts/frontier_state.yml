@@ -1951,9 +1951,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2097: Reflect - Path: The Sub-Agent Gateway Controller (Ignition)'
-  status: Backlog
-  learnings: 'Final reflection and path closure for Path: The Sub-Agent Gateway Controller
-    (Ignition).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2098: Execution Exhaust & Telemetry Partitioning (Audit)'
   status: Backlog
@@ -2132,6 +2131,17 @@ nodes:
   - The implementation adds a dispatch parser to daemon_node.py
   - adds dispatch_active_node to agent_frontier.py to modify the lock ledger safely
   - and includes a test.
+- name: 'Act - Path: The Sub-Agent Gateway Controller'
+  status: Cancelled
+  learnings: 'Cancelled: Replaced by Node 2129'
+  invariants: []
+- name: 'Reflect - Path: The Sub-Agent Gateway Controller'
+  status: Completed
+  learnings: The gateway controller sub-agent architecture was fully materialized,
+    preserving true dormancy via bin/node dispatch.
+  invariants:
+  - Lock-state modifications must be strictly paired with node status transitions
+    to prevent active_agents orphan state.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

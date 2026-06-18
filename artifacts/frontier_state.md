@@ -2235,8 +2235,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2097: Reflect - Path: The Sub-Agent Gateway Controller (Ignition)
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Path: The Sub-Agent Gateway Controller (Ignition).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2449,6 +2449,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `The implementation adds a dispatch parser to daemon_node.py`
   - `adds dispatch_active_node to agent_frontier.py to modify the lock ledger safely`
   - `and includes a test.`
+
+## Act - Path: The Sub-Agent Gateway Controller
+- **Status**: Cancelled
+- **Learnings & Context**: Cancelled: Replaced by Node 2129
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Reflect - Path: The Sub-Agent Gateway Controller
+- **Status**: Completed
+- **Learnings & Context**: The gateway controller sub-agent architecture was fully materialized, preserving true dormancy via bin/node dispatch.
+- **Feedforward Invariants**:
+  - `Lock-state modifications must be strictly paired with node status transitions to prevent active_agents orphan state.`
 
 ## Active Agents Matrix
 * **agent-ziran**:
