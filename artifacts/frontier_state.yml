@@ -1925,9 +1925,8 @@ nodes:
   kind: path
 - name: '#2091: Harmonize - Path: Concurrent Lock Ledger Materialization (Internal
     State)'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for Path: Concurrent
-    Lock Ledger Materialization (Internal State).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2092: Plan - Path: Concurrent Lock Ledger Materialization (Internal State)'
   status: Backlog
@@ -2093,6 +2092,12 @@ nodes:
     daemon_node.py
   invariants:
   - WipN1Guard evaluates current persona's worktrees only
+- name: 'Harmonize - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  status: Completed
+  learnings: Identified the need to decouple the monolithic lock and update the CSI
+    guard to support multi-agent concurrency.
+  invariants:
+  - CSI Guard must validate against the active_agents ledger
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
