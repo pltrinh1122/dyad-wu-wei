@@ -286,3 +286,99 @@ backlog_items:
   number: 2097
   title: 'Reflect - Path: The Sub-Agent Gateway Controller (Ignition)'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2097
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Path: Execution Exhaust
+    & Telemetry Partitioning (Audit).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2099
+  title: 'Harmonize - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2099
+- body: '## Goal
+
+    Technical design and proposed changes for Path: Execution Exhaust & Telemetry
+    Partitioning (Audit).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2099
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2100
+  title: 'Plan - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2100
+- body: '## Goal
+
+    Final reflection and path closure for Path: Execution Exhaust & Telemetry Partitioning
+    (Audit).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2100
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2101
+  title: 'Reflect - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2101
