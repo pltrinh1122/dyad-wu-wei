@@ -1988,10 +1988,9 @@ nodes:
   name: '#2102: Concurrent DAG Evaluation (The Scoring Alg)'
   status: Backlog
 - invariants: []
-  learnings: 'Harmonize on the philosophical and technical intent for Path: Concurrent
-    DAG Evaluation (The Scoring Alg).'
+  learnings: Planning Phase
   name: '#2103: Harmonize - Path: Concurrent DAG Evaluation (The Scoring Alg)'
-  status: Backlog
+  status: '[///] Act Phase'
 - invariants: []
   learnings: 'Technical design and proposed changes for Path: Concurrent DAG Evaluation
     (The Scoring Alg).'
@@ -2149,3 +2148,8 @@ nodes:
   learnings: Path successfully completed, automated partition mechanics working seamlessly
   invariants:
   - '- artifacts/audit/retro-2098.md'
+- name: 'Harmonize - Path: Concurrent DAG Mutex Matrix'
+  status: Completed
+  learnings: Harmonized intent and structural requirements into artifacts/harmonize_2102.md
+  invariants:
+  - '- artifacts/harmonize_2102.md'
