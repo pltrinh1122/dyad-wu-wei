@@ -2248,8 +2248,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2099: Harmonize - Path: Execution Exhaust & Telemetry Partitioning (Audit)
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: Execution Exhaust & Telemetry Partitioning (Audit).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2435,6 +2435,20 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `Plan provides clear steps to implement bin/node dispatch CLI arguments`
   - `lock transition in agent_frontier.py`
   - `and automated test cases.`
+
+## #2129: Act - Path: The Sub-Agent Gateway Controller (Ignition)
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Act - Path: The Sub-Agent Gateway Controller (Ignition)
+- **Status**: Completed
+- **Learnings & Context**: Implemented the Gateway Controller CLI command bin/node dispatch to handle transitioning nodes between personas and enforcing True Dormancy for the kernel_daemon.
+- **Feedforward Invariants**:
+  - `The implementation adds a dispatch parser to daemon_node.py`
+  - `adds dispatch_active_node to agent_frontier.py to modify the lock ledger safely`
+  - `and includes a test.`
 
 ## Active Agents Matrix
 * **agent-ziran**:

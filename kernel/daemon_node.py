@@ -666,6 +666,28 @@ def cmd_set_classification(args):
         import sys
         sys.exit(2)
 
+
+def cmd_dispatch(args):
+    import sys
+    from kernel.agent_frontier import dispatch_active_node
+    from kernel.node_lifecycle import TerminalNode
+    import os
+    
+    issue_id = args.issue_id
+    persona = args.persona
+    source_persona = os.environ.get("SPAO_PERSONA_ID") or "frontier"
+    
+    try:
+        dispatch_active_node("artifacts/frontier_state.yml", issue_id, source_persona, persona)
+        print(f"✅ Successfully dispatched Node {issue_id} to persona '{persona}'.")
+        # True Dormancy enforced: kernel_daemon yields execution.
+        print("kernel_daemon yielding execution (True Dormancy).")
+        sys.exit(0)
+    except Exception as e:
+        print(f"❌ Dispatch failed: {e}")
+        sys.exit(1)
+
+
 def cmd_test(args):
     log_stage_advancement("act", "Executing TDD Test Harness Validation", f"Running pytest on target: {args.target}")
     daemon = daemon_testing.TestDaemon()
@@ -714,6 +736,12 @@ def main():
         parser_r.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
         parser_r.add_argument("--stage", nargs="?", const="all", default="all", help="Granular files to stage: 'all' (default), 'none', or list.")
         parser_r.add_argument("--insights", default="", help="Active Insights (e.g., WHY-0071, WHY-0075)")
+
+
+        # dispatch
+        parser_dispatch = subparsers.add_parser("dispatch", help="Safely dispatch a locked Node to a sub-agent persona")
+        parser_dispatch.add_argument("issue_id", help="The ID of the node to dispatch")
+        parser_dispatch.add_argument("persona", help="The target sub-agent persona (e.g. research, test)")
 
         # cancel
         parser_c = subparsers.add_parser("cancel", help="Cancel a structurally redundant node")
@@ -781,6 +809,8 @@ def main():
             cmd_plan_start(args)
         elif args.subcommand == "plan-finish":
             cmd_plan_finish(args)
+        elif args.subcommand == "dispatch":
+            cmd_dispatch(args)
         elif args.subcommand == "cancel":
             cmd_cancel(args)
         elif args.subcommand == "abort":
