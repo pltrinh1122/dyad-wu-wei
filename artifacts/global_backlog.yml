@@ -478,3 +478,99 @@ backlog_items:
   number: 2105
   title: 'Reflect - Path: Concurrent DAG Evaluation (The Scoring Alg)'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2105
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Path: The Orchestrator
+    Harness (The Loop Rewire).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2107
+  title: 'Harmonize - Path: The Orchestrator Harness (The Loop Rewire)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2107
+- body: '## Goal
+
+    Technical design and proposed changes for Path: The Orchestrator Harness (The
+    Loop Rewire).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2107
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2108
+  title: 'Plan - Path: The Orchestrator Harness (The Loop Rewire)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2108
+- body: '## Goal
+
+    Final reflection and path closure for Path: The Orchestrator Harness (The Loop
+    Rewire).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2108
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2109
+  title: 'Reflect - Path: The Orchestrator Harness (The Loop Rewire)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2109
