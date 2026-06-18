@@ -2375,8 +2375,8 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `[ ]` None
 
 ## #2118: Harmonize - [BUG] Intake: System Crash in reflect
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in reflect.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2500,6 +2500,13 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `- kernel/daemon_strategic.py
 - kernel/daemon_status.py
 - GEMINI.md`
+
+## Path 2106: The Orchestrator Harness (The Loop Rewire)
+- **Status**: Completed
+- **Kind**: path
+- **Learnings & Context**: Completed rewiring the execution harness to automatically resolve Administrative nodes to frontier, leaving Act nodes strictly for subagent dispatch, preserving the executor bypass
+- **Feedforward Invariants**:
+  - `- kernel/daemon_strategic.py\n- kernel/daemon_status.py\n- GEMINI.md`
 
 ## Active Agents Matrix
 * **agent-sg5**:

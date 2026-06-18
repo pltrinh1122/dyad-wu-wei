@@ -2063,10 +2063,9 @@ nodes:
   name: '#2117: [BUG] Intake: System Crash in reflect'
   status: Backlog
 - invariants: []
-  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
-    System Crash in reflect.'
+  learnings: Planning Phase
   name: '#2118: Harmonize - [BUG] Intake: System Crash in reflect'
-  status: Backlog
+  status: '[///] Act Phase'
 - invariants: []
   learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
     in reflect.'
@@ -2179,3 +2178,11 @@ nodes:
     - kernel/daemon_status.py
 
     - GEMINI.md'
+- name: 'Path 2106: The Orchestrator Harness (The Loop Rewire)'
+  status: Completed
+  learnings: Completed rewiring the execution harness to automatically resolve Administrative
+    nodes to frontier, leaving Act nodes strictly for subagent dispatch, preserving
+    the executor bypass
+  invariants:
+  - '- kernel/daemon_strategic.py\n- kernel/daemon_status.py\n- GEMINI.md'
+  kind: path
