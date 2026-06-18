@@ -480,38 +480,6 @@ backlog_items:
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2109
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Path: Orchestrator Local
-    Invariant Isolation (Filesystem State).
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2111
-  title: 'Harmonize - Path: Orchestrator Local Invariant Isolation (Filesystem State)'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2111
-- body: '## Goal
-
     Technical design and proposed changes for Path: Orchestrator Local Invariant Isolation
     (Filesystem State).
 
