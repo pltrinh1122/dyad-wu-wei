@@ -225,17 +225,14 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
 
     # 6.5. Orphaned WIP CSI Guard
     try:
-        lock_path = os.path.join(repo_root, "artifacts", "frontier_state", "lock.json")
-        locked_issue_id = None
-        if os.path.exists(lock_path):
-            with open(lock_path, "r", encoding="utf-8") as lf:
-                lock_data = json.load(lf)
-                locked_issue_id = str(lock_data.get("issue_id", ""))
+        from kernel.agent_frontier import get_all_active_locked_issue_ids
+        state_path = os.path.join(repo_root, "artifacts", "frontier_state.yml")
+        locked_issue_ids = get_all_active_locked_issue_ids(state_path)
 
         in_progress_issues = github_client.list_issues_by_label("status: in-progress")
         for ip_issue in in_progress_issues:
             ip_id = str(ip_issue["number"])
-            if ip_id != locked_issue_id:
+            if ip_id not in locked_issue_ids:
                 print(f"[🛡️ CSI GUARD] Orphaned 'status: in-progress' detected on Node #{ip_id}. Lock-State Axiom dictates rejection. Actively downgrading to 'status: todo'.")
                 github_client.remove_label(ip_id, "status: in-progress")
                 github_client.add_label(ip_id, "status: todo")

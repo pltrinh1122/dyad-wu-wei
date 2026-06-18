@@ -183,6 +183,47 @@ def extract_path_id(path_str: str) -> str | None:
     from drivers.frontier_editor import extract_path_id as raw_extract
     return raw_extract(path_str)
 
+def get_all_active_locked_issue_ids(filepath: str) -> set[str]:
+    """Returns a set of all currently locked issue IDs (Nodes and Paths) across all active agents."""
+    import re
+    yml_path = resolve_yml_path(filepath)
+    state = load_state(yml_path)
+    active_agents = state.get("active_agents") or {}
+    
+    locked_ids = set()
+    for persona, data in active_agents.items():
+        node_str = data.get("current_active_node")
+        path_str = data.get("current_active_path")
+        
+        if node_str:
+            match = re.search(r"#(\d+)", node_str)
+            if match:
+                locked_ids.add(match.group(1))
+                
+        if path_str:
+            match = re.search(r"#(\d+)", path_str)
+            if match:
+                locked_ids.add(match.group(1))
+            else:
+                # Fallback to extract_path_id logic
+                pid = extract_path_id(path_str)
+                if pid:
+                    locked_ids.add(pid)
+                    
+    # Also parse legacy current_active_node/path just in case
+    legacy_node = state.get("current_active_node")
+    legacy_path = state.get("current_active_path")
+    if legacy_node:
+        match = re.search(r"#(\d+)", legacy_node)
+        if match:
+            locked_ids.add(match.group(1))
+    if legacy_path:
+        match = re.search(r"#(\d+)", legacy_path)
+        if match:
+            locked_ids.add(match.group(1))
+            
+    return locked_ids
+
 @record_execution(stage="skill")
 def set_active_path(filepath: str, path_name: str) -> None:
     """Updates the text below Current Active Path."""

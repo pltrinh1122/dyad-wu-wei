@@ -291,26 +291,16 @@ def test_sync_and_clean_node_csi_guard_orphaned_wip():
          patch("kernel.daemon_node.subprocess") as mock_sub, \
          patch("kernel.daemon_node.HookDaemon"), \
          patch("kernel.daemon_node.get_local_worktrees", return_value=[]), \
-         patch("kernel.daemon_node.os.path.exists") as mock_exists, \
-         patch("kernel.daemon_node.open") as mock_open:
-        
+         patch("kernel.agent_frontier.get_all_active_locked_issue_ids", return_value={"999"}):
+
         mock_sub.check_output.return_value = ""
         mock_gh.get_open_prs.return_value = []
-        
-        # Simulate lock file existing with issue_id 999
-        def fake_exists(path):
-            if "lock.json" in path: return True
-            return False
-        mock_exists.side_effect = fake_exists
-        
-        from unittest.mock import mock_open as make_mock_open
-        mock_open.side_effect = make_mock_open(read_data='{"issue_id": "999"}')
-        
-        # Simulate GitHub returning issues with 'status: in-progress'
+
+        # Simulate GitHub returning issues with status: in-progress
         mock_gh.list_issues_by_label.side_effect = lambda label: [{"number": 999}, {"number": 1000}] if label == "status: in-progress" else []
-        
+
         sync_and_clean_node(force_remote=True)
-        
-        # The guard should remove the label and add 'status: todo' for issue 1000, but leave 999 alone.
+
+        # The guard should remove the label and add status: todo for issue 1000, but leave 999 alone.
         mock_gh.remove_label.assert_called_once_with("1000", "status: in-progress")
         mock_gh.add_label.assert_called_once_with("1000", "status: todo")
