@@ -1067,7 +1067,7 @@ nodes:
   learnings: Planned graceful validation for cmd_checkout
   invariants: []
 - name: '#999: Implement quarantine survivor'
-  status: Completed
+  status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
 - name: '#1719: Reflect - Falsify Title Decorations'
@@ -2036,9 +2036,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2112: Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for Path: Orchestrator Local Invariant
-    Isolation (Filesystem State).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2113: Reflect - Path: Orchestrator Local Invariant Isolation (Filesystem
     State)'
@@ -2083,6 +2082,17 @@ nodes:
   learnings: Created WHAT and WHY for local invariant isolation.
   invariants:
   - none
+- name: '#2122: Reflect - Synthesize Epistemic Retrospective retro-2112.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-2112.md into the system's operational guidelines (the Dao).
+  invariants: []
+- name: 'Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)'
+  status: Completed
+  learnings: Technical design and implementation for Local Invariant Isolation in
+    daemon_node.py
+  invariants:
+  - WipN1Guard evaluates current persona's worktrees only
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

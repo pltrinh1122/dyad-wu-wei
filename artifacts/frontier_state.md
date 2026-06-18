@@ -2329,8 +2329,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2112: Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: Orchestrator Local Invariant Isolation (Filesystem State).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2391,6 +2391,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Created WHAT and WHY for local invariant isolation.
 - **Feedforward Invariants**:
   - `none`
+
+## #2122: Reflect - Synthesize Epistemic Retrospective retro-2112.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-2112.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)
+- **Status**: Completed
+- **Learnings & Context**: Technical design and implementation for Local Invariant Isolation in daemon_node.py
+- **Feedforward Invariants**:
+  - `WipN1Guard evaluates current persona's worktrees only`
 
 ## Active Agents Matrix
 * **agent-ziran**:
