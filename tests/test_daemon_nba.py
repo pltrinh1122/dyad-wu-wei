@@ -85,6 +85,61 @@ class TestNBADaemon(unittest.TestCase):
             self.assertEqual(result["type"], "path_switching")
             self.assertEqual(len(result["recommendations"]), 0)
 
+    def test_evaluate_local_path_continuation_locked_node(self, mock_read):
+        with patch("kernel.daemon_nba.agent_frontier.extract_path_id") as mock_extract, \
+             patch("kernel.daemon_nba.agent_frontier.load_state") as mock_load:
+            mock_read.return_value = "**Path 887: Refine Next-Best-Action Hook Execution Speed**"
+            mock_extract.return_value = "887"
+            mock_load.return_value = {
+                "current_active_path": "**Path 887: Refine Next-Best-Action Hook Execution Speed**",
+                "active_agents": {
+                    "agent-sg5": {
+                        "current_active_node": "Node 890: Activity 890: Reflect - Refine Next-Best-Action Hook Execution Speed"
+                    }
+                },
+                "nodes": [
+                    {
+                        "name": "Node 888: Discovery 888: Harmonize - Refine Next-Best-Action Hook Execution Speed",
+                        "status": "Completed"
+                    },
+                    {
+                        "name": "Node 889: Discovery 889: Plan - Refine Next-Best-Action Hook Execution Speed",
+                        "status": "Completed"
+                    },
+                    {
+                        "name": "Node 890: Activity 890: Reflect - Refine Next-Best-Action Hook Execution Speed",
+                        "status": "Backlog"
+                    }
+                ]
+            }
+            
+            nba = NBADaemon()
+            result = nba.evaluate("dummy_frontier.md", local_mode=True)
+            
+            self.assertEqual(result["type"], "path_continuation")
+            self.assertEqual(result["path_id"], "887")
+            self.assertEqual(len(result["recommendations"]), 0)
+
+    def test_evaluate_path_switching_locked_node(self, mock_read):
+        with patch("drivers.github_client.list_issues_by_label") as mock_list, \
+             patch("kernel.daemon_nba.agent_frontier.load_state") as mock_load:
+            mock_read.return_value = None # No active path
+            mock_load.return_value = {
+                "active_agents": {
+                    "agent-ziran": {
+                        "current_active_node": "Node 100: Global Task"
+                    }
+                }
+            }
+            mock_list.return_value = [{"number": 100, "title": "Global Task"}, {"number": 101, "title": "Another Task"}]
+            
+            nba = NBADaemon()
+            result = nba.evaluate("dummy_frontier.md")
+            
+            self.assertEqual(result["type"], "path_switching")
+            self.assertEqual(len(result["recommendations"]), 1)
+            self.assertEqual(result["recommendations"][0]["number"], 101)
+
 if __name__ == "__main__":
     unittest.main()
 

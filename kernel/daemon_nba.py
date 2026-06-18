@@ -24,6 +24,20 @@ class NBADaemon:
         from drivers import path_resolver
         if not os.path.isabs(frontier_file):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
+            
+        locked_node_ids = set()
+        try:
+            state = agent_frontier.load_state(frontier_file)
+            agents = state.get("active_agents", {})
+            for agent_name, agent_data in agents.items():
+                active_node = agent_data.get("current_active_node")
+                if active_node:
+                    match = re.search(r"(?:Node |#)(\d+)", active_node)
+                    if match:
+                        locked_node_ids.add(str(match.group(1)))
+        except Exception:
+            pass
+            
         active_path_str = agent_frontier.read_active_path(frontier_file)
         active_id = None
         if active_path_str:
@@ -86,7 +100,7 @@ class NBADaemon:
                         next_nodes = uncompleted_reflect
                     
                     if next_nodes:
-                        recs = [{"number": n["number"], "id": n["id"], "title": n["title"]} for n in next_nodes]
+                        recs = [{"number": n["number"], "id": n["id"], "title": n["title"]} for n in next_nodes if n["id"] not in locked_node_ids]
                         return {
                             "type": "path_continuation",
                             "path_id": active_id,
@@ -103,11 +117,12 @@ class NBADaemon:
                     
                     next_nodes = gh_graph_skill.get_next_nodes(path_body)
                     if next_nodes:
+                        filtered_next_nodes = [n for n in next_nodes if str(n.get("id", "")) not in locked_node_ids and str(n.get("number", "")) not in locked_node_ids]
                         return {
                             "type": "path_continuation",
                             "path_id": active_id,
                             "path_title": path_details.get("title", f"Path {active_id}"),
-                            "recommendations": next_nodes
+                            "recommendations": filtered_next_nodes
                         }
                 except Exception as e:
                     # Log error and fallback to Path Switching
@@ -207,6 +222,7 @@ class NBADaemon:
                 unmatched_items.sort(key=lambda x: x.get("number", 0))
                 backlog_items = matched_items + unmatched_items
 
+            backlog_items = [item for item in backlog_items if str(item.get("number", "")) not in locked_node_ids]
 
             return {
                 "type": "path_switching",
