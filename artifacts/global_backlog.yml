@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Final reflection and path closure for Path: Concurrent Lock Ledger Materialization
-    (Internal State).
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    2092
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2093
-  title: 'Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2093
-- body: '## Goal
-
     Harmonize on the philosophical and technical intent for Path: The Sub-Agent Gateway
     Controller (Ignition).
 
