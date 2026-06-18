@@ -2279,8 +2279,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2104: Plan - Path: Concurrent DAG Evaluation (The Scoring Alg)
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: Concurrent DAG Evaluation (The Scoring Alg).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2467,6 +2467,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Harmonized intent and structural requirements into artifacts/harmonize_2102.md
 - **Feedforward Invariants**:
   - `- artifacts/harmonize_2102.md`
+
+## Plan - Path: Concurrent DAG Evaluation
+- **Status**: Completed
+- **Learnings & Context**: Planned changes to filter locked nodes out of NBA evaluations
+- **Feedforward Invariants**:
+  - `- kb/WHAT-2102-concurrent-dag-evaluation.md\n- artifacts/plan_2104.md`
 
 ## Active Agents Matrix
 * **agent-sg5**:
