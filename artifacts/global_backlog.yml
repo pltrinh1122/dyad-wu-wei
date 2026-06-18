@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Technical design and proposed changes for Path: The Sub-Agent Gateway Controller
-    (Ignition).
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    2095
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2096
-  title: 'Plan - Path: The Sub-Agent Gateway Controller (Ignition)'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2096
-- body: '## Goal
-
     Final reflection and path closure for Path: The Sub-Agent Gateway Controller (Ignition).
 
 
