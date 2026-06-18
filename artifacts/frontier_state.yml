@@ -1933,9 +1933,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2093: Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
-  status: Backlog
-  learnings: 'Final reflection and path closure for Path: Concurrent Lock Ledger Materialization
-    (Internal State).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2094: The Sub-Agent Gateway Controller (Ignition)'
   status: Backlog
@@ -2103,6 +2102,12 @@ nodes:
     in daemon_node.py
   invariants:
   - CSI Guard must validate against the active_agents ledger
+- name: 'Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  status: Completed
+  learnings: 'Compile the epistemic reflection for Path #2090'
+  invariants:
+  - Compiled practice reflection retro-2090.md documenting the migration to a concurrent
+    lock ledger.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

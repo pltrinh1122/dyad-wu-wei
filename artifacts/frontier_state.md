@@ -2210,8 +2210,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2093: Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Path: Concurrent Lock Ledger Materialization (Internal State).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2415,6 +2415,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Technical design and implementation for concurrent lock ledger validation in daemon_node.py
 - **Feedforward Invariants**:
   - `CSI Guard must validate against the active_agents ledger`
+
+## Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)
+- **Status**: Completed
+- **Learnings & Context**: Compile the epistemic reflection for Path #2090
+- **Feedforward Invariants**:
+  - `Compiled practice reflection retro-2090.md documenting the migration to a concurrent lock ledger.`
 
 ## Active Agents Matrix
 * **agent-ziran**:
