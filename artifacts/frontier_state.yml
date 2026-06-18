@@ -1962,9 +1962,8 @@ nodes:
   invariants: []
   kind: path
 - name: '#2099: Harmonize - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for Path: Execution
-    Exhaust & Telemetry Partitioning (Audit).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2100: Plan - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
   status: Backlog
@@ -2121,6 +2120,18 @@ nodes:
   - Plan provides clear steps to implement bin/node dispatch CLI arguments
   - lock transition in agent_frontier.py
   - and automated test cases.
+- name: '#2129: Act - Path: The Sub-Agent Gateway Controller (Ignition)'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Act - Path: The Sub-Agent Gateway Controller (Ignition)'
+  status: Completed
+  learnings: Implemented the Gateway Controller CLI command bin/node dispatch to handle
+    transitioning nodes between personas and enforcing True Dormancy for the kernel_daemon.
+  invariants:
+  - The implementation adds a dispatch parser to daemon_node.py
+  - adds dispatch_active_node to agent_frontier.py to modify the lock ledger safely
+  - and includes a test.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'

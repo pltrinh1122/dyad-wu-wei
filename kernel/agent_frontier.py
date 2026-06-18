@@ -446,3 +446,42 @@ def register_backlog_node(filepath: str, node_id: int, node_title: str, descript
     state["nodes"] = nodes
     save_state(yml_path, state)
 
+
+
+def dispatch_active_node(filepath: str, issue_id: str, source_persona: str, target_persona: str) -> None:
+    """Transfers the active node lock from source_persona to target_persona."""
+    yml_path = resolve_yml_path(filepath)
+    state = load_state(yml_path)
+    
+    if "active_agents" not in state:
+        state["active_agents"] = {}
+        
+    source_state = state["active_agents"].get(source_persona, {})
+    
+    # Extract the current lock names
+    current_node = source_state.get("current_active_node")
+    current_path = source_state.get("current_active_path")
+    
+    if not current_node or str(issue_id) not in current_node:
+        raise ValueError(f"Node {issue_id} is not currently locked by {source_persona}.")
+        
+    # Clear from source
+    if source_persona in state["active_agents"]:
+        state["active_agents"][source_persona]["current_active_node"] = None
+        # We don't necessarily clear current_active_path since the kernel_daemon might stay on the path?
+        # Actually, let's keep path on source or move it. Wait, true dormancy means the kernel_daemon sleeps.
+        # But for now, just moving the node lock is enough to satisfy the CSI guard for the subagent.
+        
+    # Bind to target
+    if target_persona not in state["active_agents"]:
+        state["active_agents"][target_persona] = {
+            "current_active_path": current_path,
+            "current_active_node": None
+        }
+    else:
+        # Also copy path over to the subagent so it has the context
+        state["active_agents"][target_persona]["current_active_path"] = current_path
+        
+    state["active_agents"][target_persona]["current_active_node"] = current_node
+    
+    save_state(yml_path, state)
