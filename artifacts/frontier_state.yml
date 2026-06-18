@@ -1067,7 +1067,7 @@ nodes:
   learnings: Planned graceful validation for cmd_checkout
   invariants: []
 - name: '#999: Implement quarantine survivor'
-  status: '[///] Act Phase'
+  status: Completed
   learnings: Planning Phase
   invariants: []
 - name: '#1719: Reflect - Falsify Title Decorations'
