@@ -63,3 +63,131 @@ backlog_items:
   number: 2088
   title: 'Plan - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2088
+- body: '## Goal
+
+    Final reflection and path closure for Path: Orchestrator Remote Invariant Isolation
+    (GitHub State).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2088
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2089
+  title: 'Reflect - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2089
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Path: Concurrent Lock
+    Ledger Materialization (Internal State).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2091
+  title: 'Harmonize - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2091
+- body: '## Goal
+
+    Technical design and proposed changes for Path: Concurrent Lock Ledger Materialization
+    (Internal State).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2091
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2092
+  title: 'Plan - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2092
+- body: '## Goal
+
+    Final reflection and path closure for Path: Concurrent Lock Ledger Materialization
+    (Internal State).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2092
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2093
+  title: 'Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2093
