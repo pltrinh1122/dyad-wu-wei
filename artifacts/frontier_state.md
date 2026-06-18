@@ -2273,13 +2273,13 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2103: Harmonize - Path: Concurrent DAG Evaluation (The Scoring Alg)
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## #2104: Plan - Path: Concurrent DAG Evaluation (The Scoring Alg)
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2298,8 +2298,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2107: Harmonize - Path: The Orchestrator Harness (The Loop Rewire)
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: The Orchestrator Harness (The Loop Rewire).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2475,7 +2475,7 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `- kb/WHAT-2102-concurrent-dag-evaluation.md\n- artifacts/plan_2104.md`
 
 ## #2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2487,10 +2487,19 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `- kernel/daemon_nba.py
 - tests/test_daemon_nba.py`
 
+## Reflect - Path: Concurrent DAG Evaluation
+- **Status**: Completed
+- **Learnings & Context**: Completed Path 2102: Evolved the Next-Best-Action logic to explicitly separate Available for Dispatch nodes from Currently Locked by Workers nodes.
+- **Feedforward Invariants**:
+  - `- artifacts/retro_2102.md`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
-  - Current Active Node: `#2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)`
+  - Current Active Node: `None`
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
+  - Current Active Node: `None`
+* **frontier**:
+  - Current Active Path: `None`
   - Current Active Node: `None`
