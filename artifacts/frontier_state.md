@@ -2229,8 +2229,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2096: Plan - Path: The Sub-Agent Gateway Controller (Ignition)
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: The Sub-Agent Gateway Controller (Ignition).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2427,6 +2427,14 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Documented strategic intent and technical design for the Sub-Agent Gateway Controller to enable Cognitive Offloading.
 - **Feedforward Invariants**:
   - `Gateway Controller provides atomic lock transition and CLI interface for sub-agent dispatch`
+
+## Plan - Path: The Sub-Agent Gateway Controller (Ignition)
+- **Status**: Completed
+- **Learnings & Context**: Drafted execution plan for the dispatch CLI command to handle lock handoff and ensure True Dormancy.
+- **Feedforward Invariants**:
+  - `Plan provides clear steps to implement bin/node dispatch CLI arguments`
+  - `lock transition in agent_frontier.py`
+  - `and automated test cases.`
 
 ## Active Agents Matrix
 * **agent-ziran**:

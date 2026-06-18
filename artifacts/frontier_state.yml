@@ -1947,9 +1947,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2096: Plan - Path: The Sub-Agent Gateway Controller (Ignition)'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for Path: The Sub-Agent Gateway
-    Controller (Ignition).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2097: Reflect - Path: The Sub-Agent Gateway Controller (Ignition)'
   status: Backlog
@@ -2114,6 +2113,14 @@ nodes:
   invariants:
   - Gateway Controller provides atomic lock transition and CLI interface for sub-agent
     dispatch
+- name: 'Plan - Path: The Sub-Agent Gateway Controller (Ignition)'
+  status: Completed
+  learnings: Drafted execution plan for the dispatch CLI command to handle lock handoff
+    and ensure True Dormancy.
+  invariants:
+  - Plan provides clear steps to implement bin/node dispatch CLI arguments
+  - lock transition in agent_frontier.py
+  - and automated test cases.
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
