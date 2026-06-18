@@ -1908,13 +1908,13 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2088: Plan - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+  status: Backlog
+  learnings: 'Technical design and proposed changes for Path: Orchestrator Remote
+    Invariant Isolation (GitHub State).'
   invariants: []
 - name: '#2089: Reflect - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
-  status: Backlog
-  learnings: 'Final reflection and path closure for Path: Orchestrator Remote Invariant
-    Isolation (GitHub State).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2090: Concurrent Lock Ledger Materialization (Internal State)'
   status: Backlog
