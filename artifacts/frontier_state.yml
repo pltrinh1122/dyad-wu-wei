@@ -2186,3 +2186,10 @@ nodes:
   invariants:
   - '- kernel/daemon_strategic.py\n- kernel/daemon_status.py\n- GEMINI.md'
   kind: path
+- name: 'Path 2117: Harmonize - System Crash in reflect'
+  status: Completed
+  learnings: 'Aligned on intent: We must implement ReflectionBlockedError to gracefully
+    reject reflection when a retro is missing without triggering the crash reporter.'
+  invariants:
+  - '- kernel/daemon_node.py\n- kernel/daemon_knowledge_accrual.py'
+  kind: path

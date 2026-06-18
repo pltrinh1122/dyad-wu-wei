@@ -2508,6 +2508,13 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- kernel/daemon_strategic.py\n- kernel/daemon_status.py\n- GEMINI.md`
 
+## Path 2117: Harmonize - System Crash in reflect
+- **Status**: Completed
+- **Kind**: path
+- **Learnings & Context**: Aligned on intent: We must implement ReflectionBlockedError to gracefully reject reflection when a retro is missing without triggering the crash reporter.
+- **Feedforward Invariants**:
+  - `- kernel/daemon_node.py\n- kernel/daemon_knowledge_accrual.py`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
