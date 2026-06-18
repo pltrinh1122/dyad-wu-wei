@@ -2198,8 +2198,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2091: Harmonize - Path: Concurrent Lock Ledger Materialization (Internal State)
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: Concurrent Lock Ledger Materialization (Internal State).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2403,6 +2403,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Technical design and implementation for Local Invariant Isolation in daemon_node.py
 - **Feedforward Invariants**:
   - `WipN1Guard evaluates current persona's worktrees only`
+
+## Harmonize - Path: Concurrent Lock Ledger Materialization (Internal State)
+- **Status**: Completed
+- **Learnings & Context**: Identified the need to decouple the monolithic lock and update the CSI guard to support multi-agent concurrency.
+- **Feedforward Invariants**:
+  - `CSI Guard must validate against the active_agents ledger`
 
 ## Active Agents Matrix
 * **agent-ziran**:
