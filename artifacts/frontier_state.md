@@ -2179,8 +2179,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2088: Plan - Path: Orchestrator Remote Invariant Isolation (GitHub State)
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: Orchestrator Remote Invariant Isolation (GitHub State).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 

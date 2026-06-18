@@ -1,5 +1,5 @@
 current_active_path: null
-current_active_node: null
+current_active_node: '#999: Implement quarantine survivor'
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -1908,9 +1908,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2088: Plan - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for Path: Orchestrator Remote
-    Invariant Isolation (GitHub State).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2089: Reflect - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
   status: Backlog
