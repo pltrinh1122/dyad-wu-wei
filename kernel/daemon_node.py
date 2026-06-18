@@ -121,6 +121,32 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
             ExhaustLogger.clear_historical_exhaust("WipN1Guard")
     else:
         open_worktrees = get_local_worktrees(repo_root)
+        
+        # Filter worktrees to ignore those owned by other personas
+        persona_id = os.environ.get("SPAO_PERSONA_ID", "frontier")
+        frontier_file = os.path.join(repo_root, "artifacts", "frontier_state.yml")
+        
+        state = agent_frontier.load_state(frontier_file)
+        active_agents = state.get("active_agents", {})
+        
+        other_personas_active_ids = []
+        for p_id, p_data in active_agents.items():
+            if p_id != persona_id:
+                n_full = p_data.get("current_active_node")
+                if n_full:
+                    ext_id = agent_frontier.extract_path_id(n_full)
+                    if ext_id:
+                        other_personas_active_ids.append(str(ext_id))
+        
+        filtered_wts = []
+        for w in open_worktrees:
+            w_num = str(w.get('number', ''))
+            if w_num in other_personas_active_ids:
+                continue
+            filtered_wts.append(w)
+            
+        open_worktrees = filtered_wts
+
         if open_worktrees:
             still_open = []
             for w in open_worktrees:
