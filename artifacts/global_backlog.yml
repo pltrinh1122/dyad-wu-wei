@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Path: The Sub-Agent Gateway
-    Controller (Ignition).
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2095
-  title: 'Harmonize - Path: The Sub-Agent Gateway Controller (Ignition)'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2095
-- body: '## Goal
-
     Technical design and proposed changes for Path: The Sub-Agent Gateway Controller
     (Ignition).
 
