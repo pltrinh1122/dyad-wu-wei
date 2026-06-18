@@ -2223,8 +2223,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2095: Harmonize - Path: The Sub-Agent Gateway Controller (Ignition)
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: The Sub-Agent Gateway Controller (Ignition).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2421,6 +2421,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Compile the epistemic reflection for Path #2090
 - **Feedforward Invariants**:
   - `Compiled practice reflection retro-2090.md documenting the migration to a concurrent lock ledger.`
+
+## Harmonize - Path: The Sub-Agent Gateway Controller (Ignition)
+- **Status**: Completed
+- **Learnings & Context**: Documented strategic intent and technical design for the Sub-Agent Gateway Controller to enable Cognitive Offloading.
+- **Feedforward Invariants**:
+  - `Gateway Controller provides atomic lock transition and CLI interface for sub-agent dispatch`
 
 ## Active Agents Matrix
 * **agent-ziran**:
