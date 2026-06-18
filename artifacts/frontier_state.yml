@@ -1929,9 +1929,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2092: Plan - Path: Concurrent Lock Ledger Materialization (Internal State)'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for Path: Concurrent Lock Ledger
-    Materialization (Internal State).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2093: Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
   status: Backlog
@@ -2096,6 +2095,12 @@ nodes:
   status: Completed
   learnings: Identified the need to decouple the monolithic lock and update the CSI
     guard to support multi-agent concurrency.
+  invariants:
+  - CSI Guard must validate against the active_agents ledger
+- name: 'Plan - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  status: Completed
+  learnings: Technical design and implementation for concurrent lock ledger validation
+    in daemon_node.py
   invariants:
   - CSI Guard must validate against the active_agents ledger
 active_agents:
