@@ -2006,14 +2006,14 @@ nodes:
   name: '#2106: The Orchestrator Harness (The Loop Rewire)'
   status: Backlog
 - invariants: []
-  learnings: Planning Phase
+  learnings: 'Harmonize on the philosophical and technical intent for Path: The Orchestrator
+    Harness (The Loop Rewire).'
   name: '#2107: Harmonize - Path: The Orchestrator Harness (The Loop Rewire)'
-  status: '[///] Act Phase'
-- invariants: []
-  learnings: 'Technical design and proposed changes for Path: The Orchestrator Harness
-    (The Loop Rewire).'
-  name: '#2108: Plan - Path: The Orchestrator Harness (The Loop Rewire)'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2108: Plan - Path: The Orchestrator Harness (The Loop Rewire)'
+  status: '[///] Act Phase'
 - invariants: []
   learnings: 'Final reflection and path closure for Path: The Orchestrator Harness
     (The Loop Rewire).'
@@ -2166,8 +2166,8 @@ nodes:
   - '- kernel/daemon_nba.py
 
     - tests/test_daemon_nba.py'
-- name: 'Harmonize - Path: The Orchestrator Harness'
+- name: 'Plan - Path: The Kernel Daemon Harness'
   status: Completed
-  learnings: Harmonized intent for Orchestrator loop rewire into artifacts/harmonize_2106.md
+  learnings: 'Created Act node #2141 and WHAT-2106 to wire dispatcher behavior'
   invariants:
-  - '- artifacts/harmonize_2106.md'
+  - '- artifacts/plan_2108.md'

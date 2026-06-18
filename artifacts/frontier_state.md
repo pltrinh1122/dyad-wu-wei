@@ -2298,14 +2298,14 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2107: Harmonize - Path: The Orchestrator Harness (The Loop Rewire)
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: The Orchestrator Harness (The Loop Rewire).
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## #2108: Plan - Path: The Orchestrator Harness (The Loop Rewire)
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: The Orchestrator Harness (The Loop Rewire).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2487,11 +2487,11 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `- kernel/daemon_nba.py
 - tests/test_daemon_nba.py`
 
-## Harmonize - Path: The Orchestrator Harness
+## Plan - Path: The Kernel Daemon Harness
 - **Status**: Completed
-- **Learnings & Context**: Harmonized intent for Orchestrator loop rewire into artifacts/harmonize_2106.md
+- **Learnings & Context**: Created Act node #2141 and WHAT-2106 to wire dispatcher behavior
 - **Feedforward Invariants**:
-  - `- artifacts/harmonize_2106.md`
+  - `- artifacts/plan_2108.md`
 
 ## Active Agents Matrix
 * **agent-sg5**:
