@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Path: Execution Exhaust
-    & Telemetry Partitioning (Audit).
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2099
-  title: 'Harmonize - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2099
-- body: '## Goal
-
     Technical design and proposed changes for Path: Execution Exhaust & Telemetry
     Partitioning (Audit).
 
