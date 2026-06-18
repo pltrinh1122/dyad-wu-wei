@@ -2340,6 +2340,12 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Orchestrator Remote Invariant Isolation
+- **Status**: Completed
+- **Learnings & Context**: Injected SPAO_PERSONA_ID into PR body and filtered get_open_prs
+- **Feedforward Invariants**:
+  - `Orchestrator WipN1Guard ignores worker PRs.`
+
 ## Active Agents Matrix
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
