@@ -445,3 +445,34 @@ backlog_items:
   number: 2122
   title: Reflect - Synthesize Epistemic Retrospective retro-2112.md
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2122
+- body: '## Goal
+
+    Implement bin/node dispatch based on plan 2096
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2129
+  title: 'Act - Path: The Sub-Agent Gateway Controller (Ignition)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2129
