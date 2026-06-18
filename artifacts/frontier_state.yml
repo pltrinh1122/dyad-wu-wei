@@ -1992,10 +1992,9 @@ nodes:
   name: '#2103: Harmonize - Path: Concurrent DAG Evaluation (The Scoring Alg)'
   status: '[///] Act Phase'
 - invariants: []
-  learnings: 'Technical design and proposed changes for Path: Concurrent DAG Evaluation
-    (The Scoring Alg).'
+  learnings: Planning Phase
   name: '#2104: Plan - Path: Concurrent DAG Evaluation (The Scoring Alg)'
-  status: Backlog
+  status: '[///] Act Phase'
 - invariants: []
   learnings: 'Final reflection and path closure for Path: Concurrent DAG Evaluation
     (The Scoring Alg).'
@@ -2153,3 +2152,8 @@ nodes:
   learnings: Harmonized intent and structural requirements into artifacts/harmonize_2102.md
   invariants:
   - '- artifacts/harmonize_2102.md'
+- name: 'Plan - Path: Concurrent DAG Evaluation'
+  status: Completed
+  learnings: Planned changes to filter locked nodes out of NBA evaluations
+  invariants:
+  - '- kb/WHAT-2102-concurrent-dag-evaluation.md\n- artifacts/plan_2104.md'
