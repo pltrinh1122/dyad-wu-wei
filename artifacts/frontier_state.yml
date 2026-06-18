@@ -1,5 +1,5 @@
 current_active_path: null
-current_active_node: '#999: Implement quarantine survivor'
+current_active_node: null
 nodes:
 - name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
@@ -917,7 +917,7 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: 'Node 999: Implement quarantine survivor'
-  status: '[///] Act Phase'
+  status: Completed
   learnings: Planning Phase
   invariants: []
 - name: 'Discovery: Harmonize - [BUG] Intake: System Crash in reflect'
@@ -2032,9 +2032,8 @@ nodes:
   kind: path
 - name: '#2111: Harmonize - Path: Orchestrator Local Invariant Isolation (Filesystem
     State)'
-  status: Backlog
-  learnings: 'Harmonize on the philosophical and technical intent for Path: Orchestrator
-    Local Invariant Isolation (Filesystem State).'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2112: Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)'
   status: Backlog
@@ -2052,6 +2051,38 @@ nodes:
   learnings: Injected SPAO_PERSONA_ID into PR body and filtered get_open_prs
   invariants:
   - Orchestrator WipN1Guard ignores worker PRs.
+- name: '#2117: [BUG] Intake: System Crash in reflect'
+  status: Backlog
+  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `frontier`\n\
+    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_node.py\"\
+    , line 768, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_node.py\"\
+    , line 476, in cmd_reflect\n    reflect_node(\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_node.py\"\
+    , line 450, in reflect_node\n    node.reflect(frontier_file, node_name, learnings,\
+    \ invariants, commit_msg, branch_name, stage=stage, insights=insights)\n  File\
+    \ \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/node_lifecycle.py\"\
+    , line 603, in reflect\n    daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id,\
+    \ repo_root=main_repo, worktree_root=worktree_dir)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_knowledge_accrual.py\"\
+    , line 89, in enforce_reflection_hook\n    raise Exception(\nException: REFLECTION\
+    \ BLOCKED: Node 2111 experienced execution failures. Under SG-0005 (TG-0005-04),\
+    \ a structured post-mortem reflection record is required under artifacts/audit/retro-2111.md\
+    \ before reflection.\n\n```\n"
+  invariants: []
+  kind: path
+- name: '#2118: Harmonize - [BUG] Intake: System Crash in reflect'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
+    System Crash in reflect.'
+  invariants: []
+- name: '#2119: Plan - [BUG] Intake: System Crash in reflect'
+  status: Backlog
+  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
+    in reflect.'
+  invariants: []
+- name: 'Harmonize - Path: Kernel Daemon Local Invariant Isolation (Filesystem State)'
+  status: Completed
+  learnings: Created WHAT and WHY for local invariant isolation.
+  invariants:
+  - none
 active_agents:
   agent-ziran:
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
