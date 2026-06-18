@@ -904,7 +904,7 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
   - `[ ]` None
 
 ## Node 999: Implement quarantine survivor
-- **Status**: [///] Act Phase
+- **Status**: Completed
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2323,8 +2323,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2111: Harmonize - Path: Orchestrator Local Invariant Isolation (Filesystem State)
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent for Path: Orchestrator Local Invariant Isolation (Filesystem State).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2345,6 +2345,52 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
 - **Learnings & Context**: Injected SPAO_PERSONA_ID into PR body and filtered get_open_prs
 - **Feedforward Invariants**:
   - `Orchestrator WipN1Guard ignores worker PRs.`
+
+## #2117: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `frontier`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_node.py", line 768, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_node.py", line 476, in cmd_reflect
+    reflect_node(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_node.py", line 450, in reflect_node
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/node_lifecycle.py", line 603, in reflect
+    daemon_knowledge_accrual.enforce_reflection_hook(self.issue_id, repo_root=main_repo, worktree_root=worktree_dir)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_knowledge_accrual.py", line 89, in enforce_reflection_hook
+    raise Exception(
+Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under SG-0005 (TG-0005-04), a structured post-mortem reflection record is required under artifacts/audit/retro-2111.md before reflection.
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2118: Harmonize - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2119: Plan - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize - Path: Kernel Daemon Local Invariant Isolation (Filesystem State)
+- **Status**: Completed
+- **Learnings & Context**: Created WHAT and WHY for local invariant isolation.
+- **Feedforward Invariants**:
+  - `none`
 
 ## Active Agents Matrix
 * **agent-ziran**:
