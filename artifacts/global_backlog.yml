@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Path: Concurrent Lock
-    Ledger Materialization (Internal State).
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2091
-  title: 'Harmonize - Path: Concurrent Lock Ledger Materialization (Internal State)'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2091
-- body: '## Goal
-
     Technical design and proposed changes for Path: Concurrent Lock Ledger Materialization
     (Internal State).
 
