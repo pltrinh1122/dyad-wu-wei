@@ -2304,14 +2304,14 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2108: Plan - Path: The Orchestrator Harness (The Loop Rewire)
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Path: The Orchestrator Harness (The Loop Rewire).
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## #2109: Reflect - Path: The Orchestrator Harness (The Loop Rewire)
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Path: The Orchestrator Harness (The Loop Rewire).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2335,8 +2335,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2113: Reflect - Path: Orchestrator Local Invariant Isolation (Filesystem State)
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Path: Orchestrator Local Invariant Isolation (Filesystem State).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2487,11 +2487,19 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `- kernel/daemon_nba.py
 - tests/test_daemon_nba.py`
 
-## Plan - Path: The Kernel Daemon Harness
-- **Status**: Completed
-- **Learnings & Context**: Created Act node #2141 and WHAT-2106 to wire dispatcher behavior
+## #2141: Act - Rewire Auto-Lock and Dispatcher Behavior [Depends: 2108]
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `- artifacts/plan_2108.md`
+  - `[ ]` None
+
+## Act - Path: The Kernel Daemon Harness
+- **Status**: Completed
+- **Learnings & Context**: Implemented auto-resolve persona rewiring, bin/status dispatch hook, and updated GEMINI.md
+- **Feedforward Invariants**:
+  - `- kernel/daemon_strategic.py
+- kernel/daemon_status.py
+- GEMINI.md`
 
 ## Active Agents Matrix
 * **agent-sg5**:

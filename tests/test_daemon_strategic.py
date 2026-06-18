@@ -446,6 +446,40 @@ class TestMgrStrategic(unittest.TestCase):
         if "SPAO_WORKSPACE_DIR" in os.environ:
             del os.environ["SPAO_WORKSPACE_DIR"]
 
+    @patch("drivers.github_client.get_issue_details")
+    @patch("kernel.daemon_strategic.parse_md_table")
+    @patch("os.path.exists")
+    def test_verify_persona_administrative_auto_resolution(self, mock_exists, mock_parse, mock_details):
+        if "SPAO_PERSONA_ID" in os.environ:
+            del os.environ["SPAO_PERSONA_ID"]
+        data = {
+            "strategic_goals": [
+                {
+                    "id": "SG-0005",
+                    "status": "Active",
+                    "prioritized_paths": [416]
+                }
+            ]
+        }
+        daemon_strategic.save_ledger(data)
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
+        daemon_strategic._MOCK_PARENT_PATHS = {"419": "416"}
+        
+        def side_effect_exists(path):
+            if "WHAT-0062" in path or "WHAT-0065" in path or "strategic_intent.yml" in path:
+                return True
+            return False
+        mock_exists.side_effect = side_effect_exists
+        
+        mock_parse.return_value = [{"sg_id": "SG-0005", "owner_persona": "agent-sg5", "status": "covered"}]
+        mock_details.return_value = {"title": "Harmonize - Rewrite Engine"}
+        
+        daemon_strategic.verify_node_transition_allowed("419")
+        self.assertEqual(os.environ.get("SPAO_PERSONA_ID"), "frontier")
+            
+        daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
+        daemon_strategic._MOCK_PARENT_PATHS = {}
+
 if __name__ == "__main__":
     unittest.main()
 

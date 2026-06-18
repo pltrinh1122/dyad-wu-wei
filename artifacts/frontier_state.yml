@@ -2011,14 +2011,14 @@ nodes:
   name: '#2107: Harmonize - Path: The Orchestrator Harness (The Loop Rewire)'
   status: Backlog
 - invariants: []
-  learnings: Planning Phase
-  name: '#2108: Plan - Path: The Orchestrator Harness (The Loop Rewire)'
-  status: '[///] Act Phase'
-- invariants: []
-  learnings: 'Final reflection and path closure for Path: The Orchestrator Harness
+  learnings: 'Technical design and proposed changes for Path: The Orchestrator Harness
     (The Loop Rewire).'
-  name: '#2109: Reflect - Path: The Orchestrator Harness (The Loop Rewire)'
+  name: '#2108: Plan - Path: The Orchestrator Harness (The Loop Rewire)'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2109: Reflect - Path: The Orchestrator Harness (The Loop Rewire)'
+  status: '[///] Act Phase'
 - invariants: []
   kind: path
   learnings: Decouple the Main Agent's execution loop from local execution friction
@@ -2036,11 +2036,10 @@ nodes:
   name: '#2112: Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)'
   status: '[///] Act Phase'
 - invariants: []
-  learnings: 'Final reflection and path closure for Path: Orchestrator Local Invariant
-    Isolation (Filesystem State).'
+  learnings: Planning Phase
   name: '#2113: Reflect - Path: Orchestrator Local Invariant Isolation (Filesystem
     State)'
-  status: Backlog
+  status: '[///] Act Phase'
 - invariants:
   - Orchestrator WipN1Guard ignores worker PRs.
   learnings: Injected SPAO_PERSONA_ID into PR body and filtered get_open_prs
@@ -2166,8 +2165,17 @@ nodes:
   - '- kernel/daemon_nba.py
 
     - tests/test_daemon_nba.py'
-- name: 'Plan - Path: The Kernel Daemon Harness'
+- name: '#2141: Act - Rewire Auto-Lock and Dispatcher Behavior [Depends: 2108]'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Act - Path: The Kernel Daemon Harness'
   status: Completed
-  learnings: 'Created Act node #2141 and WHAT-2106 to wire dispatcher behavior'
+  learnings: Implemented auto-resolve persona rewiring, bin/status dispatch hook,
+    and updated GEMINI.md
   invariants:
-  - '- artifacts/plan_2108.md'
+  - '- kernel/daemon_strategic.py
+
+    - kernel/daemon_status.py
+
+    - GEMINI.md'
