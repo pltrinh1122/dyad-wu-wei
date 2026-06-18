@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Path: Orchestrator Remote
-    Invariant Isolation (GitHub State).
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2087
-  title: 'Harmonize - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2087
-- body: '## Goal
-
     Technical design and proposed changes for Path: Orchestrator Remote Invariant
     Isolation (GitHub State).
 
