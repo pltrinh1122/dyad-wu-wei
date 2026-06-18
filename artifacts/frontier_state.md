@@ -2285,8 +2285,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2105: Reflect - Path: Concurrent DAG Evaluation (The Scoring Alg)
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Path: Concurrent DAG Evaluation (The Scoring Alg).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2474,10 +2474,23 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- kb/WHAT-2102-concurrent-dag-evaluation.md\n- artifacts/plan_2104.md`
 
+## #2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Act - Path: Concurrent DAG Evaluation
+- **Status**: Completed
+- **Learnings & Context**: Implemented locked node filtering in NBA evaluator to prevent double-dispatch
+- **Feedforward Invariants**:
+  - `- kernel/daemon_nba.py
+- tests/test_daemon_nba.py`
+
 ## Active Agents Matrix
 * **agent-sg5**:
-  - Current Active Path: `Path 634: Path: Refactor frontier_state for concurrent agent awareness`
-  - Current Active Node: `None`
+  - Current Active Path: `None`
+  - Current Active Node: `#2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)`
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
   - Current Active Node: `None`

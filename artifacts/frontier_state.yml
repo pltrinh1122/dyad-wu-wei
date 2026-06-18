@@ -1,8 +1,8 @@
 active_agents:
   agent-sg5:
-    current_active_node: null
-    current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
-      awareness'
+    current_active_node: '#2136: Act - Path: Concurrent DAG Evaluation (The Scoring
+      Alg)'
+    current_active_path: null
   agent-ziran:
     current_active_node: null
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
@@ -1996,10 +1996,9 @@ nodes:
   name: '#2104: Plan - Path: Concurrent DAG Evaluation (The Scoring Alg)'
   status: '[///] Act Phase'
 - invariants: []
-  learnings: 'Final reflection and path closure for Path: Concurrent DAG Evaluation
-    (The Scoring Alg).'
+  learnings: Planning Phase
   name: '#2105: Reflect - Path: Concurrent DAG Evaluation (The Scoring Alg)'
-  status: Backlog
+  status: '[///] Act Phase'
 - invariants: []
   kind: path
   learnings: Terminate the Main Agent's executor instinct by rewiring the sync loop's
@@ -2157,3 +2156,14 @@ nodes:
   learnings: Planned changes to filter locked nodes out of NBA evaluations
   invariants:
   - '- kb/WHAT-2102-concurrent-dag-evaluation.md\n- artifacts/plan_2104.md'
+- name: '#2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Act - Path: Concurrent DAG Evaluation'
+  status: Completed
+  learnings: Implemented locked node filtering in NBA evaluator to prevent double-dispatch
+  invariants:
+  - '- kernel/daemon_nba.py
+
+    - tests/test_daemon_nba.py'
