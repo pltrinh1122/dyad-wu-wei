@@ -13,8 +13,12 @@ class ExhaustLogger:
         timestamp = int(time.time())
         artifact_name = f"exhaust_{guard_name}_{timestamp}.json"
         
-        # We always dump inside the active workspace's artifacts/audit/ directory
-        audit_dir = os.path.join(os.getcwd(), "artifacts", "audit")
+        # We always dump inside the active workspace's artifacts/audit/[persona_id] directory
+        persona_id = os.environ.get("SPAO_PERSONA_ID")
+        if persona_id:
+            audit_dir = os.path.join(os.getcwd(), "artifacts", "audit", persona_id)
+        else:
+            audit_dir = os.path.join(os.getcwd(), "artifacts", "audit")
         os.makedirs(audit_dir, exist_ok=True)
         
         artifact_path = os.path.join(audit_dir, artifact_name)
@@ -34,11 +38,17 @@ class ExhaustLogger:
         """
         Purges old exhaust logs for a specific guard to prevent contamination.
         """
-        audit_dir = os.path.join(os.getcwd(), "artifacts", "audit")
-        if not os.path.exists(audit_dir):
+        persona_id = os.environ.get("SPAO_PERSONA_ID")
+        if persona_id:
+            audit_dir = os.path.join(os.getcwd(), "artifacts", "audit", persona_id)
+        else:
+            audit_dir = os.path.join(os.getcwd(), "artifacts", "audit")
+        try:
+            files = os.listdir(audit_dir)
+        except FileNotFoundError:
             return
             
-        for file in os.listdir(audit_dir):
+        for file in files:
             if file.startswith(f"exhaust_{guard_name}_") and file.endswith(".json"):
                 try:
                     os.remove(os.path.join(audit_dir, file))

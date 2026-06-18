@@ -1,427 +1,437 @@
-current_active_path: null
+active_agents:
+  agent-sg5:
+    current_active_node: null
+    current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
+      awareness'
+  agent-ziran:
+    current_active_node: null
+    current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
 current_active_node: null
+current_active_path: null
 nodes:
-- name: 'Node 0: Agentic Initialization & Flow-State Setup'
-  status: Completed
-  learnings: Injected `AGENT.md` and established the topological `frontier_state.md`
-    to persist the session architecture.
-  invariants:
+- invariants:
   - '`[x]` `AGENT.md` is present.'
   - '`[x]` Flow-state anchor is established.'
-- name: 'Node 10: Codify Audit Remediation Threshold'
+  learnings: Injected `AGENT.md` and established the topological `frontier_state.md`
+    to persist the session architecture.
+  name: 'Node 0: Agentic Initialization & Flow-State Setup'
   status: Completed
+- invariants:
+  - '`[x]` Audits allow trivial inline remediation; complex failures demand dedicated
+    spin-out nodes.'
   learnings: Established the "Complexity Threshold" rule for audits. Agents are now
     permitted to execute atomic "Audit + Remediate" operations for trivial, deterministic
     fixes (to maintain velocity), but are strictly required to spawn dedicated GH-Issue
     Nodes for complex logic fixes (to prevent masked mutations).
-  invariants:
-  - '`[x]` Audits allow trivial inline remediation; complex failures demand dedicated
-    spin-out nodes.'
-- name: 'Node 19: Establish Antigravity Hook'
+  name: 'Node 10: Codify Audit Remediation Threshold'
   status: Completed
+- invariants:
+  - '`[x] Antigravity System reads GEMINI.md automatically`'
+  - '`[x] Native bash testing is forbidden`'
   learnings: Migrated AGENT.md to GEMINI.md to utilize the native Antigravity system
     prompt hook. Formally codified a Hard Invariant banning raw LLM bash testing,
     forcing the use of skills/testing_harness.py across all KB documents.
-  invariants:
-  - '`[x] Antigravity System reads GEMINI.md automatically`'
-  - '`[x] Native bash testing is forbidden`'
-- name: 'Node 21: Zero-Network CI Execution'
+  name: 'Node 19: Establish Antigravity Hook'
   status: Completed
+- invariants:
+  - '`[x] CI completes in <10s with zero PyPI/CDN calls after checkout`'
+  - '`[x] ci-venv is tracked as a Managed Artifact in infrastructure_state.md`'
+  - '`[x] provision.sh is idempotent and bootstraps the venv on first run`'
   learnings: Eliminated all network calls from the CI test step by pre-baking a runner-level
     venv at ~/actions-runner/venv/. Stripped setup-python and pip install steps from
     python-ci.yml. The full 16-test suite now executes in 155ms with a 2-step workflow
     (checkout + pytest). Operator duty for deps refresh is documented in infrastructure_state.md.
-  invariants:
-  - '`[x] CI completes in <10s with zero PyPI/CDN calls after checkout`'
-  - '`[x] ci-venv is tracked as a Managed Artifact in infrastructure_state.md`'
-  - '`[x] provision.sh is idempotent and bootstraps the venv on first run`'
-- name: 'Node 27: Materialize GLOSSARY.md'
+  name: 'Node 21: Zero-Network CI Execution'
   status: Completed
+- invariants:
+  - '`kb/GLOSSARY.md exists`'
+  - '`Terms from seed list are comprehensively defined`'
   learnings: Materialized the authoritative kb/GLOSSARY.md dictionary, defining Node,
     Spike, Epic, Side-bar, Materialization Boundary, SPAO Loop, HITL, Frontier, Backlog,
     WIP, Primitive, Feedforward Invariant, and Pillar terms to ensure strict vocabulary
     consistency across sessions and models.
-  invariants:
-  - '`kb/GLOSSARY.md exists`'
-  - '`Terms from seed list are comprehensively defined`'
-- name: 'Node 31: Automated Lexical Guard'
+  name: 'Node 27: Materialize GLOSSARY.md'
   status: Completed
+- invariants:
+  - '`Lexical guard test suite passes cleanly`'
+  - '`Stale vocabulary is completely blocked on all new codebase mutations`'
   learnings: Implemented a highly robust Automated Lexical Guard unit test that automatically
     scans all modified, added, renamed, or untracked files in the active git workspace
     for stale words (epic/spike). Integrates seamlessly into our local TDD test harness,
     failing loudly if violations occur. Strictly exempts legacy mapping documents
     (kb/GLOSSARY.md, artifacts/frontier_state.md, artifacts/coherence_validation.md)
     to preserve historical accuracy.
-  invariants:
-  - '`Lexical guard test suite passes cleanly`'
-  - '`Stale vocabulary is completely blocked on all new codebase mutations`'
-- name: 'Node 33: Backlog CLI Abstractions'
+  name: 'Node 31: Automated Lexical Guard'
   status: Completed
+- invariants:
+  - '`[x] bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit are
+    fully functional`'
+  - '`[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`'
   learnings: Materialized precise executable backlog script wrappers (bin/backlog-new,
     bin/backlog-list, bin/backlog-view, bin/backlog-edit) in the git index with executable
     permissions (mode 100755), eliminating raw gh calls and permitting secure operator
     whitelisting. Full TDD subprocess unit testing implemented and verified green.
-  invariants:
-  - '`[x] bin/backlog-new, bin/backlog-list, bin/backlog-view, bin/backlog-edit are
-    fully functional`'
-  - '`[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`'
-- name: 'Node 34: Consolidated Backlog CLI'
+  name: 'Node 33: Backlog CLI Abstractions'
   status: Completed
+- invariants:
+  - '`[x] bin/backlog is fully functional supporting list, new, view, edit`'
+  - '`[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`'
   learnings: Consolidated multiple separate backlog CLI wrapper scripts into a single
     unified bin/backlog wrapper script supporting list, new, view, and edit subcommands.
     This reduces directory clutter, eliminates redundant environment resolver code,
     and simplifies whitelisting.
-  invariants:
-  - '`[x] bin/backlog is fully functional supporting list, new, view, edit`'
-  - '`[x] Full TDD unit test coverage in tests/test_bash_wrappers.py`'
-- name: 'Node 35: Verbose SPAO Stage Tracking'
+  name: 'Node 34: Consolidated Backlog CLI'
   status: Completed
-  learnings: Implemented operator-triggered verbose mode for SPAO loop stage tracking
-    to keep the human operator perfectly aligned and informed of all state transitions
-    and invariant assertions. Verified fully functional with TDD unit tests.
-  invariants:
+- invariants:
   - '`[x] SPAO_VERBOSE=1 triggers detailed stage logging banners`'
   - '`[x] Standard non-verbose execution remains completely silent`'
   - '`[x] Full TDD unit test coverage in tests/test_flow_state_manager.py`'
-- name: 'Node 38: Refactor - Consolidate Node Wrappers'
+  learnings: Implemented operator-triggered verbose mode for SPAO loop stage tracking
+    to keep the human operator perfectly aligned and informed of all state transitions
+    and invariant assertions. Verified fully functional with TDD unit tests.
+  name: 'Node 35: Verbose SPAO Stage Tracking'
   status: Completed
-  learnings: Consolidated distinct bash wrapper entry points bin/plan-node and bin/reflect-node
-    into a single unified bin/node script with plan and reflect subcommands.
-  invariants:
+- invariants:
   - '`[x] bin/node implements plan and reflect subcommands`'
   - '`[x] bin/plan-node and bin/reflect-node are deleted`'
   - '`[x] tests/test_bash_wrappers.py validates bin/node arguments and usage`'
-- name: 'Node 39: Feature - Meta-Management CLI Integration'
-  status: '[///] Act Phase'
-  learnings: Implemented a unified bin/meta script to automate Metasystem-level state
-    operations, standardizing our execution transitions and eliminating manual python
-    scripting during the Plan and Reflect phases.
-  invariants:
+  learnings: Consolidated distinct bash wrapper entry points bin/plan-node and bin/reflect-node
+    into a single unified bin/node script with plan and reflect subcommands.
+  name: 'Node 38: Refactor - Consolidate Node Wrappers'
+  status: Completed
+- invariants:
   - '`[ ] bin/meta implements link, check, and active subcommands`'
   - '`[ ] skills/frontier_editor.py supports dynamic append_active_node template generation`'
   - '`[ ] tests/test_bash_wrappers.py validates bin/meta arguments and usage`'
-- name: 'Node 41: Probe - Skill vs. Workflow Boundary & bin/ Classification'
-  status: Completed
-  learnings: Evaluated and formally resolved the Skill vs. Workflow boundary, identified
-    flow_state_manager.py as a misclassified Workflow, and classified bin/ as the
-    CLI Adapter Layer.
-  invariants:
+  learnings: Implemented a unified bin/meta script to automate Metasystem-level state
+    operations, standardizing our execution transitions and eliminating manual python
+    scripting during the Plan and Reflect phases.
+  name: 'Node 39: Feature - Meta-Management CLI Integration'
+  status: '[///] Act Phase'
+- invariants:
   - '`[x] WHY-0009 Decision Record codifies Skill/Workflow boundary and bin/ classification`'
   - '`[x] GLOSSARY.md adds canonical Skill and Workflow definitions`'
   - '`[x] WHAT-0001-agentic-architecture.md adds bin/ as CLI Adapter Layer pillar`'
-- name: 'Node 43: Decouple testing_harness Skill'
+  learnings: Evaluated and formally resolved the Skill vs. Workflow boundary, identified
+    flow_state_manager.py as a misclassified Workflow, and classified bin/ as the
+    CLI Adapter Layer.
+  name: 'Node 41: Probe - Skill vs. Workflow Boundary & bin/ Classification'
   status: Completed
-  learnings: Stripped SPAO stage awareness from testing_harness.py and moved logging
-    to bin/run-tests. Acknowledged backlog creation invariant violation.
-  invariants:
+- invariants:
   - '`[x] log_stage_advancement removed from testing_harness.py`'
   - '`[x] log_stage_advancement added to bin/run-tests`'
   - '`[x] tests pass`'
-- name: 'Node 45: Evaluate Meta-Rules Reference Pattern'
+  learnings: Stripped SPAO stage awareness from testing_harness.py and moved logging
+    to bin/run-tests. Acknowledged backlog creation invariant violation.
+  name: 'Node 43: Decouple testing_harness Skill'
   status: Completed
+- invariants:
+  - '`[x] GEMINI.md updated with Rules section`'
   learnings: 'Expanded GEMINI.md to include Section 5: Meta-Rules & Guardrails index,
     enforcing strict system invariants directly in the System Prompt Hook instead
     of creating a fragmented rules/ directory.'
-  invariants:
-  - '`[x] GEMINI.md updated with Rules section`'
-- name: 'Node 48: Probe: Architectural Placement of sync-clean (bin/rt)'
-  status: '[///] Plan Phase (Paused for Evaluation)'
+  name: 'Node 45: Evaluate Meta-Rules Reference Pattern'
+  status: Completed
+- invariants:
+  - '`[ ]` Operator selects Option A or Option B.'
+  - '`[ ]` Node is resumed.'
   learnings: 'Surfaced backlog Issue #78 via `sync-clean`. Formulated the Node Contract
     to migrate `bin/sync-clean` to `bin/rt` and linked it to Epic #10. Evaluated whether
     `rt` should be just a CLI adapter (Option A) or elevated to a core Pillar (Option
     B). Suspended the node loop to persist state pending operator decision for future
     pick-up.'
-  invariants:
-  - '`[ ]` Operator selects Option A or Option B.'
-  - '`[ ]` Node is resumed.'
-- name: 'Node 50: Node 50: Probe - Evaluate Node Numbering Scheme'
-  status: '[///] Act Phase'
-  learnings: Cross-reference options based on industry best practices.
-  invariants:
+  name: 'Node 48: Probe: Architectural Placement of sync-clean (bin/rt)'
+  status: '[///] Plan Phase (Paused for Evaluation)'
+- invariants:
   - '`[ ] Research best practices`'
   - '`[ ] Output evaluation`'
-- name: 'Probe 98: Architectural Evaluation of mgr-* Orchestrators'
-  status: Completed
-  learnings: Completed architectural evaluation. Updated WHAT-0001 to document the
-    new CLI Router layer architecture and spawned Activity 104 to formally execute
-    the migration.
-  invariants:
+  learnings: Cross-reference options based on industry best practices.
+  name: 'Node 50: Node 50: Probe - Evaluate Node Numbering Scheme'
+  status: '[///] Act Phase'
+- invariants:
   - '`[x] Draft implementation plan`'
   - '`[x] Update WHAT-0001`'
   - '`[x] Spawn execution node`'
-- name: 'Probe 125: Architectural Evaluation of Hot-Fix Workflow'
+  learnings: Completed architectural evaluation. Updated WHAT-0001 to document the
+    new CLI Router layer architecture and spawned Activity 104 to formally execute
+    the migration.
+  name: 'Probe 98: Architectural Evaluation of mgr-* Orchestrators'
   status: Completed
+- invariants:
+  - '`Direct commits to main are forbidden without using the bin/hotfix tool`'
+  - '`which mandates traceability.`'
   learnings: Concluded that a Tiered Governance Model is needed. Trivial documentation
     changes warrant a formalized bin/hotfix tool rather than the heavy SPAO overhead,
     provided they are logged to a lightweight ledger to prevent traceability loss.
-  invariants:
-  - '`Direct commits to main are forbidden without using the bin/hotfix tool`'
-  - '`which mandates traceability.`'
-- name: 'Probe 149: Triage GitHub API Eventual Consistency on Issue State'
+  name: 'Probe 125: Architectural Evaluation of Hot-Fix Workflow'
   status: Completed
+- invariants:
+  - '`Probe must not mutate functional logic`'
+  - '`gh issue list (Search API) is eventually consistent`'
+  - '`gh issue view (Issue API) is strongly consistent`'
   learnings: Identified the root cause of ghost-state backlog collisions as the architectural
     lag between GitHub's strongly-consistent Issues API and its eventually-consistent
     Search API. Formulated a mitigation strategy to double-verify issue states using
     direct Issue API lookups, and generated Activity 150 to implement the patch in
     `github_client.py`.
-  invariants:
-  - '`Probe must not mutate functional logic`'
-  - '`gh issue list (Search API) is eventually consistent`'
-  - '`gh issue view (Issue API) is strongly consistent`'
-- name: 'Probe 153: Architectural Evaluation of Terminal vs Non-Terminal Node Abstraction'
+  name: 'Probe 149: Triage GitHub API Eventual Consistency on Issue State'
   status: Completed
+- invariants:
+  - '`Probe must not mutate functional logic`'
+  - '`Terminal Node represents leaf/execution node`'
+  - '`Non-Terminal Node represents composite/parent node`'
   learnings: Evaluated the benefit of abstracting nodes into Terminal (execution,
     leaf) and Non-Terminal (composite, path) base classes. This purely graph-theoretic
     abstraction decouples the Antigravity orchestration logic from the software development
     domain, allowing generic reuse across arbitrary domains like `agent-travel`. Queued
     Activity 156 to formally implement this abstraction.
-  invariants:
-  - '`Probe must not mutate functional logic`'
-  - '`Terminal Node represents leaf/execution node`'
-  - '`Non-Terminal Node represents composite/parent node`'
-- name: 'Probe 159: Evaluate node plan-start and plan-finish commands'
+  name: 'Probe 153: Architectural Evaluation of Terminal vs Non-Terminal Node Abstraction'
   status: Completed
+- invariants:
+  - '`Probe must not mutate functional logic`'
+  - '`plan-start applies status: in-progress lock immediately`'
+  - '`plan-finish uploads final contract to Issue body`'
   learnings: Determined that planning must be a stateful, two-step protocol (`plan-start`
     and `plan-finish`) to prevent race conditions during prolonged multi-turn drafting
     sessions. `plan-start` acts as the immediate GH Label lock, while `plan-finish`
     finalizes the contract. This definitively hardens the SPAO WIP-N=1 invariant against
     parallel agentic collisions.
-  invariants:
-  - '`Probe must not mutate functional logic`'
-  - '`plan-start applies status: in-progress lock immediately`'
-  - '`plan-finish uploads final contract to Issue body`'
-- name: Audit State Inconsistencies
+  name: 'Probe 159: Evaluate node plan-start and plan-finish commands'
   status: Completed
+- invariants:
+  - '`State invariants have been restored.`'
   learnings: Successfully audited and corrected stale frontier_state and Epic Meta-Index
     missing items.
-  invariants:
-  - '`State invariants have been restored.`'
-- name: Codify Manager and Dual-Agent Ontology
+  name: Audit State Inconsistencies
   status: Completed
+- invariants:
+  - '`All future architectural references must align with the Manager = Agent + Workflow
+    paradigm.`'
   learnings: Established the formal mathematical decoupling of Workflow from Agent,
     codified the concept of a Manager, and asserted the Dual-Agent (Operator/Auditor)
     paradigm for true system autonomy.
-  invariants:
-  - '`All future architectural references must align with the Manager = Agent + Workflow
-    paradigm.`'
-- name: Abstract Nodes into Terminal and Non-Terminal Base Classes
+  name: Codify Manager and Dual-Agent Ontology
   status: Completed
-  learnings: Abstracted Node classification into Terminal and Non-Terminal Base Classes
-    via dyad-wu-wei.yml configuration, unlocking domain portability.
-  invariants:
+- invariants:
   - '`All domain-specific Node Taxonomy mappings must be defined in dyad-wu-wei.yml
     at the repository root.`'
-- name: Execute Architectural Migration of mgr-* Orchestrators
+  learnings: Abstracted Node classification into Terminal and Non-Terminal Base Classes
+    via dyad-wu-wei.yml configuration, unlocking domain portability.
+  name: Abstract Nodes into Terminal and Non-Terminal Base Classes
   status: Completed
+- invariants:
+  - '`Manager components must inherently own their workflows.`'
   learnings: Migrated flow_state_manager.py natively into orchestrator/daemon_node.py
     to formally establish the Manager pattern. Refactored bin/node as a proxy wrapper
     and added argparse.
-  invariants:
-  - '`Manager components must inherently own their workflows.`'
-- name: 116-run-tests-abstraction
+  name: Execute Architectural Migration of mgr-* Orchestrators
   status: Completed
+- invariants:
+  - '`[ ]` None'
   learnings: Integrated test execution natively into daemon_node to align with domain
     manager separation of concerns. Fixed a critical bug in testing_harness.py where
     the exact exit code from pytest was swallowed, replacing capture_output with streaming
     output.
-  invariants:
-  - '`[ ]` None'
-- name: 'Probe 179: Architectural Evaluation of Configurable Operator-Gates'
+  name: 116-run-tests-abstraction
   status: Completed
+- invariants:
+  - '`- [x] kb/WHY-0012-configurable-operator-gates.md exists`'
   learnings: Conducted architectural evaluation of HITL gates, determining that a
     BaseManager OOP pattern (Option C) guided by modular {domain}-gates.yml configuration
     files provides the best systemic invariant.
-  invariants:
-  - '`- [x] kb/WHY-0012-configurable-operator-gates.md exists`'
-- name: 'Probe 193: Architectural Evaluation of Normalized Status Labels'
+  name: 'Probe 179: Architectural Evaluation of Configurable Operator-Gates'
   status: Completed
-  learnings: Investigated and codified the node.yml schema and set_status abstraction
-    in WHY-0013.
-  invariants:
+- invariants:
   - '`WHY-0013 exists`'
   - '`Schema maps logical to physical labels`'
-- name: 'Probe 203: Refine Intent and Problem Statement for Topological Invariants'
+  learnings: Investigated and codified the node.yml schema and set_status abstraction
+    in WHY-0013.
+  name: 'Probe 193: Architectural Evaluation of Normalized Status Labels'
   status: Completed
+- invariants:
+  - '`WHY-0014 exists`'
   learnings: Drafted WHY-0014 defining the Orphaned Node Fallacy and Dual-Probe Initialization
     rule.
-  invariants:
-  - '`WHY-0014 exists`'
-- name: 'Probe 204: Scope Necessary Activities for Topological Invariants'
+  name: 'Probe 203: Refine Intent and Problem Statement for Topological Invariants'
   status: Completed
-  learnings: Created Activities 206, 207, and 208 to implement the topological invariants.
-  invariants:
+- invariants:
   - '`Backlog populated`'
-- name: 'Probe 215: Scope Necessary Activities for Path Execution Guardrails'
+  learnings: Created Activities 206, 207, and 208 to implement the topological invariants.
+  name: 'Probe 204: Scope Necessary Activities for Topological Invariants'
   status: Completed
+- invariants:
+  - '`Activities 223, 224, 225 generated`'
   learnings: Scoped out the necessary Activities to enforce orthogonal scopes, pre/post-requisite
     contracts, and dynamic children traversal order. Generated Activities 223, 224,
     and 225 and injected them into the Path 213 Meta-Index.
-  invariants:
-  - '`Activities 223, 224, 225 generated`'
-- name: 'Probe 214: Refine Intent and Problem Statement for Path Execution Guardrails'
+  name: 'Probe 215: Scope Necessary Activities for Path Execution Guardrails'
   status: Completed
+- invariants:
+  - '`WHY-0015 exists`'
+  - '`Dog-food Probe generated`'
   learnings: Drafted WHY-0015 to formalize orthogonal scope, pre/post-requisite contracts,
     and dynamic children traversal order. Dog-fooded dynamic traversal by automatically
     generating a third Probe for Path 213 mid-execution.
-  invariants:
-  - '`WHY-0015 exists`'
-  - '`Dog-food Probe generated`'
-- name: 'Probe 215: Scope Necessary Activities for Path Execution Guardrails'
+  name: 'Probe 214: Refine Intent and Problem Statement for Path Execution Guardrails'
   status: Completed
+- invariants:
+  - '`Activities 223, 224, 225 generated`'
   learnings: Scoped out the necessary Activities to enforce orthogonal scopes, pre/post-requisite
     contracts, and dynamic children traversal order. Generated Activities 223, 224,
     and 225 and injected them into the Path 213 Meta-Index.
-  invariants:
-  - '`Activities 223, 224, 225 generated`'
-- name: 'Probe 221: Holistic Evaluation of Path Modifications'
+  name: 'Probe 215: Scope Necessary Activities for Path Execution Guardrails'
   status: Completed
+- invariants:
+  - '`Activities 227, 228, 229 generated`'
   learnings: Identified Graph Traversal Fallacy, Flat-List Fallacy, and Closure Synchronization
     Bug. Scoped out 3 new Activities to evolve the Meta-Index into a DAG format and
     refactor the NBA evaluator to parse it dynamically.
-  invariants:
-  - '`Activities 227, 228, 229 generated`'
-- name: 'Probe 238: Formulate the Sense-Gate Invariant Architecture'
+  name: 'Probe 221: Holistic Evaluation of Path Modifications'
   status: Completed
+- invariants:
+  - '`Sense-Gate architecture formalized`'
+  - '`Two-pronged enforcement strategy documented`'
   learnings: Formulated the architectural rationale for the two-pronged Sense-Gate
     in kb/WHY-0013-sense-phase-operator-gate.md. This establishes the requirement
     for both Behavioral (Meta-Instruction) and Environmental (CLI warning) gates to
     prevent autonomous SENSE -> PLAN transitions.
-  invariants:
-  - '`Sense-Gate architecture formalized`'
-  - '`Two-pronged enforcement strategy documented`'
-- name: 'Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator'
+  name: 'Probe 238: Formulate the Sense-Gate Invariant Architecture'
   status: Completed
+- invariants:
+  - '`WHY-0016 exists`'
+  - '`Meta-Index updated`'
   learnings: Successfully analyzed the current implementation, drafted an architectural
     promotion strategy, and spawned execution Activities 244-247. Decisions codified
     in WHY-0016.
-  invariants:
-  - '`WHY-0016 exists`'
-  - '`Meta-Index updated`'
-- name: Implement gh_graph_skill.py stateless primitive
+  name: 'Probe 243: Evaluate Refactoring and Promotion of NBA Evaluator'
   status: Completed
-  learnings: Successfully extracted graph-parsing logic from nba_evaluator.py into
-    a dedicated, stateless skill gh_graph_skill.py. Verified with 100% test coverage
-    (87/87 tests passed).
-  invariants:
+- invariants:
   - '`gh_graph_skill.py implemented`'
   - '`nba_evaluator.py refactored`'
   - '`tests pass`'
-- name: Hardened Meta-Index traceability and implemented bin/meta audit
+  learnings: Successfully extracted graph-parsing logic from nba_evaluator.py into
+    a dedicated, stateless skill gh_graph_skill.py. Verified with 100% test coverage
+    (87/87 tests passed).
+  name: Implement gh_graph_skill.py stateless primitive
   status: Completed
-  learnings: Meta-Index synchronization is now robust against formatting variations
-  invariants:
+- invariants:
   - '`[x] Robust Path ID extraction implemented`'
   - '`[x] bin/meta audit implemented`'
   - '`[x] Path labeling fixed`'
-- name: Implement NBAManager orchestrator
+  learnings: Meta-Index synchronization is now robust against formatting variations
+  name: Hardened Meta-Index traceability and implemented bin/meta audit
   status: Completed
-  learnings: Successfully migrated high-level navigation logic from legacy skill to
-    a formal orchestrator.
-  invariants:
+- invariants:
   - '`[x] NBAManager implemented`'
   - '`[x] integrated into sense_hooks`'
   - '`[x] verified with tests and manual execution.`'
-- name: Decommission legacy NBA skill and formalize primitive
+  learnings: Successfully migrated high-level navigation logic from legacy skill to
+    a formal orchestrator.
+  name: Implement NBAManager orchestrator
   status: Completed
-  learnings: Successfully promoted NBA to a first-class primitive and refactored the
-    legacy skill into a thin proxy.
-  invariants:
+- invariants:
   - '`[x] nba_evaluator.py refactored as proxy`'
   - '`[x] WHAT-0017 materialized`'
   - '`[x] WHAT-0001 updated`'
   - '`[x] obsolete tests deleted.`'
-- name: Materialize template-driven NBA banners
+  learnings: Successfully promoted NBA to a first-class primitive and refactored the
+    legacy skill into a thin proxy.
+  name: Decommission legacy NBA skill and formalize primitive
   status: Completed
-  learnings: Successfully migrated NBA banner rendering to a formal template-driven
-    system with ANSI support.
-  invariants:
+- invariants:
   - '`[x] kb/templates/nba_banner.md created`'
   - '`[x] sense_hooks.py refactored`'
   - '`[x] tests updated and passed.`'
-- name: Verify NBA Orchestrator Accuracy
+  learnings: Successfully migrated NBA banner rendering to a formal template-driven
+    system with ANSI support.
+  name: Materialize template-driven NBA banners
   status: Completed
-  learnings: Successfully verified that the new NBAManager correctly identifies Probe
-    nodes in the backlog, resolving the failures observed in the legacy evaluator.
-  invariants:
+- invariants:
   - '`[x] NBAManager verified`'
   - '`[x] Legacy issues 217-220 closed as resolved.`'
-- name: 'Probe 257: Refine NBA Presentation Requirements'
+  learnings: Successfully verified that the new NBAManager correctly identifies Probe
+    nodes in the backlog, resolving the failures observed in the legacy evaluator.
+  name: Verify NBA Orchestrator Accuracy
   status: Completed
+- invariants:
+  - '`[ ]` None'
   learnings: Reordered NBA banner to prioritize Path information with bold styling.
     Added robust newline handling to Meta-Index parser.
-  invariants:
-  - '`[ ]` None'
-- name: 'Probe 258: Scope NBA Presentation Enhancements'
+  name: 'Probe 257: Refine NBA Presentation Requirements'
   status: Completed
+- invariants:
+  - '`[ ]` None'
   learnings: Finalized technical scope for semantic color coding, visual framing,
     and history surfacing.
-  invariants:
-  - '`[ ]` None'
-- name: Materialize NBA Presentation Enhancements
+  name: 'Probe 258: Scope NBA Presentation Enhancements'
   status: Completed
+- invariants:
+  - '`[ ]` None'
   learnings: Implemented framed, color-coded, and history-aware NBA banner.
-  invariants:
-  - '`[ ]` None'
-- name: Refactor Test Runner & Legacy Proxies
+  name: Materialize NBA Presentation Enhancements
   status: Completed
-  learnings: Successfully migrated testing logic to orchestrator/daemon_testing.py
-    and decommissioned skills/nba_evaluator.py and skills/testing_harness.py. Updated
-    node_lifecycle and daemon_node to align with the new ontology.
-  invariants:
+- invariants:
   - '`[x] TestManager materialized`'
   - '`[x] bin/run-tests purified`'
   - '`[x] Legacy proxies deleted`'
   - '`[x] Mocks updated in tests`'
-- name: 'Fix ModuleNotFoundError in PR #284'
+  learnings: Successfully migrated testing logic to orchestrator/daemon_testing.py
+    and decommissioned skills/nba_evaluator.py and skills/testing_harness.py. Updated
+    node_lifecycle and daemon_node to align with the new ontology.
+  name: Refactor Test Runner & Legacy Proxies
   status: Completed
-  learnings: Successfully resolved CI failures by removing stale test files (tests/test_testing_harness.py)
-    and re-applying the Activity 279 refactoring on a clean branch. All 88 tests pass.
-  invariants:
+- invariants:
   - '`[x] Stale tests deleted`'
   - '`[x] Refactoring re-applied`'
   - '`[x] 88 tests pass`'
-- name: 'Probe: Align - Refinement of Initialization Invariants'
+  learnings: Successfully resolved CI failures by removing stale test files (tests/test_testing_harness.py)
+    and re-applying the Activity 279 refactoring on a clean branch. All 88 tests pass.
+  name: 'Fix ModuleNotFoundError in PR #284'
   status: Completed
-  learnings: Codified the Triple-Node Doctrine in kb/WHY-0020. This supersedes the
-    Dual-Probe pattern.
-  invariants:
+- invariants:
   - '`[x] kb/WHY-0020 exists`'
   - '`[x] Trinity definition aligned`'
-- name: 'Probe: Plan - Technical Integration of Triple-Node Guardrails'
+  learnings: Codified the Triple-Node Doctrine in kb/WHY-0020. This supersedes the
+    Dual-Probe pattern.
+  name: 'Probe: Align - Refinement of Initialization Invariants'
   status: Completed
-  learnings: Designed the branch-target invariant and the auto-initialization logic
-    for the Triple-Node trinity. Confirmed hard-halt and immediate backlog labeling
-    for trinity nodes.
-  invariants:
+- invariants:
   - '`[x] Branch-Target invariant designed`'
   - '`[x] Triple-Node auto-init designed`'
   - '`[x] Hard-halt confirmed`'
   - '`[x] Backlog labeling confirmed`'
-- name: 'Activity: Reflect - Formal Adoption of Triple-Node Doctrine'
+  learnings: Designed the branch-target invariant and the auto-initialization logic
+    for the Triple-Node trinity. Confirmed hard-halt and immediate backlog labeling
+    for trinity nodes.
+  name: 'Probe: Plan - Technical Integration of Triple-Node Guardrails'
   status: Completed
-  learnings: Implemented auto-initialization and branch-target invariant. Verified
-    trinity spawning and branch guardrails.
-  invariants:
+- invariants:
   - '`[x] Trinity auto-init implemented`'
   - '`[x] Branch-Target invariant implemented`'
   - '`[x] Governance docs updated`'
-- name: Plan - Regression Testing Architecture Hardening
+  learnings: Implemented auto-initialization and branch-target invariant. Verified
+    trinity spawning and branch guardrails.
+  name: 'Activity: Reflect - Formal Adoption of Triple-Node Doctrine'
   status: Completed
+- invariants:
+  - '`Test files MUST NOT exceed 10 patches`'
+  - '`Standardize on pytest fixtures`'
   learnings: Implemented centralized test support layer (conftest.py, harness.py)
     and integrated a mandatory patch-density guardrail into daemon_testing.py. Refactored
     major test files to comply with orthogonality requirements.
-  invariants:
-  - '`Test files MUST NOT exceed 10 patches`'
-  - '`Standardize on pytest fixtures`'
-- name: Format active node name with Node id prefix in frontier_editor
+  name: Plan - Regression Testing Architecture Hardening
   status: Completed
+- invariants:
+  - '`Active node titles must include Node id prefix`'
   learnings: 'Updated skills/frontier_editor.py to format appended active node titles
     using the Node {id}: prefix, ensuring consistent representation across the frontier
     state file. Updated tests/test_frontier_editor.py assertions to verify the formatting.'
-  invariants:
-  - '`Active node titles must include Node id prefix`'
-- name: Reflect - Regression Testing Architecture Hardening (Orthogonality & Reuse)
+  name: Format active node name with Node id prefix in frontier_editor
   status: Completed
+- invariants:
+  - '`Test mock density remains under configured limit (10 patches/file)`'
+  - '`All tests pass with 100% success rate`'
+  - '`Frontier active nodes are formatted with Node id prefix`'
   learnings: Refactored tests/test_daemon_node.py, tests/test_github_client.py, and
     tests/test_daemon_backlog.py to replace verbose manual patching with clean pytest
     fixtures defined in tests/conftest.py. Implemented a Patch Density Auditor in
@@ -429,402 +439,399 @@ nodes:
     This successfully reduced regression testing overhead, optimized test execution,
     and instituted automated governance checks to prevent future @patch bloat. Also
     verified node prefixing logic in skills/frontier_editor.py.
-  invariants:
-  - '`Test mock density remains under configured limit (10 patches/file)`'
-  - '`All tests pass with 100% success rate`'
-  - '`Frontier active nodes are formatted with Node id prefix`'
-- name: Implement Abstraction Remediation and Atomic Transactions
+  name: Reflect - Regression Testing Architecture Hardening (Orthogonality & Reuse)
   status: Completed
-  learnings: Adding git wrappers and a context-manager transaction layer allows rollbacks
-    of Git and GitHub state on failure, avoiding dirty states and compliance violations.
-  invariants:
+- invariants:
   - Must always use git_client wrapper functions instead of raw subprocess calls to
     git in all orchestration modules. Must always wrap state transitions in FlowTransaction.
-- name: 'Probe 385: Align - Spike Path: Three-Loop Governance Framework'
+  learnings: Adding git wrappers and a context-manager transaction layer allows rollbacks
+    of Git and GitHub state on failure, avoiding dirty states and compliance violations.
+  name: Implement Abstraction Remediation and Atomic Transactions
   status: Completed
+- invariants:
+  - None
   learnings: 'Aligned on the Three-Loop Project Governance Framework: Option B selected
     for C1. Formalized loop mechanics and states under Concept F.'
-  invariants:
-  - None
-- name: 'Probe 386: Plan - Spike Path: Three-Loop Governance Framework'
+  name: 'Probe 385: Align - Spike Path: Three-Loop Governance Framework'
   status: Completed
+- invariants:
+  - None
   learnings: Created WHAT-0034 specification documenting A1-F1 implementation decisions.
     Created implementation_plan.md.
-  invariants:
-  - None
-- name: 'Probe 481: Align - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic
-    Alignment'
+  name: 'Probe 386: Plan - Spike Path: Three-Loop Governance Framework'
   status: Completed
-  learnings: Created WHAT-0048 defining the mathematical formulation for the NBA scoring
-    rubric, WHY-0048 rationale, and updated the system GLOSSARY.md with the NS (North-Star)
-    definition.
-  invariants:
+- invariants:
   - WHAT-0048
   - WHY-0048
   - and GLOSSARY.md exist and contain NS definitions
-- name: 'Probe 482: Plan - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic
+  learnings: Created WHAT-0048 defining the mathematical formulation for the NBA scoring
+    rubric, WHY-0048 rationale, and updated the system GLOSSARY.md with the NS (North-Star)
+    definition.
+  name: 'Probe 481: Align - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic
     Alignment'
   status: Completed
+- invariants:
+  - kb/WHY-0049-nba-scorer-design.md exists
   learnings: Created kb/WHY-0049-nba-scorer-design.md detailing the scoring engine
     architectural specifications and file modifications planned for Activity 483.
-  invariants:
-  - kb/WHY-0049-nba-scorer-design.md exists
-- name: 'Probe 485: Align - Path: Next-Best-Action (NBA) Historical Decision Scoring
-    Execution'
+  name: 'Probe 482: Plan - Path: Next-Best-Action (NBA) Scoring Refinement & Axiomatic
+    Alignment'
   status: Completed
+- invariants:
+  - kb/WHAT-0050-historical-scoring-plan.md exists
   learnings: Created kb/WHAT-0050-historical-scoring-plan.md defining the execution
     plan and reporting format for historical path scoring.
-  invariants:
-  - kb/WHAT-0050-historical-scoring-plan.md exists
-- name: 'Probe 486: Plan - Path: Next-Best-Action (NBA) Historical Decision Scoring
+  name: 'Probe 485: Align - Path: Next-Best-Action (NBA) Historical Decision Scoring
     Execution'
   status: Completed
+- invariants:
+  - kb/WHY-0051-rt-scoring-cli-design.md exists
   learnings: Created kb/WHY-0051-rt-scoring-cli-design.md detailing the CLI design
     and options to expose historical path scoring through the runtime manager.
-  invariants:
-  - kb/WHY-0051-rt-scoring-cli-design.md exists
-- name: 'Probe 477: Align - Path: Concurrent Audit & Performance Monitoring Agent
-    Deployment'
+  name: 'Probe 486: Plan - Path: Next-Best-Action (NBA) Historical Decision Scoring
+    Execution'
   status: Completed
+- invariants:
+  - kb/WHAT-0052-scoring-ab-test-plan.md exists
   learnings: Created kb/WHAT-0052-scoring-ab-test-plan.md outlining the hypotheses,
     metrics, and controlled experimental design for comparing the coarse vs. granular
     scoring models.
-  invariants:
-  - kb/WHAT-0052-scoring-ab-test-plan.md exists
-- name: 'Probe 478: Plan - Path: Concurrent Audit & Performance Monitoring Agent Deployment'
+  name: 'Probe 477: Align - Path: Concurrent Audit & Performance Monitoring Agent
+    Deployment'
   status: Completed
-  learnings: Designed granular scoring metrics ({\text{Strategic}}$, {\text{Risk}}$)
-    and specified the controlled A/B test harness details in WHAT-0052.
-  invariants:
+- invariants:
   - kb/WHAT-0052-scoring-ab-test-plan.md exists and contains Detailed Implementation
     Specifications
-- name: 'Probe 543: Plan - Implement Autonomous Knowledge Accrual Engine'
+  learnings: Designed granular scoring metrics ({\text{Strategic}}$, {\text{Risk}}$)
+    and specified the controlled A/B test harness details in WHAT-0052.
+  name: 'Probe 478: Plan - Path: Concurrent Audit & Performance Monitoring Agent Deployment'
   status: Completed
-  learnings: Codified the agent-SG5 identity, strategic scope boundaries, tactical
-    goals, and invariants under SG-0005 in kb/WHAT-0059 and kb/WHY-0059.
-  invariants:
+- invariants:
   - '[x] kb/WHAT-0059-agent-persona-sg-0005-ownership.md exists'
   - '[x] kb/WHY-0059-agent-persona-sg-0005-ownership.md exists'
-- name: reflect-sg-0005-accrual-engine
+  learnings: Codified the agent-SG5 identity, strategic scope boundaries, tactical
+    goals, and invariants under SG-0005 in kb/WHAT-0059 and kb/WHY-0059.
+  name: 'Probe 543: Plan - Implement Autonomous Knowledge Accrual Engine'
   status: Completed
-  learnings: Implemented diagnostics parsing, KB conflict checks, lexical rule synthesis,
-    post-failure gates, and ROM contextual prompt injections.
-  invariants:
+- invariants:
   - INVARIANT_PERSONA_ISOLATION
   - INVARIANT_EXCLUSIVE_LEDGER_MUTATION
   - INVARIANT_FAIL_SAFE_MUTATION
-- name: 'Probe 562: Plan - Codify SG-0001 Tactical Goals and Persona Domain Ownership'
+  learnings: Implemented diagnostics parsing, KB conflict checks, lexical rule synthesis,
+    post-failure gates, and ROM contextual prompt injections.
+  name: reflect-sg-0005-accrual-engine
   status: Completed
-  learnings: Successfully resolved the index collision between SG-0001 and SG-0005
-    by moving SG-0001 spec files to indices 0060 and 0061, and updating all references
-    and titles.
-  invariants:
+- invariants:
   - All files renamed successfully.
   - Heading titles and cross-references updated.
   - Local test suite passes.
-- name: 'Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution'
+  learnings: Successfully resolved the index collision between SG-0001 and SG-0005
+    by moving SG-0001 spec files to indices 0060 and 0061, and updating all references
+    and titles.
+  name: 'Probe 562: Plan - Codify SG-0001 Tactical Goals and Persona Domain Ownership'
   status: Completed
+- invariants: []
   learnings: Aligned on dynamic agent identity resolution policy.
-  invariants: []
-- name: 'Probe 628: Plan - Path: Implement Dynamic Agent Identity Resolution'
+  name: 'Probe 627: Align - Path: Implement Dynamic Agent Identity Resolution'
   status: Completed
+- invariants: []
   learnings: Created design specification (WHAT-0064) and rationale (WHY-0064) for
     dynamic identity resolution.
-  invariants: []
-- name: 'Probe 733: Align - Formalize The Shaping Sequence'
+  name: 'Probe 628: Plan - Path: Implement Dynamic Agent Identity Resolution'
   status: Completed
+- invariants: ''
   learnings: ''
-  invariants: ''
-- name: 'Probe 736: Align - Restructure Repository for Dao Portability'
+  name: 'Probe 733: Align - Formalize The Shaping Sequence'
   status: Completed
+- invariants:
+  - None explicitly updated
+  - but reaffirmed Dao fa Ziran (The Dao follows Ziran).
   learnings: The Wu-wei Dyad is an OS. Its physical manifestation is kernel, drivers,
     bin, kb, artifacts, and tests. We do not need arbitrary nested directories. Everything
     in CWD is an artificial manifestation of The Shaping.
-  invariants:
-  - None explicitly updated
-  - but reaffirmed Dao fa Ziran (The Dao follows Ziran).
-- name: 'Probe 770: Align - Autonomous Learning Loop'
+  name: 'Probe 736: Align - Restructure Repository for Dao Portability'
   status: Completed
+- invariants:
+  - WHY-0082
+  - WHY-0770
   learnings: 'Learning Loop infrastructure is partially built. Five gaps identified:
     (1) No sluice gate sensor, (2) No bin/node retro attach, (3) No merge-conflict
     auto-resolve hook, (4) Incomplete positive feedback integration, (5) Stale GLOSSARY.md.
     WHY-0770 codifies findings. Node 806 is recommended as next.'
-  invariants:
-  - WHY-0082
-  - WHY-0770
-- name: 'Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger
-    alignment'
+  name: 'Probe 770: Align - Autonomous Learning Loop'
   status: Completed
+- invariants:
+  - WHY-0623
   learnings: Successfully investigated dynamic agent identity resolution against collaborative
     goals. The findings are codified in WHY-0623 and WHAT-0622.
-  invariants:
-  - WHY-0623
-- name: 'Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger
+  name: 'Probe 623: Align - Path: Dynamic agent identity resolution and policy ledger
     alignment'
   status: Completed
+- invariants:
+  - '[x] WHAT-0622-dynamic-identity-resolution-alignment.md is created and tracked'
+  - '[x] Registered in kb/HOW-0000-manifest.md'
   learnings: Created WHAT-0622-dynamic-identity-resolution-alignment.md specifying
     dynamic persona defaulting, child workspace gate decoupling, and test validation
     adaptations.
-  invariants:
-  - '[x] WHAT-0622-dynamic-identity-resolution-alignment.md is created and tracked'
-  - '[x] Registered in kb/HOW-0000-manifest.md'
-- name: Resolve Hard Reset Bug
+  name: 'Probe 624: Plan - Path: Dynamic agent identity resolution and policy ledger
+    alignment'
   status: Completed
-  learnings: Performed proper hard reset rollback protocol to pull down PR 1009 fix.
-  invariants:
+- invariants:
   - N/A
-- name: Resolve Final Teardown State
+  learnings: Performed proper hard reset rollback protocol to pull down PR 1009 fix.
+  name: Resolve Hard Reset Bug
   status: Completed
+- invariants:
+  - N/A
   learnings: Root repository was stale causing continuous teardown failures. Root
     repo hard reset, final reflection closing out node.
-  invariants:
-  - N/A
-- name: 'Probe 1037: Evaluate chat immediacy responses via Dialectical Falsification'
+  name: Resolve Final Teardown State
   status: Completed
+- invariants:
+  - N/A
   learnings: Codified WHY-1037 Chat Immediacy Protocol to differentiate Operator Intent
     Acknowledgments from System Event Notifications
-  invariants:
-  - N/A
-- name: 'Discovery: Workspace Engine Distribution Architecture'
+  name: 'Probe 1037: Evaluate chat immediacy responses via Dialectical Falsification'
   status: Completed
+- invariants:
+  - Orthogonal Peer Topology (WHY-0003)
   learnings: Child workspace corruption was caused by downstream project git clones
     pulling upstream Engine logic while sharing the artifacts/ state directory on
     the main branch.
-  invariants:
-  - Orthogonal Peer Topology (WHY-0003)
-- name: 1089-align-kb-deprecation-semantics
+  name: 'Discovery: Workspace Engine Distribution Architecture'
   status: Completed
+- invariants:
+  - '[x] Created WHY-1089'
+  - '[x] Updated WHAT-0001'
   learnings: Codified the Soft-Mutation rule for KB Deprecation in WHY-1089. Established
     that the body of a kb primitive is immutable ROM, while the header is mutable
     metadata, allowing seamless Dao evolution without breaking historical traceability.
-  invariants:
-  - '[x] Created WHY-1089'
-  - '[x] Updated WHAT-0001'
-- name: Materialize ISBO Epistemology
+  name: 1089-align-kb-deprecation-semantics
   status: Completed
-  learnings: Codified ISBO ontology and protocol (Install, Setup, Bootstrap, Operate)
-    as the canonical journey to prevent Creator/Director conflation.
-  invariants:
+- invariants:
   - 'The Bootstrapping Invariant: The Agent must strictly require a strategic_intent.yml
     before entering the Operate phase.'
-- name: workspace-inheritance
+  learnings: Codified ISBO ontology and protocol (Install, Setup, Bootstrap, Operate)
+    as the canonical journey to prevent Creator/Director conflation.
+  name: Materialize ISBO Epistemology
   status: Completed
-  learnings: SPAOR is the canonical 5-phase loop; Telos replaces North Star; Intents
-    and Invariants are first-class Shaping stages; intent-first naming for newcomers;
-    single water metaphor; boot loader must be fixed at source not deferred to lexical
-    guard; GLOSSARY and semantic_ledger require manual sync until automated
-  invariants:
+- invariants:
   - README
   - GLOSSARY
   - GEMINI.md
   - WHY-1069
   - semantic_ledger aligned to unified ontology
-- name: 1153-harmonize-prompts
+  learnings: SPAOR is the canonical 5-phase loop; Telos replaces North Star; Intents
+    and Invariants are first-class Shaping stages; intent-first naming for newcomers;
+    single water metaphor; boot loader must be fixed at source not deferred to lexical
+    guard; GLOSSARY and semantic_ledger require manual sync until automated
+  name: workspace-inheritance
   status: Completed
-  learnings: '-'
-  invariants:
+- invariants:
   - '-'
-- name: 1154-plan-codify-falsifications
-  status: Completed
   learnings: '-'
-  invariants:
-  - '-'
-- name: Ratify the Healing Protocol into the Dao
+  name: 1153-harmonize-prompts
   status: Completed
-  learnings: Codified the Healing Protocol doctrine, procedure, and instantiation
-    template from the ward case file.
-  invariants:
+- invariants:
+  - '-'
+  learnings: '-'
+  name: 1154-plan-codify-falsifications
+  status: Completed
+- invariants:
   - '[x] WHY-1166'
   - HOW-1166
   - and templates/healer_instantiation.md are created. [x] Node 1167 is created.
-- name: 'Probe 722: Align - Resilient GraphQL parsing in GitHub Client'
+  learnings: Codified the Healing Protocol doctrine, procedure, and instantiation
+    template from the ward case file.
+  name: Ratify the Healing Protocol into the Dao
   status: Completed
+- invariants:
+  - '[x] WHY-0722 created'
   learnings: Drafted WHY-0722 documenting the phenomenon, root cause, and mitigation
     plan.
-  invariants:
-  - '[x] WHY-0722 created'
-- name: 'Probe 723: Plan - Resilient GraphQL parsing in GitHub Client'
+  name: 'Probe 722: Align - Resilient GraphQL parsing in GitHub Client'
   status: Completed
+- invariants:
+  - '[x] WHAT-0723 created'
   learnings: Drafted WHAT-0723 specifying the resilient GraphQL parsing design and
     verification plan.
-  invariants:
-  - '[x] WHAT-0723 created'
-- name: Mock venv in test_init_workspace to restore CI speed
+  name: 'Probe 723: Plan - Resilient GraphQL parsing in GitHub Client'
   status: Completed
+- invariants:
+  - Offline tests must not perform real network I/O
   learnings: Mocked venv.create and subprocess.check_call in test_init_workspace to
     prevent real pip network I/O, reducing test execution time by 50% and restoring
     SG-0003 inner-loop offline velocity.
-  invariants:
-  - Offline tests must not perform real network I/O
-- name: Evaluate child workspace inheritance of parent gates
+  name: Mock venv in test_init_workspace to restore CI speed
   status: Completed
+- invariants:
+  - Sovereign child workspaces can bypass strategic gates locally
   learnings: Child workspaces bypass strategic persona checks if ownership index files
     do not exist locally, balancing velocity with security since final integration
     gates are enforced during parent-level PR review.
-  invariants:
-  - Sovereign child workspaces can bypass strategic gates locally
-- name: 1303-harmonize-how-1170
+  name: Evaluate child workspace inheritance of parent gates
   status: Completed
+- invariants:
+  - WIP-N=1
   learnings: Delegated recovery interactions to NBA protocol to maintain orthogonal
     physical state-assertion
-  invariants:
-  - WIP-N=1
-- name: 1314-headless-gh-token
+  name: 1303-harmonize-how-1170
   status: Completed
+- invariants:
+  - WIP-N=1
   learnings: Implemented headless GH_TOKEN fallback in github_client._run_gh to parse
     .env file when the OS DBus keyring is unavailable.
-  invariants:
-  - WIP-N=1
-- name: 1403-reconcile-deprecated-terms
+  name: 1314-headless-gh-token
   status: Completed
+- invariants:
+  - N/A
   learnings: The lexical guard was failing because dao, ziran, and align were prematurely
     deprecated. Reverted to proposed to un-seize main. Lexical guard regex hardened
     to use word boundaries and ignore .venv.
-  invariants:
-  - N/A
-- name: Codify Load-Bearing Environment Mutation Isolation
+  name: 1403-reconcile-deprecated-terms
   status: Completed
+- invariants:
+  - '[x] WHY-1433 created'
   learnings: Created an invariant explicitly forbidding the bundling of destructive
     environment changes with feature branches.
-  invariants:
-  - '[x] WHY-1433 created'
-- name: Triage 76 Execution Failures
+  name: Codify Load-Bearing Environment Mutation Isolation
   status: Completed
+- invariants: []
   learnings: The test runner was failing to clean up historical test failure telemetry,
     causing the Seizure Detector to trigger on accumulated historical debt. Added
     cleanup logic to run-tests.
-  invariants: []
-- name: 'Activity: Refactor Naming Conventions'
+  name: Triage 76 Execution Failures
   status: Completed
+- invariants:
+  - WHY-1439
   learnings: Removed predictive ID generation from backlog factory to allow GitHub
     native numbering, and explicitly prefixed PR titles with 'PR for Node {issue_id}:'
     in node reflection to prevent PR/Issue ambiguity.
-  invariants:
-  - WHY-1439
-- name: 'Discovery: Plan - Codify Stepped-Away Discipline'
+  name: 'Activity: Refactor Naming Conventions'
   status: Completed
+- invariants:
+  - '[x] Asynchronous Execution Invariant'
   learnings: Formulated WHAT-1461 specification
-  invariants:
-  - '[x] Asynchronous Execution Invariant'
-- name: 'Activity: Reflect - Codify Stepped-Away Discipline'
+  name: 'Discovery: Plan - Codify Stepped-Away Discipline'
   status: Completed
-  learnings: Compiled Path 1459 Retrospective
-  invariants:
+- invariants:
   - '[x] Asynchronous Execution Invariant'
-- name: 'Node 1510: Reflect - Remediate stale audit_state.json survivor'
-  status: '[///] Act Phase'
+  learnings: Compiled Path 1459 Retrospective
+  name: 'Activity: Reflect - Codify Stepped-Away Discipline'
+  status: Completed
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: 'Path 1017: Codify Chat Immediacy Protocol'
-  status: Cancelled
+  name: 'Node 1510: Reflect - Remediate stale audit_state.json survivor'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Cancelled: Path execution completed; final retrospective synthesized
     but node remained open in Github'
-  invariants: []
-- name: 'Path 1022: Refine Wu-wei Dyad Intent Understanding'
+  name: 'Path 1017: Codify Chat Immediacy Protocol'
   status: Cancelled
+- invariants: []
   learnings: 'Cancelled: Path execution completed; final retrospective synthesized
     in retro-1022-final.md but node remained open in Github'
-  invariants: []
-- name: Refinement Discovery - Quarantine Protocol
+  name: 'Path 1022: Refine Wu-wei Dyad Intent Understanding'
   status: Cancelled
+- invariants: []
   learnings: 'Cancelled: Orthogonal Scope Violation - Path 1223 already contains nodes
     for this protocol'
-  invariants: []
-- name: Scoping Discovery - Quarantine Protocol
+  name: Refinement Discovery - Quarantine Protocol
   status: Cancelled
+- invariants: []
   learnings: 'Cancelled: Orthogonal Scope Violation - Path 1223 already contains nodes
     for this protocol'
-  invariants: []
-- name: 'Discovery: Harmonize - [BUG] Intake: System Crash in sync'
-  status: Completed
+  name: Scoping Discovery - Quarantine Protocol
+  status: Cancelled
+- invariants: []
   learnings: Handled git switch errors gracefully in sync_and_clean_node and merged
     duplicate switch definitions in git_client.py.
-  invariants: []
-- name: Fix daemon_prompt.py crash
+  name: 'Discovery: Harmonize - [BUG] Intake: System Crash in sync'
   status: Completed
-  learnings: Fixed list type initialization for prompts
-  invariants:
+- invariants:
   - '[x] Fixed dict append crash'
-- name: 'Activity: System Crash Validation Refactor'
+  learnings: Fixed list type initialization for prompts
+  name: Fix daemon_prompt.py crash
   status: Completed
+- invariants: []
   learnings: Refactored validation gates to use sys.exit
-  invariants: []
-- name: 'Discovery: Plan - [ALIGN] Falsify and remediate private repository survivor'
+  name: 'Activity: System Crash Validation Refactor'
   status: Completed
+- invariants:
+  - None
   learnings: Untracked .venv and stale artifacts from repository, updated .gitignore
-  invariants:
-  - None
-- name: 'Activity: Reflect - [ALIGN] Falsify ontology orthogonal hierarchy'
+  name: 'Discovery: Plan - [ALIGN] Falsify and remediate private repository survivor'
   status: Completed
+- invariants:
+  - None
   learnings: Closed path 1585 by synthesizing learnings from discovery
-  invariants:
-  - None
-- name: Harmonize PR and Node Conflation and fix NBA sync bug
+  name: 'Activity: Reflect - [ALIGN] Falsify ontology orthogonal hierarchy'
   status: Completed
+- invariants:
+  - None
   learnings: Created 1603_harmonization.md detailing the PR/Node ID falsification.
     Fixed a severe bug in github_client.py where GraphQL deprecation warnings on stderr
     caused gh issue view to exit with 1, which broke daemon_nba.py and surfaced corrupt
     mock nodes.
-  invariants:
-  - None
-- name: Documented the Falsify PR and Node Conflation plan
+  name: Harmonize PR and Node Conflation and fix NBA sync bug
   status: Completed
+- invariants:
+  - None
   learnings: Created 1604_plan.md to summarize the decoupling of PR logic and Node
     locking (implemented out of band in Node 1606). Further closed all legacy dummy
     issues from the GitHub backlog and purged them from the worktree frontier state.
-  invariants:
-  - None
-- name: Reflect on Falsify PR and Node Conflation
+  name: Documented the Falsify PR and Node Conflation plan
   status: Completed
+- invariants:
+  - None
   learnings: Completed the implementation, harmonization, and plan for PR and Node
     Conflation. PR 1607 handled the logical branch isolation. PR 1608 fixed the NBA
     exit code 1 bug in daemon_nba. PR 1609 documented the plan and purged legacy ghost
     backlog issues. Path 1602 is now structurally satisfied.
-  invariants:
-  - None
-- name: 'Node 1612: Path: Implement PR Discipline Formalization'
-  status: Backlog
-  learnings: Formally define PR Discipline and implement automated test gates
-  invariants: []
-  kind: path
-- name: 'Node 1613: Harmonize - Implement PR Discipline Formalization'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Node 1614: Plan - Implement PR Discipline Formalization'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Node 1615: Reflect - Implement PR Discipline Formalization'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Automate test gates in Node Reflect
+  name: Reflect on Falsify PR and Node Conflation
   status: Completed
+- invariants: []
+  kind: path
+  learnings: Formally define PR Discipline and implement automated test gates
+  name: 'Node 1612: Path: Implement PR Discipline Formalization'
+  status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1613: Harmonize - Implement PR Discipline Formalization'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1614: Plan - Implement PR Discipline Formalization'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1615: Reflect - Implement PR Discipline Formalization'
+  status: '[///] Act Phase'
+- invariants:
+  - Automate CI gates before PRs
   learnings: Automated test gates in daemon_rt.py to enforce PR discipline, and documented
     PR discipline.
-  invariants:
-  - Automate CI gates before PRs
-- name: Reflect - Synthesize Epistemic Retrospective retro-1089.md
+  name: Automate test gates in Node Reflect
   status: Completed
+- invariants:
+  - Adhere to Soft-Mutation rule for KB deprecation
   learnings: Synthesized retro-1089.md by formally encoding the Soft-Mutation rule
     for KB Deprecation into HOW-0005-terminology-lifecycle.md.
-  invariants:
-  - Adhere to Soft-Mutation rule for KB deprecation
-- name: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
+  name: Reflect - Synthesize Epistemic Retrospective retro-1089.md
   status: Completed
-  learnings: Created discovery_1243.md artifact
-  invariants:
+- invariants:
   - None
-- name: 'Act - [BUG] Intake: System Crash in set-status'
+  learnings: Created discovery_1243.md artifact
+  name: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
   status: Completed
+- invariants:
+  - System gracefully handles invalid status or classification keys without crashing.
   learnings: Updated cmd_set_status and cmd_set_classification in daemon_node.py to
     catch ValueError raised by node.yml invalid keys and gracefully exit with sys.exit(2).
     Added tests in test_daemon_node.py.
-  invariants:
-  - System gracefully handles invalid status or classification keys without crashing.
-- name: 'Node 1659: [BUG] Intake: System Crash in checkout'
+  name: 'Act - [BUG] Intake: System Crash in set-status'
   status: Completed
+- invariants: []
   learnings: "## System Crash Report\n\n**Subcommand:** `checkout`\n**Persona:** `Unknown`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
     , line 652, in main\n    cmd_checkout(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
@@ -840,23 +847,23 @@ nodes:
     \ environment variable is absent. Cannot verify identity.\")\nException: Persona\
     \ Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify\
     \ identity.\n\n```\n"
-  invariants: []
-- name: 'Node 1660: Harmonize - [BUG] Intake: System Crash in checkout'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Node 1661: Plan - [BUG] Intake: System Crash in checkout'
+  name: 'Node 1659: [BUG] Intake: System Crash in checkout'
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1660: Harmonize - [BUG] Intake: System Crash in checkout'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
     in checkout.'
-  invariants: []
-- name: 'Node 1662: Reflect - [BUG] Intake: System Crash in checkout'
+  name: 'Node 1661: Plan - [BUG] Intake: System Crash in checkout'
   status: Completed
+- invariants: []
   learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
     checkout.'
-  invariants: []
-- name: 'Node 1667: [BUG] Intake: System Crash in plan-start'
+  name: 'Node 1662: Reflect - [BUG] Intake: System Crash in checkout'
   status: Completed
+- invariants: []
   learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
     \ `Unknown`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
     \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 646,\
@@ -872,276 +879,277 @@ nodes:
     \ environment variable is absent. Cannot verify identity.\")\nException: Persona\
     \ Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify\
     \ identity.\n\n```\n"
-  invariants: []
-- name: 'Node 1690: Plan - [BUG] Intake: System Crash in sync'
+  name: 'Node 1667: [BUG] Intake: System Crash in plan-start'
   status: Completed
+- invariants: []
   learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
     in sync.'
-  invariants: []
-- name: 'Path: Establish Job Discipline for JTBD and Dialectical Falsification'
-  status: Backlog
+  name: 'Node 1690: Plan - [BUG] Intake: System Crash in sync'
+  status: Completed
+- invariants: []
   learnings: Define philosophical tenets, create templates, and implement automated
     validation for the JTBD Job Discipline.
-  invariants: []
-- name: 'Node 1716: Falsify Title Decorations'
-  status: Completed
+  name: 'Path: Establish Job Discipline for JTBD and Dialectical Falsification'
+  status: Backlog
+- invariants: []
   learnings: Remove Node and Activity prefixes from issue titles and templates as
     they are no longer necessary for operator monitoring.
-  invariants: []
-- name: 'Node 1717: Harmonize - Falsify Title Decorations'
+  name: 'Node 1716: Falsify Title Decorations'
   status: Completed
+- invariants: []
   learnings: Harmonize on the philosophical and technical intent for Falsify Title
     Decorations.
-  invariants: []
-- name: 'Node 1718: Plan - Falsify Title Decorations'
+  name: 'Node 1717: Harmonize - Falsify Title Decorations'
   status: Completed
+- invariants: []
   learnings: Technical design and proposed changes for Falsify Title Decorations.
-  invariants: []
-- name: 'Node 1719: Reflect - Falsify Title Decorations'
+  name: 'Node 1718: Plan - Falsify Title Decorations'
   status: Completed
+- invariants: []
   learnings: Final reflection and path closure for Falsify Title Decorations.
-  invariants: []
-- name: Implement Title Decoration Falsification
+  name: 'Node 1719: Reflect - Falsify Title Decorations'
   status: Completed
+- invariants:
+  - '[x] Removed ID prefixes'
   learnings: Falsified Node and Activity prefixes in issue and PR titles as they are
     unnecessary.
-  invariants:
-  - '[x] Removed ID prefixes'
-- name: 'Reflect: System Crash Resolution'
+  name: Implement Title Decoration Falsification
   status: Completed
-  learnings: Path 1667 is resolved. Attached retro-1667.md.
-  invariants:
+- invariants:
   - '[x] Attached retro'
-- name: 'Node 1643: Harmonize - [BUG] Intake: System Crash in reflect'
+  learnings: Path 1667 is resolved. Attached retro-1667.md.
+  name: 'Reflect: System Crash Resolution'
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1643: Harmonize - [BUG] Intake: System Crash in reflect'
   status: '[///] Act Phase'
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: 'Node 999: Implement quarantine survivor'
+  name: 'Node 999: Implement quarantine survivor'
   status: Completed
-  learnings: Planning Phase
-  invariants: []
-- name: 'Discovery: Harmonize - [BUG] Intake: System Crash in reflect'
-  status: Completed
+- invariants:
+  - '[x] The bug root cause is formally identified and recorded'
   learnings: Harmonized that reflect crash is caused by double-nested execution context
     and must be guarded by an explicit block
-  invariants:
-  - '[x] The bug root cause is formally identified and recorded'
-- name: 'Node 1645: Reflect - [BUG] Intake: System Crash in reflect'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity: Reflect - [BUG] Intake: System Crash in reflect'
+  name: 'Discovery: Harmonize - [BUG] Intake: System Crash in reflect'
   status: Completed
-  learnings: Implemented explicit block in cmd_reflect to halt worktree-relative executions,
-    preventing fatal Path resolving bugs.
-  invariants:
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1645: Reflect - [BUG] Intake: System Crash in reflect'
+  status: '[///] Act Phase'
+- invariants:
   - '[x] The bug root cause is formally identified and recorded'
   - '[x] The technical design satisfies the harmonization constraints'
   - '[x] The implementation satisfies the technical design'
-- name: 'Node 1730: [ALIGN] Falsify and implement DAG mapping survivor'
-  status: Backlog
+  learnings: Implemented explicit block in cmd_reflect to halt worktree-relative executions,
+    preventing fatal Path resolving bugs.
+  name: 'Activity: Reflect - [BUG] Intake: System Crash in reflect'
+  status: Completed
+- invariants: []
+  kind: path
   learnings: 'Address the Operator''s [ALIGN] request: Falsify the assumption that
     the agent has a clear DAG mapping of backlog items to the root summit, and implement
     the survivor (a mechanism to map backlog items to the DAG summit).'
-  invariants: []
-  kind: path
-- name: 'Node 1731: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Discovery: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor'
-  status: Completed
-  learnings: Produced WHY-1731 falsifying DAG clarity and planning survivor.
-  invariants:
-  - '[x] The bug root cause is formally identified and recorded'
-  - '[x] The technical design satisfies the harmonization constraints'
-  - '[x] The implementation satisfies the technical design'
-- name: 'Node 1735: Act - [ALIGN] Falsify and implement DAG mapping survivor'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity: Act - [ALIGN] Falsify and implement DAG mapping survivor'
-  status: Completed
-  learnings: Implemented the bin/backlog map command and tested successfully.
-  invariants:
-  - '[x] The bug root cause is formally identified and recorded'
-  - '[x] The technical design satisfies the harmonization constraints'
-  - '[x] The implementation satisfies the technical design'
-- name: 'Node 1739: Establish Dyadic-Autonomous Handoff Boundary'
+  name: 'Node 1730: [ALIGN] Falsify and implement DAG mapping survivor'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1731: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor'
+  status: '[///] Act Phase'
+- invariants:
+  - '[x] The bug root cause is formally identified and recorded'
+  - '[x] The technical design satisfies the harmonization constraints'
+  - '[x] The implementation satisfies the technical design'
+  learnings: Produced WHY-1731 falsifying DAG clarity and planning survivor.
+  name: 'Discovery: Harmonize - [ALIGN] Falsify and Implement DAG Mapping Survivor'
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1735: Act - [ALIGN] Falsify and implement DAG mapping survivor'
+  status: '[///] Act Phase'
+- invariants:
+  - '[x] The bug root cause is formally identified and recorded'
+  - '[x] The technical design satisfies the harmonization constraints'
+  - '[x] The implementation satisfies the technical design'
+  learnings: Implemented the bin/backlog map command and tested successfully.
+  name: 'Activity: Act - [ALIGN] Falsify and implement DAG mapping survivor'
+  status: Completed
+- invariants: []
+  kind: path
   learnings: Formalize the architectural separation between the synchronous Dyadic
     design cycle and the asynchronous SPAO execution engine to eliminate design session
     friction.
-  invariants: []
-  kind: path
-- name: 'Node 1740: Harmonize - Establish Dyadic-Autonomous Handoff Boundary'
-  status: '[///] Act Phase'
+  name: 'Node 1739: Establish Dyadic-Autonomous Handoff Boundary'
+  status: Backlog
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: 'Discovery: Harmonize - Establish Dyadic-Autonomous Handoff Boundary'
-  status: Completed
-  learnings: Formalized the falsification of the universal SPAO application and established
-    the handoff boundary.
-  invariants:
+  name: 'Node 1740: Harmonize - Establish Dyadic-Autonomous Handoff Boundary'
+  status: '[///] Act Phase'
+- invariants:
   - '[x] The goal context and boundaries have been mapped'
   - '[x] Discovered unknowns have been formulated into actionable tasks'
-- name: 'Node 1744: Act - Handoff Friction Remediation'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity: Act - Handoff Friction Remediation'
+  learnings: Formalized the falsification of the universal SPAO application and established
+    the handoff boundary.
+  name: 'Discovery: Harmonize - Establish Dyadic-Autonomous Handoff Boundary'
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1744: Act - Handoff Friction Remediation'
+  status: '[///] Act Phase'
+- invariants:
+  - '[x] Ensure tests pass'
   learnings: Implemented the daemon_backlog.py code changes to auto-prefix path titles
     and correctly format the Meta-Index array. Tests successfully updated to enforce
     Node prefixing.
-  invariants:
-  - '[x] Ensure tests pass'
-- name: 'Node 1748: Establish Lean DM Protocol Integration'
-  status: Backlog
+  name: 'Activity: Act - Handoff Friction Remediation'
+  status: Completed
+- invariants: []
+  kind: path
   learnings: Integrate the public DM protocol via the commons falsify inbox script
     directly into the SPAO Sense phase transitions (sync/status), eliminating the
     need for an external daemon.
-  invariants: []
-  kind: path
-- name: 'Node 1749: Harmonize - Path: Establish Lean DM Protocol Integration'
-  status: '[///] Act Phase'
+  name: 'Node 1748: Establish Lean DM Protocol Integration'
+  status: Backlog
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: 'Node 1750: Plan - Path: Establish Lean DM Protocol Integration'
-  status: Completed
+  name: 'Node 1749: Harmonize - Path: Establish Lean DM Protocol Integration'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Technical design and proposed changes for Path: Establish Lean DM Protocol
     Integration.'
-  invariants: []
-- name: 'Node 1751: Reflect - Path: Establish Lean DM Protocol Integration'
+  name: 'Node 1750: Plan - Path: Establish Lean DM Protocol Integration'
   status: Completed
+- invariants: []
   learnings: 'Final reflection and path closure for Path: Establish Lean DM Protocol
     Integration.'
-  invariants: []
-- name: 'Node 1749: Harmonize'
+  name: 'Node 1751: Reflect - Path: Establish Lean DM Protocol Integration'
   status: Completed
+- invariants:
+  - '[x] Ensure no functional codebase mutations'
   learnings: Validated the commons submodule can be updated to fetch falsify.py. Identified
     kernel/sense_hooks.py as the perfect injection point for the dm_inbox HookDaemon
     to print alerts during SENSE phase. Explored falsify.py inbox behavior.
-  invariants:
-  - '[x] Ensure no functional codebase mutations'
-- name: 'Node 1753: Implement Lean DM Hook integration'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Node 1753: Activity'
+  name: 'Node 1749: Harmonize'
   status: Completed
-  learnings: Implemented Lean DM Hook integration in sense_hooks.py to asynchronously
-    alert upon unread DMs during the Sense phase. Also configured dyad-wu-wei.yml
-    and ensured dm/ directory scaffold.
-  invariants:
+- invariants: []
+  learnings: Planning Phase
+  name: 'Node 1753: Implement Lean DM Hook integration'
+  status: '[///] Act Phase'
+- invariants:
   - '[x] Implement execute_dm_inbox_hook'
   - '[x] Configure dyad-wu-wei.yml'
   - '[x] Add dm/ scaffold'
-- name: 'Activity: Reflect - Remediate stale audit_state.json survivor'
+  learnings: Implemented Lean DM Hook integration in sense_hooks.py to asynchronously
+    alert upon unread DMs during the Sense phase. Also configured dyad-wu-wei.yml
+    and ensured dm/ directory scaffold.
+  name: 'Node 1753: Activity'
   status: Completed
+- invariants: []
   learnings: Synthesized retro-1507_1511.md. Orthogonal Scope Violation safeguard
     correctly halted redundant path-to-node execution.
-  invariants: []
-- name: 'Discovery: Harmonize - Implement PR Discipline Formalization'
+  name: 'Activity: Reflect - Remediate stale audit_state.json survivor'
   status: Completed
+- invariants: []
   learnings: Synthesized PR discipline formalization in 1613_harmonization.md, mandating
     automated pre-flight CI checks.
-  invariants: []
-- name: Plan - Implement PR Discipline Formalization
+  name: 'Discovery: Harmonize - Implement PR Discipline Formalization'
   status: Completed
+- invariants: []
   learnings: Validated that node_lifecycle.py and kb/ already structurally enforce
     the Pull Request Verification Discipline. No codebase modifications needed.
-  invariants: []
-- name: Reflect - Implement PR Discipline Formalization
+  name: Plan - Implement PR Discipline Formalization
   status: Completed
+- invariants: []
   learnings: Synthesized path 1613-1615 outcomes into retro-1613-1615.md, confirming
     PR Discipline is properly codified in node_lifecycle.py.
-  invariants: []
-- name: 'Harmonize - [BUG] Intake: System Crash in checkout'
+  name: Reflect - Implement PR Discipline Formalization
   status: Completed
+- invariants: []
   learnings: 'Confirmed that the checkout Persona Gate exception was already fixed
     by PR #1722, which implemented root-level environment fallback.'
-  invariants: []
-- name: 'Plan - [BUG] Intake: System Crash in checkout'
+  name: 'Harmonize - [BUG] Intake: System Crash in checkout'
   status: Completed
+- invariants: []
   learnings: Planned graceful validation for cmd_checkout
-  invariants: []
-- name: '#999: Implement quarantine survivor'
+  name: 'Plan - [BUG] Intake: System Crash in checkout'
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#999: Implement quarantine survivor'
   status: '[///] Act Phase'
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#1719: Reflect - Falsify Title Decorations'
+  name: '#1719: Reflect - Falsify Title Decorations'
   status: Completed
-  learnings: Planning Phase
-  invariants: []
-- name: Reflect - Falsify Title Decorations
-  status: Completed
+- invariants: []
   learnings: 'Falsified Node prefix. Modified kernel and tests to rely on #ID.'
-  invariants: []
-- name: '#665: Probe 665: Align - Automate Backlog Hygiene via Python Governance Rules'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Node 665: Align - Automate Backlog Hygiene via Python Governance Rules'
+  name: Reflect - Falsify Title Decorations
   status: Completed
-  learnings: Drafted WHY-0665 to align on backlog hygiene automation
-  invariants:
+- invariants: []
+  learnings: Planning Phase
+  name: '#665: Probe 665: Align - Automate Backlog Hygiene via Python Governance Rules'
+  status: '[///] Act Phase'
+- invariants:
   - '[x] Affirmed invariant that backlog hygiene must be enforced via Python governance
     rules'
   - '[x] Fixed daemon_status bug causing backlog issues to be improperly closed'
   - '[x] Fixed daemon_nba bug causing agentic seizures and timeout crashes'
-- name: '#295: Enforce Adapter Execution Invariants'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity 295: Plan - Enforce Adapter Execution Invariants'
+  learnings: Drafted WHY-0665 to align on backlog hygiene automation
+  name: 'Node 665: Align - Automate Backlog Hygiene via Python Governance Rules'
   status: Completed
-  learnings: Drafted WHAT-0295 for executable bit guard
-  invariants:
+- invariants: []
+  learnings: Planning Phase
+  name: '#295: Enforce Adapter Execution Invariants'
+  status: '[///] Act Phase'
+- invariants:
   - Spec aligns with agentic OS requirements
-- name: '#595: Reflect - Path 578-B: Implement Persona and Path Alignment Gates in
+  learnings: Drafted WHAT-0295 for executable bit guard
+  name: 'Activity 295: Plan - Enforce Adapter Execution Invariants'
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#595: Reflect - Path 578-B: Implement Persona and Path Alignment Gates in
     CLI Runtime'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity 595: Reflect - Path 578-B'
-  status: Completed
+- invariants: []
   learnings: Closed Path 587
-  invariants: []
-- name: '#771: Probe 771: Plan - Autonomous Learning Loop'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Plan - Autonomous Learning Loop
+  name: 'Activity 595: Reflect - Path 578-B'
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#771: Probe 771: Plan - Autonomous Learning Loop'
+  status: '[///] Act Phase'
+- invariants:
+  - None
   learnings: Formalized the plan for Path 769 Autonomous Learning Loop. Documented
     the completion of the 5 gaps identified in WHY-0770 by creating WHAT-0771.
-  invariants:
-  - None
-- name: '#772: Reflect - Autonomous Learning Loop'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity 772: Reflect - Autonomous Learning Loop'
+  name: Plan - Autonomous Learning Loop
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#772: Reflect - Autonomous Learning Loop'
+  status: '[///] Act Phase'
+- invariants:
+  - None
   learnings: Formalized the completion of Path 769 by creating WHAT-0772, cementing
     the Autonomous Learning Loop mechanism. Also included hygiene mapping of Path
     1748 to SG-0004.
-  invariants:
-  - None
-- name: Reflect - Implement CLI Persona Alignment Gates
+  name: 'Activity 772: Reflect - Autonomous Learning Loop'
   status: Completed
+- invariants:
+  - None
   learnings: Formalized the closure of Path 1790 by generating Epistemic Retrospective
     Synthesis.
-  invariants:
-  - None
-- name: "#1110: Probe: Investigate kb graph CLI \u2014 infrastructure precondition\
+  name: Reflect - Implement CLI Persona Alignment Gates
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: "#1110: Probe: Investigate kb graph CLI \u2014 infrastructure precondition\
     \ for KB metadata linking thesis"
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#1802: [BUG] Intake: System Crash in checkout'
-  status: Completed
+- invariants: []
+  kind: path
   learnings: "## System Crash Report\n\n**Subcommand:** `checkout`\n**Persona:** `Unknown`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
     , line 698, in main\n    cmd_checkout(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
@@ -1153,88 +1161,88 @@ nodes:
     \ in checkout\n    raise ValueError(\"Branch name MUST follow the standard: node/<id>-<kebab-case>\"\
     )\nValueError: Branch name MUST follow the standard: node/<id>-<kebab-case>\n\n\
     ```\n"
-  invariants: []
-  kind: path
-- name: '#1803: Harmonize - [BUG] Intake: System Crash in checkout'
+  name: '#1802: [BUG] Intake: System Crash in checkout'
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#1803: Harmonize - [BUG] Intake: System Crash in checkout'
   status: '[///] Act Phase'
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#1804: Plan - [BUG] Intake: System Crash in checkout'
+  name: '#1804: Plan - [BUG] Intake: System Crash in checkout'
   status: Completed
-  learnings: Planning Phase
-  invariants: []
-- name: '#1805: Reflect - [BUG] Intake: System Crash in checkout'
-  status: Completed
+- invariants: []
   learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
     checkout.'
-  invariants: []
-- name: 'Path 1806: Implement stateless bin/kb graph CLI tool'
+  name: '#1805: Reflect - [BUG] Intake: System Crash in checkout'
+  status: Completed
+- invariants: []
   kind: path
-  status: Backlog
   learnings: Create a stateless CLI tool that parses kb/ markdown files dynamically
     to generate a machine-queryable adjacency graph without relying on static files.
-  invariants: []
-- name: 'Probe 1110: Investigate kb graph CLI'
-  status: Completed
+  name: 'Path 1806: Implement stateless bin/kb graph CLI tool'
+  status: Backlog
+- invariants: []
   learnings: Architecturally falsified kb/graph_index.yml due to Retrieval Architecture
     Mismatch and PR discipline violations. Proposed stateless CLI.
-  invariants: []
-- name: '#1819: Harmonize - Automate Retrospective Compilation'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#1820: Plan - Automate Retrospective Compilation'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#1821: Reflect - Automate Retrospective Compilation'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Harmonize - Automate Retrospective Compilation
+  name: 'Probe 1110: Investigate kb graph CLI'
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#1819: Harmonize - Automate Retrospective Compilation'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#1820: Plan - Automate Retrospective Compilation'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#1821: Reflect - Automate Retrospective Compilation'
+  status: '[///] Act Phase'
+- invariants:
+  - None
   learnings: Automated the execution of daemon_retro.py during the path closure step
     inside node_lifecycle.py. When clear_path is triggered after exhaustion of the
     path DAG, the retro is automatically generated to artifacts/audit/retro-<id>.md
     and force-staged.
-  invariants:
-  - None
-- name: Reflect - Automate Retrospective Compilation
+  name: Harmonize - Automate Retrospective Compilation
   status: Completed
+- invariants:
+  - None
   learnings: Confirmed the autonomous execution of daemon_retro.py during path clearance
     via the newly inserted node_lifecycle.py hook.
-  invariants:
-  - None
-- name: '#1826: Remediate Node Lifecycle Reflection Ordering Bug'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity: Remediate Node Lifecycle Reflection Ordering Bug'
+  name: Reflect - Automate Retrospective Compilation
   status: Completed
-  learnings: Moved complete_active_node to run before nba.evaluate.
-  invariants:
-  - '- [x] nba.evaluate reflects clear path'
-- name: '#669: Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes'
-  status: '[///] Act Phase'
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#1836: Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism
+  name: '#1826: Remediate Node Lifecycle Reflection Ordering Bug'
+  status: '[///] Act Phase'
+- invariants:
+  - '- [x] nba.evaluate reflects clear path'
+  learnings: Moved complete_active_node to run before nba.evaluate.
+  name: 'Activity: Remediate Node Lifecycle Reflection Ordering Bug'
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#669: Probe 669: Align - Codify Emergent Orthogonality of Agent Scopes'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#1836: Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism
     Guards'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism Guards
-  status: Completed
+- invariants: []
   learnings: Drafted WHAT-1836-csi-vs-mechanism-guards.md distinguishing CSI Guards
     from symptomatic Mechanism Guards, reducing Local CI latency. Referenced PR 1794.
     Also fixed UnboundLocalError in node_lifecycle.py.
-  invariants: []
-- name: '#670: Probe 670: Plan - Codify Emergent Orthogonality of Agent Scopes'
-  status: '[///] Act Phase'
+  name: Harmonize - Explore Local CI Delays and Organize CSI vs Mechanism Guards
+  status: Completed
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#1845: [BUG] Intake: System Crash in reflect'
-  status: Backlog
+  name: '#670: Probe 670: Plan - Codify Emergent Orthogonality of Agent Scopes'
+  status: '[///] Act Phase'
+- invariants: []
+  kind: path
   learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `agent-sg5`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/670-plan-emergent-orthogonality/kernel/daemon_node.py\"\
     , line 710, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/670-plan-emergent-orthogonality/kernel/daemon_node.py\"\
@@ -1248,49 +1256,49 @@ nodes:
     \ BLOCKED: Node 670 experienced execution failures. Under SG-0005 (TG-0005-04),\
     \ a structured post-mortem reflection record is required under artifacts/audit/retro-670.md\
     \ before reflection.\n\n```\n"
-  invariants: []
-  kind: path
-- name: Codify Emergent Orthogonality
-  status: Completed
+  name: '#1845: [BUG] Intake: System Crash in reflect'
+  status: Backlog
+- invariants:
+  - '[x] Drafted technical design'
   learnings: Created WHAT-0670-emergent-orthogonality.md outlining that orthogonality
     is an emergent property negotiated by overlapping boundary claims rather than
     dictated top-down by agent-meta.
-  invariants:
-  - '[x] Drafted technical design'
-- name: '#677: Probe 677: Align - Codify The Void of the Metasystem (Agnostic Payload
+  name: Codify Emergent Orthogonality
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#677: Probe 677: Align - Codify The Void of the Metasystem (Agnostic Payload
     Execution)'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Align - Codify The Void of the Metasystem (Agnostic Payload Execution)
-  status: Completed
-  learnings: Aligned on metasystem void
-  invariants:
+- invariants:
   - None
-- name: '#678: Probe 678: Plan - Codify The Void of the Metasystem (Agnostic Payload
+  learnings: Aligned on metasystem void
+  name: Align - Codify The Void of the Metasystem (Agnostic Payload Execution)
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#678: Probe 678: Plan - Codify The Void of the Metasystem (Agnostic Payload
     Execution)'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Probe 678: Plan - Codify The Void of the Metasystem'
-  status: Completed
+- invariants: []
   learnings: Defined metasystem void alignment and execution boundaries
-  invariants: []
-- name: '#666: Probe 666: Plan - Automate Backlog Hygiene via Python Governance Rules'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Plan - Automate Backlog Hygiene via Python Governance Rules
+  name: 'Probe 678: Plan - Codify The Void of the Metasystem'
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#666: Probe 666: Plan - Automate Backlog Hygiene via Python Governance Rules'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: Implemented sweep_orphans in daemon_backlog.py and evaluate_orphaned_nodes
     in audit_daemon.py
-  invariants: []
-- name: '#282: Hierarchical Telemetry Reporting'
-  status: '[///] Act Phase'
+  name: Plan - Automate Backlog Hygiene via Python Governance Rules
+  status: Completed
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#1893: [BUG] Intake: System Crash in reflect'
-  status: Backlog
+  name: '#282: Hierarchical Telemetry Reporting'
+  status: '[///] Act Phase'
+- invariants: []
+  kind: path
   learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `frontier`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py\"\
     , line 712, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/282-hierarchical-telemetry-reporting/kernel/daemon_node.py\"\
@@ -1304,20 +1312,20 @@ nodes:
     \ BLOCKED: Node 282 experienced execution failures. Under SG-0005 (TG-0005-04),\
     \ a structured post-mortem reflection record is required under artifacts/audit/retro-282.md\
     \ before reflection.\n\n```\n"
-  invariants: []
-  kind: path
-- name: 'Activity 282: Hierarchical Telemetry Reporting'
-  status: Completed
+  name: '#1893: [BUG] Intake: System Crash in reflect'
+  status: Backlog
+- invariants: []
   learnings: Implemented hierarchical reporting in SynthesisEngine and bin/telemetry
     via a --level flag allowing aggregation by node, stage, domain, component, and
     execution.
-  invariants: []
-- name: '#473: Probe 473: Align - Path: Operator Configurable Gate Enforcement'
-  status: '[///] Act Phase'
+  name: 'Activity 282: Hierarchical Telemetry Reporting'
+  status: Completed
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#1896: [BUG] Intake: System Crash in reflect'
-  status: Backlog
+  name: '#473: Probe 473: Align - Path: Operator Configurable Gate Enforcement'
+  status: '[///] Act Phase'
+- invariants: []
+  kind: path
   learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `Unknown`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/473-probe-align-path-operator-configurable-gate-enforcement/kernel/daemon_node.py\"\
     , line 712, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/473-probe-align-path-operator-configurable-gate-enforcement/kernel/daemon_node.py\"\
@@ -1329,140 +1337,140 @@ nodes:
     \  File \"/usr/lib/python3.12/json/decoder.py\", line 355, in raw_decode\n   \
     \ raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError:\
     \ Expecting value: line 1 column 2 (char 1)\n\n```\n"
-  invariants: []
-  kind: path
-- name: 'Probe 473: Align - Path: Operator Configurable Gate Enforcement'
-  status: Completed
-  learnings: Drafted WHY-0473 formalizing Operator Configurable Gate Enforcement to
-    bypass HTIL for non-Dao mutations.
-  invariants:
+  name: '#1896: [BUG] Intake: System Crash in reflect'
+  status: Backlog
+- invariants:
   - '[x] WHY-0473 created'
   - '[x] Manifest updated'
-- name: '#475: Reflect - Path: Operator Configurable Gate Enforcement'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity: Act - Path: Operator Configurable Gate Enforcement'
+  learnings: Drafted WHY-0473 formalizing Operator Configurable Gate Enforcement to
+    bypass HTIL for non-Dao mutations.
+  name: 'Probe 473: Align - Path: Operator Configurable Gate Enforcement'
   status: Completed
-  learnings: Implemented dynamic parsing of dyad-wu-wei.yml governance.sacred_files
-    to override HTIL block logic. Added robust tests.
-  invariants:
+- invariants: []
+  learnings: Planning Phase
+  name: '#475: Reflect - Path: Operator Configurable Gate Enforcement'
+  status: '[///] Act Phase'
+- invariants:
   - '[x] Config parsing implemented in node_lifecycle.py'
   - '[x] Tests updated'
   - '[x] dyad-wu-wei.yml default config added'
-- name: '#498: Probe 498: Plan - Path: Optimization of Node Sync Audit Performance
+  learnings: Implemented dynamic parsing of dyad-wu-wei.yml governance.sacred_files
+    to override HTIL block logic. Added robust tests.
+  name: 'Activity: Act - Path: Operator Configurable Gate Enforcement'
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#498: Probe 498: Plan - Path: Optimization of Node Sync Audit Performance
     (Lightweight Audit)'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Probe 498: Plan - Path: Optimization of Node Sync Audit Performance'
-  status: Completed
-  learnings: Drafted WHAT-0498 outlining the technical specs for implementing the
-    --lightweight flag in audit_daemon.py and configuring it in audit_config.yml.
-  invariants:
+- invariants:
   - '[x] WHAT-0498 created'
   - '[x] Manifest updated'
-- name: '#499: Reflect - Path: Optimization of Node Sync Audit Performance (Lightweight
+  learnings: Drafted WHAT-0498 outlining the technical specs for implementing the
+    --lightweight flag in audit_daemon.py and configuring it in audit_config.yml.
+  name: 'Probe 498: Plan - Path: Optimization of Node Sync Audit Performance'
+  status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#499: Reflect - Path: Optimization of Node Sync Audit Performance (Lightweight
     Audit)'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Activity: Act - Path: Optimization of Node Sync Audit Performance (Lightweight
-    Audit)'
-  status: Completed
-  learnings: Implemented WHAT-0498 by adding --lightweight flag to audit_daemon.py
-    and configuring lightweight rules in audit_config.yml.
-  invariants:
+- invariants:
   - '[x] Added lightweight flag'
   - '[x] Configured audit_config.yml'
   - '[x] Passed --lightweight from daemon_node.py'
   - '[x] Wrote tests'
-- name: '#1326: Reflect - Domain Dao Onboarding Protocol for External Projects'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Node 1326
+  learnings: Implemented WHAT-0498 by adding --lightweight flag to audit_daemon.py
+    and configuring lightweight rules in audit_config.yml.
+  name: 'Activity: Act - Path: Optimization of Node Sync Audit Performance (Lightweight
+    Audit)'
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#1326: Reflect - Domain Dao Onboarding Protocol for External Projects'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: Implemented DDOP
-  invariants: []
-- name: '#1911: Implement Substrate CI Guard'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Implement Substrate CI Guard
+  name: Node 1326
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#1911: Implement Substrate CI Guard'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: Implemented Substrate CI Guard in cmd_reflect to physically block PR
     creation when tests fail or remote conflicts exist.
-  invariants: []
-- name: '#1913: Triage Holding - Standalone Triage & External Requirement Intakes'
-  status: Backlog
+  name: Implement Substrate CI Guard
+  status: Completed
+- invariants: []
+  kind: path
   learnings: A holding Path to consolidate all unpromoted status:triage external intake
     nodes under the same parent class.
-  invariants: []
-  kind: path
-- name: '#1915: Plan - Triage Holding - Standalone Triage & External Requirement Intakes'
-  status: '[///] Act Phase'
+  name: '#1913: Triage Holding - Standalone Triage & External Requirement Intakes'
+  status: Backlog
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#1916: Reflect - Triage Holding - Standalone Triage & External Requirement
+  name: '#1915: Plan - Triage Holding - Standalone Triage & External Requirement Intakes'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#1916: Reflect - Triage Holding - Standalone Triage & External Requirement
     Intakes'
   status: '[///] Act Phase'
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#1917: Design Node Lifecycle OOP Class Interface'
+  name: '#1917: Design Node Lifecycle OOP Class Interface'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Design Node Lifecycle OOP Class Interface
-  status: Completed
+- invariants: []
   learnings: Moved HTIL and CI Guard mechanics out of the CLI routing layer (daemon_node.py)
     directly into the Node state machine (node_lifecycle.py TerminalNode). Fixed infinite
     test loop.
-  invariants: []
-- name: '#1919: Implement Two-Tier Backlog Abstraction'
-  status: Backlog
-  learnings: SG-0001
-  invariants: []
+  name: Design Node Lifecycle OOP Class Interface
+  status: Completed
+- invariants: []
   kind: path
-- name: '#1920: Harmonize - Path: Implement Two-Tier Backlog Abstraction'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#1921: Plan - Path: Implement Two-Tier Backlog Abstraction'
+  learnings: SG-0001
+  name: '#1919: Implement Two-Tier Backlog Abstraction'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#1920: Harmonize - Path: Implement Two-Tier Backlog Abstraction'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Technical design and proposed changes for Path: Implement Two-Tier Backlog
     Abstraction.'
-  invariants: []
-- name: '#1922: Reflect - Path: Implement Two-Tier Backlog Abstraction'
+  name: '#1921: Plan - Path: Implement Two-Tier Backlog Abstraction'
   status: Backlog
+- invariants: []
   learnings: 'Final reflection and path closure for Path: Implement Two-Tier Backlog
     Abstraction.'
-  invariants: []
-- name: '#1923: Design and Implement CSI Guards for Two-Tier Backlog'
-  status: '[///] Act Phase'
+  name: '#1922: Reflect - Path: Implement Two-Tier Backlog Abstraction'
+  status: Backlog
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: Design and Implement CSI Guards for Two-Tier Backlog
-  status: Completed
+  name: '#1923: Design and Implement CSI Guards for Two-Tier Backlog'
+  status: '[///] Act Phase'
+- invariants:
+  - Mutually Exclusive Residence Purge
   learnings: Added CSI guards for SSOT Asymmetry and Mutually Exclusive Residence.
     Synchronized remote backlog locally in global_backlog.yml.
-  invariants:
-  - Mutually Exclusive Residence Purge
-- name: 'Node 1914: Harmonize - Triage Holding - Standalone Triage & External Requirement
-    Intakes'
+  name: Design and Implement CSI Guards for Two-Tier Backlog
   status: Completed
+- invariants:
+  - SG-0008 is defined as the Triage Holding catchment mechanism
   learnings: 'Drafted WHAT-1914-audit-sg-triage.md to establish SG-0008: Metasystem
     Operational Integrity & Support Triage to handle unmapped external intakes without
     hacking NBA logic.'
-  invariants:
-  - SG-0008 is defined as the Triage Holding catchment mechanism
-- name: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+  name: 'Node 1914: Harmonize - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
   status: Completed
-  learnings: Created administrative plan.
-  invariants:
+- invariants:
   - '[x] Plan created.'
-- name: '#1931: [BUG] Intake: System Crash in plan-start'
-  status: Backlog
+  learnings: Created administrative plan.
+  name: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
+  status: Completed
+- invariants: []
+  kind: path
   learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
     \ `Unknown`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
     \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 727,\
@@ -1476,42 +1484,42 @@ nodes:
     \ proceed because Node '{current_active}' is already marked as active in {frontier_file}.\
     \ Release the lock first.\")\n          ^^^^^^^^^^^^^^^^^^^^\nNameError: name\
     \ 'StateDissonanceError' is not defined\n\n```\n"
-  invariants: []
-  kind: path
-- name: '#1932: Harmonize - [BUG] Intake: System Crash in plan-start'
+  name: '#1931: [BUG] Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
   learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
     System Crash in plan-start.'
-  invariants: []
-- name: '#1933: Plan - [BUG] Intake: System Crash in plan-start'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#1934: Reflect - [BUG] Intake: System Crash in plan-start'
+  name: '#1932: Harmonize - [BUG] Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#1933: Plan - [BUG] Intake: System Crash in plan-start'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
     plan-start.'
-  invariants: []
-- name: '#1935: Reflect - Synthesize Epistemic Retrospective retro-1916.md'
+  name: '#1934: Reflect - [BUG] Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-1916.md into the system's operational guidelines (the Dao).
-  invariants: []
-- name: 'Node 1916: Reflect - Triage Holding - Standalone Triage & External Requirement
-    Intakes'
-  status: Completed
+  name: '#1935: Reflect - Synthesize Epistemic Retrospective retro-1916.md'
+  status: Backlog
+- invariants:
+  - '[x] Triage SG boxes exogenous issues into Paths'
   learnings: SG-0008 successfully metabolizes exogenous interrupts (e.g. sync crashes)
     into isolated paths.
-  invariants:
-  - '[x] Triage SG boxes exogenous issues into Paths'
-- name: 'Plan - [BUG] Intake: System Crash in plan-start'
+  name: 'Node 1916: Reflect - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
   status: Completed
-  learnings: Successfully planned and implemented bug fixes for system crash
-  invariants:
+- invariants:
   - '[x] Problem definition verified'
   - '[x] Plan formulated'
-- name: '#1939: [BUG] Intake: System Crash in reflect'
-  status: Backlog
+  learnings: Successfully planned and implemented bug fixes for system crash
+  name: 'Plan - [BUG] Intake: System Crash in plan-start'
+  status: Completed
+- invariants: []
+  kind: path
   learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `frontier`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1920-harmonize-two-tier-backlog/kernel/daemon_node.py\"\
     , line 737, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/1920-harmonize-two-tier-backlog/kernel/daemon_node.py\"\
@@ -1530,322 +1538,322 @@ nodes:
     \ process.args,\nsubprocess.CalledProcessError: Command '['git', 'commit', '-m',\
     \ 'chore(harmonize): complete harmonization for two-tier backlog']' returned non-zero\
     \ exit status 1.\n\n```\n"
-  invariants: []
-  kind: path
-- name: '#1940: Harmonize - [BUG] Intake: System Crash in reflect'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#1941: Plan - [BUG] Intake: System Crash in reflect'
+  name: '#1939: [BUG] Intake: System Crash in reflect'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#1940: Harmonize - [BUG] Intake: System Crash in reflect'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
     in reflect.'
-  invariants: []
-- name: '#1942: Reflect - [BUG] Intake: System Crash in reflect'
+  name: '#1941: Plan - [BUG] Intake: System Crash in reflect'
   status: Backlog
+- invariants: []
   learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
     reflect.'
-  invariants: []
-- name: 'Harmonize - Path: Implement Two-Tier Backlog Abstraction'
-  status: Completed
+  name: '#1942: Reflect - [BUG] Intake: System Crash in reflect'
+  status: Backlog
+- invariants: []
   learnings: Codified intent in kb/WHY-1112-backlog-two-tier-abstraction.md.
-  invariants: []
-- name: 'Harmonize - [BUG] Intake: System Crash in reflect'
+  name: 'Harmonize - Path: Implement Two-Tier Backlog Abstraction'
   status: Completed
+- invariants: []
   learnings: Identified reflect crash during --stage none
-  invariants: []
-- name: '#1945: Implement git checkout abstraction'
-  status: '[///] Act Phase'
+  name: 'Harmonize - [BUG] Intake: System Crash in reflect'
+  status: Completed
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: 'Activity 1945: Implement git checkout abstraction'
-  status: Cancelled
+  name: '#1945: Implement git checkout abstraction'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Cancelled: Already implemented in PR 744 (commit 013a6283). Node is
     redundant.'
-  invariants: []
-- name: '#1909: Harmonize - Abstract git checkout into domain orchestrator'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Harmonize - Abstract git checkout into domain orchestrator
+  name: 'Activity 1945: Implement git checkout abstraction'
   status: Cancelled
+- invariants: []
+  learnings: Planning Phase
+  name: '#1909: Harmonize - Abstract git checkout into domain orchestrator'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Cancelled: Feature already implemented in PR 744. Path is obsolete.'
-  invariants: []
-- name: '#1960: Falsify Daemon Prompt Injection'
-  status: Backlog
+  name: Harmonize - Abstract git checkout into domain orchestrator
+  status: Cancelled
+- invariants: []
+  kind: path
   learnings: Enforce Intake Context Boundary Invariant by routing structural alerts
     directly to DAG and direct script execution.
-  invariants: []
-  kind: path
-- name: '#1961: Harmonize - Falsify Daemon Prompt Injection'
+  name: '#1960: Falsify Daemon Prompt Injection'
   status: Backlog
+- invariants: []
   learnings: Harmonize on the philosophical and technical intent for Falsify Daemon
     Prompt Injection.
-  invariants: []
-- name: '#1962: Plan - Falsify Daemon Prompt Injection'
+  name: '#1961: Harmonize - Falsify Daemon Prompt Injection'
   status: Backlog
+- invariants: []
   learnings: Technical design and proposed changes for Falsify Daemon Prompt Injection.
-  invariants: []
-- name: '#1963: Reflect - Falsify Daemon Prompt Injection'
+  name: '#1962: Plan - Falsify Daemon Prompt Injection'
   status: Backlog
+- invariants: []
   learnings: Final reflection and path closure for Falsify Daemon Prompt Injection.
-  invariants: []
-- name: '#1948: Plan - Implement resilient gh wrapper'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#1964: Implement Falsify Daemon Prompt Injection'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#999: Triage Holding - Standalone Triage & External Requirement Intakes'
+  name: '#1963: Reflect - Falsify Daemon Prompt Injection'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#1948: Plan - Implement resilient gh wrapper'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#1964: Implement Falsify Daemon Prompt Injection'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: A holding Path to consolidate all unpromoted status:triage external intake
     nodes under the same parent class.
-  invariants: []
-- name: '#1965: Reflect - Synthesize Epistemic Retrospective retro-1964.md'
+  name: '#999: Triage Holding - Standalone Triage & External Requirement Intakes'
   status: Backlog
+- invariants: []
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-1964.md into the system's operational guidelines (the Dao).
-  invariants: []
-- name: Node 1964
-  status: Completed
+  name: '#1965: Reflect - Synthesize Epistemic Retrospective retro-1964.md'
+  status: Backlog
+- invariants: []
   learnings: Falsify prompt injection. Replaced with direct DAG mutation via BacklogDaemon
     and explicit local sync invocation.
-  invariants: []
-- name: '#1973: Reflect - [BUG] Intake: Backlog Hygiene Warning'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Reflect - [BUG] Intake: Backlog Hygiene Warning'
+  name: Node 1964
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#1973: Reflect - [BUG] Intake: Backlog Hygiene Warning'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: Administratively closing the reflect node to formally seal the Backlog
     Hygiene Warning path since the remediations were completed and verified.
-  invariants: []
-- name: '#2012: Reflect - Guard: Enforce prompt queue clearance'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 2012-reflect-prompt-clearance
+  name: 'Reflect - [BUG] Intake: Backlog Hygiene Warning'
   status: Completed
-  learnings: Implemented prompt queue clearance guard in sync_and_clean_node and plan_start.
-  invariants:
+- invariants: []
+  learnings: Planning Phase
+  name: '#2012: Reflect - Guard: Enforce prompt queue clearance'
+  status: '[///] Act Phase'
+- invariants:
   - None
-- name: '#2018: Harmonize - Guard: Retain exhaust telemetry for steering efficiency'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2019: Plan - Guard: Retain exhaust telemetry for steering efficiency'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2020: Act - Guard: Retain exhaust telemetry for steering efficiency'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2021: Reflect - Guard: Retain exhaust telemetry for steering efficiency'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Harmonize - Guard: Retain exhaust telemetry for steering efficiency'
+  learnings: Implemented prompt queue clearance guard in sync_and_clean_node and plan_start.
+  name: 2012-reflect-prompt-clearance
   status: Completed
-  learnings: Transience causes AI blindness. Exhaust must survive.
-  invariants:
+- invariants: []
+  learnings: Planning Phase
+  name: '#2018: Harmonize - Guard: Retain exhaust telemetry for steering efficiency'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#2019: Plan - Guard: Retain exhaust telemetry for steering efficiency'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#2020: Act - Guard: Retain exhaust telemetry for steering efficiency'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#2021: Reflect - Guard: Retain exhaust telemetry for steering efficiency'
+  status: '[///] Act Phase'
+- invariants:
   - Serialize before panic.
-- name: 'Plan - Guard: Retain exhaust telemetry for steering efficiency'
+  learnings: Transience causes AI blindness. Exhaust must survive.
+  name: 'Harmonize - Guard: Retain exhaust telemetry for steering efficiency'
   status: Completed
-  learnings: ExhaustLogger implements pointer-based steering and durable serialization.
-  invariants:
+- invariants:
   - Guard must autoclear historical exhaust on pass.
-- name: 'Act: Exhaust Logger'
+  learnings: ExhaustLogger implements pointer-based steering and durable serialization.
+  name: 'Plan - Guard: Retain exhaust telemetry for steering efficiency'
   status: Completed
-  learnings: Implemented ExhaustLogger in drivers/exhaust_logger.py and integrated
-    it into kernel/daemon_node.py guards.
-  invariants:
+- invariants:
   - WIP-N=1 Invariant Guard
   - Discard Invariant Guard
-- name: node-2021-reflect
+  learnings: Implemented ExhaustLogger in drivers/exhaust_logger.py and integrated
+    it into kernel/daemon_node.py guards.
+  name: 'Act: Exhaust Logger'
   status: Completed
-  learnings: Verified exhaust logger via TDD tests
-  invariants:
+- invariants:
   - Exhaust logger functionality must remain active
-- name: "#2026: [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended to\
-    \ r"
-  status: Backlog
+  learnings: Verified exhaust logger via TDD tests
+  name: node-2021-reflect
+  status: Completed
+- invariants: []
+  kind: path
   learnings: "[FAILURE] GEMINI.md changed \u2014 agent (/exit) recommended to reload\
     \ instructions"
-  invariants: []
-  kind: path
-- name: "#2027: Harmonize - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
-    \ to r"
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: "#2028: Plan - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
-    \ to r"
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: "#2029: Reflect - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
-    \ to r"
+  name: "#2026: [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended to\
+    \ r"
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: "#2027: Harmonize - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
+    \ to r"
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: "#2028: Plan - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
+    \ to r"
+  status: '[///] Act Phase'
+- invariants: []
   learnings: "Final reflection and path closure for [BUG] Intake: GEMINI.md changed\
     \ \u2014 agent (/exit) recommended to r."
-  invariants: []
-- name: Harmonize GEMINI.md Bug Intake
-  status: Completed
-  learnings: Categorizing operational file modifications (like GEMINI.md) as [BUG]
-    intakes creates execution waste and pollutes the problem space.
-  invariants:
+  name: "#2029: Reflect - [BUG] Intake: GEMINI.md changed \u2014 agent (/exit) recommended\
+    \ to r"
+  status: Backlog
+- invariants:
   - '[x] Operational directives (like system prompt reloads) must trigger a stateless
     interrupt (HALT) and skip DAG node creation.'
-- name: '#2031: [NOTICE] Intake: Backlog Hygiene Warning'
-  status: Backlog
+  learnings: Categorizing operational file modifications (like GEMINI.md) as [BUG]
+    intakes creates execution waste and pollutes the problem space.
+  name: Harmonize GEMINI.md Bug Intake
+  status: Completed
+- invariants: []
+  kind: path
   learnings: '[NOTIFICATION] Backlog Hygiene Warning: Unmapped Paths (6) exceed Mapped
     Paths (0). Repository state is unhealthy.'
-  invariants: []
-  kind: path
-- name: '#2032: Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2033: Plan - [NOTICE] Intake: Backlog Hygiene Warning'
+  name: '#2031: [NOTICE] Intake: Backlog Hygiene Warning'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2032: Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Technical design and proposed changes for [NOTICE] Intake: Backlog Hygiene
     Warning.'
-  invariants: []
-- name: '#2034: Reflect - [NOTICE] Intake: Backlog Hygiene Warning'
+  name: '#2033: Plan - [NOTICE] Intake: Backlog Hygiene Warning'
   status: Backlog
+- invariants: []
   learnings: 'Final reflection and path closure for [NOTICE] Intake: Backlog Hygiene
     Warning.'
-  invariants: []
-- name: 'Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
-  status: Completed
-  learnings: Mapped dangling paths and closed them.
-  invariants:
+  name: '#2034: Reflect - [NOTICE] Intake: Backlog Hygiene Warning'
+  status: Backlog
+- invariants:
   - '[x] All unmapped paths must be addressed.'
-- name: '#2037: Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
-  status: '[///] Act Phase'
+  learnings: Mapped dangling paths and closed them.
+  name: 'Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
+  status: Completed
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#2042: Harmonize - Triage Holding - Standalone Triage & External Requirement
+  name: '#2037: Harmonize - [NOTICE] Intake: Backlog Hygiene Warning'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#2042: Harmonize - Triage Holding - Standalone Triage & External Requirement
     Intakes'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2046: Falsify Triage Holding and Implement Prompt Routing Survivor'
-  status: Backlog
+- invariants: []
+  kind: path
   learnings: Route system daemon alerts directly to the prompt queue to leverage Agentic
     Healing, bypassing the SPAO Path lifecycle and eliminating the Triage Holding
     administrative overhead.
-  invariants: []
-  kind: path
-- name: '#2047: Harmonize - Falsify Triage Holding and Implement Prompt Routing Survivor'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2048: Plan - Falsify Triage Holding and Implement Prompt Routing Survivor'
+  name: '#2046: Falsify Triage Holding and Implement Prompt Routing Survivor'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2047: Harmonize - Falsify Triage Holding and Implement Prompt Routing Survivor'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: Technical design and proposed changes for Falsify Triage Holding and
     Implement Prompt Routing Survivor.
-  invariants: []
-- name: '#2049: Reflect - Falsify Triage Holding and Implement Prompt Routing Survivor'
+  name: '#2048: Plan - Falsify Triage Holding and Implement Prompt Routing Survivor'
   status: Backlog
+- invariants: []
   learnings: Final reflection and path closure for Falsify Triage Holding and Implement
     Prompt Routing Survivor.
-  invariants: []
-- name: Plan - Falsify Triage Holding and Implement Prompt Routing Survivor
-  status: Completed
-  learnings: Generated implementation plan
-  invariants:
-  - '[x] Plan created.'
-- name: Harmonize - Falsify Triage Holding and Implement Prompt Routing Survivor
-  status: Completed
-  learnings: Generated harmonization contract
-  invariants:
-  - '[x] Contract verified.'
-- name: Act - Implement Prompt Routing Survivor
-  status: Completed
-  learnings: Implemented Prompt Routing Survivor
-  invariants:
-  - '[x] Route system alerts to prompt queue'
-- name: '#2053: Triage Holding - Standalone Triage & External Requirement Intakes'
+  name: '#2049: Reflect - Falsify Triage Holding and Implement Prompt Routing Survivor'
   status: Backlog
+- invariants:
+  - '[x] Plan created.'
+  learnings: Generated implementation plan
+  name: Plan - Falsify Triage Holding and Implement Prompt Routing Survivor
+  status: Completed
+- invariants:
+  - '[x] Contract verified.'
+  learnings: Generated harmonization contract
+  name: Harmonize - Falsify Triage Holding and Implement Prompt Routing Survivor
+  status: Completed
+- invariants:
+  - '[x] Route system alerts to prompt queue'
+  learnings: Implemented Prompt Routing Survivor
+  name: Act - Implement Prompt Routing Survivor
+  status: Completed
+- invariants: []
+  kind: path
   learnings: A holding Path to consolidate all unpromoted status:triage external intake
     nodes under the same parent class.
-  invariants: []
-  kind: path
-- name: '#2054: Harmonize - Triage Holding - Standalone Triage & External Requirement
-    Intakes'
+  name: '#2053: Triage Holding - Standalone Triage & External Requirement Intakes'
   status: Backlog
+- invariants: []
   learnings: Harmonize on the philosophical and technical intent for Triage Holding
     - Standalone Triage & External Requirement Intakes.
-  invariants: []
-- name: '#2055: Plan - Triage Holding - Standalone Triage & External Requirement Intakes'
-  status: Backlog
-  learnings: Technical design and proposed changes for Triage Holding - Standalone
-    Triage & External Requirement Intakes.
-  invariants: []
-- name: '#2056: Reflect - Triage Holding - Standalone Triage & External Requirement
+  name: '#2054: Harmonize - Triage Holding - Standalone Triage & External Requirement
     Intakes'
   status: Backlog
+- invariants: []
+  learnings: Technical design and proposed changes for Triage Holding - Standalone
+    Triage & External Requirement Intakes.
+  name: '#2055: Plan - Triage Holding - Standalone Triage & External Requirement Intakes'
+  status: Backlog
+- invariants: []
   learnings: Final reflection and path closure for Triage Holding - Standalone Triage
     & External Requirement Intakes.
-  invariants: []
-- name: '#2057: Bug Intake: System Crash in plan-start'
+  name: '#2056: Reflect - Triage Holding - Standalone Triage & External Requirement
+    Intakes'
   status: Backlog
+- invariants: []
+  kind: path
   learnings: Fix detached HEAD push bug, global cache persistency bug, and StateDissonanceError
     exception bug
-  invariants: []
-  kind: path
-- name: '#2058: Harmonize - Bug Intake: System Crash in plan-start'
+  name: '#2057: Bug Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
   learnings: 'Harmonize on the philosophical and technical intent for Bug Intake:
     System Crash in plan-start.'
-  invariants: []
-- name: '#2059: Plan - Bug Intake: System Crash in plan-start'
+  name: '#2058: Harmonize - Bug Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
   learnings: 'Technical design and proposed changes for Bug Intake: System Crash in
     plan-start.'
-  invariants: []
-- name: '#2060: Reflect - Bug Intake: System Crash in plan-start'
+  name: '#2059: Plan - Bug Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
   learnings: 'Final reflection and path closure for Bug Intake: System Crash in plan-start.'
-  invariants: []
-- name: '#2061: Harmonize Bug Intake: System Crash in plan-start'
+  name: '#2060: Reflect - Bug Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
   learnings: Fix detached HEAD push bug, global cache persistency bug, and StateDissonanceError
     exception bug
-  invariants: []
-- name: '#2062: Act: Fix system crash bugs in plan-start'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Act: Fix system crash bugs in plan-start'
-  status: Completed
-  learnings: Existing main hotfix fulfilled requirements, empty PR closed.
-  invariants: []
-- name: '#2065: Orphaned WIP CSI Guard'
+  name: '#2061: Harmonize Bug Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2062: Act: Fix system crash bugs in plan-start'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Existing main hotfix fulfilled requirements, empty PR closed.
+  name: 'Act: Fix system crash bugs in plan-start'
+  status: Completed
+- invariants: []
+  kind: path
   learnings: 'Implement an active Cybernetic Steering Invariant (CSI) Guard in the
     audit daemon to automatically detect and downgrade orphaned ''status: in-progress''
     remote DAG labels that conflict with the local Lock-State Axiom.'
-  invariants: []
-  kind: path
-- name: '#2066: Harmonize - Orphaned WIP CSI Guard'
-  status: '[///] Act Phase'
+  name: '#2065: Orphaned WIP CSI Guard'
+  status: Backlog
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#2067: Plan - Orphaned WIP CSI Guard'
-  status: Backlog
+  name: '#2066: Harmonize - Orphaned WIP CSI Guard'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: Technical design and proposed changes for Orphaned WIP CSI Guard.
-  invariants: []
-- name: '#2068: Reflect - Orphaned WIP CSI Guard'
+  name: '#2067: Plan - Orphaned WIP CSI Guard'
   status: Backlog
+- invariants: []
   learnings: Final reflection and path closure for Orphaned WIP CSI Guard.
-  invariants: []
-- name: '#2069: [BUG] Intake: System Crash in plan-start'
+  name: '#2068: Reflect - Orphaned WIP CSI Guard'
   status: Backlog
+- invariants: []
+  kind: path
   learnings: "## System Crash Report\n\n**Subcommand:** `plan-start`\n**Persona:**\
     \ `Unknown`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
     \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 739,\
@@ -1861,190 +1869,190 @@ nodes:
     \ proceed because Node '#2066: Harmonize - Orphaned WIP CSI Guard' is already\
     \ marked as active in /mnt/shared_data/dzw/dyad-wu-wei/artifacts/frontier_state.md.\
     \ Release the lock first.\n\n```\n"
-  invariants: []
-  kind: path
-- name: '#2070: Harmonize - [BUG] Intake: System Crash in plan-start'
+  name: '#2069: [BUG] Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
   learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
     System Crash in plan-start.'
-  invariants: []
-- name: '#2071: Plan - [BUG] Intake: System Crash in plan-start'
+  name: '#2070: Harmonize - [BUG] Intake: System Crash in plan-start'
   status: Backlog
+- invariants: []
   learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
     in plan-start.'
-  invariants: []
-- name: '#2072: Reflect - [BUG] Intake: System Crash in plan-start'
-  status: '[///] Act Phase'
+  name: '#2071: Plan - [BUG] Intake: System Crash in plan-start'
+  status: Backlog
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: 'Node 2066: Harmonize - Orphaned WIP CSI Guard'
-  status: Completed
+  name: '#2072: Reflect - [BUG] Intake: System Crash in plan-start'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'The CSI guard actively downgrades remote status: in-progress labels
     when no local lock exists.'
-  invariants: []
-- name: 'Reflect - [BUG] Intake: System Crash in plan-start'
+  name: 'Node 2066: Harmonize - Orphaned WIP CSI Guard'
   status: Completed
+- invariants: []
   learnings: Proper label hygiene is critical for daemon status surfacing.
-  invariants: []
-- name: '#2076: Harmonize - [BUG] Intake: System Crash in sync'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: Fix WipN1Guard Exception
+  name: 'Reflect - [BUG] Intake: System Crash in plan-start'
   status: Completed
+- invariants: []
+  learnings: Planning Phase
+  name: '#2076: Harmonize - [BUG] Intake: System Crash in sync'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: Upgraded WipN1Guard to raise StateDissonanceError instead of generic
     Exception
-  invariants: []
-- name: '#2086: Orchestrator Remote Invariant Isolation (GitHub State)'
-  status: Backlog
+  name: Fix WipN1Guard Exception
+  status: Completed
+- invariants: []
+  kind: path
   learnings: Decouple the Main Agent's execution loop from remote execution friction
     by ensuring the system only evaluates Pull Requests owned by the current persona
     during the SENSE phase's WIP=1 check.
-  invariants: []
-  kind: path
-- name: '#2087: Harmonize - Path: Orchestrator Remote Invariant Isolation (GitHub
+  name: '#2086: Orchestrator Remote Invariant Isolation (GitHub State)'
+  status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2087: Harmonize - Path: Orchestrator Remote Invariant Isolation (GitHub
     State)'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2088: Plan - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
-  status: Backlog
+- invariants: []
   learnings: 'Technical design and proposed changes for Path: Orchestrator Remote
     Invariant Isolation (GitHub State).'
-  invariants: []
-- name: '#2089: Reflect - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2090: Concurrent Lock Ledger Materialization (Internal State)'
+  name: '#2088: Plan - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2089: Reflect - Path: Orchestrator Remote Invariant Isolation (GitHub State)'
+  status: '[///] Act Phase'
+- invariants: []
+  kind: path
   learnings: Decouple the monolithic execution lock (artifacts/frontier_state/lock.json)
     into a multidimensional concurrent ledger, formally splitting the concept of an
     Orchestration State from Execution State.
-  invariants: []
-  kind: path
-- name: '#2091: Harmonize - Path: Concurrent Lock Ledger Materialization (Internal
+  name: '#2090: Concurrent Lock Ledger Materialization (Internal State)'
+  status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2091: Harmonize - Path: Concurrent Lock Ledger Materialization (Internal
     State)'
   status: '[///] Act Phase'
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#2092: Plan - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  name: '#2092: Plan - Path: Concurrent Lock Ledger Materialization (Internal State)'
   status: '[///] Act Phase'
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#2093: Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  name: '#2093: Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
   status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2094: The Sub-Agent Gateway Controller (Ignition)'
-  status: Backlog
+- invariants: []
+  kind: path
   learnings: Implement the formal CLI gateway that transitions a Node from the Orchestrator's
     domain into an active Sub-Agent execution domain.
-  invariants: []
-  kind: path
-- name: '#2095: Harmonize - Path: The Sub-Agent Gateway Controller (Ignition)'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2096: Plan - Path: The Sub-Agent Gateway Controller (Ignition)'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2097: Reflect - Path: The Sub-Agent Gateway Controller (Ignition)'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2098: Execution Exhaust & Telemetry Partitioning (Audit)'
+  name: '#2094: The Sub-Agent Gateway Controller (Ignition)'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2095: Harmonize - Path: The Sub-Agent Gateway Controller (Ignition)'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#2096: Plan - Path: The Sub-Agent Gateway Controller (Ignition)'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: 'Final reflection and path closure for Path: The Sub-Agent Gateway Controller
+    (Ignition).'
+  name: '#2097: Reflect - Path: The Sub-Agent Gateway Controller (Ignition)'
+  status: Backlog
+- invariants: []
+  kind: path
   learnings: Ensure that all transient failures, log dumps, and retrospective artifacts
     generated by a sub-agent are structurally isolated to that persona's namespace.
-  invariants: []
-  kind: path
-- name: '#2099: Harmonize - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
-  status: '[///] Act Phase'
+  name: '#2098: Execution Exhaust & Telemetry Partitioning (Audit)'
+  status: Backlog
+- invariants: []
   learnings: Planning Phase
-  invariants: []
-- name: '#2100: Plan - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
-  status: Backlog
-  learnings: 'Technical design and proposed changes for Path: Execution Exhaust &
-    Telemetry Partitioning (Audit).'
-  invariants: []
-- name: '#2101: Reflect - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
-  status: Backlog
+  name: '#2099: Harmonize - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#2100: Plan - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Final reflection and path closure for Path: Execution Exhaust & Telemetry
     Partitioning (Audit).'
-  invariants: []
-- name: '#2102: Concurrent DAG Evaluation (The Scoring Alg)'
+  name: '#2101: Reflect - Path: Execution Exhaust & Telemetry Partitioning (Audit)'
   status: Backlog
+- invariants: []
+  kind: path
   learnings: Evolve the Next-Best-Action logic to explicitly separate Available for
     Dispatch nodes from Currently Locked by Workers nodes.
-  invariants: []
-  kind: path
-- name: '#2103: Harmonize - Path: Concurrent DAG Evaluation (The Scoring Alg)'
+  name: '#2102: Concurrent DAG Evaluation (The Scoring Alg)'
   status: Backlog
+- invariants: []
   learnings: 'Harmonize on the philosophical and technical intent for Path: Concurrent
     DAG Evaluation (The Scoring Alg).'
-  invariants: []
-- name: '#2104: Plan - Path: Concurrent DAG Evaluation (The Scoring Alg)'
+  name: '#2103: Harmonize - Path: Concurrent DAG Evaluation (The Scoring Alg)'
   status: Backlog
+- invariants: []
   learnings: 'Technical design and proposed changes for Path: Concurrent DAG Evaluation
     (The Scoring Alg).'
-  invariants: []
-- name: '#2105: Reflect - Path: Concurrent DAG Evaluation (The Scoring Alg)'
+  name: '#2104: Plan - Path: Concurrent DAG Evaluation (The Scoring Alg)'
   status: Backlog
+- invariants: []
   learnings: 'Final reflection and path closure for Path: Concurrent DAG Evaluation
     (The Scoring Alg).'
-  invariants: []
-- name: '#2106: The Orchestrator Harness (The Loop Rewire)'
+  name: '#2105: Reflect - Path: Concurrent DAG Evaluation (The Scoring Alg)'
   status: Backlog
+- invariants: []
+  kind: path
   learnings: Terminate the Main Agent's executor instinct by rewiring the sync loop's
     auto-lock behavior into a pure dispatcher behavior.
-  invariants: []
-  kind: path
-- name: '#2107: Harmonize - Path: The Orchestrator Harness (The Loop Rewire)'
+  name: '#2106: The Orchestrator Harness (The Loop Rewire)'
   status: Backlog
+- invariants: []
   learnings: 'Harmonize on the philosophical and technical intent for Path: The Orchestrator
     Harness (The Loop Rewire).'
-  invariants: []
-- name: '#2108: Plan - Path: The Orchestrator Harness (The Loop Rewire)'
+  name: '#2107: Harmonize - Path: The Orchestrator Harness (The Loop Rewire)'
   status: Backlog
+- invariants: []
   learnings: 'Technical design and proposed changes for Path: The Orchestrator Harness
     (The Loop Rewire).'
-  invariants: []
-- name: '#2109: Reflect - Path: The Orchestrator Harness (The Loop Rewire)'
+  name: '#2108: Plan - Path: The Orchestrator Harness (The Loop Rewire)'
   status: Backlog
+- invariants: []
   learnings: 'Final reflection and path closure for Path: The Orchestrator Harness
     (The Loop Rewire).'
-  invariants: []
-- name: '#2110: Orchestrator Local Invariant Isolation (Filesystem State)'
+  name: '#2109: Reflect - Path: The Orchestrator Harness (The Loop Rewire)'
   status: Backlog
+- invariants: []
+  kind: path
   learnings: Decouple the Main Agent's execution loop from local execution friction
     by ensuring the system only evaluates git worktrees owned by the current persona
     during the SENSE phase's WIP=1 check.
-  invariants: []
-  kind: path
-- name: '#2111: Harmonize - Path: Orchestrator Local Invariant Isolation (Filesystem
-    State)'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2112: Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: '#2113: Reflect - Path: Orchestrator Local Invariant Isolation (Filesystem
-    State)'
+  name: '#2110: Orchestrator Local Invariant Isolation (Filesystem State)'
   status: Backlog
+- invariants: []
+  learnings: Planning Phase
+  name: '#2111: Harmonize - Path: Orchestrator Local Invariant Isolation (Filesystem
+    State)'
+  status: '[///] Act Phase'
+- invariants: []
+  learnings: Planning Phase
+  name: '#2112: Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)'
+  status: '[///] Act Phase'
+- invariants: []
   learnings: 'Final reflection and path closure for Path: Orchestrator Local Invariant
     Isolation (Filesystem State).'
-  invariants: []
-- name: Orchestrator Remote Invariant Isolation
-  status: Completed
-  learnings: Injected SPAO_PERSONA_ID into PR body and filtered get_open_prs
-  invariants:
-  - Orchestrator WipN1Guard ignores worker PRs.
-- name: '#2117: [BUG] Intake: System Crash in reflect'
+  name: '#2113: Reflect - Path: Orchestrator Local Invariant Isolation (Filesystem
+    State)'
   status: Backlog
+- invariants:
+  - Orchestrator WipN1Guard ignores worker PRs.
+  learnings: Injected SPAO_PERSONA_ID into PR body and filtered get_open_prs
+  name: Orchestrator Remote Invariant Isolation
+  status: Completed
+- invariants: []
+  kind: path
   learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `frontier`\n\
     \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_node.py\"\
     , line 768, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2111-harmonize-local-isolation/kernel/daemon_node.py\"\
@@ -2058,95 +2066,82 @@ nodes:
     \ BLOCKED: Node 2111 experienced execution failures. Under SG-0005 (TG-0005-04),\
     \ a structured post-mortem reflection record is required under artifacts/audit/retro-2111.md\
     \ before reflection.\n\n```\n"
-  invariants: []
-  kind: path
-- name: '#2118: Harmonize - [BUG] Intake: System Crash in reflect'
+  name: '#2117: [BUG] Intake: System Crash in reflect'
   status: Backlog
+- invariants: []
   learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
     System Crash in reflect.'
-  invariants: []
-- name: '#2119: Plan - [BUG] Intake: System Crash in reflect'
+  name: '#2118: Harmonize - [BUG] Intake: System Crash in reflect'
   status: Backlog
+- invariants: []
   learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
     in reflect.'
-  invariants: []
-- name: 'Harmonize - Path: Kernel Daemon Local Invariant Isolation (Filesystem State)'
-  status: Completed
-  learnings: Created WHAT and WHY for local invariant isolation.
-  invariants:
-  - none
-- name: '#2122: Reflect - Synthesize Epistemic Retrospective retro-2112.md'
+  name: '#2119: Plan - [BUG] Intake: System Crash in reflect'
   status: Backlog
+- invariants:
+  - none
+  learnings: Created WHAT and WHY for local invariant isolation.
+  name: 'Harmonize - Path: Kernel Daemon Local Invariant Isolation (Filesystem State)'
+  status: Completed
+- invariants: []
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-2112.md into the system's operational guidelines (the Dao).
-  invariants: []
-- name: 'Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)'
-  status: Completed
+  name: '#2122: Reflect - Synthesize Epistemic Retrospective retro-2112.md'
+  status: Backlog
+- invariants:
+  - WipN1Guard evaluates current persona's worktrees only
   learnings: Technical design and implementation for Local Invariant Isolation in
     daemon_node.py
-  invariants:
-  - WipN1Guard evaluates current persona's worktrees only
-- name: 'Harmonize - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  name: 'Plan - Path: Orchestrator Local Invariant Isolation (Filesystem State)'
   status: Completed
+- invariants:
+  - CSI Guard must validate against the active_agents ledger
   learnings: Identified the need to decouple the monolithic lock and update the CSI
     guard to support multi-agent concurrency.
-  invariants:
-  - CSI Guard must validate against the active_agents ledger
-- name: 'Plan - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  name: 'Harmonize - Path: Concurrent Lock Ledger Materialization (Internal State)'
   status: Completed
+- invariants:
+  - CSI Guard must validate against the active_agents ledger
   learnings: Technical design and implementation for concurrent lock ledger validation
     in daemon_node.py
-  invariants:
-  - CSI Guard must validate against the active_agents ledger
-- name: 'Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
+  name: 'Plan - Path: Concurrent Lock Ledger Materialization (Internal State)'
   status: Completed
-  learnings: 'Compile the epistemic reflection for Path #2090'
-  invariants:
+- invariants:
   - Compiled practice reflection retro-2090.md documenting the migration to a concurrent
     lock ledger.
-- name: 'Harmonize - Path: The Sub-Agent Gateway Controller (Ignition)'
+  learnings: 'Compile the epistemic reflection for Path #2090'
+  name: 'Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
   status: Completed
-  learnings: Documented strategic intent and technical design for the Sub-Agent Gateway
-    Controller to enable Cognitive Offloading.
-  invariants:
+- invariants:
   - Gateway Controller provides atomic lock transition and CLI interface for sub-agent
     dispatch
-- name: 'Plan - Path: The Sub-Agent Gateway Controller (Ignition)'
+  learnings: Documented strategic intent and technical design for the Sub-Agent Gateway
+    Controller to enable Cognitive Offloading.
+  name: 'Harmonize - Path: The Sub-Agent Gateway Controller (Ignition)'
   status: Completed
-  learnings: Drafted execution plan for the dispatch CLI command to handle lock handoff
-    and ensure True Dormancy.
-  invariants:
+- invariants:
   - Plan provides clear steps to implement bin/node dispatch CLI arguments
   - lock transition in agent_frontier.py
   - and automated test cases.
-- name: '#2129: Act - Path: The Sub-Agent Gateway Controller (Ignition)'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-- name: 'Act - Path: The Sub-Agent Gateway Controller (Ignition)'
+  learnings: Drafted execution plan for the dispatch CLI command to handle lock handoff
+    and ensure True Dormancy.
+  name: 'Plan - Path: The Sub-Agent Gateway Controller (Ignition)'
   status: Completed
-  learnings: Implemented the Gateway Controller CLI command bin/node dispatch to handle
-    transitioning nodes between personas and enforcing True Dormancy for the kernel_daemon.
-  invariants:
+- invariants: []
+  learnings: Planning Phase
+  name: '#2129: Act - Path: The Sub-Agent Gateway Controller (Ignition)'
+  status: '[///] Act Phase'
+- invariants:
   - The implementation adds a dispatch parser to daemon_node.py
   - adds dispatch_active_node to agent_frontier.py to modify the lock ledger safely
   - and includes a test.
-- name: 'Act - Path: The Sub-Agent Gateway Controller'
-  status: Cancelled
-  learnings: 'Cancelled: Replaced by Node 2129'
-  invariants: []
-- name: 'Reflect - Path: The Sub-Agent Gateway Controller'
+  learnings: Implemented the Gateway Controller CLI command bin/node dispatch to handle
+    transitioning nodes between personas and enforcing True Dormancy for the kernel_daemon.
+  name: 'Act - Path: The Sub-Agent Gateway Controller (Ignition)'
   status: Completed
-  learnings: The gateway controller sub-agent architecture was fully materialized,
-    preserving true dormancy via bin/node dispatch.
+- name: 'Node 2100: Execution Exhaust & Telemetry Partitioning (Audit)'
+  status: Completed
+  learnings: Implemented persona-specific telemetry and exhaust partitioning based
+    on SPAO_PERSONA_ID
   invariants:
-  - Lock-state modifications must be strictly paired with node status transitions
-    to prevent active_agents orphan state.
-active_agents:
-  agent-ziran:
-    current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
-    current_active_node: null
-  agent-sg5:
-    current_active_path: 'Path 634: Path: Refactor frontier_state for concurrent agent
-      awareness'
-    current_active_node: null
+  - '- artifacts/telemetry_<persona>.jsonl - artifacts/audit/<persona>/'

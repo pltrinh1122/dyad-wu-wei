@@ -6,6 +6,7 @@ from drivers.exhaust_logger import ExhaustLogger
 def test_dump_transient_exhaust(tmp_path, monkeypatch):
     # Mock os.getcwd to use tmp_path so we don't pollute the actual repo
     monkeypatch.setattr(os, "getcwd", lambda: str(tmp_path))
+    monkeypatch.delenv("SPAO_PERSONA_ID", raising=False)
     
     guard_name = "test_guard"
     payload = {"error_code": 401, "reason": "Unauthorized"}
@@ -27,6 +28,7 @@ def test_dump_transient_exhaust(tmp_path, monkeypatch):
 
 def test_clear_historical_exhaust(tmp_path, monkeypatch):
     monkeypatch.setattr(os, "getcwd", lambda: str(tmp_path))
+    monkeypatch.delenv("SPAO_PERSONA_ID", raising=False)
     
     guard_name = "test_guard"
     other_guard = "other_guard"
@@ -46,3 +48,19 @@ def test_clear_historical_exhaust(tmp_path, monkeypatch):
     assert not os.path.exists(path1)
     assert not os.path.exists(path2)
     assert os.path.exists(path3)  # Other guard's exhaust should remain
+
+def test_dump_transient_exhaust_persona(tmp_path, monkeypatch):
+    monkeypatch.setattr(os, "getcwd", lambda: str(tmp_path))
+    monkeypatch.setenv("SPAO_PERSONA_ID", "test_persona")
+    
+    guard_name = "test_guard"
+    payload = {"error_code": 402, "reason": "Payment Required"}
+    message = "The API call failed."
+    
+    artifact_path = ExhaustLogger.dump_transient_exhaust(guard_name, payload, message)
+    
+    assert os.path.exists(artifact_path)
+    assert "test_persona" in artifact_path
+    
+    ExhaustLogger.clear_historical_exhaust(guard_name)
+    assert not os.path.exists(artifact_path)
