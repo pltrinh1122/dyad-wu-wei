@@ -101,6 +101,9 @@ class TelemetryDaemon:
     def _get_default_ledger_path(self):
         """Anchors the default ledger path to the git repository root."""
         from drivers import path_resolver
+        persona_id = os.environ.get("SPAO_PERSONA_ID")
+        if persona_id:
+            return path_resolver.resolve_workspace_path("artifacts", f"telemetry_{persona_id}.jsonl")
         return path_resolver.resolve_workspace_path("artifacts", "telemetry.jsonl")
 
     def log_event(self, stage, event, node_id=None, path_id=None, domain=None, component=None, execution_id=None, metadata=None):

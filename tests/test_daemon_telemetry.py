@@ -65,7 +65,17 @@ def test_generate_report_with_bottleneck():
 def test_ledger_anchoring():
     with patch("drivers.path_resolver.resolve_workspace_path") as mock_resolve:
         mock_resolve.return_value = "/repo/root/artifacts/telemetry.jsonl"
-        with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}):
+        with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1"}, clear=False):
+            if "SPAO_PERSONA_ID" in os.environ:
+                del os.environ["SPAO_PERSONA_ID"]
             tm = TelemetryDaemon()
             assert tm.ledger_path == "/repo/root/artifacts/telemetry.jsonl"
         mock_resolve.assert_called_with("artifacts", "telemetry.jsonl")
+
+def test_ledger_anchoring_persona():
+    with patch("drivers.path_resolver.resolve_workspace_path") as mock_resolve:
+        mock_resolve.return_value = "/repo/root/artifacts/telemetry_test_persona.jsonl"
+        with patch.dict("os.environ", {"SPAO_TELEMETRY_NO_TEST_SAFETY": "1", "SPAO_PERSONA_ID": "test_persona"}, clear=False):
+            tm = TelemetryDaemon()
+            assert tm.ledger_path == "/repo/root/artifacts/telemetry_test_persona.jsonl"
+        mock_resolve.assert_called_with("artifacts", "telemetry_test_persona.jsonl")

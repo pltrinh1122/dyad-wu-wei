@@ -2235,8 +2235,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2097: Reflect - Path: The Sub-Agent Gateway Controller (Ignition)
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Path: The Sub-Agent Gateway Controller (Ignition).
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2254,8 +2254,8 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2100: Plan - Path: Execution Exhaust & Telemetry Partitioning (Audit)
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Path: Execution Exhaust & Telemetry Partitioning (Audit).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2450,22 +2450,16 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `adds dispatch_active_node to agent_frontier.py to modify the lock ledger safely`
   - `and includes a test.`
 
-## Act - Path: The Sub-Agent Gateway Controller
-- **Status**: Cancelled
-- **Learnings & Context**: Cancelled: Replaced by Node 2129
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Reflect - Path: The Sub-Agent Gateway Controller
+## Node 2100: Execution Exhaust & Telemetry Partitioning (Audit)
 - **Status**: Completed
-- **Learnings & Context**: The gateway controller sub-agent architecture was fully materialized, preserving true dormancy via bin/node dispatch.
+- **Learnings & Context**: Implemented persona-specific telemetry and exhaust partitioning based on SPAO_PERSONA_ID
 - **Feedforward Invariants**:
-  - `Lock-state modifications must be strictly paired with node status transitions to prevent active_agents orphan state.`
+  - `- artifacts/telemetry_<persona>.jsonl - artifacts/audit/<persona>/`
 
 ## Active Agents Matrix
-* **agent-ziran**:
-  - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
-  - Current Active Node: `None`
 * **agent-sg5**:
   - Current Active Path: `Path 634: Path: Refactor frontier_state for concurrent agent awareness`
+  - Current Active Node: `None`
+* **agent-ziran**:
+  - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
   - Current Active Node: `None`
