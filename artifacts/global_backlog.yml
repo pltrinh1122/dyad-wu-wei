@@ -191,3 +191,98 @@ backlog_items:
   number: 2093
   title: 'Reflect - Path: Concurrent Lock Ledger Materialization (Internal State)'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2093
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Path: The Sub-Agent Gateway
+    Controller (Ignition).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2095
+  title: 'Harmonize - Path: The Sub-Agent Gateway Controller (Ignition)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2095
+- body: '## Goal
+
+    Technical design and proposed changes for Path: The Sub-Agent Gateway Controller
+    (Ignition).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2095
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2096
+  title: 'Plan - Path: The Sub-Agent Gateway Controller (Ignition)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2096
+- body: '## Goal
+
+    Final reflection and path closure for Path: The Sub-Agent Gateway Controller (Ignition).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2096
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2097
+  title: 'Reflect - Path: The Sub-Agent Gateway Controller (Ignition)'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2097
