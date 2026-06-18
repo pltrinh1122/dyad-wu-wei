@@ -1,13 +1,15 @@
 active_agents:
   agent-sg5:
-    current_active_node: '#2136: Act - Path: Concurrent DAG Evaluation (The Scoring
-      Alg)'
+    current_active_node: null
     current_active_path: null
   agent-ziran:
     current_active_node: null
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
+  frontier:
+    current_active_path: null
+    current_active_node: null
 current_active_node: null
-current_active_path: null
+current_active_path: 'Path 2102: Concurrent DAG Evaluation'
 nodes:
 - invariants:
   - '`[x]` `AGENT.md` is present.'
@@ -1990,11 +1992,11 @@ nodes:
 - invariants: []
   learnings: Planning Phase
   name: '#2103: Harmonize - Path: Concurrent DAG Evaluation (The Scoring Alg)'
-  status: '[///] Act Phase'
+  status: Completed
 - invariants: []
   learnings: Planning Phase
   name: '#2104: Plan - Path: Concurrent DAG Evaluation (The Scoring Alg)'
-  status: '[///] Act Phase'
+  status: Completed
 - invariants: []
   learnings: Planning Phase
   name: '#2105: Reflect - Path: Concurrent DAG Evaluation (The Scoring Alg)'
@@ -2006,10 +2008,9 @@ nodes:
   name: '#2106: The Orchestrator Harness (The Loop Rewire)'
   status: Backlog
 - invariants: []
-  learnings: 'Harmonize on the philosophical and technical intent for Path: The Orchestrator
-    Harness (The Loop Rewire).'
+  learnings: Planning Phase
   name: '#2107: Harmonize - Path: The Orchestrator Harness (The Loop Rewire)'
-  status: Backlog
+  status: '[///] Act Phase'
 - invariants: []
   learnings: 'Technical design and proposed changes for Path: The Orchestrator Harness
     (The Loop Rewire).'
@@ -2157,7 +2158,7 @@ nodes:
   invariants:
   - '- kb/WHAT-2102-concurrent-dag-evaluation.md\n- artifacts/plan_2104.md'
 - name: '#2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)'
-  status: '[///] Act Phase'
+  status: Completed
   learnings: Planning Phase
   invariants: []
 - name: 'Act - Path: Concurrent DAG Evaluation'
@@ -2167,3 +2168,9 @@ nodes:
   - '- kernel/daemon_nba.py
 
     - tests/test_daemon_nba.py'
+- name: 'Reflect - Path: Concurrent DAG Evaluation'
+  status: Completed
+  learnings: 'Completed Path 2102: Evolved the Next-Best-Action logic to explicitly
+    separate Available for Dispatch nodes from Currently Locked by Workers nodes.'
+  invariants:
+  - '- artifacts/retro_2102.md'
