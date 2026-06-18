@@ -2273,13 +2273,13 @@ kernel.node_lifecycle.StateDissonanceError: Cannot proceed because Node '#2066: 
   - `[ ]` None
 
 ## #2103: Harmonize - Path: Concurrent DAG Evaluation (The Scoring Alg)
-- **Status**: Completed
+- **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
 ## #2104: Plan - Path: Concurrent DAG Evaluation (The Scoring Alg)
-- **Status**: Completed
+- **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2475,7 +2475,7 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `- kb/WHAT-2102-concurrent-dag-evaluation.md\n- artifacts/plan_2104.md`
 
 ## #2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)
-- **Status**: Completed
+- **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
@@ -2487,19 +2487,16 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `- kernel/daemon_nba.py
 - tests/test_daemon_nba.py`
 
-## Reflect - Path: Concurrent DAG Evaluation
+## Harmonize - Path: The Orchestrator Harness
 - **Status**: Completed
-- **Learnings & Context**: Completed Path 2102: Evolved the Next-Best-Action logic to explicitly separate Available for Dispatch nodes from Currently Locked by Workers nodes.
+- **Learnings & Context**: Harmonized intent for Orchestrator loop rewire into artifacts/harmonize_2106.md
 - **Feedforward Invariants**:
-  - `- artifacts/retro_2102.md`
+  - `- artifacts/harmonize_2106.md`
 
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
-  - Current Active Node: `None`
+  - Current Active Node: `#2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)`
 * **agent-ziran**:
   - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
-  - Current Active Node: `None`
-* **frontier**:
-  - Current Active Path: `None`
   - Current Active Node: `None`
