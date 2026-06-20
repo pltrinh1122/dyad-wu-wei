@@ -2076,10 +2076,9 @@ nodes:
   name: 'Harmonize - Path: Kernel Daemon Local Invariant Isolation (Filesystem State)'
   status: Completed
 - invariants: []
-  learnings: Synthesize the epistemic learnings from the post-failure retrospective
-    retro-2112.md into the system's operational guidelines (the Dao).
+  learnings: Planning Phase
   name: '#2122: Reflect - Synthesize Epistemic Retrospective retro-2112.md'
-  status: Backlog
+  status: '[///] Act Phase'
 - invariants:
   - WipN1Guard evaluates current persona's worktrees only
   learnings: Technical design and implementation for Local Invariant Isolation in
@@ -2209,4 +2208,11 @@ nodes:
     without triggering system crash reports.
   invariants:
   - '- kernel/node_lifecycle.py\n- kernel/daemon_knowledge_accrual.py\n- kernel/daemon_node.py'
+  kind: path
+- name: 'Path 2110: Synthesize Epistemic Retrospective retro-2112.md'
+  status: Completed
+  learnings: Codified the frontier state access pattern into the Dao to prevent future
+    hallucination crashes.
+  invariants:
+  - '- kb/WHY-2122-frontier-state-access.md'
   kind: path
