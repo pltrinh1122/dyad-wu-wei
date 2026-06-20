@@ -2633,6 +2633,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n- infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/`
 
+## Harmonize - Path: Re-architecture of Path Container State Preservation
+- **Status**: Completed
+- **Learnings & Context**: Completed Root Cause Analysis and proposed shifting from Meta-Index parsing to actual GitHub API state checking.
+- **Feedforward Invariants**:
+  - `- artifacts/harmonize_2165.md\n- artifacts/audit/retro-2165.md`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
