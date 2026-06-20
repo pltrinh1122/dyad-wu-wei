@@ -2696,7 +2696,7 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 
 ## reflect
 - **Status**: Completed
-- **Learnings & Context**: Drafted Plan and WHAT
+- **Learnings & Context**: Fixed WIP-N=1 blockade
 - **Feedforward Invariants**:
   - `None`
 
@@ -2707,6 +2707,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `[ ]` None
 
 ## #2205: Plan - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2206: Reflect - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:

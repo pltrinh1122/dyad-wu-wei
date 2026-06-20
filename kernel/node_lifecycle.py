@@ -286,8 +286,15 @@ class TerminalNode(BaseNode):
             
             open_prs = github_client.get_open_prs()
             if open_prs:
-                pr_info = [f"PR #{pr.get('number', 'Unknown')} (branch: {pr.get('headRefName', 'Unknown')})" for pr in open_prs]
-                sys.exit(f"[🚫 BLOCKED] WIP-N=1 Invariant Violation: Cannot plan node #{self.issue_id} because there are open pull requests: {pr_info}. You must merge or close them first.")
+                conflicting_prs = []
+                for pr in open_prs:
+                    head_ref = pr.get('headRefName', '')
+                    if head_ref.startswith(f"node/{self.issue_id}-"):
+                        conflicting_prs.append(pr)
+                
+                if conflicting_prs:
+                    pr_info = [f"PR #{pr.get('number', 'Unknown')} (branch: {pr.get('headRefName', 'Unknown')})" for pr in conflicting_prs]
+                    sys.exit(f"[🚫 BLOCKED] WIP-N=1 Invariant Violation: Cannot plan node #{self.issue_id} because there are open pull requests for this specific node: {pr_info}. You must merge or close them first.")
             
             from kernel.daemon_strategic import verify_node_transition_allowed
             verify_node_transition_allowed(self.issue_id)

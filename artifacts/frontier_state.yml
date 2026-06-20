@@ -2344,7 +2344,7 @@ nodes:
   invariants: []
 - name: reflect
   status: Completed
-  learnings: Drafted Plan and WHAT
+  learnings: Fixed WIP-N=1 blockade
   invariants:
   - None
 - name: '#2204: Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory
@@ -2353,6 +2353,11 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2205: Plan - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#2206: Reflect - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory
+    Floor'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []

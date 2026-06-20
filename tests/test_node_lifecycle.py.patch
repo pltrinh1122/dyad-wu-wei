@@ -1,0 +1,18 @@
+--- tests/test_node_lifecycle.py
++++ tests/test_node_lifecycle.py
+@@ -435,6 +435,7 @@
+ def test_plan_start_wip_n1_bypassed_for_concurrent_nodes(mock_frontier, mock_gh, mock_git):
+     node = TerminalNode("2206")
+     mock_gh.get_issue_details.return_value = {"body": ""}
++    mock_gh.get_issue_labels.return_value = ["backlog"]
+     # Simulate an open PR for a DIFFERENT node
+     mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "node/1234-plan"}]
+     
+@@ -449,6 +450,7 @@
+ def test_plan_start_wip_n1_blocks_duplicate_node(mock_frontier, mock_gh, mock_git):
+     node = TerminalNode("2206")
+     mock_gh.get_issue_details.return_value = {"body": ""}
++    mock_gh.get_issue_labels.return_value = ["backlog"]
+     # Simulate an open PR for the SAME node
+     mock_gh.get_open_prs.return_value = [{"number": 124, "headRefName": "node/2206-plan"}]
+     
