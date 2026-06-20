@@ -1,1 +1,199 @@
-backlog_items: []
+backlog_items:
+- body: '## Goal
+
+    Final reflection and path closure for [BUG] Intake: System Crash in reflect.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2170
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2171
+  title: 'Reflect - [BUG] Intake: System Crash in reflect'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2171
+- body: "## Goal\n## System Crash Report\n\n**Subcommand:** `checkout`\n**Persona:**\
+    \ `frontier`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 819,\
+    \ in main\n    cmd_checkout(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 490, in cmd_checkout\n    checkout_node(args.issue_id, args.branch_name)\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 37, in\
+    \ checkout_node\n    node.checkout(branch_name)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\"\
+    , line 233, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 467,\
+    \ in checkout\n    git_client.worktree_add(branch_name, worktree_path, \"origin/main\"\
+    )\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\", line\
+    \ 233, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/drivers/git_client.py\", line 163,\
+    \ in worktree_add\n    _run([\"git\", \"worktree\", \"add\", \"-b\", branch, path,\
+    \ base], check=True)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/drivers/git_client.py\"\
+    , line 10, in _run\n    return subprocess.run(cmd, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/usr/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode,\
+    \ process.args,\nsubprocess.CalledProcessError: Command '['git', 'worktree', 'add',\
+    \ '-b', 'node/2165-harmonize', '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2165-harmonize',\
+    \ 'origin/main']' returned non-zero exit status 255.\n\n```\n\n\n## Meta-Index\n\
+    - [ ] #2175: Reflect - [BUG] Intake: System Crash in checkout [Depends: 2174]\n\
+    - [ ] #2174: Plan - [BUG] Intake: System Crash in checkout [Depends: 2173]\n-\
+    \ [ ] #2173: Harmonize - [BUG] Intake: System Crash in checkout\n\n## Agent Retrospective\n\
+    \n### Continue\n- \n\n### Stop\n- \n\n### Start\n- \n"
+  labels:
+  - bug
+  - backlog
+  - path
+  - status:triage
+  number: 2172
+  title: 'Path: [BUG] Intake: System Crash in checkout'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2172
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash
+    in checkout.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2173
+  title: 'Harmonize - [BUG] Intake: System Crash in checkout'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2173
+- body: '## Goal
+
+    Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2173
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2174
+  title: 'Plan - [BUG] Intake: System Crash in checkout'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2174
+- body: '## Goal
+
+    Final reflection and path closure for [BUG] Intake: System Crash in checkout.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2174
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2175
+  title: 'Reflect - [BUG] Intake: System Crash in checkout'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2175
+- body: '## Goal
+
+    Synthesize the epistemic learnings from the post-failure retrospective retro-2165.md
+    into the system''s operational guidelines (the Dao).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2176
+  title: Reflect - Synthesize Epistemic Retrospective retro-2165.md
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2176
+- body: "## Goal\nWrap enforce_reflection_hook in try/except within kernel/node_lifecycle.py\
+    \ and exit with [\U0001F6AB BLOCKED]\n\n## Changes\nTBD\n\n## Pre-Requisites\n\
+    TBD\n\n## Post-Requisites\nTBD\n\n## Depends On\n2170\n"
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2182
+  title: Catch ReflectionBlockedError in reflect
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2182
