@@ -431,3 +431,32 @@ def test_plan_start_quarantine_bypass():
         # Verify backlog label was added autonomously
         mock_add_label.assert_any_call("999", "backlog")
         mock_verify.assert_called_once_with("999")
+
+@mock.patch("kernel.node_lifecycle.git_client")
+@mock.patch("kernel.node_lifecycle.github_client")
+@mock.patch("kernel.node_lifecycle.agent_frontier")
+def test_plan_start_wip_n1_bypassed_for_concurrent_nodes(mock_frontier, mock_gh, mock_git):
+    node = TerminalNode("2206")
+    mock_gh.get_issue_details.return_value = {"body": ""}
+    mock_gh.get_issue_labels.return_value = ["backlog"]
+    # Simulate an open PR for a DIFFERENT node
+    mock_gh.get_open_prs.return_value = [{"number": 123, "headRefName": "node/1234-plan"}]
+    
+    # Should not raise SystemExit
+    try:
+        node.plan_start("dummy_frontier.md")
+    except SystemExit as e:
+        pytest.fail(f"WIP-N=1 blocked plan-start for an unrelated PR! {e}")
+
+@mock.patch("kernel.node_lifecycle.git_client")
+@mock.patch("kernel.node_lifecycle.github_client")
+@mock.patch("kernel.node_lifecycle.agent_frontier")
+def test_plan_start_wip_n1_blocks_duplicate_node(mock_frontier, mock_gh, mock_git):
+    node = TerminalNode("2206")
+    mock_gh.get_issue_details.return_value = {"body": ""}
+    mock_gh.get_issue_labels.return_value = ["backlog"]
+    # Simulate an open PR for the SAME node
+    mock_gh.get_open_prs.return_value = [{"number": 124, "headRefName": "node/2206-plan"}]
+    
+    with pytest.raises(SystemExit, match="WIP-N=1 Invariant Violation: Cannot plan node #2206"):
+        node.plan_start("dummy_frontier.md")
