@@ -2067,10 +2067,9 @@ nodes:
   name: '#2118: Harmonize - [BUG] Intake: System Crash in reflect'
   status: '[///] Act Phase'
 - invariants: []
-  learnings: 'Technical design and proposed changes for [BUG] Intake: System Crash
-    in reflect.'
+  learnings: Planning Phase
   name: '#2119: Plan - [BUG] Intake: System Crash in reflect'
-  status: Backlog
+  status: '[///] Act Phase'
 - invariants:
   - none
   learnings: Created WHAT and WHY for local invariant isolation.
@@ -2192,4 +2191,11 @@ nodes:
     reject reflection when a retro is missing without triggering the crash reporter.'
   invariants:
   - '- kernel/daemon_node.py\n- kernel/daemon_knowledge_accrual.py'
+  kind: path
+- name: 'Path 2117: Plan - System Crash in reflect'
+  status: Completed
+  learnings: Developed Node Contract to introduce ReflectionBlockedError to bypass
+    crash reporter
+  invariants:
+  - '- kernel/node_lifecycle.py\n- kernel/daemon_knowledge_accrual.py\n- kernel/daemon_node.py'
   kind: path
