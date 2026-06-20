@@ -2706,6 +2706,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #2205: Plan - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
