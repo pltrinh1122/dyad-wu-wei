@@ -2237,3 +2237,31 @@ nodes:
   invariants:
   - '- kb/WHY-2144-frontier-state-rehash.md'
   kind: path
+- name: '#2152: Autonomous Domain Delegation and Healer Protocol'
+  status: Backlog
+  learnings: Transform the Main Agent into a silent dispatcher for bug paths, authorize
+    specialized subagents to own Administrative nodes, and implement HTIL bypass for
+    bug execution nodes.
+  invariants: []
+  kind: path
+- name: '#2153: Harmonize - Autonomous Domain Delegation and Healer Protocol'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#2154: Plan - Autonomous Domain Delegation and Healer Protocol'
+  status: Backlog
+  learnings: Technical design and proposed changes for Autonomous Domain Delegation
+    and Healer Protocol.
+  invariants: []
+- name: '#2155: Reflect - Autonomous Domain Delegation and Healer Protocol'
+  status: Backlog
+  learnings: Final reflection and path closure for Autonomous Domain Delegation and
+    Healer Protocol.
+  invariants: []
+- name: 'Path 2152: Harmonize - Autonomous Domain Delegation and Healer Protocol'
+  status: Completed
+  learnings: Aligned on delegating Administrative nodes to agent-healer for bug paths
+    and auto-bypassing HTIL for its Act nodes.
+  invariants:
+  - '- artifacts/discovery_2152.md'
+  kind: path

@@ -2568,6 +2568,38 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- kb/WHY-2144-frontier-state-rehash.md`
 
+## #2152: Autonomous Domain Delegation and Healer Protocol
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: Transform the Main Agent into a silent dispatcher for bug paths, authorize specialized subagents to own Administrative nodes, and implement HTIL bypass for bug execution nodes.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2153: Harmonize - Autonomous Domain Delegation and Healer Protocol
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2154: Plan - Autonomous Domain Delegation and Healer Protocol
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Autonomous Domain Delegation and Healer Protocol.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2155: Reflect - Autonomous Domain Delegation and Healer Protocol
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Autonomous Domain Delegation and Healer Protocol.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Path 2152: Harmonize - Autonomous Domain Delegation and Healer Protocol
+- **Status**: Completed
+- **Kind**: path
+- **Learnings & Context**: Aligned on delegating Administrative nodes to agent-healer for bug paths and auto-bypassing HTIL for its Act nodes.
+- **Feedforward Invariants**:
+  - `- artifacts/discovery_2152.md`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
