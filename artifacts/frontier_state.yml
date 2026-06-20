@@ -2199,3 +2199,14 @@ nodes:
   invariants:
   - '- kernel/node_lifecycle.py\n- kernel/daemon_knowledge_accrual.py\n- kernel/daemon_node.py'
   kind: path
+- name: '#2120: Reflect - [BUG] Intake: System Crash in reflect'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Path 2117: Reflect - System Crash in reflect'
+  status: Completed
+  learnings: Implemented ReflectionBlockedError to catch reflection blocks gracefully
+    without triggering system crash reports.
+  invariants:
+  - '- kernel/node_lifecycle.py\n- kernel/daemon_knowledge_accrual.py\n- kernel/daemon_node.py'
+  kind: path
