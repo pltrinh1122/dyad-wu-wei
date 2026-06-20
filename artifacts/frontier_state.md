@@ -2381,8 +2381,8 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `[ ]` None
 
 ## #2119: Plan - [BUG] Intake: System Crash in reflect
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in reflect.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2514,6 +2514,13 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Aligned on intent: We must implement ReflectionBlockedError to gracefully reject reflection when a retro is missing without triggering the crash reporter.
 - **Feedforward Invariants**:
   - `- kernel/daemon_node.py\n- kernel/daemon_knowledge_accrual.py`
+
+## Path 2117: Plan - System Crash in reflect
+- **Status**: Completed
+- **Kind**: path
+- **Learnings & Context**: Developed Node Contract to introduce ReflectionBlockedError to bypass crash reporter
+- **Feedforward Invariants**:
+  - `- kernel/node_lifecycle.py\n- kernel/daemon_knowledge_accrual.py\n- kernel/daemon_node.py`
 
 ## Active Agents Matrix
 * **agent-sg5**:
