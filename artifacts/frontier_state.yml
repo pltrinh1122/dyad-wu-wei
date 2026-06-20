@@ -2216,3 +2216,13 @@ nodes:
   invariants:
   - '- kb/WHY-2122-frontier-state-access.md'
   kind: path
+- name: '#2133: Reflect - Synthesize Epistemic Retrospective retro-2101.md'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Path 2098: Synthesize Epistemic Retrospective retro-2101.md'
+  status: Completed
+  learnings: Codified command signature verification rule into the Dao.
+  invariants:
+  - '- kb/WHY-2133-command-signature-awareness.md'
+  kind: path
