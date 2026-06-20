@@ -221,37 +221,6 @@ backlog_items:
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2199
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Rename AGENT.md to DYAD.md.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2200
-  title: Harmonize - Rename AGENT.md to DYAD.md
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2200
-- body: '## Goal
-
     Technical design and proposed changes for Rename AGENT.md to DYAD.md.
 
 
