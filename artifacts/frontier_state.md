@@ -2393,8 +2393,8 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `none`
 
 ## #2122: Reflect - Synthesize Epistemic Retrospective retro-2112.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-2112.md into the system's operational guidelines (the Dao).
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2534,6 +2534,13 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Implemented ReflectionBlockedError to catch reflection blocks gracefully without triggering system crash reports.
 - **Feedforward Invariants**:
   - `- kernel/node_lifecycle.py\n- kernel/daemon_knowledge_accrual.py\n- kernel/daemon_node.py`
+
+## Path 2110: Synthesize Epistemic Retrospective retro-2112.md
+- **Status**: Completed
+- **Kind**: path
+- **Learnings & Context**: Codified the frontier state access pattern into the Dao to prevent future hallucination crashes.
+- **Feedforward Invariants**:
+  - `- kb/WHY-2122-frontier-state-access.md`
 
 ## Active Agents Matrix
 * **agent-sg5**:
