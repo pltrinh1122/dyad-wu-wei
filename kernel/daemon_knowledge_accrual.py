@@ -8,6 +8,7 @@ import subprocess
 from kernel.daemon_telemetry import record_execution
 from drivers import knowledge_accrual_skill
 from kernel import agent_frontier
+from kernel.node_lifecycle import ReflectionBlockedError
 
 def get_repo_root():
     from drivers import path_resolver
@@ -86,7 +87,7 @@ def enforce_reflection_hook(issue_id: str, repo_root: str, worktree_root: str = 
             if os.path.exists(retro_path_wt):
                 retro_path = retro_path_wt
         if not os.path.exists(retro_path):
-            raise Exception(
+            raise ReflectionBlockedError(
                 f"REFLECTION BLOCKED: Node {issue_id} experienced execution failures. "
                 f"Under SG-0005 (TG-0005-04), a structured post-mortem reflection record "
                 f"is required under artifacts/audit/{retro_filename} before reflection."
@@ -171,7 +172,7 @@ def enforce_reflection_hook(issue_id: str, repo_root: str, worktree_root: str = 
         reaffirm_filename = f"reaffirm-{issue_id}.md"
         reaffirm_path = os.path.join(repo_root, "artifacts", "audit", reaffirm_filename)
         if not os.path.exists(reaffirm_path):
-            raise Exception(
+            raise ReflectionBlockedError(
                 f"REFLECTION BLOCKED: Node {issue_id} received positive Operator feedback. "
                 f"Under SG-0005, a codified insight is required under artifacts/audit/{reaffirm_filename} "
                 f"before reflection to reaffirm the Dao."

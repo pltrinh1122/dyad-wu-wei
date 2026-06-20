@@ -12,6 +12,9 @@ from kernel.daemon_transaction import FlowTransaction
 class StateDissonanceError(Exception):
     pass
 
+class ReflectionBlockedError(Exception):
+    pass
+
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
     return os.environ.get("SPAO_VERBOSE") in ("1", "true", "TRUE") or os.environ.get("SPOA_VERBOSE") in ("1", "true", "TRUE")
