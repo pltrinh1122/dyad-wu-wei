@@ -1559,7 +1559,7 @@ nodes:
   name: 'Harmonize - Path: Implement Two-Tier Backlog Abstraction'
   status: Completed
 - invariants: []
-  learnings: Identified reflect crash during --stage none
+  learnings: Diagnosed unhandled ReflectionBlockedError
   name: 'Harmonize - [BUG] Intake: System Crash in reflect'
   status: Completed
 - invariants: []
@@ -2296,12 +2296,12 @@ nodes:
   invariants:
   - '- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n-
     infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/'
-- name: '#2167: Reflect - Path: Re-architecture of Path Container State Preservation'
+- name: '#2168: [BUG] Intake: System Crash in reflect'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: 'Reflect - Path: Re-architecture of Path Container State Preservation'
-  status: Completed
-  learnings: Drafted retro-2164.md for Path 2164
-  invariants:
-  - '- artifacts/audit/retro-2164.md'
+  kind: path
+- name: '#2169: Harmonize - [BUG] Intake: System Crash in reflect'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []

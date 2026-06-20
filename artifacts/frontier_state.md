@@ -1726,7 +1726,7 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 
 ## Harmonize - [BUG] Intake: System Crash in reflect
 - **Status**: Completed
-- **Learnings & Context**: Identified reflect crash during --stage none
+- **Learnings & Context**: Diagnosed unhandled ReflectionBlockedError
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2633,17 +2633,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n- infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/`
 
-## #2167: Reflect - Path: Re-architecture of Path Container State Preservation
+## #2168: [BUG] Intake: System Crash in reflect
 - **Status**: [///] Act Phase
+- **Kind**: path
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Reflect - Path: Re-architecture of Path Container State Preservation
-- **Status**: Completed
-- **Learnings & Context**: Drafted retro-2164.md for Path 2164
+## #2169: Harmonize - [BUG] Intake: System Crash in reflect
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `- artifacts/audit/retro-2164.md`
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-sg5**:
