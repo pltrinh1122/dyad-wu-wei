@@ -2344,6 +2344,11 @@ nodes:
   invariants: []
 - name: reflect
   status: Completed
-  learnings: Synthesized retro-2165 into Formal Worktree Materialization Invariant
+  learnings: Drafted Harmonize Artifact
   invariants:
   - None
+- name: '#2204: Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory
+    Floor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []

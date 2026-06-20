@@ -2696,9 +2696,15 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 
 ## reflect
 - **Status**: Completed
-- **Learnings & Context**: Synthesized retro-2165 into Formal Worktree Materialization Invariant
+- **Learnings & Context**: Drafted Harmonize Artifact
 - **Feedforward Invariants**:
   - `None`
+
+## #2204: Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-sg5**:
