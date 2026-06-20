@@ -176,37 +176,6 @@ backlog_items:
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2184
 - body: '## Goal
 
-    Reflect on the code fixes for the manual interventions
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    2186
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2187
-  title: Reflect - Remediate DAG Execution and NBA Fallback Invariants
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2187
-- body: '## Goal
-
     Synthesize the epistemic learnings from the post-failure retrospective retro-2182.md
     into the system''s operational guidelines (the Dao).
 
