@@ -5,7 +5,7 @@ The system previously allowed for 'Global User Prompts' configured at the IDE/Cl
 
 ## The Problem
 If an Operator injects rules at the global Antigravity level, those rules pollute the context of all agents indiscriminately. This violates the principle of **Emergent Orthogonality**:
-Orthogonality is not a top-down dictate from the global meta-system; it is an emergent property of a decentralized contract system. Each agent must define its own scope, invariants, and physics locally through its own `GEMINI.md` and `AGENT.md`.
+Orthogonality is not a top-down dictate from the global meta-system; it is an emergent property of a decentralized contract system. Each agent must define its own scope, invariants, and physics locally through its own `GEMINI.md` and `DYAD.md`.
 
 ## The Solution: Deprecation of Global Context
 To enforce strict boundary isolation, we formalize the following architectural invariants:

@@ -1,7 +1,7 @@
 # WHAT-2027: Technical Implementation for "GEMINI.md changed" Intake
 
 ## 1. Goal
-Halt the system without polluting the backlog when `GEMINI.md` or `AGENT.md` is changed, and properly route `dispatch_alert` tags based on semantic severity.
+Halt the system without polluting the backlog when `GEMINI.md` or `DYAD.md` is changed, and properly route `dispatch_alert` tags based on semantic severity.
 
 ## 2. Requirements
 

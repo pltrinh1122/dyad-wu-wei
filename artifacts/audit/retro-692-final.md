@@ -9,7 +9,7 @@
 ## 2. START — what to do better
 **Narrative (Operator):**
 **Details (Agent):**
-- Moving forward, the `AGENT.md` protocol should explicitly point to `WHAT-0692` when resolving questions around system framework edits. 
+- Moving forward, the `DYAD.md` protocol should explicitly point to `WHAT-0692` when resolving questions around system framework edits. 
 
 ## 3. STOP — what hurt (or almost did)
 **Narrative (Operator):**

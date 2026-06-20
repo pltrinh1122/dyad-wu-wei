@@ -11,7 +11,7 @@ This audit verifies that the `agent-antigravity` meta-repository strictly compli
 ## Verification Checklist
 
 ### 1. Persona & Memory Invariants
-- `[PASS]` **`AGENT.md`**: Present at the repository root and correctly defines the Frontier Agent persona.
+- `[PASS]` **`DYAD.md`**: Present at the repository root and correctly defines the Frontier Agent persona.
 - `[PASS]` **`artifacts/frontier_state.md`**: Present, initialized, and actively tracking the topological frontier.
 
 ### 2. Agentic Architecture Scaffolding

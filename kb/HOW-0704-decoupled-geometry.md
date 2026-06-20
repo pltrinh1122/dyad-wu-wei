@@ -18,5 +18,5 @@ Enforce "The Decoupled Geometry of the State Machine" (`WHAT-0704`) by establish
 - To further decouple geometry, the `SPAO_PERSONA_ID` resolution should be mapped cleanly. The "Steward" persona should handle engine maintenance, while the "Frontier" or "Healer" persona handles domain work.
 
 ## 3. Implementation Steps
-1. **Inject Directive into AGENT.md**: Add explicit instruction that the Agent must not mix engine code modifications with application code modifications in the same node.
+1. **Inject Directive into DYAD.md**: Add explicit instruction that the Agent must not mix engine code modifications with application code modifications in the same node.
 2. **Develop the Git Diff Hook**: Enhance the testing or commit pipeline to enforce this separation programmatically in the future.

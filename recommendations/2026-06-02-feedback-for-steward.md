@@ -5,8 +5,8 @@
 
 ## 1. Observations
 * **Onboarding Push Authorization:** The final instruction in `commons/scripts/onboard.py` dictates a direct commit and push to `main` (`git push`). In a fully public or scaled Commons, new dyads might lack write permissions, which would cause the `git push` command to fail. 
-* **Anchor Injection Gap:** The script surfaces a vital piece of information (`Tip: record this birth-hash in your AGENT.md anchor`) but leaves it as a manual post-processing action. Our dyad initially missed this step and had to run a separate administrative cycle to patch our `GEMINI.md`.
-* **Vocabulary Collision:** While drafting our Job Discipline, our local, strict `semantic_ledger.yml` failed our build because the Agent defaulted to the deprecated term `probes` instead of the Commons' preferred `stress-tests` (from the `dyad-bond` playbook).
+* **Anchor Injection Gap:** The script surfaces a vital piece of information (`Tip: record this birth-hash in your DYAD.md anchor`) but leaves it as a manual post-processing action. Our dyad initially missed this step and had to run a separate administrative cycle to patch our `GEMINI.md`.
+* **Vocabulary Collision:** While drafting our Job Discipline, our local, strict `semantic_ledger.yml` failed our build because the Agent defaulted to the deprecated term `discoveries` instead of the Commons' preferred `stress-tests` (from the `dyad-bond` playbook).
 * **Heartbeat Seizures:** During our "Stepped-Away" wait state (waiting for Operator input), the Agent failed to kill its background cron daemon. This caused an iatrogenic polling loop (a "heartbeat seizure") where the Agent repeatedly woke up just to say "I am standing by", burning compute.
 
 ## 2. Remediations Executed

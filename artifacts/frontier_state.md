@@ -2,9 +2,9 @@
 
 ## Node 0: Agentic Initialization & Flow-State Setup
 - **Status**: Completed
-- **Learnings & Context**: Injected `AGENT.md` and established the topological `frontier_state.md` to persist the session architecture.
+- **Learnings & Context**: Injected `DYAD.md` and established the topological `frontier_state.md` to persist the session architecture.
 - **Feedforward Invariants**:
-  - `[x]` `AGENT.md` is present.
+  - `[x]` `DYAD.md` is present.
   - `[x]` Flow-state anchor is established.
 
 ## Node 10: Codify Audit Remediation Threshold
@@ -15,7 +15,7 @@
 
 ## Node 19: Establish Antigravity Hook
 - **Status**: Completed
-- **Learnings & Context**: Migrated AGENT.md to GEMINI.md to utilize the native Antigravity system prompt hook. Formally codified a Hard Invariant banning raw LLM bash testing, forcing the use of skills/testing_harness.py across all KB documents.
+- **Learnings & Context**: Migrated DYAD.md to GEMINI.md to utilize the native Antigravity system prompt hook. Formally codified a Hard Invariant banning raw LLM bash testing, forcing the use of skills/testing_harness.py across all KB documents.
 - **Feedforward Invariants**:
   - `[x] Antigravity System reads GEMINI.md automatically`
   - `[x] Native bash testing is forbidden`

@@ -1,5 +1,5 @@
 ## Goal
-Execute the Dyad Instantiation Protocol (from `the-dyad-practice/AGENT.md`) to author the personalized `GEMINI.md` anchor through the SPAOR execution scaffold.
+Execute the Dyad Instantiation Protocol (from `the-dyad-practice/DYAD.md`) to author the personalized `GEMINI.md` anchor through the SPAOR execution scaffold.
 
 ## Scope
 Walk the 7 Dimensions in the grain-flow sequence to build a Shared Mental Model:

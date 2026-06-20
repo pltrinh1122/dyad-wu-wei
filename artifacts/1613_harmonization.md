@@ -14,4 +14,4 @@ To formalize the PR discipline, the Agent must proactively execute the local tes
    - The formal codification of this discipline into the agent's core rule-set ensures future Dyad instantiations inherit this robust behavior.
 3. **Next Steps (Node 1614 Plan)**:
    - Identify if any remaining guardrails are missing (e.g. merge conflict validation before pushing).
-   - Update `kb/` documentation or `AGENT.md` guidelines if they do not yet fully articulate this strict invariant.
+   - Update `kb/` documentation or `DYAD.md` guidelines if they do not yet fully articulate this strict invariant.

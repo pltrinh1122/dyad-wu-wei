@@ -68,7 +68,7 @@ Both historical Healer cases were silent freezes detected **only by the human Op
 
 **Decision**: No additional work needed.
 
-**Rationale**: The Healer noted the daemon had no cron entry at time of intake. This is now solved — the Agent establishes a `*/5 * * * *` cron via the `schedule` tool during the Bring-Up Process (AGENT.md §2.5). Verified operational (current session tick count: 30+).
+**Rationale**: The Healer noted the daemon had no cron entry at time of intake. This is now solved — the Agent establishes a `*/5 * * * *` cron via the `schedule` tool during the Bring-Up Process (DYAD.md §2.5). Verified operational (current session tick count: 30+).
 
 ## 3. Implementation Plan
 

@@ -720,7 +720,7 @@ class TerminalNode(BaseNode):
             import yaml
             from drivers import path_resolver
             
-            sacred_files = ["GEMINI.md", "AGENT.md"]
+            sacred_files = ["GEMINI.md", "DYAD.md"]
             try:
                 main_repo_dir = path_resolver.get_core_dir()
                 if ".worktrees" in main_repo_dir.split(os.sep):

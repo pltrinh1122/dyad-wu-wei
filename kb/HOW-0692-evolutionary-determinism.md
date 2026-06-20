@@ -7,7 +7,7 @@ This document outlines the technical mechanism for enforcing "Evolutionary Deter
 
 ### 2.1. Dogfooding Execution Pipeline
 - **Agentic Engine Updates**: When the Agent is tasked with fixing a bug in the `SPAOR` loop, it MUST generate a Path/Node for it, check it out, execute the change, and run the `bin/run-tests` harness before reflecting.
-- **Implementation**: The system's ruleset (`AGENT.md`) MUST explicitly mandate that structural framework edits follow the standard path execution protocol. Ad-hoc terminal edits via standard unix utilities outside a Node execution are forbidden.
+- **Implementation**: The system's ruleset (`DYAD.md`) MUST explicitly mandate that structural framework edits follow the standard path execution protocol. Ad-hoc terminal edits via standard unix utilities outside a Node execution are forbidden.
 
 ### 2.2. Ledger Consistency
 - **Audit Trace**: The audit daemon (`drivers/audit_daemon.py`) passively scans the git history for commits on `main` that did not originate from a properly merged `node/*` branch PR. 
@@ -17,5 +17,5 @@ This document outlines the technical mechanism for enforcing "Evolutionary Deter
 - **Safety Boundaries**: Because upgrading the engine while running it can cause execution collapse, all `bin/` changes MUST execute strictly inside the `.worktrees/node/` boundary. The root `bin/node` execution context remains shielded until the PR merges.
 
 ## 3. Implementation Plan
-1. **Inject Directive into AGENT.md**: Add explicit language requiring that any modification to the execution engine (`bin/`, `drivers/`) requires node checkout and PR merge.
+1. **Inject Directive into DYAD.md**: Add explicit language requiring that any modification to the execution engine (`bin/`, `drivers/`) requires node checkout and PR merge.
 2. **Review Ziran Auditor**: Ensure the existing test suites (e.g. `test_ziran_auditor.py`) and PR validation checks account for strict PR-only commits to `main`.

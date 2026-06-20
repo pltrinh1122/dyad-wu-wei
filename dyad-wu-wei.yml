@@ -25,7 +25,7 @@ governance:
   spao_purity_enforcement: true
   sacred_files:
     - GEMINI.md
-    - AGENT.md
+    - DYAD.md
 
 domains:
   family_legacy:
