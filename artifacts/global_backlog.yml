@@ -1,1 +1,111 @@
-backlog_items: []
+backlog_items:
+- body: "## Goal\nPerform RCA to remediate the orphaned state of Path nodes. A 'container'\
+    \ node, like Path had always been fragile and we should reconsider the whole node\
+    \ architecture for preserving state during execution.\n\n## Meta-Index\n- [ ]\
+    \ #2167: Reflect - Path: Re-architecture of Path Container State Preservation\
+    \ [Depends: 2166]\n- [ ] #2166: Plan - Path: Re-architecture of Path Container\
+    \ State Preservation [Depends: 2165]\n- [ ] #2165: Harmonize - Path: Re-architecture\
+    \ of Path Container State Preservation\n\n## Agent Retrospective\n\n### Continue\n\
+    - \n\n### Stop\n- \n\n### Start\n- \n"
+  labels:
+  - backlog
+  - path
+  number: 2164
+  title: 'Path: Re-architecture of Path Container State Preservation'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2164
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Path: Re-architecture
+    of Path Container State Preservation.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2165
+  title: 'Harmonize - Path: Re-architecture of Path Container State Preservation'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2165
+- body: '## Goal
+
+    Technical design and proposed changes for Path: Re-architecture of Path Container
+    State Preservation.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2165
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2166
+  title: 'Plan - Path: Re-architecture of Path Container State Preservation'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2166
+- body: '## Goal
+
+    Final reflection and path closure for Path: Re-architecture of Path Container
+    State Preservation.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2166
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2167
+  title: 'Reflect - Path: Re-architecture of Path Container State Preservation'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2167
