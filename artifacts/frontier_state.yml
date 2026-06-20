@@ -2284,3 +2284,8 @@ nodes:
     - kernel/node_lifecycle.py
 
     - kb/WHAT-0065-domain-path-ownership-index.md'
+- name: Reflect - Autonomous Domain Delegation and Healer Protocol
+  status: Completed
+  learnings: Synthesized retrospective.
+  invariants:
+  - '- artifacts/retro_2152.md'

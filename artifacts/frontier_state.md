@@ -2621,6 +2621,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - kernel/node_lifecycle.py
 - kb/WHAT-0065-domain-path-ownership-index.md`
 
+## Reflect - Autonomous Domain Delegation and Healer Protocol
+- **Status**: Completed
+- **Learnings & Context**: Synthesized retrospective.
+- **Feedforward Invariants**:
+  - `- artifacts/retro_2152.md`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
