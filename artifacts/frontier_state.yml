@@ -2315,12 +2315,17 @@ nodes:
     and exit gracefully
   invariants:
   - '- kernel/node_lifecycle.py'
-- name: '#2186: Plan - Remediate DAG Execution and NBA Fallback Invariants'
+- name: '#2185: Harmonize - Remediate DAG Execution and NBA Fallback Invariants'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Plan - Remediate DAG Execution and NBA Fallback Invariants
+- name: Harmonize - Remediate DAG Execution and NBA Fallback Invariants
   status: Completed
-  learnings: Drafted plan for DAG remediation and generated 3 execution nodes
+  learnings: Harmonized intent and structural requirements into artifacts/harmonize_2184.md
   invariants:
-  - '- artifacts/plan_2186.md\n- kb/WHAT-2184-dag-nba-remediation.md'
+  - '- artifacts/harmonize_2184.md'
+- name: Act - Implement Abort Hygiene Fix
+  status: Completed
+  learnings: 'Restored status: todo and backlog label on abort'
+  invariants:
+  - '- kernel/node_lifecycle.py'

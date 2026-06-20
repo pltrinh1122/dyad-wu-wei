@@ -504,10 +504,12 @@ class TerminalNode(BaseNode):
             log_stage_advancement("abort", "Initiating Abort Phase", f"Releasing lock on Issue #{self.issue_id}")
             
             # Remove in-progress label and restore 'open' status
+            # Remove in-progress label and restore 'todo' status and backlog classification
             try:
-                self.set_status("open")
+                self.set_status("todo")
+                self.set_classification("backlog")
             except Exception as e:
-                print(f"Warning: Failed to set status to open: {e}")
+                print(f"Warning: Failed to set status to todo and backlog classification: {e}")
                 
             # Discard any associated worktrees
             branches = [f"node/{self.issue_id}-plan", f"node/{self.issue_id}-act", f"node/{self.issue_id}-observe"]
