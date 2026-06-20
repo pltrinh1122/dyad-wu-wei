@@ -2633,17 +2633,30 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n- infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/`
 
-## #2170: Plan - [BUG] Intake: System Crash in reflect
-- **Status**: Completed
-- **Learnings & Context**: Drafted plan for wrapping reflection hook in try/except. Created Act node.
-- **Feedforward Invariants**:
-  - `- artifacts/plan_2170.md`
-
-## #2182: Catch ReflectionBlockedError in reflect
-- **Status**: Backlog
-- **Learnings & Context**: Wrap enforce_reflection_hook in try/except within kernel/node_lifecycle.py and exit with [🚫 BLOCKED]
+## #2171: Reflect - [BUG] Intake: System Crash in reflect
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## #2172: [BUG] Intake: System Crash in checkout
+- **Status**: [///] Act Phase
+- **Kind**: path
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2182: Catch ReflectionBlockedError in reflect
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Act - [BUG] Intake: System Crash in reflect
+- **Status**: Completed
+- **Learnings & Context**: Wrapped enforce_reflection_hook in try/except block to catch ReflectionBlockedError and exit gracefully
+- **Feedforward Invariants**:
+  - `- kernel/node_lifecycle.py`
 
 ## Active Agents Matrix
 * **agent-sg5**:
