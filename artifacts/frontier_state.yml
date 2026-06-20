@@ -1559,7 +1559,7 @@ nodes:
   name: 'Harmonize - Path: Implement Two-Tier Backlog Abstraction'
   status: Completed
 - invariants: []
-  learnings: Diagnosed unhandled ReflectionBlockedError
+  learnings: Identified reflect crash during --stage none
   name: 'Harmonize - [BUG] Intake: System Crash in reflect'
   status: Completed
 - invariants: []
@@ -2296,12 +2296,14 @@ nodes:
   invariants:
   - '- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n-
     infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/'
-- name: '#2168: [BUG] Intake: System Crash in reflect'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
-  invariants: []
-  kind: path
-- name: '#2169: Harmonize - [BUG] Intake: System Crash in reflect'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+- name: '#2170: Plan - [BUG] Intake: System Crash in reflect'
+  status: Completed
+  learnings: Drafted plan for wrapping reflection hook in try/except. Created Act
+    node.
+  invariants:
+  - '- artifacts/plan_2170.md'
+- name: '#2182: Catch ReflectionBlockedError in reflect'
+  status: Backlog
+  learnings: "Wrap enforce_reflection_hook in try/except within kernel/node_lifecycle.py\
+    \ and exit with [\U0001F6AB BLOCKED]"
   invariants: []

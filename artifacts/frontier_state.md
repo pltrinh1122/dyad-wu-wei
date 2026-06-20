@@ -1726,7 +1726,7 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 
 ## Harmonize - [BUG] Intake: System Crash in reflect
 - **Status**: Completed
-- **Learnings & Context**: Diagnosed unhandled ReflectionBlockedError
+- **Learnings & Context**: Identified reflect crash during --stage none
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2633,16 +2633,15 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n- infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/`
 
-## #2168: [BUG] Intake: System Crash in reflect
-- **Status**: [///] Act Phase
-- **Kind**: path
-- **Learnings & Context**: Planning Phase
+## #2170: Plan - [BUG] Intake: System Crash in reflect
+- **Status**: Completed
+- **Learnings & Context**: Drafted plan for wrapping reflection hook in try/except. Created Act node.
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `- artifacts/plan_2170.md`
 
-## #2169: Harmonize - [BUG] Intake: System Crash in reflect
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+## #2182: Catch ReflectionBlockedError in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Wrap enforce_reflection_hook in try/except within kernel/node_lifecycle.py and exit with [🚫 BLOCKED]
 - **Feedforward Invariants**:
   - `[ ]` None
 
