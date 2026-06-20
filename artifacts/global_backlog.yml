@@ -343,3 +343,81 @@ backlog_items:
   number: 2202
   title: Reflect - Rename AGENT.md to DYAD.md
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2202
+- body: "## Goal\nThe `open_prs` check in `kernel/node_lifecycle.py` indiscriminately\
+    \ blocks `plan-start` if ANY PR is open, violating the Concurrent Factory Floor\
+    \ fan-out architecture. It must be scoped to the specific node or persona.\n\n\
+    ## Meta-Index\n- [ ] #2206: Reflect - Bug: Global WIP-N=1 Invariant blocks Concurrent\
+    \ Factory Floor [Depends: 2205]\n- [ ] #2205: Plan - Bug: Global WIP-N=1 Invariant\
+    \ blocks Concurrent Factory Floor [Depends: 2204]\n- [ ] #2204: Harmonize - Bug:\
+    \ Global WIP-N=1 Invariant blocks Concurrent Factory Floor\n\n## Agent Retrospective\n\
+    \n### Continue\n- \n\n### Stop\n- \n\n### Start\n- \n"
+  labels:
+  - backlog
+  - path
+  number: 2203
+  title: 'Path: Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2203
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for Bug: Global WIP-N=1 Invariant
+    blocks Concurrent Factory Floor.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2204
+  title: 'Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2204
+- body: '## Goal
+
+    Technical design and proposed changes for Bug: Global WIP-N=1 Invariant blocks
+    Concurrent Factory Floor.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2204
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2205
+  title: 'Plan - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2205
