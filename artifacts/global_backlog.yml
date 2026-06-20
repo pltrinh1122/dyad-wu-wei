@@ -321,35 +321,3 @@ backlog_items:
   number: 2213
   title: Reflect - Triage Holding - Standalone Triage & External Requirement Intakes
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2213
-- body: '## Goal
-
-    Update parse_meta_index to isolate the Meta-Index block before parsing lines to
-    prevent DAG evaluation failures caused by stray checkboxes in retrospective notes.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2217
-  title: 'Act - Hotfix: Isolate Meta-Index parsing in gh_graph_skill'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2217
