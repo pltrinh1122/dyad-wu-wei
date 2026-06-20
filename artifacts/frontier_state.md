@@ -2528,6 +2528,13 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Path 2117: Reflect - System Crash in reflect
+- **Status**: Completed
+- **Kind**: path
+- **Learnings & Context**: Implemented ReflectionBlockedError to catch reflection blocks gracefully without triggering system crash reports.
+- **Feedforward Invariants**:
+  - `- kernel/node_lifecycle.py\n- kernel/daemon_knowledge_accrual.py\n- kernel/daemon_node.py`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`

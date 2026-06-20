@@ -6,7 +6,7 @@ active_agents:
   agent-ziran:
     current_active_node: null
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
-current_active_node: '#2120: Reflect - [BUG] Intake: System Crash in reflect'
+current_active_node: null
 current_active_path: null
 nodes:
 - invariants:
@@ -2203,3 +2203,10 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: 'Path 2117: Reflect - System Crash in reflect'
+  status: Completed
+  learnings: Implemented ReflectionBlockedError to catch reflection blocks gracefully
+    without triggering system crash reports.
+  invariants:
+  - '- kernel/node_lifecycle.py\n- kernel/daemon_knowledge_accrual.py\n- kernel/daemon_node.py'
+  kind: path
