@@ -123,6 +123,25 @@ def get_ready_nodes(nodes: dict) -> list[str]:
     dependencies are all satisfied (completed).
     """
     incomplete_ids = {nid for nid, data in nodes.items() if not data["completed"]}
+    
+    # --- DIRECT GITHUB API STATE CHECKS ---
+    # To fix orphan path generation, if a node is incomplete in markdown,
+    # we verify its actual state via the GitHub API.
+    from drivers import github_client
+    actually_completed = set()
+    for nid in list(incomplete_ids):
+        try:
+            details = github_client.get_issue_details(nid)
+            if details.get("state", "").upper() == "CLOSED":
+                actually_completed.add(nid)
+                nodes[nid]["completed"] = True
+                nodes[nid]["in_progress"] = False
+        except Exception:
+            pass
+            
+    incomplete_ids = incomplete_ids - actually_completed
+    # ----------------------------------------
+    
     ready_ids = []
     for nid in incomplete_ids:
         deps = nodes[nid]["depends"]
