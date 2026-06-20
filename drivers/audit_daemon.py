@@ -255,51 +255,6 @@ def evaluate_lexical_guard(rule, state):
     new_state["triggered_files"] = triggered_files_state
     return triggered, new_state
 
-def evaluate_pr_merged_monitor(rule, state):
-    """Evaluates the Sluice Gate Sensor: detects when the active node PR is merged.
-
-    Delegates all logic to the pure ``drivers.sluice_gate_sensor`` skill and
-    surfaces errors explicitly rather than swallowing them.
-    """
-    from drivers import sluice_gate_sensor
-
-    frontier_file = get_frontier_file()
-    if not frontier_file.exists():
-        return False, state
-
-    with open(frontier_file, "r") as f:
-        frontier_content = f.read()
-
-    sys.path.append(str(get_repo_root()))
-    from drivers.github_client import get_merged_prs
-
-    try:
-        merged_prs = get_merged_prs()
-    except Exception as e:
-        print(f"[Sluice Gate Sensor] Error fetching merged PRs: {e}")
-        return False, state
-
-    last_alerted = state.get("last_alerted_node")
-    result = sluice_gate_sensor.evaluate(frontier_content, merged_prs, last_alerted_node=last_alerted)
-
-    if result["error"]:
-        print(f"[Sluice Gate Sensor] Evaluation error: {result['error']}")
-        return False, state
-
-    if not result["triggered"]:
-        return False, state
-
-    print(f"[Sluice Gate Sensor] {result['message']}")
-    print(f"Executing local sync...")
-    node_cli = str(get_repo_root() / "bin" / "node")
-    subprocess.run([node_cli, "sync", "--remote"], cwd=get_workspace_dir())
-
-    state["last_alerted_node"] = result["node_id"]
-    return True, state
-
-
-
-
 def evaluate_semantic_immune_system(rule, state):
     sys.path.append(str(get_repo_root()))
     import yaml
@@ -497,7 +452,6 @@ RULE_REGISTRY = {
     "stale_active_node": evaluate_stale_active_node,
     "frontier_integrity": evaluate_frontier_integrity,
     "lexical_guard": evaluate_lexical_guard,
-    "pr_merged_monitor": evaluate_pr_merged_monitor,
     "semantic_immune_system": evaluate_semantic_immune_system,
     "backlog_hygiene": evaluate_backlog_hygiene,
     "orphaned_nodes": evaluate_orphaned_nodes,
@@ -522,7 +476,7 @@ def main(args=None):
     
     if current_branch not in audit_branches:
         print(f"Audit daemon ignoring branch: {current_branch}. Target branches: {audit_branches}. Evaluating global rules only.")
-        rules_to_evaluate = [r for r in rules if r.get("type") in ("pr_merged_monitor", "semantic_immune_system", "backlog_hygiene")]
+        rules_to_evaluate = [r for r in rules if r.get("type") in ("semantic_immune_system", "backlog_hygiene")]
         if not rules_to_evaluate:
             return
     else:
@@ -539,10 +493,6 @@ def main(args=None):
         rule_type = rule.get("type")
         
         if not rule_id or not rule_type:
-            continue
-            
-        if parsed_args.local and rule_type == "pr_merged_monitor":
-            print(f"Skipping remote-bound rule {rule_id} in local mode.")
             continue
 
         evaluator = RULE_REGISTRY.get(rule_type)

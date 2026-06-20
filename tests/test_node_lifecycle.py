@@ -144,6 +144,8 @@ def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_lab
 @mock.patch("kernel.node_lifecycle.TerminalNode.get_worktree_path")
 @mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
 def test_reflect_success(mock_enforce, mock_get_worktree_path, mock_nba, mock_frontier, mock_gh, mock_git, mock_subprocess):
+    from unittest import mock
+    mock_subprocess.return_value = mock.MagicMock(returncode=0, stdout="", stderr="")
     from drivers import path_resolver
     mock_get_worktree_path.return_value = os.path.join(path_resolver.get_core_dir(), ".worktrees/node/390-test")
     mock_frontier.read_active_path.return_value = None
@@ -323,6 +325,8 @@ def test_branch_naming_regex_enforcement_and_exemption(mock_enforce, mock_fronti
 @mock.patch("kernel.node_lifecycle.yaml.safe_load")
 @mock.patch("kernel.daemon_knowledge_accrual.enforce_reflection_hook")
 def test_reflect_admin_bypass_conditions(mock_enforce, mock_yaml_load, mock_git, mock_gh, mock_tx, mock_frontier, mock_nba, mock_subprocess):
+    from unittest import mock
+    mock_subprocess.return_value = mock.MagicMock(returncode=0, stdout="", stderr="")
     mock_frontier.read_active_path.return_value = None
     mock_nba.NBADaemon.return_value.evaluate.return_value = {"type": "continue"}
     mock_git.get_git_common_dir.return_value = ".git"
@@ -362,6 +366,7 @@ def test_reflect_admin_bypass_conditions(mock_enforce, mock_yaml_load, mock_git,
     mock_gh.admin_merge_pull_request.assert_not_called()
     
     # Case 6: Custom sacred_files logic
+    mock_subprocess.return_value = mock.MagicMock(returncode=0, stdout="", stderr="")
     mock_yaml_load.return_value = {"governance": {"sacred_files": ["CUSTOM.md"]}}
     # GEMINI.md no longer sacred -> should bypass
     mock_git.diff_names.return_value = ["GEMINI.md"]

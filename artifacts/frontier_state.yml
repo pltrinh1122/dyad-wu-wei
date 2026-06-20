@@ -2289,3 +2289,10 @@ nodes:
   learnings: Synthesized retrospective.
   invariants:
   - '- artifacts/retro_2152.md'
+- name: 'Act - Path: True CSI Guard Implementation'
+  status: Completed
+  learnings: Implemented true CSI Guard by wrapping gh clone and blocking PR merges
+    via bin/pr-sync.
+  invariants:
+  - '- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n-
+    infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/'

@@ -2627,6 +2627,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- artifacts/retro_2152.md`
 
+## Act - Path: True CSI Guard Implementation
+- **Status**: Completed
+- **Learnings & Context**: Implemented true CSI Guard by wrapping gh clone and blocking PR merges via bin/pr-sync.
+- **Feedforward Invariants**:
+  - `- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n- infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`

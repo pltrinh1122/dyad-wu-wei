@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# A script to poll GitHub Actions for a PR and block synchronously until completion.
+# Exits with 0 if checks pass, or >0 if checks fail.
+
+if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
+    echo "Usage: ./bin/pr-sync [PR number, url, or branch]"
+    echo "Blocks synchronously until the PR checks reach a definitive PASS or FAIL state."
+    exit 0
+fi
+
+echo "Synchronizing PR checks..."
+
+# We use the built-in --watch flag of 'gh pr checks' which handles the polling loop
+# natively. It blocks until the PR checks finish, exiting 0 on success and >0 on failure.
+gh pr checks "$@" --watch
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -eq 0 ]; then
+    echo "✅ PR checks PASSED."
+else
+    echo "❌ PR checks FAILED."
+    
+    # CSI Guard: capture final output state to analyze failure type
+    OUTPUT=$(gh pr checks "$@" 2>&1 || true)
+    
+    if echo "$OUTPUT" | grep -qi -e "conflict in" -e "merge conflict"; then
+        CONFLICT_FILES=$(echo "$OUTPUT" | grep -ioP "(?<=conflict in )\S+" || true)
+        if [ -n "$CONFLICT_FILES" ]; then
+            for file in $CONFLICT_FILES; do
+                echo "[STEERING VECTOR] Resolve conflict in $file"
+            done
+        else
+            echo "[STEERING VECTOR] Resolve merge conflict in PR branch"
+        fi
+    elif echo "$OUTPUT" | grep -qi "fail"; then
+        echo "[STEERING VECTOR] Fix failing test cases in the PR"
+    else
+        echo "[STEERING VECTOR] Investigate failed PR checks"
+    fi
+fi
+
+exit $EXIT_CODE
