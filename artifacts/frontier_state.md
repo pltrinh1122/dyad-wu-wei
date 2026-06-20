@@ -2696,11 +2696,17 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 
 ## reflect
 - **Status**: Completed
-- **Learnings & Context**: Drafted Harmonize Artifact
+- **Learnings & Context**: Drafted Plan and WHAT
 - **Feedforward Invariants**:
   - `None`
 
 ## #2204: Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2205: Plan - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:

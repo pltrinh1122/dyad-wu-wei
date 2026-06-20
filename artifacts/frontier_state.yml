@@ -2344,11 +2344,15 @@ nodes:
   invariants: []
 - name: reflect
   status: Completed
-  learnings: Drafted Harmonize Artifact
+  learnings: Drafted Plan and WHAT
   invariants:
   - None
 - name: '#2204: Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory
     Floor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#2205: Plan - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
