@@ -2338,3 +2338,12 @@ nodes:
   learnings: Applied DAG sort to all open paths in daemon_nba
   invariants:
   - '- kernel/daemon_nba.py\n- tests/test_daemon_nba.py'
+- name: '#2176: Reflect - Synthesize Epistemic Retrospective retro-2165.md'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: reflect
+  status: Completed
+  learnings: Synthesized retro-2165 into Formal Worktree Materialization Invariant
+  invariants:
+  - None

@@ -88,6 +88,7 @@ You are mathematically forbidden from violating the following constraints:
 20. **The Consistency Invariant (No Mutual Exclusivity)**: You must NEVER allow your execution mode or state to produce mutually-exclusive mandatory actions. If two rules logically contradict each other mid-step (e.g., "Run this" vs "Don't run this"), you MUST halt execution of the step and queue an asynchronous intent to the Operator rather than oscillating and seizing.
 21. **The Atomic-Commit Hygiene Invariant**: You must NEVER bundle structural or risky codebase changes with unrelated lexicon or documentation updates (e.g., `GLOSSARY.md` or `README.md`). Bundling exposes unrelated files to silent regressions if a complex workflow is swept or rolled back.
 22. **The IP Isolation Invariant**: Wu-wei Dyad MUST NOT contain any project-specific rules, identifiers, architecture decisions, or business constraints from external projects. All domain-specific content resides exclusively in the external project's repository. The engine must remain project-agnostic.
+23. **The Formal Worktree Materialization Invariant**: You must NEVER execute the `reflect` command or close a node without first explicitly materializing its formal `.worktrees/node/<id>` namespace via `bin/node checkout`, even for administrative nodes that do not contain code modifications. Failing to do so causes unhandled execution exceptions during the porcelain status check.
 
 
 ## 6. Bilateral Chat Interaction Protocol (Telos Coherence)
