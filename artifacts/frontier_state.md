@@ -2582,8 +2582,8 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `[ ]` None
 
 ## #2154: Plan - Autonomous Domain Delegation and Healer Protocol
-- **Status**: Backlog
-- **Learnings & Context**: Technical design and proposed changes for Autonomous Domain Delegation and Healer Protocol.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2599,6 +2599,19 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Aligned on delegating Administrative nodes to agent-healer for bug paths and auto-bypassing HTIL for its Act nodes.
 - **Feedforward Invariants**:
   - `- artifacts/discovery_2152.md`
+
+## #2157: Act - Domain Delegation and HTIL Bypass
+- **Status**: Backlog
+- **Learnings & Context**: Implement auto-resolve logic for agent-healer and HTIL bypass for BUG paths
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Path 2152: Plan
+- **Status**: Completed
+- **Kind**: path
+- **Learnings & Context**: Generated Act node 2157 to implement auto-resolve for agent-healer and htil-bypass logic.
+- **Feedforward Invariants**:
+  - `- artifacts/plan_2152.md`
 
 ## Active Agents Matrix
 * **agent-sg5**:

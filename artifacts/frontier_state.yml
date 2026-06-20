@@ -2249,9 +2249,8 @@ nodes:
   learnings: Planning Phase
   invariants: []
 - name: '#2154: Plan - Autonomous Domain Delegation and Healer Protocol'
-  status: Backlog
-  learnings: Technical design and proposed changes for Autonomous Domain Delegation
-    and Healer Protocol.
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
 - name: '#2155: Reflect - Autonomous Domain Delegation and Healer Protocol'
   status: Backlog
@@ -2264,4 +2263,16 @@ nodes:
     and auto-bypassing HTIL for its Act nodes.
   invariants:
   - '- artifacts/discovery_2152.md'
+  kind: path
+- name: '#2157: Act - Domain Delegation and HTIL Bypass'
+  status: Backlog
+  learnings: Implement auto-resolve logic for agent-healer and HTIL bypass for BUG
+    paths
+  invariants: []
+- name: 'Path 2152: Plan'
+  status: Completed
+  learnings: Generated Act node 2157 to implement auto-resolve for agent-healer and
+    htil-bypass logic.
+  invariants:
+  - '- artifacts/plan_2152.md'
   kind: path
