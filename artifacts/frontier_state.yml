@@ -2226,3 +2226,14 @@ nodes:
   invariants:
   - '- kb/WHY-2133-command-signature-awareness.md'
   kind: path
+- name: '#2144: Reflect - Synthesize Epistemic Retrospective retro-2109.md'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Path 2106: Synthesize Epistemic Retrospective retro-2109.md'
+  status: Completed
+  learnings: Codified the requirement to run bin/meta rehash when manually mutating
+    frontier_state.yml.
+  invariants:
+  - '- kb/WHY-2144-frontier-state-rehash.md'
+  kind: path

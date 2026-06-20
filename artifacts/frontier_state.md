@@ -2555,6 +2555,19 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- kb/WHY-2133-command-signature-awareness.md`
 
+## #2144: Reflect - Synthesize Epistemic Retrospective retro-2109.md
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Path 2106: Synthesize Epistemic Retrospective retro-2109.md
+- **Status**: Completed
+- **Kind**: path
+- **Learnings & Context**: Codified the requirement to run bin/meta rehash when manually mutating frontier_state.yml.
+- **Feedforward Invariants**:
+  - `- kb/WHY-2144-frontier-state-rehash.md`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
