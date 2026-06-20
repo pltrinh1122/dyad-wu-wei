@@ -158,7 +158,6 @@ class NBADaemon:
                         raise Exception(f"[CYBERNETIC STEERING VECTOR] Mutually Exclusive Residence Violation: Issue {item_id} is active but still exists in the global backlog cache. Purge it from global_backlog.yml.")
             else:
                 backlog_items = github_client.list_issues_by_label("backlog")
-                backlog_items = [item for item in backlog_items if "path" not in item.get("labels", [])]
             
             backlog_items.sort(key=lambda x: x.get("number", 0))
             

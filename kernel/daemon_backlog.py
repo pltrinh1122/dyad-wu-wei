@@ -478,7 +478,6 @@ def main():
             try:
                 repo_root = path_resolver.get_workspace_dir()
                 backlog_items = github_client.list_issues_by_label("backlog")
-                backlog_items = [item for item in backlog_items if "path" not in item.get("labels", [])]
                 backlog_items.sort(key=lambda x: x.get("number", 0))
                 backlog_file_path = os.path.join(repo_root, "artifacts", "global_backlog.yml")
                 with open(backlog_file_path, "w", encoding="utf-8") as f:
