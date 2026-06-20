@@ -903,12 +903,6 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Node 999: Implement quarantine survivor
-- **Status**: Completed
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
 ## Discovery: Harmonize - [BUG] Intake: System Crash in reflect
 - **Status**: Completed
 - **Learnings & Context**: Harmonized that reflect crash is caused by double-nested execution context and must be guarded by an explicit block
@@ -1074,12 +1068,6 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 ## Plan - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
 - **Learnings & Context**: Planned graceful validation for cmd_checkout
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #999: Implement quarantine survivor
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -1788,12 +1776,6 @@ subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'chore(harmonize
 ## #1964: Implement Falsify Daemon Prompt Injection
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #999: Triage Holding - Standalone Triage & External Requirement Intakes
-- **Status**: Backlog
-- **Learnings & Context**: A holding Path to consolidate all unpromoted status:triage external intake nodes under the same parent class.
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2633,11 +2615,48 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n- infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/`
 
-## Harmonize - Path: Re-architecture of Path Container State Preservation
-- **Status**: Completed
-- **Learnings & Context**: Completed Root Cause Analysis and proposed shifting from Meta-Index parsing to actual GitHub API state checking.
+## #2175: Reflect - [BUG] Intake: System Crash in checkout
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in checkout.
 - **Feedforward Invariants**:
-  - `- artifacts/harmonize_2165.md\n- artifacts/audit/retro-2165.md`
+  - `[ ]` None
+
+## #2176: Reflect - Synthesize Epistemic Retrospective retro-2165.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-2165.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2164: Re-architecture of Path Container State Preservation
+- **Status**: [///] Act Phase
+- **Kind**: path
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2166: Plan - Path: Re-architecture of Path Container State Preservation
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #999: Triage Holding - Standalone Triage & External Requirement Intakes
+- **Status**: Backlog
+- **Learnings & Context**: A holding Path to consolidate all unpromoted status:triage external intake nodes under the same parent class.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #999: Implement quarantine survivor
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Plan - Path: Re-architecture of Path Container State Preservation
+- **Status**: Completed
+- **Learnings & Context**: Drafted WHAT-2166-path-architecture.md and implemented API state checks
+- **Feedforward Invariants**:
+  - `- kb/WHAT-2166-path-architecture.md\n- drivers/gh_graph_skill.py`
 
 ## Active Agents Matrix
 * **agent-sg5**:

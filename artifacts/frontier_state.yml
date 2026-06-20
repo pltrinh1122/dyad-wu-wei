@@ -924,10 +924,6 @@ nodes:
   learnings: Planning Phase
   name: 'Node 1643: Harmonize - [BUG] Intake: System Crash in reflect'
   status: '[///] Act Phase'
-- invariants: []
-  learnings: Planning Phase
-  name: 'Node 999: Implement quarantine survivor'
-  status: Completed
 - invariants:
   - '[x] The bug root cause is formally identified and recorded'
   learnings: Harmonized that reflect crash is caused by double-nested execution context
@@ -1074,10 +1070,6 @@ nodes:
   learnings: Planned graceful validation for cmd_checkout
   name: 'Plan - [BUG] Intake: System Crash in checkout'
   status: Completed
-- invariants: []
-  learnings: Planning Phase
-  name: '#999: Implement quarantine survivor'
-  status: '[///] Act Phase'
 - invariants: []
   learnings: Planning Phase
   name: '#1719: Reflect - Falsify Title Decorations'
@@ -1606,11 +1598,6 @@ nodes:
   learnings: Planning Phase
   name: '#1964: Implement Falsify Daemon Prompt Injection'
   status: '[///] Act Phase'
-- invariants: []
-  learnings: A holding Path to consolidate all unpromoted status:triage external intake
-    nodes under the same parent class.
-  name: '#999: Triage Holding - Standalone Triage & External Requirement Intakes'
-  status: Backlog
 - invariants: []
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-1964.md into the system's operational guidelines (the Dao).
@@ -2296,9 +2283,36 @@ nodes:
   invariants:
   - '- bin/pr-sync\n- drivers/gh_wrapper.py\n- drivers/audit_daemon.py\n- drivers/sluice_gate_sensor.py\n-
     infra/audit-daemon/audit_config.yml\n- kernel/node_lifecycle.py\n- tests/'
-- name: 'Harmonize - Path: Re-architecture of Path Container State Preservation'
+- name: '#2175: Reflect - [BUG] Intake: System Crash in checkout'
+  status: Backlog
+  learnings: 'Final reflection and path closure for [BUG] Intake: System Crash in
+    checkout.'
+  invariants: []
+- name: '#2176: Reflect - Synthesize Epistemic Retrospective retro-2165.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-2165.md into the system's operational guidelines (the Dao).
+  invariants: []
+- name: '#2164: Re-architecture of Path Container State Preservation'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+  kind: path
+- name: '#2166: Plan - Path: Re-architecture of Path Container State Preservation'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#999: Triage Holding - Standalone Triage & External Requirement Intakes'
+  status: Backlog
+  learnings: A holding Path to consolidate all unpromoted status:triage external intake
+    nodes under the same parent class.
+  invariants: []
+- name: '#999: Implement quarantine survivor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Plan - Path: Re-architecture of Path Container State Preservation'
   status: Completed
-  learnings: Completed Root Cause Analysis and proposed shifting from Meta-Index parsing
-    to actual GitHub API state checking.
+  learnings: Drafted WHAT-2166-path-architecture.md and implemented API state checks
   invariants:
-  - '- artifacts/harmonize_2165.md\n- artifacts/audit/retro-2165.md'
+  - '- kb/WHAT-2166-path-architecture.md\n- drivers/gh_graph_skill.py'
