@@ -145,6 +145,11 @@ def get_ready_nodes(nodes: dict) -> list[str]:
     ready_ids = []
     for nid in incomplete_ids:
         deps = nodes[nid]["depends"]
+        
+        # Terminal Reflect Invariant
+        if "reflect" in nodes[nid].get("title", "").lower() and len(incomplete_ids) > 1:
+            continue
+            
         # A node is ready if none of its dependencies are in the incomplete list AND the node itself is not in-progress
         if not any(dep in incomplete_ids for dep in deps) and not nodes[nid].get("in_progress", False):
             ready_ids.append(nid)
