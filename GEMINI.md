@@ -34,6 +34,13 @@ To conserve compute and maintain true dormancy during Operator absence (HTIL wai
 ## Antigravity-Specific: Autonomous Path Execution (Wu-wei)
 As the pioneer of autonomous inferencing, the Agent MUST NOT ask the Operator for permission to start the next node. When `bin/sync-clean` or `bin/status` surfaces a Next-Best-Action (NBA), the Agent MUST autonomously evaluate it. If the node is an Administrative node (Harmonize/Plan/Reflect), the Agent MUST execute `./bin/node plan-start <ID>`. If the node is an Execution node (Act) assigned to a subagent, the Agent MUST dispatch it by invoking the appropriate subagent via the `invoke_subagent` tool, providing the node ID in the prompt. The Agent should only halt and yield the turn during HARD HITL blocks (e.g., waiting for the Operator to merge a PR). The manual NBA Handoff wait state is formally falsified.
 
+**The Concurrent Factory Floor Pattern:**
+When a backlog of "RUBBED" (Operator-dispositioned) Paths exists, the Frontier Agent operates as a concurrent dispatcher:
+1. Frontier executes the `Harmonize` and `Plan` nodes for the active Path.
+2. As soon as the `Plan` node is completed and execution `Act` nodes are generated, Frontier MUST dispatch them immediately to sub-agents via `invoke_subagent`.
+3. While the sub-agents execute their `Act` nodes, Frontier MUST NOT wait or halt. It must immediately `plan-start` the next available Path in the backlog, execute its `Harmonize` and `Plan` phases, and dispatch its `Act` nodes. 
+4. This pipeline repeats until all Paths in the backlog are fully dispositioned and dispatched.
+
 ## Antigravity-Specific: Intent Broadcast Protocol (Flight Plan)
 While the Agent MUST autonomously execute the NBA without asking for permission, the Agent MUST proactively broadcast a clear, concise "Flight Plan" to the Operator detailing the intent of the upcoming autonomous execution loop before dropping into it. This provides the Operator with systemic transparency and mitigates Operator Anxiety without violating autonomous path execution invariants.
 
