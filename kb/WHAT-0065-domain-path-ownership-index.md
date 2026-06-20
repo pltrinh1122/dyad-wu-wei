@@ -34,6 +34,7 @@ When the CLI harmonization gate evaluates a node transition, it MUST:
 | domain_id         | owner_persona   | description                                      |
 |-------------------|-----------------|--------------------------------------------------|
 | domain:platform   | agent-ziran  | Horizontal kernel, a2ai, o2ai, shared observability |
+| domain:healing    | agent-healer    | Autonomous crash resolution and bug fixing       |
 
 ---
 

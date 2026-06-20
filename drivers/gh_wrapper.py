@@ -20,6 +20,19 @@ def run_gh_command(args: list[str]) -> int:
     """Executes a gh command via the ./bin/gh wrapper, adding resilience for GraphQL deprecations."""
     cmd = ["/usr/bin/gh"] + args
     
+    # CSI Guard: Intercept `gh repo clone` to catch occupied destination paths
+    if len(args) >= 2 and args[0] == "repo" and args[1] == "clone":
+        res = subprocess.run(cmd, capture_output=True, text=True)
+        if res.returncode != 0:
+            combined_output = res.stdout + res.stderr
+            print(res.stdout, end="")
+            print(res.stderr, file=sys.stderr, end="")
+            if "already exists" in combined_output.lower():
+                print("\n[STEERING VECTOR] Destination path occupied. If you require a clean remote reference, you MUST clone to a temporary directory using mktemp -d or an isolated git worktree.", file=sys.stderr)
+            return res.returncode
+        print(res.stdout, end="")
+        return 0
+
     # Intercept `gh issue view <id>` without --json or --web
     if len(args) >= 2 and args[0] == "issue" and args[1] == "view":
         if "--json" not in args and "--web" not in args:

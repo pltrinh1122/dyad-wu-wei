@@ -46,6 +46,7 @@ def test_checkout_node(mock_verify, mock_gh, mock_fe, mock_telemetry, mock_subpr
 @patch("kernel.daemon_strategic.verify_node_transition_allowed")
 def test_reflect_node(mock_verify, mock_gh, mock_fe, mock_telemetry, mock_backlog, mock_subprocess, mock_nba):
     # Setup
+    mock_subprocess.run.return_value = MagicMock(returncode=0)
     mock_fe.read_active_path.return_value = "Path 181: Configurable Sense Hooks"
     mock_fe.extract_path_id.return_value = "181"
     

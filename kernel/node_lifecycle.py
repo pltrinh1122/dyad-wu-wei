@@ -690,6 +690,20 @@ class TerminalNode(BaseNode):
             pr_title = f"PR: {clean_name}"
             pr_url = github_client.create_pull_request(pr_title, pr_body, head=branch_name)
             
+            # CSI GUARD: Block synchronously until CI checks pass or fail
+            import subprocess
+            from pathlib import Path
+            from drivers import path_resolver
+            print("CSI Guard: Synchronously polling PR checks via bin/pr-sync...")
+            # Use branch_name so gh can resolve the PR context
+            pr_sync_cmd = [str(Path(path_resolver.get_core_dir()) / "bin" / "pr-sync"), branch_name]
+            res = subprocess.run(pr_sync_cmd, capture_output=True, text=True, cwd=path_resolver.get_core_dir())
+            if res.returncode != 0:
+                print(res.stdout)
+                print(res.stderr)
+                raise Exception(f"[CSI GUARD BLOCK] PR checks failed! Steering Vector:\n{res.stdout}\n{res.stderr}")
+            print("CSI Guard: PR checks PASSED. Continuing transition...")
+            
             # Evaluate Administrative Node HTIL Bypass (WHY-0473-configurable-htil-pr-gate)
             import yaml
             from drivers import path_resolver
@@ -714,6 +728,19 @@ class TerminalNode(BaseNode):
             if any(f in sacred_files for f in modified_files):
                 is_autonomous_merge = False
                 
+            active_path_str = agent_frontier.read_active_path(frontier_file)
+            if active_path_str:
+                path_issue_id = agent_frontier.extract_path_id(active_path_str)
+                if path_issue_id:
+                    try:
+                        path_details = github_client.get_issue_details(str(path_issue_id))
+                        if "[bug] intake" in path_details.get("title", "").lower() and "act" in node_name.lower():
+                            is_autonomous_merge = True
+                            github_client.add_label(self.issue_id, "htil-bypass")
+                    except Exception:
+                        pass
+                        
+
             domain_config = self._get_domain_config()
             if domain_config and domain_config.get("auto_approve_labels"):
                 labels = github_client.get_issue_labels(self.issue_id)

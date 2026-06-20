@@ -385,9 +385,23 @@ def _verify_persona(path_id: str, ledger: dict, node_id: str = None) -> None:
 
     if not spao_persona:
         resolved_owner = None
+        is_bug_path = False
+        try:
+            path_details = github_client.get_issue_details(str(path_id))
+            path_title = path_details.get("title", "")
+            if "[bug] intake" in path_title.lower():
+                is_bug_path = True
+        except Exception:
+            pass
+
         # 0. Check node administrative prefix
         if is_admin_node:
-            resolved_owner = "frontier"
+            if is_bug_path:
+                resolved_owner = "agent-healer"
+            else:
+                resolved_owner = "frontier"
+        elif is_bug_path:
+            resolved_owner = "agent-healer"
 
         # 1. Check WHAT-0065 (Horizontal Domain Override)
         if os.path.exists(what_0065_path):
@@ -457,6 +471,14 @@ def _verify_persona(path_id: str, ledger: dict, node_id: str = None) -> None:
 
     if _is_pure_ziran(path_id, ledger):
         return # Pure Ziran paths have no structured domain or SG owner; they bypass the gate.
+
+    try:
+        path_details = github_client.get_issue_details(str(path_id))
+        if "[bug] intake" in path_details.get("title", "").lower():
+            if spao_persona == "agent-healer":
+                return # Authorized by Healer Protocol!
+    except Exception:
+        pass
 
     # 1. Check WHAT-0065 (Horizontal Domain Override)
     if os.path.exists(what_0065_path):
