@@ -2613,6 +2613,14 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- artifacts/plan_2152.md`
 
+## Act - Domain Delegation and HTIL Bypass
+- **Status**: Completed
+- **Learnings & Context**: Implemented persona auto-resolve logic in daemon_strategic.py and forced HTIL bypass for bug paths in node_lifecycle.py. Registered agent-healer in WHAT-0065.
+- **Feedforward Invariants**:
+  - `- kernel/daemon_strategic.py
+- kernel/node_lifecycle.py
+- kb/WHAT-0065-domain-path-ownership-index.md`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
