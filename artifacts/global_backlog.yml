@@ -1,38 +1,6 @@
 backlog_items:
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Autonomous Domain Delegation
-    and Healer Protocol.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2153
-  title: Harmonize - Autonomous Domain Delegation and Healer Protocol
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2153
-- body: '## Goal
-
     Technical design and proposed changes for Autonomous Domain Delegation and Healer
     Protocol.
 
