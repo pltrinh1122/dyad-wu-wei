@@ -297,38 +297,6 @@ backlog_items:
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2203
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Bug: Global WIP-N=1 Invariant
-    blocks Concurrent Factory Floor.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2204
-  title: 'Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory Floor'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2204
-- body: '## Goal
-
     Technical design and proposed changes for Bug: Global WIP-N=1 Invariant blocks
     Concurrent Factory Floor.
 
