@@ -94,38 +94,6 @@ backlog_items:
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2202
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Triage Holding - Standalone
-    Triage & External Requirement Intakes.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2211
-  title: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2211
-- body: '## Goal
-
     Technical design and proposed changes for Triage Holding - Standalone Triage &
     External Requirement Intakes.
 
