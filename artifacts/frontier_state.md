@@ -2682,6 +2682,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- drivers/gh_graph_skill.py`
 
+## Act - Implement Universal NBA Topology Pass
+- **Status**: Completed
+- **Learnings & Context**: Applied DAG sort to all open paths in daemon_nba
+- **Feedforward Invariants**:
+  - `- kernel/daemon_nba.py\n- tests/test_daemon_nba.py`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
