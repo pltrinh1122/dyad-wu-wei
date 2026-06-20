@@ -15,38 +15,6 @@ backlog_items:
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2164
 - body: '## Goal
 
-    Harmonize on the philosophical and technical intent for Path: Re-architecture
-    of Path Container State Preservation.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2165
-  title: 'Harmonize - Path: Re-architecture of Path Container State Preservation'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2165
-- body: '## Goal
-
     Technical design and proposed changes for Path: Re-architecture of Path Container
     State Preservation.
 
