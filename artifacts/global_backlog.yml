@@ -1,1 +1,363 @@
-backlog_items: []
+backlog_items:
+- body: "## Goal\n## System Crash Report\n\n**Subcommand:** `checkout`\n**Persona:**\
+    \ `frontier`\n\n### Traceback\n```python\nTraceback (most recent call last):\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 819,\
+    \ in main\n    cmd_checkout(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
+    , line 490, in cmd_checkout\n    checkout_node(args.issue_id, args.branch_name)\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\", line 37, in\
+    \ checkout_node\n    node.checkout(branch_name)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\"\
+    , line 233, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 467,\
+    \ in checkout\n    git_client.worktree_add(branch_name, worktree_path, \"origin/main\"\
+    )\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\", line\
+    \ 233, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/drivers/git_client.py\", line 163,\
+    \ in worktree_add\n    _run([\"git\", \"worktree\", \"add\", \"-b\", branch, path,\
+    \ base], check=True)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/drivers/git_client.py\"\
+    , line 10, in _run\n    return subprocess.run(cmd, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/usr/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode,\
+    \ process.args,\nsubprocess.CalledProcessError: Command '['git', 'worktree', 'add',\
+    \ '-b', 'node/2165-harmonize', '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2165-harmonize',\
+    \ 'origin/main']' returned non-zero exit status 255.\n\n```\n\n\n## Meta-Index\n\
+    - [ ] #2175: Reflect - [BUG] Intake: System Crash in checkout [Depends: 2174]\n\
+    - [ ] #2174: Plan - [BUG] Intake: System Crash in checkout [Depends: 2173]\n-\
+    \ [ ] #2173: Harmonize - [BUG] Intake: System Crash in checkout\n\n## Agent Retrospective\n\
+    \n### Continue\n- \n\n### Stop\n- \n\n### Start\n- \n"
+  labels:
+  - bug
+  - backlog
+  - 'status: todo'
+  - path
+  - status:triage
+  number: 2172
+  title: 'Path: [BUG] Intake: System Crash in checkout'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2172
+- body: '## Goal
+
+    Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash
+    in checkout.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2173
+  title: 'Harmonize - [BUG] Intake: System Crash in checkout'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2173
+- body: '## Goal
+
+    Technical design and proposed changes for [BUG] Intake: System Crash in checkout.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2173
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2174
+  title: 'Plan - [BUG] Intake: System Crash in checkout'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2174
+- body: '## Goal
+
+    Final reflection and path closure for [BUG] Intake: System Crash in checkout.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2174
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2175
+  title: 'Reflect - [BUG] Intake: System Crash in checkout'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2175
+- body: '## Goal
+
+    Synthesize the epistemic learnings from the post-failure retrospective retro-2165.md
+    into the system''s operational guidelines (the Dao).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2176
+  title: Reflect - Synthesize Epistemic Retrospective retro-2165.md
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2176
+- body: '## Goal
+
+    Resolve the structural mechanisms that required manual intervention during the
+    execution of Path 2168, specifically around DAG topological sorting, node aborting,
+    and auto-locking invariants.
+
+
+    ## Context (Manual Interventions Performed)
+
+    During the execution of Path 2168, the following manual interventions were required
+    to unseize the engine:
+
+    1. **UnboundLocalError in daemon_nba.py**: API failure caused `open_path_issues`
+    to be unbound, silencing fallback. (Hotfixed manually).
+
+    2. **Aborting Nodes Orphans Them**: Running `./bin/node abort <id>` failed with
+    `Status key ''open'' is not defined in node.yml`, preventing the restoration of
+    the `backlog` label. I had to manually restore labels via `gh issue edit`.
+
+    3. **Subagent Failed to Update Reflect Dependency**: When `agent-healer` added
+    the `Act` node via `bin/backlog`, the `Reflect` node''s dependency was not updated,
+    leaving it incorrectly unblocked. I manually updated the parent path body.
+
+    4. **NBA Fallback Ignores DAG Topology**: Unmatched items (nodes belonging to
+    paths not in `strategic_intent.yml`, like dynamic BUG intakes) are sorted purely
+    by issue number. This caused the unblocked `Reflect` node (lower ID) to be prioritized
+    over the newly created `Act` node (higher ID).
+
+    5. **Auto-Locking Path Containers**: `bin/status` auto-acquired the `Path` container
+    (2168, 2172) because they appeared in `unmatched_items`. This violates the invariant
+    that Path containers should not be executed natively. I had to manually abort
+    them.
+
+
+    ## Changes
+
+    1. Update `kernel/node_lifecycle.py` (or `node.yml`) to correctly map the `open`
+    state to `status: todo` during an abort.
+
+    2. Update `kernel/daemon_nba.py` to filter out issues with `Path:` in the title
+    from the final `recommendations` list.
+
+    3. Update `kernel/daemon_nba.py` to apply topological dependency checking (via
+    `gh_graph_skill.get_next_nodes()`) to `unmatched_items` so that DAG structure
+    is preserved even for non-strategic paths.
+
+    4. Enhance `bin/backlog` (or `agent-healer` prompts) to intelligently update `Reflect`
+    node dependencies when injecting `Act` nodes.
+
+
+    ## Meta-Index
+
+    - [ ] #2192: Act - Implement Terminal Reflect Invariant [Depends: 2186]
+
+    - [ ] #2191: Act - Implement Abort Hygiene Fix [Depends: 2186]
+
+    - [ ] #2187: Reflect - Remediate DAG Execution and NBA Fallback Invariants [Depends:
+    2186]
+
+    - [ ] #2186: Plan - Remediate DAG Execution and NBA Fallback Invariants [Depends:
+    2185]
+
+    - [ ] #2185: Harmonize - Remediate DAG Execution and NBA Fallback Invariants
+
+    - [ ] Harmonize - Remediate DAG Execution and NBA Fallback Invariants
+
+    - [ ] Plan - Remediate DAG Execution and NBA Fallback Invariants
+
+    - [ ] Reflect - Remediate DAG Execution and NBA Fallback Invariants
+
+    '
+  labels:
+  - backlog
+  - path
+  - status:triage
+  number: 2184
+  title: 'Path: Remediate DAG Execution and NBA Fallback Invariants'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2184
+- body: '## Goal
+
+    Reflect on the code fixes for the manual interventions
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2186
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2187
+  title: Reflect - Remediate DAG Execution and NBA Fallback Invariants
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2187
+- body: '## Goal
+
+    Synthesize the epistemic learnings from the post-failure retrospective retro-2182.md
+    into the system''s operational guidelines (the Dao).
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2188
+  title: Reflect - Synthesize Epistemic Retrospective retro-2182.md
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2188
+- body: '## Goal
+
+    Fix abort to restore status: todo and backlog labels
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2186
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2191
+  title: Act - Implement Abort Hygiene Fix
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2191
+- body: '## Goal
+
+    Enforce Reflect nodes to execute last mathematically
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2186
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2192
+  title: Act - Implement Terminal Reflect Invariant
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2192
