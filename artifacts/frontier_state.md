@@ -2658,6 +2658,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- kernel/node_lifecycle.py`
 
+## #2185: Harmonize - Remediate DAG Execution and NBA Fallback Invariants
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize - Remediate DAG Execution and NBA Fallback Invariants
+- **Status**: Completed
+- **Learnings & Context**: Harmonized intent and structural requirements into artifacts/harmonize_2184.md
+- **Feedforward Invariants**:
+  - `- artifacts/harmonize_2184.md`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
