@@ -210,6 +210,8 @@ backlog_items:
 
     ## Meta-Index
 
+    - [ ] #2193: Act - Implement Universal NBA Topology Pass [Depends: 2186]
+
     - [ ] #2192: Act - Implement Terminal Reflect Invariant [Depends: 2186]
 
     - [ ] #2191: Act - Implement Abort Hygiene Fix [Depends: 2186]
@@ -361,3 +363,34 @@ backlog_items:
   number: 2192
   title: Act - Implement Terminal Reflect Invariant
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2192
+- body: '## Goal
+
+    Apply DAG sort to all open paths in daemon_nba
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2186
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2193
+  title: Act - Implement Universal NBA Topology Pass
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2193
