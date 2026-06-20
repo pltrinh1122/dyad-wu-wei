@@ -2344,7 +2344,7 @@ nodes:
   invariants: []
 - name: reflect
   status: Completed
-  learnings: Fixed WIP-N=1 blockade
+  learnings: Drafted Harmonize Artifact
   invariants:
   - None
 - name: '#2204: Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory
