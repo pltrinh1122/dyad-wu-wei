@@ -2588,8 +2588,8 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `[ ]` None
 
 ## #2155: Reflect - Autonomous Domain Delegation and Healer Protocol
-- **Status**: Backlog
-- **Learnings & Context**: Final reflection and path closure for Autonomous Domain Delegation and Healer Protocol.
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2601,8 +2601,8 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `- artifacts/discovery_2152.md`
 
 ## #2157: Act - Domain Delegation and HTIL Bypass
-- **Status**: Backlog
-- **Learnings & Context**: Implement auto-resolve logic for agent-healer and HTIL bypass for BUG paths
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2612,6 +2612,14 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Generated Act node 2157 to implement auto-resolve for agent-healer and htil-bypass logic.
 - **Feedforward Invariants**:
   - `- artifacts/plan_2152.md`
+
+## Act - Domain Delegation and HTIL Bypass
+- **Status**: Completed
+- **Learnings & Context**: Implemented persona auto-resolve logic in daemon_strategic.py and forced HTIL bypass for bug paths in node_lifecycle.py. Registered agent-healer in WHAT-0065.
+- **Feedforward Invariants**:
+  - `- kernel/daemon_strategic.py
+- kernel/node_lifecycle.py
+- kb/WHAT-0065-domain-path-ownership-index.md`
 
 ## Active Agents Matrix
 * **agent-sg5**:
