@@ -177,49 +177,62 @@ class NBADaemon:
                 except Exception as e:
                     print(f"Warning: Failed to load/parse strategic intent ledger: {e}")
             
-            if prioritized_ids:
-                # Filter prioritized paths to only include those with open
-                # GitHub issues. Closed path issues = completed paths.
-                try:
-                    open_path_issues = github_client.list_issues_by_label("path")
-                    open_path_ids = {str(i.get("number", "")) for i in open_path_issues}
-                    prioritized_ids = [pid for pid in prioritized_ids if pid in open_path_ids]
-                except Exception:
-                    pass  # If API fails, proceed with unfiltered list
-                
-                # Build child_to_path map from open Path issues
-                child_to_path = {}
-                try:
-                    import re
-                    for p in open_path_issues:
-                        pid = str(p.get("number", ""))
-                        body = p.get("body", "")
-                        # Support both `- [ ] Node 1914` and `- [ ] #1914` formats, but only for open (unchecked) nodes
-                        matches = re.findall(r"-\s+\[\s*\]\s+(?:(?:Node|Activity|Discovery)\s+|#)(\d+)\b", body, re.IGNORECASE)
-                        for m in matches:
-                            child_to_path[m] = pid
-                except Exception:
-                    pass
+            # Universal DAG Evaluation Pass
+            try:
+                open_path_issues = github_client.list_issues_by_label("path")
+                open_path_ids = {str(i.get("number", "")) for i in open_path_issues}
+                prioritized_ids = [pid for pid in prioritized_ids if pid in open_path_ids]
+            except Exception:
+                open_path_issues = []
 
-                prioritized_set = set(prioritized_ids)
-                matched_items = []
-                unmatched_items = []
-                
-                for item in backlog_items:
-                    num_str = str(item.get("number", ""))
-                    parent_id = child_to_path.get(num_str, "")
+            child_to_path = {}
+            dag_ready_node_ids = set()
+            try:
+                import re
+                for p in open_path_issues:
+                    pid = str(p.get("number", ""))
+                    body = p.get("body", "")
                     
-                    if parent_id in prioritized_set:
-                        matched_items.append((prioritized_ids.index(parent_id), item))
-                    elif parent_id != "":
-                        unmatched_items.append(item)
-                    else:
-                        unmatched_items.append(item)
+                    try:
+                        next_nodes = gh_graph_skill.get_next_nodes(body)
+                        for n in next_nodes:
+                            dag_ready_node_ids.add(str(n.get("id", "")))
+                    except Exception as e:
+                        print(f"Warning: Failed to evaluate DAG for Path {pid}: {e}")
+                    
+                    # Map all nodes in the path
+                    matches = re.findall(r"-\s+\[.*?\]\s+(?:(?:Node|Activity|Discovery)\s+|#)(\d+)\b", body, re.IGNORECASE)
+                    for m in matches:
+                        child_to_path[m] = pid
+            except Exception as e:
+                print(f"Warning: Failed to build DAG maps: {e}")
+
+            prioritized_set = set(prioritized_ids)
+            matched_items = []
+            unmatched_items = []
+            
+            for item in backlog_items:
+                num_str = str(item.get("number", ""))
+                title_str = item.get("title", "")
                 
-                matched_items.sort(key=lambda x: (x[0], x[1].get("number", 0)))
-                matched_items = [x[1] for x in matched_items]
-                unmatched_items.sort(key=lambda x: x.get("number", 0))
-                backlog_items = matched_items + unmatched_items
+                if title_str.strip().lower().startswith("path:"):
+                    continue
+                    
+                parent_id = child_to_path.get(num_str, "")
+                
+                if parent_id:
+                    if num_str in dag_ready_node_ids:
+                        if parent_id in prioritized_set:
+                            matched_items.append((prioritized_ids.index(parent_id), item))
+                        else:
+                            matched_items.append((len(prioritized_ids), item))
+                else:
+                    unmatched_items.append(item)
+            
+            matched_items.sort(key=lambda x: (x[0], x[1].get("number", 0)))
+            matched_items = [x[1] for x in matched_items]
+            unmatched_items.sort(key=lambda x: x.get("number", 0))
+            backlog_items = matched_items + unmatched_items
 
             backlog_items = [item for item in backlog_items if str(item.get("number", "")) not in locked_node_ids]
 

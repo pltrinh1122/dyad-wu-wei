@@ -139,6 +139,35 @@ class TestNBADaemon(unittest.TestCase):
             self.assertEqual(result["type"], "path_switching")
             self.assertEqual(len(result["recommendations"]), 1)
             self.assertEqual(result["recommendations"][0]["number"], 101)
+    def test_evaluate_universal_topology_pass(self, mock_read):
+        with patch("drivers.github_client.list_issues_by_label") as mock_list, \
+             patch("drivers.gh_graph_skill.get_next_nodes") as mock_get_next, \
+             patch("kernel.daemon_nba.agent_frontier.load_state") as mock_load:
+            mock_read.return_value = None # No active path
+            mock_load.return_value = {} # No active agents locking nodes
+            
+            def mock_list_side_effect(label):
+                if label == "path":
+                    return [
+                        {"number": "200", "title": "Path 200", "body": "- [ ] Node 201\n- [ ] Node 202"}
+                    ]
+                elif label == "backlog":
+                    return [
+                        {"number": "201", "title": "Node 201"},
+                        {"number": "202", "title": "Node 202"},
+                        {"number": "300", "title": "Path: Container Path"}
+                    ]
+                return []
+                
+            mock_list.side_effect = mock_list_side_effect
+            mock_get_next.return_value = [{"id": "201", "title": "Node 201"}]
+            
+            nba = NBADaemon()
+            result = nba.evaluate("dummy_frontier.md")
+            
+            self.assertEqual(result["type"], "path_switching")
+            self.assertEqual(len(result["recommendations"]), 1)
+            self.assertEqual(result["recommendations"][0]["number"], "201")
 
 if __name__ == "__main__":
     unittest.main()
