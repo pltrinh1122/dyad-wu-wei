@@ -2670,11 +2670,17 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `- artifacts/harmonize_2184.md`
 
-## Act - Implement Abort Hygiene Fix
-- **Status**: Completed
-- **Learnings & Context**: Restored status: todo and backlog label on abort
+## #2193: Act - Implement Universal NBA Topology Pass
+- **Status**: Backlog
+- **Learnings & Context**: Apply DAG sort to all open paths in daemon_nba
 - **Feedforward Invariants**:
-  - `- kernel/node_lifecycle.py`
+  - `[ ]` None
+
+## Act - Implement Terminal Reflect Invariant
+- **Status**: Completed
+- **Learnings & Context**: Enforced Reflect nodes to execute last mathematically
+- **Feedforward Invariants**:
+  - `- drivers/gh_graph_skill.py`
 
 ## Active Agents Matrix
 * **agent-sg5**:

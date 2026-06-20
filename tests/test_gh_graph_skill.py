@@ -139,3 +139,22 @@ def test_get_ready_nodes_excludes_in_progress():
     assert "3" in ready
     assert "4" not in ready
     assert ready == ["3"]
+
+def test_terminal_reflect_invariant_blocked():
+    nodes = {
+        "1": {"completed": False, "in_progress": False, "depends": [], "title": "Act - Something"},
+        "2": {"completed": False, "in_progress": False, "depends": [], "title": "Reflect - Done"}
+    }
+    ready = gh_graph_skill.get_ready_nodes(nodes)
+    # Node 1 is ready. Node 2 is a reflect node and len(incomplete_ids) == 2 > 1, so it should be blocked.
+    assert "1" in ready
+    assert "2" not in ready
+
+def test_terminal_reflect_invariant_ready():
+    nodes = {
+        "1": {"completed": True, "in_progress": False, "depends": [], "title": "Act - Something"},
+        "2": {"completed": False, "in_progress": False, "depends": [], "title": "Reflect - Done"}
+    }
+    ready = gh_graph_skill.get_ready_nodes(nodes)
+    # Node 1 is completed. Node 2 is the ONLY incomplete node, so it should be ready.
+    assert "2" in ready

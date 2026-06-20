@@ -2324,8 +2324,12 @@ nodes:
   learnings: Harmonized intent and structural requirements into artifacts/harmonize_2184.md
   invariants:
   - '- artifacts/harmonize_2184.md'
-- name: Act - Implement Abort Hygiene Fix
+- name: '#2193: Act - Implement Universal NBA Topology Pass'
+  status: Backlog
+  learnings: Apply DAG sort to all open paths in daemon_nba
+  invariants: []
+- name: Act - Implement Terminal Reflect Invariant
   status: Completed
-  learnings: 'Restored status: todo and backlog label on abort'
+  learnings: Enforced Reflect nodes to execute last mathematically
   invariants:
-  - '- kernel/node_lifecycle.py'
+  - '- drivers/gh_graph_skill.py'
