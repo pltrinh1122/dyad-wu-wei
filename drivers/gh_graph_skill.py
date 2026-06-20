@@ -79,6 +79,11 @@ def parse_meta_index(body: str) -> dict:
     # Handle both real newlines and literal \n characters that might appear from JSON parsing
     body = body.replace("\\n", "\n")
     
+    # Isolate the ## Meta-Index block to avoid parsing checkboxes in retrospective notes
+    meta_index_match = re.search(r'^##\s*Meta-Index\b.*?\n(.*?)(?=^##\s|\Z)', body, re.IGNORECASE | re.MULTILINE | re.DOTALL)
+    if meta_index_match:
+        body = meta_index_match.group(1)
+    
     # Pre-process to merge wrapped lines. If a line doesn't start with '- [', it's likely a continuation.
     merged_lines = []
     for line in body.splitlines():
