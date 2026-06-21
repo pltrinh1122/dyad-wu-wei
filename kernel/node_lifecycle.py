@@ -622,14 +622,8 @@ class TerminalNode(BaseNode):
             
             # Automate Meta-Index Checkbox Synchronization
             active_path_str = agent_frontier.read_active_path(frontier_file)
-            if active_path_str:
-                path_issue_id = agent_frontier.extract_path_id(active_path_str)
-                if path_issue_id:
-                    backlog = daemon_backlog.BacklogDaemon()
-                    backlog.check_off_meta_index(path_issue_id, self.issue_id)
-                    tx.register_rollback(backlog.uncheck_meta_index, path_issue_id, self.issue_id)
-                else:
-                    print(f"Warning: Failed to extract Path ID from active path string: '{active_path_str}'")
+            from drivers import gh_graph_skill
+            gh_graph_skill.check_off_node_in_parent(str(self.issue_id))
             
             # ATOMIC UPDATE: Mark node completed AND clear pointers
             agent_frontier.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)

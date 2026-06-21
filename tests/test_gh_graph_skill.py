@@ -158,3 +158,29 @@ def test_terminal_reflect_invariant_ready():
     ready = gh_graph_skill.get_ready_nodes(nodes)
     # Node 1 is completed. Node 2 is the ONLY incomplete node, so it should be ready.
     assert "2" in ready
+
+from unittest.mock import patch, MagicMock
+
+@patch("drivers.github_client.update_issue_body")
+@patch("drivers.github_client.list_issues_by_label")
+def test_check_off_node_in_parent(mock_list, mock_update):
+    mock_list.return_value = [
+        {"number": 100, "body": "## Meta-Index\n- [ ] Node 99\n- [ ] #101: Something"}
+    ]
+    gh_graph_skill.check_off_node_in_parent("101")
+    
+    # It should have called update_issue_body with the updated text
+    expected_body = "## Meta-Index\n- [ ] Node 99\n- [x] #101: Something"
+    mock_update.assert_called_once_with("100", expected_body)
+
+@patch("drivers.github_client.update_issue_body")
+@patch("drivers.github_client.list_issues_by_label")
+def test_check_off_node_in_parent_not_found(mock_list, mock_update):
+    mock_list.return_value = [
+        {"number": 100, "body": "## Meta-Index\n- [ ] Node 99\n- [ ] #102: Something"}
+    ]
+    gh_graph_skill.check_off_node_in_parent("101")
+    
+    # It should NOT call update_issue_body if the node is not found
+    mock_update.assert_not_called()
+

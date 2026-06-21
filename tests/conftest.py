@@ -29,6 +29,15 @@ def mock_fe():
         m.read_active_path.return_value = "None"
         yield m
 
+@pytest.fixture(autouse=True)
+def mock_check_off_node_in_parent(request):
+    """Provides a centralized mock for check_off_node_in_parent."""
+    if "test_gh_graph_skill.py" in str(request.node.fspath):
+        yield None
+    else:
+        with patch("drivers.gh_graph_skill.check_off_node_in_parent") as m:
+            yield m
+
 @pytest.fixture
 def mock_telemetry():
     """Provides a centralized mock for TelemetryDaemon."""
