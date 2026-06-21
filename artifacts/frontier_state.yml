@@ -2403,3 +2403,12 @@ nodes:
   - Iatrogenic-Injection Suppression
   - File-System State Persistence
   - Lexical HTIL Gates.
+- name: '#2252: Act - Sift GEMINI.md and DYAD.md (Part 1 - Pruning)'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Act - Sift GEMINI.md and DYAD.md (Part 1 - Pruning)
+  status: Completed
+  learnings: Pruned universal concepts from GEMINI.md to decouple physics from proprietary
+    tools.
+  invariants: []
