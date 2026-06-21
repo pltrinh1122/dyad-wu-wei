@@ -174,3 +174,25 @@ def get_next_nodes(body: str) -> list[dict]:
         {"id": nid, "title": nodes[nid]["title"]}
         for nid in ready_ids
     ]
+
+def check_off_node_in_parent(child_id: str) -> None:
+    """
+    Finds the parent Path issue that contains the given child_id in its Meta-Index
+    and checks it off by replacing `- [ ]` with `- [x]`.
+    """
+    from drivers import github_client
+    
+    paths = github_client.list_issues_by_label("Path")
+    pattern = re.compile(rf"^(.*?-\s+\[)\s*(\]\s+(?:Node|Activity|Discovery|Path|#)?\s*{child_id}\b.*)$", re.IGNORECASE | re.MULTILINE)
+    
+    for path in paths:
+        body = path.get("body", "")
+        if not body:
+            continue
+            
+        if pattern.search(body):
+            new_body = pattern.sub(r"\1x\2", body)
+            if new_body != body:
+                github_client.update_issue_body(str(path["number"]), new_body)
+                return
+
