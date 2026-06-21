@@ -2736,6 +2736,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Plan - [BUG] Intake: System Crash in sync
+- **Status**: Completed
+- **Learnings & Context**: StateCorruptionError requires graceful exit in daemon_node.py to prevent false-positive bug reports.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
