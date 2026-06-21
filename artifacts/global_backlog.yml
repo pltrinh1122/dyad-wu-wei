@@ -270,6 +270,7 @@ backlog_items:
   title: 'Path: [BUG] Intake: System Crash in sync'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2220
 - body: "## Goal\nMigrate universal anchors from GEMINI.md to DYAD.md\n\n## Meta-Index\n\
+    - [ ] #2253: Act - Sift GEMINI.md and DYAD.md (Part 2 - Grafting) [Depends: 2250]\n\
     - [ ] #2252: Act - Sift GEMINI.md and DYAD.md (Part 1 - Pruning) [Depends: 2250]\n\
     - [ ] #2251: Reflect - HAL Sifting for Portability Axiom [Depends: 2250]\n- [\
     \ ] #2250: Plan - HAL Sifting for Portability Axiom [Depends: 2249]\n- [ ] #2249:\
@@ -312,3 +313,34 @@ backlog_items:
   number: 2251
   title: Reflect - HAL Sifting for Portability Axiom
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2251
+- body: '## Goal
+
+    Remove universal concepts from GEMINI.md
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2250
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2252
+  title: Act - Sift GEMINI.md and DYAD.md (Part 1 - Pruning)
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2252
