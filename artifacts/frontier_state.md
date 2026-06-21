@@ -2736,9 +2736,15 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Plan - [BUG] Intake: System Crash in sync
+## #2223: Reflect - [BUG] Intake: System Crash in sync
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Reflect - [BUG] Intake: System Crash in sync
 - **Status**: Completed
-- **Learnings & Context**: StateCorruptionError requires graceful exit in daemon_node.py to prevent false-positive bug reports.
+- **Learnings & Context**: StateCorruptionError is an intentional validation gate. It must be explicitly caught by the execution error handler to prevent false-positive crash reports.
 - **Feedforward Invariants**:
   - `[ ]` None
 
