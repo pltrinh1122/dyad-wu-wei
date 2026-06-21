@@ -2724,6 +2724,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #2201: Plan - Rename AGENT.md to DYAD.md
+- **Status**: Completed
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2221: Harmonize - [BUG] Intake: System Crash in sync
+- **Status**: Completed
+- **Learnings & Context**: Codified the rationale to catch StateCorruptionError during sync gracefully as a blocked HTIL gate instead of allowing a systemic unhandled crash.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
