@@ -41,7 +41,7 @@ backlog_items:
     \ checkout\n- [ ] #2174: Plan - [BUG] Intake: System Crash in checkout\n- [ ]\
     \ #2174: Plan - [BUG] Intake: System Crash in checkout\n- [ ] #2174: Plan - [BUG]\
     \ Intake: System Crash in checkout\n- [ ] #2174: Plan - [BUG] Intake: System Crash\
-    \ in checkout"
+    \ in checkout\n- [ ] #2174: Plan - [BUG] Intake: System Crash in checkout"
   labels:
   - bug
   - backlog
@@ -231,6 +231,8 @@ backlog_items:
 
     - [ ] #2168: Path: [BUG] Intake: System Crash in reflect
 
+    - [ ] #2168: Path: [BUG] Intake: System Crash in reflect
+
     - [ ] #2168: Path: [BUG] Intake: System Crash in reflect'
   labels:
   - backlog
@@ -268,6 +270,7 @@ backlog_items:
   title: 'Path: [BUG] Intake: System Crash in sync'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2220
 - body: "## Goal\nMigrate universal anchors from GEMINI.md to DYAD.md\n\n## Meta-Index\n\
+    - [ ] #2252: Act - Sift GEMINI.md and DYAD.md (Part 1 - Pruning) [Depends: 2250]\n\
     - [ ] #2251: Reflect - HAL Sifting for Portability Axiom [Depends: 2250]\n- [\
     \ ] #2250: Plan - HAL Sifting for Portability Axiom [Depends: 2249]\n- [ ] #2249:\
     \ Harmonize - HAL Sifting for Portability Axiom\n\n## Agent Retrospective\n\n\
@@ -278,3 +281,34 @@ backlog_items:
   number: 2248
   title: 'Path: HAL Sifting for Portability Axiom'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2248
+- body: '## Goal
+
+    Final reflection and path closure for HAL Sifting for Portability Axiom.
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2250
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2251
+  title: Reflect - HAL Sifting for Portability Axiom
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2251
