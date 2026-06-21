@@ -1,7 +1,7 @@
 # WHY-2027: Harmonize "GEMINI.md changed" Bug Intake
 
 ## 1. The Phenomenon
-When the Operator modifies `GEMINI.md` or `AGENT.md`, the `audit_daemon.py` detects the modification via the `file_modified` rule. It then constructs a `[FAILURE]` alert and routes it through `dispatch_alert()`. Because `dispatch_alert()` hardcodes the `[BUG] Intake:` prefix for all alerts, it spawns an orphan Path in the backlog (e.g., `[BUG] Intake: GEMINI.md changed — agent (/exit) recommended`).
+When the Operator modifies `GEMINI.md` or `DYAD.md`, the `audit_daemon.py` detects the modification via the `file_modified` rule. It then constructs a `[FAILURE]` alert and routes it through `dispatch_alert()`. Because `dispatch_alert()` hardcodes the `[BUG] Intake:` prefix for all alerts, it spawns an orphan Path in the backlog (e.g., `[BUG] Intake: GEMINI.md changed — agent (/exit) recommended`).
 
 ## 2. The Fallacy
 1. **Ontological Conflation**: A change to the System Prompt (`GEMINI.md`) is a purposeful Dao evolution driven by the Operator, not a defect in the system's execution logic. Categorizing it as a `[BUG]` pollutes the problem space.

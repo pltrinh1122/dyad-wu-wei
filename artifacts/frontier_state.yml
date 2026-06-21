@@ -6,7 +6,7 @@ active_agents:
   agent-ziran:
     current_active_node: null
     current_active_path: 'Path 1043: Codify Wu-wei NBA Handoff Message Structure'
-current_active_node: null
+current_active_node: '#999: Implement quarantine survivor'
 current_active_path: null
 nodes:
 - invariants:
@@ -2358,6 +2358,10 @@ nodes:
   invariants: []
 - name: '#2206: Reflect - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory
     Floor'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: '#2215: Act - Rename AGENT.md to DYAD.md and Update Codebase References'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []

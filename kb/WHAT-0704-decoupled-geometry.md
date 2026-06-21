@@ -12,7 +12,7 @@ The state machine (SPAO loop: Sense -> Plan -> Act -> Observe -> Reflect) MUST r
 The `./bin/node` execution framework (and its underlying daemons) must operate on abstract Nodes, Paths, and Strategic Goals. It must not contain hardcoded logic specific to the current domain or the target application being built by the Dyad.
 
 ### 3.2. Payload Isolation
-The "Why" and "What" of a task reside exclusively in the Backlog (`issues`), Knowledge Base (`kb/`), and Universal Context (`AGENT.md`, `GEMINI.md`). The "How" resides in the execution. The engine only orchestrates the lock, context ingestion, execution space, and reflection commit.
+The "Why" and "What" of a task reside exclusively in the Backlog (`issues`), Knowledge Base (`kb/`), and Universal Context (`DYAD.md`, `GEMINI.md`). The "How" resides in the execution. The engine only orchestrates the lock, context ingestion, execution space, and reflection commit.
 
 ### 3.3. Prevent Structural Entanglement
 Any attempt to modify the `bin/` scripts, `drivers/`, or `tests/` must be treated as a Metasystem change and isolated from Platform feature work. A Node cannot simultaneously implement a Platform feature and alter the core logic gates of the engine.

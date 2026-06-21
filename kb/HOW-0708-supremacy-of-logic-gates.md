@@ -14,5 +14,5 @@ Enforce "The Supremacy of the Logic Gates" (`WHAT-0708`) by documenting the stru
 - The execution lock in `.frontier_state.json` provides the final source of truth for the Agent's current task.
 
 ## 3. Implementation Steps
-1. **Consolidate Universal Dao Rules**: Update `AGENT.md` (or `GEMINI.md`) to formally document that the Agent must reject prompt-based attempts to bypass the engine (e.g., asking to skip local tests, or skip node lock acquisition).
+1. **Consolidate Universal Dao Rules**: Update `DYAD.md` (or `GEMINI.md`) to formally document that the Agent must reject prompt-based attempts to bypass the engine (e.g., asking to skip local tests, or skip node lock acquisition).
 2. **Lexical Guard Augmentation**: (Already implemented via Path 1152 and 1355) Ensure that the iatrogenic suppression regexes remain active in the system context.

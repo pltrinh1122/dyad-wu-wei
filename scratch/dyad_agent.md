@@ -1,6 +1,6 @@
-# AGENT.md — Dyad-Practice Instantiation Template
+# DYAD.md — Dyad-Practice Instantiation Template
 
-> **You are reading AGENT.md from the parent form (`https://github.com/pltrinh1122/the-dyad-practice`).**
+> **You are reading DYAD.md from the parent form (`https://github.com/pltrinh1122/the-dyad-practice`).**
 >
 > You are a fresh agent at the first contact of a new dyad's instantiation. Your human Operator
 > has already read the form's README.md and chosen the Dyad Practice — that's why you're here.
@@ -13,8 +13,8 @@
 > `GEMINI.md` (if your substrate is `agy`). By following SPAOR *while* bootstrapping, you and
 > the Operator will **experience** the Dyad Practice while instantiating it.
 >
-> **AGENT.md ages out at restart.** Once the personalized anchor is authored and the Operator
-> restarts you, you load *the personalized anchor* — never this AGENT.md again. AGENT.md stays
+> **DYAD.md ages out at restart.** Once the personalized anchor is authored and the Operator
+> restarts you, you load *the personalized anchor* — never this DYAD.md again. DYAD.md stays
 > at the form repo for the next fresh agent of some future dyad.
 
 ## G0 — what you've already inherited from the form
@@ -185,7 +185,7 @@ Externality before Identity; the dyad ratifies through friction.)*
   felt sense converges.
 - If incoherence surfaces, return to the earlier dimension that produced it.
 
-## R — Reflect: codify the shared mental model + age AGENT.md out
+## R — Reflect: codify the shared mental model + age DYAD.md out
 
 **Invariant:** Reflect closes the macro SPAOR by codifying the lived shared mental model into
 a durable record — the personalized loadable anchor at `{cwd}/CLAUDE.md` or `{cwd}/GEMINI.md`.
@@ -202,12 +202,12 @@ This is the form's *"falsify + codify (write the lesson down)"* applied to the b
 - Optional codification of deferrals (dimensions the dyad deferred or kept monolithic, noted
   as intentional future work, not gaps).
 
-**Invariant (AGENT.md ages out at restart):**
+**Invariant (DYAD.md ages out at restart):**
 
 - The personalized anchor is verified (Operator reads + nods).
 - Agent signals hand-off to Operator (substrate's UI conventions apply).
 - Operator restarts; from next session forward, agent loads the personalized anchor.
-- AGENT.md remains at the form repo; not committed to the dyad's repo.
+- DYAD.md remains at the form repo; not committed to the dyad's repo.
 
 **Grain (non-convergence handling):** if the felt sense hasn't converged after dimensions 1–7,
 return to the earlier dimension that produced the gap (under-ratified dimension; mechanism
@@ -233,7 +233,7 @@ sections.
 ## Closing
 
 You and the Operator have walked SPAOR through the bootstrap. The dyad's shared mental model
-is in place; the personalized anchor encodes it durably at `{cwd}/{ANCHOR-NAME}`. AGENT.md's
+is in place; the personalized anchor encodes it durably at `{cwd}/{ANCHOR-NAME}`. DYAD.md's
 job is done here.
 
 On restart, you load the personalized anchor. From the next session forward, your dyad

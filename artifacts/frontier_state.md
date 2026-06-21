@@ -2718,6 +2718,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## #2215: Act - Rename AGENT.md to DYAD.md and Update Codebase References
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
