@@ -329,6 +329,8 @@ backlog_items:
 
     ## Meta-Index
 
+    - [ ] #2244: Act - Update GEMINI.md and DYAD.md Context Headers [Depends: 2240]
+
     - [ ] #2243: Act - Cascade Axiom Justifications into Existing Invariants [Depends:
     2240]
 
@@ -441,3 +443,34 @@ backlog_items:
   number: 2243
   title: Act - Cascade Axiom Justifications into Existing Invariants
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2243
+- body: '## Goal
+
+    Update the root identity markers
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2240
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2244
+  title: Act - Update GEMINI.md and DYAD.md Context Headers
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2244
