@@ -2696,7 +2696,7 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 
 ## reflect
 - **Status**: Completed
-- **Learnings & Context**: Created WHAT document for Triage Holding Path
+- **Learnings & Context**: Formalized execution plan for Triage Holding Path
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2754,7 +2754,7 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #2211: Harmonize - Triage Holding - Standalone Triage & External Requirement Intakes
+## #2212: Plan - Triage Holding - Standalone Triage & External Requirement Intakes
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
