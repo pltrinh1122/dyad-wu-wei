@@ -2403,3 +2403,12 @@ nodes:
   - Iatrogenic-Injection Suppression
   - File-System State Persistence
   - Lexical HTIL Gates.
+- name: '#2253: Act - Sift GEMINI.md and DYAD.md (Part 2 - Grafting)'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Act - Sift GEMINI.md and DYAD.md (Part 2 - Grafting)
+  status: Completed
+  learnings: Grafted universal concepts from GEMINI.md into DYAD.md as invariants.
+  invariants:
+  - None
