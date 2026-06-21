@@ -2344,9 +2344,8 @@ nodes:
   invariants: []
 - name: reflect
   status: Completed
-  learnings: Drafted Harmonize Artifact
-  invariants:
-  - None
+  learnings: Successfully renamed AGENT.md to DYAD.md and updated codebase references.
+  invariants: []
 - name: '#2204: Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory
     Floor'
   status: '[///] Act Phase'
