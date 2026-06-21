@@ -2775,17 +2775,17 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `File-System State Persistence`
   - `Lexical HTIL Gates.`
 
-## #2253: Act - Sift GEMINI.md and DYAD.md (Part 2 - Grafting)
+## #2252: Act - Sift GEMINI.md and DYAD.md (Part 1 - Pruning)
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Act - Sift GEMINI.md and DYAD.md (Part 2 - Grafting)
+## Act - Sift GEMINI.md and DYAD.md (Part 1 - Pruning)
 - **Status**: Completed
-- **Learnings & Context**: Grafted universal concepts from GEMINI.md into DYAD.md as invariants.
+- **Learnings & Context**: Pruned universal concepts from GEMINI.md to decouple physics from proprietary tools.
 - **Feedforward Invariants**:
-  - `None`
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-sg5**:
