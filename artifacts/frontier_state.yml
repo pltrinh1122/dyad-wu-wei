@@ -2344,7 +2344,7 @@ nodes:
   invariants: []
 - name: reflect
   status: Completed
-  learnings: Created WHAT document for Triage Holding Path
+  learnings: Formalized execution plan for Triage Holding Path
   invariants: []
 - name: '#2204: Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory
     Floor'
@@ -2387,8 +2387,7 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: '#2211: Harmonize - Triage Holding - Standalone Triage & External Requirement
-    Intakes'
+- name: '#2212: Plan - Triage Holding - Standalone Triage & External Requirement Intakes'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
