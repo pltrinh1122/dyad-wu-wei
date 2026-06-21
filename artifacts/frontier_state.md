@@ -2766,11 +2766,14 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Act - Update Context Headers
+## Act - Instantiate Portability Axiom Knowledge Document
 - **Status**: Completed
-- **Learnings & Context**: Updated GEMINI.md and DYAD.md to establish the Portability Axiom and accurately frame GEMINI.md as the Antigravity HAL.
+- **Learnings & Context**: Codified the Portability Axiom to ensure dyad portability.
 - **Feedforward Invariants**:
-  - `None`
+  - `Abstraction Doctrine`
+  - `Iatrogenic-Injection Suppression`
+  - `File-System State Persistence`
+  - `Lexical HTIL Gates.`
 
 ## Active Agents Matrix
 * **agent-sg5**:
