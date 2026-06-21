@@ -2365,3 +2365,7 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: '#2201: Plan - Rename AGENT.md to DYAD.md'
+  status: Completed
+  learnings: Planning Phase
+  invariants: []
