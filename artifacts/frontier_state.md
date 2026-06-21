@@ -2696,7 +2696,7 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 
 ## reflect
 - **Status**: Completed
-- **Learnings & Context**: Successfully renamed AGENT.md to DYAD.md and updated codebase references.
+- **Learnings & Context**: Established Option D: Decoupled Ledger Architecture
 - **Feedforward Invariants**:
   - `[ ]` None
 
@@ -2745,6 +2745,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 ## Reflect - [BUG] Intake: System Crash in sync
 - **Status**: Completed
 - **Learnings & Context**: StateCorruptionError is an intentional validation gate. It must be explicitly caught by the execution error handler to prevent false-positive crash reports.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2229: Harmonize - Path: Re-architecture of Path Container State Preservation (Option D)
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 

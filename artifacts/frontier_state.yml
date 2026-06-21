@@ -2344,7 +2344,7 @@ nodes:
   invariants: []
 - name: reflect
   status: Completed
-  learnings: Successfully renamed AGENT.md to DYAD.md and updated codebase references.
+  learnings: 'Established Option D: Decoupled Ledger Architecture'
   invariants: []
 - name: '#2204: Harmonize - Bug: Global WIP-N=1 Invariant blocks Concurrent Factory
     Floor'
@@ -2381,4 +2381,9 @@ nodes:
   status: Completed
   learnings: StateCorruptionError is an intentional validation gate. It must be explicitly
     caught by the execution error handler to prevent false-positive crash reports.
+  invariants: []
+- name: '#2229: Harmonize - Path: Re-architecture of Path Container State Preservation
+    (Option D)'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
   invariants: []
