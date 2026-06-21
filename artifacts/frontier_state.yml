@@ -2373,8 +2373,12 @@ nodes:
   learnings: Codified the rationale to catch StateCorruptionError during sync gracefully
     as a blocked HTIL gate instead of allowing a systemic unhandled crash.
   invariants: []
-- name: 'Plan - [BUG] Intake: System Crash in sync'
+- name: '#2223: Reflect - [BUG] Intake: System Crash in sync'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Reflect - [BUG] Intake: System Crash in sync'
   status: Completed
-  learnings: StateCorruptionError requires graceful exit in daemon_node.py to prevent
-    false-positive bug reports.
+  learnings: StateCorruptionError is an intentional validation gate. It must be explicitly
+    caught by the execution error handler to prevent false-positive crash reports.
   invariants: []

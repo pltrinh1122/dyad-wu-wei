@@ -14,6 +14,8 @@ from kernel.sense_hooks import HookDaemon
 from kernel.node_lifecycle import TerminalNode, BaseNode, log_stage_advancement, StateDissonanceError, ReflectionBlockedError
 from kernel.daemon_telemetry import TelemetryDaemon, record_execution
 
+from kernel.agent_frontier import StateCorruptionError
+
 class ValidationError(Exception):
     pass
 
@@ -830,7 +832,7 @@ def main():
         elif args.subcommand == "retro":
             cmd_retro(args)
 
-    except (ValidationError, StateDissonanceError, ReflectionBlockedError) as ve:
+    except (ValidationError, StateDissonanceError, ReflectionBlockedError, StateCorruptionError) as ve:
         print(f"\n[🚫 BLOCKED] Execution Blocked: {ve}")
         sys.exit(1)
     except Exception as e:
