@@ -34,3 +34,7 @@ Locate the `Evaluate Administrative Node HTIL Bypass` logic inside the `reflect(
 
 ## 4. Operational Invariant
 The system must NEVER automatically merge changes to its core execution loop definitions (`GEMINI.md`/`DYAD.md`) unless explicitly overridden by the Operator via the removal of those files from the `sacred_files` list. The default state must always be secure (Fail-Safe).
+
+
+## 5. Portability Axiom Justification
+The enforcement of HTIL gates (specifically the Hard HITL block for sacred identity files like `GEMINI.md` and `DYAD.md`) is directly anchored to the **Portability Axiom**. The Dyad relies on text-based lexical markers (e.g., `lean!`, `lean.`, `clip.`) within the git ecosystem and prompt interface rather than proprietary UI buttons or platform-specific autonomy authorization tools. By isolating these sacred files and managing their drift through strict operator gates, we ensure the agent's identity and execution logic remain universally portable across different foundational LLMs without being compromised by engine-specific "auto-merge" or proprietary state mechanisms.
