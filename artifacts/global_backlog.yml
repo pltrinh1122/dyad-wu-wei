@@ -329,6 +329,9 @@ backlog_items:
 
     ## Meta-Index
 
+    - [ ] #2243: Act - Cascade Axiom Justifications into Existing Invariants [Depends:
+    2240]
+
     - [ ] #2242: Act - Instantiate Portability Axiom Knowledge Document [Depends:
     2240]
 
@@ -376,3 +379,65 @@ backlog_items:
   number: 2241
   title: 'Reflect - Path: Codify Portability Axiom and Cascade Invariants'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2241
+- body: '## Goal
+
+    Create kb/WHY-xxxx-portability-axiom.md
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2240
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2242
+  title: Act - Instantiate Portability Axiom Knowledge Document
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2242
+- body: '## Goal
+
+    Update WHAT-0708 and WHAT-0474
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2240
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2243
+  title: Act - Cascade Axiom Justifications into Existing Invariants
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2243
