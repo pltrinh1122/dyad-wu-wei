@@ -278,34 +278,3 @@ backlog_items:
   number: 2248
   title: 'Path: HAL Sifting for Portability Axiom'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2248
-- body: '## Goal
-
-    Technical design and proposed changes for HAL Sifting for Portability Axiom.
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    2249
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2250
-  title: Plan - HAL Sifting for Portability Axiom
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2250
