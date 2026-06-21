@@ -6,7 +6,7 @@ The thesis proposed that child projects and the SPAO Engine (`dyad-wu-wei`) coul
 ## 2. Evidence of Failure
 When the Engine and the Child project are decoupled orthogonally, the Agent's context scope is immediately lobotomized. The LLM Agent can only reliably parse directives, invariants, and systemic goals if they are physically present in the active working directory root.
 
-Orthogonal workspaces meant the Agent lost access to `GEMINI.md`, `AGENT.md`, and the `kb/` primitives. This led to systemic regressions, invariant breaches, and loss of the Dao inheritance during agent instantiations.
+Orthogonal workspaces meant the Agent lost access to `GEMINI.md`, `DYAD.md`, and the `kb/` primitives. This led to systemic regressions, invariant breaches, and loss of the Dao inheritance during agent instantiations.
 
 ## 3. The Re-Grounding
 As established in `WHY-0921` and reaffirmed here, the Dyad must strictly adhere to the **Model 1 Dual-Context Workspace Architecture**:

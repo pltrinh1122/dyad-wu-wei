@@ -14,8 +14,8 @@ This document outlines the technical mechanisms for enforcing "Temporal Immutabi
 - **Implementation**: The `active_node` state parser in `bin/status` should emit a warning if `main` has progressed past the `checkout` hash of the active node.
 
 ### 2.3. Agent Level Directives
-- **Instruction Injection**: Add an invariant to `AGENT.md` strictly prohibiting the Agent from opening concurrent shells or sub-agents that attempt to alter `main` behind the back of the actively running node lock.
+- **Instruction Injection**: Add an invariant to `DYAD.md` strictly prohibiting the Agent from opening concurrent shells or sub-agents that attempt to alter `main` behind the back of the actively running node lock.
 
 ## 3. Implementation Steps
-1. **Inject Directive into AGENT.md**: Add explicit language stating the Agent must not bypass the Node Lock timeline via direct CLI git pushes or out-of-band pull requests.
+1. **Inject Directive into DYAD.md**: Add explicit language stating the Agent must not bypass the Node Lock timeline via direct CLI git pushes or out-of-band pull requests.
 2. **Review bin/reflect mechanisms**: Ensure `bin/reflect` requires a clean merge path. If it relies on GitHub's API (`gh pr merge`), GitHub inherently enforces this if branch protection rules are set correctly. Document that the repository's branch protection MUST require branches to be up-to-date before merging.
