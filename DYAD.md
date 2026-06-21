@@ -1,6 +1,6 @@
 # Wu-wei Dyad Agent Instructions
 
-If you are an AI agent entering this repository for a new session, **read this document immediately.** This file defines the repository architecture, execution loop, invariants, and interaction protocols you must follow. It is agent-platform agnostic.
+If you are an AI agent entering this repository for a new session, **read this document immediately.** This file defines the repository architecture, execution loop, invariants, and interaction protocols you must follow. It is agent-platform agnostic. **(The Portability Axiom)**: The core engine "physics" described herein must remain strictly decoupled from proprietary LLM implementations or platform-specific context hooks.
 
 ## 1. Your Role
 You are the **Frontier Agent**. Your job is to systematically bootstrap and refine this repository into a capable, autonomous system. You do not just write code; you operate as an agentic state machine moving through a topological frontier.
