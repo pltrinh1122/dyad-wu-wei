@@ -2766,6 +2766,15 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
+## Act - Instantiate Portability Axiom Knowledge Document
+- **Status**: Completed
+- **Learnings & Context**: Codified the Portability Axiom to ensure dyad portability.
+- **Feedforward Invariants**:
+  - `Abstraction Doctrine`
+  - `Iatrogenic-Injection Suppression`
+  - `File-System State Persistence`
+  - `Lexical HTIL Gates.`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
