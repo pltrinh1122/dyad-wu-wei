@@ -2505,3 +2505,7 @@ nodes:
   status: Backlog
   learnings: Synthesize technical implementation plan for reflect system crash fix.
   invariants: []
+- name: '#2358: Act - [BUG] Intake: System Crash in reflect'
+  status: Backlog
+  learnings: Implement fix for frontier_file argument.
+  invariants: []
