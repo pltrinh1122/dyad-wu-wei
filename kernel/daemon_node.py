@@ -603,7 +603,7 @@ def main():
         parser_r.add_argument("invariants")
         parser_r.add_argument("commit_msg")
         parser_r.add_argument("branch_name")
-        parser_r.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
+        parser_r.add_argument("--frontier-file", default="artifacts/frontier_state.md")
         parser_r.add_argument("--stage", nargs="?", const="all", default="all", help="Granular files to stage: 'all' (default), 'none', or list.")
         parser_r.add_argument("--insights", default="", help="Active Insights (e.g., WHY-0071, WHY-0075)")
 
@@ -618,7 +618,7 @@ def main():
         parser_c.add_argument("issue_id")
         parser_c.add_argument("node_name")
         parser_c.add_argument("reason")
-        parser_c.add_argument("frontier_file", nargs="?", default="artifacts/frontier_state.md")
+        parser_c.add_argument("--frontier-file", default="artifacts/frontier_state.md")
 
         # abort
         parser_a = subparsers.add_parser("abort", help="Atomically release an in-progress plan-start lock")
