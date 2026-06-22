@@ -2496,3 +2496,8 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: '#2307: Act - Decouple Prompt Channel'
+  status: Backlog
+  learnings: Execute the physical excision of artifacts/prompt_backlog.yml and implement
+    the Singular Staging Area API mechanism
+  invariants: []

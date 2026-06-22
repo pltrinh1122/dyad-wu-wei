@@ -5,27 +5,25 @@ set -euo pipefail
 python3 -m kernel.daemon_telemetry log SYSTEM START --domain bin --component $(basename "$0")
 trap 'EXIT_CODE=$?; python3 -m kernel.daemon_telemetry log SYSTEM FINISH --domain bin --component '$(basename "$0")' --metadata "{\"exit_code\": $EXIT_CODE}"' EXIT
 
-
-REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PYTHON_EXE="${REPO_DIR}/venv/bin/python3"
-if [ ! -f "$PYTHON_EXE" ]; then
-    PYTHON_EXE="python3"
-fi
-
 if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
-    echo "Usage: $0 <prompt_text> | list | add | process <prompt_ids> [--context <ctx>] | delete <prompt_id> | clean"
+    echo "Usage: $0 queue <msg> | process | list"
     exit 0
 fi
 
 if [ "$#" -eq 0 ]; then
-    echo "Usage: $0 <prompt_text> | list"
+    echo "Usage: $0 queue <msg> | process"
     exit 1
 fi
 
 CMD=$1
-if [[ "$CMD" == "list" || "$CMD" == "add" || "$CMD" == "process" || "$CMD" == "delete" || "$CMD" == "clean" ]]; then
-    PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m kernel.daemon_prompt "$@"
+if [[ "$CMD" == "queue" ]]; then
+    shift
+    MSG="$*"
+    gh issue create --title "Prompt: $MSG" --body "" --label "staging"
+elif [[ "$CMD" == "process" || "$CMD" == "list" ]]; then
+    gh issue list --label "staging"
 else
-    # Legacy fallback: assume they just typed ./prompt "some text"
-    PYTHONPATH="${REPO_DIR}:${PYTHONPATH:-}" "$PYTHON_EXE" -m kernel.daemon_prompt add "$*"
+    # Legacy fallback: queue
+    MSG="$*"
+    gh issue create --title "Prompt: $MSG" --body "" --label "staging"
 fi

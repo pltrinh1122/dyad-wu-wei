@@ -6,8 +6,7 @@ import subprocess
 from drivers import github_client, git_client
 from kernel import agent_frontier
 from kernel import daemon_testing
-from kernel import daemon_prompt
-from kernel.daemon_prompt import process_prompts, get_backlog_file, clean_prompts
+
 from kernel.daemon_status import get_local_worktrees
 from kernel.sense_hooks import HookDaemon
 

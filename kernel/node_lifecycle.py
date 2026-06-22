@@ -5,7 +5,7 @@ import json
 import subprocess
 import yaml
 from drivers import github_client, git_client
-from kernel import agent_frontier, daemon_prompt, daemon_backlog, daemon_nba
+from kernel import agent_frontier, daemon_backlog, daemon_nba
 from kernel.daemon_telemetry import TelemetryDaemon, record_execution
 from kernel.daemon_transaction import FlowTransaction
 
@@ -16,6 +16,9 @@ class ReflectionBlockedError(Exception):
     pass
 
 class CheckoutBlockedError(Exception):
+    pass
+
+class StagingAreaBlockedError(Exception):
     pass
 
 def is_verbose() -> bool:
@@ -236,9 +239,7 @@ class TerminalNode(BaseNode):
         from kernel.daemon_status import get_prompt_backlog_size
         from drivers.path_resolver import get_workspace_dir
         if get_prompt_backlog_size(get_workspace_dir()) > 0:
-            print("🚨 **[HTIL GATE ENGAGED: CONVERSATIONAL_ALIGNMENT]** 🚨")
-            print("Pending operator prompts detected. You must clear the prompt queue using `bin/prompt process` before acquiring a new Node lock.")
-            sys.exit(1)
+            raise StagingAreaBlockedError("Pending items in Singular Staging Area. You must harmonize issues labeled 'staging' before acquiring a new Node lock.")
 
         from drivers import path_resolver
         if not os.path.isabs(frontier_file):

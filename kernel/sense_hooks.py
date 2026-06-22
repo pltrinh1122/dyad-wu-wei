@@ -59,11 +59,10 @@ class HookDaemon:
             print(f"Warning: Failed to execute dm_inbox hook: {e}")
 
     def execute_prompt_queue_hook(self, config):
-        """Surfaces pending operator prompts from a configurable file path."""
-        location = config.get("location", "artifacts/prompt_backlog.yml")
-        from kernel.daemon_prompt import list_prompts
-        print()
-        list_prompts(all_prompts=False, backlog_file=location)
+        """Surfaces pending operator prompts from GitHub Staging Area."""
+        print("\n--- Staging Area (Prompts) ---")
+        import subprocess
+        subprocess.run(["gh", "issue", "list", "--label", "staging"], check=False)
 
     def execute_next_best_action_hook(self, config, local_mode=False):
         """Dynamically evaluates and surfaces the next best action using NBADaemon kernel."""
