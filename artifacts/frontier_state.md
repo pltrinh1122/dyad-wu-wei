@@ -2823,6 +2823,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `Implemented graceful degradation via CheckoutBlockedError for stale git states`
 
+## #2257: Act - Synthesize Epistemic Retrospective retro-2171.md
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Act - Synthesize Epistemic Retrospective retro-2171.md
+- **Status**: Completed
+- **Learnings & Context**: Synthesized retro-2171.md into GEMINI.md
+- **Feedforward Invariants**:
+  - `Added explicit rule about graceful degradation upon local invariant failure`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
