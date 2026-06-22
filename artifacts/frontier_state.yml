@@ -2501,3 +2501,24 @@ nodes:
   learnings: Execute the physical excision of artifacts/prompt_backlog.yml and implement
     the Singular Staging Area API mechanism
   invariants: []
+- name: '#2310: Instantiate Symmetric Mutability Invariant'
+  status: Backlog
+  learnings: Update DYAD.md with the Symmetric Mutability Invariant and commit work_lifecycle.md
+    to the kb/ directory.
+  invariants: []
+  kind: path
+- name: '#2311: Harmonize - Instantiate Symmetric Mutability Invariant'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Instantiate Symmetric
+    Mutability Invariant.
+  invariants: []
+- name: '#2312: Plan - Instantiate Symmetric Mutability Invariant'
+  status: Backlog
+  learnings: Technical design and proposed changes for Instantiate Symmetric Mutability
+    Invariant.
+  invariants: []
+- name: '#2313: Reflect - Instantiate Symmetric Mutability Invariant'
+  status: Backlog
+  learnings: Final reflection and path closure for Instantiate Symmetric Mutability
+    Invariant.
+  invariants: []
