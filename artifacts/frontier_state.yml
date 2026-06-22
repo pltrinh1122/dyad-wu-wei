@@ -1065,14 +1065,14 @@ nodes:
     PR Discipline is properly codified in node_lifecycle.py.
   name: Reflect - Implement PR Discipline Formalization
   status: Completed
-- invariants:
-  - System MUST NOT crash due to stale local git state during checkout
-  learnings: Mapped CalledProcessError during worktree add to CheckoutBlockedError
-    for graceful rollback
+- invariants: []
+  learnings: 'Confirmed that the checkout Persona Gate exception was already fixed
+    by PR #1722, which implemented root-level environment fallback.'
   name: 'Harmonize - [BUG] Intake: System Crash in checkout'
   status: Completed
-- invariants: []
-  learnings: Planned graceful validation for cmd_checkout
+- invariants:
+  - System must gracefully handle git worktree blockages during execution transitions
+  learnings: Established CheckoutBlockedError invariant
   name: 'Plan - [BUG] Intake: System Crash in checkout'
   status: Completed
 - invariants: []
@@ -2413,7 +2413,12 @@ nodes:
   learnings: Pruned universal concepts from GEMINI.md to decouple physics from proprietary
     tools.
   invariants: []
-- name: '#2173: Harmonize - [BUG] Intake: System Crash in checkout'
+- name: '#2259: Reflect - Synthesize Epistemic Retrospective retro-2173.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-2173.md into the system's operational guidelines (the Dao).
+  invariants: []
+- name: '#2174: Plan - [BUG] Intake: System Crash in checkout'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
