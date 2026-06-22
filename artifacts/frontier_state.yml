@@ -2412,3 +2412,12 @@ nodes:
   learnings: Pruned universal concepts from GEMINI.md to decouple physics from proprietary
     tools.
   invariants: []
+- name: '#2165: Harmonize - Path: Re-architecture of Path Container State Preservation'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Harmonize - Path: Re-architecture of Path Container State Preservation'
+  status: Completed
+  learnings: Formalized Option 1 to enforce Github state as Source of Truth.
+  invariants:
+  - System MUST NOT rely purely on local state.
