@@ -152,15 +152,20 @@ def _clean_json_output(stdout: str) -> str:
 
 
 @record_execution(stage="skill")
-def create_issue(title: str, body: str) -> str:
+def create_issue(title: str, body: str, labels: list[str] = None) -> str:
     """Creates a GH issue safely using a temp file for the body."""
     invalidate_cache()
     with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=True) as temp_file:
         temp_file.write(body)
         temp_file.flush()
         
+        cmd = ["gh", "issue", "create", "--title", title, "-F", temp_file.name]
+        if labels:
+            for label in labels:
+                cmd.extend(["--label", label])
+                
         result = _run_gh(
-            ["gh", "issue", "create", "--title", title, "-F", temp_file.name],
+            cmd,
             capture_output=True, text=True, check=True
         )
         return result.stdout.strip()

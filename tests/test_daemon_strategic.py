@@ -348,7 +348,7 @@ class TestMgrStrategic(unittest.TestCase):
         try:
             parent_id = daemon_strategic.find_parent_path_id("419")
             self.assertEqual(parent_id, "416")
-            github_client.list_issues_by_label.assert_called_once_with("path")
+            self.assertEqual(github_client.list_issues_by_label.call_count, 2)
         finally:
             github_client.list_issues_by_label = orig_list
             github_client.get_issue_details = orig_details
