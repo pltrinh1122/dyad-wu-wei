@@ -622,7 +622,12 @@ class TerminalNode(BaseNode):
                 self._validate_spao_purity(worktree_path=worktree_dir)
             
             # Always stage the frontier state files because they were mutated by this reflect method
-            git_client.add(["artifacts/frontier_state.md", "artifacts/frontier_state.yml", "artifacts/frontier_state.yml.sha256"], cwd=worktree_dir)
+            state_files = []
+            for f in ["artifacts/frontier_state.md", "artifacts/frontier_state.yml", "artifacts/frontier_state.yml.sha256"]:
+                if os.path.exists(os.path.join(worktree_dir, f)):
+                    state_files.append(f)
+            if state_files:
+                git_client.add(state_files, cwd=worktree_dir)
 
             # Execute staging strategy
             if stage == "none":
