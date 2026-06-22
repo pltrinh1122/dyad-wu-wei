@@ -2492,3 +2492,8 @@ nodes:
   learnings: completed root cause analysis and resolution documentation
   invariants:
   - preserved TDD boundaries and true dormancy
+- name: Reflect - Remediate Zombie Triage Holding Mechanism
+  status: Completed
+  learnings: Path 2269 complete
+  invariants:
+  - Zombie triage holding block removed from daemon_node.py
