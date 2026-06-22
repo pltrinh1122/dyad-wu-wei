@@ -2496,3 +2496,24 @@ nodes:
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
+- name: '#2300: Decouple Prompt Channel to GitHub API'
+  status: Backlog
+  learnings: Excise artifacts/prompt_backlog.yml and move async operator prompts to
+    GitHub Issues to support concurrent swarm fan-out without physical file collisions.
+  invariants: []
+  kind: path
+- name: '#2301: Harmonize - Decouple Prompt Channel to GitHub API'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Decouple Prompt
+    Channel to GitHub API.
+  invariants: []
+- name: '#2303: Plan - Decouple Prompt Channel to GitHub API'
+  status: Backlog
+  learnings: Technical design and proposed changes for Decouple Prompt Channel to
+    GitHub API.
+  invariants: []
+- name: '#2304: Reflect - Decouple Prompt Channel to GitHub API'
+  status: Backlog
+  learnings: Final reflection and path closure for Decouple Prompt Channel to GitHub
+    API.
+  invariants: []
