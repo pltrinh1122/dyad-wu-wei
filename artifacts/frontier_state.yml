@@ -2448,3 +2448,14 @@ nodes:
   learnings: Synthesized retro-2171.md into GEMINI.md
   invariants:
   - Added explicit rule about graceful degradation upon local invariant failure
+- name: '#2187: Reflect - Remediate DAG Execution and NBA Fallback Invariants'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Reflect - Remediate DAG Execution and NBA Fallback Invariants
+  status: Completed
+  learnings: Synthesized learning for Path 2184
+  invariants:
+  - Enforced DAG topology
+  - Meta-Index isolation
+  - and abort hygiene

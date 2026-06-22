@@ -2835,6 +2835,20 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `Added explicit rule about graceful degradation upon local invariant failure`
 
+## #2187: Reflect - Remediate DAG Execution and NBA Fallback Invariants
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Reflect - Remediate DAG Execution and NBA Fallback Invariants
+- **Status**: Completed
+- **Learnings & Context**: Synthesized learning for Path 2184
+- **Feedforward Invariants**:
+  - `Enforced DAG topology`
+  - `Meta-Index isolation`
+  - `and abort hygiene`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
