@@ -2897,10 +2897,27 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Active Agents Matrix
-* **agent-sg5**:
-  - Current Active Path: `None`
-  - Current Active Node: `#2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)`
-* **agent-ziran**:
-  - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
-  - Current Active Node: `None`
+## #2300: Decouple Prompt Channel to GitHub API
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: Excise artifacts/prompt_backlog.yml and move async operator prompts to GitHub Issues to support concurrent swarm fan-out without physical file collisions.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2301: Harmonize - Decouple Prompt Channel to GitHub API
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Decouple Prompt Channel to GitHub API.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2303: Plan - Decouple Prompt Channel to GitHub API
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for Decouple Prompt Channel to GitHub API.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2304: Reflect - Decouple Prompt Channel to GitHub API
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for Decouple Prompt Channel to GitHub API.
+- **Feedforward Invariants**:
+  - `[ ]` None
