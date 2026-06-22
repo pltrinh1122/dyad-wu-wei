@@ -52,6 +52,18 @@ The **Wu-wei Dyad Hybrid Triad** action for effortless adaptation. It replaces t
 The **Wu-wei Dyad Hybrid Triad** action for increasing metabolic efficiency. It replaces the purely mathematical "Optimization" and the purely spiritual "Cultivation." Refinement ensures that as the system travels toward the Telos, it simultaneously streamlines code execution while preserving the epistemic history needed to prevent future errors.
 * **Domain Boundary**: Read/Write access to codebase logic and tests, but *strictly constrained* to not altering external feature behavior. Strictly metabolic (speed, safety, clarity). See `WHAT-0073`.
 
+### Rigging
+The process of structuring a raw idea into a formal Directed Acyclic Graph (DAG) suitable for execution.
+
+### `rub:` Protocol
+The collaborative sluice gate protocol used by the Operator and Agent to rig an issue.
+
+### Two-Tier Backlog Abstraction
+The structural separation between the `staging` queue (raw ideas, `status: todo`) and the execution queue (formal Paths, `path` label).
+
+### Agentic Elevation
+The formal promotion of an issue from the staging queue to the execution queue through rigorous formatting.
+
 ## ⚙️ The Operating Environment
 
 To resolve ontological confusion between the static machinery, the abstract logic, the living loop, the file system, and the host platform, the architecture is divided into five distinct operational boundaries:
