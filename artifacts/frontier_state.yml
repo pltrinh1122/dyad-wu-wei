@@ -2482,3 +2482,8 @@ nodes:
   learnings: completed action plan to fix file not found error during reflect
   invariants:
   - maintained structural integrity
+- name: 2286-act
+  status: Completed
+  learnings: fixed system crash FileNotFoundError when reflecting without checkout
+  invariants:
+  - maintained test coverage
