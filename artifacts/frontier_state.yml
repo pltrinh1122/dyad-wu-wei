@@ -2430,12 +2430,12 @@ nodes:
   learnings: Updated regex to stop at any markdown header to isolate Meta-Index
   invariants:
   - Meta-Index parsing must be structurally isolated to avoid DAG evaluation failures
-- name: '#2259: Act - Synthesize Epistemic Retrospective retro-2173.md'
+- name: '#2175: Reflect - [BUG] Intake: System Crash in checkout'
   status: '[///] Act Phase'
   learnings: Planning Phase
   invariants: []
-- name: Act - Synthesize Epistemic Retrospective retro-2173.md
+- name: 'Reflect - [BUG] Intake: System Crash in checkout'
   status: Completed
-  learnings: Synthesized retro-2173.md into GEMINI.md
+  learnings: Synthesized learnings from checkout crash resolution
   invariants:
-  - Added explicit rule about writing retro artifacts before reflection
+  - Implemented graceful degradation via CheckoutBlockedError for stale git states
