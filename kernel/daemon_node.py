@@ -709,6 +709,47 @@ def main():
         tb_str = traceback.format_exc()
         print("CRASH TRACEBACK:\n" + tb_str)
         
+        issue_id = getattr(args, 'issue_id', None) if 'args' in locals() else None
+        if not issue_id:
+            try:
+                from drivers import path_resolver
+                repo_root = path_resolver.get_workspace_dir()
+                frontier_file = os.path.join(repo_root, "artifacts", "frontier_state.md")
+                if os.path.exists(frontier_file):
+                    with open(frontier_file, "r") as f:
+                        content = f.read()
+                    match = re.search(r"## Current Active Node\n(.*?)(?=\n## |\Z)", content, re.DOTALL)
+                    if match:
+                        active_node = match.group(1).strip().strip('*')
+                        if active_node and active_node != "None":
+                            id_match = re.search(r"(?:Node\s*#?|#)(\d+)", active_node, re.IGNORECASE)
+                            if id_match:
+                                issue_id = id_match.group(1)
+            except Exception as detect_err:
+                print(f"Warning: Guard A failed to detect active issue lock: {detect_err}")
+
+        if issue_id:
+            try:
+                from drivers import github_client
+                try:
+                    github_client.remove_label(issue_id, "status: in-progress")
+                except Exception:
+                    pass
+                try:
+                    github_client.add_label(issue_id, "status: triage")
+                except Exception:
+                    pass
+                print(f"[CSI GUARD A] Released lock on Node {issue_id} and reverted to triage.")
+                try:
+                    from kernel.node_lifecycle import TerminalNode
+                    node = TerminalNode(issue_id)
+                    node.abort()
+                    print(f"[CSI GUARD A] Aborted Node {issue_id} locally.")
+                except Exception as abort_err:
+                    print(f"Warning: Guard A failed to abort locally: {abort_err}")
+            except Exception as release_err:
+                print(f"Warning: Guard A failed to release remote lock: {release_err}")
+        
         body = f"## System Crash Report\n\n**Subcommand:** `{subcommand}`\n**Persona:** `{persona}`\n\n### Traceback\n```python\n{tb_str}\n```\n"
         
         try:

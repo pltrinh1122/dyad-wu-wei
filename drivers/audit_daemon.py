@@ -429,6 +429,20 @@ def evaluate_liveness_stall(rule, state):
         )
         dispatch_alert(msg)
         state["last_alerted_at"] = time.time()
+        
+        # GUARD B: Active Autonomous Abort
+        id_match = re.search(r"(?:Node\s*#?|#)(\d+)", active_node, re.IGNORECASE)
+        if id_match:
+            issue_id = id_match.group(1)
+            try:
+                print(f"[CSI GUARD B] Initiating autonomous abort for stalled node '{active_node}' (Issue #{issue_id}).")
+                bin_node = str(get_repo_root() / "bin" / "node")
+                subprocess.run([bin_node, "abort", issue_id], check=False)
+            except Exception as e:
+                print(f"[CSI GUARD B] Failed to execute autonomous abort: {e}")
+        else:
+            print(f"[CSI GUARD B] Could not extract issue ID from active node: '{active_node}'. Abort skipped.")
+            
         return True, state
     
     return False, state
