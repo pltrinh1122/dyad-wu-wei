@@ -2867,6 +2867,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `maintained true dormancy`
 
+## #2280: Plan - [BUG] Intake: System Crash in reflect
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## 2280-plan
+- **Status**: Completed
+- **Learnings & Context**: completed action plan to fix file not found error during reflect
+- **Feedforward Invariants**:
+  - `maintained structural integrity`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
