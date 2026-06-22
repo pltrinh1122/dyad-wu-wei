@@ -2787,17 +2787,11 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #2165: Harmonize - Path: Re-architecture of Path Container State Preservation
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## Harmonize - Path: Re-architecture of Path Container State Preservation
+## Reflect - [BUG] Intake: System Crash in reflect
 - **Status**: Completed
-- **Learnings & Context**: Formalized Option 1 to enforce Github state as Source of Truth.
+- **Learnings & Context**: Exceptions should be structured rather than native Python unhandled exceptions
 - **Feedforward Invariants**:
-  - `System MUST NOT rely purely on local state.`
+  - `System MUST NOT crash during reflection due to blocked requirements`
 
 ## Active Agents Matrix
 * **agent-sg5**:
