@@ -2513,3 +2513,8 @@ nodes:
   status: Backlog
   learnings: Reflect on fix for system crash.
   invariants: []
+- name: '#2364: Reflect - Synthesize Epistemic Retrospective retro-2353.md'
+  status: Backlog
+  learnings: Synthesize the epistemic learnings from the post-failure retrospective
+    retro-2353.md into the system's operational guidelines (the Dao).
+  invariants: []
