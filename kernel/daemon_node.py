@@ -46,16 +46,9 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
     from drivers import path_resolver
     from drivers.tty_gate import require_operator_approval
     from kernel.node_lifecycle import TerminalNode
-    from kernel.daemon_status import get_prompt_backlog_size
 
     repo_root = path_resolver.get_workspace_dir()
     
-    if get_prompt_backlog_size(repo_root) > 0:
-        import sys as _sys
-        print("🚨 **[HTIL GATE ENGAGED: CONVERSATIONAL_ALIGNMENT]** 🚨")
-        print("Pending operator prompts detected. You must clear the prompt queue using `bin/prompt process` before synchronizing the DAG.")
-        _sys.exit(1)
-
     gemini_path = os.path.join(repo_root, "GEMINI.md")
     
     # 1. Remote Mode: fetch remote updates

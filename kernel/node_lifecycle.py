@@ -18,9 +18,6 @@ class ReflectionBlockedError(Exception):
 class CheckoutBlockedError(Exception):
     pass
 
-class StagingAreaBlockedError(Exception):
-    pass
-
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
     return os.environ.get("SPAO_VERBOSE") in ("1", "true", "TRUE") or os.environ.get("SPOA_VERBOSE") in ("1", "true", "TRUE")
@@ -235,11 +232,6 @@ class TerminalNode(BaseNode):
                 print("🚨 **[HTIL GATE ENGAGED: NBA_HANDOFF]** 🚨")
                 print("Waiting for Operator to manually trigger `plan-start`.")
                 sys.exit(1)
-
-        from kernel.daemon_status import get_prompt_backlog_size
-        from drivers.path_resolver import get_workspace_dir
-        if get_prompt_backlog_size(get_workspace_dir()) > 0:
-            raise StagingAreaBlockedError("Pending items in Singular Staging Area. You must harmonize issues labeled 'staging' before acquiring a new Node lock.")
 
         from drivers import path_resolver
         if not os.path.isabs(frontier_file):
