@@ -581,6 +581,9 @@ class TerminalNode(BaseNode):
             from kernel.daemon_strategic import verify_node_transition_allowed
             verify_node_transition_allowed(self.issue_id)
             
+            if not os.environ.get("ANTIGRAVITY_RUNNING_TESTS") == "1" and not os.path.exists(worktree_dir):
+                sys.exit(f"[🚫 BLOCKED] Reflection Blocked: The worktree directory does not exist. You must run './bin/node checkout {self.issue_id} {branch_name}' before reflecting.")
+
             # Enforce Prevent Empty PR Guard (Node 1437)
             status_output = git_client.status_porcelain(cwd=worktree_dir).strip()
             diff_against_main = git_client.diff_names("origin/main", cwd=worktree_dir)

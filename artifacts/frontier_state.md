@@ -2879,6 +2879,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `maintained structural integrity`
 
+## 2286-act
+- **Status**: Completed
+- **Learnings & Context**: fixed system crash FileNotFoundError when reflecting without checkout
+- **Feedforward Invariants**:
+  - `maintained test coverage`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
