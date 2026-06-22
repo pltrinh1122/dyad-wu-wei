@@ -2487,3 +2487,8 @@ nodes:
   learnings: fixed system crash FileNotFoundError when reflecting without checkout
   invariants:
   - maintained test coverage
+- name: 2281-reflect
+  status: Completed
+  learnings: completed root cause analysis and resolution documentation
+  invariants:
+  - preserved TDD boundaries and true dormancy
