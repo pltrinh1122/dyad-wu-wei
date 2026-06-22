@@ -2849,6 +2849,115 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `Meta-Index isolation`
   - `and abort hygiene`
 
+## #2270: Harmonize - Remediate Zombie Triage Holding Mechanism
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2271: Plan - Remediate Zombie Triage Holding Mechanism
+- **Status**: Backlog
+- **Learnings & Context**: Plan removal of Triage Holding invariant
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2272: Reflect - Remediate Zombie Triage Holding Mechanism
+- **Status**: Backlog
+- **Learnings & Context**: Reflect on removal of Triage Holding invariant
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2274: Harmonize - Formulate Elevation Invariants
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize intent for promotion invariants
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2275: Plan - Formulate Elevation Invariants
+- **Status**: Backlog
+- **Learnings & Context**: Plan changes to DYAD.md
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2276: Act - Implement Elevation Invariants in DYAD.md
+- **Status**: Backlog
+- **Learnings & Context**: Update DYAD.md
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2277: Reflect - Formulate Elevation Invariants
+- **Status**: Backlog
+- **Learnings & Context**: Reflect on promotion invariants
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2278: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `frontier`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 823, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 501, in cmd_reflect
+    reflect_node(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 475, in reflect_node
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 585, in reflect
+    status_output = git_client.status_porcelain(cwd=worktree_dir).strip()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py", line 233, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/drivers/git_client.py", line 140, in status_porcelain
+    res = _run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True, cwd=cwd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/drivers/git_client.py", line 10, in _run
+    return subprocess.run(cmd, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2270-harmonize'
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2279: Harmonize - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2280: Plan - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Technical design and proposed changes for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2281: Reflect - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Final reflection and path closure for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Harmonize - Remediate Zombie Triage Holding Mechanism
+- **Status**: Completed
+- **Learnings & Context**: Synthesized discovery to excise zombie code in daemon_node.py
+- **Feedforward Invariants**:
+  - `Confirmed block A and D in daemon_node.py need deletion`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
