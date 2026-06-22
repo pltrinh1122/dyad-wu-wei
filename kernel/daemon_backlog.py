@@ -135,10 +135,6 @@ class BacklogDaemon:
                     try:
                         github_client.remove_label(issue_num, "backlog")
                         github_client.add_label(issue_num, "status: deferred")
-                        try:
-                            github_client.remove_label(issue_num, "status: todo")
-                        except:
-                            pass
                         github_client.update_issue_body(issue_num, issue.get("body", "") + "\n\n**Automated Hygiene Sweep**: Node deferred because it is an orphaned terminal node with no parent Path.")
                         orphaned_count += 1
                         print(f"Swept orphaned node #{issue_num}")
@@ -217,21 +213,15 @@ class BacklogDaemon:
         try:
             from drivers import path_resolver
             node_yml = path_resolver.load_node_yml()
-            status_config = node_yml.get("node_attributes", {}).get("status", {})
             class_config = node_yml.get("node_attributes", {}).get("classification", {})
             
             backlog_label = class_config.get("backlog", "backlog")
-            todo_label = status_config.get("todo", "status: todo")
             
             github_client.add_label(issue_id, backlog_label)
-            if is_terminal:
-                github_client.add_label(issue_id, todo_label)
             if is_non_terminal:
                 github_client.add_label(issue_id, "path")
         except Exception:
             github_client.add_label(issue_id, "backlog")
-            if is_terminal:
-                github_client.add_label(issue_id, "status: todo")
             if is_non_terminal:
                 github_client.add_label(issue_id, "path")
 

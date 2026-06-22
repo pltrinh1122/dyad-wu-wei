@@ -30,24 +30,14 @@ def test_execute_all(mock_nba, mock_pq):
     mock_nba.assert_called_once_with({"type": "next_best_action", "repository": "b"}, local_mode=False)
 
 @patch('kernel.sense_hooks.HookDaemon._load_config', return_value=[])
-@patch('kernel.daemon_prompt.list_prompts')
-def test_execute_prompt_queue_hook(mock_list_prompts, mock_load_config):
-    hm = HookDaemon("fake.yml")
-    config = {"location": "custom/path.yml"}
-    
-    hm.execute_prompt_queue_hook(config)
-    
-    mock_list_prompts.assert_called_once_with(all_prompts=False, backlog_file="custom/path.yml")
-    
-@patch('kernel.sense_hooks.HookDaemon._load_config', return_value=[])
-@patch('kernel.daemon_prompt.list_prompts')
-def test_execute_prompt_queue_hook_default(mock_list_prompts, mock_load_config):
+@patch('subprocess.run')
+def test_execute_prompt_queue_hook(mock_run, mock_load_config):
     hm = HookDaemon("fake.yml")
     config = {}
     
     hm.execute_prompt_queue_hook(config)
     
-    mock_list_prompts.assert_called_once_with(all_prompts=False, backlog_file="artifacts/prompt_backlog.yml")
+    mock_run.assert_called_once_with(["gh", "issue", "list", "--label", "staging"], check=False)
 
 @patch('kernel.sense_hooks.HookDaemon._load_config', return_value=[])
 @patch('kernel.daemon_nba.NBADaemon.evaluate')

@@ -2897,10 +2897,8 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Active Agents Matrix
-* **agent-sg5**:
-  - Current Active Path: `None`
-  - Current Active Node: `#2136: Act - Path: Concurrent DAG Evaluation (The Scoring Alg)`
-* **agent-ziran**:
-  - Current Active Path: `Path 1043: Codify Wu-wei NBA Handoff Message Structure`
-  - Current Active Node: `None`
+## #2307: Act - Decouple Prompt Channel
+- **Status**: Backlog
+- **Learnings & Context**: Execute the physical excision of artifacts/prompt_backlog.yml and implement the Singular Staging Area API mechanism
+- **Feedforward Invariants**:
+  - `[ ]` None

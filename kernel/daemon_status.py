@@ -11,14 +11,10 @@ if repo_root not in sys.path:
 from drivers.git_client import get_current_branch
 
 def get_prompt_backlog_size(repo_root: str) -> int:
-    path = os.path.join(repo_root, "artifacts", "prompt_backlog.yml")
-    if not os.path.exists(path):
-        return 0
     try:
-        with open(path, "r") as f:
-            data = yaml.safe_load(f) or {}
-        prompts = data.get("prompts", [])
-        return len([p for p in prompts if p.get("status") != "consumed"])
+        from drivers import github_client
+        staging_issues = github_client.list_issues_by_label("staging")
+        return len(staging_issues)
     except Exception:
         return 0
 

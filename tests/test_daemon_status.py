@@ -4,16 +4,10 @@ from unittest.mock import patch, MagicMock
 
 from kernel.daemon_status import get_prompt_backlog_size, get_local_worktrees, main
 
-def test_get_prompt_backlog_size(tmp_path):
-    repo_root = str(tmp_path)
-    artifacts_dir = os.path.join(repo_root, "artifacts")
-    os.makedirs(artifacts_dir)
-    yaml_path = os.path.join(artifacts_dir, "prompt_backlog.yml")
-    
-    with open(yaml_path, "w") as f:
-        f.write("prompts:\n  - msg: 1\n  - msg: 2\n")
-        
-    assert get_prompt_backlog_size(repo_root) == 2
+@patch('drivers.github_client.list_issues_by_label')
+def test_get_prompt_backlog_size(mock_list):
+    mock_list.return_value = [{"number": 1}, {"number": 2}]
+    assert get_prompt_backlog_size("/some/repo/root") == 2
 
 def test_get_local_worktrees(tmp_path):
     repo_root = str(tmp_path)

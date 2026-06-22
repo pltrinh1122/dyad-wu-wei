@@ -62,9 +62,7 @@ def test_backlog_add(mock_render, mock_backlog_gh):
 
     assert url == "https://github.com/pltrinh1122/dyad-wu-wei/issues/31"
     mock_backlog_gh.create_issue.assert_called_once()
-    # Now labels are fetched dynamically or defaults to status: todo, backlog
     mock_backlog_gh.add_label.assert_any_call("31", "backlog")
-    mock_backlog_gh.add_label.assert_any_call("31", "status: todo")
     mock_backlog_gh.update_issue_body.assert_called_once()
     
     mock_render.assert_called_once_with("backlog_issue", {
@@ -165,8 +163,7 @@ def test_backlog_add_path(mock_render, mock_backlog_gh):
 
     assert url == "https://github.com/pltrinh1122/dyad-wu-wei/issues/100"
     assert mock_backlog_gh.create_issue.call_count == 4
-    # Labels added for each issue (both backlog and status: todo for terminals, and path for path)
-    assert mock_backlog_gh.add_label.call_count == 8 # 2 (Path: backlog, path) + 2*3 (Align, Plan, Reflect)
+    assert mock_backlog_gh.add_label.call_count == 5
     mock_backlog_gh.add_label.assert_any_call("100", "path")
 
 def test_backlog_cli_list(mock_backlog_gh, capsys):
