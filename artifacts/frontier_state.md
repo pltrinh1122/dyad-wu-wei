@@ -1073,9 +1073,9 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 
 ## Plan - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
-- **Learnings & Context**: Established CheckoutBlockedError invariant
+- **Learnings & Context**: Planned graceful validation for cmd_checkout
 - **Feedforward Invariants**:
-  - `System must gracefully handle git worktree blockages during execution transitions`
+  - `[ ]` None
 
 ## #999: Implement quarantine survivor
 - **Status**: [///] Act Phase
@@ -2787,17 +2787,17 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #2259: Reflect - Synthesize Epistemic Retrospective retro-2173.md
-- **Status**: Backlog
-- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-2173.md into the system's operational guidelines (the Dao).
-- **Feedforward Invariants**:
-  - `[ ]` None
-
-## #2174: Plan - [BUG] Intake: System Crash in checkout
+## #2262: Act - Implement CheckoutBlockedError for graceful checkout failures
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## Act - Implement CheckoutBlockedError
+- **Status**: Completed
+- **Learnings & Context**: Defined CheckoutBlockedError
+- **Feedforward Invariants**:
+  - `System now catches stale checkout states`
 
 ## Active Agents Matrix
 * **agent-sg5**:
