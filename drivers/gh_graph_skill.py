@@ -80,7 +80,7 @@ def parse_meta_index(body: str) -> dict:
     body = body.replace("\\n", "\n")
     
     # Isolate the ## Meta-Index block to avoid parsing checkboxes in retrospective notes
-    meta_index_match = re.search(r'^##\s*Meta-Index\b.*?\n(.*?)(?=^##\s|\Z)', body, re.IGNORECASE | re.MULTILINE | re.DOTALL)
+    meta_index_match = re.search(r'^##\s*Meta-Index\b.*?\n(.*?)(?=^#+\s|\Z)', body, re.IGNORECASE | re.MULTILINE | re.DOTALL)
     if meta_index_match:
         body = meta_index_match.group(1)
     

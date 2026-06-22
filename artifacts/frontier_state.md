@@ -2799,6 +2799,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `System now catches stale checkout states`
 
+## #2217: Act - Hotfix: Isolate Meta-Index parsing in gh_graph_skill
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Act - Hotfix: Isolate Meta-Index parsing in gh_graph_skill
+- **Status**: Completed
+- **Learnings & Context**: Updated regex to stop at any markdown header to isolate Meta-Index
+- **Feedforward Invariants**:
+  - `Meta-Index parsing must be structurally isolated to avoid DAG evaluation failures`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`

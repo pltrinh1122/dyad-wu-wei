@@ -2421,3 +2421,12 @@ nodes:
   learnings: Defined CheckoutBlockedError
   invariants:
   - System now catches stale checkout states
+- name: '#2217: Act - Hotfix: Isolate Meta-Index parsing in gh_graph_skill'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: 'Act - Hotfix: Isolate Meta-Index parsing in gh_graph_skill'
+  status: Completed
+  learnings: Updated regex to stop at any markdown header to isolate Meta-Index
+  invariants:
+  - Meta-Index parsing must be structurally isolated to avoid DAG evaluation failures
