@@ -17,7 +17,6 @@ def test_plan_start_node(mock_verify, mock_gh, mock_fe, mock_telemetry, mock_bac
     
     # Assert
     mock_gh.add_label.assert_called_with("157", "status: in-progress")
-    mock_fe.append_active_node.assert_called_once()
 
 @patch("kernel.daemon_strategic.verify_node_transition_allowed")
 def test_plan_start_node_locked(mock_verify, mock_gh, mock_fe):
@@ -64,8 +63,6 @@ def test_reflect_node(mock_verify, mock_gh, mock_fe, mock_telemetry, mock_backlo
     # Assert
     mock_gh.close_issue.assert_any_call("100", "Node completed via Node Lifecycle Daemon. Moving to PR.")
     mock_gh.close_issue.assert_any_call("181", "Path Invariant Enforced: Automatically closed because the final child Activity has been completed.")
-    mock_fe.set_active_path.assert_called_once_with("/tmp/dummy.md", "None")
-    mock_fe.complete_active_node.assert_called_once_with("/tmp/dummy.md", "Node 1: Test", "It worked", ["[x] Good"], clear_pointers=True)
 
 
 def test_sync_and_clean_node_order():
@@ -286,22 +283,4 @@ def test_sync_and_clean_node_discard_invariant_guard_force():
         
         mock_git.switch.assert_called_once()
 
-def test_sync_and_clean_node_csi_guard_orphaned_wip():
-    with patch("kernel.daemon_node.git_client"), \
-         patch("kernel.daemon_node.github_client") as mock_gh, \
-         patch("kernel.daemon_node.subprocess") as mock_sub, \
-         patch("kernel.daemon_node.HookDaemon"), \
-         patch("kernel.daemon_node.get_local_worktrees", return_value=[]), \
-         patch("kernel.agent_frontier.get_all_active_locked_issue_ids", return_value={"999"}):
 
-        mock_sub.check_output.return_value = ""
-        mock_gh.get_open_prs.return_value = []
-
-        # Simulate GitHub returning issues with status: in-progress
-        mock_gh.list_issues_by_label.side_effect = lambda label: [{"number": 999}, {"number": 1000}] if label == "status: in-progress" else []
-
-        sync_and_clean_node(force_remote=True)
-
-        # The guard should remove the label and add status: todo for issue 1000, but leave 999 alone.
-        mock_gh.remove_label.assert_called_once_with("1000", "status: in-progress")
-        mock_gh.add_label.assert_called_once_with("1000", "status: todo")

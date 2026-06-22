@@ -26,10 +26,7 @@ def extract_path_id(path_str: str) -> str | None:
         return match.group(1)
     return None
 
-def read_active_node(filepath: str) -> str:
-    """Reads the current active node from the frontier state (via agent_frontier)."""
-    from kernel import agent_frontier
-    return agent_frontier.read_active_node(filepath)
+
 
 def read_last_completed_node(filepath: str) -> str:
     """Reads the most recently completed node (via agent_frontier)."""
@@ -41,16 +38,7 @@ def read_active_path(filepath: str) -> str | None:
     from kernel import agent_frontier
     return agent_frontier.read_active_path(filepath)
 
-@record_execution(stage="skill")
-def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str], clear_pointers: bool = True) -> None:
-    """Appends the completed node block (via agent_frontier)."""
-    from kernel import agent_frontier
-    agent_frontier.complete_active_node(filepath, node_name, learnings, invariants, clear_pointers)
 
-def set_active_node(filepath: str, node_name: str) -> None:
-    """Updates the active node (via agent_frontier)."""
-    from kernel import agent_frontier
-    agent_frontier.set_active_node(filepath, node_name)
 
 @record_execution(stage="skill")
 def set_active_path(filepath: str, path_name: str) -> None:
@@ -58,7 +46,3 @@ def set_active_path(filepath: str, path_name: str) -> None:
     from kernel import agent_frontier
     agent_frontier.set_active_path(filepath, path_name)
 
-def append_active_node(filepath: str, node_id: int, node_title: str, description: str, invariants: list[str]) -> None:
-    """Appends a new active node block (via agent_frontier)."""
-    from kernel import agent_frontier
-    agent_frontier.append_active_node(filepath, node_id, node_title, description, invariants)

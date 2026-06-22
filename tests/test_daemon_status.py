@@ -64,11 +64,11 @@ def test_get_local_worktrees(tmp_path):
 
 @patch("kernel.daemon_status.get_current_branch")
 @patch("kernel.daemon_status.get_local_worktrees")
-@patch("kernel.daemon_status.read_active_path")
-@patch("kernel.daemon_status.read_active_node")
-def test_main(mock_node, mock_path, mock_worktrees, mock_branch, capsys):
-    mock_node.return_value = "805"
-    mock_path.return_value = "802"
+@patch("subprocess.run")
+def test_main(mock_subprocess, mock_worktrees, mock_branch, capsys):
+    mock_proc = MagicMock()
+    mock_proc.stdout = "123\tstatus: in-progress\tTest Issue"
+    mock_subprocess.return_value = mock_proc
     mock_branch.return_value = "node/805-status-dashboard"
     mock_worktrees.return_value = [{"number": 1, "title": "Test PR", "url": "local:node/1-test-pr"}]
     
@@ -77,8 +77,8 @@ def test_main(mock_node, mock_path, mock_worktrees, mock_branch, capsys):
             main()
             
     captured = capsys.readouterr()
-    assert "Active Path : 802" in captured.out
-    assert "Active Node : 805" in captured.out
+    assert "Active Nodes (In-Progress):" in captured.out
+    assert "123\tstatus: in-progress\tTest Issue" in captured.out
     assert "WIP Branch  : node/805-status-dashboard" in captured.out
     assert "Local Worktrees: 1" in captured.out
     assert "- #1: Test PR" in captured.out
@@ -127,13 +127,18 @@ def test_main_dispatcher_auto_lock(capsys, monkeypatch):
     
     monkeypatch.setattr(kernel.daemon_status, "get_current_branch", lambda cwd=None: "main")
     monkeypatch.setattr(kernel.daemon_status, "get_local_worktrees", lambda repo: [])
-    monkeypatch.setattr(kernel.daemon_status, "read_active_path", lambda f: "802")
-    monkeypatch.setattr(kernel.daemon_status, "read_active_node", lambda f: "None")
     
     mock_proc = MagicMock()
-    mock_proc.stdout = "ℹ️  Auto-resolved SPAO_PERSONA_ID to 'agent-sg5' for Path #802"
-    mock_proc.stderr = ""
-    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: mock_proc)
+    # It first runs `gh issue list`, we should return empty for no active nodes
+    def run_side_effect(*args, **kwargs):
+        res = MagicMock()
+        if "issue" in args[0]:
+            res.stdout = ""
+        else:
+            res.stdout = "ℹ️  Auto-resolved SPAO_PERSONA_ID to 'agent-sg5' for Path #802"
+        res.stderr = ""
+        return res
+    monkeypatch.setattr(subprocess, "run", run_side_effect)
     
     monkeypatch.setattr(kernel.daemon_nba.NBADaemon, "evaluate", lambda self, frontier_file, local_mode=False: {
         "type": "path_continuation",

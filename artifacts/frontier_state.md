@@ -2891,17 +2891,11 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `preserved TDD boundaries and true dormancy`
 
-## #2293: Plan - Gut Local Lock Ledger and Implement API-Driven Orchestrator for Swarm Fan-Out
+## #2298: Act - Gut Local Lock Ledger
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
-
-## Plan - Gut Local Lock Ledger
-- **Status**: Completed
-- **Learnings & Context**: Technical specification for physical lock excision
-- **Feedforward Invariants**:
-  - `Prepared technical specification`
 
 ## Active Agents Matrix
 * **agent-sg5**:

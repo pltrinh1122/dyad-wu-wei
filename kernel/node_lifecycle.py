@@ -163,28 +163,7 @@ class TerminalNode(BaseNode):
     def __init__(self, issue_id: str):
         super().__init__(issue_id)
 
-    def _verify_state_purity(self, frontier_file: str = "artifacts/frontier_state.md", expected_active: str | None = None):
-        """
-        Verifies that the frontier state is 'pure' (no conflicting active nodes).
-        If expected_active is provided, it validates that the specific node is the only active one.
-        """
-        if not os.path.exists(frontier_file):
-            return
-            
-        current_active = agent_frontier.read_active_node(frontier_file)
-        if current_active and current_active != "None":
-            # If we expect a specific node (e.g. during reflect), it must match
-            if expected_active and current_active == expected_active:
-                return
-            
-            # Special case for "Node <ID>: Title" or "#<ID>:" format
-            match = re.search(r"(?:Node |#)(\d+):", current_active)
-            active_id = match.group(1) if match else None
-            
-            if expected_active and active_id and str(expected_active) == str(active_id):
-                return
-                
-            raise StateDissonanceError(f"Cannot proceed because Node '{current_active}' is already marked as active in {frontier_file}. Release the lock first.")
+
 
     def _validate_spao_purity(self, worktree_path: str | None = None):
         """Validates that a loop:spao branch only modifies policy/documentation paths."""
@@ -265,8 +244,6 @@ class TerminalNode(BaseNode):
         if not os.path.isabs(frontier_file):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
         with FlowTransaction(frontier_file) as tx:
-            self._verify_state_purity(frontier_file)
-            
             # Enforce Quarantine Gate: Only allow nodes that possess the 'backlog' label.
             labels = self.gh_labels
             if "backlog" not in labels:
@@ -331,11 +308,7 @@ class TerminalNode(BaseNode):
             self.set_status("in_progress")
             tx.register_rollback(self.set_status, "open")
             
-            # Atomically set active node in frontier
-            node_title = details.get("title", f"Node {self.issue_id}")
-            agent_frontier.append_active_node(frontier_file, int(self.issue_id), node_title, "Planning Phase", [])
-            
-            log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id} and updated frontier.")
+            log_stage_advancement("plan", "Plan-Start Executed", f"Acquired lock on Node #{self.issue_id}.")
 
             # Purge from Tier 2 Global Backlog to enforce Mutually Exclusive Residence
             global_backlog_path = path_resolver.resolve_workspace_path("artifacts/global_backlog.yml")
@@ -458,8 +431,6 @@ class TerminalNode(BaseNode):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
 
         with FlowTransaction(frontier_file) as tx:
-            self._verify_state_purity(frontier_file, expected_active=self.issue_id)
-            
             open_prs = github_client.get_open_prs()
             if open_prs:
                 pr_info = [f"PR #{pr.get('number', 'Unknown')} (branch: {pr.get('headRefName', 'Unknown')})" for pr in open_prs]
@@ -539,8 +510,7 @@ class TerminalNode(BaseNode):
                 except Exception:
                     pass
             
-            # Revert the active node entry
-            agent_frontier.abort_active_node(frontier_file, str(self.issue_id))
+
 
     def reflect(self, frontier_file: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
         from kernel.htil_gates import check_backlog_mutation
@@ -634,8 +604,7 @@ class TerminalNode(BaseNode):
             from drivers import gh_graph_skill
             gh_graph_skill.check_off_node_in_parent(str(self.issue_id))
             
-            # ATOMIC UPDATE: Mark node completed AND clear pointers
-            agent_frontier.complete_active_node(frontier_file, node_name, learnings, invariants, clear_pointers=True)
+
             
             # Enforce Path Invariant: Evaluate the active path and close it if 0 activities remain
             nba = daemon_nba.NBADaemon()

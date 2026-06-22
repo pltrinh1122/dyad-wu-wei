@@ -225,21 +225,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
             
     git_client.worktree_prune()
 
-    # 6.5. Orphaned WIP CSI Guard
-    try:
-        from kernel.agent_frontier import get_all_active_locked_issue_ids
-        state_path = os.path.join(repo_root, "artifacts", "frontier_state.yml")
-        locked_issue_ids = get_all_active_locked_issue_ids(state_path)
-
-        in_progress_issues = github_client.list_issues_by_label("status: in-progress")
-        for ip_issue in in_progress_issues:
-            ip_id = str(ip_issue["number"])
-            if ip_id not in locked_issue_ids:
-                print(f"[🛡️ CSI GUARD] Orphaned 'status: in-progress' detected on Node #{ip_id}. Lock-State Axiom dictates rejection. Actively downgrading to 'status: todo'.")
-                github_client.remove_label(ip_id, "status: in-progress")
-                github_client.add_label(ip_id, "status: todo")
-    except Exception as ex:
-        print(f"Warning: Failed to execute Orphaned WIP CSI Guard: {ex}")
+    # 6.5. Orphaned WIP CSI Guard removed (Decoupled Geometry)
     # 7. Automate standalone backlog mapping and quarantine status label cleanup
     try:
         import re
@@ -360,19 +346,12 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
     daemon.execute_all(local_mode=not remote_mode)
 
     # NBA Handoff Automation
-    from drivers.frontier_editor import read_active_node
-    frontier_path = os.path.join(repo_root, "artifacts", "frontier_state.md")
-    active_node = "None"
-    if os.path.exists(frontier_path):
-        try:
-            active_node = read_active_node(frontier_path) or "None"
-        except Exception:
-            pass
-            
-    if active_node == "None":
-        from kernel.daemon_nba import NBADaemon
-        nba = NBADaemon(repository="pltrinh1122/dyad-wu-wei")
-        try:
+    try:
+        in_progress = github_client.list_issues_by_label("status: in-progress")
+        if not in_progress:
+            from kernel.daemon_nba import NBADaemon
+            nba = NBADaemon(repository="pltrinh1122/dyad-wu-wei")
+            frontier_path = os.path.join(repo_root, "artifacts", "frontier_state.md")
             result = nba.evaluate(frontier_file=frontier_path, local_mode=not remote_mode)
             if result.get("type") in ["path_continuation", "path_switching"] and result.get("recommendations"):
                 best_nba = result["recommendations"][0]
@@ -380,8 +359,8 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
                 print(f"\n[🤖 AUTONOMY] WIP=0 detected. Automatically acquiring lock for top NBA: Node {nba_id}...")
                 bin_node = os.path.join(repo_root, "bin", "node")
                 subprocess.run([bin_node, "plan-start", str(nba_id)])
-        except Exception:
-            pass
+    except Exception:
+        pass
 
 def reflect_node(frontier_file: str, issue_id: str, node_name: str, learnings: str, invariants: list[str], commit_msg: str, branch_name: str, stage: str = "all", insights: str = "") -> None:
     """Closes the GH issue, creates a PR, and updates the frontier."""
