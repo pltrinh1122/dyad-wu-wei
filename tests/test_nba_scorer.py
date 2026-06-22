@@ -107,5 +107,44 @@ class TestNBAScorer(unittest.TestCase):
         self.assertEqual(res["components"]["persona"], 0.0)
         self.assertEqual(res["score"], 0.0)
 
+    def test_calculate_score_semantic_dispatcher_conflict(self):
+        github_client.get_issue_details = lambda issue_id: {"title": "Test", "body": ""}
+        github_client.get_issue_labels = lambda x: ["activity"]
+        daemon_strategic.find_parent_path_id = lambda x: "480"
+        daemon_strategic.load_ledger = lambda: {
+            "strategic_goals": [
+                {"id": "SG-123", "status": "Active", "prioritized_paths": [480]},
+                {"id": "SG-999", "status": "Active", "prioritized_paths": [900]}
+            ]
+        }
+        nba_scorer_module._get_active_persona = lambda: "agent-alpha"
+        nba_scorer_module._get_persona_ownership = lambda: {}
+        
+        from kernel import agent_frontier
+        self.old_load_state = getattr(agent_frontier, "load_state", None)
+        self.old_resolve_yml_path = getattr(agent_frontier, "resolve_yml_path", None)
+        
+        agent_frontier.resolve_yml_path = lambda x: "dummy.yml"
+        agent_frontier.load_state = lambda x: {
+            "active_agents": {
+                "agent-beta": {
+                    "current_active_path": "#480"  # agent-beta is working on path 480 which is in SG-123
+                }
+            }
+        }
+        
+        scorer = NBAScorer()
+        res = scorer.calculate_score("483")
+        
+        # Restore mock
+        if self.old_load_state:
+            agent_frontier.load_state = self.old_load_state
+        if self.old_resolve_yml_path:
+            agent_frontier.resolve_yml_path = self.old_resolve_yml_path
+            
+        # c_dep should drop to 0.0 because of the semantic conflict in SG-123
+        self.assertEqual(res["components"]["dependency"], 0.0)
+        self.assertEqual(res["score"], 0.0)
+
 if __name__ == "__main__":
     unittest.main()
