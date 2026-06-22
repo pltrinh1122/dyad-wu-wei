@@ -28,37 +28,6 @@ backlog_items:
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2269
 - body: '## Goal
 
-    Synthesize intent to remove Triage Holding invariant
-
-
-    ## Changes
-
-    TBD
-
-
-    ## Pre-Requisites
-
-    TBD
-
-
-    ## Post-Requisites
-
-    TBD
-
-
-    ## Depends On
-
-    TBD
-
-    '
-  labels:
-  - backlog
-  - 'status: todo'
-  number: 2270
-  title: Harmonize - Remediate Zombie Triage Holding Mechanism
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2270
-- body: '## Goal
-
     Plan removal of Triage Holding invariant
 
 
