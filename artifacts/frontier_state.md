@@ -2920,3 +2920,9 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Reflect on fix for system crash.
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## #2364: Reflect - Synthesize Epistemic Retrospective retro-2353.md
+- **Status**: Backlog
+- **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-2353.md into the system's operational guidelines (the Dao).
+- **Feedforward Invariants**:
+  - `[ ]` None
