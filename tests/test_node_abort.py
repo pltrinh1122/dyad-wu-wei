@@ -18,4 +18,3 @@ def test_abort_node_flow(mock_resolve_workspace_path, mock_tx, mock_frontier, mo
     
     mock_set_status.assert_called_with("todo")
     mock_set_classification.assert_called_with("backlog")
-    mock_frontier.abort_active_node.assert_called_once_with("/dummy/frontier.md", "123")

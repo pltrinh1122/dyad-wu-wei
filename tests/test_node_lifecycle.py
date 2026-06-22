@@ -192,12 +192,10 @@ def test_reflect_empty_pr_blocked(mock_enforce, mock_get_worktree_path, mock_nba
 @mock.patch("kernel.node_lifecycle.FlowTransaction")
 @mock.patch("kernel.node_lifecycle.load_node_status_config")
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_details")
-@mock.patch("kernel.node_lifecycle.TerminalNode._verify_state_purity")
 @mock.patch("kernel.node_lifecycle.TerminalNode._validate_orthogonal_scope")
 @mock.patch("kernel.node_lifecycle.TerminalNode.set_status")
-@mock.patch("kernel.node_lifecycle.agent_frontier.append_active_node")
 @mock.patch("kernel.daemon_knowledge_accrual.run_kb_check")
-def test_plan_start_dependency_violation(mock_kb_check, mock_append, mock_set_status, mock_validate_scope, mock_verify_purity, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
+def test_plan_start_dependency_violation(mock_kb_check, mock_set_status, mock_validate_scope, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
     mock_load_config.return_value = {"in_progress": "status: in-progress"}
     mock_get_labels.return_value = ["backlog"]
     
@@ -228,12 +226,10 @@ def test_plan_start_dependency_violation(mock_kb_check, mock_append, mock_set_st
 @mock.patch("kernel.node_lifecycle.FlowTransaction")
 @mock.patch("kernel.node_lifecycle.load_node_status_config")
 @mock.patch("kernel.node_lifecycle.github_client.get_issue_details")
-@mock.patch("kernel.node_lifecycle.TerminalNode._verify_state_purity")
 @mock.patch("kernel.node_lifecycle.TerminalNode._validate_orthogonal_scope")
 @mock.patch("kernel.node_lifecycle.TerminalNode.set_status")
-@mock.patch("kernel.node_lifecycle.agent_frontier.append_active_node")
 @mock.patch("kernel.daemon_knowledge_accrual.run_kb_check")
-def test_plan_start_dependency_satisfied(mock_kb_check, mock_append, mock_set_status, mock_validate_scope, mock_verify_purity, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
+def test_plan_start_dependency_satisfied(mock_kb_check, mock_set_status, mock_validate_scope, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
     mock_load_config.return_value = {"in_progress": "status: in-progress"}
     mock_get_labels.return_value = ["backlog"]
     
@@ -294,7 +290,6 @@ def test_branch_naming_regex_enforcement_and_exemption(mock_enforce, mock_fronti
         # Mock dependencies inside checkout to verify it bypasses the regex check and proceeds to other checks
         with mock.patch("kernel.node_lifecycle.FlowTransaction"), \
              mock.patch("kernel.daemon_strategic.verify_node_transition_allowed"), \
-             mock.patch.object(node, "_verify_state_purity"), \
              mock.patch.object(node, "set_status"):
             # This should NOT raise ValueError. It might raise other errors if mock is incomplete,
             # but ValueError("Branch name MUST follow...") should not be raised.
@@ -306,7 +301,6 @@ def test_branch_naming_regex_enforcement_and_exemption(mock_enforce, mock_fronti
                 
         # Similarly for reflect in workspace mode
         with mock.patch("kernel.node_lifecycle.FlowTransaction"), \
-             mock.patch.object(node, "_verify_state_purity"), \
              mock.patch.object(node, "get_worktree_path", return_value="/tmp/wt"):
             try:
                 node.reflect("dummy_frontier.md", "node-1133", "learnings", [], "msg", "custom-branch-name")
@@ -384,7 +378,6 @@ def test_plan_start_quarantine_protocol_violation():
     with mock.patch("kernel.node_lifecycle.github_client.get_issue_labels", return_value=["status:triage"]), \
          mock.patch("kernel.node_lifecycle.FlowTransaction"), \
          mock.patch("kernel.node_lifecycle.github_client.get_open_prs", return_value=[]), \
-         mock.patch("kernel.node_lifecycle.TerminalNode._verify_state_purity"), \
          mock.patch("kernel.daemon_knowledge_accrual.run_kb_check"):
         
         node = TerminalNode("9999")
@@ -421,7 +414,6 @@ def test_plan_start_quarantine_bypass():
          mock.patch("kernel.node_lifecycle.github_client.add_label") as mock_add_label, \
          mock.patch("kernel.node_lifecycle.FlowTransaction"), \
          mock.patch("kernel.node_lifecycle.github_client.get_open_prs", return_value=[]), \
-         mock.patch("kernel.node_lifecycle.TerminalNode._verify_state_purity"), \
          mock.patch("kernel.daemon_strategic.verify_node_transition_allowed") as mock_verify:
         
         from kernel.node_lifecycle import TerminalNode

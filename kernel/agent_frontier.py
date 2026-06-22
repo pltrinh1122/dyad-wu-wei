@@ -115,24 +115,7 @@ def write_markdown_derived(yml_path: str, md_path: str) -> None:
             lines.append("  - `[ ]` None")
         lines.append("")  # Empty line after node
         
-    # Add pointers at the bottom
-    lines.append("## Active Agents Matrix")
-    active_agents = data.get("active_agents")
-    if active_agents:
-        for persona, state in active_agents.items():
-            lines.append(f"* **{persona}**:")
-            path = state.get("current_active_path") or "None"
-            node = state.get("current_active_node") or "None"
-            lines.append(f"  - Current Active Path: `{path}`")
-            lines.append(f"  - Current Active Node: `{node}`")
-    else:
-        # Legacy fallback
-        lines.append("* **agent-default**:")
-        path = data.get("current_active_path") or "None"
-        node = data.get("current_active_node") or "None"
-        lines.append(f"  - Current Active Path: `{path}`")
-        lines.append(f"  - Current Active Node: `{node}`")
-    lines.append("")  # Empty line
+
     
     # Write derived markdown file under lock
     with lock_file(md_path):
@@ -249,25 +232,7 @@ def set_active_path(filepath: str, path_name: str) -> None:
     state["active_agents"][persona]["current_active_path"] = val
     save_state(yml_path, state)
 
-def set_active_node(filepath: str, node_name: str) -> None:
-    """Updates the text below Current Active Node."""
-    yml_path = resolve_yml_path(filepath)
-    state = load_state(yml_path)
-    persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
-    
-    val = None
-    if node_name != "None" and node_name is not None:
-        val = node_name
-        
-    if "active_agents" not in state:
-        state["active_agents"] = {}
-    if persona not in state["active_agents"]:
-        state["active_agents"][persona] = {
-            "current_active_path": state.get("current_active_path"),
-            "current_active_node": state.get("current_active_node")
-        }
-    state["active_agents"][persona]["current_active_node"] = val
-    save_state(yml_path, state)
+
 
 def get_node_metadata(node_id: int | str) -> dict:
     """Queries issue labels to extract loop, area, and kind metadata."""
@@ -289,134 +254,7 @@ def get_node_metadata(node_id: int | str) -> dict:
         pass
     return metadata
 
-@record_execution(stage="skill")
-def complete_active_node(filepath: str, node_name: str, learnings: str, invariants: list[str], clear_pointers: bool = True) -> None:
-    """Marks the active node as completed in the YAML ledger."""
-    yml_path = resolve_yml_path(filepath)
-    state = load_state(yml_path)
-    
-    node_id = extract_path_id(node_name)
-    nodes = state.get("nodes", [])
-    found = False
-    for node in nodes:
-        if node.get("name") == node_name:
-            node["status"] = "Completed"
-            node["learnings"] = learnings
-            node["invariants"] = invariants
-            if node_id:
-                node.update(get_node_metadata(node_id))
-            found = True
-            break
-            
-    if not found:
-        new_node = {
-            "name": node_name,
-            "status": "Completed",
-            "learnings": learnings,
-            "invariants": invariants
-        }
-        if node_id:
-            new_node.update(get_node_metadata(node_id))
-        nodes.append(new_node)
-        
-    state["nodes"] = nodes
-    if clear_pointers:
-        persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
-        if "active_agents" in state and persona in state["active_agents"]:
-            state["active_agents"][persona]["current_active_node"] = None
-        else:
-            state["current_active_node"] = None
-        
-    save_state(yml_path, state)
 
-def cancel_active_node(filepath: str, node_name: str, reason: str, clear_pointers: bool = True) -> None:
-    """Marks the active node as cancelled in the YAML ledger."""
-    yml_path = resolve_yml_path(filepath)
-    state = load_state(yml_path)
-    
-    node_id = extract_path_id(node_name)
-    nodes = state.get("nodes", [])
-    found = False
-    for node in nodes:
-        if node.get("name") == node_name:
-            node["status"] = "Cancelled"
-            node["learnings"] = f"Cancelled: {reason}"
-            if node_id:
-                node.update(get_node_metadata(node_id))
-            found = True
-            break
-            
-    if not found:
-        new_node = {
-            "name": node_name,
-            "status": "Cancelled",
-            "learnings": f"Cancelled: {reason}",
-            "invariants": []
-        }
-        if node_id:
-            new_node.update(get_node_metadata(node_id))
-        nodes.append(new_node)
-        
-    state["nodes"] = nodes
-    if clear_pointers:
-        persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
-        if "active_agents" in state and persona in state["active_agents"]:
-            state["active_agents"][persona]["current_active_node"] = None
-        else:
-            state["current_active_node"] = None
-        
-    save_state(yml_path, state)
-
-def append_active_node(filepath: str, node_id: int, node_title: str, description: str, invariants: list[str]) -> None:
-    """Appends a new active node block to the ledger."""
-    yml_path = resolve_yml_path(filepath)
-    state = load_state(yml_path)
-    
-    from kernel.title_utils import clean_node_title
-    clean_title = clean_node_title(node_title)
-    node_name = f"#{node_id}: {clean_title}"
-    nodes = state.get("nodes", [])
-    found = False
-    for node in nodes:
-        if node.get("name") == node_name:
-            node["status"] = "[///] Act Phase"
-            node["learnings"] = description
-            node["invariants"] = invariants
-            node.update(get_node_metadata(node_id))
-            found = True
-            break
-            
-    if not found:
-        new_node = {
-            "name": node_name,
-            "status": "[///] Act Phase",
-            "learnings": description,
-            "invariants": invariants
-        }
-        new_node.update(get_node_metadata(node_id))
-        nodes.append(new_node)
-        
-    state["nodes"] = nodes
-    state["current_active_node"] = node_name
-    save_state(yml_path, state)
-
-def abort_active_node(filepath: str, node_id: str) -> None:
-    """Removes the aborted node from the ledger and clears pointers."""
-    yml_path = resolve_yml_path(filepath)
-    state = load_state(yml_path)
-    
-    nodes = state.get("nodes", [])
-    # Remove nodes matching this ID
-    state["nodes"] = [node for node in nodes if str(extract_path_id(node.get("name", ""))) != str(node_id)]
-    
-    # Clear pointers
-    persona = os.environ.get("SPAO_PERSONA_ID") or "agent-default"
-    if "active_agents" in state and persona in state["active_agents"]:
-        state["active_agents"][persona]["current_active_node"] = None
-    else:
-        state["current_active_node"] = None
-        
-    save_state(yml_path, state)
 
 def register_backlog_node(filepath: str, node_id: int, node_title: str, description: str) -> None:
     """Registers a newly created backlog node in the ledger with Backlog status."""
@@ -448,40 +286,4 @@ def register_backlog_node(filepath: str, node_id: int, node_title: str, descript
 
 
 
-def dispatch_active_node(filepath: str, issue_id: str, source_persona: str, target_persona: str) -> None:
-    """Transfers the active node lock from source_persona to target_persona."""
-    yml_path = resolve_yml_path(filepath)
-    state = load_state(yml_path)
-    
-    if "active_agents" not in state:
-        state["active_agents"] = {}
-        
-    source_state = state["active_agents"].get(source_persona, {})
-    
-    # Extract the current lock names
-    current_node = source_state.get("current_active_node")
-    current_path = source_state.get("current_active_path")
-    
-    if not current_node or str(issue_id) not in current_node:
-        raise ValueError(f"Node {issue_id} is not currently locked by {source_persona}.")
-        
-    # Clear from source
-    if source_persona in state["active_agents"]:
-        state["active_agents"][source_persona]["current_active_node"] = None
-        # We don't necessarily clear current_active_path since the kernel_daemon might stay on the path?
-        # Actually, let's keep path on source or move it. Wait, true dormancy means the kernel_daemon sleeps.
-        # But for now, just moving the node lock is enough to satisfy the CSI guard for the subagent.
-        
-    # Bind to target
-    if target_persona not in state["active_agents"]:
-        state["active_agents"][target_persona] = {
-            "current_active_path": current_path,
-            "current_active_node": None
-        }
-    else:
-        # Also copy path over to the subagent so it has the context
-        state["active_agents"][target_persona]["current_active_path"] = current_path
-        
-    state["active_agents"][target_persona]["current_active_node"] = current_node
-    
-    save_state(yml_path, state)
+

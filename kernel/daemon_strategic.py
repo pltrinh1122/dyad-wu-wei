@@ -363,165 +363,6 @@ def _is_pure_ziran(path_id: str, ledger: dict) -> bool:
                 
     return True
 
-def _verify_persona(path_id: str, ledger: dict, node_id: str = None) -> None:
-    is_offline = os.environ.get("ANTIGRAVITY_RUNNING_TESTS") == "1" or os.environ.get("SPAO_OFFLINE") == "1"
-    if is_offline and not _FORCE_STRATEGIC_VERIFICATION:
-        return
-        
-    spao_persona = os.environ.get("SPAO_PERSONA_ID")
-    what_0065_path = path_resolver.resolve_workspace_path("kb", "WHAT-0065-domain-path-ownership-index.md")
-    what_0062_path = path_resolver.resolve_workspace_path("kb", "WHAT-0062-agent-persona-ownership-index.md")
-
-    is_admin_node = False
-    if node_id:
-        try:
-            details = github_client.get_issue_details(str(node_id))
-            title = details.get("title", "")
-            prefixes = ["Harmonize", "Plan", "Reflect", "Align", "Activity", "Discovery"]
-            if any(title.strip().startswith(prefix) for prefix in prefixes):
-                is_admin_node = True
-        except Exception:
-            pass
-
-    if not spao_persona:
-        resolved_owner = None
-        is_bug_path = False
-        try:
-            path_details = github_client.get_issue_details(str(path_id))
-            path_title = path_details.get("title", "")
-            if "[bug] intake" in path_title.lower():
-                is_bug_path = True
-        except Exception:
-            pass
-
-        # 0. Check node administrative prefix
-        if is_admin_node:
-            if is_bug_path:
-                resolved_owner = "agent-healer"
-            else:
-                resolved_owner = "frontier"
-        elif is_bug_path:
-            resolved_owner = "agent-healer"
-
-        # 1. Check WHAT-0065 (Horizontal Domain Override)
-        if os.path.exists(what_0065_path):
-            try:
-                rows = parse_md_table(what_0065_path)
-                path_to_domain = {}
-                domain_to_owner = {}
-                for r in rows:
-                    if "path_id" in r and "domain_id" in r:
-                        path_to_domain[r["path_id"]] = r["domain_id"]
-                    elif "domain_id" in r and "owner_persona" in r:
-                        domain_to_owner[r["domain_id"]] = r["owner_persona"]
-                
-                domain_id = path_to_domain.get(str(path_id))
-                if domain_id:
-                    owner = domain_to_owner.get(domain_id)
-                    if owner and owner not in ("unassigned", "shared"):
-                        resolved_owner = owner
-            except Exception:
-                pass
-
-        # 2. Fall back to WHAT-0062 (Vertical SG mapping)
-        if not resolved_owner:
-            sg_id = None
-            for goal in ledger.get("strategic_goals", []):
-                if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
-                    sg_id = goal.get("id")
-                    break
-            if sg_id and os.path.exists(what_0062_path):
-                try:
-                    rows = parse_md_table(what_0062_path)
-                    sg_to_owner = {r.get("sg_id"): r.get("owner_persona") for r in rows if "sg_id" in r}
-                    owner = sg_to_owner.get(sg_id)
-                    if owner and owner not in ("unassigned", "shared"):
-                        resolved_owner = owner
-                except Exception:
-                    pass
-
-        # 3. Fallback inside child workspace
-        if not resolved_owner and os.environ.get("SPAO_WORKSPACE_DIR"):
-            resolved_owner = "frontier"
-            try:
-                yaml_path = path_resolver.resolve_workspace_path("dyad-wu-wei.yml")
-                if os.path.exists(yaml_path):
-                    with open(yaml_path, "r") as f:
-                        data = yaml.safe_load(f)
-                        resolved_owner = data.get("agent_id") or "frontier"
-            except Exception:
-                pass
-                
-        # 4. Root system daemon fallback
-        if not resolved_owner and not os.environ.get("SPAO_WORKSPACE_DIR"):
-            resolved_owner = "frontier"
-
-        if resolved_owner:
-            os.environ["SPAO_PERSONA_ID"] = resolved_owner
-            spao_persona = resolved_owner
-            print(f"ℹ️  Auto-resolved SPAO_PERSONA_ID to '{spao_persona}' for Path #{path_id}")
-
-    if os.environ.get("SPAO_WORKSPACE_DIR"):
-        if not os.path.exists(what_0062_path) or not os.path.exists(what_0065_path):
-            print("⚠️  WARNING: Child workspace is missing ownership index files in kb/. Strategic gate sovereign bypass allowed.")
-            return
-
-    if not spao_persona:
-        raise Exception("Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent. Cannot verify identity.")
-
-    if _is_pure_ziran(path_id, ledger):
-        return # Pure Ziran paths have no structured domain or SG owner; they bypass the gate.
-
-    try:
-        path_details = github_client.get_issue_details(str(path_id))
-        if "[bug] intake" in path_details.get("title", "").lower():
-            if spao_persona == "agent-healer":
-                return # Authorized by Healer Protocol!
-    except Exception:
-        pass
-
-    # 1. Check WHAT-0065 (Horizontal Domain Override)
-    if os.path.exists(what_0065_path):
-        rows = parse_md_table(what_0065_path)
-        path_to_domain = {}
-        domain_to_owner = {}
-        for r in rows:
-            if "path_id" in r and "domain_id" in r:
-                path_to_domain[r["path_id"]] = r["domain_id"]
-            elif "domain_id" in r and "owner_persona" in r:
-                domain_to_owner[r["domain_id"]] = r["owner_persona"]
-        
-        domain_id = path_to_domain.get(str(path_id))
-        if domain_id:
-            owner = domain_to_owner.get(domain_id)
-            if owner and owner != "unassigned":
-                if owner == "shared" or owner == spao_persona or (spao_persona == "frontier" and is_admin_node):
-                    return # Authorized by horizontal override!
-                else:
-                    raise Exception(f"Persona Gate Blocked: Executing persona '{spao_persona}' does not match horizontal domain owner '{owner}' for Path #{path_id}.")
-    
-    # 2. Fall back to WHAT-0062 (Vertical SG mapping)
-    sg_id = None
-    for goal in ledger.get("strategic_goals", []):
-        if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
-            sg_id = goal.get("id")
-            break
-            
-    if not sg_id:
-        raise Exception(f"Persona Gate Blocked: Path #{path_id} is not associated with any Strategic Goal.")
-        
-    if os.path.exists(what_0062_path):
-        rows = parse_md_table(what_0062_path)
-        sg_to_owner = {r.get("sg_id"): r.get("owner_persona") for r in rows if "sg_id" in r}
-        owner = sg_to_owner.get(sg_id)
-        if not owner:
-            sys.exit(f"[🚫 BLOCKED] Persona Gate Blocked: SG {sg_id} is not mapped in WHAT-0062.")
-        if owner == "unassigned":
-            sys.exit(f"[🚫 BLOCKED] Persona Gate Blocked: SG {sg_id} is 'unassigned'.")
-        if owner != "shared" and owner != spao_persona:
-            if not (spao_persona == "frontier" and is_admin_node):
-                sys.exit(f"[🚫 BLOCKED] Persona Gate Blocked: Executing persona '{spao_persona}' does not match vertical SG owner '{owner}' for Path #{path_id}.")
-
 
 def verify_node_transition_allowed(node_id: str) -> None:
     """Verifies that a node transition is allowed based on the strategic intent ledger."""
@@ -547,11 +388,8 @@ def verify_node_transition_allowed(node_id: str) -> None:
                 
     if str(parent_path_id) not in active_prioritized_paths:
         if _is_pure_ziran(str(parent_path_id), ledger):
-            _verify_persona(str(parent_path_id), ledger, node_id=node_id_str)
             return
         print(f"⚠️  WARNING: Parent Path #{parent_path_id} of Node #{node_id_str} is not prioritized in the active strategic ledger.", file=sys.stderr)
-
-    _verify_persona(str(parent_path_id), ledger, node_id=node_id_str)
 
 def verify_path_activation_allowed(path_id: str) -> None:
     """Verifies that a path activation is allowed based on the strategic intent ledger."""
@@ -569,11 +407,8 @@ def verify_path_activation_allowed(path_id: str) -> None:
                 
     if path_id_str not in active_prioritized_paths:
         if _is_pure_ziran(path_id_str, ledger):
-            _verify_persona(path_id_str, ledger)
             return
         print(f"⚠️  WARNING: Path #{path_id_str} is not prioritized in the active strategic ledger.", file=sys.stderr)
-
-    _verify_persona(path_id_str, ledger)
 @record_execution(stage="align")
 def main():
     parser = argparse.ArgumentParser(description="Manage the strategic intent ledger.")
