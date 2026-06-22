@@ -88,3 +88,89 @@ backlog_items:
   number: 2271
   title: Plan - Remediate Zombie Triage Holding Mechanism
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2271
+- body: '## Goal
+
+    Reflect on removal of Triage Holding invariant
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2271
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2272
+  title: Reflect - Remediate Zombie Triage Holding Mechanism
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2272
+- body: '## Goal
+
+    Define and codify the strict invariants and conditions required for promoting
+    Raw issues (status: todo) into Agentic Elevation (Paths) via the `rub:` protocol.
+
+
+    ## Meta-Index
+
+    - [ ] #2274: Harmonize - Formulate Elevation Invariants
+
+    - [ ] Harmonize - Formulate Elevation Invariants
+
+    - [ ] Plan - Formulate Elevation Invariants
+
+    - [ ] Act - Implement Elevation Invariants in DYAD.md
+
+    - [ ] Reflect - Formulate Elevation Invariants'
+  labels:
+  - backlog
+  - 'status: todo'
+  - path
+  number: 2273
+  title: 'Path: Formulate Invariants for Promotion from Raw Issues to Agentic Elevation'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2273
+- body: '## Goal
+
+    Synthesize intent for promotion invariants
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    TBD
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2274
+  title: Harmonize - Formulate Elevation Invariants
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2274
