@@ -39,9 +39,9 @@ class NBADaemon:
             if local_mode:
                 staging_items = []
             else:
-                staging_items = github_client.list_issues_by_label("status: todo")
+                staging_items = github_client.list_issues_by_label("status: todo,type: intent")
                 if not staging_items:
-                    staging_items = github_client.list_issues_by_label("staging")
+                    staging_items = github_client.list_issues_by_label("staging,type: intent")
 
             # Filter out locked items
             staging_items = [i for i in staging_items if str(i.get("number", "")) not in locked_node_ids]
