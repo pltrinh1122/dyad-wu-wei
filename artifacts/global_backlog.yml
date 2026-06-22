@@ -7,6 +7,8 @@ backlog_items:
 
     ## Meta-Index
 
+    - [ ] #2272: Reflect - Remediate Zombie Triage Holding Mechanism [Depends: 2271]
+
     - [ ] #2271: Plan - Remediate Zombie Triage Holding Mechanism [Depends: 2270]
 
     - [ ] #2270: Harmonize - Remediate Zombie Triage Holding Mechanism
@@ -55,3 +57,34 @@ backlog_items:
   number: 2270
   title: Harmonize - Remediate Zombie Triage Holding Mechanism
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2270
+- body: '## Goal
+
+    Plan removal of Triage Holding invariant
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2270
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2271
+  title: Plan - Remediate Zombie Triage Holding Mechanism
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2271
