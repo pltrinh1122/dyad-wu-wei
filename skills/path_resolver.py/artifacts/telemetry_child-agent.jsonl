@@ -1,0 +1,1 @@
+{"timestamp": "2026-06-22T21:28:42.309983Z", "node_id": "390", "path_id": null, "domain": "kernel", "component": "node_lifecycle", "execution_id": "6996a41d-9d78-4676-8da7-ea5544dfda02", "stage": "PLAN", "event": "START", "metadata": {"function": "plan_finish"}}
