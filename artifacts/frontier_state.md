@@ -2908,3 +2908,9 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Synthesize technical implementation plan for reflect system crash fix.
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## #2358: Act - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Implement fix for frontier_file argument.
+- **Feedforward Invariants**:
+  - `[ ]` None
