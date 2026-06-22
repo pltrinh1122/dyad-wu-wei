@@ -2468,3 +2468,8 @@ nodes:
   learnings: Excised Triage Holding invariant from daemon_node.py
   invariants:
   - Confirmed tests pass after removal
+- name: 2279-harmonize
+  status: Completed
+  learnings: harmonized philosophical intent for bug fix
+  invariants:
+  - maintained true dormancy
