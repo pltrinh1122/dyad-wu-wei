@@ -2849,17 +2849,17 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
   - `Meta-Index isolation`
   - `and abort hygiene`
 
-## #2271: Plan - Remediate Zombie Triage Holding Mechanism
-- **Status**: [///] Act Phase
-- **Learnings & Context**: Planning Phase
+## #2284: Act - Remediate Zombie Triage Holding Mechanism
+- **Status**: Backlog
+- **Learnings & Context**: Execute refactoring of daemon_node.py to remove Triage Holding invariant
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Plan - Remediate Zombie Triage Holding Mechanism
+## Act - Remediate Zombie Triage Holding Mechanism
 - **Status**: Completed
-- **Learnings & Context**: Synthesized plan to refactor daemon_node.py
+- **Learnings & Context**: Excised Triage Holding invariant from daemon_node.py
 - **Feedforward Invariants**:
-  - `Planned removal of blocks A and D`
+  - `Confirmed tests pass after removal`
 
 ## Active Agents Matrix
 * **agent-sg5**:

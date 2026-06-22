@@ -2459,12 +2459,12 @@ nodes:
   - Enforced DAG topology
   - Meta-Index isolation
   - and abort hygiene
-- name: '#2271: Plan - Remediate Zombie Triage Holding Mechanism'
-  status: '[///] Act Phase'
-  learnings: Planning Phase
+- name: '#2284: Act - Remediate Zombie Triage Holding Mechanism'
+  status: Backlog
+  learnings: Execute refactoring of daemon_node.py to remove Triage Holding invariant
   invariants: []
-- name: Plan - Remediate Zombie Triage Holding Mechanism
+- name: Act - Remediate Zombie Triage Holding Mechanism
   status: Completed
-  learnings: Synthesized plan to refactor daemon_node.py
+  learnings: Excised Triage Holding invariant from daemon_node.py
   invariants:
-  - Planned removal of blocks A and D
+  - Confirmed tests pass after removal
