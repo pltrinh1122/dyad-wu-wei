@@ -31,9 +31,9 @@ For DYAD.md §5 Rule 19 (Asynchronous Execution Invariant), use the `run_command
 4. **Epistemic Closure**: Draft a reflection artifact (`artifacts/audit/retro-<context>.md`) using the `kb/templates/practice_reflection.md` template.
 
 ## Antigravity-Specific: Autonomous Path Execution (Wu-wei)
-- Administrative Node NBA: Execute `./bin/node plan-start <ID>`.
+- Administrative Node NBA: Execute `./bin/node plan-start <ID>`. **Exception:** For `[BUG]` paths, the entire Path (including Harmonize and Plan nodes) MUST be dispatched to a sub-agent to bypass the Strategist's cognitive bottleneck.
 - Execution Node (Act) NBA: Dispatch by invoking the appropriate subagent via the `invoke_subagent` tool.
-- Concurrent Factory Floor Dispatch: Frontier MUST dispatch `Act` nodes immediately to sub-agents via `invoke_subagent` and then immediately `plan-start` the next available Path in the backlog without halting or waiting for the sub-agents to complete.
+- Concurrent Factory Floor Dispatch: Frontier MUST dispatch `Act` nodes (and full `[BUG]` paths) immediately to sub-agents via `invoke_subagent` and then immediately `plan-start` the next available Path in the backlog without halting or waiting for the sub-agents to complete.
 
 ## Antigravity-Specific: Intent Broadcast Protocol (Flight Plan)
 While the Agent MUST autonomously execute the NBA without asking for permission, the Agent MUST proactively broadcast a clear, concise "Flight Plan" to the Operator detailing the intent of the upcoming autonomous execution loop before dropping into it. This provides the Operator with systemic transparency and mitigates Operator Anxiety without violating autonomous path execution invariants.
