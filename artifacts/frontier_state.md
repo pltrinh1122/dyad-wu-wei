@@ -2891,6 +2891,12 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `preserved TDD boundaries and true dormancy`
 
+## Reflect - Remediate Zombie Triage Holding Mechanism
+- **Status**: Completed
+- **Learnings & Context**: Path 2269 complete
+- **Feedforward Invariants**:
+  - `Zombie triage holding block removed from daemon_node.py`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
