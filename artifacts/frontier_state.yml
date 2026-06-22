@@ -2430,3 +2430,12 @@ nodes:
   learnings: Updated regex to stop at any markdown header to isolate Meta-Index
   invariants:
   - Meta-Index parsing must be structurally isolated to avoid DAG evaluation failures
+- name: '#2259: Act - Synthesize Epistemic Retrospective retro-2173.md'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Act - Synthesize Epistemic Retrospective retro-2173.md
+  status: Completed
+  learnings: Synthesized retro-2173.md into GEMINI.md
+  invariants:
+  - Added explicit rule about writing retro artifacts before reflection

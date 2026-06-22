@@ -2811,6 +2811,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `Meta-Index parsing must be structurally isolated to avoid DAG evaluation failures`
 
+## #2259: Act - Synthesize Epistemic Retrospective retro-2173.md
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## Act - Synthesize Epistemic Retrospective retro-2173.md
+- **Status**: Completed
+- **Learnings & Context**: Synthesized retro-2173.md into GEMINI.md
+- **Feedforward Invariants**:
+  - `Added explicit rule about writing retro artifacts before reflection`
+
 ## Active Agents Matrix
 * **agent-sg5**:
   - Current Active Path: `None`
