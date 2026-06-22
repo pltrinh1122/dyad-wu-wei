@@ -2902,3 +2902,42 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Execute the physical excision of artifacts/prompt_backlog.yml and implement the Singular Staging Area API mechanism
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## #2346: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `Unknown`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/daemon_node.py", line 691, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/daemon_node.py", line 369, in cmd_reflect
+    reflect_node(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/daemon_node.py", line 343, in reflect_node
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/node_lifecycle.py", line 594, in reflect
+    active_path_str = agent_frontier.read_active_path(frontier_file)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/agent_frontier.py", line 161, in read_active_path
+    state = load_state(yml_path)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/agent_frontier.py", line 63, in load_state
+    with open(yml_path, 'r') as f:
+         ^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/artifacts/audit/retro-2335.yml'
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2347: Harmonize - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for [BUG] Intake: System Crash in reflect.
+- **Feedforward Invariants**:
+  - `[ ]` None

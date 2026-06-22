@@ -124,8 +124,8 @@ class TestMgrStrategic(unittest.TestCase):
 
     @patch("drivers.github_client.list_issues_by_label")
     @patch("drivers.github_client.get_issue_labels")
-    def test_nba_reordering(self, mock_labels, mock_list):
-        # Setup strategic ledger with prioritized paths
+    def test_nbr_triage_scoring(self, mock_labels, mock_list):
+        # Setup strategic ledger with active keywords
         data = {
             "strategic_goals": [
                 {
@@ -135,12 +135,12 @@ class TestMgrStrategic(unittest.TestCase):
                     "constraints": "Constraints 1",
                     "falsification_signal": "Signal 1",
                     "status": "Active",
-                    "prioritized_paths": [368]
+                    "prioritized_paths": []
                 }
             ]
         }
         daemon_strategic.save_ledger(data)
-        
+    
         def mock_list_side_effect(label):
             if label == "status: todo":
                 return [
@@ -149,22 +149,16 @@ class TestMgrStrategic(unittest.TestCase):
                     {"number": 362, "title": "Node 362", "body": "goal"}
                 ]
             elif label == "path":
-                return [
-                    {"number": 100, "body": "- [ ] Node 362"},
-                    {"number": 368, "body": "- [ ] Node 368"}, # Path 368 contains Node 368 (for test purposes)
-                    {"number": 200, "body": "- [ ] Node 355"}
-                ]
+                return []
             return []
         mock_list.side_effect = mock_list_side_effect
-        
+    
         nba = NBADaemon()
-        # Mock active path as None to test global switching logic reordering
-        with patch("kernel.agent_frontier.read_active_path", return_value=None):
-            result = nba.evaluate("dummy_frontier.md")
-            
+        result = nba.evaluate("dummy_frontier.md")
+    
         recs = result["recommendations"]
         self.assertEqual(len(recs), 3)
-        # 368 must be moved to the first place
+        # 368 must be moved to the first place because it matches keywords
         self.assertEqual(recs[0]["number"], 368)
         self.assertEqual(recs[1]["number"], 355)
         self.assertEqual(recs[2]["number"], 362)
@@ -364,4 +358,3 @@ class TestMgrStrategic(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
