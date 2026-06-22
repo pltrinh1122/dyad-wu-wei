@@ -1,1 +1,24 @@
-backlog_items: []
+backlog_items:
+- body: '## Goal
+
+    Remove the zombie Triage Holding catchment invariant from `kernel/daemon_node.py`
+    (lines 250-348) that autonomously recreates Path 2210, violating Path 2046.
+
+
+    ## Meta-Index
+
+    - [ ] #2270: Harmonize - Remediate Zombie Triage Holding Mechanism
+
+    - [ ] Harmonize - Remediate Zombie Triage Holding Mechanism
+
+    - [ ] Plan - Remediate Zombie Triage Holding Mechanism
+
+    - [ ] Reflect - Remediate Zombie Triage Holding Mechanism'
+  labels:
+  - bug
+  - backlog
+  - 'status: todo'
+  - path
+  number: 2269
+  title: 'Path: [BUG] Intake: Remediate Zombie Triage Holding Mechanism'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2269
