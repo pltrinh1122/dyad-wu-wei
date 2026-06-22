@@ -56,3 +56,5 @@ To avoid regression and ensure the durability of the engine's invariants, the Ag
 - **Simultaneous Test Evolution**: When modifying source files, the Agent MUST proactively locate, review, and update the associated test files.
 - **Refactoring Hazard Mitigation**: Before utilizing bulk replacement tools or refactoring core components, verify that automated tests validate the intended structural change and continue passing.
 
+## Antigravity-Specific: Execution Failure Tracing (SG-0005)
+To satisfy the `SG-0005 (TG-0005-04)` invariant for node execution failure tracing, the Agent MUST explicitly write a retro artifact (`artifacts/audit/retro-<node_id>.md`) detailing the execution failure and remediation before attempting to reflect on or re-execute a blocked node.
