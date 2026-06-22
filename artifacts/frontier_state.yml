@@ -2492,8 +2492,13 @@ nodes:
   learnings: completed root cause analysis and resolution documentation
   invariants:
   - preserved TDD boundaries and true dormancy
-- name: Reflect - Remediate Zombie Triage Holding Mechanism
+- name: '#2292: Harmonize - Gut Local Lock Ledger and Implement API-Driven Orchestrator
+    for Swarm Fan-Out'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Harmonize - Gut Local Lock Ledger
   status: Completed
-  learnings: Path 2269 complete
+  learnings: Resolved that WIP-N=1 is a cognitive, not physical, constraint.
   invariants:
-  - Zombie triage holding block removed from daemon_node.py
+  - Removed physical lock dependency for fan-out
