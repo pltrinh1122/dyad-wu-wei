@@ -66,6 +66,25 @@ def _get_persona_ownership():
     except Exception:
         pass
     return mapping
+
+def _get_sg_domain_for_issue(issue_id: str, ledger: dict) -> str | None:
+    # 1. Check if the issue itself is a prioritized path in any SG
+    for goal in ledger.get("strategic_goals", []):
+        if str(issue_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
+            return goal.get("id")
+            
+    # 2. If it's a node, find its parent path and check again
+    try:
+        path_id = daemon_strategic.find_parent_path_id(issue_id)
+        if path_id:
+            for goal in ledger.get("strategic_goals", []):
+                if str(path_id) in [str(p) for p in goal.get("prioritized_paths", [])]:
+                    return goal.get("id")
+    except Exception:
+        pass
+        
+    return None
+
 class NBAScorer:
     """Computes Next-Best-Action (NBA) prioritization scores based on WHAT-0048."""
     
@@ -118,6 +137,40 @@ class NBAScorer:
                         c_dep = 0.0
                         break
                         
+        # Semantic Dispatcher: Cross-Path Dependency Tracking
+        if c_dep > 0.0:
+            try:
+                from kernel import agent_frontier
+                yml_path = agent_frontier.resolve_yml_path(self.frontier_file)
+                state = agent_frontier.load_state(yml_path)
+                active_agents = state.get("active_agents", {})
+                my_persona = _get_active_persona()
+                
+                ledger = daemon_strategic.load_ledger()
+                other_active_sgs = set()
+                
+                # Find SG domains being executed by OTHER agents
+                for persona, data in active_agents.items():
+                    if persona == my_persona:
+                        continue
+                    
+                    for key in ["current_active_node", "current_active_path"]:
+                        val = data.get(key)
+                        if val:
+                            match = re.search(r"#(\d+)", str(val))
+                            if match:
+                                active_id = match.group(1)
+                                sg_domain = _get_sg_domain_for_issue(active_id, ledger)
+                                if sg_domain:
+                                    other_active_sgs.add(sg_domain)
+                                    
+                # Determine Candidate's SG Domain
+                candidate_sg = _get_sg_domain_for_issue(node_id_str, ledger)
+                if candidate_sg and candidate_sg in other_active_sgs:
+                    c_dep = 0.0  # Defer dispatch
+            except Exception:
+                pass
+                
         # 2. Axiomatic Compliance (C_axiom)
         title_lower = title.lower()
         forbidden_1 = "sp" + "ike"
@@ -245,6 +298,42 @@ class GranularNBAScorer(NBAScorer):
                         c_dep = 0.0
                         break
                         
+        # Semantic Dispatcher: Cross-Path Dependency Tracking
+        if c_dep > 0.0:
+            try:
+                from kernel import agent_frontier
+                # Use a default path since GranularNBAScorer might not have self.frontier_file initialized 
+                # (but it inherits from NBAScorer so it does have it)
+                yml_path = agent_frontier.resolve_yml_path(self.frontier_file)
+                state = agent_frontier.load_state(yml_path)
+                active_agents = state.get("active_agents", {})
+                my_persona = _get_active_persona()
+                
+                ledger = daemon_strategic.load_ledger()
+                other_active_sgs = set()
+                
+                # Find SG domains being executed by OTHER agents
+                for persona, data in active_agents.items():
+                    if persona == my_persona:
+                        continue
+                    
+                    for key in ["current_active_node", "current_active_path"]:
+                        val = data.get(key)
+                        if val:
+                            match = re.search(r"#(\d+)", str(val))
+                            if match:
+                                active_id = match.group(1)
+                                sg_domain = _get_sg_domain_for_issue(active_id, ledger)
+                                if sg_domain:
+                                    other_active_sgs.add(sg_domain)
+                                    
+                # Determine Candidate's SG Domain
+                candidate_sg = _get_sg_domain_for_issue(node_id_str, ledger)
+                if candidate_sg and candidate_sg in other_active_sgs:
+                    c_dep = 0.0  # Defer dispatch
+            except Exception:
+                pass
+                
         # 2. Axiomatic Compliance (C_axiom)
         title_lower = title.lower()
         forbidden_1 = "sp" + "ike"
