@@ -15,6 +15,9 @@ class StateDissonanceError(Exception):
 class ReflectionBlockedError(Exception):
     pass
 
+class CheckoutBlockedError(Exception):
+    pass
+
 def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
     return os.environ.get("SPAO_VERBOSE") in ("1", "true", "TRUE") or os.environ.get("SPOA_VERBOSE") in ("1", "true", "TRUE")
@@ -471,7 +474,10 @@ class TerminalNode(BaseNode):
             os.makedirs(os.path.dirname(worktree_path), exist_ok=True)
             
             git_client.fetch("origin")
-            git_client.worktree_add(branch_name, worktree_path, "origin/main")
+            try:
+                git_client.worktree_add(branch_name, worktree_path, "origin/main")
+            except subprocess.CalledProcessError as e:
+                raise CheckoutBlockedError(f"Stale local git state or checkout failed. Cannot create worktree for '{branch_name}': {e}")
             tx.register_rollback(git_client.worktree_remove, worktree_path, force=True)
             tx.register_rollback(git_client.branch_delete, branch_name)
 
