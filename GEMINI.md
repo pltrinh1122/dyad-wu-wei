@@ -31,6 +31,7 @@ For DYAD.md §5 Rule 19 (Asynchronous Execution Invariant), use the `run_command
 4. **Epistemic Closure**: Draft a reflection artifact (`artifacts/audit/retro-<context>.md`) using the `kb/templates/practice_reflection.md` template.
 
 ## Antigravity-Specific: Autonomous Path Execution (Wu-wei)
+- **Two-Tier Backlog Abstraction**: The Agent must NEVER autonomously `plan-start` a node that still has a `status: todo` label. Only fully rigged nodes (labeled `path`) may be dispatched to the factory floor. The only exception is if the Agent is explicitly summoned for a collaborative `rub:` session to rig the node.
 - Administrative Node NBA: Execute `./bin/node plan-start <ID>`. **Exception:** For `[BUG]` paths, the entire Path (including Harmonize and Plan nodes) MUST be dispatched to a sub-agent to bypass the Strategist's cognitive bottleneck.
 - Execution Node (Act) NBA: Dispatch by invoking the appropriate subagent via the `invoke_subagent` tool.
 - Concurrent Factory Floor Dispatch: Frontier MUST dispatch `Act` nodes (and full `[BUG]` paths) immediately to sub-agents via `invoke_subagent` and then immediately `plan-start` the next available Path in the backlog without halting or waiting for the sub-agents to complete.

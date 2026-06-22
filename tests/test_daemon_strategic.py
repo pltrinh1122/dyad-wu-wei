@@ -142,11 +142,11 @@ class TestMgrStrategic(unittest.TestCase):
         daemon_strategic.save_ledger(data)
     
         def mock_list_side_effect(label):
-            if label == "staging":
+            if label == "status: todo":
                 return [
-                    {"number": 362, "title": "Node 362"},
-                    {"number": 368, "title": "Goal Problem Node 368"}, # Contains active keywords
-                    {"number": 355, "title": "Node 355"}
+                    {"number": 368, "title": "Node 368", "body": "goal problem goal"},
+                    {"number": 355, "title": "Node 355", "body": "goal problem"},
+                    {"number": 362, "title": "Node 362", "body": "goal"}
                 ]
             elif label == "path":
                 return []
