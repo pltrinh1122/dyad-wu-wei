@@ -2891,17 +2891,17 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `preserved TDD boundaries and true dormancy`
 
-## #2292: Harmonize - Gut Local Lock Ledger and Implement API-Driven Orchestrator for Swarm Fan-Out
+## #2293: Plan - Gut Local Lock Ledger and Implement API-Driven Orchestrator for Swarm Fan-Out
 - **Status**: [///] Act Phase
 - **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Harmonize - Gut Local Lock Ledger
+## Plan - Gut Local Lock Ledger
 - **Status**: Completed
-- **Learnings & Context**: Resolved that WIP-N=1 is a cognitive, not physical, constraint.
+- **Learnings & Context**: Technical specification for physical lock excision
 - **Feedforward Invariants**:
-  - `Removed physical lock dependency for fan-out`
+  - `Prepared technical specification`
 
 ## Active Agents Matrix
 * **agent-sg5**:
