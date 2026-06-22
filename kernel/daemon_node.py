@@ -95,24 +95,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
     # 3. Assert WIP-N=1 Invariant
     from drivers.exhaust_logger import ExhaustLogger
     if remote_mode:
-        open_prs = github_client.get_open_prs()
-        if open_prs:
-            def format_pr(pr):
-                import re
-                branch = pr.get('headRefName', '')
-                m = re.match(r'^node/(\d+)', branch)
-                node_part = f" for Node #{m.group(1)}" if m else ""
-                return f"PR #{pr['number']}{node_part} (branch: {branch})"
-            
-            pr_list = ", ".join([format_pr(pr) for pr in open_prs])
-            exhaust_path = ExhaustLogger.dump_transient_exhaust(
-                "WipN1Guard",
-                {"open_prs": [pr.get('headRefName', '') for pr in open_prs]},
-                f"WIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}"
-            )
-            raise StateDissonanceError(f"[🚫 BLOCKED] WipN1Guard failed. Transient exhaust serialized to {exhaust_path}. You must read this file to deduce the failure.\nWIP-N=1 Violation: Cannot initiate SENSE phase while PRs are still open: {pr_list}")
-        else:
-            ExhaustLogger.clear_historical_exhaust("WipN1Guard")
+        ExhaustLogger.clear_historical_exhaust("WipN1Guard")
     else:
         open_worktrees = get_local_worktrees(repo_root)
         

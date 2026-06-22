@@ -425,9 +425,7 @@ class TerminalNode(BaseNode):
 
         with FlowTransaction(frontier_file) as tx:
             open_prs = github_client.get_open_prs()
-            if open_prs:
-                pr_info = [f"PR #{pr.get('number', 'Unknown')} (branch: {pr.get('headRefName', 'Unknown')})" for pr in open_prs]
-                sys.exit(f"[🚫 BLOCKED] WIP-N=1 Invariant Violation: Cannot checkout node #{self.issue_id} because there are open pull requests: {pr_info}. You must merge or close them first.")
+            # PR blocking removed to support concurrent fan-out mode.
             
             self.set_status("in_progress")
             tx.register_rollback(self.set_status, "open")
@@ -667,19 +665,7 @@ class TerminalNode(BaseNode):
             pr_title = f"PR: {clean_name}"
             pr_url = github_client.create_pull_request(pr_title, pr_body, head=branch_name)
             
-            # CSI GUARD: Block synchronously until CI checks pass or fail
-            import subprocess
-            from pathlib import Path
-            from drivers import path_resolver
-            print("CSI Guard: Synchronously polling PR checks via bin/pr-sync...")
-            # Use branch_name so gh can resolve the PR context
-            pr_sync_cmd = [str(Path(path_resolver.get_core_dir()) / "bin" / "pr-sync"), branch_name]
-            res = subprocess.run(pr_sync_cmd, capture_output=True, text=True, cwd=path_resolver.get_core_dir())
-            if res.returncode != 0:
-                print(res.stdout)
-                print(res.stderr)
-                raise Exception(f"[CSI GUARD BLOCK] PR checks failed! Steering Vector:\n{res.stdout}\n{res.stderr}")
-            print("CSI Guard: PR checks PASSED. Continuing transition...")
+            # CSI GUARD removed: Relying on GitHub branch protection rules to gate merges.
             
             # Evaluate Administrative Node HTIL Bypass (WHY-0473-configurable-htil-pr-gate)
             import yaml

@@ -2902,9 +2902,3 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Execute the physical excision of artifacts/prompt_backlog.yml and implement the Singular Staging Area API mechanism
 - **Feedforward Invariants**:
   - `[ ]` None
-
-## #2322: Harmonize - Audit and refactor CSI Guard code to decouple from PR HITL Gate
-- **Status**: Backlog
-- **Learnings & Context**: Harmonize on the philosophical and technical intent.
-- **Feedforward Invariants**:
-  - `[ ]` None

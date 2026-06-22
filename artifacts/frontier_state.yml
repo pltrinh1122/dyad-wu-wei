@@ -2501,8 +2501,3 @@ nodes:
   learnings: Execute the physical excision of artifacts/prompt_backlog.yml and implement
     the Singular Staging Area API mechanism
   invariants: []
-- name: '#2322: Harmonize - Audit and refactor CSI Guard code to decouple from PR
-    HITL Gate'
-  status: Backlog
-  learnings: Harmonize on the philosophical and technical intent.
-  invariants: []
