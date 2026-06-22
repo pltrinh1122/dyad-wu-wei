@@ -237,7 +237,7 @@ def cmd_verify():
         for item in backlog_items:
             num = str(item.get("number"))
             labels = github_client.get_issue_labels(num)
-            if "path" in labels:
+            if "path" in labels or "type: path" in labels:
                 open_paths.append(item)
                 
         if open_paths:
@@ -324,7 +324,7 @@ def find_parent_path_id(node_id: str) -> str | None:
         return None
         
     try:
-        path_items = github_client.list_issues_by_label("path")
+        path_items = github_client.list_issues_by_label("type: path") + github_client.list_issues_by_label("path")
     except Exception as e:
         print(f"Warning: Failed to fetch path issues: {e}")
         return None

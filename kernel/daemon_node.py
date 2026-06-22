@@ -175,7 +175,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
         # Sync Tier 2 Global Backlog Cache
         try:
             backlog_items = github_client.list_issues_by_label("backlog")
-            backlog_items = [item for item in backlog_items if "path" not in item.get("labels", [])]
+            backlog_items = [item for item in backlog_items if "path" not in item.get("labels", []) and "type: path" not in item.get("labels", [])]
             backlog_items.sort(key=lambda x: x.get("number", 0))
             
             backlog_file_path = os.path.join(repo_root, "artifacts", "global_backlog.yml")
@@ -233,7 +233,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
         for issue in open_issues:
             labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
             labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
-            if "path" in labels:
+            if "path" in labels or "type: path" in labels:
                 paths.append(issue)
                 body = issue.get("body") or ""
                 node_ids = re.findall(r"-\s+\[[\s*xX]\]\s+Node\s+(\d+):", body)
@@ -245,7 +245,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
             issue_id = str(issue["number"])
             labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
             labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
-            if "backlog" in labels and "path" not in labels:
+            if "backlog" in labels and "path" not in labels and "type: path" not in labels:
                 title = issue.get("title", "")
                 is_terminal = any(t in title.lower() for t in ["activity", "discovery", "intake"])
                 if is_terminal and issue_id not in mapped_nodes:
