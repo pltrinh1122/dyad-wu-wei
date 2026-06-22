@@ -2439,3 +2439,12 @@ nodes:
   learnings: Synthesized learnings from checkout crash resolution
   invariants:
   - Implemented graceful degradation via CheckoutBlockedError for stale git states
+- name: '#2257: Act - Synthesize Epistemic Retrospective retro-2171.md'
+  status: '[///] Act Phase'
+  learnings: Planning Phase
+  invariants: []
+- name: Act - Synthesize Epistemic Retrospective retro-2171.md
+  status: Completed
+  learnings: Synthesized retro-2171.md into GEMINI.md
+  invariants:
+  - Added explicit rule about graceful degradation upon local invariant failure
