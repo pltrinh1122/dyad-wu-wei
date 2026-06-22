@@ -2501,3 +2501,27 @@ nodes:
   learnings: Execute the physical excision of artifacts/prompt_backlog.yml and implement
     the Singular Staging Area API mechanism
   invariants: []
+- name: '#2346: [BUG] Intake: System Crash in reflect'
+  status: Backlog
+  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `Unknown`\n\
+    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/daemon_node.py\"\
+    , line 691, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/daemon_node.py\"\
+    , line 369, in cmd_reflect\n    reflect_node(\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/daemon_node.py\"\
+    , line 343, in reflect_node\n    node.reflect(frontier_file, node_name, learnings,\
+    \ invariants, commit_msg, branch_name, stage=stage, insights=insights)\n  File\
+    \ \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/node_lifecycle.py\"\
+    , line 594, in reflect\n    active_path_str = agent_frontier.read_active_path(frontier_file)\n\
+    \                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File\
+    \ \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/agent_frontier.py\"\
+    , line 161, in read_active_path\n    state = load_state(yml_path)\n          \
+    \  ^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/kernel/agent_frontier.py\"\
+    , line 63, in load_state\n    with open(yml_path, 'r') as f:\n         ^^^^^^^^^^^^^^^^^^^\n\
+    FileNotFoundError: [Errno 2] No such file or directory: '/mnt/shared_data/dzw/dyad-wu-wei/.worktrees/node/2335-reflect-nba/artifacts/audit/retro-2335.yml'\n\
+    \n```\n"
+  invariants: []
+  kind: path
+- name: '#2347: Harmonize - [BUG] Intake: System Crash in reflect'
+  status: Backlog
+  learnings: 'Harmonize on the philosophical and technical intent for [BUG] Intake:
+    System Crash in reflect.'
+  invariants: []
