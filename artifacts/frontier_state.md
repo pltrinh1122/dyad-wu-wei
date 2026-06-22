@@ -1067,9 +1067,9 @@ Exception: Persona Gate Blocked: SPAO_PERSONA_ID environment variable is absent.
 
 ## Harmonize - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
-- **Learnings & Context**: Confirmed that the checkout Persona Gate exception was already fixed by PR #1722, which implemented root-level environment fallback.
+- **Learnings & Context**: Mapped CalledProcessError during worktree add to CheckoutBlockedError for graceful rollback
 - **Feedforward Invariants**:
-  - `[ ]` None
+  - `System MUST NOT crash due to stale local git state during checkout`
 
 ## Plan - [BUG] Intake: System Crash in checkout
 - **Status**: Completed
@@ -2787,11 +2787,11 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## Reflect - [BUG] Intake: System Crash in reflect
-- **Status**: Completed
-- **Learnings & Context**: Exceptions should be structured rather than native Python unhandled exceptions
+## #2173: Harmonize - [BUG] Intake: System Crash in checkout
+- **Status**: [///] Act Phase
+- **Learnings & Context**: Planning Phase
 - **Feedforward Invariants**:
-  - `System MUST NOT crash during reflection due to blocked requirements`
+  - `[ ]` None
 
 ## Active Agents Matrix
 * **agent-sg5**:
