@@ -2914,3 +2914,9 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Implement fix for frontier_file argument.
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## #2361: Reflect - [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Learnings & Context**: Reflect on fix for system crash.
+- **Feedforward Invariants**:
+  - `[ ]` None
