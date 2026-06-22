@@ -127,6 +127,8 @@ backlog_items:
 
     ## Meta-Index
 
+    - [ ] #2277: Reflect - Formulate Elevation Invariants [Depends: 2276]
+
     - [ ] #2276: Act - Implement Elevation Invariants in DYAD.md [Depends: 2275]
 
     - [ ] #2275: Plan - Formulate Elevation Invariants [Depends: 2274]
@@ -240,3 +242,34 @@ backlog_items:
   number: 2276
   title: Act - Implement Elevation Invariants in DYAD.md
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2276
+- body: '## Goal
+
+    Reflect on promotion invariants
+
+
+    ## Changes
+
+    TBD
+
+
+    ## Pre-Requisites
+
+    TBD
+
+
+    ## Post-Requisites
+
+    TBD
+
+
+    ## Depends On
+
+    2276
+
+    '
+  labels:
+  - backlog
+  - 'status: todo'
+  number: 2277
+  title: Reflect - Formulate Elevation Invariants
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2277
