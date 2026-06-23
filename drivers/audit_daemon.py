@@ -438,6 +438,24 @@ def evaluate_liveness_stall(rule, state):
                 print(f"[CSI GUARD B] Initiating autonomous abort for stalled node '{active_node}' (Issue #{issue_id}).")
                 bin_node = str(get_repo_root() / "bin" / "node")
                 subprocess.run([bin_node, "abort", issue_id], check=False)
+                
+                # Serialize the anomaly by creating a new issue
+                issue_title = f"[BUG] Autonomous Abort: Node #{issue_id} Stalled"
+                issue_body = (
+                    f"**Context**: The audit daemon detected a liveness stall on active node '{active_node}'.\n"
+                    f"**Trigger**: `frontier_state.yml` was not modified for {elapsed_minutes:.0f} minutes.\n"
+                    f"**Action**: The node was automatically aborted to prevent a silent seizure.\n"
+                    f"**Next Steps**: Investigate the cognitive execution loop for Node #{issue_id} to determine the cause of the stall."
+                )
+                
+                subprocess.run([
+                    "gh", "issue", "create",
+                    "--title", issue_title,
+                    "--body", issue_body,
+                    "--label", "type: intent",
+                    "--label", "status: todo"
+                ], check=False, cwd=get_repo_root())
+                print(f"[CSI GUARD B] Created bug intent issue for the autonomous abort.")
             except Exception as e:
                 print(f"[CSI GUARD B] Failed to execute autonomous abort: {e}")
         else:
