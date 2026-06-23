@@ -239,28 +239,31 @@ class TestMgrStrategic(unittest.TestCase):
             daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
             daemon_strategic._MOCK_PARENT_PATHS = {}
 
-    def test_verify_node_transition_allowed_missing_parent(self):
+    @patch("sys.stderr", new_callable=lambda: __import__("io").StringIO())
+    def test_verify_node_transition_allowed_missing_parent(self, mock_stderr):
         data = {
             "strategic_goals": [
                 {
                     "id": "SG-0001",
-                    "status": "Active",
-                    "prioritized_paths": [416]
+                    "status": "Inactive",
+                    "prioritized_paths": [419]
                 }
             ]
         }
         daemon_strategic.save_ledger(data)
-        
+    
         daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         daemon_strategic._MOCK_PARENT_PATHS = {}
-        
+    
         try:
-            with self.assertRaises(SystemExit) as ctx:
-                daemon_strategic.verify_node_transition_allowed("419")
-            self.assertIn("Harmonization Failure", str(ctx.exception))
+            # Should proceed without raising Exception, writing warning to stderr
+            daemon_strategic.verify_node_transition_allowed("419")
+            warning_out = mock_stderr.getvalue()
+            self.assertIn("WARNING: Node #419 (or its parent #419) is not prioritized", warning_out)
         finally:
             daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
+            del os.environ["SPAO_PERSONA_ID"]
 
     @patch("sys.stderr", new_callable=lambda: __import__("io").StringIO())
     def test_verify_node_transition_allowed_not_prioritized_warning(self, mock_stderr):
@@ -274,16 +277,16 @@ class TestMgrStrategic(unittest.TestCase):
             ]
         }
         daemon_strategic.save_ledger(data)
-        
+    
         daemon_strategic._FORCE_STRATEGIC_VERIFICATION = True
         os.environ["SPAO_PERSONA_ID"] = "agent-sg1"
         daemon_strategic._MOCK_PARENT_PATHS = {"419": "416"}
-        
+    
         try:
             # Should proceed without raising Exception, writing warning to stderr
             daemon_strategic.verify_node_transition_allowed("419")
             warning_out = mock_stderr.getvalue()
-            self.assertIn("WARNING: Parent Path #416 of Node #419 is not prioritized", warning_out)
+            self.assertIn("WARNING: Node #419 (or its parent #416) is not prioritized", warning_out)
         finally:
             daemon_strategic._FORCE_STRATEGIC_VERIFICATION = False
             daemon_strategic._MOCK_PARENT_PATHS = {}

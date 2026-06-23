@@ -373,11 +373,9 @@ def verify_node_transition_allowed(node_id: str) -> None:
         return
         
     parent_path_id = find_parent_path_id(node_id_str)
-    if is_offline and not parent_path_id and not _FORCE_STRATEGIC_VERIFICATION:
-        return
-        
     if not parent_path_id:
-        sys.exit(f"[🚫 BLOCKED] Harmonization Failure: Terminal Node #{node_id_str} has no parent Path. (Is it a Path issue? You cannot execute plan-start on a Path.)")
+        # In a flattened architecture, a root node is its own path.
+        parent_path_id = node_id_str
         
     ledger = load_ledger()
     active_prioritized_paths = set()
@@ -389,7 +387,7 @@ def verify_node_transition_allowed(node_id: str) -> None:
     if str(parent_path_id) not in active_prioritized_paths:
         if _is_pure_ziran(str(parent_path_id), ledger):
             return
-        print(f"⚠️  WARNING: Parent Path #{parent_path_id} of Node #{node_id_str} is not prioritized in the active strategic ledger.", file=sys.stderr)
+        print(f"⚠️  WARNING: Node #{node_id_str} (or its parent #{parent_path_id}) is not prioritized in the active strategic ledger.", file=sys.stderr)
 
 def verify_path_activation_allowed(path_id: str) -> None:
     """Verifies that a path activation is allowed based on the strategic intent ledger."""
