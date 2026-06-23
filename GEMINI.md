@@ -16,21 +16,8 @@ This file serves as the **Personalized Anchor** and the **Antigravity-specific H
 
 ---
 
-## Antigravity-Specific: Background Daemon Setup
-During the Bring-Up Process (DYAD.md §2, Step 5), use your `schedule` tool to establish background cron jobs:
-- Set `CronExpression` according to `infra/audit-daemon/audit_config.yml` (e.g., `*/5 * * * *`)
-- Set `Prompt="Run ./drivers/audit_daemon.py"`
-
 ## Antigravity-Specific: Asynchronous Execution
 For DYAD.md §5 Rule 19 (Asynchronous Execution Invariant), use the `run_command` tool for background bash tasks and the `schedule` tool for timers. The Agent's conversational turn must function exclusively as an "I am ready for the next prompt" signal while work completes silently in the background, waking the Agent via system callbacks. The Agent must never halt execution by yielding without a pending background task or timer, as this causes the Agent to become stuck.
-
-## Antigravity-Specific: Stepped-Away Discipline (Dormancy)
-1. **Dormancy Injection**: The Agent MUST explicitly use the `manage_task(Action="kill")` tool to terminate the recurring `audit_daemon.py` schedule before yielding the turn.
-2. **Heartbeat Seizure Prevention**: Invoke `manage_task(Action="list")` and strictly kill any lingering cron schedules.
-3. **Re-Instantiation**: The Agent MUST use the `schedule` tool to immediately re-instantiate the `audit_daemon.py` background cron job upon awakening.
-4. **Epistemic Closure**: Draft a reflection artifact (`artifacts/audit/retro-<context>.md`) using the `kb/templates/practice_reflection.md` template.
-
-
 
 ## Antigravity-Specific: Intent Broadcast Protocol (Flight Plan)
 While the Agent MUST autonomously execute the NBA without asking for permission, the Agent MUST proactively broadcast a clear, concise "Flight Plan" to the Operator detailing the intent of the upcoming autonomous execution loop before dropping into it. This provides the Operator with systemic transparency and mitigates Operator Anxiety without violating autonomous path execution invariants.
