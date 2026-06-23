@@ -143,6 +143,65 @@ class BacklogDaemon:
                         
         return orphaned_count
 
+    def sweep_orphaned_paths(self) -> int:
+        """Identifies orphaned paths (paths with no open child nodes but path is open) and triggers RCA."""
+        import re
+        from drivers.github_client import get_open_issues, get_issue_details, add_label, update_issue_body
+        open_issues = get_open_issues()
+        path_issues = []
+        for issue in open_issues:
+            labels = [l.get("name", "").lower() for l in issue.get("labels", []) if isinstance(l, dict)]
+            labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
+            if "path" in labels or issue.get("title", "").lower().startswith("path:"):
+                path_issues.append(issue)
+                
+        orphaned_paths = 0
+        for path in path_issues:
+            body = path.get("body") or ""
+            meta_match = re.search(r"## Meta-Index\s*\n(.*?)(?=\n##|\Z)", body, re.IGNORECASE | re.DOTALL)
+            if meta_match:
+                lines = meta_match.group(1).strip().split('\n')
+                has_children = False
+                all_closed = True
+                
+                for line in lines:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    m = re.match(r"-\s*\[([ xX]?)\]\s*(?:Node|Activity|Discovery|Plan|Act|Reflect|Align)?\s*#?(\d+):?", line, re.IGNORECASE)
+                    if m:
+                        has_children = True
+                        checked = m.group(1).lower() == 'x'
+                        child_id = m.group(2)
+                        if not checked:
+                            try:
+                                child_details = get_issue_details(child_id)
+                                if child_details.get("state", "").upper() == "OPEN":
+                                    all_closed = False
+                                    break
+                            except Exception:
+                                # Default to assuming it's open if we can't fetch it, to be safe
+                                all_closed = False
+                                break
+                            
+                if has_children and all_closed:
+                    issue_num = str(path["number"])
+                    # Check if we already tagged it
+                    labels = [l.get("name", "").lower() for l in path.get("labels", []) if isinstance(l, dict)]
+                    labels += [l.lower() for l in path.get("labels", []) if isinstance(l, str)]
+                    if "status: rca-required" not in labels:
+                        try:
+                            add_label(issue_num, "status: rca-required")
+                            msg = ("**Automated CSI Guard**: This Path has been identified as an Orphaned Path "
+                                   "(all child nodes are closed, but the Path remains open). An RCA (Root Cause Analysis) "
+                                   "must be performed to systematically resolve why it was not closed natively by the node lifecycle daemon.")
+                            update_issue_body(issue_num, body + f"\n\n{msg}")
+                            orphaned_paths += 1
+                            print(f"Swept orphaned path #{issue_num}")
+                        except Exception as e:
+                            print(f"Failed to sweep orphaned path #{issue_num}: {e}")
+        return orphaned_paths
+
     def add(self, node_type: str, title: str, goal: str, path_id: str = None, depends_on: str = None) -> str:
         """Creates a GH issue based on whether the node type maps to a Terminal or Non-Terminal Base Class."""
         node_type_lower = node_type.lower()

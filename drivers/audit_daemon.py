@@ -468,13 +468,16 @@ def evaluate_liveness_stall(rule, state):
 def evaluate_orphaned_nodes(rule, state):
     from kernel.daemon_backlog import BacklogDaemon
     try:
-        orphaned_count = BacklogDaemon().sweep_orphans()
-        if orphaned_count > 0:
-            msg = f"[NOTIFICATION] Automated Hygiene Sweep: Deferred {orphaned_count} orphaned terminal nodes."
+        bd = BacklogDaemon()
+        orphaned_count = bd.sweep_orphans()
+        orphaned_paths_count = bd.sweep_orphaned_paths()
+        
+        if orphaned_count > 0 or orphaned_paths_count > 0:
+            msg = f"[NOTIFICATION] Automated Hygiene Sweep: Deferred {orphaned_count} orphaned terminal nodes, Tagged {orphaned_paths_count} orphaned paths for RCA."
             dispatch_alert(msg)
             return True, state
     except Exception as e:
-        print(f"Error evaluating orphaned nodes: {e}")
+        print(f"Error evaluating orphaned nodes/paths: {e}")
     return False, state
 
 # Registry mapping rule types to evaluator functions
