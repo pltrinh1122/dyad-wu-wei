@@ -11,3 +11,4 @@ Modify the `drivers/audit_daemon.py` to programmatically open a new issue labele
 
 ## Rationale
 To bridge the Dark Substrate with the Operator UI, ensuring that when the daemon deterministically aborts a stalled node, the LLM is notified via a standardized `[BUG]` intent in the backlog for cognitive investigation.
+
