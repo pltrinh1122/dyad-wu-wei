@@ -22,10 +22,27 @@ def is_verbose() -> bool:
     """Checks if verbose mode is triggered by the operator."""
     return os.environ.get("SPAO_VERBOSE") in ("1", "true", "TRUE") or os.environ.get("SPOA_VERBOSE") in ("1", "true", "TRUE")
 
+def _elevate_parent_path_status(issue_id: str) -> None:
+    """Automatically query the parent Path and elevate its label from 'status: todo' to 'status: in-progress'."""
+    try:
+        from kernel import daemon_strategic
+        from kernel.node_lifecycle import BaseNode, load_node_status_config
+        parent_path_id = daemon_strategic.find_parent_path_id(str(issue_id))
+        if parent_path_id and str(parent_path_id) != str(issue_id):
+            path_node = BaseNode(parent_path_id)
+            path_labels = path_node.gh_labels
+            todo_label = load_node_status_config().get("todo", "status: todo")
+            if todo_label in path_labels:
+                path_node.set_status("in_progress")
+                print(f"Elevated parent Path #{parent_path_id} status to in-progress.")
+    except Exception as e:
+        print(f"Warning: Failed to elevate parent path status: {e}")
+
 def plan_start_node(issue_id: str) -> None:
     """Acquires the GH Issue label lock to begin a multi-phase planning sequence."""
     node = TerminalNode(issue_id)
     node.plan_start()
+    _elevate_parent_path_status(issue_id)
 
 def plan_finish_node(issue_id: str, body: str) -> str:
     """Finalizes a multi-phase plan by committing the Node Contract into the existing Issue."""
@@ -36,6 +53,7 @@ def checkout_node(issue_id: str, branch_name: str) -> None:
     """Creates a git worktree for a new node."""
     node = TerminalNode(issue_id)
     node.checkout(branch_name)
+    _elevate_parent_path_status(issue_id)
 
 @record_execution(stage="sense")
 def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False) -> None:
