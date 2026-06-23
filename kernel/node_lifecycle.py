@@ -373,6 +373,9 @@ class TerminalNode(BaseNode):
             
         self.update_body(body)
         
+        if re.search(r"^(?:(?:Node|Path|Discovery|Activity)\s*\d+:\s*|#\d+:\s*)?Plan\b", current_title, flags=re.IGNORECASE):
+            self.close("Plan finalized.")
+        
         issue_url = f"https://github.com/pltrinh1122/dyad-wu-wei/issues/{self.issue_id}"
         log_stage_advancement("plan", "Plan Phase Completed", f"Node issue #{self.issue_id} successfully planned. Transitioning to Act phase.")
         return issue_url

@@ -137,6 +137,36 @@ def test_plan_finish_spec_check_failure(mock_get_details, mock_run, mock_get_lab
         node.plan_finish("dummy body")
 
 @mock.patch("kernel.node_lifecycle.subprocess.run")
+@mock.patch("kernel.node_lifecycle.TerminalNode.update_body")
+@mock.patch("kernel.node_lifecycle.TerminalNode.close")
+@mock.patch("kernel.node_lifecycle.github_client.get_issue_details")
+def test_plan_finish_automates_closure_for_plan_nodes(mock_get_details, mock_close, mock_update_body, mock_run):
+    mock_get_details.return_value = {"title": "Node 2453: Plan - Automate Closure", "body": ""}
+    mock_run.return_value = mock.MagicMock(returncode=0, stdout="kb/WHAT-2453.md")
+    
+    with mock.patch("kernel.daemon_knowledge_accrual.run_kb_check"):
+        node = TerminalNode("2453")
+        node.plan_finish("new body")
+        
+    mock_update_body.assert_called_once_with("new body")
+    mock_close.assert_called_once_with("Plan finalized.")
+
+@mock.patch("kernel.node_lifecycle.subprocess.run")
+@mock.patch("kernel.node_lifecycle.TerminalNode.update_body")
+@mock.patch("kernel.node_lifecycle.TerminalNode.close")
+@mock.patch("kernel.node_lifecycle.github_client.get_issue_details")
+def test_plan_finish_does_not_close_non_plan_nodes(mock_get_details, mock_close, mock_update_body, mock_run):
+    mock_get_details.return_value = {"title": "Node 2454: Act - Automate Closure", "body": ""}
+    mock_run.return_value = mock.MagicMock(returncode=0, stdout="")
+    
+    with mock.patch("kernel.daemon_knowledge_accrual.run_kb_check"):
+        node = TerminalNode("2454")
+        node.plan_finish("new body")
+        
+    mock_update_body.assert_called_once_with("new body")
+    mock_close.assert_not_called()
+
+@mock.patch("kernel.node_lifecycle.subprocess.run")
 @mock.patch("kernel.node_lifecycle.git_client")
 @mock.patch("kernel.node_lifecycle.github_client")
 @mock.patch("kernel.node_lifecycle.agent_frontier")
