@@ -209,9 +209,10 @@ class BacklogDaemon:
         
         is_terminal = node_type_lower in taxonomy.get("terminal", [])
         is_non_terminal = node_type_lower in taxonomy.get("non_terminal", [])
+        is_intent = node_type_lower == "intent"
         
-        if not is_terminal and not is_non_terminal:
-            valid_types = taxonomy.get("terminal", []) + taxonomy.get("non_terminal", [])
+        if not is_terminal and not is_non_terminal and not is_intent:
+            valid_types = taxonomy.get("terminal", []) + taxonomy.get("non_terminal", []) + ["intent"]
             raise ValueError(f"Error: Invalid node type '{node_type}'. Must be one of: {', '.join(valid_types)}")
             
         if is_terminal and not path_id:
@@ -236,7 +237,9 @@ class BacklogDaemon:
         # Strip any accidentally prepended predictive IDs or redundant prefixes from the user title
         cleaned_title = clean_node_title(title)
         formatted_title = cleaned_title
-        if is_non_terminal and not formatted_title.lower().startswith("path:"):
+        if is_intent and not formatted_title.lower().startswith("intent:"):
+            formatted_title = f"Intent: {formatted_title}"
+        elif is_non_terminal and not formatted_title.lower().startswith("path:"):
             formatted_title = f"Path: {formatted_title}"
 
         # Idempotency duplicate check
@@ -251,7 +254,7 @@ class BacklogDaemon:
         except Exception:
             pass
 
-        if is_non_terminal:
+        if is_non_terminal or is_intent:
             kwargs = {"goal": goal}
             body = render_template("path_tracker", kwargs)
             issue_url = github_client.create_issue(formatted_title, body)
@@ -277,11 +280,19 @@ class BacklogDaemon:
             backlog_label = class_config.get("backlog", "backlog")
             
             github_client.add_label(issue_id, backlog_label)
-            if is_non_terminal:
+            github_client.add_label(issue_id, "node")
+            if is_intent:
+                github_client.add_label(issue_id, "intent")
+                github_client.add_label(issue_id, "status: todo")
+            elif is_non_terminal:
                 github_client.add_label(issue_id, "path")
         except Exception:
             github_client.add_label(issue_id, "backlog")
-            if is_non_terminal:
+            github_client.add_label(issue_id, "node")
+            if is_intent:
+                github_client.add_label(issue_id, "intent")
+                github_client.add_label(issue_id, "status: todo")
+            elif is_non_terminal:
                 github_client.add_label(issue_id, "path")
 
         if is_terminal and path_id:
