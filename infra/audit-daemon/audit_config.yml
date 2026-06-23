@@ -43,4 +43,6 @@ rules:
   alert_level: FAILURE
   create_intake: false
   prompt_message: "GEMINI.md changed — agent (/exit) recommended to reload instructions"
-
+- id: repository_clean_state
+  type: clean_state
+  alert_level: FAILURE

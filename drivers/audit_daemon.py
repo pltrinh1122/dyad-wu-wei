@@ -480,6 +480,58 @@ def evaluate_orphaned_nodes(rule, state):
         print(f"Error evaluating orphaned nodes/paths: {e}")
     return False, state
 
+def evaluate_clean_state(rule, state):
+    try:
+        import subprocess
+        from drivers.github_client import get_open_issues
+        from drivers.path_resolver import get_core_dir
+        
+        core_root = get_core_dir()
+        
+        result = subprocess.run(["git", "status", "--porcelain"], cwd=core_root, capture_output=True, text=True)
+        if result.returncode == 0 and result.stdout.strip():
+            lines = result.stdout.strip().split('\n')
+            rogue_files = []
+            for line in lines:
+                if len(line) < 4:
+                    continue
+                file_path = line[3:]
+                if not (file_path.startswith("artifacts/") or file_path.startswith(".worktrees/") or file_path.startswith(".gemini/") or file_path.startswith("tmp/")):
+                    rogue_files.append(line)
+                    
+            if rogue_files:
+                msg = f"[FAILURE] Repository Clean State Violation: Unintended mutability detected in main worktree.\nRogue modifications:\n" + "\n".join(rogue_files[:5])
+                dispatch_alert(msg)
+                return True, state
+                
+        result = subprocess.run(["git", "branch", "--format=%(refname:short)"], cwd=core_root, capture_output=True, text=True)
+        if result.returncode == 0:
+            local_branches = [b.strip() for b in result.stdout.strip().split('\n') if b.strip()]
+            
+            open_issues = get_open_issues()
+            active_node_ids = {str(issue["number"]) for issue in open_issues}
+            
+            rogue_branches = []
+            for branch in local_branches:
+                if branch == "main":
+                    continue
+                if branch.startswith("node/"):
+                    parts = branch.split('-')
+                    node_id = parts[0].replace("node/", "")
+                    if node_id not in active_node_ids:
+                        rogue_branches.append(branch)
+                else:
+                    rogue_branches.append(branch)
+                    
+            if rogue_branches:
+                msg = f"[FAILURE] Repository Clean State Violation: Rogue branches detected that do not map to an active node: {rogue_branches}"
+                dispatch_alert(msg)
+                return True, state
+
+    except Exception as e:
+        print(f"Error evaluating clean state: {e}")
+    return False, state
+
 # Registry mapping rule types to evaluator functions
 RULE_REGISTRY = {
     "node_completion_threshold": evaluate_node_completion_threshold,
@@ -491,7 +543,8 @@ RULE_REGISTRY = {
     "backlog_hygiene": evaluate_backlog_hygiene,
     "orphaned_nodes": evaluate_orphaned_nodes,
     "seizure_detection": evaluate_seizure_detection,
-    "liveness_stall": evaluate_liveness_stall
+    "liveness_stall": evaluate_liveness_stall,
+    "clean_state": evaluate_clean_state
 }
 
 @record_execution(stage="system")
