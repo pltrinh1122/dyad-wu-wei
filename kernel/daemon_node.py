@@ -172,24 +172,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
         except Exception as e:
             print(f"Warning: Failed to fetch merged PRs from GitHub: {e}")
 
-        # Sync Tier 2 Global Backlog Cache
-        try:
-            backlog_items = github_client.list_issues_by_label("backlog")
-            backlog_items = [item for item in backlog_items if "path" not in item.get("labels", []) and "type: path" not in item.get("labels", [])]
-            backlog_items.sort(key=lambda x: x.get("number", 0))
-            
-            backlog_file_path = os.path.join(repo_root, "artifacts", "global_backlog.yml")
-            with open(backlog_file_path, "w", encoding="utf-8") as f:
-                yaml.dump({"backlog_items": backlog_items}, f)
-            print("Successfully synchronized Tier 2 Global Backlog cache.")
-            try:
-                subprocess.check_call(["git", "add", "artifacts/global_backlog.yml"], cwd=repo_root)
-                subprocess.check_call(["git", "commit", "-m", "chore: sync Tier 2 global backlog cache"], cwd=repo_root)
-                subprocess.check_call(["git", "push", "origin", "HEAD:main"], cwd=repo_root)
-            except Exception as e:
-                pass
-        except Exception as e:
-            print(f"Warning: Failed to sync global backlog: {e}")
+
  
     # Verify which of these actually exist locally and clean them
     local_branches = set(git_client.list_local_branches())
@@ -227,81 +210,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
         # C. Re-fetch open issues to have consistent labels
         open_issues = github_client.get_open_issues()
 
-        # E. Automate parent path mapping for standalone backlog terminal nodes
-        paths = []
-        mapped_nodes = set()
-        for issue in open_issues:
-            labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
-            labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
-            if "path" in labels or "type: path" in labels:
-                paths.append(issue)
-                body = issue.get("body") or ""
-                node_ids = re.findall(r"-\s+\[[\s*xX]\]\s+Node\s+(\d+):", body)
-                for nid in node_ids:
-                    mapped_nodes.add(str(nid))
-                    
-        terminal_backlog_nodes = []
-        for issue in open_issues:
-            issue_id = str(issue["number"])
-            labels = [l.get("name").lower() for l in issue.get("labels", []) if isinstance(l, dict) and "name" in l]
-            labels += [l.lower() for l in issue.get("labels", []) if isinstance(l, str)]
-            if "backlog" in labels and "path" not in labels and "type: path" not in labels:
-                title = issue.get("title", "")
-                is_terminal = any(t in title.lower() for t in ["activity", "discovery", "intake"])
-                if is_terminal and issue_id not in mapped_nodes:
-                    terminal_backlog_nodes.append(issue)
-                    
-        if terminal_backlog_nodes:
-            print(f"Found {len(terminal_backlog_nodes)} standalone backlog terminal nodes to map automatically.")
-            for node in terminal_backlog_nodes:
-                node_id = str(node["number"])
-                node_title = node["title"]
-                node_body = node.get("body") or ""
-                best_path = None
-                
-                # Method A: Explicit Path ID reference
-                path_matches = re.findall(r"path\s*#?(\d+)", node_body + " " + node_title, re.IGNORECASE)
-                for pm in path_matches:
-                    for path in paths:
-                        if str(path["number"]) == pm:
-                            best_path = path
-                            break
-                    if best_path:
-                        break
-                        
-                # Method B: Keyword overlap
-                if not best_path and paths:
-                    node_words = set(re.findall(r"\w+", node_title.lower()))
-                    stop_words = {"intake", "activity", "discovery", "and", "or", "the", "a", "of", "to", "for", "in", "on", "with", "at", "by", "from"}
-                    node_words = node_words - stop_words
-                    best_score = 0
-                    for path in paths:
-                        path_title = path["title"]
-                        path_words = set(re.findall(r"\w+", path_title.lower())) - stop_words
-                        overlap = len(node_words.intersection(path_words))
-                        if overlap > best_score:
-                            best_score = overlap
-                            best_path = path
-                            
-                # Method C: Fall back to first open Path
-                if not best_path and paths:
-                    for path in paths:
-                        best_path = path
-                        break
-                    
-                if best_path:
-                    path_id = str(best_path["number"])
-                    path_body = best_path.get("body") or ""
-                    checkbox_line = f"- [ ] #{node_id}: {node_title}"
-                    if "## Meta-Index" in path_body:
-                        path_body += f"\n{checkbox_line}"
-                    else:
-                        path_body += f"\n\n## Meta-Index\n{checkbox_line}"
-                    try:
-                        github_client.update_issue_body(path_id, path_body)
-                        print(f"Automatically mapped Node #{node_id} ('{node_title}') to parent Path #{path_id} ('{best_path['title']}').")
-                    except Exception as ex:
-                        print(f"Error: Failed to map Node #{node_id} to Path #{path_id}: {ex}")
+
     except Exception as ex:
         print(f"Warning: Failed to execute automated backlog mapping/cleanup: {ex}")
 

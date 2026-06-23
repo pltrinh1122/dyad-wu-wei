@@ -86,16 +86,15 @@ def main():
         print("Error: Path title is missing in the manifest.")
         sys.exit(1)
 
-    print(f"Creating Path: {path_title}")
-    path_url = github_client.create_issue(
+    # In flattened structure, the overarching path is just another node
+    print(f"Creating Root Node from Path title: {path_title}")
+    root_node_url = github_client.create_issue(
         title=path_title,
         body=path_body,
-        labels=["type: path", "backlog"]
+        labels=["type: node", "backlog"]
     )
-    
-    # Extract the issue number from the URL
-    path_id = path_url.split('/')[-1]
-    print(f"Created Path #{path_id}: {path_url}")
+    path_id = root_node_url.split('/')[-1]
+    print(f"Created Root Node #{path_id}: {root_node_url}")
 
     created_nodes = []
     for i, node in enumerate(nodes):
