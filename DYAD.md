@@ -105,6 +105,7 @@ You are mathematically forbidden from violating the following constraints:
    - **Raw Issue Quarantine**: Issues labeled `status: todo` (the `staging` queue) are strictly prohibited from entering the `plan-start` phase or being assigned to the engine for autonomous execution.
    - **The Rigging Gate (`rub:` protocol)**: The mandatory conversion process to elevate an issue to a Path requires: (1) Expanding raw intent into a structured `Goal`, (2) Creating the `## Meta-Index` DAG (Harmonize -> Plan -> Act -> Reflect nodes), and (3) Removing the `status: todo` label and applying the `path` label.
    - **Execution Domain Separation**: The `staging` queue is the Operator's domain (unformed Telos), the `path` queue is the Factory Floor's domain (Agents), and the `rub:` protocol is the sluice gate.
+33. **The Backlog-Only Ingestion Invariant**: To increase the precision of Generation (G) and eliminate hidden sensory nerves, the Agent's Generation loop must never respond to out-of-band signals. All execution interrupts and task requests MUST be forced exclusively through the formal UI backlog triage process. The UI must not act solely as a generation layer but must enforce execution alignment and control.
 
 ## 6. Bilateral Chat Interaction Protocol (Telos Coherence)
 To realize the Synergistic Human-Agent Partnership (NS-0001) and satisfy Axiom (1) (Collaborative Grounding) and Axiom (4) (Architectural Coherence), all chat exchanges between the Operator and the Agent must adhere to the following protocol, mapping directly to our Strategic Goals:
