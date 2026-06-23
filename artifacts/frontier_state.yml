@@ -2518,7 +2518,3 @@ nodes:
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-2353.md into the system's operational guidelines (the Dao).
   invariants: []
-- name: '#2473: Act: Fix NBADaemon return types'
-  status: Backlog
-  learnings: Fix NBADaemon return types
-  invariants: []
