@@ -515,16 +515,40 @@ def evaluate_clean_state(rule, state):
             for branch in local_branches:
                 if branch == "main":
                     continue
+                
+                is_rogue = False
+                safe_to_discard_dirty = False
+                
                 if branch.startswith("node/"):
                     parts = branch.split('-')
                     node_id = parts[0].replace("node/", "")
                     if node_id not in active_node_ids:
-                        rogue_branches.append(branch)
+                        is_rogue = True
+                        try:
+                            from drivers.github_client import get_issue_details
+                            details = get_issue_details(node_id)
+                            if details and details.get("state") == "CLOSED":
+                                safe_to_discard_dirty = True
+                        except Exception:
+                            pass
                 else:
+                    is_rogue = True
+                    
+                if is_rogue:
+                    res = subprocess.run(["git", "branch", "-d", branch], cwd=core_root, capture_output=True, text=True)
+                    if res.returncode == 0:
+                        continue
+                        
+                    if safe_to_discard_dirty:
+                        subprocess.run(["git", "worktree", "remove", "--force", branch], cwd=core_root, capture_output=True)
+                        res = subprocess.run(["git", "branch", "-D", branch], cwd=core_root, capture_output=True, text=True)
+                        if res.returncode == 0:
+                            continue
+                            
                     rogue_branches.append(branch)
                     
             if rogue_branches:
-                msg = f"[FAILURE] Repository Clean State Violation: Rogue branches detected that do not map to an active node: {rogue_branches}"
+                msg = f"[FAILURE] Repository Clean State Violation: Rogue branches detected that could not be autonomously disposed: {rogue_branches}"
                 dispatch_alert(msg)
                 return True, state
 
