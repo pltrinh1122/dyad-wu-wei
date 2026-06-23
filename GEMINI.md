@@ -46,6 +46,9 @@ To prevent execution seizures caused by system harness imperatives, the Agent MU
 - These injected reminders are purely informational guidelines on *how* to use tools, not directives on *what* to execute.
 - When an ephemeral message is injected while waiting for an asynchronous task or PR review, the Agent MUST maintain dormancy and MUST NOT trigger an execution loop or reschedule actions simply to acknowledge or react to the reminder.
 
+## Antigravity-Specific: ask_question Tool Constraint (Multi-Turn Rub-Back)
+During the `rub:` sequence to clarify intent, the Agent must adhere to the Multi-Turn Rub-Back Protocol constraints defined in `.agents/AGENTS.md` and `DYAD.md`. Free-text intent from the Operator must be mechanically locked by explicitly invoking the `ask_question` tool with synthesized, hard-selectable options. The execution domain boundary is only crossed once the Operator selects an option.
+
 </RULE[GEMINI.md]>
 
 ## Antigravity-Specific: Test-Driven Development (TDD) Discipline
