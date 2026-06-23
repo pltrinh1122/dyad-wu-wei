@@ -140,28 +140,41 @@ def test_get_current_branch_normal():
     from unittest.mock import ANY
     with patch("drivers.git_client.subprocess.run") as mock_run:
         from drivers.audit_daemon import get_current_branch
-        mock_run.return_value.stdout = "main\n"
+        def mock_run_impl(*args, **kwargs):
+            m = MagicMock()
+            if args[0] == ["git", "rev-parse", "--show-toplevel"]:
+                m.stdout = "./mock_repo\n"
+            else:
+                m.stdout = "main\n"
+            return m
+        mock_run.side_effect = mock_run_impl
+        
         assert get_current_branch() == "main"
-        mock_run.assert_called_once_with(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=ANY)
+        mock_run.assert_any_call(["git", "branch", "--show-current"], capture_output=True, text=True, check=True, cwd=ANY)
 
 def test_get_current_branch_detached():
     from unittest.mock import ANY
     with patch("drivers.git_client.subprocess.run") as mock_run:
         from drivers.audit_daemon import get_current_branch
         
-        run_show_current = MagicMock()
-        run_show_current.stdout = "\n"
-        
-        run_head = MagicMock()
-        run_head.stdout = "abc123commit\n"
-        
-        run_origin = MagicMock()
-        run_origin.stdout = "abc123commit\n"
-        
-        run_main = MagicMock()
-        run_main.stdout = "abc123commit\n"
-        
-        mock_run.side_effect = [run_show_current, run_head, run_origin, run_main]
+        def mock_run_impl(*args, **kwargs):
+            cmd = args[0]
+            m = MagicMock()
+            if cmd == ["git", "rev-parse", "--show-toplevel"]:
+                m.stdout = "./mock_repo\n"
+            elif cmd == ["git", "branch", "--show-current"]:
+                m.stdout = "\n"
+            elif cmd == ["git", "rev-parse", "HEAD"]:
+                m.stdout = "abc123commit\n"
+            elif cmd == ["git", "rev-parse", "origin/main"]:
+                m.stdout = "abc123commit\n"
+            elif cmd == ["git", "rev-parse", "main"]:
+                m.stdout = "abc123commit\n"
+            else:
+                m.stdout = "\n"
+            return m
+            
+        mock_run.side_effect = mock_run_impl
         
         assert get_current_branch() == "main"
         
@@ -218,7 +231,8 @@ def test_liveness_stall_fires_when_active_and_stale():
     with patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=frontier_md_content)), \
          patch("os.path.getmtime", return_value=stale_mtime), \
-         patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
+         patch("drivers.audit_daemon.dispatch_alert") as mock_inject, \
+         patch("drivers.audit_daemon.subprocess.run") as mock_run:
         
         triggered, new_state = evaluate_liveness_stall(rule, state.copy())
         
@@ -227,6 +241,25 @@ def test_liveness_stall_fires_when_active_and_stale():
         mock_inject.assert_called_once()
         assert "LIVENESS_STALL" in mock_inject.call_args[0][0]
         assert "Node 42" in mock_inject.call_args[0][0]
+        
+        # Verify subprocess.run was called for the abort and the issue creation
+        
+        # We can just look for the calls in the call list
+        abort_call = None
+        gh_call = None
+        for call in mock_run.call_args_list:
+            args = call[0][0]
+            if "abort" in args:
+                abort_call = call
+            elif "gh" in args and "issue" in args and "create" in args:
+                gh_call = call
+                
+        assert abort_call is not None, "abort was not called"
+        assert "42" in abort_call[0][0]
+        
+        assert gh_call is not None, "gh issue create was not called"
+        assert "--title" in gh_call[0][0]
+        assert "--label" in gh_call[0][0]
 
 def test_liveness_stall_silent_when_no_active_node():
     """Negative control: no active node = legitimately idle -> does NOT fire."""
