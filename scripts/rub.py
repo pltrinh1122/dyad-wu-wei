@@ -63,38 +63,56 @@ def parse_dag_md(file_path):
 
 def main():
     parser = argparse.ArgumentParser(description="DAG Generator: Creates Path and Node issues with orthogonal type labels.")
-    parser.add_argument("manifest", help="Path to the manifest file (dag.json or dag.md)")
+    parser.add_argument("manifest", help="Path to the manifest file (dag.json or dag.md), or a Path issue ID (e.g., 1234)")
     args = parser.parse_args()
 
-    if not os.path.exists(args.manifest):
-        print(f"Error: Manifest file {args.manifest} not found.")
-        sys.exit(1)
-
-    if args.manifest.endswith('.json'):
-        dag = parse_dag_json(args.manifest)
-    elif args.manifest.endswith('.md'):
-        dag = parse_dag_md(args.manifest)
+    if args.manifest.isdigit():
+        issue_id = args.manifest
+        issue_details = github_client.get_issue_details(issue_id)
+        if not issue_details or 'title' not in issue_details:
+            print(f"Error: Could not fetch details for issue #{issue_id}")
+            sys.exit(1)
+            
+        path_title = issue_details["title"]
+        path_id = issue_id
+        print(f"Using existing Path #{path_id}: {path_title}")
+        
+        nodes = [
+            {"title": f"[Harmonize] {path_title}", "body": f"[Parent: #{path_id}]"},
+            {"title": f"[Plan] {path_title}", "body": f"[Parent: #{path_id}]"},
+            {"title": f"[Act] {path_title}", "body": f"[Parent: #{path_id}]"},
+            {"title": f"[Reflect] {path_title}", "body": f"[Parent: #{path_id}]"}
+        ]
     else:
-        print("Error: Manifest must be a .json or .md file.")
-        sys.exit(1)
+        if not os.path.exists(args.manifest):
+            print(f"Error: Manifest file {args.manifest} not found.")
+            sys.exit(1)
 
-    path_title = dag.get("title")
-    path_body = dag.get("body", "")
-    nodes = dag.get("nodes", [])
+        if args.manifest.endswith('.json'):
+            dag = parse_dag_json(args.manifest)
+        elif args.manifest.endswith('.md'):
+            dag = parse_dag_md(args.manifest)
+        else:
+            print("Error: Manifest must be a .json, .md file, or an issue ID.")
+            sys.exit(1)
 
-    if not path_title:
-        print("Error: Path title is missing in the manifest.")
-        sys.exit(1)
+        path_title = dag.get("title")
+        path_body = dag.get("body", "")
+        nodes = dag.get("nodes", [])
 
-    # In flattened structure, the overarching path is just another node
-    print(f"Creating Root Node from Path title: {path_title}")
-    root_node_url = github_client.create_issue(
-        title=path_title,
-        body=path_body,
-        labels=["type: node", "backlog"]
-    )
-    path_id = root_node_url.split('/')[-1]
-    print(f"Created Root Node #{path_id}: {root_node_url}")
+        if not path_title:
+            print("Error: Path title is missing in the manifest.")
+            sys.exit(1)
+
+        # In flattened structure, the overarching path is just another node
+        print(f"Creating Root Node from Path title: {path_title}")
+        root_node_url = github_client.create_issue(
+            title=path_title,
+            body=path_body,
+            labels=["type: node", "backlog"]
+        )
+        path_id = root_node_url.split('/')[-1]
+        print(f"Created Root Node #{path_id}: {root_node_url}")
 
     created_nodes = []
     for i, node in enumerate(nodes):
