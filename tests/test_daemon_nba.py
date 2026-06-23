@@ -28,7 +28,7 @@ strategic_goals:
         with patch("builtins.open", mock_open(read_data=yaml_content)):
             result = nba.evaluate("dummy_frontier.md")
             
-        self.assertEqual(result["type"], "next_best_rub")
+        self.assertEqual(result["type"], "path_switching")
         self.assertEqual(len(result["recommendations"]), 2)
         # 101 should score higher because it has 'synergistic', 'automation', 'output'
         self.assertEqual(result["recommendations"][0]["number"], "101")
@@ -53,7 +53,7 @@ strategic_goals:
         with patch("os.path.exists", return_value=False):
             result = nba.evaluate("dummy_frontier.md")
             
-        self.assertEqual(result["type"], "next_best_rub")
+        self.assertEqual(result["type"], "path_switching")
         self.assertEqual(len(result["recommendations"]), 1)
         self.assertEqual(result["recommendations"][0]["number"], 101)
 

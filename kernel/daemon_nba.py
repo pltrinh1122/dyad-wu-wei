@@ -78,8 +78,21 @@ class NBADaemon:
             
             top_items = [x[1] for x in scored_items[:5]]
 
+            active_path = None
+            try:
+                active_path = agent_frontier.read_active_path(frontier_file)
+            except Exception:
+                pass
+
+            if not top_items:
+                nba_type = "idle"
+            elif active_path:
+                nba_type = "path_continuation"
+            else:
+                nba_type = "path_switching"
+
             return {
-                "type": "next_best_rub",
+                "type": nba_type,
                 "recommendations": top_items
             }
 
