@@ -2926,9 +2926,3 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-2353.md into the system's operational guidelines (the Dao).
 - **Feedforward Invariants**:
   - `[ ]` None
-
-## #2473: Act: Fix NBADaemon return types
-- **Status**: Backlog
-- **Learnings & Context**: Fix NBADaemon return types
-- **Feedforward Invariants**:
-  - `[ ]` None
