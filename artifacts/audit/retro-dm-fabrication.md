@@ -9,5 +9,5 @@
 ## CONTINUE
 - **Agent**: Once the actual document was located (via the `falsify.py` script from `dyad-steward`), the dialectical falsification was executed cleanly and strictly adhered to the formal, declarative boundary requested by the Operator.
 
-## SH (Should Have)
+## STOP (Additional)
 - **Agent**: "I should have used `falsify.py` immediately to poll the inbox when asked about a DM from another dyad." (Mechanical check: `commons/scripts/falsify.py dm --me dyad-wu-wei` properly surfaces the exact document needed).
