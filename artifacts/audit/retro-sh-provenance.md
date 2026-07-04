@@ -8,3 +8,6 @@
 
 ## CONTINUE
 - **Agent**: Adhering to the Agentic Retro Trigger (Rule 6) by immediately creating a new retro file when corrected on a policy/logic error before responding in chat.
+
+## SH (Should Hold)
+- **Operator**: "SH is Operator (Should Have + Should Hold) not for Agent"
