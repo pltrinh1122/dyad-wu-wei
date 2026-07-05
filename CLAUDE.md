@@ -16,13 +16,6 @@ This file serves as the **Personalized Anchor** and the **Claude Code-specific H
 
 ---
 
-## RESTART-PENDING (Owed from `agy` 2026-07-04 session)
-> **ACTION REQUIRED ON NEXT LAUNCH**: 
-> During the recent Antigravity (`agy`) session, several critical structural updates were landed to enforce cross-substrate symmetry. You MUST sync and mirror these updates into this `CLAUDE.md` shim:
-> 1. **The Scripting Discipline (The Bash-Complexity Ceiling)**: Mirror the exact "Rule of Two" and `.scratch/<task>.py` scripting mandates added to `CLAUDE.md` to prevent compound bash execution.
-> 2. **Cross-Substrate Symmetry**: Acknowledge that the native `SessionStart`/`SessionEnd` automated hooks (previously via `.claude/settings.json`) have been entirely retired in favor of the manual, declarative `d-start` and `d-reflect` disciplines.
-> 3. Clear this RESTART-PENDING block once mirrored.
-
 ## Claude Code-Specific: Asynchronous Execution
 For DYAD.md §5 Rule 19 (Asynchronous Execution Invariant), use the `run_command` tool for background bash tasks and the `schedule` tool for timers. The Agent's conversational turn must function exclusively as an "I am ready for the next prompt" signal while work completes silently in the background, waking the Agent via system callbacks. The Agent must never halt execution by yielding without a pending background task or timer, as this causes the Agent to become stuck.
 
