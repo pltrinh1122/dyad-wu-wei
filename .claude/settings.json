@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(bin/git:*)",
-      "Bash(bin/gh:*)"
+      "Bash(bin/gh:*)",
+      "Bash(bin/standup.sh)",
+      "Bash(bin/standdown.sh)"
     ],
     "deny": [
       "Bash(git push --force*)",

@@ -4,7 +4,11 @@
       "command(bin/git)",
       "command(bin/gh)",
       "command(./bin/git)",
-      "command(./bin/gh)"
+      "command(./bin/gh)",
+      "command(bin/standup.sh)",
+      "command(./bin/standup.sh)",
+      "command(bin/standdown.sh)",
+      "command(./bin/standdown.sh)"
     ],
     "deny": [
       "command(git push --force*)",
