@@ -190,7 +190,7 @@ def main():
         
     backlog_size = get_prompt_backlog_size(repo_root)
 
-    print("=== Antigravity System Status ===")
+    print("=== Dyad-Wu-wei System Status ===")
     if has_active_nodes:
         print("Active Nodes (In-Progress):")
         print(in_progress_output)

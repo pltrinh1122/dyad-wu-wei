@@ -13,7 +13,7 @@ else
         EXIT_CODE=\$?
         if [ \$EXIT_CODE -ne 0 ]; then
             echo 'Daemon crashed with exit code '\$EXIT_CODE'. Creating bug report...'
-            gh issue create --title \"[BUG] Daemon Crash (\$SESSION_NAME)\" --body \"Daemon exited with \$EXIT_CODE. Stderr:
+            ./bin/gh issue create --title \"[BUG] Daemon Crash (\$SESSION_NAME)\" --body \"Daemon exited with \$EXIT_CODE. Stderr:
 \`\`\`
 \$(cat $LOG_FILE)
 \`\`\`\"
