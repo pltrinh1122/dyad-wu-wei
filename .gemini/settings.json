@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "command(bin/git)",
+      "command(bin/gh)",
+      "command(./bin/git)",
+      "command(./bin/gh)"
+    ],
+    "deny": [
+      "command(git push --force*)",
+      "command(git push * --force*)",
+      "command(git push -f*)",
+      "command(git push * -f*)",
+      "command(git push --delete*)",
+      "command(git push * --delete*)",
+      "command(git push * -d*)",
+      "command(git push +*)",
+      "command(git push * +*)",
+      "command(git push * :*)"
+    ]
+  }
+}
