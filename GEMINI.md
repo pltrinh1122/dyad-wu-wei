@@ -45,3 +45,9 @@ To avoid regression and ensure the durability of the engine's invariants, the Ag
 
 ## Antigravity-Specific: Execution Failure Tracing (SG-0005)
 To satisfy the `SG-0005 (TG-0005-04)` invariant for node execution failure tracing, the Agent MUST explicitly write a retro artifact (`artifacts/audit/retro-<node_id>.md`) detailing the execution failure and remediation before attempting to reflect on or re-execute a blocked node.
+
+## Antigravity-Specific: The Bash-Complexity Ceiling (Scripting Discipline)
+To prevent execution seizures caused by brittle shell escaping and opaque `stderr` output in the autonomous loop, the Agent MUST adhere to the following scripting discipline:
+- **The Rule of Two**: The Agent MUST NOT execute compound Bash commands containing more than one logical operator (`&&`, `||`, `|`).
+- **The `.scratch/` Convention**: If a task requires conditional logic, loops, structured data parsing, or multi-step execution beyond a simple linear chain, the Agent MUST write the logic to a Python script (e.g., in `.scratch/<task>.py`) and execute it via `python3`.
+- **Structured Payload Advantage**: By defaulting to Python, the Agent ensures structured output (e.g., `json`) is printed to `stdout`, drastically reducing parsing hallucinations in the context window.
