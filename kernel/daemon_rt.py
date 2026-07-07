@@ -245,6 +245,12 @@ def main():
     parser_insight.add_argument("--message", default="", help="PR Body")
     parser_insight.add_argument("--insights", default="", help="Active Insights (e.g., WHY-0075)")
 
+    # Audit command
+    parser_audit = subparsers.add_parser("audit", help="Run the integrity audit daemon natively without a polling loop")
+    parser_audit.add_argument("--lightweight", action="store_true", help="Run only lightweight rules")
+    parser_audit.add_argument("--local", action="store_true", help="Bypass remote network-bound checks")
+
+
     args = parser.parse_args()
 
     if args.command == "hotfix":
@@ -253,6 +259,14 @@ def main():
         execute_score_paths(args.start, args.end)
     elif args.command == "insight":
         execute_insight(args.files, args.title, args.message, insights=args.insights)
+    elif args.command == "audit":
+        from drivers import audit_daemon
+        audit_args = []
+        if args.lightweight:
+            audit_args.append("--lightweight")
+        if args.local:
+            audit_args.append("--local")
+        audit_daemon.main(audit_args)
 
 if __name__ == "__main__":
     main()
