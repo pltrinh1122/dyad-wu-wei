@@ -722,7 +722,23 @@ class TerminalNode(BaseNode):
                 github_client.admin_merge_pull_request(pr_url)
                 log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} successfully created and AUTONOMOUSLY MERGED. HTIL bypassed (Administrative or Spec-First HTIL Inversion).")
             else:
-                log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} successfully created. Entering Observe phase under HARD HITL block.")
+                try:
+                    import time
+                    time.sleep(2)  # Brief sleep to allow remote auto-merge rules to evaluate
+                    
+                    pr_status = github_client.get_pr_status(pr_url)
+                    state = pr_status.get("state")
+                    am_req = pr_status.get("autoMergeRequest")
+                    
+                    if state == "MERGED":
+                        log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} was already MERGED by repository rules. HITL bypassed.")
+                    elif am_req is not None:
+                        log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} is queued for remote auto-merge. Bypassing HARD HITL block.")
+                    else:
+                        log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} successfully created. Entering Observe phase under HARD HITL block.")
+                except Exception as e:
+                    print(f"Warning: Failed to fetch PR status for {pr_url}: {e}")
+                    log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} successfully created. Entering Observe phase under HARD HITL block.")
 
     @record_execution(stage="act")
     def retro_attach(self, retro_file: str, branch_name: str) -> str:

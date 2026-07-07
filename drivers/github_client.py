@@ -447,6 +447,18 @@ def get_pr_checks(pr_number: int) -> str:
     )
     return res.stdout + res.stderr
 
+def get_pr_status(pr_identifier: str) -> dict:
+    """
+    Returns the PR state and auto-merge request status.
+    Uses: gh pr view <id> --json state,autoMergeRequest
+    """
+    result = _run_gh(
+        ["gh", "pr", "view", str(pr_identifier), "--json", "state,autoMergeRequest"],
+        capture_output=True, text=True, check=True
+    )
+    import json
+    return json.loads(_clean_json_output(result.stdout) or "{}")
+
 def get_run_view(run_id: str) -> str:
     """Retrieves run details and logs."""
     res = _run_gh(

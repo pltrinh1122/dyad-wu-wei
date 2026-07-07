@@ -97,7 +97,22 @@ def execute_hotfix(file_path, commit_msg):
     git_client.commit("chore(artifacts): append hotfix ledger")
     git_client.push(branch_name)
 
-    print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
+    try:
+        import time
+        from drivers import github_client
+        time.sleep(2) # Brief sleep to allow remote auto-merge rules to evaluate
+        pr_status = github_client.get_pr_status(pr_url)
+        state = pr_status.get("state")
+        am_req = pr_status.get("autoMergeRequest")
+        
+        if state == "MERGED":
+            print(f"Hotfix PR {pr_url} was already MERGED by repository rules. HITL bypassed.")
+        elif am_req is not None:
+            print(f"Hotfix PR {pr_url} is queued for remote auto-merge. HITL bypassed.")
+        else:
+            print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
+    except Exception as e:
+        print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
 
 
 
