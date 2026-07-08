@@ -8,3 +8,7 @@
 ## SH (Should Have, Should Hold)
 - **Should Have**: (Debit) *No friction detected.*
 - **Should Hold**: (Credit) The Operator demonstrated exceptional vigilance in policing systemic definitions and ensuring the retro fields remain mutually exclusive. The prompt to instantly close the semantic gap between Agent-critique and Operator-observation maintains a frictionless execution channel.
+
+## Delta (Topological Fix)
+- **Continue**: Relentlessly verifying that foundational files (`DYAD.md`, `HOW-0000-manifest.md`) maintain unbroken execution graphs.
+- **Should Hold**: (Credit) The Operator accurately identified that the `d-start` and `d-reflect` protocols were orphaned in the `kb/` directory, preventing new Agent instantiations from inheriting the interaction discipline. This precise structural audit preserves system survivability.
