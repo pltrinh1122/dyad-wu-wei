@@ -59,18 +59,18 @@ def test_lightweight_audit_workflow(tmp_path):
     
     issue_body_content = """
 ## Checklist
-- [ ] Node 506: Optimize audit (#506)
+- [ ] Node 506: Harmonize audit (#506)
 - [x] Node 505: Plan audit (#505)
 """
     
     def dummy_run(args, **kwargs):
         cmd_str = " ".join(args)
         if "issue view 503 --json body" in cmd_str:
-            mock_res = MagicMock()
+            mock_res = MagicMock(returncode=0)
             mock_res.stdout = json.dumps({"body": issue_body_content})
             return mock_res
         elif "issue view 503 --json title" in cmd_str:
-            mock_res = MagicMock()
+            mock_res = MagicMock(returncode=0)
             mock_res.stdout = json.dumps({"title": "Path 503: Optimization of Node Sync Audit Performance (Lightweight Audit)"})
             return mock_res
         raise ValueError(f"Unexpected subprocess call: {args}")
@@ -90,7 +90,7 @@ def test_lightweight_audit_workflow(tmp_path):
     mock_update_body.assert_called_once()
     called_path, called_body = mock_update_body.call_args[0]
     assert called_path == "503"
-    assert "- [x] Node 506: Optimize audit" in called_body
+    assert "- [x] Node 506: Harmonize audit" in called_body
     
     cache_file = tmp_path / "artifacts" / "audit_state.json"
     assert cache_file.exists()
@@ -189,18 +189,18 @@ def test_lightweight_audit_with_new_completed_node(tmp_path):
     issue_body_content = """
 ## Checklist
 - [x] Node 505: Plan audit (#505)
-- [x] Node 506: Optimize audit (#506)
+- [x] Node 506: Harmonize audit (#506)
 - [ ] Node 507: Verify performance fixes (#507)
 """
     
     def dummy_run(args, **kwargs):
         cmd_str = " ".join(args)
         if "issue view 503 --json body" in cmd_str:
-            mock_res = MagicMock()
+            mock_res = MagicMock(returncode=0)
             mock_res.stdout = json.dumps({"body": issue_body_content})
             return mock_res
         elif "issue view 503 --json title" in cmd_str:
-            mock_res = MagicMock()
+            mock_res = MagicMock(returncode=0)
             mock_res.stdout = json.dumps({"title": "Path 503: Optimization of Node Sync Audit Performance (Lightweight Audit)"})
             return mock_res
         raise ValueError(f"Unexpected subprocess call: {args}")
@@ -257,7 +257,7 @@ def test_lightweight_audit_path_detection_formats(tmp_path):
     def dummy_run(args, **kwargs):
         cmd_str = " ".join(args)
         if "issue view 503" in cmd_str or "issue view 100" in cmd_str:
-            mock_res = MagicMock()
+            mock_res = MagicMock(returncode=0)
             mock_res.stdout = json.dumps({"body": "No checklist", "title": "Some title"})
             return mock_res
         raise ValueError(f"Unexpected subprocess call: {args}")

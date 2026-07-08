@@ -2,6 +2,9 @@ import pytest
 from unittest.mock import MagicMock, patch
 import os
 
+# Enforce test mode universally to bypass sleep/retry loops in github_client
+os.environ["ANTIGRAVITY_RUNNING_TESTS"] = "1"
+
 _FIXTURES_DIR = os.path.join(os.path.dirname(__file__), "fixtures")
 
 @pytest.fixture(autouse=True, scope="session")

@@ -46,7 +46,7 @@ def test_enforce_reflection_hook_worktree_retro():
             
         with patch("os.path.exists", mock_exists), \
              patch("subprocess.run") as mock_run:
-            mock_res = MagicMock()
+            mock_res = MagicMock(returncode=0)
             mock_res.returncode = 0
             mock_res.stdout = '[{"number": 123, "title": "surfaced"}]'
             mock_run.return_value = mock_res
@@ -75,7 +75,7 @@ nodes:
             
         mock_file.side_effect = open_side_effect
         
-        mock_res = MagicMock()
+        mock_res = MagicMock(returncode=0)
         mock_res.returncode = 0
         mock_res.stdout = "[]"
         mock_run.return_value = mock_res
@@ -96,7 +96,7 @@ def test_enforce_reflection_hook_fallback_active_path():
          patch("kernel.agent_frontier.read_active_path", return_value="current_active_path: 999"), \
          patch("kernel.agent_frontier.extract_path_id", return_value="999"):
          
-        mock_res = MagicMock()
+        mock_res = MagicMock(returncode=0)
         mock_res.returncode = 0
         mock_res.stdout = "[]"
         mock_run.return_value = mock_res

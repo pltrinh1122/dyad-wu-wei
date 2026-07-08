@@ -14,7 +14,7 @@ def test_stop_daemon_systemd_user(mock_run):
 
 @patch('drivers.infra_manager.subprocess.run')
 def test_get_daemon_status_systemd_user(mock_run):
-    mock_result = MagicMock()
+    mock_result = MagicMock(returncode=0)
     mock_result.stdout = "active\n"
     mock_run.return_value = mock_result
     

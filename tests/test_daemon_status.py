@@ -60,7 +60,7 @@ def test_get_local_worktrees(tmp_path):
 @patch("kernel.daemon_status.get_local_worktrees")
 @patch("subprocess.run")
 def test_main(mock_subprocess, mock_worktrees, mock_branch, capsys):
-    mock_proc = MagicMock()
+    mock_proc = MagicMock(returncode=0)
     mock_proc.stdout = "123\tstatus: in-progress\tTest Issue"
     mock_subprocess.return_value = mock_proc
     mock_branch.return_value = "node/805-status-dashboard"
@@ -122,10 +122,10 @@ def test_main_dispatcher_auto_lock(capsys, monkeypatch):
     monkeypatch.setattr(kernel.daemon_status, "get_current_branch", lambda cwd=None: "main")
     monkeypatch.setattr(kernel.daemon_status, "get_local_worktrees", lambda repo: [])
     
-    mock_proc = MagicMock()
+    mock_proc = MagicMock(returncode=0)
     # It first runs `gh issue list`, we should return empty for no active nodes
     def run_side_effect(*args, **kwargs):
-        res = MagicMock()
+        res = MagicMock(returncode=0)
         if "issue" in args[0]:
             res.stdout = ""
         else:

@@ -161,7 +161,7 @@ strategic_goals:
 def test_run_kb_check_success():
     with patch("subprocess.run") as mock_run, \
          patch("drivers.knowledge_accrual_skill.check_kb_conflicts", return_value=[]):
-        mock_result = MagicMock()
+        mock_result = MagicMock(returncode=0)
         mock_result.returncode = 0
         mock_result.stdout = "diff text"
         mock_run.return_value = mock_result
@@ -172,7 +172,7 @@ def test_run_kb_check_success():
 def test_run_kb_check_failure():
     with patch("subprocess.run") as mock_run, \
          patch("drivers.knowledge_accrual_skill.check_kb_conflicts", return_value=["conflict"]):
-        mock_result = MagicMock()
+        mock_result = MagicMock(returncode=0)
         mock_result.returncode = 0
         mock_result.stdout = "diff text"
         mock_run.return_value = mock_result
@@ -289,7 +289,7 @@ def test_evaluate_lexical_guard():
          patch("pathlib.Path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data="This contains forbidden_word!")):
              
-        mock_result = MagicMock()
+        mock_result = MagicMock(returncode=0)
         mock_result.returncode = 0
         mock_result.stdout = " M src/code.py\n"
         mock_run.return_value = mock_result
