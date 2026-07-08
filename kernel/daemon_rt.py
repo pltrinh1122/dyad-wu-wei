@@ -110,9 +110,9 @@ def execute_hotfix(file_path, commit_msg):
         elif am_req is not None:
             print(f"Hotfix PR {pr_url} is queued for remote auto-merge. HITL bypassed.")
         else:
-            print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
+            print(f"Awaiting Operator review and merge (HITL) for PR {pr_url}. Do NOT merge autonomously.")
     except Exception as e:
-        print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
+        print(f"Awaiting Operator review and merge (HITL) for PR {pr_url}. Do NOT merge autonomously.")
 
 
 
@@ -169,9 +169,9 @@ def execute_insight(files, title, message, insights=""):
         elif am_req is not None:
             print(f"Insight PR {pr_url} is queued for remote auto-merge. HITL bypassed.")
         else:
-            print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
+            print(f"Awaiting Operator review and merge (HITL) for PR {pr_url}. Do NOT merge autonomously.")
     except Exception as e:
-        print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
+        print(f"Awaiting Operator review and merge (HITL) for PR {pr_url}. Do NOT merge autonomously.")
 
 def execute_score_paths(start=None, end=None):
     from kernel.nba_scorer import GranularNBAScorer
