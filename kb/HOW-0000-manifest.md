@@ -51,6 +51,8 @@ To operate safely and correctly, you MUST read and follow the active system rule
 * **Audit and Remediate Deprecated KB Files Plan**: Read [WHY-1096-audit-remediate-deprecated-kb-files-plan.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-1096-audit-remediate-deprecated-kb-files-plan.md)
 * **Chat Immediacy Protocol**: Read [WHY-1037-chat-immediacy-protocol.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-1037-chat-immediacy-protocol.md)
 * **Chat Immediacy Protocol Spec**: Read [WHAT-1037-chat-immediacy-protocol.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHAT-1037-chat-immediacy-protocol.md)
+* **Session Initialization Discipline (d-start)**: Read [start-session-discipline.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/start-session-discipline.md)
+* **Session Termination Discipline (d-reflect)**: Read [reflection-discipline.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/reflection-discipline.md)
 
 * **Refine Wu-wei Dyad Intent Understanding**: Read [WHY-1022-refine-intent.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHY-1022-refine-intent.md)
 * **Refine Wu-wei Dyad Intent Understanding Spec**: Read [WHAT-1022-refine-intent.md](file:///mnt/shared_data/git_repos/dyad-wu-wei/kb/WHAT-1022-refine-intent.md)
