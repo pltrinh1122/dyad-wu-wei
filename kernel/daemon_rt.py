@@ -156,6 +156,22 @@ def execute_insight(files, title, message, insights=""):
 
     pr_url = github_client.create_pull_request(title, message, branch_name)
     print(f"Insight PR created successfully: {pr_url}")
+    
+    try:
+        import time
+        time.sleep(2) # Brief sleep to allow remote auto-merge rules to evaluate
+        pr_status = github_client.get_pr_status(pr_url)
+        state = pr_status.get("state")
+        am_req = pr_status.get("autoMergeRequest")
+        
+        if state == "MERGED":
+            print(f"Insight PR {pr_url} was already MERGED by repository rules. HITL bypassed.")
+        elif am_req is not None:
+            print(f"Insight PR {pr_url} is queued for remote auto-merge. HITL bypassed.")
+        else:
+            print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
+    except Exception as e:
+        print("Awaiting Operator review and merge (HITL). Do NOT merge autonomously.")
 
 def execute_score_paths(start=None, end=None):
     from kernel.nba_scorer import GranularNBAScorer
