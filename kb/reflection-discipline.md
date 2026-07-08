@@ -7,7 +7,7 @@ The **Reflection Discipline** (`d-reflect`) is the explicit session-close trigge
 
 Upon receiving the `d-reflect` token, the Agent MUST:
 1. **Write the Retro**: Author a session closeout retro using the **CSS+SH** form (Continue/Start/Stop + Should Have/Should Hold).
-   - *UI-Invariant (SH Form)*: The SH form grants explicit permission for the Agent to provide direct observations regarding the Operator's intent clarity and coherence. Specifically, **Should Have** is used for the *debit* (constructive critique on friction or ambiguity), and **Should Hold** is used for the *credit* (positive reinforcement of clear, coherent execution).
+   - *UI-Invariant (SH Form)*: The SH form grants explicit permission for the Agent to provide direct observations *strictly regarding the Operator's prompting, intent clarity, and coherence*. It must NOT be used for the Agent to critique its own behavior (which belongs in CSS). Specifically, **Should Have** is used for the *debit* (constructive critique on the Operator's friction or ambiguity), and **Should Hold** is used for the *credit* (positive reinforcement of the Operator's clear, coherent execution).
 2. **Execute the Spine**: Run the autonomous mechanical spine `bin/standdown.sh` to close the session mechanically.
 3. **Commit for Durability**: Land the retro and any uncommitted changes to ensure memory is grounded on disk.
 
