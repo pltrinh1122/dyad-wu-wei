@@ -237,6 +237,12 @@ class TerminalNode(BaseNode):
         if not os.path.isabs(frontier_file):
             frontier_file = path_resolver.resolve_workspace_path(frontier_file)
         with FlowTransaction(frontier_file) as tx:
+
+            # Enforce Intent-Alignment Gate
+            labels = self.gh_labels
+            if "status: clarify" in labels or "status: dispose" in labels or "status:clarify" in labels or "status:dispose" in labels:
+                sys.exit(f"[🚫 BLOCKED] Intent-Alignment Violation: Node #{self.issue_id} has not been ratified by the Operator. Expected 'status:execute'.")
+
             # Enforce Quarantine Gate: Only allow nodes that possess the 'backlog' label.
             labels = self.gh_labels
             if "backlog" not in labels:
