@@ -131,3 +131,4 @@ To realize the Synergistic Human-Agent Partnership (NS-0001) and satisfy Axiom (
 
 
 14. **Graceful Daemon Degradation**: To prevent the framework from hard crashing due to expected failure modes during automated execution, the daemon must not crash or bubble up native exceptions because a local test, invariant, or reflection hook fails. Instead, it must catch the exception, cleanly roll back the transaction, and exit the node with a `[🚫 BLOCKED]` status, leaving the system in a stable state.
+15. **The Remote Grounding Invariant**: Before asserting PR status or Issue state, the Agent MUST always ground with the remote repo first (e.g., by executing `git fetch` or parsing real-time GitHub API responses) to ensure the physical state isn't stale.

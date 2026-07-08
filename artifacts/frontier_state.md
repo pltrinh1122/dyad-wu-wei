@@ -2926,3 +2926,38 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Learnings & Context**: Synthesize the epistemic learnings from the post-failure retrospective retro-2353.md into the system's operational guidelines (the Dao).
 - **Feedforward Invariants**:
   - `[ ]` None
+
+## #2502: [BUG] Intake: System Crash in reflect
+- **Status**: Backlog
+- **Kind**: path
+- **Learnings & Context**: ## System Crash Report
+
+**Subcommand:** `reflect`
+**Persona:** `Unknown`
+
+### Traceback
+```python
+Traceback (most recent call last):
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 618, in main
+    cmd_reflect(args)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 296, in cmd_reflect
+    reflect_node(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py", line 270, in reflect_node
+    node.reflect(frontier_file, node_name, learnings, invariants, commit_msg, branch_name, stage=stage, insights=insights)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 599, in reflect
+    self.close("Node completed via Node Lifecycle Daemon. Moving to PR.")
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py", line 127, in close
+    github_client.close_issue(self.issue_id, comment)
+  File "/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py", line 233, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/shared_data/dzw/dyad-wu-wei/drivers/github_client.py", line 177, in close_issue
+    _run_gh(
+  File "/mnt/shared_data/dzw/dyad-wu-wei/drivers/github_client.py", line 76, in _run_gh
+    raise subprocess.CalledProcessError(result.returncode, cmd, output=getattr(result, "stdout", None), stderr=getattr(result, "stderr", None))
+subprocess.CalledProcessError: Command '['gh', 'issue', 'close', '2501', '-c', 'Node completed via Node Lifecycle Daemon. Moving to PR.']' returned non-zero exit status 1.
+
+```
+
+- **Feedforward Invariants**:
+  - `[ ]` None
