@@ -64,7 +64,7 @@ def test_git_client_workspace_redirection():
         assert kwargs.get("cwd") == "/tmp/workspace_dir"
 
 def test_github_client_repo_redirection():
-    mock_env = {"SPAO_WORKSPACE_DIR": "/tmp/workspace_dir"}
+    mock_env = {"SPAO_WORKSPACE_DIR": "/tmp/workspace_dir", "ANTIGRAVITY_RUNNING_TESTS": "0"}
     
     mock_git_remote_res = MagicMock()
     mock_git_remote_res.stdout = "git@github.com:test-owner/test-repo.git\n"

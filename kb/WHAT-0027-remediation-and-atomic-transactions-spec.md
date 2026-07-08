@@ -181,15 +181,15 @@ def plan_start(self, frontier_file: str = "artifacts/frontier_state.md") -> None
     with FlowTransaction(frontier_file) as tx:
         self._verify_state_purity(frontier_file)
         
-        in_progress_label = load_node_status_config().get("in_progress", "status: in-progress")
-        if in_progress_label in self.gh_labels:
+        execute_label = load_node_status_config().get("execute", "status: execute")
+        if execute_label in self.gh_labels:
             raise Exception("already in progress")
             
         self._validate_orthogonal_scope()
-        self.set_status("in_progress")
+        self.set_status("execute")
         
         # Register rollback to remove the label on failure
-        tx.register_rollback(github_client.remove_label, self.issue_id, in_progress_label)
+        tx.register_rollback(github_client.remove_label, self.issue_id, execute_label)
         
         details = github_client.get_issue_details(self.issue_id)
         node_title = details.get("title", f"Node {self.issue_id}")

@@ -23,7 +23,7 @@ def is_verbose() -> bool:
     return os.environ.get("SPAO_VERBOSE") in ("1", "true", "TRUE") or os.environ.get("SPOA_VERBOSE") in ("1", "true", "TRUE")
 
 def _elevate_parent_path_status(issue_id: str) -> None:
-    """Automatically query the parent Path and elevate its label from 'status: todo' to 'status: in-progress'."""
+    """Automatically query the parent Path and elevate its label from 'status: clarify' to 'status: execute'."""
     try:
         from kernel import daemon_strategic
         from kernel.node_lifecycle import BaseNode, load_node_status_config
@@ -31,9 +31,9 @@ def _elevate_parent_path_status(issue_id: str) -> None:
         if parent_path_id and str(parent_path_id) != str(issue_id):
             path_node = BaseNode(parent_path_id)
             path_labels = path_node.gh_labels
-            todo_label = load_node_status_config().get("todo", "status: todo")
-            if todo_label in path_labels:
-                path_node.set_status("in_progress")
+            clarify_label = load_node_status_config().get("clarify", "status: clarify")
+            if clarify_label in path_labels:
+                path_node.set_status("execute")
                 print(f"Elevated parent Path #{parent_path_id} status to in-progress.")
     except Exception as e:
         print(f"Warning: Failed to elevate parent path status: {e}")
@@ -218,7 +218,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
             labels_lower = [l.lower() for l in labels]
             if "backlog" in labels_lower:
                 for l in labels:
-                    if l.lower() in ["status:triage", "triage", "status:intake", "intake"]:
+                    if l.lower() in ["status:triage", "clarify", "status:intake", "intake"]:
                         try:
                             github_client.remove_label(issue_id, l)
                             print(f"Automatically removed quarantine label '{l}' from Node #{issue_id}.")
@@ -249,7 +249,7 @@ def sync_and_clean_node(force_discard: bool = False, force_remote: bool = False)
 
     # NBA Handoff Automation
     try:
-        in_progress = github_client.list_issues_by_label("status: in-progress")
+        in_progress = github_client.list_issues_by_label("status: execute")
         if not in_progress:
             from kernel.daemon_nba import NBADaemon
             nba = NBADaemon(repository="pltrinh1122/dyad-wu-wei")
@@ -659,11 +659,11 @@ def main():
             try:
                 from drivers import github_client
                 try:
-                    github_client.remove_label(issue_id, "status: in-progress")
+                    github_client.remove_label(issue_id, "status: execute")
                 except Exception:
                     pass
                 try:
-                    github_client.add_label(issue_id, "status: triage")
+                    github_client.add_label(issue_id, "status: clarify")
                 except Exception:
                     pass
                 print(f"[CSI GUARD A] Released lock on Node {issue_id} and reverted to triage.")

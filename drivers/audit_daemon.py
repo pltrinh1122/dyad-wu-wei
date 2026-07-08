@@ -453,7 +453,7 @@ def evaluate_liveness_stall(rule, state):
                     "--title", issue_title,
                     "--body", issue_body,
                     "--label", "type: intent",
-                    "--label", "status: todo"
+                    "--label", "status: clarify"
                 ], check=False, cwd=get_repo_root())
                 print(f"[CSI GUARD B] Created bug intent issue for the autonomous abort.")
             except Exception as e:

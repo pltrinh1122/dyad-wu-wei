@@ -3,7 +3,7 @@
 ## 1. CONTINUE — what worked
 **Narrative (Operator):** The introduction of automated parent path status elevation seamlessly addresses manual UI status tracking, minimizing cognitive friction and bridging the gap between daemon execution and UI representation.
 **Details (Agent):**
-- Automated State Parity — Successfully verified that `_elevate_parent_path_status` in `daemon_node.py` correctly queries `daemon_strategic.find_parent_path_id` and shifts the parent path's label from 'todo' to 'in-progress'. Hooking this deeply into `plan_start_node` and `checkout_node` guarantees accurate state parity without operator intervention.
+- Automated State Parity — Successfully verified that `_elevate_parent_path_status` in `daemon_node.py` correctly queries `daemon_strategic.find_parent_path_id` and shifts the parent path's label from 'clarify' to 'in-progress'. Hooking this deeply into `plan_start_node` and `checkout_node` guarantees accurate state parity without operator intervention.
 
 ## 2. START — what to do better
 **Narrative (Operator):** We should look toward handling terminal states organically.

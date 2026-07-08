@@ -16,7 +16,7 @@ def test_create_issue(mock_tempfile, mock_subprocess):
 
 def test_close_issue(mock_subprocess):
     mock_close = MagicMock(returncode=0)
-    mock_labels = MagicMock(stdout='{"labels": [{"name": "status: in-progress"}]}', returncode=0)
+    mock_labels = MagicMock(stdout='{"labels": [{"name": "status: execute"}]}', returncode=0)
     mock_remove = MagicMock(returncode=0)
     
     mock_subprocess.side_effect = [mock_close, mock_labels, mock_remove]
@@ -33,7 +33,7 @@ def test_close_issue(mock_subprocess):
     
     remove_args = mock_subprocess.call_args_list[2][0][0]
     assert "--remove-label" in remove_args
-    assert "status: in-progress" in remove_args
+    assert "status: execute" in remove_args
 
 def test_reopen_issue(mock_subprocess):
     reopen_issue("99")
@@ -125,12 +125,12 @@ def test_list_issues_by_label(mock_subprocess):
     assert mock_subprocess.call_count == 1
 
 def test_get_issue_labels(mock_subprocess):
-    mock_subprocess.return_value.stdout = '{"labels": [{"name": "status: in-progress"}, {"name": "backlog"}]}'
+    mock_subprocess.return_value.stdout = '{"labels": [{"name": "status: execute"}, {"name": "backlog"}]}'
     labels = get_issue_labels("145")
-    assert "status: in-progress" in labels
+    assert "status: execute" in labels
 
 def test_add_label(mock_subprocess):
-    add_label("145", "status: in-progress")
+    add_label("145", "status: execute")
     mock_subprocess.assert_called_once()
 
 def test_remove_label(mock_subprocess):

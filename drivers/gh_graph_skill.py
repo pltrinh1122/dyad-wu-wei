@@ -113,7 +113,7 @@ def parse_meta_index(body: str) -> dict:
                 
             nodes[nid] = {
                 "completed": status_char == "x",
-                "in_progress": status_char == "/",
+                "execute": status_char == "/",
                 "depends": depends,
                 "title": title
             }
@@ -140,7 +140,7 @@ def get_ready_nodes(nodes: dict) -> list[str]:
             if details.get("state", "").upper() == "CLOSED":
                 actually_completed.add(nid)
                 nodes[nid]["completed"] = True
-                nodes[nid]["in_progress"] = False
+                nodes[nid]["execute"] = False
         except Exception:
             pass
             
@@ -156,7 +156,7 @@ def get_ready_nodes(nodes: dict) -> list[str]:
             continue
             
         # A node is ready if none of its dependencies are in the incomplete list AND the node itself is not in-progress
-        if not any(dep in incomplete_ids for dep in deps) and not nodes[nid].get("in_progress", False):
+        if not any(dep in incomplete_ids for dep in deps) and not nodes[nid].get("execute", False):
             ready_ids.append(nid)
     
     # Sort by numeric ID to ensure deterministic order

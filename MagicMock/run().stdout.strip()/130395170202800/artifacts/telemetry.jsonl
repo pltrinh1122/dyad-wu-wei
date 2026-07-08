@@ -1,1 +1,0 @@
-{"timestamp": "2026-06-09T15:15:07.758740Z", "node_id": null, "path_id": null, "domain": "drivers", "component": "github_client", "execution_id": "bbda9708-4732-4fc7-8901-52d2425129db", "stage": "SKILL", "event": "START", "metadata": {"function": "list_issues_by_label"}}

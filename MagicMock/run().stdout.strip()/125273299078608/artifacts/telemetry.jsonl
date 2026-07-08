@@ -1,2 +1,0 @@
-{"timestamp": "2026-05-30T14:27:17.520381Z", "node_id": null, "path_id": null, "domain": "drivers", "component": "git_wrapper", "execution_id": "ea3ca7ed-ccfc-43af-a5a4-d7e80fc3f4b8", "stage": "SKILL", "event": "START", "metadata": {"function": "run_git_command"}}
-{"timestamp": "2026-05-30T14:27:17.521284Z", "node_id": null, "path_id": null, "domain": "drivers", "component": "git_wrapper", "execution_id": "ea3ca7ed-ccfc-43af-a5a4-d7e80fc3f4b8", "stage": "SKILL", "event": "FINISH", "metadata": {"function": "run_git_command", "duration_sec": 1.3e-05, "status": "success"}}

@@ -16,5 +16,5 @@ def test_abort_node_flow(mock_resolve_workspace_path, mock_tx, mock_frontier, mo
     node = TerminalNode("123")
     node.abort("artifacts/frontier_state.md")
     
-    mock_set_status.assert_called_with("todo")
+    mock_set_status.assert_called_with("clarify")
     mock_set_classification.assert_called_with("backlog")

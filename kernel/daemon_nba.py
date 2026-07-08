@@ -16,7 +16,7 @@ class NBADaemon:
         """Evaluates the current state and returns the Next-Best-Rub (NBR) recommendations.
         
         Logic:
-        1. Fetch all issues labeled 'status: todo' (Staging Area).
+        1. Fetch all issues labeled 'status: clarify' (Staging Area).
         2. Score them against active strategic goals in strategic_intent.yml.
         3. Return the top 5 issues as recommendations.
         """

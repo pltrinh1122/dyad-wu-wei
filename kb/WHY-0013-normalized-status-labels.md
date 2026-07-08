@@ -18,13 +18,13 @@ The configuration will map logical state keys (the standard vocabulary used by t
 ```yaml
 node_attributes:
   status:
-    in_progress: "status: in-progress"
+    in_progress: "status: execute"
     backlog: "backlog"
 ```
 
 ### Orthogonality Across Node Types
 - **Terminal Nodes**: Will natively rely on both the `backlog` key (for Sense phase queuing) and the `in_progress` key (for WIP-N=1 locking).
-- **Non-Terminal Nodes (Paths)**: Since Paths serve as meta-containers for tracking Paths/Probes/Activities, they do not enter the Act worktree loop and do not strictly require the `backlog` label. However, invoking `set_status('in_progress')` on a Path can cleanly indicate active traversal without affecting the Sense prompt queue.
+- **Non-Terminal Nodes (Paths)**: Since Paths serve as meta-containers for tracking Paths/Probes/Activities, they do not enter the Act worktree loop and do not strictly require the `backlog` label. However, invoking `set_status('execute')` on a Path can cleanly indicate active traversal without affecting the Sense prompt queue.
 
 ### Abstraction Behavior (`BaseNode.set_status`)
 - **Lookup**: The method will query `node.yml` for the corresponding label string mapping.
@@ -34,5 +34,5 @@ node_attributes:
 ## Consequences
 - A `node.yml` file must be materialized at the repository root.
 - The `kernel/node_lifecycle.py` logic must be refactored to parse this file.
-- All hardcoded `add_gh_label("status: in-progress")` calls must be replaced with `self.set_status("in_progress")`.
+- All hardcoded `add_gh_label("status: execute")` calls must be replaced with `self.set_status("execute")`.
 - Path execution nodes (Activities 194, 195, 196) will proceed linearly to implement these components.

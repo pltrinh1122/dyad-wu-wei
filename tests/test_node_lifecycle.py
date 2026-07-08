@@ -9,7 +9,7 @@ def test_load_node_status_config_success():
     mock_yaml_content = {
         "node_attributes": {
             "status": {
-                "in_progress": "status: in-progress"
+                "execute": "status: execute"
             },
             "classification": {
                 "backlog": "backlog"
@@ -19,7 +19,7 @@ def test_load_node_status_config_success():
     with mock.patch("os.path.exists", return_value=True):
         with mock.patch("builtins.open", mock.mock_open(read_data=yaml.dump(mock_yaml_content))):
             status_config = load_node_status_config()
-            assert status_config.get("in_progress") == "status: in-progress"
+            assert status_config.get("execute") == "status: execute"
 
             class_config = load_node_classification_config()
             assert class_config.get("backlog") == "backlog"
@@ -38,20 +38,20 @@ def test_load_node_status_config_not_found():
 @mock.patch("kernel.node_lifecycle.github_client.add_label")
 def test_base_node_set_status(mock_add_label, mock_load_config, mock_get_labels, mock_remove_label):
     mock_load_config.return_value = {
-        "todo": "status: todo",
-        "in_progress": "status: in-progress"
+        "clarify": "status: clarify",
+        "execute": "status: execute"
     }
-    mock_get_labels.return_value = ["status: todo", "backlog"]
+    mock_get_labels.return_value = ["status: clarify", "backlog"]
     
     node = BaseNode("100")
-    node.set_status("in_progress")
+    node.set_status("execute")
     
-    mock_add_label.assert_called_once_with("100", "status: in-progress")
-    mock_remove_label.assert_called_once_with("100", "status: todo")
+    mock_add_label.assert_called_once_with("100", "status: execute")
+    mock_remove_label.assert_called_once_with("100", "status: clarify")
 
 @mock.patch("kernel.node_lifecycle.load_node_status_config")
 def test_base_node_set_status_invalid(mock_load_config):
-    mock_load_config.return_value = {"in_progress": "status: in-progress"}
+    mock_load_config.return_value = {"execute": "status: execute"}
     node = BaseNode("100")
     with pytest.raises((ValueError, SystemExit), match="Status key 'invalid' is not defined in node.yml"):
         node.set_status("invalid")
@@ -225,7 +225,7 @@ def test_reflect_empty_pr_blocked(mock_enforce, mock_get_worktree_path, mock_nba
 @mock.patch("kernel.node_lifecycle.TerminalNode.set_status")
 @mock.patch("kernel.daemon_knowledge_accrual.run_kb_check")
 def test_plan_start_dependency_violation(mock_kb_check, mock_set_status, mock_validate_scope, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
-    mock_load_config.return_value = {"in_progress": "status: in-progress"}
+    mock_load_config.return_value = {"execute": "status: execute"}
     mock_get_labels.return_value = ["backlog"]
     
     def side_effect(issue_id):
@@ -259,7 +259,7 @@ def test_plan_start_dependency_violation(mock_kb_check, mock_set_status, mock_va
 @mock.patch("kernel.node_lifecycle.TerminalNode.set_status")
 @mock.patch("kernel.daemon_knowledge_accrual.run_kb_check")
 def test_plan_start_dependency_satisfied(mock_kb_check, mock_set_status, mock_validate_scope, mock_get_details, mock_load_config, mock_tx, mock_get_labels):
-    mock_load_config.return_value = {"in_progress": "status: in-progress"}
+    mock_load_config.return_value = {"execute": "status: execute"}
     mock_get_labels.return_value = ["backlog"]
     
     def side_effect(issue_id):
@@ -282,7 +282,7 @@ def test_plan_start_dependency_satisfied(mock_kb_check, mock_set_status, mock_va
     node = TerminalNode("390")
     
     node.plan_start("dummy_frontier.md")
-    mock_set_status.assert_called_with("in_progress")
+    mock_set_status.assert_called_with("execute")
 
 
 def test_log_stage_advancement():
