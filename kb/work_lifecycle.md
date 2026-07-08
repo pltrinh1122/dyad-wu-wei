@@ -34,7 +34,7 @@ graph TD
         GenPath -.->|Produces Nodes| Backlog[Nodes with 'status: backlog']
         Backlog --> NBA
         
-        NBA --> PlanStart[plan-start acquires lock<br/>Applies 'status: in-progress']
+        NBA --> PlanStart[plan-start acquires lock<br/>Applies 'status: execute']
         
         PlanStart --> ExecHarmonize[Harmonize Node]
         ExecHarmonize --> ExecPlan[Plan Node]

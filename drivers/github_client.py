@@ -46,9 +46,10 @@ def _run_gh(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
         if cmd[0] == "git" and kwargs.get("cwd") is None:
             kwargs["cwd"] = workspace_dir
         elif cmd[0] == "gh":
-            repo = _resolve_gh_repo()
-            if repo:
-                env["GH_REPO"] = repo
+            if os.environ.get("ANTIGRAVITY_RUNNING_TESTS") != "1":
+                repo = _resolve_gh_repo()
+                if repo:
+                    env["GH_REPO"] = repo
                 
     kwargs["env"] = env
     

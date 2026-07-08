@@ -6,7 +6,7 @@ During the execution of recent Paths (e.g., Path 2168, Path 2172), the Operator 
 ### 1. The Abort / Orphan State Bug
 **Symptom**: When `bin/node abort` is used, the targeted node's status is reset, but it gets stranded and is no longer picked up by the NBA engine.
 **Root Cause**: 
-`kernel/node_lifecycle.py` uses `self.set_status("open")`, which fails because the physical mapping for "open" was replaced by `"todo"` in `node.yml`. Furthermore, when a node is locked via `plan-start`, it is purged from the Tier-2 `global_backlog.yml` cache and its `backlog` label is stripped from GitHub. When `abort` is called, it fails to re-apply the `backlog` classification label, leaving the node without the intake mechanism needed for the NBA engine to re-evaluate it.
+`kernel/node_lifecycle.py` uses `self.set_status("open")`, which fails because the physical mapping for "open" was replaced by `"clarify"` in `node.yml`. Furthermore, when a node is locked via `plan-start`, it is purged from the Tier-2 `global_backlog.yml` cache and its `backlog` label is stripped from GitHub. When `abort` is called, it fails to re-apply the `backlog` classification label, leaving the node without the intake mechanism needed for the NBA engine to re-evaluate it.
 
 ### 2. The Backlog Appending Dependency Bug (DAG Rewiring)
 **Symptom**: When `bin/backlog new activity` is executed to add an `Act` node, the `Reflect` node's `[Depends: <Plan-ID>]` string in the parent Path's Meta-Index is not updated. This causes `gh_graph_skill` to treat both `Act` and `Reflect` as ready the moment `Plan` is completed. Because `Reflect` has an older issue ID, the naive numerical sort prioritizes it over `Act`.

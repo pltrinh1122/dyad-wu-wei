@@ -3,7 +3,7 @@ backlog_items:
     directory to establish a structurally clean repository.
   labels:
   - backlog
-  - 'status: todo'
+  - 'status: clarify'
   - path
   - node
   number: 2486
@@ -14,7 +14,7 @@ backlog_items:
     violate architectural cleanliness.
   labels:
   - backlog
-  - 'status: todo'
+  - 'status: clarify'
   - path
   - node
   number: 2487

@@ -118,18 +118,18 @@ def test_parse_meta_index_in_progress():
 """
     nodes = gh_graph_skill.parse_meta_index(body)
     assert nodes["1"]["completed"] is True
-    assert nodes["1"].get("in_progress", False) is False
+    assert nodes["1"].get("execute", False) is False
     assert nodes["2"]["completed"] is False
-    assert nodes["2"].get("in_progress") is True
+    assert nodes["2"].get("execute") is True
     assert nodes["3"]["completed"] is False
-    assert nodes["3"].get("in_progress", False) is False
+    assert nodes["3"].get("execute", False) is False
 
-def test_get_ready_nodes_excludes_in_progress():
+def test_get_ready_nodes_excludes_execute():
     nodes = {
-        "1": {"completed": True, "in_progress": False, "depends": []},
-        "2": {"completed": False, "in_progress": True, "depends": ["1"]},
-        "3": {"completed": False, "in_progress": False, "depends": ["1"]},
-        "4": {"completed": False, "in_progress": False, "depends": ["2"]}
+        "1": {"completed": True, "execute": False, "depends": []},
+        "2": {"completed": False, "execute": True, "depends": ["1"]},
+        "3": {"completed": False, "execute": False, "depends": ["1"]},
+        "4": {"completed": False, "execute": False, "depends": ["2"]}
     }
     ready = gh_graph_skill.get_ready_nodes(nodes)
     # Node 2 is locked (in_progress), so it should NOT be ready
@@ -142,8 +142,8 @@ def test_get_ready_nodes_excludes_in_progress():
 
 def test_terminal_reflect_invariant_blocked():
     nodes = {
-        "1": {"completed": False, "in_progress": False, "depends": [], "title": "Act - Something"},
-        "2": {"completed": False, "in_progress": False, "depends": [], "title": "Reflect - Done"}
+        "1": {"completed": False, "execute": False, "depends": [], "title": "Act - Something"},
+        "2": {"completed": False, "execute": False, "depends": [], "title": "Reflect - Done"}
     }
     ready = gh_graph_skill.get_ready_nodes(nodes)
     # Node 1 is ready. Node 2 is a reflect node and len(incomplete_ids) == 2 > 1, so it should be blocked.
@@ -152,8 +152,8 @@ def test_terminal_reflect_invariant_blocked():
 
 def test_terminal_reflect_invariant_ready():
     nodes = {
-        "1": {"completed": True, "in_progress": False, "depends": [], "title": "Act - Something"},
-        "2": {"completed": False, "in_progress": False, "depends": [], "title": "Reflect - Done"}
+        "1": {"completed": True, "execute": False, "depends": [], "title": "Act - Something"},
+        "2": {"completed": False, "execute": False, "depends": [], "title": "Reflect - Done"}
     }
     ready = gh_graph_skill.get_ready_nodes(nodes)
     # Node 1 is completed. Node 2 is the ONLY incomplete node, so it should be ready.

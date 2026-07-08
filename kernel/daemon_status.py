@@ -175,10 +175,10 @@ def main():
     frontier_path = os.path.join(repo_root, "artifacts", "frontier_state.md")
     
     import subprocess
-    res = subprocess.run(["gh", "issue", "list", "--search", 'is:issue is:open label:"status: in-progress"'], capture_output=True, text=True)
-    in_progress_output = res.stdout.strip()
+    res = subprocess.run(["gh", "issue", "list", "--search", 'is:issue is:open label:"status: execute"'], capture_output=True, text=True)
+    execute_output = res.stdout.strip()
     
-    has_active_nodes = bool(in_progress_output and "no issues match" not in in_progress_output.lower())
+    has_active_nodes = bool(execute_output and "no issues match" not in execute_output.lower())
 
     try:
         branch = get_current_branch(cwd=repo_root)
@@ -193,7 +193,7 @@ def main():
     print("=== Dyad-Wu-wei System Status ===")
     if has_active_nodes:
         print("Active Nodes (In-Progress):")
-        print(in_progress_output)
+        print(execute_output)
     else:
         print("Active Nodes: None")
         

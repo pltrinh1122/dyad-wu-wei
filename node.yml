@@ -1,8 +1,8 @@
 node_attributes:
   status:
-    todo: "status: todo"
-    in_progress: "status: in-progress"
-    in_review: "status: in-review"
+    clarify: "status: clarify"
+    dispose: "status: dispose"
+    execute: "status: execute"
     blocked: "status: blocked"
   classification:
     backlog: "backlog"

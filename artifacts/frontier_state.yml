@@ -1836,7 +1836,7 @@ nodes:
 - invariants: []
   kind: path
   learnings: 'Implement an active Cybernetic Steering Invariant (CSI) Guard in the
-    audit daemon to automatically detect and downgrade orphaned ''status: in-progress''
+    audit daemon to automatically detect and downgrade orphaned ''status: execute''
     remote DAG labels that conflict with the local Lock-State Axiom.'
   name: '#2065: Orphaned WIP CSI Guard'
   status: Backlog
@@ -2518,26 +2518,3 @@ nodes:
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-2353.md into the system's operational guidelines (the Dao).
   invariants: []
-- name: '#2502: [BUG] Intake: System Crash in reflect'
-  status: Backlog
-  learnings: "## System Crash Report\n\n**Subcommand:** `reflect`\n**Persona:** `Unknown`\n\
-    \n### Traceback\n```python\nTraceback (most recent call last):\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
-    , line 618, in main\n    cmd_reflect(args)\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
-    , line 296, in cmd_reflect\n    reflect_node(\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_node.py\"\
-    , line 270, in reflect_node\n    node.reflect(frontier_file, node_name, learnings,\
-    \ invariants, commit_msg, branch_name, stage=stage, insights=insights)\n  File\
-    \ \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\", line 599, in\
-    \ reflect\n    self.close(\"Node completed via Node Lifecycle Daemon. Moving to\
-    \ PR.\")\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/node_lifecycle.py\"\
-    , line 127, in close\n    github_client.close_issue(self.issue_id, comment)\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/kernel/daemon_telemetry.py\", line\
-    \ 233, in wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/mnt/shared_data/dzw/dyad-wu-wei/drivers/github_client.py\", line 177,\
-    \ in close_issue\n    _run_gh(\n  File \"/mnt/shared_data/dzw/dyad-wu-wei/drivers/github_client.py\"\
-    , line 76, in _run_gh\n    raise subprocess.CalledProcessError(result.returncode,\
-    \ cmd, output=getattr(result, \"stdout\", None), stderr=getattr(result, \"stderr\"\
-    , None))\nsubprocess.CalledProcessError: Command '['gh', 'issue', 'close', '2501',\
-    \ '-c', 'Node completed via Node Lifecycle Daemon. Moving to PR.']' returned non-zero\
-    \ exit status 1.\n\n```\n"
-  invariants: []
-  kind: path

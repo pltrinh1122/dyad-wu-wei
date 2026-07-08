@@ -16,12 +16,12 @@ def test_plan_start_node(mock_verify, mock_gh, mock_fe, mock_telemetry, mock_bac
     plan_start_node("157")
     
     # Assert
-    mock_gh.add_label.assert_called_with("157", "status: in-progress")
+    mock_gh.add_label.assert_called_with("157", "status: execute")
 
 @patch("kernel.daemon_strategic.verify_node_transition_allowed")
 def test_plan_start_node_locked(mock_verify, mock_gh, mock_fe):
     # Setup
-    mock_gh.get_issue_labels.return_value = ["backlog", "status: in-progress"]
+    mock_gh.get_issue_labels.return_value = ["backlog", "status: execute"]
     mock_fe.read_active_node.return_value = "None"
     mock_gh.get_open_prs.return_value = []
     
@@ -39,7 +39,7 @@ def test_checkout_node(mock_verify, mock_gh, mock_fe, mock_telemetry, mock_subpr
     checkout_node("157", "node/157-test-branch")
     
     # Assert
-    mock_gh.add_label.assert_called_with("157", "status: in-progress")
+    mock_gh.add_label.assert_called_with("157", "status: execute")
     mock_subprocess.assert_called()
 
 @patch("kernel.daemon_strategic.verify_node_transition_allowed")
