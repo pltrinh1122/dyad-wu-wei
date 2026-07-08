@@ -1,0 +1,1 @@
+Failure: gh issue close crashed because SPAO_WORKSPACE_DIR was not set, meaning GH_REPO was not injected by _run_gh. Fix: Patched github_client.py to fallback to _resolve_gh_repo() in all gh commands.
