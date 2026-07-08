@@ -22,3 +22,8 @@ This axiom serves as the root justification for several critical system invarian
 
 4. **Lexical HTIL Gates (kb/WHY-0012-configurable-operator-gates.md)**:
    We enforce autonomy authorization through strict text-based markers (`lean!`, `lean.`, `clip.`) instead of relying on proprietary platform UI buttons (like "Approve" or "Reject" tool calls) to manage execution handoffs.
+
+5. **The Universal Engine vs. HAL Boundary**:
+   We formally establish a strict structural boundary between `DYAD.md` (The Universal Engine) and `GEMINI.md` / `CLAUDE.md` (The Hardware Abstraction Layer):
+   - **`DYAD.md`**: Holds the platform-agnostic "physics" (SPAOR loop, registries, systemic invariants). It also strictly owns the **Presentation Layer** (UI-invariants for chat formatting, link conventions, and `d-start`/`d-reflect` formatting). The Operator's UI experience must be universally identical regardless of the LLM host.
+   - **`GEMINI.md` / `CLAUDE.md`**: Acts as the Personalized Anchor (HAL). It translates the universal intent into the specific tooling and harness constraints of the host environment (e.g., mapping asynchronous execution rules to specific `run_command` tools, or suppressing platform-specific injected ephemeral messages).
