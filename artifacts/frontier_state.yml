@@ -2518,3 +2518,8 @@ nodes:
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-2353.md into the system's operational guidelines (the Dao).
   invariants: []
+- name: '#2508: Re-drive dyad-wu-wei craft dimensions'
+  status: Backlog
+  learnings: '## Meta-Index\n\n- [ ] ...'
+  invariants: []
+  kind: path
