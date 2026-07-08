@@ -1,7 +1,7 @@
-# WHY-2509: Architectural Decision Record for GEMINI.md vs. DYAD.md Portability Boundary
+# WHY-2509: Architectural Decision Record for Agent Platform Portability Boundary
 
 - **Type**: WHY (Architectural Decision Record)
-- **Context**: The `dyad-wu-wei` engine must be strictly portable across disparate foundational LLM substrates (e.g., Anthropic's Claude vs. Google's Antigravity/Gemini). We must ensure that the universal physics of the engine are not corrupted by platform-specific workarounds.
+- **Context**: The `dyad-wu-wei` engine must be strictly portable across disparate foundational LLM substrates and agent platforms (e.g., Anthropic's Claude vs. Google's Antigravity/Gemini). We must ensure that the universal physics of the engine are not corrupted by platform-specific workarounds.
 
 ## Decision Record
 We formally establish a strict structural boundary between `DYAD.md` and `GEMINI.md` (or `CLAUDE.md`) to enforce the Portability Axiom.
