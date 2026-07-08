@@ -19,6 +19,7 @@ artifacts/audit_state.json
 artifacts/cache/
 
 .scratch/
-artifacts/
+artifacts/*
+!artifacts/frontier_state.*
 bin/agy
 .falsify-seen.json
