@@ -735,10 +735,10 @@ class TerminalNode(BaseNode):
                     elif am_req is not None:
                         log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} is queued for remote auto-merge. Bypassing HARD HITL block.")
                     else:
-                        log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} successfully created. Entering Observe phase under HARD HITL block.")
+                        log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block for PR {pr_url}.")
                 except Exception as e:
                     print(f"Warning: Failed to fetch PR status for {pr_url}: {e}")
-                    log_stage_advancement("reflect", "Reflect Phase Completed", f"PR {pr_url} successfully created. Entering Observe phase under HARD HITL block.")
+                    log_stage_advancement("reflect", "Reflect Phase Completed", f"PR successfully created. Entering Observe phase under HARD HITL block for PR {pr_url}.")
 
     @record_execution(stage="act")
     def retro_attach(self, retro_file: str, branch_name: str) -> str:
