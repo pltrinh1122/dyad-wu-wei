@@ -13,12 +13,12 @@ We formally establish a strict structural boundary between `DYAD.md` and `GEMINI
 - The structural registries, ontologies, and interaction protocols (`d-start`, `d-reflect`).
 
 **Rule**: `DYAD.md` MUST NOT contain references to specific system prompt injections, proprietary tool names, or platform-specific execution nuances. It assumes a perfect, standardized agentic environment.
+- **Presentation Layer**: UI-invariants for chat presentation (how the Agent speaks to the Operator, the formats used like CSS+SH, or hyperlinking conventions) are universally defined here. The UI behavior must be identical regardless of platform.
 
 ### 2. GEMINI.md / CLAUDE.md (The Hardware Abstraction Layer)
 These files act as the **Personalized Anchor** and the **Hardware Abstraction Layer (HAL)** for the specific LLM instantiation. They translate the universal intent of `DYAD.md` into the specific tooling and harness constraints of the host environment.
 - **Tool Mapping**: Translating universal asynchronous execution rules into platform-specific tool calls (e.g., mandating `run_command` and `schedule` in Antigravity).
 - **Harness Suppression**: Implementing iatrogenic-injection suppression rules tailored to the host (e.g., instructing the agent to ignore `<EPHEMERAL_MESSAGE>` blocks injected by the Antigravity system wrapper).
-- **Presentation Layer**: Defining UI-invariants for chat presentation that optimize for the specific frontend interface.
 
 ## Justification
 By decoupling the universal physics (`DYAD.md`) from the host-specific drivers (`GEMINI.md`), we guarantee that the `dyad-wu-wei` substrate remains a singular, universally portable engine. If the Dyad migrates to a new frontier model tomorrow, `DYAD.md` remains untouched; we merely author a new `NEW_MODEL.md` HAL file.

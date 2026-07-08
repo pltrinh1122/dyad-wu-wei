@@ -51,6 +51,3 @@ To prevent execution seizures caused by brittle shell escaping and opaque `stder
 - **The Rule of Two**: The Agent MUST NOT execute compound Bash commands containing more than one logical operator (`&&`, `||`, `|`).
 - **The `.scratch/` Convention**: If a task requires conditional logic, loops, structured data parsing, or multi-step execution beyond a simple linear chain, the Agent MUST write the logic to a Python script (e.g., in `.scratch/<task>.py`) and execute it via `python3`.
 - **Structured Payload Advantage**: By defaulting to Python, the Agent ensures structured output (e.g., `json`) is printed to `stdout`, drastically reducing parsing hallucinations in the context window.
-
-## Antigravity-Specific: Chat Presentation UI-Invariants
-- **Durability Validation**: Whenever presenting to the Operator that changes have been "pushed to main" (e.g. during a session closeout or arbitrary commit), the Agent MUST include the exact Commit ID or PR number, and it MUST be hyperlinked (e.g., `[Commit abc1234](https://github.com/pltrinh1122/dyad-wu-wei/commit/abc1234)`) so the Operator can instantly validate the state transition.
