@@ -2518,8 +2518,20 @@ nodes:
   learnings: Synthesize the epistemic learnings from the post-failure retrospective
     retro-2353.md into the system's operational guidelines (the Dao).
   invariants: []
-- name: '#2508: Re-drive dyad-wu-wei craft dimensions'
+- name: '#2511: Deprecate ask_question tool for Markdown Enumeration in Rub-Back Protocol'
   status: Backlog
-  learnings: '## Meta-Index\n\n- [ ] ...'
+  learnings: 'Update AGENTS.md to enforce Markdown Enumeration for the Rub-Back Protocol
+    instead of ask_question.
+
+
+    ## Meta-Index
+
+    '
   invariants: []
   kind: path
+- name: '#2512: Harmonize - Deprecate ask_question tool for Markdown Enumeration in
+    Rub-Back Protocol'
+  status: Backlog
+  learnings: Harmonize on the philosophical and technical intent for Deprecate ask_question
+    tool for Markdown Enumeration in Rub-Back Protocol.
+  invariants: []

@@ -2927,9 +2927,18 @@ Exception: REFLECTION BLOCKED: Node 2111 experienced execution failures. Under S
 - **Feedforward Invariants**:
   - `[ ]` None
 
-## #2508: Re-drive dyad-wu-wei craft dimensions
+## #2511: Deprecate ask_question tool for Markdown Enumeration in Rub-Back Protocol
 - **Status**: Backlog
 - **Kind**: path
-- **Learnings & Context**: ## Meta-Index\n\n- [ ] ...
+- **Learnings & Context**: Update AGENTS.md to enforce Markdown Enumeration for the Rub-Back Protocol instead of ask_question.
+
+## Meta-Index
+
+- **Feedforward Invariants**:
+  - `[ ]` None
+
+## #2512: Harmonize - Deprecate ask_question tool for Markdown Enumeration in Rub-Back Protocol
+- **Status**: Backlog
+- **Learnings & Context**: Harmonize on the philosophical and technical intent for Deprecate ask_question tool for Markdown Enumeration in Rub-Back Protocol.
 - **Feedforward Invariants**:
   - `[ ]` None
