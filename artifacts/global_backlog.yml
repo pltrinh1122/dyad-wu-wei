@@ -1,1 +1,46 @@
-backlog_items: []
+backlog_items:
+- body: Systematically remove or relocate scratch scripts and files from the root
+    directory to establish a structurally clean repository.
+  labels:
+  - backlog
+  - 'status: todo'
+  - path
+  - node
+  number: 2486
+  title: 'Path: Clean Root Directory Detritus'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2486
+- body: Systematically sweep all sub-directories (e.g. kernel/, drivers/, infra/,
+    bin/) to remove misplaced scratch files, test detritus, or orphaned patches that
+    violate architectural cleanliness.
+  labels:
+  - backlog
+  - 'status: todo'
+  - path
+  - node
+  number: 2487
+  title: 'Path: Clean Sub-directory Detritus'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2487
+- body: "## Goal\nAudit how we use gh-issue and the associated tags to ensure that\
+    \ our interaction workflow synergizes with the autonomous execution workflow\n\
+    \n## Meta-Index\n\n## Agent Retrospective\n\n### Continue\n- \n\n### Stop\n- \n\
+    \n### Start\n- \n"
+  labels:
+  - backlog
+  - node
+  - intent
+  - 'status: clarify'
+  - 'status: dispose'
+  number: 2500
+  title: 'Intent: Audit gh-issue interaction synergy'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2500
+- body: "## Goal\nAnchor the process invariant in DYAD.md to always ground with the\
+    \ remote repo before asserting PR status.\n\n## Meta-Index\n\n## Agent Retrospective\n\
+    \n### Continue\n- \n\n### Stop\n- \n\n### Start\n- \n"
+  labels:
+  - backlog
+  - node
+  - intent
+  - 'status: clarify'
+  number: 2501
+  title: 'Intent: Anchor Remote Grounding Invariant'
+  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2501
