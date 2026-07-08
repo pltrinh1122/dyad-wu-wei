@@ -17,3 +17,8 @@ artifacts/audit_state.json
 /.workspace/
 
 artifacts/cache/
+
+.scratch/
+artifacts/
+bin/agy
+.falsify-seen.json
