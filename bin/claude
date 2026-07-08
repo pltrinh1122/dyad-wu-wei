@@ -1,0 +1,6 @@
+#!/bin/bash
+# Remove our local bin directory from PATH to avoid infinite recursion
+MY_BIN=$(cd "$(dirname "$0")" && pwd)
+export PATH=$(echo "$PATH" | sed -e "s|$MY_BIN:||g" -e "s|:$MY_BIN||g" -e "s|^$MY_BIN$||g")
+
+exec claude "$@" --dangerously-skip-permissions
