@@ -65,7 +65,7 @@ def test_evaluate_file_modified():
     with patch("drivers.audit_daemon.subprocess.run") as mock_run, \
          patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
              
-        mock_result = MagicMock()
+        mock_result = MagicMock(returncode=0)
         mock_result.stdout = "new_hash\n"
         mock_run.return_value = mock_result
         
@@ -86,7 +86,7 @@ def test_evaluate_file_modified_initial_run():
     with patch("drivers.audit_daemon.subprocess.run") as mock_run, \
          patch("drivers.audit_daemon.dispatch_alert") as mock_inject:
              
-        mock_result = MagicMock()
+        mock_result = MagicMock(returncode=0)
         mock_result.stdout = "new_hash\n"
         mock_run.return_value = mock_result
         

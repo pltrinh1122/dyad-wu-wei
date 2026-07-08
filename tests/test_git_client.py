@@ -169,10 +169,10 @@ def test_git_switch_detach(mock_subprocess):
 
 def test_git_get_current_branch_detached(mock_subprocess):
     # Simulating detached HEAD pointing to origin/main
-    show_current_res = MagicMock(stdout="\n")
-    head_res = MagicMock(stdout="hash123\n")
-    origin_main_res = MagicMock(stdout="hash123\n")
-    main_res = MagicMock(stdout="hash456\n")
+    show_current_res = MagicMock(returncode=0, stdout="\n")
+    head_res = MagicMock(returncode=0, stdout="hash123\n")
+    origin_main_res = MagicMock(returncode=0, stdout="hash123\n")
+    main_res = MagicMock(returncode=0, stdout="hash456\n")
     
     mock_subprocess.side_effect = [show_current_res, head_res, origin_main_res, main_res]
     
@@ -225,7 +225,7 @@ def test_rebase_with_conflict_resolution_sha256_autoresolve(tmp_path):
 
     def fake_run(cmd, **kwargs):
         call_log.append(cmd)
-        mock = MagicMock()
+        mock = MagicMock(returncode=0)
         if cmd == ["git", "rebase", "--autostash", "origin/main"]:
             mock.returncode = 1
             mock.stdout = ""
@@ -257,7 +257,7 @@ def test_rebase_with_conflict_resolution_unresolvable(tmp_path):
 
     def fake_run(cmd, **kwargs):
         call_log.append(cmd)
-        mock = MagicMock()
+        mock = MagicMock(returncode=0)
         if cmd == ["git", "rebase", "--autostash", "origin/main"]:
             mock.returncode = 1
             mock.stdout = ""
