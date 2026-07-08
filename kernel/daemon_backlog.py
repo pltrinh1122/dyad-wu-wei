@@ -283,7 +283,7 @@ class BacklogDaemon:
             github_client.add_label(issue_id, "node")
             if is_intent:
                 github_client.add_label(issue_id, "intent")
-                github_client.add_label(issue_id, "status: todo")
+                github_client.add_label(issue_id, "status: clarify")
             elif is_non_terminal:
                 github_client.add_label(issue_id, "path")
         except Exception:
@@ -291,7 +291,7 @@ class BacklogDaemon:
             github_client.add_label(issue_id, "node")
             if is_intent:
                 github_client.add_label(issue_id, "intent")
-                github_client.add_label(issue_id, "status: todo")
+                github_client.add_label(issue_id, "status: clarify")
             elif is_non_terminal:
                 github_client.add_label(issue_id, "path")
 
@@ -393,6 +393,29 @@ class BacklogDaemon:
                 github_client.update_issue_body(str(path_id), new_body)
         except Exception as e:
             print(f"Warning: Failed to uncheck Meta-Index for Node {node_id} in Path {path_id}: {e}")
+
+
+    def converge(self, issue_id: str) -> None:
+        """Signals that the Sense phase has converged and the Agent is awaiting Operator disposition."""
+        try:
+            github_client.remove_label(issue_id, "status: clarify")
+        except Exception:
+            pass
+        github_client.add_label(issue_id, "status: dispose")
+        print(f"Node #{issue_id} converged. Awaiting Operator disposition.")
+
+    def ratify(self, issue_id: str) -> None:
+        """Ratifies an intent, unlocking it for execution."""
+        try:
+            github_client.remove_label(issue_id, "status: dispose")
+        except Exception:
+            pass
+        try:
+            github_client.remove_label(issue_id, "status: clarify")
+        except Exception:
+            pass
+        github_client.add_label(issue_id, "status: execute")
+        print(f"Node #{issue_id} ratified. Ready for execution.")
 
     def map(self) -> None:
         """Generates a Mermaid.js DAG visualization of the open issue backlog."""
@@ -505,6 +528,15 @@ def main():
     parser_edit.add_argument("issue_id", help="Issue ID to edit")
     parser_edit.add_argument("new_body", help="New body content")
     
+
+    # converge
+    parser_converge = subparsers.add_parser("converge", help="Signal that the Sense phase is complete and ready for disposition")
+    parser_converge.add_argument("issue_id", help="Issue ID")
+    
+    # ratify
+    parser_ratify = subparsers.add_parser("ratify", help="Ratify an intent, unlocking execution")
+    parser_ratify.add_argument("issue_id", help="Issue ID")
+
     # map
     parser_map = subparsers.add_parser("map", help="Generate a Mermaid.js DAG of the active backlog")
     
@@ -567,6 +599,13 @@ def main():
         
     elif args.subcommand == "edit":
         daemon.edit(args.issue_id, args.new_body)
+
+
+    elif args.subcommand == "converge":
+        daemon.converge(args.issue_id)
+        
+    elif args.subcommand == "ratify":
+        daemon.ratify(args.issue_id)
 
     elif args.subcommand == "map":
         daemon.map()
