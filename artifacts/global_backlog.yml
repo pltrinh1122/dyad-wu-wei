@@ -33,14 +33,3 @@ backlog_items:
   number: 2500
   title: 'Intent: Audit gh-issue interaction synergy'
   url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2500
-- body: "## Goal\nAnchor the process invariant in DYAD.md to always ground with the\
-    \ remote repo before asserting PR status.\n\n## Meta-Index\n\n## Agent Retrospective\n\
-    \n### Continue\n- \n\n### Stop\n- \n\n### Start\n- \n"
-  labels:
-  - backlog
-  - node
-  - intent
-  - 'status: clarify'
-  number: 2501
-  title: 'Intent: Anchor Remote Grounding Invariant'
-  url: https://github.com/pltrinh1122/dyad-wu-wei/issues/2501
